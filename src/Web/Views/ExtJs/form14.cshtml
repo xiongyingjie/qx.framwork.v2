@@ -1,0 +1,31 @@
+﻿
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.BLANK_IMAGE_URL = '/Include/EXT-JS/V3/resources/images/gray/s.gif';
+            Ext.QuickTips.init();
+            new Ext.Window({
+                title: 'Help',
+                id: 'helpwin',
+                width: 300,
+                height: 300,
+                tbar: [{
+                    text: 'Close',
+                    handler: function() {
+                        Ext.getCmp('helpwin').close();
+                    }
+                }, {
+                    text: 'Disable',
+                    handler: function(t) {
+                        t.disable();
+                    }
+}]//,
+                   // autoLoad: 'html/' + btn.helpfile + '.txt'
+                }).show();
+
+            });
+</script>
+}

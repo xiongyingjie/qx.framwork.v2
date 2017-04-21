@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    发件信息类型:&nbsp;
+    @Html.TextBox("发件信息类型", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询类型名称" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("发件信息类型");
+        return Params;
+    }
+</script>

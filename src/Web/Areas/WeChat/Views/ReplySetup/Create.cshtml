@@ -1,0 +1,12 @@
+﻿@model Web.Areas.WeChat.ViewModels.ReplySetup_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.ReplySetupId)
+
+@*@Html.InputFor(o => o.ReplyMsgId)*@
+
+@Html.InputFor(o => o.KeyWord)
+
+@Html.InputFor(o => o.ReplyTypeId)

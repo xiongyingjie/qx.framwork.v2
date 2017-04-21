@@ -1,0 +1,30 @@
+﻿@{
+    var content = "";
+    content = DateTime.Now + "\n";
+    content += "QueryString" + "\n";
+    if (Context.Request.Form.HasKeys())
+    {
+        foreach (var item in Context.Request.QueryString)
+        {
+            content += item + ":" + Context.Request.QueryString[item.ToString()] + "\n";
+        }
+    }
+    else
+    {
+        content += "无QueryString" + "\n";
+    }
+
+    content += "Form" + "\n";
+
+    if (Context.Request.Form.HasKeys())
+    {
+        foreach (var item in Context.Request.Form)
+        {
+            content += item + ":" + Context.Request.QueryString[item.ToString()] + "\n";
+        }
+    }
+    else
+    {
+        content += "无QueryString" + "\n";
+    }
+}

@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "~/Views/Shared/_Sb2AdminLayout.cshtml";
+
+}
+<blockquote class="layui-elem-quote">
+   Welcome To Qx Framwork v2.0
+</blockquote>
+<fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+    <legend>Tips：点击左边的菜单开始工作</legend>
+</fieldset>
+
+<script>
+  //触发事件
+  var active = {
+    setTop: function(){
+        var that = $(this);
+        var url = that.data('url');
+        if (url.indexOf("http") > -1) {
+            console.log("remote requesting to " + url);
+            //url = "/sb/grap?dist_url=" + url;
+        } else {
+            console.log("local requesting to " + url);
+        }
+      //多窗口模式，层叠置顶
+      layer.open({
+        type: 2 //2 =>iframe
+        , title: that.data('title') ? that.data('title') : '未命名'
+        ,area: ['75%', '75%']
+        ,shade: 0
+        ,maxmin: true
+        ,offset: [
+        50 + Math.random() * 100// Math.random()*($(window).height()-300)
+          , 300 + Math.random() * 100//Math.random()*($(window).width()-390)
+        ]
+        , content: url//'http://www.baidu.com'
+        ,btn: ['复制窗口', '全部关闭'] 
+        ,yes: function(){
+          $(that).click();
+        }
+        ,btn2: function(){
+          layer.closeAll();
+        }
+        ,zIndex: layer.zIndex //重点1
+        , success: function (layero) {
+            debugger
+            console.log(layero);
+          layer.setTop(layero); //重点2
+        }
+      });
+    }}
+        // $('#wrapper .layui-btn')
+  $('#wrapper .qx-menu').on('click', function () {
+      var othis = $(this), method = 'setTop';//othis.data('method');
+    active[method] ? active[method].call(this, othis) : '';
+  });
+
+
+</script>

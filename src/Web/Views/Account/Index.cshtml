@@ -1,0 +1,58 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+
+
+
+@*<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                系统提示：
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>@("当前登录用户:" + ViewData["UserID"] )</li>
+                    <li>@("登陆时间：" + DateTime.Now)</li>
+                    <li>请在左边开始您的工作</li>
+
+                </ul>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+@*<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+            @ViewData["msg"]
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            @Html.ActionLink("重新登录", "Login", new RouteValueDictionary(), new { @class = "btn btn-primary" })
+            &nbsp; &nbsp;
+            @Html.ActionLink("退出登录", "LoginOut", new RouteValueDictionary(), new { @class = "btn btn-warning" })
+        </div>
+    </div>
+
+</div>*@
+
+<div class="row">
+    <div class="col-lg-12 back-main">
+        <p>欢迎来到大健康企业，<br />一个帮助您管理健康的贴心平台。</p>
+        <div class="left">
+            <p><span><b>|</b></span>&nbsp;您的信息</p>
+            <p class="one">用户名：@ViewData["UserID"]</p>
+            @*<p class="one">身份：店长</p>*@
+            <p class="one">登录时间：@DateTime.Now</p>
+            <p class="two">您可以在菜单栏开始您的健康之旅，<br />如有任何疑问可以点击<a href="#"><b>帮助中心</b></a>。</p>
+        </div>
+        <div class="right">
+            <img src="~/Content/Acounnt/img/tea.png" />
+        </div>
+        
+    </div>
+</div>

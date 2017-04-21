@@ -1,0 +1,32 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD.MenuExtension_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.HiddenFor(o => o.MenuID)
+
+@Html.InputFor(o => o.Controller)
+
+@Html.InputFor(o => o.Action)
+
+@Html.InputFor(o => o.Area)
+
+@Html.InputFor(o => o.ImageClass)
+
+@Html.InputFor(o => o.ActiveLi)
+
+@Html.InputFor(o => o.Status)
+
+@Html.InputFor(o => o.ParentId)
+
+@Html.InputFor(o => o.IsParent)
+
+@Html.InputFor(o => o.SubSystem)
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*------------------------------------------------------------*/
+
+.main-banner
+{
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+
+.main-bannerBox
+{
+	width: 400%;
+}
+
+.main-bannerBox a
+{
+	display: block;
+	float: left;
+	width: 25%;
+}
+
+.main-bannerBox a img
+{
+	width: 100%;
+	height: auto;
+}
+
+.main-banner ol
+{
+	width: 80px;
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -40px;
+	zoom: 1;
+	overflow: hidden;
+}
+.main-banner ol li
+{
+	float: left;
+	border-radius: 50%;
+	height: 10px;
+	width: 10px;
+	margin: 0 5px;
+	background: white;
+}
+.bannerOlActive
+{
+	background: red;
+}
+.Aviewphoto{
+	margin-top:20px;
+}
+.Ashopping
+{
+	background:#FFF;
+	margin-top:20px;
+	height:160px;
+	font-size:1.4em;
+	padding-left:6%;
+}
+.atime
+{   padding-top:20px;
+	height:40px;
+	
+}
+.anum{
+	height:40px;
+}
+.btn{
+	background:#F00;
+    width:94%;
+	height:40px;
+	font-size:1.2em;
+	margin-bottom:20px;
+
+}
+.btn:active{
+	background:#e41b46;
+}
+.Aintroduce
+{
+	background:#FFF;
+	margin-top:20px;
+	font-size:1.2em;
+	padding:10px 6%;
+	box-sizing:border-box;
+}
+.Aintroduce p{
+	line-height:20px;
+}
+.Aintroduce h2{
+	text-align:center;
+}
+.Aintroduce.motion{
+		color:#03F;
+		cursor:help;
+	}
+.motion-box{
+		display:block;
+		background:#FFF;
+		line-height:1.6;
+		border:1px solid #66CCFF;
+		color:#333;
+		padding:4%;
+		font-size:12px;
+		border-radius:5px;
+	   -moz-border-radius:5px;
+	   -webkit-border-radius:5px;
+		 overflow:auto;
+	}
+.Aintroduce a:hover
+{
+	color:red;
+}
+#wu img{
+	float:left;
+	width:30%;
+	padding:5%;
+	}
+#wu p{
+		float:left;
+		width:50%;
+	}

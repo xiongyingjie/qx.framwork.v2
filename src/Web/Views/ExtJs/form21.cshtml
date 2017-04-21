@@ -1,0 +1,54 @@
+﻿
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.BLANK_IMAGE_URL = '/Include/EXT-JS/V3/resources/images/gray/s.gif';
+            Ext.QuickTips.init();
+            var viewport = new Ext.Viewport({
+                layout: 'border',
+                renderTo: Ext.getBody(),
+                items: [{
+                    region: 'north',
+                    xtype: 'panel',
+                    html: 'North'
+                }, {
+
+region: 'west',
+xtype: 'panel',
+split: true,
+collapsible: true,
+collapseMode: 'mini',
+title: 'Some Info',
+bodyStyle:'padding:5px;',
+width: 200,
+minSize: 200,
+html: 'West'
+
+                }, {
+                    region: 'center',
+                    xtype: 'panel',
+                    html: 'Center'
+                }, {
+                    region: 'east',
+                    xtype: 'panel',
+                    split: true,
+                    width: 200,
+                    html: 'East'
+                }, {
+                    region: 'south',
+                    xtype: 'panel',
+                    html: 'South'
+}]
+                });
+
+
+
+        });
+
+
+</script>
+}

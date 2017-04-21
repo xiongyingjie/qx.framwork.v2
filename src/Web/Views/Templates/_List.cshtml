@@ -1,0 +1,21 @@
+﻿@model  List<object[]>
+@{
+    var Title = ViewData["Title"];
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                 @Title
+            </div>
+            <div class="panel-body">
+                @foreach (var item in Model)
+                {
+                    @Html.Action(item[0].ToString(), item[1].ToString(), item[2])
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

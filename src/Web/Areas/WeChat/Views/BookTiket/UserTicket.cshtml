@@ -1,0 +1,18 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.UserTicket_M
+
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    种类名称:&nbsp;
+
+    @Html.DropDownListFor(o => o.TypeName, Model.selectListItem, new { @class = "form-control input-sm" })
+</label>
+
+<script>
+    function Search() {
+        var Params = t("TypeName");
+        return Params;
+    }
+</script>

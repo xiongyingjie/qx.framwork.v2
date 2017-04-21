@@ -1,0 +1,17 @@
+﻿@model Web.Areas.Permission.ViewModels.CRUD.Index_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>菜单列表</h2>
+@foreach (var item in Model.MenuItems)
+{
+    <h1>@item.Father.MenuID</h1>
+    foreach (var child in item.Children)
+     {
+           <h3>&nbsp;&nbsp;&nbsp;&nbsp; <a href="@child.Value">@child.MenuID</a></h3>
+     }
+}

@@ -1,0 +1,151 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.SpotIntroduction_M
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@Model.ticketname</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery-2.1.4.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/fastclick.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery-weui.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/swiper.js"></script>
+    <style>
+        .swiper-container {
+            width: 100%;
+        }
+
+            .swiper-container img {
+                display: block;
+                width: 100%;
+            }
+
+        p {
+            text-indent: 2em;
+        }
+
+        .swiper-slide img {
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (1).JPG" /></div>
+            <div class="swiper-slide"><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (2).JPG" /></div>
+            <div class="swiper-slide"><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (3).JPG" /></div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="weui-flex" style="background: gainsboro">
+        <div class="weui-flex__item"><div class="placeholder"></div></div>
+    </div>
+
+<form action="BuyTicket">
+    @Html.Hidden("id",Model.ticketonsellid)
+    <div class="weui-cells weui-cells_form">
+       
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">景区名称</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input value="@Model.ticketname" readonly="" class="weui-input" type="text">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label for="time3" class="weui-label">游览时间</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input value="@Model.traveltime" readonly="" class="weui-input" id="time3" type="text">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">票价/张</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input value="￥@Model.price" readonly="" class="weui-input" type="text">
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label">预定票数</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="ip_num" value="1" required="" name="num" class="weui-input" pattern="[0-9]*" type="number">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">订单总价</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input value="￥@Model.price" readonly="" id="ip_total" class="weui-input" type="text">
+            </div>
+        </div>
+    </div>
+    <div id="time-container"></div>
+    <div class="demos-content-padded">
+        <button type="submit" id="#bt-submit" class="weui-btn weui-btn_primary">确认购买</button>
+    </div>
+
+    <div class="weui-flex" style="background: gainsboro">
+        <div class="weui-flex__item">
+            <div class="placeholder"></div>
+        </div>
+    </div>
+
+    <article class="weui-article">
+        <h3 style="text-align: center"><strong>景区简介</strong>
+        </h3>
+        <p>
+            @Model.SpotIntroduction
+        </p>
+    </article>
+</form>
+<script>
+    function onValueChange() {
+        if ($("#ip_num").val() > 10) {
+            alert("单次只能购买最多10张");
+            $("#ip_num").val(10);
+        }
+        $("#ip_total").val("￥"+($("#ip_num").val() * @Model.price));
+    }
+    $().ready(function() {
+        $("#ip_num").keyup(onValueChange);
+        $("#ip_num").change(onValueChange);
+    });
+    $(function() {
+        FastClick.attach(document.body);
+    });
+    $(".swiper-container").swiper({
+        loop: true,
+        autoplay: 3000
+    });
+    $("#time3").datetimePicker({
+        times: function () {
+            return [
+                {
+                    values: ['上午', '下午']
+                }
+            ];
+        },
+        onChange: function (picker, values, displayValues) {
+            console.log(values);
+        }
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,340 @@
+body
+{
+	margin: 0 0;
+	padding: 0 0;
+	width: 100%;
+	height: 100%;
+}
+
+li
+{
+list-style:none;
+}
+
+a:link 
+{
+text-decoration: none;
+}
+.found
+{
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	padding: 0 0;
+
+
+}
+
+.found .head
+{
+	width: 100%;
+	height: 150px;
+	background-color: rgb(55,54,59);
+
+}
+
+.found .head .left
+{
+	width: 20%;
+	
+	float: left;
+	padding: 40px 0;
+}
+.found .head .left a
+{
+	font-size: 70px;
+	color: rgb(255,255,255);
+
+
+
+	
+}
+
+.found .head .middle
+{
+	width: 60%;
+	text-align: center;
+	float: left;
+}
+.found .head .middle p
+{
+	font-size: 50px;
+	color: rgb(255,255,255);
+}
+.found .head .right
+{
+	width: 20%;
+	text-align: center;
+	float: left;
+	padding: 60px 0;
+}
+.found .head .right a
+{
+	font-size: 38px;
+	color: rgb(255,255,255);
+
+
+
+	
+}
+
+.found .main
+{
+	width: 95%;
+	margin: 10px auto;
+
+}
+.found .main .one
+{
+	width: 40%;
+	height: 100px;
+	float: left;
+
+}
+
+.found .main .one p
+{
+	font-size: 40px;
+	color: rgb(69,69,69);
+
+	height: 20px;
+
+}
+.found .main .one p select
+{
+	font-size: 35px;
+	color: rgb(69,69,69);
+	width: 180px;
+	height: 50px;
+
+}
+
+.found .main .two
+{
+		width: 60%;
+	height: 100px;
+	float: left; 
+	padding-top: 30px;
+}
+
+.found .main .two ul
+{
+width: 100%;
+padding: 0 0;
+height: 25px;
+margin: 0 0;
+float: left;
+
+}
+.found .main .two ul li
+{
+float: left;
+padding: 0px 6px;
+font-size: 26px;
+height: 24px;
+
+}
+.found .main .two ul li a
+{
+	color: rgb(0,0,255);
+}
+.found .main .two ul li a span
+{
+	color: rgb(255,0,0);
+}
+
+
+.found .main .two hr
+{
+	width: 260px;
+	float: left;
+
+}
+
+.found .main .three
+{
+	width: 100%;
+	margin-top: 10px;
+
+
+
+}
+.found .main .three ul
+{
+	padding: 0 0;
+	margin: 30px 0;
+	height: 50px;
+
+}
+
+.found .main .three ul .one
+{
+float: left;
+
+font-size: 30px;
+height: 60px;
+width: 10%;
+margin-top: 0px;
+color: rgb(69,69,69);
+
+}
+.found .main .three ul .one a
+{
+	color: rgb(69,69,69);
+	margin: 0 0;
+}
+.found .main .three ul .tw
+{
+float: left;
+
+font-size: 28px;
+height: 60px;
+width: 48%;
+
+margin-left: 4px;
+
+
+}
+.found .main .three ul .tw a
+{
+		color: rgb(69,69,69);
+		margin: 0 0;
+}
+.found .main .three ul .three
+{
+float: left;
+
+font-size: 26px;
+height: 60px;
+width: 18%;
+margin-top: 0px;
+
+}
+
+.found .main .three ul .three a
+{
+		color: rgb(69,69,69);
+		margin: 0 0;
+}
+.found .main .three ul .fore
+{
+float: right;
+
+font-size: 24px;
+height: 60px;
+width: 13%;
+margin-top: 0px;
+
+
+}
+.found .main .three ul .fore a
+{
+		color: rgb(69,69,69);
+}
+
+
+
+
+
+.found .main .the-input
+{
+	width: 100%;
+	padding: 0 0;
+	margin: 0 0;
+
+}
+.found .main .the-input p
+{
+					font-size: 38px;
+		color: rgb(69,69,69);
+}
+
+.found .main .the-input p textarea
+{
+	width: 60%;
+	height: 150px;
+	border: 1px solid rgb(69,69,69);
+
+} 
+.found .main .the-input ul
+{
+	width: 100%;
+	padding: 0 0;
+	margin: 0 0;
+
+}
+
+.found .main .the-input li
+{
+	width: 100%;
+	padding: 0 0;
+	margin: 0 0;
+	height: 80px;
+}
+
+.found .main .the-input li p
+{
+	font-size: 38px;
+		color: rgb(69,69,69);
+}
+
+.found .main .the-input li span
+{
+	font-size: 32px;
+		color: rgb(69,69,69);
+}
+
+.found .main .the-input li input
+{
+	width: 50%;
+	height: 40px;
+	font-size: 35px;
+	border: 1px solid rgb(69,69,69)
+}
+
+
+.found .main .the-input li select
+{
+	width: 20%;
+	height: 44px;
+	font-size: 35px;
+		border: 1px solid rgb(69,69,69)
+}
+
+
+.found .main .the-message
+{
+	width: 100%;
+	padding: 0 0;
+	margin: 0 0;
+}
+.found .main .the-message p
+{
+	font-size: 41px;
+	color: rgb(69,69,69);
+}
+.found .main .the-message p img
+{
+	width: 400px;
+	height: 250px;
+}
+
+.found .main .the-message p span
+{
+	font-size: 33px;
+}
+
+
+.done
+{
+    background-color: black;
+    color:rgb(255,255,255);
+    border:none;
+    font-size:14px;
+    font-family:"Î¢ÈíÑÅºÚ";
+}
+
+
+
+
+

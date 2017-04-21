@@ -1,0 +1,53 @@
+﻿
+@{
+    var style = (string)ViewData["style"] != "" ? (string)ViewData["style"] : "1";
+    var required = (string)ViewData["required"] != "" ? "required='" + ViewData["required"] + "'" : "";
+    var id = (string)ViewData["id"] != "" ? (string)ViewData["id"] : "noId";
+    var displayName = (string)ViewData["displayName"] != "" ? (string)ViewData["displayName"] : "默认名称";
+    var value = (string)ViewData["value"] != "" ? (string)ViewData["value"] : "";
+    var selectListItem = ViewData["selectListItem"] != null ? (List<SelectListItem>)ViewData["selectListItem"] : new List<SelectListItem>();
+}
+
+@Html.LabelFor(m=>m)
+@switch (style)
+{
+    case "1":
+        {
+            <label class="col-sm-3 control-label">@displayName：</label>
+            <div class="col-sm-9">
+                <select class="form-control" id="@id" name="@id">
+                    @foreach (var item in selectListItem)
+                    {
+                        if (item.Selected || item.Text == value)
+                        {
+                            <option selected="selected" value="@item.Value">@item.Text</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+
+                    }
+                </select>
+            </div>
+        }
+        break;
+    case "2":
+        {
+
+        }
+        break;
+}
+
+
+@*
+    @Html.Partial("/Views/Templates/_Select.cshtml", new ViewDataDictionary()
+               {
+                  { "style","1"},
+                  { "required",""},
+                  { "id","属性字段名"},
+                  { "value",Model.属性字段名},
+                  { "displayName","显示名称"},
+                  { "selectListItem",下拉数据项}
+               })
+*@

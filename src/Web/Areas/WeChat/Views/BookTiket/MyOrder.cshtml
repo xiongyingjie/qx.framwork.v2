@@ -1,0 +1,65 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.OrderList_M
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/我的订单.css" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/public.css" rel="stylesheet" />
+    <title>我的订单</title>
+</head>
+<body>
+    <div class="header">
+        <div class="headerL"><img src="~/Areas/WeChat/Content/BookeTicket/img/return-icon.png" /></div>
+        <div class="headerM"><h3>我的订单</h3></div>
+        <div class="headerR"><b>...</b></div>
+    </div>
+    <div class="content">
+        <div class="result">
+            <div id="unfinish" class="Hover">
+                <a href="/Wechat/BookTiket/MyOrder?flag=true" style="float:left"></a>
+                <a href="/Wechat/BookTiket/MyOrder?flag=true"style="float:left;margin-left:10%;">未兑换</a>
+            </div>
+            <div id="finish">
+                <a href="/Wechat/BookTiket/MyOrder?flag=false" style="margin-left:50%">已兑换</a>
+            </div>
+        </div>
+        @if (Model.flag)
+        {
+            <div class="unfinishmore">
+                <ul>
+                    @foreach (var item in Model.orderlist)
+                    {
+                        <a href="/WeChat/BookTiket/OrderDetails?id=@item.userticketid">
+                        <li>
+                            <p>@item.ticketname</p>
+                            <p>时间：@item.booktime</p>
+                        </li>
+                            </a>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <div class="finishmore" style="display:none;">
+                <ul>
+                    @foreach (var item in Model.orderlist)
+                    {
+                        <a href="/WeChat/BookTiket/OrderDetails?id=@item.userticketid">
+                            <li>
+                                <p>@item.ticketname</p>
+                                <p>时间：@item.booktime</p>
+                            </li>
+                        </a>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+
+  @*  <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery.min.js"></script>*@
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/myorder.js"></script>
+</body>
+</html>

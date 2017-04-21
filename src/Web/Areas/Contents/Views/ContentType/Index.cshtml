@@ -1,0 +1,14 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    内容分类编号:&nbsp;
+    @Html.TextBox("内容分类编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的内容分类编号" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("内容分类编号");
+        return Params;
+    }
+</script>

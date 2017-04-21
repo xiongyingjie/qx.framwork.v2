@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    短信发送记录:&nbsp;
+    @Html.TextBox("短信发送记录", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的请求ID" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("短信发送记录");
+        return Params;
+    }
+</script>

@@ -1,0 +1,24 @@
+﻿
+
+
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+
+        Ext.get('okButton').on('click', function(){
+		var msg = Ext.get('msg');
+		msg.load({
+		    url: ['ProcessRequest'], // <-- replace with your url
+			params: 'name=' + Ext.get('name').dom.value,
+			text: 'Updating...'
+		});
+		msg.show();
+	});
+
+
+        });
+</script>
+}
+<div id="msg"></div>
+Name: <input type="text" id="name" /><br />
+<input type="button" id="okButton" value="OK" />

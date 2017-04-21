@@ -1,0 +1,71 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.OrderDetial_M
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>订单详情</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+        <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+        <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+        <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+        <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+        <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+    </head>
+    <body>
+    <div style="padding-left: 20px">
+
+        <div class="weui-col-50"><p style="font-size: smaller">名称:@Model.name</p></div>
+        <div class="weui-col-50"><p style="font-size: smaller">订票时间:@Model.booktime.ToDateTime()</p></div>
+        <div class="weui-col-50"><p style="font-size: smaller">购票数量:@Model.Num 张</p></div>
+    </div>
+
+    <hr width=100% style="border: 1px dashed grey; ">
+
+    <div style="padding-top: 20px">
+        <div class="weui-flex">
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+            <div class="weui-flex__item"><div class="placeholder"><p style="font-size: smaller;padding-left:30%"></p> </div></div>
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+        </div>
+    </div>
+
+
+
+    <div class="weui-flex">
+        <div class="weui-flex__item"><div class="placeholder"></div></div>
+        <div class="weui-flex__item"><div class="placeholder">
+                                         <img src="@Model.QR_code"style="width: 150px" /> </div></div>
+        <div class="weui-flex__item"><div class="placeholder"></div></div>
+    </div>
+
+    <div style="padding: 20px 10px">
+        <div class="weui-flex" style="background: gainsboro">
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+            <div class="weui-flex__item"><div class="placeholder">取票号：</div></div>
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+        </div>
+
+        <div class="weui-flex" style="background: gainsboro">
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+            <div class="weui-flex__item"><div class="placeholder">@Model.orderid</div></div>
+            <div class="weui-flex__item"><div class="placeholder"></div></div>
+        </div>
+    </div>
+    <hr width=100% style="border: 1px dashed grey; ">
+    <div style="padding: 10px 10px">
+        <div class="weui-form-preview__hd">
+            <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">实付金额</label>
+                <em class="weui-form-preview__value">¥@Model.price</em>
+            </div>
+        </div>
+
+        <div class="weui-col-50"><p style="font-size: smaller">订单号：@Model.orderid</p></div>
+        <div class="weui-col-50"><p style="font-size: smaller">游览时间:@Model.traveldate</p></div>
+        <div class="weui-col-50"><p style="font-size: smaller">实体票：@Model.Num 张</p></div>
+    </div>
+
+    <a href="javascript:location.href='MyOrder';" class="weui-btn weui-btn_primary">确认</a>
+</body>
+</html>

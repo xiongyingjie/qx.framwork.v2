@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Qx.Account</RootNamespace>
+    <AssemblyName>Qx.Account</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Qx.Djk.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LitJson, Version=0.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>WeixinPay\dll\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="Qx.Tools">
+      <HintPath>..\..\lib\Qx.Tools.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Alipay\AlipayConfig.cs" />
+    <Compile Include="Alipay\AlipayCore.cs" />
+    <Compile Include="Alipay\AlipayNotify.cs" />
+    <Compile Include="Alipay\AlipaySubmit.cs" />
+    <Compile Include="Alipay\RSA.cs" />
+    <Compile Include="Configs\Setting.cs" />
+    <Compile Include="Entity\account.cs" />
+    <Compile Include="Entity\account_record.cs" />
+    <Compile Include="Entity\account_type.cs" />
+    <Compile Include="Entity\order_type.cs" />
+    <Compile Include="Entity\payment_type.cs" />
+    <Compile Include="Entity\pay_order.cs" />
+    <Compile Include="Entity\pay_state.cs" />
+    <Compile Include="Entity\withdraw_apply.cs" />
+    <Compile Include="WeixinPay\business\DownloadBill.cs" />
+    <Compile Include="WeixinPay\business\JsApiPay.cs" />
+    <Compile Include="WeixinPay\business\MicroPay.cs" />
+    <Compile Include="WeixinPay\business\NativeNotify.cs" />
+    <Compile Include="WeixinPay\business\NativePay.cs" />
+    <Compile Include="WeixinPay\business\OrderQuery.cs" />
+    <Compile Include="WeixinPay\business\Refund.cs" />
+    <Compile Include="WeixinPay\business\RefundQuery.cs" />
+    <Compile Include="WeixinPay\business\ResultNotify.cs" />
+    <Compile Include="WeixinPay\lib\Config.cs" />
+    <Compile Include="WeixinPay\lib\Data.cs" />
+    <Compile Include="WeixinPay\lib\Exception.cs" />
+    <Compile Include="WeixinPay\lib\HttpService.cs" />
+    <Compile Include="WeixinPay\lib\Log.cs" />
+    <Compile Include="WeixinPay\lib\Notify.cs" />
+    <Compile Include="WeixinPay\lib\WxPayApi.cs" />
+    <Compile Include="Entity\MyDbContext.cs" />
+    <Compile Include="Interfaces\Extensions.cs" />
+    <Compile Include="Interfaces\IAccountPayService.cs" />
+    <Compile Include="Interfaces\IAccountProvider.cs" />
+    <Compile Include="Models\AccountBag.cs" />
+    <Compile Include="Models\AccountTypeEnum.cs" />
+    <Compile Include="Models\PaymentTypeEnum.cs" />
+    <Compile Include="Models\PayOrderBag.cs" />
+    <Compile Include="Models\PayOrderTypeEnum.cs" />
+    <Compile Include="Models\PayStateEnum.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AccountPayService.cs" />
+    <Compile Include="Services\AccountProvider.cs" />
+    <Compile Include="Services\BaseRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repository\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="WeixinPay\cert\apiclient_cert.p12" />
+    <None Include="WeixinPay\cert\apiclient_cert.pem" />
+    <None Include="WeixinPay\cert\apiclient_key.pem" />
+    <None Include="WeixinPay\cert\rootca.pem" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WeixinPay\dll\LitJson.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

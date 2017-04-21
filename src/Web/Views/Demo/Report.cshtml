@@ -1,0 +1,19 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+<div class="row">
+    <div class="col-lg-2">
+        <label>用户姓名</label>
+    </div>
+    <div class="col-lg-10">
+        @Html.TextBox("用户姓名", "", new { PlaceHolder = "请输入要查询的用户姓名" })
+    </div>
+</div>
+
+<script>
+    function Search() {
+        var Params = v("用户姓名");//在这里构造参数
+        return Params;
+    }
+</script>

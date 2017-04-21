@@ -1,0 +1,64 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.ChargeOK_M
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>充值成功</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+    <div class="weui-form-preview__hd">
+        <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label">充值金额</label>
+            <em class="weui-form-preview__value">¥@Model._total_fee</em>
+        </div>
+    </div><div class="content">
+        <div class="container" id="container">
+            <div class="page layers flex input button uploader js_show">
+                <div class="page__bd page__bd_spaci js_show">
+
+
+
+
+                    <div class="weui-form-preview__bd">
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值方式</label>
+                            <span class="weui-form-preview__value">微信支付</span>
+                        </div>
+
+
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值时间</label>
+                            <span class="weui-form-preview__value">@DateTime.Now.ToString()</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值单号</label>
+                            <span class="weui-form-preview__value">@Model._po_id</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值账户</label>
+                            <span class="weui-form-preview__value">@Model._userId</span>
+                        </div>
+
+
+
+                        <div class="weui-form-preview__ft">
+                            <button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" onclick="window.close()">确认</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

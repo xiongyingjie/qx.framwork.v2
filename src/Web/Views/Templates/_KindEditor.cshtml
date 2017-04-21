@@ -1,0 +1,43 @@
+﻿@{
+    var css =string.IsNullOrEmpty((string)ViewData["css"])  ?"": (string)ViewData["css"] ;
+    var value = string.IsNullOrEmpty((string)ViewData["value"]) ? DateTime.Now.ToLongDateString():(string)ViewData["value"] ;
+    var id = string.IsNullOrEmpty((string)ViewData["id"])? "noId":((string)ViewData["id"]) ;
+    var name = string.IsNullOrEmpty((string)ViewData["name"]) ? "noName":((string)ViewData["name"]) ;
+
+}
+
+<textarea id="@id" name="@name" style="width:700px;height:300px;" class="@css">
+   @value
+</textarea>
+
+
+<script src="~/Include/KindEditor/kindeditor-all-min.js"></script>
+<script src="~/Include/KindEditor/lang/zh-CN.js"></script>
+
+
+<script>
+    KindEditor.ready(function (K) {
+   
+        var options = {   
+            allowFileManager: true,
+            imageUploadJson: '/Content/kindeditor/asp.net/upload_json.ashx',
+            fileManagerJson: '/Content/kindeditor/asp.net/file_manager_json.ashx',
+            width: "98%", //编辑器的宽度为70%
+            height: "400px", //编辑器的高度为100px
+            filterMode: false, //不会过滤HTML代码
+            resizeMode: 1 //编辑器只能调整高度
+        };
+        var editor = K.create('#@id', options);       
+    });
+  
+</script>
+
+@*
+    @Html.Partial("/Views/Templates/_KindEditor.cshtml", new ViewDataDictionary(ViewData)
+                           {
+                              { "css",""},
+                              { "id","调用举例"},
+                              { "name","调用举例"},
+                               { "value",Model}
+                           })
+*@

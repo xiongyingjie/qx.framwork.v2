@@ -1,0 +1,25 @@
+﻿@{
+    var showDeafultButton = true;
+    showDeafultButton = ViewData["showDeafultButton"] is bool ? (bool)ViewData["showDeafultButton"] : true;
+}
+
+
+@if (showDeafultButton)
+{
+    <div class="row">
+        <div class="col-lg-12 ">
+            <button class="btn btn-primary" onclick="Search()" id="Search">查询</button>&nbsp;
+        </div>
+    </div>
+}
+
+
+@Html.Action("Report2", "Report", new { dbConnStringKey = ViewData["dbConnStringKey"], AddLink = ViewData["AddLink"], Title = ViewData["Title"], ExtraParam = ViewData["ExtraParam"], ReportID = ViewData["ReportID"], Params = ViewData["Params"], area = "" })
+
+
+
+
+@*
+    用法
+@Html.Partial("_Report", new ViewDataDictionary(ViewData) { { "showDeafultButton", true } })
+    *@

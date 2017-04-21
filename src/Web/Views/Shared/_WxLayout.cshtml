@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>@ViewData["Title"]</title>
+    <!-- 引入 WeUI -->
+    <link href="~/Content/Wx/style/weui.min.css" rel="stylesheet"/>
+    @RenderSection("css", required: false)
+</head>
+<body ontouchstart="">
+<!-- 使用 -->
+    @RenderBody()
+<script type="text/javascript">
+
+    function _v(v, msg) {
+        if (v == "") {
+            if (msg == undefined || msg == "") {
+                alert("请填写完整的信息" + v);
+            } else {
+                alert(msg);
+            }
+            exit();
+        }
+        return v;
+    }
+
+    function v_i(id, msg) {
+        var v = f_i(id);
+        _v(v, msg);
+        return v;
+    }
+
+    function v_r(id, msg) {
+        var v = f_r(id);
+        _v(v, msg);
+        return v;
+    }
+
+    function f_i(id) {
+        return document.getElementById(id).value;
+    }
+
+    function f_r(name) {
+        var obj;
+        obj = document.getElementsByName(name);
+        if (obj != null) {
+            var i;
+            for (i = 0; i < obj.length; i++) {
+                if (obj[i].checked) {
+                    return obj[i].value;
+                }
+            }
+        }
+        return null;
+    }
+
+    function log_i(id) {
+        console.log(id + "=>" + f_i(id));
+        return f_i(id);
+    }
+
+    function log_r(name) {
+        console.log(name + "=>" + f_r(name));
+        return f_r(name);
+    }
+</script>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

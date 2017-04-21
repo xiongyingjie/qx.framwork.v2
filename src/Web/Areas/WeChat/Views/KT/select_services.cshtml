@@ -1,0 +1,104 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+@section scripts{
+    <script type="text/javascript">
+        function submit() {
+            var index = "12";
+            //var number = v_i("number");
+            //var phone = v_i("phone");
+            //var qq = v_i("qq");
+            //var drink = v_r("drink","请选择酒水");
+            //if (drink == "no") {
+            //    alert("您选择了自带酒水");
+            //} else {
+            //    alert("请选择酒水");
+            //}
+           location.href = "@Url.Action("pay")"+"?id=@ViewData["id"]-"+index;
+        }
+    </script>
+}
+<div class="page__bd">
+    <div class="weui-cells__title">请选择酒水</div>
+    <div class="weui-cells weui-cells_form">
+
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">雪碧</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="tel" placeholder="请输入数量">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">(8元/瓶/2L)</button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">可乐</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="tel" placeholder="请输入数量">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">(7元/瓶/2L)</button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">农夫果园</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="tel" placeholder="请输入数量">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">(10元/瓶/1.5L)</button>
+            </div>
+        </div>
+
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">青岛啤酒</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="tel" placeholder="请输入数量">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">(4元/瓶/500ml)</button>
+            </div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">雪花啤酒</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="tel" placeholder="请输入数量">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">(5元/瓶/500ml)</button>
+            </div>
+        </div>
+
+
+    </div>
+
+        <div class="weui-cells__title">备注</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea id="note" class="weui-textarea" placeholder="如有其它需求或问题可在这里输入" rows="3"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__tips">底部说明文字底部说明文字</div>
+        <label for="weuiAgree" class="weui-agree">
+            <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意<a href="javascript:void(0);">《相关条款》</a>
+            </span>
+        </label>
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:submit(2)" id="showTooltips">下一步</a>
+        </div>
+    </div>

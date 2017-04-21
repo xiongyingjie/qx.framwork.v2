@@ -1,0 +1,137 @@
+﻿using Djk.FastCar.Entity;
+using Djk.FastCar.Interfaces;
+using Djk.Member.Entity;
+using Djk.Order.Interfaces;
+using Qx.Tools.CommonExtendMethods;
+using Qx.Tools.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Web.Areas.Order.ViewModel;
+
+namespace Web.Areas.Order.Controllers
+{
+    public class ShoppingCartController : BaseOrderController
+    {
+        private IRepository<Djk.Order.Entity.shopping_cart> _repository;
+        private IOrderService _orderService;
+        private IRepository<StockRightProduce> _stockRightProduce;
+        private IRepository<Djk.FastCar.Entity.FastCar> _fastcar;
+        private IRepository<T_Member> _memrepository;
+        private IRepository<StockRightShelf> _stockrighshelfrepository;
+        private IStockRightServices _stockRightServices;
+        public ShoppingCartController(IRepository<Djk.Order.Entity.shopping_cart> repository, 
+            IOrderService orderService, IRepository<StockRightProduce> stockRightProduce,
+            IRepository<Djk.FastCar.Entity.FastCar> fastcar,IRepository<T_Member> memrepository,
+            IRepository<StockRightShelf> stockrighshelfrepository, IStockRightServices stockRightServices)
+        {
+            _repository = repository;
+            _orderService = orderService;
+            _stockRightProduce = stockRightProduce;
+            _fastcar = fastcar;
+            _memrepository = memrepository;
+            _stockrighshelfrepository = stockrighshelfrepository;
+            _stockRightServices = stockRightServices;
+        }
+
+        public ActionResult Index(string ReportID, string Params)
+        {
+           
+            if (!ReportID.HasValue())
+            {
+                return RedirectToAction("Index", new { ReportID = "Djk.Order.购物车", Params = ";" });
+            }
+            InitReport(_stockRightServices.FindCart(DataContext), "购物车", "#");
+            if (_orderService.FindCart(DataContext,ProductProvider).CartItems.FirstOrDefault() != null)
+            {
+                return View(ShoppingCart_M.ToViewModel(_orderService.FindCart(DataContext,ProductProvider)._cartItems.FirstOrDefault().SellerID));
+            }
+            else
+                return View(ShoppingCart_M.ToViewModel(""));
+        }
+
+        // GET: Area/Controller/Create
+        public ActionResult Create()
+        {
+            InitForm("添加内容表");
+            return View();
+        }
+
+        // POST: Area/Controller/Create
+        [HttpPost]
+        public ActionResult Create(ShoppingCart_M viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    InitForm("添加内容表");
+                    return View(viewModel);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return Alert("请联系开发人员\n" + ex.Message);
+            }
+        }
+
+        // GET: Area/Controller/Edit/5
+        public ActionResult Edit(string id)
+        {
+            InitForm("编辑内容表");
+            return View();
+        }
+
+        // POST: Area/Controller/Edit/5
+        [HttpPost]
+        public ActionResult Edit(ShoppingCart_M viewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    InitForm("编辑内容表");
+                    return View(viewModel);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return Alert("请联系开发人员\n" + ex.Message);
+            }
+        }
+
+        // GET: Area/Controller/Delete/5
+        public ActionResult Delete(string id)
+        {
+            if (id.HasValue())
+            {
+                _repository.Delete(id);
+                return Alert("删除成功！");
+            }
+            else
+            {
+                return Alert("操作失败！");
+            }
+        }
+
+        // GET: Area/Controller/Details/5
+        public ActionResult Details(string id)
+        {
+            InitForm("这里填写标题");
+            // TODO: 这里编写详情逻辑
+            return View();
+        }
+    }
+}

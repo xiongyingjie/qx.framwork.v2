@@ -1,0 +1,19 @@
+﻿
+@model Web.Areas.WeChat.ViewModels.BookTicket.TicketOnSell_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o => o.TicketID)
+
+@Html.InputFor(o => o.TicketName, "",true)
+@Html.ActionLink("选择门票", "ChooseTicket", "BookTiket", new {flag="add" }, new { @class = "col-lg-offset-3" })
+
+@Html.InputFor(o => o.RemainNum)
+
+@Html.SelectFor(o => o.Enable,Model.selectItems)
+
+@Html.InputFor(o => o.Price)
+
+@Html.InputFor(o => o.UnableReason)
+
+@Html.InputFor(o => o.TravalDate,"按照格式输入，如2017年1月25日为20170125")

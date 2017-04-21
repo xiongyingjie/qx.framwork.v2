@@ -1,0 +1,694 @@
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJavaException 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJavaRunnableProxy 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidReflection 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine._AndroidJNIHelper 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJNISafe 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WrapperlessIcall 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AttributeHelperEngine 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CanConvertToFlashAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MarshallOnlyFirstField 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ClassLibraryInitializer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SetupCoroutine 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppIncludeAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppDefineAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppBodyAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppInvokeAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppPropertyBodyAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppPropertyAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WritableAttribute 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FilterMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextureWrapMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NPOTSupport 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextureFormat 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CubemapFace 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderTextureFormat 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderTextureReadWrite 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.BlendMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.BlendOp 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.CompareFunction 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.CullMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.ColorWriteMask 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.StencilOp 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIStateObjects 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SendMouseEvents 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Social 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.ActivePlatform 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.UserState 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.UserScope 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.TimeScope 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.Range 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RangeAttribute 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MultilineAttribute 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ScrollWaitDefinitions 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Security 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Types 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SliderState 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SliderHandler 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SystemClock 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UserAuthorizationDialog 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WWW 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhone 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADBannerView 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADInterstitialAd 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Serialization.ListSerializationSurrogate 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Serialization.DictionarySerializationSurrogate`2 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InternalStaticBatchingUtility 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshSubsetCombineUtility 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngineInternal.TypeInferenceRules 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ForceMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodyConstraints 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rigidbody 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodyInterpolation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointMotor 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointSpring 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointLimits 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HingeJoint 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpringJoint 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FixedJoint 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SoftJointLimit 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointDriveMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointProjectionMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointDrive 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CharacterJoint 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ConfigurableJointMotion 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RotationDriveMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ConfigurableJoint 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ConstantForce 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CollisionDetectionMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BoxCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SphereCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CapsuleCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RaycastCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WheelFrictionCurve 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WheelHit 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WheelCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RaycastHit 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PhysicMaterialCombine 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PhysicMaterial 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ContactPoint 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CollisionFlags 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ControllerColliderHit 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CharacterController 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InteractiveCloth 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ClothSkinningCoefficient 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SkinnedCloth 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ClothRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TerrainCollider 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RaycastHit2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodyInterpolation2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodySleepMode2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CollisionDetectionMode2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rigidbody2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CircleCollider2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BoxCollider2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.EdgeCollider2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PolygonCollider2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ContactPoint2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointAngleLimits2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointTranslationLimits2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointMotor2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpringJoint2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DistanceJoint2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HingeJoint2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SliderJoint2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PhysicsMaterial2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ObstacleAvoidanceType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshAgent 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.OffMeshLinkType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.OffMeshLinkData 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshHit 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshTriangulation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMesh 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.OffMeshLink 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshPathStatus 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshPath 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshObstacle 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioSpeakerMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioSettings 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioClip 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioVelocityUpdateMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioListener 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FFTWindow 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioRolloffMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioSource 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioReverbPreset 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioReverbZone 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioLowPassFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioHighPassFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioDistortionFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioEchoFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioChorusFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioReverbFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Microphone 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MovieTexture 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WebCamFlags 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WebCamDevice 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WebCamTexture 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationClipPair 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimatorOverrideController 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WrapMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationEvent 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationClip 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Keyframe 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationCurve 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PlayMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.QueueMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationBlendMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationPlayMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationCullingType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Animation 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationState 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GameObject 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AvatarTarget 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AvatarIKGoal 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationInfo 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimatorCullingMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimatorStateInfo 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimatorTransitionInfo 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MatchTargetWeightMask 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Animator 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SkeletonBone 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanLimit 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanBone 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanDescription 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AvatarBuilder 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BodyDoF 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HeadDoF 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LegDoF 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ArmDoF 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FingerDoF 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DoF 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanBodyBones 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanFingerBones 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanBodyPart 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanParameter 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Avatar 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanTrait 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TreePrototype 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DetailRenderMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DetailPrototype 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SplatPrototype 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TreeInstance 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TerrainData 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TerrainChangedFlags 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TerrainRenderFlags 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Terrain 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Tree 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WindZoneMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WindZone 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AssetBundleCreateRequest 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AssetBundleRequest 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AssetBundle 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ReferenceData 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HideFlags 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SendMessageOptions 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PrimitiveType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Space 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LayerMask 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RuntimePlatform 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SystemLanguage 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LogType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DeviceType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SystemInfo 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WaitForSeconds 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WaitForFixedUpdate 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WaitForEndOfFrame 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Coroutine 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RequireComponent 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AddComponentMenu 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ContextMenu 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ExecuteInEditMode 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HideInInspector 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Resources 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SerializePrivateVariables 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ThreadPriority 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SerializeField 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Profiler 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngineInternal.Reproduction 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CrashReport 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CursorMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Cursor 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightRenderMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightShadows 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.OcclusionArea 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.OcclusionPortal 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FogMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderSettings 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.QualityLevel 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ShadowProjection 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.QualitySettings 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CameraClearFlags 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DepthTextureMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TexGenMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnisotropicFiltering 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BlendWeights 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextureCompressionQuality 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshFilter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CombineInstance 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshTopology 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Mesh 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BoneWeight 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SkinQuality 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Flare 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LensFlare 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Projector 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Skybox 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextMesh 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Particle 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InternalEmitParticleArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleEmitter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleAnimator 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TrailRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleRenderMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LineRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MaterialPropertyBlock 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderBuffer 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InternalDrawTextureArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawMeshTRArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawMeshMatrixArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Graphics 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Resolution 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightmapData 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightmapsMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ColorSpace 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightProbes 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightmapSettings 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GeometryUtility 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ScreenOrientation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Screen 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SleepTimeout 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GL 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUITexture 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextAlignment 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextAnchor 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIText 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CharacterInfo 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Font 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.StaticBatchingUtility 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ImageEffectTransformsToLDR 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ImageEffectOpaque 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Texture2D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Cubemap 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Texture3D 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderTexture 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LOD 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LODGroup 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GradientColorKey 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GradientAlphaKey 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Gradient 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ScaleMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayout 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutEntry 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutGroup 生成存根: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIScrollGroup 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIAspectSizer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIGridSizer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIWordWrapSizer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutOption 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ExitGUIException 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FocusType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIClip 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchScreenKeyboard_InternalConstructorHelperArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FullScreenMovieControlMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FullScreenMovieScalingMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iOSActivityIndicatorStyle 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidActivityIndicatorStyle 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Handheld 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchScreenKeyboardType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchScreenKeyboard 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneGeneration 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PlatformSelection 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUISettings 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUISkin 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIContent 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIStyleState 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RectOffset 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FontStyle 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawWithTextSelectionArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ImagePosition 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIStyle 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextClipping 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Event 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.KeyCode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.EventType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.EventModifiers 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Gizmos 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneTouchPhase 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneTouch 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneAccelerationEvent 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneOrientation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneInput 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneScreenOrientation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneSettings 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneKeyboardType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneKeyboard_InternalConstructorHelperArguments 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneKeyboard 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneMovieControlMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneMovieScalingMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneNetworkReachability 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneUtils 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CalendarIdentifier 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CalendarUnit 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LocalNotification 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RemoteNotification 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RemoteNotificationType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NotificationServices 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UnhandledExceptionHandler 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightProbeGroup 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Vector2 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Vector3 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Color 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Color32 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Quaternion 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rect 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Matrix4x4 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Bounds 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Vector4 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Ray 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Ray2D 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Plane 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Mathf 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RPCMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ConnectionTesterStatus 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkConnectionError 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkDisconnection 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MasterServerEvent 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkStateSynchronization 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkPeerType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkLogLevel 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkPlayer 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkViewID 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Ping 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkView 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Network 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BitStream 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RPC 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HostData 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MasterServer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkMessageInfo 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleSystemRenderMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleSystemSimulationSpace 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleSystem 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleSystemRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Shader 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralProcessorUsage 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralCacheSize 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralLoadingBehavior 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralPropertyType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralOutputType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralPropertyDescription 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralMaterial 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralTexture 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpriteAlignment 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpritePackingMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpritePackingRotation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpriteMeshType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Sprite 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpriteRenderer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WWWForm 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WWWTranscoder 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CacheIndex 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Caching 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UnityLogWriter 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UnityString 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkReachability 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Application 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UserAuthorization 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderingPath 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TransparencySortMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Camera 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ComputeShader 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ComputeBufferType 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ComputeBuffer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Debug 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Display 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Flash.ActionScript 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Flash.FlashPlayer 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NotConvertedAttribute 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NotFlashValidatedAttribute 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NotRenamedAttribute 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchPhase 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.IMECompositionMode 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Touch 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DeviceOrientation 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AccelerationEvent 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Gyroscope 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LocationInfo 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LocationServiceStatus 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LocationService 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Compass 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Input 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Light 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Transform 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Time 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Random 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PlayerPrefsException 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PlayerPrefs 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.jvalue 生成存根: 类型是一个值类型。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJNIHelper 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJNI 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidInput 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJavaRunnable 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngineInternal.FastCallExceptionHandler 生成存根: 类型已密封。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 <PrivateImplementationDetails> 生成存根: 类型不受支持，因为存在内部限制。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJavaRunnableProxy 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidReflection 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine._AndroidJNIHelper 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJNISafe 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WrapperlessIcall 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AttributeHelperEngine 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CanConvertToFlashAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MarshallOnlyFirstField 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ClassLibraryInitializer 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SetupCoroutine 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppIncludeAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppDefineAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppBodyAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppInvokeAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppPropertyBodyAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CppPropertyAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WritableAttribute 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FilterMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextureWrapMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NPOTSupport 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextureFormat 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CubemapFace 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderTextureFormat 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderTextureReadWrite 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.BlendMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.BlendOp 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.CompareFunction 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.CullMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.ColorWriteMask 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Rendering.StencilOp 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIStateObjects 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SendMouseEvents 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.ActivePlatform 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.ISocialPlatform 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.ILocalUser 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.UserState 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.IUserProfile 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.IAchievement 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.IAchievementDescription 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.IScore 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.UserScope 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.TimeScope 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SocialPlatforms.ILeaderboard 生成填充码: 类型是一个接口。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ScrollWaitDefinitions 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SliderState 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SliderHandler 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SystemClock 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextEditor+CharacterType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextEditor+DblClickSnapping 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextEditor+TextEditOp 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UserAuthorizationDialog 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADBannerView+BannerWasClickedDelegate 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADBannerView+BannerWasLoadedDelegate 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADBannerView+Layout 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADBannerView+Type 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ADInterstitialAd+InterstitialWasLoadedDelegate 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Serialization.ListSerializationSurrogate 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Serialization.DictionarySerializationSurrogate`2 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InternalStaticBatchingUtility 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshSubsetCombineUtility 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngineInternal.TypeInferenceRules 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ForceMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodyConstraints 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodyInterpolation 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointDriveMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.JointProjectionMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ConfigurableJointMotion 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RotationDriveMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CollisionDetectionMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RaycastCollider 生成填充码: 类型已过时。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PhysicMaterialCombine 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CollisionFlags 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodyInterpolation2D 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RigidbodySleepMode2D 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CollisionDetectionMode2D 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ObstacleAvoidanceType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.OffMeshLinkType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NavMeshPathStatus 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioSpeakerMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioClip+PCMReaderCallback 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioClip+PCMSetPositionCallback 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioVelocityUpdateMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FFTWindow 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioRolloffMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AudioReverbPreset 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WebCamFlags 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimatorOverrideController+OnOverrideControllerDirtyCallback 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WrapMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PlayMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.QueueMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationBlendMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationPlayMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimationCullingType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Animation+Enumerator 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AvatarTarget 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AvatarIKGoal 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnimatorCullingMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BodyDoF 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HeadDoF 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LegDoF 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ArmDoF 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FingerDoF 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DoF 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanBodyBones 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanFingerBones 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanBodyPart 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HumanParameter 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DetailRenderMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TerrainChangedFlags 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TerrainRenderFlags 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WindZoneMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WindZone 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ReferenceData 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.HideFlags 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SendMessageOptions 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PrimitiveType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Space 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RuntimePlatform 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SystemLanguage 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LogType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DeviceType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SerializePrivateVariables 生成填充码: 类型已过时。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ThreadPriority 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CursorMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightRenderMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightShadows 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FogMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.QualityLevel 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ShadowProjection 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CameraClearFlags 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DepthTextureMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TexGenMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AnisotropicFiltering 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.BlendWeights 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextureCompressionQuality 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MeshTopology 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SkinQuality 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InternalEmitParticleArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleRenderMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.InternalDrawTextureArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawMeshTRArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawMeshMatrixArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LightmapsMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ColorSpace 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ScreenOrientation 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextAlignment 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextAnchor 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Font+FontTextureRebuildCallback 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ScaleMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUI+ScrollViewState 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUI+WindowFunction 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayout+LayoutedWindow 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutUtility+LayoutCache 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutEntry 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutGroup 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIScrollGroup 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIAspectSizer 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIGridSizer 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIWordWrapSizer 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUILayoutOption+Type 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FocusType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUIClip 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchScreenKeyboard_InternalConstructorHelperArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FullScreenMovieControlMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FullScreenMovieScalingMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iOSActivityIndicatorStyle 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidActivityIndicatorStyle 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchScreenKeyboardType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneGeneration 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.PlatformSelection 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.GUISkin+SkinChangedDelegate 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.FontStyle 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Internal_DrawWithTextSelectionArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ImagePosition 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TextClipping 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.KeyCode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.EventType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.EventModifiers 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneTouchPhase 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneTouch 生成填充码: 类型已过时。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneAccelerationEvent 生成填充码: 类型已过时。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneOrientation 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneScreenOrientation 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneKeyboardType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneKeyboard_InternalConstructorHelperArguments 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneKeyboard 生成填充码: 类型已过时。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneMovieControlMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneMovieScalingMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.iPhoneNetworkReachability 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CalendarIdentifier 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CalendarUnit 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RemoteNotificationType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UnhandledExceptionHandler 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RPCMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ConnectionTesterStatus 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkConnectionError 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkDisconnection 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.MasterServerEvent 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkStateSynchronization 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkPeerType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkLogLevel 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleSystemRenderMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ParticleSystemSimulationSpace 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralProcessorUsage 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralCacheSize 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralLoadingBehavior 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralPropertyType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ProceduralOutputType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpriteAlignment 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpritePackingMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpritePackingRotation 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.SpriteMeshType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.WWWTranscoder 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.CacheIndex 生成填充码: 类型已过时。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UnityLogWriter 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UnityString 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.NetworkReachability 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Application+LogCallback 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.UserAuthorization 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.RenderingPath 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TransparencySortMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.ComputeBufferType 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Display+DisplaysUpdatedDelegate 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.TouchPhase 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.IMECompositionMode 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.DeviceOrientation 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.LocationServiceStatus 生成填充码: 类型是一个枚举。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.Transform+Enumerator 生成填充码: 类型对 exported or assembly(UnityEngine.Fakes) 不可见。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngine.AndroidJavaRunnable 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 UnityEngineInternal.FastCallExceptionHandler 生成填充码: 类型是一个委托。
+E:\svn\qx.framwork\FramWork\Qx.Tools\Fakes\UnityEngine.fakes : warning : 无法为 <PrivateImplementationDetails> 生成填充码: 类型不受支持，因为存在内部限制。

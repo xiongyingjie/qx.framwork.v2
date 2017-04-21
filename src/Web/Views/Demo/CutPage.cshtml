@@ -1,0 +1,40 @@
+﻿@model List<string> 
+@{
+    Layout = "/Views/Shared/_PandaLayout.cshtml";
+
+}
+
+
+
+<script>
+    $().ready(function () {
+
+        $("#jumpTo").click(function () {
+          
+            location.href = '@ViewData["currentUrl"]?pageIndex=' + $("#currentIndex").val() + '&perCount=@ViewData["perCount"]';
+        });
+    })
+</script>
+<h1>分页demo</h1>
+<h2>当前地址 -currentUrl&nbsp;&nbsp;&nbsp;<b>@ViewData["currentUrl"]</b> </h2>
+<h2>每页数量 -perCount  &nbsp;&nbsp;&nbsp;<b>@ViewData["perCount"]</b>   </h2>
+<h2>当前索引 -pageIndex &nbsp;&nbsp;&nbsp;<b>@ViewData["pageIndex"]</b>   </h2>
+<h2>总共页数 -maxIndex  &nbsp;&nbsp;&nbsp;<b>@ViewData["maxIndex"] </b>  </h2>
+
+
+<hr/>
+
+@foreach (var item in Model)
+{
+    <p>@item </p>
+}
+<hr/>
+<div class="row">
+    <div class="col-lg-4">
+        <input class="form-control" placeholder="请输入页码" value="@ViewData["pageIndex"]" type="text" id="currentIndex" />
+    </div>
+    <div class="col-lg-2">
+        <button class="btn btn-primary" id="jumpTo">跳转</button>
+    </div>
+    
+</div>

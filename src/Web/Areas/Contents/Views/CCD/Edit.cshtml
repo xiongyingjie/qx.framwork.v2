@@ -1,0 +1,19 @@
+﻿@model Web.Areas.Contents.ViewModels.CCD_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.InputFor(o => o.ColumnName)
+
+@Html.HiddenFor(o => o.CTD_ID)
+
+@Html.SelectFor(o => o.DT_ID, Model.DTelectItems)
+
+@Html.SelectFor(o => o.PCT_ID, Model.PCTselectItems)
+
+@Html.InputFor(o => o.Seq)
+
+@Html.InputFor(o => o.IsPk)
+
+@Html.InputFor(o => o.DefValue)
+
+@Html.HiddenFor(o => o.CCD_ID)

@@ -1,0 +1,129 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.OrderList_M
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>我的订单</title>
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/public.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+    <style>
+        .placeholder {
+            margin: 5px;
+            padding: 0 10px;
+            text-align: center;
+            height: 2.6em;
+            line-height: 2.6em;
+        }
+
+        .weui-form-preview__bd {
+            margin-top: -20px;
+        }
+
+        .weui-form-preview__hd:after {
+            border-bottom: 0px solid #D9D9D9;
+        }
+
+        .weui-form-preview new {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                已兑换
+            </a>
+            <a class="weui-navbar__item" href="#tab2">
+                未兑换
+            </a>
+
+        </div>
+        <div class="weui-tab__bd">
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active" style="opacity:0.5">
+
+
+                @foreach ( var item in Model.chanegeorderlist)
+                {
+                    <a href="/WeChat/BookTiketWeb/OrderDetails?id=@item.userticketid">
+                   <div class="weui-form-preview">
+                    <div class="weui-form-preview__hd">
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">实付金额</label>
+                            <em class="weui-form-preview__value">¥@item.Price</em>
+                        </div>
+                    </div>
+                    <div class="weui-form-preview__bd">
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">订单号</label>
+                            <span class="weui-form-preview__value">@item.OrderID</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">购买时间</label>
+                            <span class="weui-form-preview__value">@item.booktime.ToDateTime().ToStr()</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">门票名称</label>
+                            <span class="weui-form-preview__value">@item.ticketname</span>
+                        </div>
+                    </div>
+                </div>
+                        </a>
+                }
+
+
+
+
+
+
+
+            </div>
+            <div id="tab2" class="weui-tab__bd-item">
+                @foreach (var item in Model.unchanegeorderlist)
+                {
+                    <a href="/WeChat/BookTiketWeb/OrderDetails?id=@item.userticketid">
+                        <div class="weui-form-preview">
+                            <div class="weui-form-preview__hd">
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">实付金额</label>
+                                    <em class="weui-form-preview__value">¥@item.Price</em>
+                                </div>
+                            </div>
+                            <div class="weui-form-preview__bd">
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">订单号</label>
+                                    <span class="weui-form-preview__value">@item.OrderID</span>
+                                </div>
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">购买时间</label>
+                                    <span class="weui-form-preview__value">@item.booktime.ToDateTime().ToStr()</span>
+                                </div>
+                                <div class="weui-form-preview__item">
+                                    <label class="weui-form-preview__label">门票名称</label>
+                                    <span class="weui-form-preview__value">@item.ticketname</span>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                        }
+</div>
+        </div>
+    </div>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery-2.1.4.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/fastclick.js"></script>
+    <script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+    </script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery-weui.js"></script>
+</body>
+</html>

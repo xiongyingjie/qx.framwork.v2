@@ -1,0 +1,13 @@
+﻿
+
+@model Web.Areas.WeChat.ViewModels.BookTicket.TicketList_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.InputFor(o => o.Name)
+
+@Html.SelectFor(o=>o.TicketTypeID,Model.selectItems)
+
+@Html.SelectFor(o => o.ScenicSpotID, Model.spotselectItems)
+
+@Html.HiddenFor(o=>o.TicketID)

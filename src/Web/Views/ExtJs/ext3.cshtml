@@ -1,0 +1,34 @@
+﻿
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+
+
+
+            var someHandler = function(evt, t, o, myArg1, myArg2, myArg3) {
+                //do stuff
+
+            var v = evt;
+
+
+                alert(myArg1 + " " + myArg2 + " " + myArg3);
+            }
+
+            Ext.select('p').addListener('click', someHandler.createDelegate(this, [4, 'pizza', 11], true));
+
+        });
+</script>
+}
+
+
+
+
+
+<input type="button" id="myButton" value="Click me!" />
+<div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <p>p4</p>
+
+</div>

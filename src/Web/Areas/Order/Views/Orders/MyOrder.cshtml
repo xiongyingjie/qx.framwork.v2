@@ -1,0 +1,15 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+<h2>@ViewData["Title"]</h2>
+<label>
+    订单编号:&nbsp;
+    @Html.TextBox("订单编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的订单编号" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("订单编号");
+        return Params;
+    }
+</script>

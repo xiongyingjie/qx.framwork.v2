@@ -1,0 +1,10 @@
+﻿
+@model Web.Areas.WeChat.ViewModels.BookTicket.ScenicSpot_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.InputFor(o => o.Name)
+
+@Html.InputFor(o => o.Intorduction)
+
+@Html.HiddenFor(o=>o.ScenicSpotID)

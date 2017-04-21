@@ -1,0 +1,50 @@
+﻿@model Web.Areas.WeChat.ViewModels.LostAndFound.LostDetail_M
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>寻物详情</title>
+
+    <link href="~/Content/LostAndFound/css.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+    <div class="found">
+        <div class="head">
+            <div class="left">
+                <a href=""><b>&nbsp;<&nbsp;</b></a>
+            </div>
+            <div class="middle">
+                <p>寻物详情</p>
+            </div>
+            <div class="right">
+                <p></p>
+            </div>
+
+        </div>
+        <div class="main">
+            <div class="the-message">
+                <p><b>[寻物启事]</b>&nbsp;@Model.LostDetail.AddrName：@Model.LostDetail.LostThingTitle</p>
+                <p><span>发表于：@Model.LostDetail.CreateTime</span></p><br />
+                <p>物品种类：@Model.LostDetail.TypeName</p>
+                <p>物品描述：@Model.LostDetail.ThingDescribe</p>
+                <p>丢失地点：华侨大学>兑山艺术区</p>
+                <p>详细地址：@Model.LostDetail.AddrDetails</p>
+                <p>丢失时间：@Model.LostDetail.LostTime</p>
+                <p>联系人：@Model.LostDetail.Contactor</p>
+                <p>联系电话：@Model.LostDetail.ContactorPhone</p>
+                <p>酬谢方式：@Model.LostDetail.RewordName</p>
+                <p>图片：<img src="@Model.LostDetail.Photo" /></p>
+                <p>丢失详细描述：@Model.LostDetail.LostDetails</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@foreach (var item in ViewBag.Menus)
+{
+    <h3><a href="@item.Value">@item.Key</a></h3>
+}

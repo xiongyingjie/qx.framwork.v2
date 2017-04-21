@@ -1,0 +1,32 @@
+﻿
+@model Web.Areas.Msg.ViewModels.SmsSendRecord.SmsSendRecord_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.InputFor(o => o.RequestId, "", true)
+
+@Html.InputFor(o => o.Code, "", true)
+
+@Html.InputFor(o => o.PhoneNumber, "", true)
+
+@Html.InputFor(o => o.SignName, "", true)
+
+@Html.InputFor(o => o.TemplateCode, "", true)
+
+@Html.InputFor(o => o.ParamString, "", true)
+
+@Html.InputFor(o => o.SendTime, "", true)
+
+@Html.InputFor(o => o.ExpiredTime, "", true)
+
+@Html.InputFor(o => o.Verified, "", true)
+
+@Html.InputFor(o => o.CheckCount)
+
+@Html.InputFor(o => o.Sender)
+
+@Html.InputFor(o => o.ErrorMessage)
+
+
+
+

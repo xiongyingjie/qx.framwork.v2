@@ -1,0 +1,148 @@
+﻿@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            //------ContainerLayout开始------//
+            var box1 = new Ext.BoxComponent({
+                autoEl: {
+                    tag: 'div',
+                    style: 'background:red;width:300px;height:30px',
+                    html: 'box1'
+                }
+            });
+            var box2 = new Ext.BoxComponent({
+                autoEl: {
+                    tag: 'div',
+                    style: 'background:yellow;width:300px;height:30px',
+                    html: 'box2'
+                }
+            });
+            var box3 = new Ext.BoxComponent({
+                autoEl: {
+                    tag: 'div',
+                    style: 'background:blue;width:300px;height:30px;color:#fff',
+                    html: 'box3'
+                }
+            });
+            var containerlayout = new Ext.Container({
+                layout: 'form',
+                items: [box1, box2, box3],
+                renderTo: 'ContainerLayout'
+            });
+            //------ContainerLayout结束-----//
+            //------FormLayout开始------//
+            var formlayout = new Ext.Panel({
+                title: 'FormLayout',
+                layout: 'form',
+                items: [
+                    new Ext.form.TextField({ fieldLabel: '姓名' }),
+                    new Ext.form.TextField({ fieldLabel: '2' }),
+                    new Ext.form.TextField({ fieldLabel: '3' })
+                ],
+                renderTo: 'FormLayout'
+            });
+            //------FormLayout结束------//
+            //------ColumnLayout开始------//
+            var ColumnLayout = new Ext.Panel({
+                width: 600,
+                title: 'ColumnLayout',
+                layout: 'column',
+                items: [
+                    new Ext.form.FormPanel({ title: '24', columnWidth: .33, labelWidth: 50, items: [
+                        new Ext.form.TextField({ fieldLabel: '4' })]
+                    }),
+                    new Ext.form.FormPanel({ title: '25', columnWidth: .33, labelWidth: 50, items: [
+                        new Ext.form.TextField({ fieldLabel: '5' })]
+                    }),
+                    new Ext.form.FormPanel({ title: '26', columnWidth: .34, labelWidth: 80, items: [
+                        new Ext.form.TextField({ fieldLabel: '6' })]
+                    })
+                ],
+                renderTo: 'ColumnLayout'
+            });
+            //------ColumnLayout结束------//
+            //------BorderLayout开始------//
+            var BorderLayout = new Ext.Panel({
+                title: 'BorderLayout',
+                layout: 'border',
+                width: 1100,
+                height: 300,
+                items: [
+                    new Ext.Panel({ title: '27', region: 'north', html: '7' }),
+                    new Ext.Panel({ title: '28', region: 'south', html: '8', autoEl: 'center', height: 100}),
+                    new Ext.Panel({ title: '29', region: 'center', html: '9' }),
+                    new Ext.Panel({ title: '30', region: 'west', html: '10' }),
+                    new Ext.Panel({ title: '31', region: 'east', html: '11' })
+                ],
+                renderTo: 'BorderLayout'
+            });
+            //------BorderLayout结束------//
+            //------AccordionLayout开始------//
+            var AccordionLayout = new Ext.Panel({
+                title: 'AccordionLayout',
+                layout: 'accordion',
+                height: 200,
+                items: [
+                    new Ext.Panel({ title: '21', items: [new Ext.BoxComponent({ autoEl: { tag: 'div', html: '12'} })] }),
+                    new Ext.Panel({ title: '22', items: [new Ext.BoxComponent({ autoEl: { tag: 'div', html: '13'} })] }),
+                    new Ext.Panel({ title: '23', items: [new Ext.BoxComponent({ autoEl: { tag: 'div', html: '14'} })] })
+                ],
+                renderTo: 'AccordionLayout'
+            });
+            //------AccordionLayout结束------//
+            //------FitLayout结束------//
+            var FitLayout = new Ext.Panel({
+                title: 'FitLayout',
+                height: 100,
+                renderTo: 'FitLayout',
+                layout: 'fit',
+                items: [
+                    new Ext.Panel({ bodyStyle: 'background:red', html: '15' }),
+                    new Ext.Panel({ bodyStyle: 'background:yellow', html: '16' }),//黄色不会显示，因为fit布局全部填充满
+                ]
+            });
+            var NoFitLayout = new Ext.Panel({
+                title: 'NoFitLayout',
+                height: 100,
+                renderTo: 'FitLayout',
+                items: [
+                    new Ext.Panel({ bodyStyle: 'background:yellow', html: '30' })
+                ]
+            });
+            //------FitLayout结束------//
+            //------TableLayout开始------//
+            var TableLayout = new Ext.Panel({
+                title: 'TableLayout',
+                layout: 'table',
+                layoutConfig: { columns: 3 },                       //3列
+                defaults: {
+                    width: 133,
+                    height: 100,
+                    autoEl: 'center'
+                },
+                defaultType: 'panel',
+                items: [
+                    { html: '17' },
+                    { html: '18' },
+                    { html: '19', rowspan: 2, height: 180 },
+                    { html: '20', colspan: 2, width: 266 }
+                ],
+                renderTo: 'TableLayout'
+            });
+            //------TableLayout结束------//
+        });
+    </script>
+}
+<div id="ContainerLayout" style="float: left; width: 300px">
+</div>
+<div id="FormLayout" style="float: left; width: 240px; padding-left: 10px;">
+</div>
+<div id="ColumnLayout" style="float: left; width: 500px; padding-left: 10px;">
+</div>
+<div id="BorderLayout" style="padding: 10px 0px; clear: both">
+</div>
+<div id="AccordionLayout" style="width: 300px; float: left; height: 200px">
+</div>
+<div id="FitLayout" style="width: 300px; float: left; height: 200px; padding-left: 10px;">
+</div>
+<div id="TableLayout" style="width: 400px; float: left; padding-left: 10px;">
+</div>

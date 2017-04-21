@@ -1,0 +1,15 @@
+﻿@model Web.Areas.WeChat.ViewModels.ReplyImageMsg_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o => o.ReplyMsgId)
+
+@Html.InputFor(o => o.ToUserName)
+
+@Html.InputFor(o => o.FromUserName)
+
+@Html.InputFor(o => o.CreateTime)
+
+@Html.InputFor(o => o.MsgType)
+
+@Html.InputFor(o => o.MediaId)

@@ -1,0 +1,444 @@
+body
+{
+	width: 100%;
+	height: 100%;
+	margin: 0 0;
+	padding: 0 0;
+}
+a:link {
+ text-decoration: none;
+}
+a:visited {
+ text-decoration: none;
+}
+a:hover {
+ text-decoration: none;
+}
+a:active {
+ text-decoration: none;
+}
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*手机端*/
+
+.main-title
+{
+	width: 100%;
+	height: 100px;
+
+	margin-top: 25%;
+}
+
+.main-title .left
+{
+	width: 20%;
+	float: left;
+		height: 80px;
+}
+
+.main-title .middle
+{
+	width: 60%;
+	float: left;
+	padding: 0 0;
+		height: 80px;
+}
+
+.main-title .middle p
+{
+	font-size: 48px;
+	color: rgb(0,0,0);
+	font-family: '微软雅黑';
+}
+
+.main-title .right
+{
+	width: 20%;
+	float: left;
+		padding-top: 65px;
+			height: 80px;
+
+
+
+}
+
+.main-title .right a
+{
+		font-size: 30px;
+	color: rgb(75,138,217);
+	font-family: '微软雅黑';
+}
+
+.panel-body
+{
+	width: 80%;
+	margin: 120px auto;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 80px;
+    padding: 8px 30px;
+    font-size: 35px;
+    margin-bottom: 40px;
+    margin-left: -30px;
+    line-height: 1.42857143;
+    color: rgb(204,204,204);
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid rgb(211,211,211);
+    border-radius: 12px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.checkbox, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.checkbox label
+ {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 60px;
+    font-weight: 700;
+    font-size: 30px;
+    color: rgb(211,211,211);
+   margin-left: -20px;
+}
+.checkbox a
+{
+	float: right;
+	font-size: 30px;
+	color: rgb(75,138,217);
+	margin-right: -20px;
+}
+.checkbox label input
+{
+	width: 25px;
+	height: 25px;
+	border: 1px solid rgb(211,211,211);
+}
+
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 10px 16px;
+    font-size: 38px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btn {
+    display: inline-block;
+    padding: 6px 0px;
+    margin-bottom: 0;
+    font-size: 38px;
+    height: 100px;
+
+
+    font-weight: 100%;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 12px;
+}
+
+.btn:hover
+{
+	background-color: rgb(98,200,145);
+}
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------*/
+/*pc端*/
+
+ul li
+{
+list-style-type:none;
+}
+
+
+.part1
+{
+	width:100%;
+	margin: 0 auto;
+	height: 130px;
+	background-color: red;
+
+}
+
+.part1 .left
+{
+	width: 60%;
+    padding:5px 10px;
+	height: 120px;
+	text-align: center;
+	float: left;
+ 
+
+}
+
+.part1 .left p
+{
+	font-size: 40px;
+	color: rgb(69,69,69);
+
+}
+
+.part1 .middle
+{
+	width: 5%;
+	height: 120px;
+	text-align: center;
+	float: left;
+
+}
+.part1 .right
+{
+	width: 30%;
+   
+	height: 120px;
+	margin:0 auto;
+	float: right;
+    text-align:center;
+}
+
+
+.part1 .right div
+{
+	width: 150px;
+	
+	padding: 0 0;
+	height: 110px;
+    float:left;
+    text-align:center;
+ 
+
+}
+
+
+
+.part2 {
+    width: 100%;
+    margin: 20px auto;
+    height: 470px;
+    background-image: url('/Content/Acounnt/img/back.png');
+  
+}
+
+.part2 .left
+{
+	width: 50%;
+	height: 510px;
+	text-align: center;
+	float: left;
+
+}
+
+
+  #container{width: 500px;height: 440px;overflow: hidden;position: relative;margin: 0 auto;}
+  #list{width: 4200px;height: 400px;position: absolute;z-index:1;}
+  #list img{float: left;}
+  #buttons{position: absolute;height: 10px;width: 200px;z-index:4;bottom: 5px;left: 200px;}
+  #buttons span{cursor: pointer;float: left;border: 1px solid rgb(211,211,211);width: 12px;height: 12px;border-radius: 50%;background: transparent;margin-right: 35px;}
+  #buttons .on{background:rgb(75,217,141);}
+
+  .arrow{cursor:pointer;display: none;line-height: 39px;text-align: center;font-size: 36px;font-weight:bold;width: 40px;height: 40px;position: absolute;z-index: 2;top: 180px;background-color: rgba(0,0,0,.3);color: #fff; }
+  .arrow:hover{background-color: rgba(0,0,0,.7);}
+  #container:hover .arrow{display: block;}
+  #prev{left: 20px;}
+  #next{right: 20px;}
+
+
+  .part2 .middle
+{
+	width: 10%;
+	height: 510px;
+	text-align: center;
+	float: left;
+
+}
+
+.part2 .right
+{
+	width: 40%;
+	height: 510px;
+	text-align: center;
+	float: left;
+
+}
+
+.part2 .right .border1
+{
+	width: 60%;
+	margin: 47px auto;
+	height: 360px;
+	border: 2px solid rgb(231,231,231);
+    background-color:rgb(255,255,255);
+}
+
+
+.form-controls {
+    display: block;
+    width: 75%;
+    height: 34px;
+    padding: 8px 15px;
+    font-size: 18px;
+    outline:none;
+    margin: 35px auto;
+     
+    line-height: 1.42857143;
+    color: black;/*rgb(204,204,204);*/
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid rgb(211,211,211);
+    border-radius: 12px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+
+
+.checkboxs, .radio {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.checkboxs label
+ {
+    display: inline-block;
+    padding: 0 0;
+    margin-bottom: 40px;
+   margin-left: 10%;
+    font-size: 20px;
+    color: rgb(211,211,211);
+    float: left;
+  
+}
+.checkboxs a
+{
+	float: right;
+	font-size: 18px;
+	color: rgb(75,138,217);
+	 margin-right: 8%;
+
+}
+.checkboxs label input
+{
+	width: 18px;
+	height: 18px;
+	border: 1px solid rgb(211,211,211);
+}
+
+
+.btns-block {
+    display: block;
+    width: 80%;
+}
+
+.btns-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.btns {
+    display: inline-block;
+    padding: 6px 0px;
+    margin-bottom: 0;
+    font-size: 26px;
+    height: 55px;
+
+
+    font-weight: 100%;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 12px;
+}
+
+.btns:hover
+{
+	background-color: rgb(98,200,145);
+}
+
+
+.part3
+{
+	width: 100%;
+	height:80px;
+	text-align: center;
+	padding: 0 0;
+
+}
+.part3 a
+{
+	font-size:20px;
+	color: rgb(105,105,105);
+	font-family: '微软雅黑';
+}
+.part3 p
+{
+	font-size:20px;
+	color: rgb(128,128,128);
+}

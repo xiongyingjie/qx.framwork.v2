@@ -1,0 +1,217 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using Microsoft.Practices.Unity;
+using Qx.Report.Interfaces;
+using Qx.Report.Services;
+using Qx.Contents.Interfaces;
+using Qx.Contents.Services;
+using Qx.Wechat.Entity;
+using Qx.Wechat.Repository;
+using Qx.Wechat.Interfaces;
+using Qx.Wechat.Services;
+using Qx.Msg.Interfaces;
+using Qx.Msg.Repository;
+using Qx.Msg.Services;
+using Qx.WorkFlow.Entity;
+using Qx.WorkFlow.Interfaces;
+using Qx.WorkFlow.Repository;
+using Qx.WorkFlow.Services;
+using Qx.Account.Interfaces;
+using Qx.Account.Services;
+using Qx.Order.Entity;
+using Qx.Order.Interfaces;
+using Qx.Order.Repository;
+using Qx.Order.Services;
+using Qx.Org.Interfaces;
+using Qx.Org.Services;
+using Qx.Permission.Entity;
+using Qx.Permission.Interfaces;
+using Qx.Permission.Repository;
+using Qx.Permission.Services;
+using Qx.Tools.Interfaces;
+
+namespace Qx.Tools.Ioc.Unity
+{
+    public static class UnityIoc
+    {
+        public static void Register(List<Type> controllers)
+        {
+            //Container
+            IUnityContainer container = new UnityContainer();
+            //Register controllers
+            controllers.ForEach(c => container.RegisterType(c));
+            //Register Services
+            RegisterServices(container);
+            //Resolver
+            DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+        }
+
+        static void RegisterServices(IUnityContainer container)
+        {
+          
+         
+
+            #region Order
+
+            container.RegisterType<IRepository<order_item>, OrderItemRepository>();
+            container.RegisterType<IRepository<order>, OrderRepository>();
+            container.RegisterType<IRepository<order_state>, OrderStatuRepository>();
+            container.RegisterType<IRepository<order_type>, OrderTypeRepository>();
+            container.RegisterType<IRepository<r_product>, R_ProductsRepository>();
+            container.RegisterType<IRepository<r_user>, R_UsersRepository>();
+            container.RegisterType<IRepository<sell_consultant>, SellConsultantRepository>();
+            container.RegisterType<IRepository<shopping_cart>, ShoppingCartRepository>();
+
+            #endregion
+
+
+            #region Permission Repository
+            container.RegisterType<IRepository<button>, ButtonRepository>();
+            container.RegisterType<IRepository<menu>, MenuRepository>();
+            container.RegisterType<IRepository<role_button_forbid >, RoleButtonForbidRepository>();
+            container.RegisterType<IRepository<role_menu>, RoleMenuRepository>();
+            container.RegisterType<IRepository<role>, RoleRepository>();
+            container.RegisterType<IRepository<Qx.Permission.Entity.permission_user>, Qx.Permission.Repository.UserRepository>();
+            container.RegisterType<IRepository<user_role>, UserRoleRepository>();
+            container.RegisterType<IRepository<menu_extension>, MenuExtensionRepository>();
+            container.RegisterType<IPermissionProvider, PermissionProvider>();
+
+
+            #endregion
+
+
+
+
+            #region Contents Repository
+            container.RegisterType<IRepository<Qx.Contents.Entity.content_column_design>, Qx.Contents.Repository.ContentColumnDesignRepository>();
+            container.RegisterType<IRepository<Qx.Contents.Entity.content_column_value>, Qx.Contents.Repository.ContentColumnValueRepository>();
+            container.RegisterType<IRepository<Qx.Contents.Entity.content_table_design>, Qx.Contents.Repository.ContentTableDesignRepository>();
+            container.RegisterType<IRepository<Qx.Contents.Entity.content_table_query>, Qx.Contents.Repository.ContentTableQueryRepository>();
+            container.RegisterType<IRepository<Qx.Contents.Entity.content_type>, Qx.Contents.Repository.ContentTypeRepository>();
+            container.RegisterType<IRepository<Qx.Contents.Entity.data_type>, Qx.Contents.Repository.DataTypeRepository>();
+            container.RegisterType<IRepository<Qx.Contents.Entity.page_control_type>, Qx.Contents.Repository.PageControlTypeRepository>();
+            #endregion
+
+          
+
+
+
+            #region Wechat  Repository
+            container.RegisterType<IRepository<ImageMsg>, ImageMsgRepository>();
+            container.RegisterType<IRepository<LinkMsg>, LinkMsgRepository>();
+            container.RegisterType<IRepository<LocationEvent>, LocationEventRepository>();
+            container.RegisterType<IRepository<LocationMsg>, LocationMsgRepository>();
+            container.RegisterType<IRepository<Log>, LogRepository>();
+            container.RegisterType<IRepository<MenuEvent>, MenuEventRepository>();
+            container.RegisterType<IRepository<NewsMsgItem>, NewsMsgItemRepository>();
+            container.RegisterType<IRepository<ReplyImageMsg>, ReplyImageMsgRepository>();
+            container.RegisterType<IRepository<ReplyMusicMsg>, ReplyMusicMsgRepository>();
+            container.RegisterType<IRepository<ReplyNewsMsg>, ReplyNewsMsgRepository>();
+            container.RegisterType<IRepository<ReplySetup>, ReplySetupRepository>();
+            container.RegisterType<IRepository<ReplyTextMsg>, ReplyTextMsgRepository>();
+            container.RegisterType<IRepository<ReplyVideoMsg>, ReplyVideoMsgRepository>();
+            container.RegisterType<IRepository<ReplyVoiceMsg>, ReplyVoiceMsgRepository>();
+            container.RegisterType<IRepository<ShortVideoMsg>, ShortVideoMsgRepository>();
+            container.RegisterType<IRepository<SubscribeEvent>, SubscribeEventRepository>();
+            container.RegisterType<IRepository<SystemSetup>, SystemSetupRepository>();
+            container.RegisterType<IRepository<TextMsg>, TextMsgRepository>();
+            container.RegisterType<IRepository<Token>, TokenRepository>();
+            container.RegisterType<IRepository<VideoMsg>, VideoMsgRepository>();
+            container.RegisterType<IRepository<VoiceMsg>, VoiceMsgRepository>();
+            container.RegisterType<IRepository<ReplyMsg>, ReplyMsgRepository>();
+            //失物招领
+            //container.RegisterType<ILostAndFoundServices, LostAndFoundServices>();
+           // container.RegisterType<IWeChatBll, WeChatBll>();
+
+            
+            #endregion
+
+            #region Provider
+            //container.RegisterType<IInvoicingProvider, InvoicingProvider>();
+            //container.RegisterType<IEmployeeProvider, EmployeeProvider>();
+            container.RegisterType<IPermissionProvider, PermissionProvider>();
+           // container.RegisterType<IProductProvider, InvoicingProductProvider>();
+            container.RegisterType<IAccountProvider, AccountProvider>();
+            container.RegisterType<IOrderProvider, OrderProvider>();
+            //container.RegisterType<IMemberProvider, MemberProvider>();
+           // container.RegisterType<IFastOrg, Qx.Tools.Ioc.Unity.FastCarProvider>();
+            container.RegisterType<IOrgProvider, OrgProvider>();
+           
+
+
+
+            #endregion
+
+            #region Service
+            container.RegisterType<IContents, ContentService>();
+            //container.RegisterType<IMemberServices,MemberServices>();
+            //container.RegisterType<IInvoicingServices, InvoicingServices>();
+            container.RegisterType<IAccountPayService, AccountPayService>();
+            container.RegisterType<IOrderService, OrderService>();
+            container.RegisterType<IReportServices, ReportServices>();
+        //    container.RegisterType<IStockRightServices, StockRightServices>();
+            container.RegisterType<IPermission, PermissionServices>();
+            container.RegisterType<IOrg, OrgServices>();
+            //container.RegisterType<IProfitServices, ProfitServices>();
+            // container.RegisterType<ITaskServices, TaskServices>();
+
+
+            #endregion
+
+            #region R Provider
+
+            container.RegisterType<IWechatServices, WechatServices>();
+            //container.RegisterType<IInvoicingPermissionOrder, InvoicingPermissionOrder>();
+            //container.RegisterType<IInvoicingPermission, InvoicingPermission>();
+
+            //container.RegisterType<IRServieces, RServieces>();
+            //container.RegisterType<IAccountOrg, AccountOrg>();
+            //container.RegisterType<IAccountFastCarOrg, AccountFastCarOrg>();
+            //container.RegisterType<IAccountMember, AccountMember>();
+            //container.RegisterType<IEmployeeOrg, EmployeeOrg>();
+            //container.RegisterType<IVipCardProvider, VipCardProvider>();
+            //container.RegisterType<IEmployeePermission, EmployeePermission>();
+            //container.RegisterType<IAccountMemberVipCard, AccountMemberVipCard>();
+            //container.RegisterType<IAccountInvoicingOrderProduct, AccountInvoicingOrderProduct>();
+            //container.RegisterType<IMemberPermission,MemberPermission>();
+            //container.RegisterType<IBonusOrg, BonusOrg>();
+            //container.RegisterType<IInvoicingOrg, InvoicingOrg>();
+            //container.RegisterType<ICreditCardInvoicing, CreditCardInvoicing>();
+            //container.RegisterType<IMemberMsg, MemberMsg>();            
+            #endregion
+
+        
+
+            #region Qx.Msg
+            container.RegisterType<IMsgProvider, MsgProvider>();
+            container.RegisterType<IMsgService, MsgService>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.contact>, ContactRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.msg_group>, GroupRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.group_member>, Qx.Msg.Repository.GroupMemberRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.in_state>, InStateRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.msg>, MsgRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.msg_collection>, MsgCollectionRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.crew_limite_type>, CrewLimiteTypeRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.msg_send_record>, MsgSendRecordRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.msg_type>, MsgTypeRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.out_state>, OutStateRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.timer_msg>, TimerMsgRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.sms_send_record>, SmsSendRecordRepository>();
+            container.RegisterType<IRepository<Qx.Msg.Entity.msg_user>, Qx.Msg.Repository.UserRepository>();
+            #endregion
+
+            #region Qx.WorkFlow
+           container.RegisterType<IWorkFlowProvider, WorkFlowProvider>();
+           container.RegisterType<IWorkFlowService, WorkFlowService>();
+           container.RegisterType<IRepository<ConvertCondition>, ConvertConditionRepository>();
+           container.RegisterType<IRepository<NodeRelation>, NodeRelationRepository>();
+           container.RegisterType<IRepository<Node>, NodeRepository>();
+           container.RegisterType<IRepository<WorkFlowInstance>, WorkFlowInstanceRepository>();
+           container.RegisterType<IRepository<WorkFlow.Entity.WorkFlow>, WorkFlowRepository>();
+          
+            #endregion
+        }
+
+    }
+}

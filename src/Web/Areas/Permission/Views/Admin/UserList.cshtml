@@ -1,0 +1,23 @@
+﻿@model Web.Areas.Permission.ViewModels.Admin.UserList_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@if (Model.userid != ";")
+{
+    <div class="col-md-12">
+        <ol class="page-breadcrumb breadcrumb">
+            <li><a href="/Permission/Admin/UserList?ReportID=Permision_用户列表&Params=;">[用户列表]所有用户列表</a> <i class="fa fa-angle-right"></i></li>
+        </ol>
+    </div>
+}
+<label>
+    用户编号:&nbsp;
+    @Html.TextBox("用户编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的用户编号" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("用户编号");
+        return Params;
+    }
+</script>

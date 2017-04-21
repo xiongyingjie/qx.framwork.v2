@@ -1,0 +1,79 @@
+﻿@model Web.Areas.WeChat.ViewModels.LostAndFound.FoundThingNotice_M
+@using Qx.Wechat.LostAndFound.Models
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>招领启事</title>
+
+    <link href="~/Content/LostAndFound/css.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+
+    <div class="found">
+        <div class="head">
+            <div class="left">
+                <a href=""><b>&nbsp;<&nbsp;</b></a>
+            </div>
+            <div class="middle">
+                <p>招领启事</p>
+            </div>
+            <div class="right">
+                <p></p>
+            </div>
+
+        </div>
+        <div class="main">
+            <div class="one">
+                <p>
+                    地点：
+                    <select>
+                        <option value="">后街</option>
+                        <option value="">西门</option>
+                        <option value="">兑山</option>
+                        <option value="">中庭</option>
+                    </select>
+                </p>
+            </div>
+            <div class="two">
+
+                <ul>
+                    <li><a href="">玩具</a></li>
+                    <li><a href="">学生卡</a></li>
+                    <li><a href="">手机</a></li>
+                    <li><a href="">电脑</a></li>
+                </ul>
+                <div>
+                    <hr />
+                </div>
+                <ul>
+                    <li><a href=""><span>今日</span></a></li>
+                    <li><a href=""><span>本周</span></a></li>
+                    <li><a href=""><span>本月</span></a></li>
+                    <li><a href=""><span>更早</span></a></li>
+                </ul>
+            </div>
+            <div class="three">
+                <ul>
+                    @foreach (var item in Model.foundlist)
+                    {
+                        <li class="one"><a href=""><b>[@item.AddrName]</b></a></li>
+                        <li class="one"><a href=""><b>[@item.ThingType]</b></a></li>
+                        <li class="tw"><a href="">@item.FoundDescribeDetail</a></li>
+                        <li class="three">【@item.RewordName】</li>
+                        <li class="fore">@item.FoundTime</li>
+                    }
+                </ul>
+             
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>

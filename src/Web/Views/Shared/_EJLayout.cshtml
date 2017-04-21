@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>@ViewData["Title"]</title>
+    <!--ExtJs框架开始-->
+    <link href="~/Include/EXT-JS/V3/resources/css/ext-all.css" rel="stylesheet" />
+    <script src="~/Include/EXT-JS/V3/adapter/ext/ext-base.js"></script>
+    <script src="~/Include/EXT-JS/V3/ext-all.js"></script>
+    <!--ExtJs框架结束-->
+
+    <!--框架js函数开始-->
+    <script src="~/Include/FrameWork/js/tools.js"></script>
+    <!--框架js函数结束-->
+    @RenderSection("css", required: false)
+</head>
+<body ontouchstart="">
+    @RenderBody()
+   
+    @RenderSection("scripts", required: false)
+</body>
+</html>

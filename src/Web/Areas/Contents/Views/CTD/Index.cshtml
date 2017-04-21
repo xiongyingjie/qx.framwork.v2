@@ -1,0 +1,19 @@
+﻿@model Web.Areas.Contents.ViewModels.CTD_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    内容类型:&nbsp;
+    @Html.DropDownListFor(o=>o.CT_ID, Model.CTselectItems,new { @class = "form-control input-sm" })
+</label>
+
+
+<script>
+    function Search() {
+        if (t('CT_ID') == '请选择')
+            alert('请选择内容类型');
+        else
+            var Params = $('#CT_ID').val() + ';' + t('CT_ID');
+        return Params;
+    }
+</script>

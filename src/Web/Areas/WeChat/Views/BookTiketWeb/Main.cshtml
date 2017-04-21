@@ -1,0 +1,170 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.Main_M
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery-2.1.4.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/fastclick.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery-weui.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/swiper.js"></script>
+    <style>
+        .swiper-container {
+            width: 100%;
+        }
+
+        .swiper-slide img {
+            height: 200px;
+        }
+
+        .swiper-container img {
+            display: block;
+            width: 100%;
+        }
+
+        p {
+            text-indent: 2em;
+        }
+
+        #containter {
+            width: 375px;
+            height: 150px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        #list {
+            width: 1600px;
+            height: 150px;
+            position: absolute;
+            z-index: 1;
+            margin-top: 7px;
+        }
+
+        .arrow {
+            cursor: pointer;
+            /*display: none;*/
+            line-height: 39px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            z-index: 2;
+            top: 50px;
+            background-color: rgba(0,0,0,.3);
+            color: #fff;
+        }
+
+            .arrow:hover {
+                background-color: rgba(0,0,0,.7);
+            }
+
+        #containter:hover .arrow {
+            display: block;
+        }
+
+        #prev {
+            left: 5px;
+        }
+
+        #next {
+            right: 5px;
+        }
+
+        .pic1 {
+            width: 100px;
+            float: left;
+            padding-left: 18.75px;
+        }
+
+            .pic1 img {
+                width: 100px;
+                height: 120px;
+            }
+
+        .weui-article p img {
+            width: 70%;
+        }
+    </style>
+</head>
+<body ontouchstart>
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide"><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (1).JPG" /></div>
+            <div class="swiper-slide"><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (2).JPG" /></div>
+            <div class="swiper-slide"><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (3).JPG" /></div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <script>
+    $(function() {
+        FastClick.attach(document.body);
+    });
+    $(".swiper-container").swiper({
+        loop: true,
+        autoplay:2000,
+    });
+    </script>
+
+    <div class="weui-flex" style="background:gainsboro">
+        <div class="weui-flex__item"><div class="placeholder">在售门票</div></div>
+        <div><div class="placeholder"></div></div>
+    </div>
+
+    <div class="swiper-container swiper-container-horizontal">
+        <div id="containter">
+            <div id="list" style="left:0px">
+                @foreach (var item in Model.tickets)
+                {
+                    <a href="/WeChat/BookTiketWeb/SpotIntroduction?id=@item.ticketonsellid">
+                         <div class="pic1">
+                              <img src="@item.Picture">@item.name¥@item.price
+                         </div>
+                   </a>
+                }
+
+
+
+
+            </div>
+            <a id="prev" class="arrow"><</a>
+            <a id="next" class="arrow">></a>
+        </div>
+    </div>
+  
+
+    <div class="weui-flex" style="background:gainsboro">
+        <div class="weui-flex__item"><div class="placeholder">景区简介</div></div>
+        <div><div class="placeholder"></div></div>
+    </div>
+
+    <article class="weui-article">
+        <section>
+            <p>
+                婺源是唯一一个以县城命名的国家AAA级景区，全县共有一个5A级景区江湾，篁（huáng）岭，李坑、汪口、思溪延村、大鄣山卧龙谷、灵岩洞、严田古樟等12个4A级景区，还有一批精品景区。
+                篁岭是婺源旅游的浓缩，集古村落、古树群、梯田花海、民俗晒秋为一体的最美乡村景致。篁岭旅游不受季节影响，春观油菜花海、夏戏峡谷溯溪、秋赏古村晒秋、冬品民俗度假。
+                卧龙谷是国家AAAA级景区，地处皖赣边界，是婺源的北部屏障，属黄山余脉。卧龙谷内群山环抱，山峰林立，森林覆盖率高达90.7%，主峰海拔1629.8米，巍峨雄伟，俯瞰平川，是一处金庸笔下的人间美景、世外桃源。
+            </p>
+           
+                <img style="width: 100%" src="~/Areas/WeChat/Content/BookeTicket/img/A景点1.png" alt="photo"/>
+             
+            
+        </section>
+    </article>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/js2.js"></script>
+
+
+</body>
+</html>

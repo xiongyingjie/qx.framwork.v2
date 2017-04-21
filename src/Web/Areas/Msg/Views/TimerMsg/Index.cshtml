@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    定时消息:&nbsp;
+    @Html.TextBox("定时消息", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询定时消息表ID" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("定时消息");
+        return Params;
+    }
+</script>

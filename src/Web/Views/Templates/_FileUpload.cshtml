@@ -1,0 +1,209 @@
+﻿@{
+
+
+    var uploadAction = "/Base/UploadHandle";
+    var continueUploadAction = "/Base/ContinueHandle";
+    var reUploadAction = "/Base/RedoHandle";
+    var freshAction = "/Base/FreshHandle";
+    var id = string.IsNullOrEmpty((string)ViewData["id"]) ? "noId" : ((string)ViewData["id"]);
+    var value = string.IsNullOrEmpty((string)ViewData["value"]) ? "/UserFiles/deafultImg.jpeg" : ((string)ViewData["value"]);
+    var name = string.IsNullOrEmpty((string)ViewData["name"]) ? "noName" : ((string)ViewData["name"]);
+    var saveDirectory = string.IsNullOrEmpty((string)ViewData["saveDirectory"]) ? "noSaveDirectory" : ((string)ViewData["saveDirectory"]);
+    //var uploadAction = string.IsNullOrEmpty((string)ViewData["uploadAction"]) ? "noUploadAction" : ((string)ViewData["uploadAction"]);
+    //var continueUploadAction = string.IsNullOrEmpty((string)ViewData["continueUploadAction"]) ? "noContinueUploadAction" : ((string)ViewData["continueUploadAction"]);
+    //var reUploadAction = string.IsNullOrEmpty((string)ViewData["reUploadAction"]) ? "noReuploadAction" : ((string)ViewData["reUploadAction"]);
+    //var freshAction = string.IsNullOrEmpty((string)ViewData["freshAction"]) ? "noFreshAction" : ((string)ViewData["freshAction"]);
+}
+
+<link href="~/Include/JQueryFileUploadPlugin/css/style.css" rel="stylesheet" />
+<link href="~/Include/JQueryFileUploadPlugin/css/jquery.fileupload.css" rel="stylesheet" />
+<link href="~/Include/JQueryFileUploadPlugin/css/jquery.fileupload-ui.css" rel="stylesheet" />
+<link href="~/Include/JQueryFileUploadPlugin/css/InputFileCss.css" rel="stylesheet" />
+
+<div id="@("ContentArea_"+id)">
+    <div id="@("UploadArea_" + id)" class="UploadAreaCSS">
+        <div id="@("FileTable_" + id)" class="UploadFileTable">
+            <input name="@name" type="hidden">
+            <input id="@id" type="file">
+        </div>
+        <div id="@("MessageArea_" + id)" class="MessageArea_modi">
+            <!--用于显示上传状态信息-->
+            提示:请选择文件
+        </div>
+
+        <div id="@("ProgressBar_" + id)" class="myProgressBar">
+            <div class="BarArea" id="@("BarArea_" + id)">
+                <img src="~/Include/JQueryFileUploadPlugin/JqueryFileStyle/Bar1.png"/>
+            </div>
+            <div id="@("ProPersentMessage_" + id)" class="ProPersentMessage">
+                <div id="@("MessageContent_" + id)" class="MessageContent">
+                    <!--用于存放百分比数值-->
+                </div>
+            </div>
+        </div>
+
+        <div id="@("MessageContent_" + id)" class="ButtonArea">
+            <!--按钮操作区-->
+            <div id="@("AbortButton_" + id)" class="SingleButtonArea">
+                <!--暂停上传按钮-->
+                <input type="button" name="button1" id="button1" value="暂停" class="SingleButton"/>
+            </div>
+            <div id="@("RestartButton_" + id)" class="SingleButtonArea">
+                <!--继续上传按钮-->
+                <input type="button" name="@("button3_" + id)" id="@("button3_" + id)" value="继续" class="SingleButton"/>
+            </div>
+            <div id="@("DeleteButton_" + id)" class="SingleButtonArea">
+                <!--刷新页面，重新上传-->
+                <input type="button" name="button2" id="button2" value="删除" class="SingleButton" onclick="Redo();"/>
+            </div>
+            <div id="@("RefreshButton_" + id)" class="SingleButtonArea">
+                <!--刷新页面，重新上传-->
+                <input type="button" name="@("RefreshButton_" + id)" id="@("RefreshButton_" + id)" value="刷新" class="SingleButton" onclick="Refresh();"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+@*<div class="">
+    <img style="width:436px;" id="photoView_@id" src="@value">
+</div>*@
+<script src="~/Include/JQueryFileUploadPlugin/js/jquery-1.8.2.js"></script>
+<script src="~/Include/JQueryFileUploadPlugin/js/vendor/jquery.ui.widget.js"></script>
+<script src="~/Include/JQueryFileUploadPlugin/js/jquery.fileupload.js"></script>
+<script src="~/Include/JQueryFileUploadPlugin/js/jquery.iframe-transport.js"></script>
+<script src="~/Include/JQueryFileUploadPlugin/JqueryFileStyle/jquery.filestyle.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var BarImageWidth = 225;
+        //JQuery File Style
+        $("#@id").filestyle({
+            image: "/Include/JQueryFileUploadPlugin/JqueryFileStyle/filebutton4.jpg",
+            imageheight: 25,
+            imagewidth: 70,
+            width: 200
+        });
+       
+        
+        //JQuery File Upload
+        $('#@id').fileupload({
+            //dataType: "json",//返回类型
+            autoUpload: true,//自动上传
+            url: "@(uploadAction + "?saveDirectory=" + saveDirectory)",//请求传递的路径
+            limitConcurrentUploads: 1,//限制并发数
+            sequentialUploads: true,//设置为true保证文件顺序存储而不是同步存储
+            progressInterval: 100,//触发进度条事件的最小间隔事件，以毫秒为单位
+            maxChunkSize: 10000,//块状分段存储，允许块的最大长度
+
+            add: function (e, data) {
+                //开始上传
+                var Begin = "提示:上传中，请稍后...";
+                //var thethat = this;
+                $('#@("MessageArea_"+id)').html(Begin);
+                data.submit();
+                //var jqXHR = data.submit()
+                //    //.success(function (result, textStatus, jqXHR) { alert("success"); })
+                //    .error(function (jqXHR, textStatus, errorThrown) {
+                //        if (errorThrown === 'abort') {
+                //            //alert('File Upload has been canceled');
+                //        }
+                //    })
+                //    .complete(function (result, textStatus, jqXHR) {
+                //        //alert("Complete");
+                //    });
+
+                $('#button1').click(function (e) {
+                    //点击stop按钮
+                    var StopMessage = "提示:上传被中断!";
+                    $('#@("MessageArea_"+id)').html(StopMessage);
+                    var jqXHR = data.submit();
+                    jqXHR.abort();
+                    //alert("中断了");
+                });
+                $('#@("button3_"+id)').click(function (e) {
+                    //点击Start按钮，add方法中必须选择文件后才能触发
+                    //alert('继续上传');
+                    var RestartMessage = "提示:重新开始";
+                    $('#@("MessageArea_"+id)').html(RestartMessage);
+                    $.ajax({
+                        type: 'POST',
+                        url: '@continueUploadAction',
+                        data: {
+                            fileName: data.files[0].name,
+                        },
+                        success: function (result) {
+                            var filesize = result.FileSize;
+                            data.uploadedBytes = filesize;
+                            //alert(data.uploadedBytes);
+                            data.submit();
+                        },
+                    });
+                });
+            },
+
+            done: function (e, data) {
+                //所有数据块上传完成
+                var SuccessMessage = data.result.name;
+                $('#@("MessageArea_"+id)').html(SuccessMessage);
+                $("input[name='@name']").val(data.result.filePath);
+                $("photoView_@id").val(data.result.filePath);
+                OnUploadFinish(data.result.filePath, '@id');
+               
+                //@("OnUploadFinish_" + id)(data.result.filePath);
+                //alert("上传成功" + $('#@id').val())
+
+            },
+            progress: function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                //data.context.find('.bar').css('width', progress + '%');
+                var CurrentBarWidth = progress / 100 * BarImageWidth;
+                $('#@("BarArea_"+id) img').css({ "width": CurrentBarWidth, "height": 14 });
+                $('#@("MessageContent_"+id)').html(progress + '%');
+            },
+        });
+    });
+    function Redo() {
+        //刷新后删除上传中断的物理文件
+        alert("删除成功！");
+        $.ajax({
+            type: 'POST',
+            url: '@reUploadAction',
+            data: {
+                DeleteCommand: 1,
+            },
+            success: function (data) {
+                alert(data);
+            },
+        });
+        location.reload();
+    }
+    function Refresh() {
+        //just刷新
+        alert("刷新成功!");
+        $.post("@freshAction");
+        location.reload();
+    }
+</script>
+
+
+
+@*
+    @Html.Partial("/Views/Templates/_KindEditor.cshtml", new ViewDataDictionary(ViewData)
+                           {
+                              { "uploadAction","上传地址"},
+                              { "continueUploadAction","续传地址"},
+                              { "reUploadAction","重新上传地址"},
+                               { "freshAction","刷新地址",
+                                { "saveDirectory","/UserFiles/Test/"},
+                                { "id","调用举例"},
+                              { "name","调用举例"}
+
+                           })
+      <input type="text" value="" name="调用举例" />
+    @Html.Partial("/Views/Templates/_FileUpload.cshtml", new ViewDataDictionary(ViewData)
+                           {
+                              { "saveDirectory","/UserFiles/Test/"},
+                                { "id","调用举例"},
+                                {"name","调用举例"}
+
+                           })
+*@

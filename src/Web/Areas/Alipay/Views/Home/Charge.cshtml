@@ -1,0 +1,28 @@
+﻿@model Web.Areas.Alipay.Models.Orderetail
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<h1>请输入充值金额</h1>
+<div class="content">
+    <form class="alipayform" target="_blank" method="POST">
+        
+
+       
+
+       
+        <div class="element">
+            <div class="etitle">充值金额（1元=100健康币）:</div>
+            <div class="einput">
+                @Html.TextBoxFor(a => a.WIDtotal_fee)
+
+            </div>
+            <br>
+            <div class="mark">注意：充值金额必须>=0.01(格式如：1.00,请精确到分)</div>
+        </div>
+       
+        <div class="element">
+            <button type="submit" class="alisubmit" Style="text-align: center;" OnClick="BtnAlipay_Click">确认支付</button>
+        </div>
+    </form>
+</div>
+

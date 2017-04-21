@@ -1,0 +1,40 @@
+﻿
+@{
+    var style = (string)ViewData["style"] != "" ? (string)ViewData["style"] : "1";
+    var required = (string)ViewData["required"] != "" ? "required='"+ViewData["required"]+"'" : "";
+    var id = (string)ViewData["id"] != "" ? (string)ViewData["id"] : "noId";
+    var displayName = (string)ViewData["displayName"] != "" ? (string)ViewData["displayName"] : "默认名称";
+    var value = (string)ViewData["value"] != "" ? (string)ViewData["value"] : "";
+}
+
+
+@switch (style)
+{
+    case "1":
+        {
+            <div class="form-group">
+                <label class="col-sm-3 control-label">@displayName：</label>
+                <div class="col-sm-8">
+                    <input id="@id" value="@value" name="name" minlength="2" placeholder="请输入 @displayName" type="text" class="form-control" @required aria-required="true">
+                </div>
+            </div>
+        }
+        break;
+    case "2":
+        {
+            
+        }
+        break;
+}
+
+
+@*
+     @Html.Partial("/Views/Templates/_Input.cshtml", new ViewDataDictionary()
+                {
+                   { "style","1"},
+                   { "required",""},
+                   { "id","属性字段名"},
+                   { "value",Model.属性字段名},
+                   { "displayName","显示名称"}
+                })
+*@

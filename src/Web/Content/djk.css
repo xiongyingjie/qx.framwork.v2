@@ -1,0 +1,108 @@
+﻿ .add-brand{
+            height:100px;
+            background:rgb(255, 255, 255) !important;         
+            
+            padding:10px;
+        }
+        .headerImg{
+            width:450px;
+            height:85px;
+            padding-left:25px;
+        }
+        .dropdown a{
+            font-size:16px; 
+            letter-spacing:1px;
+            color:rgb(0,160,134); 
+            font-family:'Microsoft YaHei';
+            /*/font-weight:bold;*/
+        }
+        .dropdown a:hover {
+           
+            text-decoration:underline !important;
+            color: rgb(0,120,90)!important;
+            background-color:rgb(255,255,255)!important;
+        }
+
+        .back-main{
+            width:90%;
+            height:600px;
+            margin:30px auto;
+            padding:0 40px;
+
+          
+        }
+
+        .back-main p{
+            font-size:38px;
+            color:rgb(62,183,121);
+          
+
+        }
+
+         .back-main .left{
+          width:40%;
+          height:400px;
+          float:left;
+          margin-top:40px;
+
+        }
+
+         .back-main .left p{
+            font-size:20px;
+            color:rgb(109,109,109);
+          
+
+        }
+         .back-main .left p span{
+            font-size:30px;
+            color:rgb(13,222,190);
+
+        }
+          .back-main .left .one{
+            font-size:18px !important;
+            color:rgb(109,109,109);
+
+            margin:0 14px;
+            padding:0 0;
+          
+
+        }
+
+         .back-main .left .two{
+            font-size:18px !important;
+            color:rgb(2,178,168);
+
+           
+            margin-top:40px;
+            margin-left:14px;
+            padding:0 0;
+          
+
+        }
+
+         
+         .back-main .left .two a{
+            font-size:18px !important;
+            color:rgb(2,178,168);
+
+            text-decoration:underline !important;
+            padding:0 0;
+          
+
+        }
+        .back-main .right{
+          width:60%;
+          height:500px;
+          float:right;
+          margin-top:-20px;
+          
+
+        }
+
+          .back-main .right img{
+          width:85%;
+          height:90%;
+          float:right;
+         
+
+        }

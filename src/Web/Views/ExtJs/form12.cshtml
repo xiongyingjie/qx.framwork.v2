@@ -1,0 +1,114 @@
+﻿
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.BLANK_IMAGE_URL = '/Include/EXT-JS/V3/resources/images/gray/s.gif';
+        Ext.QuickTips.init();
+
+        var Movies = function() {
+            return {
+                showHelp: function(btn) {
+                    var helpbody = Ext.get('helpbody');
+                    if (!helpbody) {
+                        Ext.DomHelper.append(Ext.getBody(), {
+                            tag: 'div',
+                            id: 'helpbody'
+                        });
+                    }
+                    Movies.doLoad(btn.helpfile);
+                },
+
+                doLoad: function(file) {
+                    Ext.get('helpbody').load({
+                        url: 'html/' + file + '.txt'
+                    });
+                }
+            };
+        } ();
+
+        new Ext.Toolbar({
+            renderTo: document.body,
+            items: [
+            {
+                xtype: 'tbbutton',//tool bar
+                text: 'Button',
+                //cls: 'x-btn-icon',
+                cls: 'x-btn-text-icon',
+                icon: '/Include/EXT-JS/V3/images/1_upBmP8mbwQVc.gif',
+                handler: function() {
+                    Ext.Msg.alert('Boo', 'Here I am');
+                }
+            }
+            ,
+{
+                xtype: 'tbbutton',//tool bar
+                text: 'Button2',
+                //cls: 'x-btn-icon',
+                cls: 'x-btn-text-icon',
+                icon: '/Include/EXT-JS/V3/images/1_upBmP8mbwQVc.gif',
+               handler: function(f){
+                f.disable();
+                }
+            },
+' ',
+
+            {
+                xtype: 'tbbutton',
+                text: 'Menu Button',
+                menu: [{//menu
+                text: 'Better',
+                checked: true,
+                group: 'quality'//radio button
+                }, {
+                text: 'Good',
+                    group: 'quality'
+                },
+
+                {
+                text: 'Best',
+                    group: 'quality'
+}]
+},
+
+'-',
+
+                {//
+                    xtype: 'tbsplit',
+                    text: 'Split Button',
+                    menu: [{
+                        text: 'Item One'
+                    }, {
+                        text: 'Item Two'
+                    }, {
+                        text: 'Item Three'
+}]
+},
+
+{
+    xtype: 'tbsplit',
+    text: 'Help',
+    menu: [{
+        text: 'Genre',
+        helpfile: 'genre',
+        handler: Movies.showHelp
+    }, {
+        text: 'Director',
+        helpfile: 'director',
+        handler: Movies.showHelp
+    }, {
+        text: 'Title',
+        helpfile: 'title',
+        handler: Movies.showHelp
+}]
+    }
+
+]
+});
+
+
+        });
+</script>
+}

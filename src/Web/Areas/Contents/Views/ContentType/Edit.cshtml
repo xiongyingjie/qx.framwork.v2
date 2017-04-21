@@ -1,0 +1,10 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Contents.ViewModels.ContentType_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o => o.CT_ID)
+
+@Html.InputFor(o => o.TypeName)
+
+@Html.HiddenFor(o => o.FatherID)

@@ -1,0 +1,110 @@
+﻿
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.BLANK_IMAGE_URL = '/Include/EXT-JS/V3/resources/images/gray/s.gif';
+        Ext.QuickTips.init();
+
+
+        //combox events
+        var genres = new Ext.data.SimpleStore({
+            fields: ['id', 'genre'],
+            data: [
+['0', 'New Genre'],
+['1', 'Comedy'],
+['2', 'Drama'],
+['3', 'Action']
+]
+        });
+
+        var movie_form = new Ext.FormPanel({
+        url: 'Handler1.ashx',
+            renderTo: document.body,
+            frame: true,
+            title: 'Movie Information Form',
+            width: 250,
+            items: [
+
+            {
+                xtype:'textfield',
+                fieldLabel: 'Title',
+                name: 'title',
+                allowBlank: false,//Validation
+                listeners: {
+                       specialkey: function(f,e){
+                          if (e.getKey() == e.ENTER) {
+                           movie_form.getForm().submit();
+                             }
+                            }
+                           }
+
+
+            }, {
+                xtype: 'textfield',
+                fieldLabel: 'Director',
+                name: 'director',
+                vtype: 'alpha'//vtype only alphabetic characters.
+            }, {
+                xtype: 'datefield',
+                fieldLabel: 'Released',
+                name: 'released',
+                disabledDays: [1,2,3,4,5]//Validation
+            },
+
+            {
+            xtype: 'radio',
+            fieldLabel: 'Filmed In',
+            name: 'filmed_in',
+            boxLabel: 'Color'
+        },
+            {
+            xtype: 'radio',
+            hideLabel: false,
+            labelSeparator: '',
+            name: 'filmed_in',
+            boxLabel: 'Black & White'
+        },
+            {
+                xtype: 'checkbox',
+                fieldLabel: 'Bad Movie',
+                name: 'bad_movie'
+            }
+            ,
+            {
+                xtype: 'combo',
+                name: 'genre',
+                fieldLabel: 'Genre',
+                mode: 'local',
+                store: genres,
+                displayField: 'genre',//'genre_name',
+                width: 120,
+                listeners: {
+                    select: function(f, r, i) {
+                        if (i == 0) {
+                            Ext.Msg.prompt('New Genre', 'Name', Ext.emptyFn);
+                        }
+                    }
+                }
+            },
+            {
+                //xtype: 'textarea',
+                xtype: 'htmleditor',
+                name: 'description',
+                hideLabel: true,
+                labelSeparator: '',
+                height: 100,
+                anchor: '100%'
+            }
+
+
+]
+        });
+       // genres.load();
+
+        });
+</script>
+}

@@ -1,0 +1,40 @@
+﻿@section scripts{
+   <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.get('myButton').on('click', function() {
+                alert("You clicked the button");
+            });
+/*
+            //p click 1
+            Ext.select('p').on('click', function() {
+                alert("You clicked a paragraph");
+            });
+            //p click 2
+            var paragraphClicked = function() {
+                alert("You clicked a paragraph 2");
+            }
+            Ext.select('p').on('click', paragraphClicked);
+*/
+            //p click 3
+            var paragraphClicked = function(e) {
+                Ext.get(e.target).highlight();
+            }
+            Ext.select('p').on('click', paragraphClicked);
+
+
+        });
+</script>
+}
+
+
+
+
+
+<input type="button" id="myButton" value="Click me!" />
+<div>
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <p>p4</p>
+
+</div>

@@ -1,0 +1,16 @@
+﻿
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    群组:&nbsp;
+    @Html.TextBox("群组2", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的群组表ID" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("群组2");
+        return Params;
+    }
+</script>

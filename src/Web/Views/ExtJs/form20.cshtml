@@ -1,0 +1,85 @@
+﻿
+
+
+
+
+@section scripts{
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            Ext.BLANK_IMAGE_URL = '/Include/EXT-JS/V3/resources/images/gray/s.gif';
+            Ext.QuickTips.init();
+
+            var genres = new Ext.data.SimpleStore({
+                fields: ['id', 'genre'],
+                data: [
+['0', 'New Genre'],
+['1', 'Comedy'],
+['2', 'Drama'],
+['3', 'Action']
+]
+            });
+
+         var store = new Ext.data.Store({
+             url: '/Include/EXT-JS/V3/movies.json',
+reader: new Ext.data.JsonReader({
+root:'rows',
+id:'id'
+}, [
+'id',
+'coverthumb',
+'title',
+'director',
+{name: 'released', type: 'date', dateFormat: 'Y-m-d'},
+'genre',
+'tagline',
+{name: 'price', type: 'float'},
+{name: 'available', type: 'bool'}
+])
+});
+store.load();
+
+
+
+            var grid = new Ext.grid.GridPanel({
+                renderTo: document.body,
+                frame: true,
+                title: 'Movie Database',
+                height: 400,
+                width: 700,
+                store: store,
+                columns: [
+                //{header: "Title", dataIndex: 'title'},
+            {header: 'Cover', dataIndex: 'coverthumb', renderer: cover_image },
+            { header: 'Title', dataIndex: 'title', renderer: title_tagline },
+            { header: "Director", dataIndex: 'director' },
+            { header: "Released", dataIndex: 'released',
+                renderer: Ext.util.Format.dateRenderer('m/d/Y')
+            },
+            { header: 'Genre', dataIndex: 'genre', renderer: genre_name },
+            { header: 'Tagline', dataIndex: 'tagline', hidden: true }
+
+            ]
+            });
+
+
+            function genre_name(val) {
+                return genres.queryBy(function(rec) {
+                    return rec.data.id == val;
+                }).itemAt(0).data.genre;
+            }
+
+            function title_tagline(val, x, store) {
+                return '<b>' + val + '</b><br>' + store.data.tagline;
+            };
+            function cover_image(val) {
+                return '<img src=/Include/EXT-JS/V3/images/' + val + '>';
+            };
+
+
+
+
+        });
+
+
+</script>
+}

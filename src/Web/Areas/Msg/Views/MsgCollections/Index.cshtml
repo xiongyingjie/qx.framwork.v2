@@ -1,0 +1,14 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    消息内容:&nbsp;
+    @Html.TextBox("消息内容", "", new { @class = "form-control input-sm", PlaceHolder = " " })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("消息内容");
+        return Params;
+    }
+</script>

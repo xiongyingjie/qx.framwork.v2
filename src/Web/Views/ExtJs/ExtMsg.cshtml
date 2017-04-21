@@ -1,0 +1,127 @@
+﻿
+
+
+
+
+@section scripts{
+    <script type="text/javascript" language="javascript">
+
+
+
+
+        msg1 = function() {
+            Ext.Msg.show({
+                title: 'Milton1',
+                msg: 'Have you seen my stapler?',
+                buttons: {
+                    yes: true,
+                    no: true,
+                    cancel: true
+                }
+            });
+        };
+
+        msg2 = function() {
+            Ext.Msg.show({
+                title: 'Milton2',
+                msg: 'Have you seen my stapler?',
+                buttons: {
+                    yes: true,
+                    no: true,
+                    cancel: true
+                    },
+                   // icon: 'milton-icon',
+                    fn: function(btn) {//callback
+                        Ext.Msg.alert('You Clicked', btn);
+                    }
+            });
+
+        };
+
+ msg3 = function() {
+            Ext.Msg.show({
+                title: 'Milton2',
+                msg: 'Have you seen my stapler?',
+                buttons: {
+                    yes: true,
+                    no: true,
+                    cancel: true
+                    },
+                   // icon: 'milton-icon',
+                    fn: function(btn) {
+                        switch (btn) {
+                            case 'yes':
+                                Ext.Msg.prompt('Milton', 'Where is it?');
+                                break;
+                            case 'no':
+                                Ext.Msg.alert('Milton','Im going to burn the building down!');
+                                break;
+                            case 'cancel':
+                                Ext.Msg.wait('Saving tables to disk...', 'File Copy');
+                                break;
+                        }
+                    }
+            });
+
+        };
+
+
+        msg4 = function() {
+            Ext.Msg.show({
+                title: 'Milton2',
+                msg: 'Have you seen my stapler?',
+                buttons: {
+                    yes: true,
+                    no: true,
+                    cancel: true
+                },
+                icon: 'milton-icon',
+                fn: function(btn) {
+                    switch (btn) {
+                        case 'yes':
+                           Ext.Msg.prompt('Milton', 'Where is it?', function(btn,txt)
+{
+if (txt.toLowerCase() == 'the office') {
+Ext.get('my_id').dom.innerHTML = 'Dull Work';
+}else{
+Ext.get('my_id').dom.innerHTML = txt;
+}
+Ext.DomHelper.applyStyles('my_id',{background: 'transparent url(images/1_upBmP8mbwQVc.gif) 50% 50% no-repeat'});});
+break;
+                        case 'no':
+                           Ext.Msg.alert('Milton','Im going to burn the building down!',
+function() {
+Ext.DomHelper.applyStyles('my_id',{
+'background': 'transparent url(images/01.jpg) 0 100% repeat-x'
+});
+Ext.DomHelper.applyStyles(Ext.getBody(),{'background-color': '#FF0000'});
+Ext.getBody().highlight('FFCC00',{endColor:'FF0000',duration: 6});
+});
+break;
+                        case 'cancel':
+                            Ext.Msg.wait('Saving tables to disk...', 'File Copy');
+                            break;
+                    }
+                }
+            });
+
+        };
+
+        Ext.onReady(function() {
+            Ext.BLANK_IMAGE_URL = 'ext/resources/images/gray/s.gif';
+
+            msg4();
+
+        });
+
+
+
+</script>
+<style type="text/css">
+    .milton-icon {
+        background: url(images/231615bc216784ad7a718.gif) no-repeat;
+    }
+</style>
+}
+<div id='my_id'
+     style='width:200px;height:200px;'>test</div>

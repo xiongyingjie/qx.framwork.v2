@@ -1,0 +1,41 @@
+﻿@{ 
+    //var dbConnStringKey = ViewData["dbConnStringKey"];
+    var AddLink = ViewData["AddLink"];
+    var Title = ViewData["Title"];
+    var ExtraParam = ViewData["ExtraParam"];
+    //var ReportID = ViewData["ReportID"];
+    var Params = ViewData["Params"];
+    var perCount = ViewData["perCount"];
+    var pageIndex = ViewData["pageIndex"];
+    var area = "";
+
+    var header = (List<string>)ViewData["header"];
+    var body = (List<List<string>>)ViewData["body"];
+    var config = ViewData["config"];
+    var colunmToShow= ViewData["colunmToShow"];
+}
+
+@Html.Action("Table", "Table", new {
+    //dbConnStringKey = dbConnStringKey,
+    AddLink = AddLink,
+    Title = Title,
+    ExtraParam = ExtraParam,
+    // ReportID = ReportID,
+    Params = Params,
+    perCount = perCount,
+    pageIndex = pageIndex,
+    area = area,
+    header = header,
+    body = body,
+    config= config,
+    colunmToShow= colunmToShow
+}
+)
+
+
+
+
+@*
+    用法
+@Html.Partial("_Report", new ViewDataDictionary(ViewData) { { "showDeafultButton", true } })
+    *@

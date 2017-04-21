@@ -1,0 +1,94 @@
+﻿
+<label>加载完成!</label>
+<script type="text/javascript">
+        //声明命名空间
+        Ext.namespace("Qx.Ext");
+        //定义类(默认构造函数)
+        Qx.Ext.Panda = function () {
+            //定义类事件
+            this.addEvents("BeforeSay",
+                "AfterEat");
+        }; // Ext.emptyFn;
+        //定义类(带参数构造函数)
+        //Qx.Ext.Panda = function(obj) {
+        //    Ext.apply(this, obj);
+        //};
+
+        //定义类成员
+        //Ext.apply
+        Ext.extend
+            (
+            //Qx.Ext.Panda.prototype
+            Qx.Ext.Panda,
+            Ext.util.Observable//继承事件工具类
+            , {
+            //成员变量
+            nickName: "四川大熊猫",
+            sex: "男",
+            //成员方法
+            Say: function () {
+                //触发前置事件
+                this.fireEvent("BeforeSay", this, this.nickName);
+                log("我的名字是" + this.nickName + "[" + this.sex + "]");
+            },
+            //成员方法(带参数)
+            Eat: function(food) {
+                log(String.format("{0}正在吃{1}",this.nickName, food));
+                //触发后置事件
+                this.fireEvent("AfterEat", this, this.nickName, food);
+
+            }
+        });
+
+        //定义类静态方法（带参数）
+        Qx.Ext.Panda.GetType = function(note) {
+            log(note + "Qx.Ext.Panda");
+        }
+</script>
+<script type="text/javascript">
+        Ext.namespace("Qx.Ext.Zoo");
+        //设置命名空间别名（全局有效）
+        var _Zoo = Qx.Ext.Zoo;
+        //用别名定义类
+        _Zoo.BigPanda = function () { };
+        //设置类别名（全局有效）
+        var BIG_PANDA = _Zoo.BigPanda;
+        //类继承
+        Ext.extend(BIG_PANDA,
+           Qx.Ext.Panda, {
+            Run:function() {
+                log(this.nickName+"正在飞快的奔跑");
+            },
+               //重写父类方法
+            Eat: function (food) {
+                log(String.format("大熊猫正在吃{0}",  food));
+
+            }
+        });
+</script>
+<script type="text/javascript">
+                //实例化类Panda
+                var panda = new Qx.Ext.Panda();
+                //var panda = new Qx.Ext.Panda({ nickName: '熊姐姐', sex: '女' });
+                //调用成员变量
+                log(panda.nickName, "panda.nickName");
+                //设置事件处理
+                panda.on("AfterEat",function(obj,name,food) {
+                    log(String.format("广播：{0}吃了10kg{1}", name, food));
+                });
+                panda.on("BeforeSay", function (obj, name) {
+                    log(String.format("广播：{0}喝了一大瓶水，然后准备说话", name));
+                    });
+                //调用成员函数
+                panda.Say();
+                panda.Eat("竹子");
+
+                //调用类静态方法（带参数）
+                Qx.Ext.Panda.GetType("[Type]");
+
+                //调用子类
+                var bigPanda = new Qx.Ext.Zoo.BigPanda();
+                bigPanda.Run();
+                //调用子类被重写的方法
+                bigPanda.Eat("大竹子");
+</script>

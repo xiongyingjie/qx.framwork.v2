@@ -1,0 +1,51 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.SpotIntroduction_M
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta charset="utf-8" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/A景点.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/public.css" rel="stylesheet" />
+    <title>@Model.ticketname</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="headerL"><img src="~/Areas/WeChat/Content/BookeTicket/img/return-icon.png" onclick="history.go(-1)"/></div>
+        <div class="headerM"><h3>@Model.ticketname 介绍</h3></div>
+        <div class="headerR"><img src="~/Areas/WeChat/Content/BookeTicket/img/star-icon.png" /><img src="~/Areas/WeChat/Content/BookeTicket/img/share-icon.png" /></div>
+    </div>
+    <div class="content">
+        <div class="main-banner">
+            <div class="main-bannerBox">
+                <a><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (1).JPG" /></a>
+                <a><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (2).JPG" /></a>
+                <a><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (3).JPG" /></a>
+                <a><img src="~/Areas/WeChat/Content/BookeTicket/img/pic (4).JPG" /></a>
+            </div>
+            <ol>
+                <li style="background: red;"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <form class="Ashopping" action="/WeChat/BookTiket/BuyTicket">
+            <div class="atime">游览时间：<span>@Model.traveltime</span></div>
+            <div class="anum">预定票数 : 1@*<input type="text" size="4" name="Num"/>*@</div>
+            <input type="hidden" name="id" value="@Model.ticketonsellid">
+            <div class="asure"><input type="submit" value="下单" class="btn" /></div>
+        </form>
+        <div class="Aintroduce">
+            <h2>A景点简介</h2>
+            <p><a class="motion" id="motion1">&nbsp;&nbsp;&nbsp;&nbsp;婺源</a>是唯一一个以县城命名的国家AAA级景区，全县共有一个5A级景区江湾，篁（huáng）岭，李坑、汪口、思溪延村、大鄣山卧龙谷、灵岩洞、严田古樟等12个4A级景区，还有一批精品景区。</p>
+            <p><a class="motion" id="motion2">&nbsp;&nbsp;&nbsp;&nbsp;篁岭</a>是婺源旅游的浓缩，集古村落、古树群、梯田花海、民俗晒秋为一体的最美乡村景致。篁岭旅游不受季节影响，春观油菜花海、夏戏峡谷溯溪、秋赏古村晒秋、冬品民俗度假。</p>
+            <p> <a class="motion" id="motion3">&nbsp;&nbsp;&nbsp;&nbsp;卧龙谷</a>是国家AAAA级景区，地处皖赣边界，是婺源的北部屏障，属黄山余脉。卧龙谷内群山环抱，山峰林立，森林覆盖率高达90.7%，主峰海拔1629.8米，巍峨雄伟，俯瞰平川，是一处金庸笔下的人间美景、世外桃源。</p>
+            <p><a class="motion" id="motion4"><img src="~/Areas/WeChat/Content/BookeTicket/img/A景点1.png" width="100%" /></a></p>
+        </div>
+    </div>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/jquery.min.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/顶部轮播.js"></script>
+    <script src="~/Areas/WeChat/Content/BookeTicket/js/interdouce.js"></script>
+</body>
+</html>

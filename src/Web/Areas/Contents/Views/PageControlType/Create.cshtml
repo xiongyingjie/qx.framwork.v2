@@ -1,0 +1,8 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Contents.ViewModels.PageControlType_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o =>o.PCT_ID)
+
+@Html.InputFor(o=>o.PCT_Name)

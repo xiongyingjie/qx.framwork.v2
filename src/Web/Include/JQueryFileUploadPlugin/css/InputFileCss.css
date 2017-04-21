@@ -1,0 +1,81 @@
+﻿body {
+}
+
+.UploadAreaCSS {
+    width:350px;
+    height:160px;
+    background: #d0d0d0;
+    border:5px solid #808080;
+}
+.UploadFileTable {
+    margin-left:20px;
+    margin-top:25px;
+}
+#MessageArea {
+    width:295px;
+    height:15px;
+    background: #ffdfdf;
+    margin-top:5px;
+    margin-left:20px;
+    font-size:12px;
+    color:#ff6d6d;
+    font-weight:600;
+}
+.myProgressBar {
+    width:295px;
+    height:30px;
+    background: #d0d0d0;
+    margin-top:5px;
+    margin-left:20px;
+}
+#ProgressBar #BarArea {
+    width:240px;
+    height:25px;
+    float:left;
+    /*background: #b6ff00;*/
+    background-image: url("/Include/JQueryFileUploadPlugin/JqueryFileStyle/ProBottom2.jpg");
+}
+#BarArea img {
+    width:0px;
+    margin-left:8px;
+    margin-top:5px;
+}
+#ProgressBar #ProPersentMessage {
+    width:50px;
+    height:40px;
+    float:left;
+    /*background: #ffd800;*/
+}
+#MessageContent {
+    /*background: #ffffff;*/
+    width:40px;
+    height:40px;
+    margin-left:5px;
+    font-family:'Angsana New';
+    font-size:23px;
+    font-weight:700;
+    color:#0b4ea1;
+}
+.ButtonArea {
+    width:290px;
+    height:40px;
+    margin-left:20px;
+}
+.SingleButtonArea {
+    width:70px;
+    height:25px;
+    float:left;
+}
+.SingleButton {
+    width:65px;
+    height:25px;
+    font-size:12px;
+    font-family:Arial;
+    font-weight:600px;
+    color:#ffffff;
+    background-image: url("/Include/JQueryFileUploadPlugin/JqueryFileStyle/ManiButton1.png");
+}
+    .SingleButton:hover {
+        background-image: url("/Include/JQueryFileUploadPlugin/JqueryFileStyle/ManiButton2.png");
+        cursor:pointer;
+    }

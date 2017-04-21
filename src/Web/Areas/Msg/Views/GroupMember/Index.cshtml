@@ -1,0 +1,15 @@
+﻿
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    通讯组成员:&nbsp;
+    @Html.TextBox("通讯组成员", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的通讯组成员表ID" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("通讯组成员");
+        return Params;
+    }
+</script>

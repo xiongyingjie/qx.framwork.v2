@@ -1,0 +1,24 @@
+﻿@{
+    var value = (((DateTime?)ViewData["value"]).HasValue ? ((DateTime)ViewData["value"]) : DateTime.Now);
+    var name = string.IsNullOrEmpty((string)ViewData["name"]) ? "noName" : ((string)ViewData["name"]);
+    var id = string.IsNullOrEmpty((string)ViewData["id"]) ? "noId" : ((string)ViewData["id"]);
+    var displayName = string.IsNullOrEmpty((string)ViewData["displayName"]) ? "默认名称" : (string)ViewData["displayName"];
+
+}
+
+<div class="input-group date form_datetime">
+    <input type="text" size="16" id="@id" name="@name" value="@value.ToString("yyyy-MM-dd HH:mm")" readonly class="form-control">
+    <span class="input-group-btn">
+        <button class="btn btn-success date-set" type="button"><i class="fa fa-calendar"></i></button>
+    </span>
+</div>
+
+@*
+    @Html.Partial("/Views/Templates/_BootTimePicker.cshtml", new ViewDataDictionary(ViewData)
+                {
+                   { "id","调用举例"},
+                   { "name","调用举例"},
+                   { "value",Model DateTime.Now},
+                   { "displayName","调用举例"}
+                })
+*@

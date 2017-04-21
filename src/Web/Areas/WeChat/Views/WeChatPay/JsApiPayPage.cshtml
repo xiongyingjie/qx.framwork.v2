@@ -1,0 +1,119 @@
+﻿@model Web.Areas.WeChat.ViewModels.WeChatPay.JsApiPayPage_M
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>充值确认</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+    <script type="text/javascript">
+
+               //调用微信JS api 支付
+               function jsApiCall()
+               {
+                   WeixinJSBridge.invoke(
+                   'getBrandWCPayRequest',
+                   @(new HtmlString(Model._wxJsApiParam)),//josn串
+                    function (res)
+                    {
+                        WeixinJSBridge.log(res.err_msg);
+                        //支付成功或失败前台判断
+                        if(res.err_msg=='get_brand_wcpay_request:ok'){
+                            alert('恭喜您，支付成功!');
+                            location.href = "/WeChat/BookTiketWeb/ChargeOK?num=@Model._total_fee";
+                        }else{
+                            alert('支付失败,请点击[立刻支付]重试！');//+res.err_msg
+                            //history.go(-1);
+                            //这里一直返回getBrandWCPayRequest提示fail_invalid appid
+                        }
+                       // alert(res.err_code + res.err_desc + res.err_msg);
+                     }
+                    );
+               }
+
+               function callpay()
+               {
+                   if (typeof WeixinJSBridge == "undefined")
+                   {
+                       if (document.addEventListener)
+                       {
+                           document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                       }
+                       else if (document.attachEvent)
+                       {
+                           document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                           document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                       }
+                   }
+                   else
+                   {
+                       jsApiCall();
+                   }
+               }
+
+    </script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            callpay();
+        }
+    </script>
+</head>
+
+
+
+<body>
+
+    <div class="weui-form-preview__hd">
+        <div class="weui-form-preview__item">
+            <label class="weui-form-preview__label">充值金额</label>
+            <em class="weui-form-preview__value">¥@Model._total_fee</em>
+        </div>
+    </div><div class="content">
+        <div class="container" id="container">
+            <div class="page layers flex input button uploader js_show">
+                <div class="page__bd page__bd_spaci js_show">
+
+
+
+
+                    <div class="weui-form-preview__bd">
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值方式</label>
+                            <span class="weui-form-preview__value">微信支付</span>
+                        </div>
+
+
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值时间</label>
+                            <span class="weui-form-preview__value">@DateTime.Now.ToStr()</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值单号</label>
+                            <span class="weui-form-preview__value">@Model._po_id</span>
+                        </div>
+                        <div class="weui-form-preview__item">
+                            <label class="weui-form-preview__label">充值账户</label>
+                            <span class="weui-form-preview__value">@Model._userId</span>
+                        </div>
+
+
+
+                        <div class="weui-form-preview__ft">
+                            <a class="weui-form-preview__btn weui-form-preview__btn_default" href="/WeChat/WeChatPay">取消充值</a>
+                            <a class="weui-form-preview__btn weui-form-preview__btn_primary" OnClick="callpay()">立刻支付</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

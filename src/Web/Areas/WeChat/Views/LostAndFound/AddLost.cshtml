@@ -1,0 +1,105 @@
+﻿@model Web.Areas.WeChat.ViewModels.LostAndFound.LostThingNotice_M
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>发布寻物</title>
+    <link href="~/Content/LostAndFound/css.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form runat="server" id="form1" method="post" enctype="multipart/form-data>
+        <div class="found">
+            <div class="head">
+                <div class="left">
+                    <a href=""><b>&nbsp;<&nbsp;</b></a>
+                </div>
+                <div class="middle">
+                    <p>发布寻物</p>
+                </div>
+                <div class="right">
+                    <input class="done" type="submit" value="提交" />
+                </div>
+
+            </div>
+            <div class="main">
+                <div class="the-input">
+                    <ul>
+                        <li>
+                            <p>
+                                @Html.LabelFor(o => o.LostThingTitle)
+                                @Html.TextBoxFor(o => o.LostThingTitle)
+                            </p>
+                        </li>
+
+                        <li><span>标题范例:华侨大学兑山艺术区捡到一只小熊</span></li>
+
+                        <li>
+                            <p>
+                                @Html.LabelFor(o=>o.ThingTypeID)
+                                @Html.DropDownListFor(o => o.ThingTypeID,Model.ThingTypeItem)
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                            @Html.LabelFor(o=>o.ThingDescribe)
+                            @Html.TextBoxFor(o=>o.ThingDescribe)
+                            </p></li>
+
+                        <li>
+                            @Html.LabelFor(o=>o.AddrID)
+                            @Html.DropDownListFor(o => o.AddrID, Model.AddressItem)
+                        </li>
+
+                        <li>
+                            <p>
+                                @Html.LabelFor(o => o.AddrDetails)
+                                @Html.TextBoxFor(o => o.AddrDetails)
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                @Html.LabelFor(o => o.LostTime)
+                                @Html.TextBoxFor(o => o.LostTime)
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                @Html.LabelFor(o => o.Contactor)
+                                @Html.TextBoxFor(o => o.Contactor)
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                @Html.LabelFor(o => o.ContactorPhone)
+                                @Html.TextBoxFor(o => o.ContactorPhone)
+                            </p>
+                        </li>
+
+                        <li>
+                            <p>
+                                @Html.LabelFor(o=>o.RewardWayID)
+                                @Html.DropDownListFor(o => o.RewardWayID, Model.RewardItem)
+                                <input style="width: 15%;" type="" name=""/>
+                            </p>
+                        </li>
+                        <li>
+                             <input style="width: 156px; height: 45px;" type="file" accept="image/*"  name="Photo" onchange="" id="Photo"/>
+                        </li>
+
+                    </ul>
+                    <p>
+                        @Html.LabelFor(o=>o.LostDetails)
+                        <br/>
+                        @Html.TextAreaFor(o => o.LostDetails)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

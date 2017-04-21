@@ -1,0 +1,45 @@
+﻿ @{
+     var Longitude = ViewData["Longitude"];
+     var Latitude = ViewData["Latitude"];
+}
+<!----------地图--------->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=fKmRVnUoPewjWkmqfI0jFyB5KRkVzPTj	"></script>
+<body >
+<div >
+   <input id="text_" type="hidden" value="宁波天一广场" style="margin-right: 100px;"/>
+    <input id="result_" type="hidden"/>
+    @*<input type="button" value="查询" onclick="searchByStationName();"/>*@
+</div>
+    <div id="container"
+         style="position: absolute;
+                margin-top:30px;
+                width: 530px;
+                height: 390px;
+                top: 10px;
+                border: 1px solid gray;
+                overflow:hidden;">
+    </div>
+</body>
+<script type="text/javascript">
+	// 百度地图API功能
+    var map = new BMap.Map("container");
+	var point = new BMap.Point(116.404, 39.915);
+	map.centerAndZoom(point, 15);
+	// 编写自定义函数,创建标注
+	function addMarker(point){
+	  var marker = new BMap.Marker(point);
+	  map.addOverlay(marker);
+      marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+	}
+	// 随机向地图添加25个标注
+	var bounds = map.getBounds();
+	var sw = bounds.getSouthWest();
+	var ne = bounds.getNorthEast();
+	var lngSpan = Math.abs(sw.lng - ne.lng);
+	var latSpan = Math.abs(ne.lat - sw.lat);
+      new HtmlString("addMarker(new BMap.Point('"+ Longitude + "', '"+ Latitude + "'));")
+
+</script>
+
+
+<!----------地图--------->

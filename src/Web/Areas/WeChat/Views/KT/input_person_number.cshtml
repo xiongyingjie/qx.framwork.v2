@@ -1,0 +1,100 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+@section scripts{
+    <script type="text/javascript">
+        function submit() {
+           
+            var number = v_i("number");
+            var phone = v_i("phone");
+            var qq = v_i("qq");
+            var drink = v_r("drink", "请选择酒水");
+
+            var param = number + ";" + phone + ";" + qq + ";" + drink ;
+            if (drink == "no") {
+                location.href = "@Url.Action("pay")" + "?id=@ViewData["id"]-" + param+"-no_drink";
+            } else {
+                location.href = "@Url.Action("select_services")" + "?id=@ViewData["id"]-" + param;
+               // alert("请选择酒水");
+            }
+          
+        }
+    </script>
+}
+<div class="page__bd">
+    <div class="weui-cells__title">补全预约信息</div>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd">
+                <label class="weui-label">人数</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="number" class="weui-input" type="tel" placeholder="请输入到场人数">
+            </div>
+            <div class="weui-cell__ft">
+                <button class="weui-vcode-btn">人</button>
+            </div>
+        </div>
+
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">电话</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="phone" class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入负责人联系电话">
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd">
+                <label class="weui-label">QQ</label>
+            </div>
+            <div class="weui-cell__bd">
+                <input id="qq" class="weui-input" type="number" pattern="[0-9]*" placeholder="请输入负责人qq号">
+            </div>
+        </div>
+        <div class="weui-cells__title">预订酒水(啤酒、饮料)</div>
+        <div class="weui-cells weui-cells_radio">
+            <label class="weui-cell weui-check__label" for="x11">
+                <div class="weui-cell__bd">
+                    <p>我要预订酒水</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" value="yes" class="weui-check" name="drink" id="x11">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="x12">
+
+                <div class="weui-cell__bd">
+                    <p>自带酒水，不预定</p>
+                </div>
+                <div class="weui-cell__ft">
+                    <input type="radio" name="drink" value="no" class="weui-check" id="x12" checked="checked">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+
+        </div>
+
+
+        <div class="weui-cells__title">备注</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea id="note" class="weui-textarea" placeholder="如有其它需求或问题可在这里输入" rows="3"></textarea>
+                    <div class="weui-textarea-counter"><span>0</span>/200</div>
+                </div>
+            </div>
+        </div>
+        <div class="weui-cells__tips">底部说明文字底部说明文字</div>
+        <label for="weuiAgree" class="weui-agree">
+            <input id="weuiAgree" type="checkbox" class="weui-agree__checkbox">
+            <span class="weui-agree__text">
+                阅读并同意<a href="javascript:void(0);">《相关条款》</a>
+            </span>
+        </label>
+        <div class="weui-btn-area">
+            <a class="weui-btn weui-btn_primary" href="javascript:submit(2)" id="showTooltips">下一步</a>
+        </div>
+    </div>
+</div>

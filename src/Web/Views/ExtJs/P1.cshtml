@@ -1,0 +1,22 @@
+﻿@section scripts{
+    <script type="text/javascript">
+        Ext.BLANK_IMAGE_URL = "/Include/EXT-JS/V3/resources/images/default/s.gif";
+        Ext.onReady(function () {
+            log("ok");
+
+            var tip = Ext.get('tip');
+            tip.addClass("red");
+            log(tip.dom.innerHTML);
+            Ext.select("label").highlight("FFCCFF");
+            // Ext.Msg.alert("ok");
+        });
+    </script>
+    <script type="text/javascript">
+
+    </script>
+    <script type="text/javascript">
+
+    </script>
+}
+
+<label id="tip">加载完成!</label>

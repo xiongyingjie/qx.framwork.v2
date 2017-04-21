@@ -1,0 +1,46 @@
+﻿@model Web.Areas.WeChat.ViewModels.BookTicket.MyWallet_M
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的钱包</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/example.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/jquery-weui.css" rel="stylesheet" />
+    <link href="~/Areas/WeChat/Content/BookeTicket/css/demos.css" rel="stylesheet" />
+</head>
+<style>
+    .placeholder img {
+        width: 250px;
+    }
+</style>
+
+<body ontouchstart>
+
+    <div class="content">
+        <div class="container" id="container">
+            <div class="page layers flex input button uploader js_show">
+
+                <form>
+                    <div class="page__bd page__bd_spaci js_show">
+                        <div class="weui-flex__item"><div class="placeholder"></div></div>
+                        <div class="weui-flex__item"><div class="placeholder"><img src="/Areas/WeChat/Content/BookeTicket/img/weixin.png"></div></div>
+                        <div class="weui-flex__item"><div class="placeholder"></div></div>
+                        <div class="weui-flex__item"><div class="placeholder"></div></div>
+                        <div class="weui-flex__item"><div class="placeholder"></div></div>
+                        <div class="weui-flex__item"><div class="placeholder">我的账户余额：</div></div>
+                        <div class="weui-flex__item"><div class="placeholder"><p style="font-size:50px"> ¥@Model.balance </p> </div></div>
+                        <div style="padding: 10px 20px">
+                            <a class="weui-btn weui-btn_primary" href="/WeChat/WeChatPay">充值</a>
+                          @*  <button type="submit" class="weui-btn weui-btn_primary">提现</button>*@
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

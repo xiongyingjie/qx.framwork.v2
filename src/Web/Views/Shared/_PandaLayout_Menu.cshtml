@@ -1,0 +1,69 @@
+﻿@model List<Qx.Permission.Models.MenuItem>
+<ul class="page-sidebar-menu">
+    <li class="sidebar-toggler-wrapper">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler">
+        </div>
+        <div class="clearfix">
+        </div>
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+    </li>
+    <li>
+        <form class="search-form" role="form" action="index.html" method="get">
+            <div class="input-icon right">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control input-medium input-sm" name="query" placeholder="Search...">
+            </div>
+        </form>
+    </li>
+    <li class="start ">
+        <a href="index.html">
+            <i class="fa fa-home"></i>
+            <span class="title">
+                Dashboard
+            </span>
+        </a>
+    </li>
+ 
+    @foreach (var item in Model)
+    {
+        if (item.Children.Any())
+        {
+
+        }
+        <li class="">
+            <a href="javascript:;">
+                <i class="fa fa-map-marker"></i>
+                <span class="title">
+                    @item.Father.Name
+                </span>
+
+                <span class="arrow ">
+                </span>
+
+            </a>
+
+            <ul class="sub-menu">
+                @foreach (var child in item.Children)
+                {
+                    <li>
+                        <a href="@child.Value.ToString()">
+                            @child.Name
+                            <span class="badge badge-success">
+                                @child.Note
+                            </span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+    <li class="last ">
+        <a href="login.html">
+            <i class="fa fa-user"></i>
+            <span class="title">
+                Login
+            </span>
+        </a>
+    </li>
+</ul>
