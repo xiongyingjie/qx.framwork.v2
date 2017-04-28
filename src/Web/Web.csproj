@@ -192,10 +192,6 @@
     <Compile Include="Areas\Contents\ViewModels\CTQ_M.cs" />
     <Compile Include="Areas\Contents\ViewModels\DataType_M.cs" />
     <Compile Include="Areas\Contents\ViewModels\PageControlType_M.cs" />
-    <Compile Include="Areas\Jzxt\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Jzxt\Controllers\BaseJzxtController.cs" />
-    <Compile Include="Areas\Jzxt\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Jzxt\JzxtAreaRegistration.cs" />
     <Compile Include="Areas\Msg\Controllers\AdminController.cs" />
     <Compile Include="Areas\Msg\Controllers\BaseMsgController.cs" />
     <Compile Include="Areas\Msg\Controllers\ContactsController.cs" />
@@ -9928,9 +9924,6 @@
     <Content Include="Include\EXT-JS\V3\src\widgets\vssver.scc" />
     <Content Include="Include\EXT-JS\V3\vssver.scc" />
     <Content Include="Include\EXT-JS\V3\movies.json" />
-    <Content Include="Areas\Jzxt\Views\web.config" />
-    <Content Include="Areas\Jzxt\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Jzxt\Views\Home\Index.cshtml" />
     <Content Include="Include\startbootstrap-sb-admin-2-master\.gitignore" />
     <Content Include="Include\startbootstrap-sb-admin-2-master\bower.json" />
     <Content Include="Include\startbootstrap-sb-admin-2-master\less\mixins.less" />
@@ -10150,9 +10143,6 @@
     <Folder Include="Areas\Contents\Views\Shared\" />
     <Folder Include="Areas\Json\Views\Home\" />
     <Folder Include="Areas\Json\Views\Shared\" />
-    <Folder Include="Areas\Jzxt\Models\" />
-    <Folder Include="Areas\Jzxt\ViewModels\Home\" />
-    <Folder Include="Areas\Jzxt\Views\Shared\" />
     <Folder Include="Areas\Msg\Models\" />
     <Folder Include="Areas\Order\Models\" />
     <Folder Include="Areas\Order\Views\BaseOrder\" />
@@ -10200,10 +10190,6 @@
     <ProjectReference Include="..\..\FramWork\Qx.Tools\Qx.Tools.csproj">
       <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
       <Name>Qx.Tools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Qx.Bysj.Jzxt\Qx.Bysj.Jzxt.csproj">
-      <Project>{f74a2a02-4b60-41fd-8cf9-80e0eb9d2bca}</Project>
-      <Name>Qx.Bysj.Jzxt</Name>
     </ProjectReference>
     <ProjectReference Include="..\Qx.Tools.Ioc.Unity\Qx.Tools.Ioc.Unity.csproj">
       <Project>{8b717824-787e-4c94-a209-ad3d85705310}</Project>
