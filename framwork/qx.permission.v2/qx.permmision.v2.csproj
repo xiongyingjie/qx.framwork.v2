@@ -72,6 +72,7 @@
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemExtend.cs" />
     <Compile Include="Models\Navbar.cs" />
+    <Compile Include="Repository\RoleGroupRepository.cs" />
     <Compile Include="Repository\UserTypeRepository.cs" />
     <Compile Include="Repository\ButtonRepository.cs" />
     <Compile Include="Repository\RoleGroupRelationRepository.cs" />
