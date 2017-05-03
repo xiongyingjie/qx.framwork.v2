@@ -35,7 +35,7 @@ namespace Web.Controllers
                 model = Session[DataContext.UserID] as IEnumerable<Navbar>;
             }
             //   return PartialView("_Navbar", new Data().navbarItems().ToList());
-            return PartialView("_Navbar", NavbarIndex.Init(_permission.GetNavbarByUserId(DataContext.UserID),
+            return PartialView("_Sb2Navbar", NavbarIndex.Init(_permission.GetNavbarByUserId(DataContext.UserID),
                  _permission.GetForbidenButtonByUserId(DataContext.UserID)));
 
         }

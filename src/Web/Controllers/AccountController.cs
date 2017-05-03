@@ -26,6 +26,7 @@ namespace Web.Controllers
         // GET: /Account/Login
         public ActionResult Index(string msg)
         {
+
             List<string> aaa = new List<string>();
             for (int i = 0; i < 10; i++)
             {
@@ -36,7 +37,7 @@ namespace Web.Controllers
                 return Redirect("/WeChat/Web/Authorize?return_url=" + ReturnUrl);
                // return RedirectToAction("Authorize","Web",new { area= "WeChat" });
             }
-            
+            return RedirectToAction("Index","F2");
             InitAdminLayout("");
             return View();
         }

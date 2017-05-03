@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewData["Title"]</title>
+    <!--css core-->
+    @Html.Partial("_src_css_sb2")
+    <style type="text/css">
+        th {
+            text-align: center;
+        }
+    </style>
+    @RenderSection("css", required: false)
+</head>
+<body>
+@RenderBody()
+@Html.Partial("_Report2")
+    <!--js core-->
+    @Html.Partial("_src_js_sb2")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

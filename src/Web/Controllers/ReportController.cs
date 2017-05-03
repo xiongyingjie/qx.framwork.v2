@@ -7,7 +7,7 @@ using Web.ViewModels.Report;
 
 namespace Web.Controllers
 {
-    public class ReportController : AccountFilterController
+    public class ReportController : BaseController
     {
         // GET: Report
          private readonly IReportServices reportServices;
@@ -23,8 +23,9 @@ namespace Web.Controllers
             {
                 return RedirectToAction("Index", new { ReportID = "System", Params = ";", pageIndex = 1, perCount = 10 });
             }
+            Search.Add("报表ID");
             InitReport("报表引擎", "/Report/Add",  "", true, "Qx.System");
-             return View();
+             return ReportView();
         }
         public ActionResult Add()
         {
@@ -91,26 +92,48 @@ namespace Web.Controllers
                 return Alert("删除失败:报表不存在");
             }
         }
-
-        public ActionResult Report(string ReportID, string Params, string ExtraParam, string AddLink, string Title, int pageIndex, int perCount, List<List<string>> dataSource,bool showDeafultButton)
+      
+        public ActionResult Report(string ReportID, string Params, string ExtraParam, string AddLink, string Title, 
+            int pageIndex, int perCount, List<List<string>> dataSource,bool showDeafultButton)
         {
             ViewData["ReportID"] = ReportID; ViewData["Params"] = Params;
             ViewData["AddLink"] = AddLink; ViewData["ExtraParam"] = ExtraParam;
             ViewData["Title"] = Title; ViewData["showDeafultButton"] = showDeafultButton;
             var table = dataSource;
-            var header = new List<string>(table[0]);
-            table.Remove(table[0]);
-            table = InitCutPage(table, pageIndex, perCount);
-            table.Insert(0, header);
+            //计算maxPage
+            InitCutPage(table, pageIndex, perCount);
+            //var header = new List<string>(table[0]);
+            //table.Remove(table[0]);
+            //table = InitCutPage(table, pageIndex, perCount);
+            //table.Insert(0, header);
             return PartialView(table);
         }
-        public ActionResult Report2(string ReportID, string Params, string ExtraParam, string AddLink, string Title, List<List<string>> dataSource)
+        //Report/Report2
+        [HttpPost]
+        public ActionResult Report2(string ReportID, string Params, string dbConnStringKey, int pageIndex = 1, int perCount = 10)
         {
-            ViewData["ReportID"] = ReportID; ViewData["Params"] = Params;
-            ViewData["AddLink"] = AddLink; ViewData["ExtraParam"] = ExtraParam;
-            ViewData["Title"] = Title;
-            var table = reportServices.ToHtml(ReportID, Params, dataSource);
-            return PartialView(table);
+            var config = reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount);
+            return Json(config, JsonRequestBehavior.AllowGet);        
+        }
+        private string ToVirtualPath(string path)
+        {
+            string tmpRootDir = Server.MapPath(Request.ApplicationPath);//获取程序根目录  
+            string path2 = path.Replace(tmpRootDir, ""); //转换成相对路径  
+            path2 = path2.Replace(@"\", @"/");
+            return path2;
+        }
+        public ActionResult ReportToExcel2(string ReportID, string Params, string dbConnStringKey, int pageIndex = 1, int perCount = 99999)
+        {
+            var path = reportServices.ToExcel(
+                ReportID,
+                Params,
+                GetProjectDir("UserFiles\\Report\\Template.xlsx"),
+                GetProjectDir("UserFiles\\Report\\报表.xlsx"),
+                dbConnStringKey);
+           return Content("/"+ToVirtualPath(path));
+            //return Content(path,
+            //    "application/zip-x-compressed", "报表.xlsx"
+            //    );
         }
         public ActionResult ReportToExcel(string ReportID, string Params, List<List<string>> dataSource)
         {

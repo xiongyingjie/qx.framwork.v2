@@ -7,7 +7,10 @@ namespace Web.Areas.Permission.Controllers
     {
         protected void InitReport(string Title, string AddLink, int pageIndex, int perCount, string ExtraParam = "", bool showDeafultButton = true)
         {
-            base.InitReport(Title, AddLink,  ExtraParam,showDeafultButton, "Qx.Permission");
+          
+
+            base.InitReport(Title, AddLink,  ExtraParam,showDeafultButton, "qx.permmision.v2");
+           // base.InitReport(Title, AddLink, ExtraParam, showDeafultButton, "ecampus.yxxt");
         }
 
         protected string BackToReport

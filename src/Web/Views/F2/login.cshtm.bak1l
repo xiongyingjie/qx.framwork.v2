@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Views/Shared/_Sb2Layout.cshtml";
+
+}
+@model Web.ViewModels.Login_M
+@section css
+{
+<link href="~/Include/startbootstrap-sb-admin-2-master/css/login.css" rel="stylesheet" />
+    
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2">
+
+        </div>
+        <div class="col-lg-6">
+            <br>
+           
+            <img src="~/Include/startbootstrap-sb-admin-2-master/img/logo.png" width="220px">
+        </div>
+        <div class="col-lg-4 welcome-div">
+            <p>欢迎登陆学工系统迎新网！</p>
+        </div>
+        <div class="col-lg-12 cont-div">
+            <div class="col-lg-2">
+
+            </div>
+            <div class="col-lg-5">
+                <img src="~/Include/startbootstrap-sb-admin-2-master/img/inform.png" width="80%">
+                <ul>
+                    @foreach (var item in Model._anouncement)
+                    {
+                        <a href="/Yxxt/Web/ViewAnouncement?id=@item.anouncement_id">
+                            <li style="height: 20px;">
+                                <div class="col-lg-8 over">@item.title</div>
+                                <div class="col-lg-4">@item.create_time</div>
+                            </li>
+                        </a>
+                    }
+                </ul>
+            </div>
+            <div class="col-lg-5 login-div">
+                <form method="POST" role="form" action="/F2/Login" method="get">
+                    <div class="login-div-div">
+                        <div class="form-group">
+                            @Html.TextBoxFor(o => o.UserId, new { @class = "form-control", autofocus = "autofocus", placeholder = "登录名" })
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(o => o.UserPsw, new { @class = "form-control", placeholder = "登录密码", })
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="checkbox">
+                                <label>
+                                 
+                                    <input type="checkbox" id="blankCheckbox" value="option1" aria-label="...">记住密码
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 forget-st">
+                            <a href="">忘记密码？</a>
+                        </div>
+                        <br>
+                        <div class="col-lg-12 login-input">
+                            <p align="center">
+
+                                <button type="submit" class="btn btn-primary btn-block">登陆</button>
+                            </p>
+                        </div>
+                    </div>
+                </form>
+</div>
+        </div>
+        <div class="col-lg-12">
+            <p align="center">
+                <a href="#">党务系统</a>
+                | <a href="#">学校主页</a>
+                | <a href="#">关于我们</a>
+                | <a href="#">服务协议</a>
+                | <a href="#">联系邮箱</a>
+                | <a href="#" >放至桌面</a>
+                | <a href="#">收藏本站</a><br><br>
+                Copyright © 2016-2017 迎新网版权所有
+            </p>
+        </div>
+
+
+
+    </div>
+    <!-- /.row -->
+</div>
+
+

@@ -119,12 +119,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Weibo\Home.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Weibo\Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
-    </Compile>
     <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,9 +147,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Weibo\Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>

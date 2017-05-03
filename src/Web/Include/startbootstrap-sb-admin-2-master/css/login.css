@@ -1,0 +1,51 @@
+
+ul{
+	padding: 30px 10px;
+}
+li
+{
+	padding: 3px 0;
+	font-size: 15px;
+	color: rgb(69,69,69);
+
+}
+ul a
+{
+	color: rgb(59,59,59);
+}
+.welcome-div
+{
+	padding-top:70px;
+}
+.welcome-div p
+{
+	font-size:17px;color:rgb(69,69,69);padding-left:0%;
+}
+.cont-div
+{
+	background-image: url(../img/background.png);margin-top:10px;margin-bottom:30px;height:540px;
+}
+.login-div
+{
+padding:100px 100px;
+}
+.login-div-div
+{
+	border:1px solid rgb(250,250,250);width:320px;height:300px;padding:60px 20px;background:rgba(255,255,255,.8);border-radius:5px;
+}
+.forget-st
+{
+	padding:10px 0;
+}
+.login-input
+{
+	padding:20px 0;
+}
+
+.over
+{
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}

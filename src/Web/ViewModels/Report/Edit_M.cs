@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
+using Qx.Tools.Models.Report;
 namespace Web.ViewModels.Report
 {
     public class Edit_M
     {
-        public Qx.Report.Models.Report ToModel()
+        public ReportModel ToModel()
         {
-            return new Qx.Report.Models.Report()
+            return new ReportModel()
             {
                 ReportID = ReportID,
                 ReportName = ReportName,
@@ -22,7 +22,7 @@ namespace Web.ViewModels.Report
                 RecordsPerPage = RecordsPerPage
             };
         }
-        public static Edit_M ToViewModel(Qx.Report.Models.Report model)
+        public static Edit_M ToViewModel(ReportModel model)
         {
             return new Edit_M() {ReportID=model.ReportID, ColunmToShow=model.ColunmToShow, HeadFields=model.HeadFields,
              OperateColum=model.OperateColum, ParaNames=model.ParaNames, RecordsPerPage=model.RecordsPerPage, ReportName=model.ReportName,

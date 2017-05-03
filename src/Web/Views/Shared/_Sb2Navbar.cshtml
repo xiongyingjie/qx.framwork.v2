@@ -1,4 +1,24 @@
-﻿<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+﻿
+@model Web.Models.NavbarIndex
+@{
+    var user = ViewData["DataContext"] as Qx.Tools.DataContext;
+}
+
+<script>
+    $().ready(function() {
+         @foreach (var button in Model.Buttons)
+        {
+            @(new HtmlString(string.Format(@"
+            $('.{0}').remove();
+
+            ",
+            button.ButtonID
+            )));
+        }
+    });
+</script>
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -6,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Qx Framwork v2.0</a>
+        <a class="navbar-brand" href="/yxxt/web">数字迎新系统</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
@@ -202,18 +222,18 @@
         <!-- /.dropdown -->
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                <i class="fa fa-user fa-fw"></i> @(user.UserID ?? "登录超时") <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                @*<li>
+                    <a href="/Account/"><i class="fa fa-user fa-fw"></i> User Profile</a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
-                <li class="divider"></li>
+                <li class="divider"></li>*@
                 <li>
-                    <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    <a href="/F2/LoginOut"><i class="fa fa-sign-out fa-fw"></i> 退出登录</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -235,68 +255,111 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    <li>
-                        <a  class="qx-menu" data-url="/Sb/welcome"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                    @foreach (var item in Model.Navbars)
+                    {
+                        if (!item.IsParent && item.ParentId == "MRoot")
+                        {
+                            var action = item.Action.Replace(" ", "");
+                            var controller = item.Controller.Replace(" ", "");
+                            var area = item.Area.Replace(" ", "");
+                            var url = "/" + area + "/" + controller + "/" + action + "";
+                            var name = item.Name.Replace(" ", "");
+                            var imageClass = item.ImageClass.Replace(" ", "");
+                            <li><a href="@url"><i class="@imageClass"></i> @name</a></li>
+                        }
+                        else
+                        {
+                            if (item.IsParent)
+                            {
+                                <li>
+                                    <a href="#"><i class="@item.ImageClass"></i> @item.Name<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        @foreach (var child in Model.Navbars.Where(p => p.ParentId == item.Id))
+                                        {
+                                            if (child.Controller == null)
+                                            {
+                                                <li><a href="#">@child.Name.Replace(" ", "")</a></li>
+                                            }
+                                            else
+                                            {
+                                                var action = child.Action.Replace(" ", "");
+                                                var controller = child.Controller.Replace(" ", "");
+                                                var area = child.Area.Replace(" ", "");
+                                                var name = child.Name.Replace(" ", "");
+                                                var url = "/" + area + "/" + controller + "/" + action + "";
+                                                <li><a class="qx-menu"  data-title="@name" data-url="@url">@name</a></li>
+
+                                            }
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    }
+
+
+                    @*<li>
+                        <a  class="qx-menu" data-url="/F2/welcome"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="qx-menu" data-url="/Sb/Flot" >Flot Charts</a>
+                                <a class="qx-menu" data-url="/F2/Flot" >Flot Charts</a>
                             </li>
                             <li>
-                                <a class="qx-menu" data-url="/Sb/morris" >Morris.js Charts</a>
+                                <a class="qx-menu" data-url="/F2/morris" >Morris.js Charts</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a class="qx-menu" data-url="/Sb/Tables" ><i class="fa fa-table fa-fw"></i> Tables</a>
+                        <a class="qx-menu" data-url="/F2/Tables" ><i class="fa fa-table fa-fw"></i> Tables</a>
                     </li>
                     <li>
-                        <a class="qx-menu" data-url="/Sb/Forms"  ><i class="fa fa-edit fa-fw"></i> Forms</a>
+                        <a class="qx-menu" data-url="/F2/Forms"  ><i class="fa fa-edit fa-fw"></i> Forms</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="qx-menu" data-url="/Sb/panelsWells"  >Panels and Wells</a>
+                                <a class="qx-menu" data-url="/F2/panelsWells"  >Panels and Wells</a>
                             </li>
                             <li>
-                                <a class="qx-menu" data-url="/Sb/buttons"  >Buttons</a>
+                                <a class="qx-menu" data-url="/F2/buttons"  >Buttons</a>
                             </li>
                             <li>
-                                <a class="qx-menu" data-url="/Sb/Notifications"  >Notifications</a>
+                                <a class="qx-menu" data-url="/F2/Notifications"  >Notifications</a>
                             </li>
                             <li>
-                                <a class="qx-menu" data-url="/Sb/Typography"  >Typography</a>
+                                <a class="qx-menu" data-url="/F2/Typography"  >Typography</a>
                             </li>
                             <li>
-                                <a class="qx-menu" data-url="/Sb/Icons"  > Icons</a>
+                                <a class="qx-menu" data-url="/F2/Icons"  > Icons</a>
                             </li>
                             <li>
-                                <a class="qx-menu" data-url="/Sb/Grid" >Grid</a>
+                                <a class="qx-menu" data-url="/F2/Grid" >Grid</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="qx-menu" data-url="/Sb/Error" >Test Error</a>
+                                <a class="qx-menu" data-url="/F2/Error" >Test Error</a>
                             </li>
                             <li>
                                 <a class="qx-menu" data-url="http://baidu.com" >Test Baidu</a>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="#">第三方服务 <span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a class="qx-menu" data-url="/Sb/layer" >Test layer</a>
+                                        <a class="qx-menu" data-url="/F2/layer" >Test layer</a>
                                     </li>
                                     <li>
-                                        <a class="qx-menu" data-url="/Sb/Grid">open new form</a>
+                                        <a class="qx-menu" data-url="/F2/Grid">open new form</a>
                                     </li>
                                    
                                     <li>
@@ -315,14 +378,14 @@
                         <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="qx-menu active" data-url="/Sb/Blank" >Blank Page</a>
+                                <a class="qx-menu active" data-url="/F2/Blank" >Blank Page</a>
                             </li>
                             <li>
-                                <a class="qx-menu active" data-url="/Sb/Login" >Login Page</a>
+                                <a class="qx-menu active" data-url="/F2/Login" >Login Page</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
-                    </li>
+                    </li>*@
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->

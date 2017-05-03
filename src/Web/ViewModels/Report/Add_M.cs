@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-
+using Qx.Tools.Models.Report;
 namespace Web.ViewModels.Report
 {
     public class Add_M
     {
-        public Qx.Report.Models.Report ToModel()
+        public ReportModel ToModel()
         {
-            return new Qx.Report.Models.Report() { ReportID= ReportID,ReportName=ReportName, SqlStr=SqlStr, ColunmToShow=ColunmToShow,
+            return new ReportModel() { ReportID= ReportID,ReportName=ReportName, SqlStr=SqlStr, ColunmToShow=ColunmToShow,
              HeadFields=HeadFields, OperateColum=OperateColum, ParaNames=ParaNames, RecordsPerPage=RecordsPerPage};
         }
         [Display(Name = "编号ID")]

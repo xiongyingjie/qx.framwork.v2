@@ -15,7 +15,7 @@
     <AssemblyName>Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -59,8 +59,8 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Qx.Account, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -250,8 +250,10 @@
     <Compile Include="Areas\Order\ViewModel\OrderPayItem_M.cs" />
     <Compile Include="Areas\Order\ViewModel\Order_M.cs" />
     <Compile Include="Areas\Order\ViewModel\ShoppingCart_M.cs" />
+    <Compile Include="Areas\Permission\Controllers\Admin2Controller.cs" />
     <Compile Include="Areas\Permission\Controllers\AdminController.cs" />
     <Compile Include="Areas\Permission\Controllers\BasePermissionController.cs" />
+    <Compile Include="Areas\Permission\Controllers\CRUD2Controller.cs" />
     <Compile Include="Areas\Permission\Controllers\CRUDController.cs" />
     <Compile Include="Areas\Permission\Controllers\HomeController.cs" />
     <Compile Include="Areas\Permission\PermissionAreaRegistration.cs" />
@@ -262,6 +264,15 @@
     <Compile Include="Areas\Permission\ViewModels\Admin\RoleMenuList_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\Admin\UserList_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\Admin\UserRoleList_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\BanButtonAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\ButtonAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\Index_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\MenuAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\MenuEdit_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\RoleAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\RoleMenuAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\UserAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\UserRoleAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD\BanButtonAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD\ButtonAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD\Index_M.cs" />
@@ -311,6 +322,8 @@
     <Compile Include="Areas\WorkFlow\Controllers\HomeController.cs" />
     <Compile Include="Areas\WorkFlow\WorkFlowAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoReportController.cs" />
+    <Compile Include="Controllers\Base\RestApiResponseModel.cs" />
     <Compile Include="Controllers\Base\WxServerFilterController.cs" />
     <Compile Include="Controllers\Base\WxWebFilterController.cs" />
     <Compile Include="Controllers\Base\AccountFilterController.cs" />
@@ -320,6 +333,8 @@
     <Compile Include="Controllers\CrudDemoController.cs" />
     <Compile Include="Controllers\DemoController.cs" />
     <Compile Include="Controllers\ExtJsController.cs" />
+    <Compile Include="Controllers\F2Controller.cs" />
+    <Compile Include="Controllers\F2DemoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavbarController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
@@ -2524,6 +2539,8 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Include\echarts\3.5.2\echarts.js" />
+    <Content Include="Include\echarts\3.5.2\echarts.min.js" />
     <Content Include="Include\EXT-JS\V3\adapter\ext\ext-base-debug.js" />
     <Content Include="Include\EXT-JS\V3\adapter\ext\ext-base.js" />
     <Content Include="Include\EXT-JS\V3\adapter\ext\ext-baseBAK.js" />
@@ -8321,6 +8338,7 @@
     <Content Include="Include\JQueryFileUploadPlugin\js\jquery.iframe-transport.js" />
     <Content Include="Include\JQueryFileUploadPlugin\js\main.js" />
     <Content Include="Include\JQueryFileUploadPlugin\js\vendor\jquery.ui.widget.js" />
+    <Content Include="Include\jquery\jquery-3.2.0.min.js" />
     <Content Include="Include\KindEditor\asp.net\bin\LitJSON.dll" />
     <Content Include="Include\KindEditor\asp.net\demo.aspx" />
     <Content Include="Include\KindEditor\asp.net\README.txt" />
@@ -9990,6 +10008,18 @@
     <Content Include="Include\layui\1.0.9\文档与演示\在线演示.url" />
     <Content Include="Include\layui\1.0.9\文档与演示\快速上手.url" />
     <Content Include="Include\layui\1.0.9\更新日志.url" />
+    <Content Include="Areas\Permission\Views\CRUD2\BanButtonAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\ButtonAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\Index.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\MenuAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\MenuEdit.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\MenuExtensionAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\MenuExtensionEdit.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\RoleAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\RoleMenuAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\UserAdd.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\UserRoleAdd.cshtml" />
+    <Content Include="Include\echarts\3.5.2\map\china.json" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />
@@ -10133,6 +10163,27 @@
     <Content Include="Views\Sb\layer.cshtml" />
     <Content Include="Views\Sb\welcome.cshtml" />
     <Content Include="Views\Sb\grap.cshtml" />
+    <Content Include="Views\F2\blank.cshtml" />
+    <Content Include="Views\F2\buttons.cshtml" />
+    <Content Include="Views\F2\flot.cshtml" />
+    <Content Include="Views\F2\forms.cshtml" />
+    <Content Include="Views\F2\grap.cshtml" />
+    <Content Include="Views\F2\grid.cshtml" />
+    <Content Include="Views\F2\icons.cshtml" />
+    <Content Include="Views\F2\index.cshtml" />
+    <Content Include="Views\F2\layer.cshtml" />
+    <None Include="Views\F2\login.cshtm.bak1l" />
+    <None Include="Views\F2\login.cshtml" />
+    <Content Include="Views\F2\morris.cshtml" />
+    <Content Include="Views\F2\notifications.cshtml" />
+    <Content Include="Views\F2\panelsWells.cshtml" />
+    <Content Include="Views\F2\tables.cshtml" />
+    <Content Include="Views\F2\typography.cshtml" />
+    <Content Include="Views\F2\welcome.cshtml" />
+    <Content Include="Views\F2Demo\eChart.cshtml" />
+    <Content Include="Views\F2Demo\FormView.cshtml" />
+    <Content Include="Views\F2Demo\Map.cshtml" />
+    <Content Include="Views\F2Demo\ReportDemo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -10173,6 +10224,7 @@
     <Folder Include="Include\FrameWork\img\" />
     <Folder Include="UserFiles\Contents\" />
     <Folder Include="UserFiles\Test\" />
+    <Folder Include="Views\AutoReport\" />
     <Folder Include="Views\CrudDemo\" />
     <Folder Include="Views\Customer\" />
     <Folder Include="Views\Open\" />
@@ -10187,6 +10239,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FramWork\qx.permission.v2\qx.permmision.v2.csproj">
+      <Project>{51c18cb8-5e07-44b9-8aa5-ed3e6823d1f5}</Project>
+      <Name>qx.permmision.v2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FramWork\Qx.Tools\Qx.Tools.csproj">
       <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
       <Name>Qx.Tools</Name>
@@ -10214,7 +10270,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>29128</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:12599</IISUrl>
+          <IISUrl>http://localhost:28128/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

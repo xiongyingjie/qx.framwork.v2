@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
@@ -176,7 +177,8 @@ namespace CodeTool
             {
                 var id = row.SubItems[0].Text;
                 var columName = row.SubItems[1].Text;
-                var columNote = row.SubItems[2].Text;
+                var columNote = row.SubItems[2].Text+ //防止列明重复
+                    (rows.Cast<ListViewItem>().Count(a=>a.SubItems[2].Text == row.SubItems[2].Text)>1 ?"":"");
                 var tableName = row.SubItems[3].Text;
                 var isHidden = bool.Parse(row.SubItems[4].Text);
                 //加入tables
@@ -186,7 +188,7 @@ namespace CodeTool
                 }
                 //拼接Headears
                 reportHeadears += columNote + ";";
-                reportSql_select += string.Format(" {0}.{1} as '{2}' , ", tableName, columName, columNote);
+                reportSql_select += string.Format("\n  {0}.{1} as '{2}' ,", tableName, columName, columNote);
                 if (!isHidden)
                 {
                     //拼接ColumToShow
@@ -200,8 +202,8 @@ namespace CodeTool
             //拼接from和where子句
             tables.ForEach(table =>
             {
-                reportSql_from += table + ",";
-                reportSql_where += table + ".XXX LIKE '%XXX.XXX%' and ";
+                reportSql_from += "\n"+ table + ",";
+                reportSql_where += "\n" + table + ".XXX LIKE '%XXX.XXX%' and ";
                 reportTableName += table + "|";
             });
             //清除Headears中最后一个;
@@ -214,7 +216,7 @@ namespace CodeTool
             reportTableName = reportTableName.Substring(0, reportTableName.Length - 1);
             //赋值
             tb_reportName.Text = DateTime.Now.Random();
-            tb_reportId.Text = string.Format("{0}.{1}.{2}", reportDataBase, tb_reportName.Text,DateTime.Now.Random() );
+            tb_reportId.Text = string.Format("{0}.{1}.{2}", reportDataBase, DateTime.Now.Random().Substring(0,3), tb_reportName.Text);
             rtb_headears.Text = reportHeadears;
             tb_columToShow.Text = reportColumToShow;
             #region 不更新CheckError和CheckPass状态的where子句
@@ -343,6 +345,7 @@ namespace CodeTool
             var reportId = tb_reportId.Text;
             reportId = reportId.Substring(0, reportId.LastIndexOf('.')+1);
             tb_reportId.Text = reportId + tb_reportName.Text;
+            ReFreshState();
         }
 
         private void bt_check_Click(object sender, EventArgs e)

@@ -83,4 +83,11 @@
         }
         return text;
     }
+   
+    function hasValue(value) {
+        value = $.trim(value);
+        return (value === "；" || value === ";" || value === "#" || value === null || value === undefined || value === '') ? false : true;
+    }
+
+   
  

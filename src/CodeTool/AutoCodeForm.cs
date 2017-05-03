@@ -321,9 +321,7 @@ public class {0}
          
             tb_database.Text = _database;
             tb_columsNote.Text = _columsNote;
-            tb_tableName.Text =
-            tb_action.Text =
-            tb_actionNote.Text = _tables;
+            tb_tableName.Text = _tables;
             tb_colums.Text = _colums;
 
             #region apiModel自动赋值
@@ -349,7 +347,11 @@ public class {0}
             #endregion
             tb_apiModel.Text = apiModel;
             tb_viewModel.Text = tb_action.Text + "_M";
-
+            tb_apiInModelNote.Text = apiModel;
+            tb_apiName.Text =
+                tb_apiNote.Text =
+                tb_action.Text =
+                tb_actionNote.Text ="Update" + apiModel;
 
 
         }

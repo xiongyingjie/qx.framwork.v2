@@ -1,25 +1,128 @@
-﻿@{
-    var showDeafultButton = true;
-    showDeafultButton = ViewData["showDeafultButton"] is bool ? (bool)ViewData["showDeafultButton"] : true;
+﻿@using Qx.Tools.CommonExtendMethods;
+@{
+    var dataSource = ViewData["dataSource"];
+    var AddLink = ViewData["AddLink"];
+    var Title = ViewData["Title"];
+    var ExtraParam = ViewData["ExtraParam"];
+    var ReportID = ViewData["ReportID"];
+    var Params = ViewData["Params"]==null? "":ViewData["Params"].ToString();
+    var perCount = ViewData["perCount"];
+    var pageIndex = ViewData["pageIndex"];
+    var showDeafultButton = ViewData["showDeafultButton"];
+    var dbConnStringKey = ViewData["dbConnStringKey"];
+    var formControlConfig = ViewData["formControlConfig"];
+    var area = "";
+    var deleteLink = ViewData["deleteLink"];
+    var CurrentUrl = ViewData["CurrentUrl"];
+    //固定参数
+    var fixedIndex = Params.IndexOf("!fixed");
+    var fixedParams = fixedIndex>-1? Params.Substring(0, fixedIndex):"";
+    //var ExtraParam = ViewData["ExtraParam"];
+    //var CurrentUrl = ViewData["CurrentUrl"];
+    //var CurrentUrl = ViewData["CurrentUrl"];
 }
 
+   
+    <!-- Page Content -->
+ 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 style="padding-bottom:10px;color:rgb(99,99,99);font-size:28px;margin-top:20px;font-family:'微软雅黑';">
+                       <span id="lb_title"></span><button class="btn btn-primary btn-sm back" onclick="back()" style="float:right;"> 返回</button>
+                    </h2>
+                </div>
+                <!-- /.col-lg-12 -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-pd">
+                                                <a class="btn btn-primary" id="bt_query" onclick=" Query() ">
+                                                    查询
+                                                    <i class="fa fa-search"></i>
+                                                </a>
+                                                <a onclick=" ToExcel() " id="bt_toExcel" class="btn btn-warning">
+                                                    导出EXcel
+                                                    <i class="fa fa-download"></i>
+                                                </a>
+                                                <a onclick=" Add() " id="bt_add" class="btn btn-success">
+                                                    添加
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                                <a onclick=" Delete() " id="bt_delete" class="btn btn-danger">
+                                                    删除
+                                                    <i class="fa fa-remove"></i>
+                                                </a>
+                                                <a id="extra-bt-container">
 
-@if (showDeafultButton)
-{
-    <div class="row">
-        <div class="col-lg-12 ">
-            <button class="btn btn-primary" onclick="Search()" id="Search">查询</button>&nbsp;
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div  class="row">
+                                        <a style="color:red" id="extra_tip-container"></a>
+                                    </div>
+                                    <br/>
+                                    <ul class="list-ul" id="mainForm"></ul>
+                                    <div class="table-div">
+                                        <div id="callBackPagination" class="piece">
+                                            <div id="mainContent"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <br>
+                                        <div class="col-md-5 col-sm-12">
+                                            <div class="dataTables_info" id="sample_1_info">当前显示 <span id="lb_fromIndex">*</span>- <span id="lb_toIndex">*</span>记录</div>
+
+                                        </div>
+                                        <div id="callBackPager"></div>
+                                    </div>
+                                </div>
+                              
+                            </div>
+                            <!-- /.table-responsive -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+            </div>
+
+
+            <!--新加的js-->
+
+
+            
+            <!--./新加的js-->
+            <!-- /.col-lg-12 -->
         </div>
-    </div>
-}
+        <!-- /.row -->
+
+    <!-- /.container-fluid -->
 
 
-@Html.Action("Report2", "Report", new { dbConnStringKey = ViewData["dbConnStringKey"], AddLink = ViewData["AddLink"], Title = ViewData["Title"], ExtraParam = ViewData["ExtraParam"], ReportID = ViewData["ReportID"], Params = ViewData["Params"], area = "" })
+<script type="text/javascript">
+    var g_dataSource = '@dataSource';
+    var g_addLink = '@(new HtmlString(AddLink.ToString())) ';
+    var g_title = '@Title';
+    var g_extraParam = '@(new HtmlString(ExtraParam.ToString()) ) ';
+    var g_reportId = '@ReportID';
+    var g_params = '@Params';
+    var g_perCount = @perCount;
+    var g_pageIndex = @pageIndex;
+    var g_showDeafultButton = @showDeafultButton.ToString().ToLower();
+    var g_area = '@area';
+    var g_dbConnStringKey = '@dbConnStringKey';
+    var g_formControlConfig = '@(new HtmlString(formControlConfig.ToString()) )';
+    var g_deleteLink = '@deleteLink';
+    var g_currentUrl = '@CurrentUrl';
+    var g_fixedParams = '@fixedParams';
+</script>
 
-
-
-
-@*
-    用法
-@Html.Partial("_Report", new ViewDataDictionary(ViewData) { { "showDeafultButton", true } })
-    *@
+<script src="~/Include/FrameWork/js/table-loader.js"></script>

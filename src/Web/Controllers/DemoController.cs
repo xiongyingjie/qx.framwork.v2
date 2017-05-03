@@ -13,7 +13,7 @@ using Qx.Permission.Interfaces;
 using Qx.Tools.CommonExtendMethods;
 using Web.Controllers.Base;
 using Web.ViewModels.Demo;
-using Qx.Report.Models;
+using Qx.Tools.Models.Report;
 using Qx.WorkFlow.Interfaces;
 using Qx.Tools;
 using Qx.Tools.Interfaces;

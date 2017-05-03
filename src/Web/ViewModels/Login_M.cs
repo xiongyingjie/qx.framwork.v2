@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Web.ViewModels
 {
@@ -18,5 +19,6 @@ namespace Web.ViewModels
         public string AppPicUrl;
         [Display(Name = "微信二维码地址")]
         public string WeiXinPicUrl;
+
     }
 }

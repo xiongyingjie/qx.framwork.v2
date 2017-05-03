@@ -1,0 +1,214 @@
+﻿@{
+    var url = Context.Request.RawUrl;
+}
+@model List<List<string>>
+
+@{
+    var pageIndex = (int)ViewData["pageIndex"];
+    var maxIndex    =(int)ViewData["maxIndex"];
+    var perCount = (int)ViewData["perCount"];
+    var startIndex = (pageIndex - 1) * perCount+1;
+    var endIndex = startIndex +perCount-1;
+    var AddLink = (string)ViewData["AddLink"];
+    var ExtraParam = new HtmlString((string)ViewData["ExtraParam"]);
+    //var dataSource = (List<List<string>>)ViewData["dataSource"];
+
+    var Title = (string)ViewData["Title"];
+    var ReportID = (string)ViewData["ReportID"];
+    var Params = (string)ViewData["Params"];
+    var CurrentUrl = (string)ViewData["CurrentUrl"];
+    var CurrentFullUrl = (string)ViewData["CurrentFullUrl"];
+
+    var showDeafultButton = true;
+    showDeafultButton = ViewData["showDeafultButton"] is bool ? (bool)ViewData["showDeafultButton"] : true;
+
+    var header = Model[0];
+    Model.Remove(header);
+    var body = Model;
+
+    if (body.Count == 0)
+    {
+        header = header.Take(header.Count - 1).ToList();
+    }
+}
+
+
+<script>
+     function JumpTo(index) {
+        var url = "@CurrentUrl?ReportID=@ReportID&Params=@Params&pageIndex=" + index + "&perCount=@perCount@ExtraParam" ;
+        location.href = url;
+    }
+      function Query() {
+        var Params = Search();
+        $("#Params").val(Params);
+        if (Params == "") {
+            alert('请填写要搜索的关键字');
+            return;
+        }
+        location.href = "@CurrentUrl?ReportID=@ReportID"  + "&Params=" + Params+"@ExtraParam&pageIndex=1&perCount=@perCount@ExtraParam" ;
+    }
+
+      function ToExcel() {
+        var Params = $("#Params").val();
+        if (Params == "") {
+            alert('请刷新页面后重试');
+            return;
+        }
+        location.href = "/Report/ReportToExcel?ReportID=@ReportID" + "&Params=" + Params;
+    }
+</script>
+
+
+
+
+<div>
+    <input type="text" value="@Params" id="Params" placeholder="多个参数使用;分隔" style="visibility:hidden" />
+</div>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group form-pd">
+            @if (showDeafultButton)
+            {
+                <a class="btn btn-primary" onclick=" Query() ">
+                    查询 <i class="fa fa-search"></i>
+                </a>
+                <a onclick="ToExcel() " id="ToExcel" class="btn btn-warning">
+                    导出EXcel <i class="fa fa-download"></i>
+                </a>
+            }
+            @if (!(AddLink == "#" || AddLink == ""))
+            {
+                <a href="@AddLink" class="btn btn-success">
+                    添加 <i class="fa fa-plus"></i>
+                </a>
+            }
+            <a href="#" class="btn btn-danger">
+                删除
+                <i class="fa fa-delet"></i>
+            </a>
+            <div id="bt-container"></div>
+</div>
+    </div>
+    <hr style="visibility:hidden"/>
+</div>
+<div class="table-div">
+    <table class="table table-striped table-bordered table-hover info">
+        <thead>
+            <tr>
+                <th width="30px;">
+                    <input class="check_w" type="checkbox" onclick=" swapCheck() ">
+                </th>
+                @foreach (var item in header)
+                {
+                    <th width="300px;" class="text_w">
+                        @Html.Label(item)
+                    </th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in body)
+            {
+                var index = 0;
+                @(new HtmlString(string.Format("<tr   id='{0}' class='{1}'>", row[0], index % 2 == 0 ? "" : "info")))
+                if (index == 0)
+                {
+                    @(new HtmlString("<td class='center overOut'>"))
+                    @(new HtmlString(" <input class='check_w' type='checkbox'>"))
+                    @(new HtmlString(" </td>"))
+                }
+                foreach (var item in row)
+                {
+
+                    @(new HtmlString("<td class='center overOut'>"))
+                    if (index == row.Count - 1)
+                    {
+                        @(new HtmlString(item.Replace("[]", ExtraParam.ToString())))
+                    }
+                    else
+                    {
+                        @(item)
+                    }
+                    @(new HtmlString(" </td>"))
+
+                    index++;
+                }
+                @(new HtmlString(" </tr>"))
+            }
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-md-5 col-sm-12">
+        <div class="dataTables_info" id="sample_1_info">当前显示 @((pageIndex*perCount)+"-"+ ((pageIndex+1) * perCount)) 记录</div>
+    </div>
+    <div class="col-md-7 col-sm-12">
+        <div id="callBackPagination" class="piece">
+            @*@if (pageIndex > 1)
+            {
+                <li>
+                    <a onclick="JumpTo('@(pageIndex - 1)')" href="#"><i class="fa fa-angle-left"></i></a>
+                </li>
+            }
+            @if (maxIndex > 2)
+            {
+                for (var i = 1; i <= maxIndex; i++)
+                {
+
+                    <li class="@(i == pageIndex ? "active" : "")">
+                        <a onclick="JumpTo('@(i)')" href="#">@(i)</a>
+                    </li>
+                }
+            }
+            @if (pageIndex < maxIndex)
+            {
+                <li>
+                    <a onclick="JumpTo('@(pageIndex + 1)')" href="#"><i class="fa fa-angle-right"></i></a>
+                </li>
+            }*@
+            <div id="callBackPager"></div>
+        </div>
+    </div>
+</div>
+
+    <script src="~/Include/FrameWork/js/extendPagination.js"></script>
+    <script type="text/javascript">
+         $().ready(function() {
+              var totalCount =252,
+              limit = 10;
+
+        $('#callBackPager').extendPagination({
+            totalCount: totalCount,
+            limit: limit,
+            callback: function (curr, limit, totalCount) {
+                JumpTo(curr);
+                //alert(curr + "-" + limit + "-" + totalCount);
+            }
+
+          });
+         });
+
+
+    </script>
+<script type="text/javascript">
+    //checkbox 全选/取消全选
+    var isCheckAll = false;
+
+    function swapCheck() {
+        if(isCheckAll) {
+            $("input[type='checkbox']").each(function() {
+                this.checked = false;
+            });
+            isCheckAll = false;
+        } else {
+            $("input[type='checkbox']").each(function() {
+                this.checked = true;
+            });
+            isCheckAll = true;
+        }
+    }
+</script>
+@*@Html.Partial("_DebugCutPage")*@

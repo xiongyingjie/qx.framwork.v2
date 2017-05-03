@@ -80,7 +80,21 @@ namespace Qx.Tools.Ioc.Unity
 
             #endregion
 
+            #region Permission V2 Repository
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.button>, qx.permmision.v2.Repository.ButtonRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.menu>, qx.permmision.v2.Repository.MenuRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.role_button_forbid>, qx.permmision.v2.Repository.RoleButtonForbidRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.role_menu>, qx.permmision.v2.Repository.RoleMenuRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.role>, qx.permmision.v2.Repository.RoleRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.permission_user>, qx.permmision.v2.Repository.UserRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.user_role>, qx.permmision.v2.Repository.UserRoleRepository>();
+            container.RegisterType<IPermissionProvider, PermissionProvider>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group>, qx.permmision.v2.Repository.UserGroupRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group_relation>, qx.permmision.v2.Repository.UserGroupRelationRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.role_group>, qx.permmision.v2.Repository.RoleGroupRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.role_group_relation>, qx.permmision.v2.Repository.RoleGroupRelationRepository>();
 
+            #endregion
 
 
             #region Contents Repository

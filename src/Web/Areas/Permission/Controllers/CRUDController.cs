@@ -70,6 +70,8 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult RoleMenuAdd(string roleid,string menuid)
         {
+            roleid = RQ("roleid");
+            menuid = RQ("menuid");
             var role = _role.Find(roleid);
             InitForm("分配菜单");
             var menu = _module.Find(menuid);
@@ -98,6 +100,8 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult BanButtonAdd(string roleid,string buttonid)
         {
+            roleid = RQ("roleid");
+            buttonid = RQ("buttonid");
             var role = _role.Find(roleid);
             if (buttonid.HasValue())
             {
@@ -157,6 +161,8 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult UserRoleAdd(string userid,string roleid)
         {
+            roleid = RQ("roleid");
+            userid = RQ("userid");
             if (roleid.HasValue())
             {
                 var role = _role.Find(roleid);
@@ -192,6 +198,7 @@ namespace Web.Areas.Permission.Controllers
         
         public ActionResult ButtonAdd(string menuid)
         {
+            //menuid = RQ("menuid");
             InitForm("添加按钮");
             if (menuid.HasValue())
                 return View(ButtonAdd_M.ToViewModel(menuid));
@@ -206,6 +213,10 @@ namespace Web.Areas.Permission.Controllers
                 model.buttonid = model.menuid + "-" + model.name;
                 if (_funcObject.Find(model.buttonid) == null)
                 {
+                    if (model.menuid.IndexOf("!fixed") != -1)
+                    {
+                        model.menuid = model.menuid.Substring(0,model.menuid.Length-6);
+                    }
                     _funcObject.Add(model.ToModel());
                     return Redirect("/Permission/Admin/ButtonList?ReportID=Permision_按钮列表&Params=;");
                 }
@@ -220,6 +231,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult MenuAdd(string fartherid)
         {
+            fartherid = RQ("fartherid");
             if (fartherid==";")
                 fartherid = "MRoot";
             InitForm("添加菜单");
@@ -234,7 +246,7 @@ namespace Web.Areas.Permission.Controllers
                 {
                    
                     _module.Add(model.ToModel());
-                    return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+model._fartherid);
+                    return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+model._fartherid+"!fixed");
                 }
                 else
                     return Alert("添加失败，请重新添加");
@@ -248,6 +260,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult MenuExtensionAdd(string menuid)
         {
+            menuid = RQ("menuid");
             if (menuid.HasValue())
             {
                 InitForm("添加菜单扩展");
@@ -267,7 +280,7 @@ namespace Web.Areas.Permission.Controllers
                 {
                     var menu=_module.Find(model.MenuID);
                     _menuExtension.Add(model.ToModel());
-                    return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+menu.FartherID);
+                    return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+menu.FartherID+"!fixed");
                 }
                 else
                     return Alert("添加失败，请重新添加");
@@ -280,6 +293,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult MenuExtensionEdit(string menuid)
         {
+            menuid = RQ("menuid");
             var menuExtension = _menuExtension.Find(menuid);
             if (menuExtension!=null)
             {
@@ -300,7 +314,7 @@ namespace Web.Areas.Permission.Controllers
                 {
                     var menu = _module.Find(model.MenuID);
                     _menuExtension.Update(model.ToModel());
-                    return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+menu.FartherID);
+                    return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+menu.FartherID+"!fixed");
                 }
                 else
                     return Alert("操作失败！");
@@ -313,6 +327,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult UserDelete(string userid)
         {
+            userid = RQ("userid");
             var user=_user.Find(userid);
             if (user != null)
             {
@@ -324,6 +339,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult RoleDelete(string roleid)
         {
+            roleid = RQ("roleid");
             var role = _role.Find(roleid);
             if (role != null)
             {
@@ -335,6 +351,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult UserRoleDelete(string userroleid)
         {
+            userroleid = RQ("userroleid");
             var userrole = _userRole.Find(userroleid);
             if (userrole != null)
             {
@@ -346,6 +363,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult RoleMenuDelete(string rolemenuid)
         {
+            rolemenuid = RQ("rolemenuid");
             if (rolemenuid.HasValue())
             {
                 if (_roleModule.Delete(rolemenuid))
@@ -358,6 +376,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult BanButtonDelete(string banbuttonid)
         {
+            banbuttonid = RQ("banbuttonid");
             var banbutton = _roleFuncObjForbid.Find(banbuttonid);
             if (banbutton != null)
             {
@@ -369,6 +388,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult ButtonDelete(string buttonid)
         {
+            buttonid = RQ("buttonid");
             var button = _funcObject.Find(buttonid);
             if (button != null)
             {
@@ -380,6 +400,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult MenuDelete(string menuid)
         {
+            menuid = RQ("menuid");
             if (menuid.HasValue())
             {
                 if (_module.Delete(menuid))
@@ -392,6 +413,7 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult MenuEdit(string menuid)
         {
+            menuid = RQ("menuid");
             InitForm("菜单编辑");
             var menu = _module.Find(menuid);
             if (menu == null)
@@ -412,7 +434,7 @@ namespace Web.Areas.Permission.Controllers
                 old.Value = model.value;
                 old.FartherID = model._fartherid;
                 _module.Update(old);
-                return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+old.FartherID);
+                return Redirect("/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params="+old.FartherID+"!fixed");
             }
             else
             {
@@ -422,15 +444,23 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult ChooseBanButton(string roleid, string buttonid)
         {
+            roleid = RQ("roleid");
+            buttonid = RQ("buttonid");
             return Redirect("/Permission/CRUD/BanButtonAdd?roleid=" + roleid + "&buttonid=" + buttonid);
         }
         public ActionResult ChooseRole(string userid,string roleid)
         {
+            roleid = RQ("roleid");
+            userid = RQ("userid");
+
             return Redirect("/Permission/CRUD/UserRoleAdd?userid=" + userid + "&roleid=" + roleid);
         }
         public ActionResult ChooseMenu(string menuid,string roleid,string buttonid)
         {
-            if(!roleid.HasValue())
+            //roleid = RQ("roleid");
+            //buttonid = RQ("buttonid");
+            //menuid = RQ("menuid");
+            if (!roleid.HasValue())
                 return Redirect("/Permission/CRUD/ButtonAdd?buttonid=" + buttonid + "&menuid=" + menuid);
             else
                 return Redirect("/Permission/CRUD/RoleMenuAdd?roleid=" + roleid + "&menuid=" + menuid);

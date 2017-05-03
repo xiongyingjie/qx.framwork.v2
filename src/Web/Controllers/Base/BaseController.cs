@@ -11,7 +11,7 @@ using Qx.Report.Services;
 using Qx.Tools;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Web.Controller;
-using Qx.Report.Models;
+using Qx.Tools.Models.Report;
 using System.Web;
 using System.Web.Mvc.Async;
 using System.Web.Profile;
@@ -23,6 +23,11 @@ namespace Web.Controllers.Base
 {
     public class BaseController : Controller
     {
+        #region restApi
+
+        #endregion
+
+        protected const string _FIXED_FLAG= "!fixed";
         protected  bool IsUnitTest
         {
             get
@@ -38,7 +43,21 @@ namespace Web.Controllers.Base
         {
             this._reportServices = new ReportServices();
         }
+      
+        private List<FormControlConfig> _formSearch;
 
+        public List<FormControlConfig> Search
+        {
+            get
+            {
+                if (_formSearch == null)
+                {
+                    _formSearch = new List<FormControlConfig>();
+                    
+                }
+                return _formSearch;
+            }
+        }
         private DataContext _dataContext;
         public DataContext DataContext
         {
@@ -81,7 +100,20 @@ namespace Web.Controllers.Base
             }
         }
 
-
+        #region ReportView
+        protected ActionResult ReportView()
+        {
+            return View("_empty");
+        }
+        protected ActionResult ReportView(string viewName, object model)
+        {
+            return View(viewName, model);
+        }
+        protected ActionResult ReportView(object model)
+        {
+            return View(model);
+        }
+        #endregion
         protected string ToPhysicPath(string FilePath)
         {
             return new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory).FullName + FilePath;//System.Web.HttpContext.Current.Server.MapPath(SavePath) + fileBase.FileName;
@@ -147,17 +179,20 @@ namespace Web.Controllers.Base
             {
                 if (item == null) continue;
                 var key = item.ToString() ?? "";
-                ViewData[key] = Request.QueryString[key];
+                if (key != "Params")
+                {
+                    ViewData[key] = Request.QueryString[key];
+                }
             }
            
         }
         protected void InitLayout(string Title)
         {
-            _BaseInitLayout(Title, "_SbLayout");
+            _BaseInitLayout(Title, "_Sb2Layout");
         }
         protected void InitAdminLayout(string Title)
         {
-            _BaseInitLayout(Title, "_SbAdminLayout");
+            _BaseInitLayout(Title, "_Sb2AdminLayout");
        }
         
        protected void InitEJLayout(string Title)
@@ -173,66 +208,75 @@ namespace Web.Controllers.Base
             ViewBag.Menus = Menus;
             _BaseInitLayout("菜单列表", "_SbLayout");
         }
+
+        public void InitFormView(string Title, bool ShowSaveButton = true)
+        {
+            V("UserID", DataContext.UserID);
+            V("Title", Title); V("ShowSaveButton", ShowSaveButton);
+            _BaseInitLayout(Title, "_Sb2FormViewLayout");
+        }
         public void InitForm(string Title,bool ShowSaveButton=true)
         {
             V("UserID", DataContext.UserID);
             //V("Url", CurrentUrl());
             V("Title", Title); V("ShowSaveButton", ShowSaveButton);
-            if (!IsUnitTest)
+            if (IsUnitTest)
             {
-                HttpContext.Items["Layout"] = "~/Views/Shared/_SbFormLayout.cshtml"; V("Layout", "~/Views/Shared/_SbFormLayout.cshtml");
+                HttpContext.Items["Layout"] = "~/Views/Shared/_Sb2FormLayout.cshtml"; V("Layout", "~/Views/Shared/_Sb2FormLayout.cshtml");
             }
             else
             {
-                _BaseInitLayout(Title, "_SbFormLayout");
+                _BaseInitLayout(Title, "_Sb2FormLayout");
             }
             
           }
         #endregion
 
         #region 废弃
-        [Obsolete(@"使用InitReport(List<List<string>> dataSource, string Title,string AddLink,string ExtraParam = "",bool showDeafultButton = true) 代替")]
-        protected void InitReport(List<List<string>> dataSource, string Title, string AddLink,
-           int pageIndex, int perCount, string ExtraParam = "", bool showDeafultButton = true)
-        {
-            //throw new Exception("已过时的方法\r\n"+ @"使用InitReport(List<List<string>> dataSource, string Title,string AddLink,string ExtraParam = "",bool showDeafultButton = true) 代替");
-            var ReportID = Q("ReportID"); var Params = Q("Params");
-            _InitReport(ReportID, Params, dataSource,
-                Title, AddLink,
-                ExtraParam, showDeafultButton,
-                pageIndex.ToString(), perCount.ToString()
-                );
-        }
-        [Obsolete(@"使用InitReport(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey) 代替")]
-        protected void InitReport(string Title, string AddLink, int pageIndex, int perCount, string ExtraParam, bool showDeafultButton, string dbConnStringKey)
-        {
-            //throw new Exception("已过时的方法\r\n"+ @"使用InitReport(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey) 代替");
-            if (!dbConnStringKey.HasValue())
-            {
-                throw new Exception("报表数据库配置错误！");
-            }
-            var ReportID = Q("ReportID"); var Params = V("Params");
-            var dataSource = _reportServices.GetDbDataSource(ReportID, Params, dbConnStringKey);
-            _InitReport(ReportID, Params, dataSource,
-                Title, AddLink,
-                ExtraParam, showDeafultButton,
-                pageIndex.ToString(), perCount.ToString()
-                );
-        }
+        //[Obsolete(@"使用InitReport(List<List<string>> dataSource, string Title,string AddLink,string ExtraParam = "",bool showDeafultButton = true) 代替")]
+        //protected void InitReport(List<List<string>> dataSource, string Title, string AddLink,
+        //   int pageIndex, int perCount, string ExtraParam = "", bool showDeafultButton = true)
+        //{
+        //    throw new Exception("已过时的方法\r\n"+ @"使用InitReport(List<List<string>> dataSource, string Title,string AddLink,string ExtraParam = "",bool showDeafultButton = true) 代替");
+        //    var ReportID = Q("ReportID"); var Params = Q("Params");
+        //    _InitReport(ReportID, Params, dataSource,
+        //        Title, AddLink,
+        //        ExtraParam, showDeafultButton,
+        //        pageIndex.ToString(), perCount.ToString()
+        //        );
+        //}
+        //[Obsolete(@"使用InitReport(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey) 代替")]
+        //protected void InitReport(string Title, string AddLink, int pageIndex, int perCount, string ExtraParam, bool showDeafultButton, string dbConnStringKey)
+        //{
+        //    throw new Exception("已过时的方法\r\n"+ @"使用InitReport(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey) 代替");
+        //    if (!dbConnStringKey.HasValue())
+        //    {
+        //        throw new Exception("报表数据库配置错误！");
+        //    }
+        //    var ReportID = Q("ReportID"); var Params = V("Params");
+        //    var dataSource = _reportServices.GetDbDataSource(ReportID, Params, dbConnStringKey);
+        //    _InitReport(ReportID, Params, dataSource,
+        //        Title, AddLink,
+        //        ExtraParam, showDeafultButton,
+        //        pageIndex.ToString(), perCount.ToString()
+        //        );
+        //}
         #endregion
 
         #region Report相关
-        protected void InitReport(List<CrossDbParam> paramList, string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey)
+        //垮裤专用
+        protected void InitReport(List<CrossDbParam> paramList, string Title, string AddLink
+            , string ExtraParam, bool showDeafultButton, string dbConnStringKey)
         {
             if (!dbConnStringKey.HasValue())
             {
                 throw new Exception("报表数据库配置错误！");
             }
-            var pageIndex = Q("pageIndex"); var perCount = Q("perCount");
+            var pageIndex = Q_Int("pageIndex"); var perCount = Q_Int("perCount");
             var ReportID = Q("ReportID"); var Params = V("Params");
             var dataSource = _reportServices.GetDbDataSource(ReportID, Params, dbConnStringKey);
             //垮裤
-            dataSource = _reportServices.CrossDb(ReportID, Params, dataSource, paramList);
+            dataSource = _reportServices.CrossDb(ReportID, Params, dataSource, paramList, pageIndex, perCount);
             _InitReport(ReportID, Params, dataSource,
                 Title, AddLink,
                 ExtraParam, showDeafultButton,
@@ -240,20 +284,21 @@ namespace Web.Controllers.Base
                 );
         }
 
-
+        //Service专用
         protected void InitReport(List<List<string>> dataSource,
                                  string Title, string AddLink, string ExtraParam = "", bool showDeafultButton = true)
         {
-            var pageIndex = Q("pageIndex"); var perCount = Q("perCount");
+            var pageIndex = Q_Int("pageIndex"); var perCount = Q_Int("perCount");
             var ReportID = Q("ReportID"); var Params = Q("Params");
-            dataSource = _reportServices.ToHtml(ReportID, Params, dataSource);
+            dataSource = _reportServices.ToHtml(ReportID, Params, dataSource, pageIndex, perCount);
             _InitReport(ReportID, Params, dataSource,
                 Title, AddLink,
                 ExtraParam, showDeafultButton,
                 pageIndex, perCount
                 );
         }
-        protected void InitReport(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey)
+      
+        protected void InitReport_old(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey)
         {
             if (!dbConnStringKey.HasValue())
             {
@@ -261,9 +306,9 @@ namespace Web.Controllers.Base
             }
             if (!IsUnitTest)
             {
-                var pageIndex = Q("pageIndex"); var perCount = Q("perCount");
-                var ReportID = Q("ReportID"); var Params = Q("Params");
-                var dataSource = _reportServices.ToHtml(ReportID, Params, dbConnStringKey);
+                var pageIndex = Q_Int("pageIndex"); var perCount = Q_Int("perCount");
+                var ReportID = Q("ReportID"); var Params = V("Params").HasValue()? V("Params"):Q("Params");
+                var dataSource = _reportServices.ToHtml(ReportID, Params, dbConnStringKey,pageIndex,perCount);
                 _InitReport(ReportID, Params, dataSource,
                     Title, AddLink,
                     ExtraParam, showDeafultButton,
@@ -271,36 +316,82 @@ namespace Web.Controllers.Base
                     );
             }
         }
-
+        //2.0专用
+        protected void InitReport(string Title, string AddLink, string ExtraParam, bool showDeafultButton, string dbConnStringKey,string deleteLink="")
+        {
+            if (!dbConnStringKey.HasValue())
+            {
+                throw new Exception("报表数据库配置错误！");
+            }
+            if (!IsUnitTest)
+            {
+                var pageIndex = Q_Int("pageIndex"); var perCount = Q_Int("perCount");
+                var ReportID = Q("ReportID"); var Params = V("Params").HasValue() ? V("Params") : Q("Params");
+               // var dataSource = _reportServices.ToHtml(ReportID, Params, dbConnStringKey, pageIndex, perCount);
+                V("dbConnStringKey", dbConnStringKey);
+                V("deleteLink", deleteLink);
+                V("formControlConfig", Search.Serialize());
+                _InitReport(ReportID, Params, new List<List<string>>(), 
+                    Title, AddLink,
+                    ExtraParam, showDeafultButton,
+                    pageIndex, perCount
+                    );
+            }
+        }
 
         private void _InitReport(string ReportID, string Params, List<List<string>> dataSource,
             string Title, string AddLink,
             string ExtraParam, bool showDeafultButton,
-            string pageIndex, string perCount)
+            int pageIndex, int perCount)
         {
-            V("ReportID", ReportID); V("Params", Params); V("dataSource", dataSource);
-            V("Title", Title); V("AddLink", AddLink);
+            V("ReportID", ReportID); V("Params", Params);
+            V("AddLink", AddLink); V("dataSource", dataSource);
             V("ExtraParam", ExtraParam); V("showDeafultButton", showDeafultButton);
-            V("pageIndex", pageIndex ?? "1"); V("perCount", perCount ?? "10");//分页参数
+            V("pageIndex", pageIndex ); V("perCount", perCount);//分页参数
             V("Url", CurrentUrl()); V("UserID", DataContext.UserID);
-            // V("Layout", "~/Views/Shared/_PandaReportLayout.cshtml"; HttpContext.Items.Add("Layout", "~/Views/Shared/_PandaReportLayout.cshtml");
-            V("Layout", "~/Views/Shared/_SbReportLayout.cshtml"); HttpContext.Items.Add("Layout", "~/Views/Shared/_SbReportLayout.cshtml");
+            _BaseInitLayout(Title, "_Sb2ReportLayout");
         }
 
 
         protected List<T> InitCutPage<T>(IEnumerable<T> data, int pageIndex, int perCount)
         {
-            int maxIndex;
-            var model = data.GetPage(pageIndex, perCount, out maxIndex);
+            int maxIndex=10;
+            var model = new List<T>();// data.GetPage(pageIndex, perCount, out maxIndex);
             V("currentUrl", CurrentUrl());
             V("maxIndex", maxIndex); V("pageIndex", pageIndex); V("perCount", perCount);
             return model.ToList();
         }
         #endregion
 
+     
         protected string Q(string key)
         {
             return Request.QueryString[key];
+        }
+        /// <summary>
+        /// 所有从带固定参数的报表跳转过来的参数获取必须使用此方法
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        protected string RQ(string key)
+        {
+            return Q(key).Replace(_FIXED_FLAG, "");
+        }
+        protected int Q_Int(string key)
+        {
+            string value = Request.QueryString[key];
+            if (!value.HasValue())
+            {
+                if(key== "pageIndex")
+                return 1;
+                else if (key == "perCount")
+                    return 10;
+                else
+                {
+                    throw new Exception("未处理的异常！");
+                }
+            }
+            return int.Parse(value);
         }
         protected string F(string key)
         {
@@ -330,8 +421,30 @@ namespace Web.Controllers.Base
         {
             V("Params", Param);
         }
-           
-       
+        /// <summary>
+        /// 设置固定参数
+        /// </summary>
+        /// <param name="fixedParam">固定参数部分(多个用;间隔)</param>
+        /// <param name="dynamicParam">动态参数(多个用;间隔)</param>
+        protected void SetFixedParam(string fixedParam,string dynamicParam)
+        {
+            if(!fixedParam.HasValue())
+            { throw new Exception("固定参数为空，请检查SetFixedParam的传入参数");}
+            //清除从报表带过来的标志位
+            fixedParam = fixedParam.Replace(_FIXED_FLAG, "");
+                  //容错处理(删除fixedParam最后一个;)
+                  fixedParam = fixedParam[fixedParam.Length - 1] == ';' ? fixedParam.Substring(0, fixedParam.Length - 1) : fixedParam;
+            OverWriteParam(fixedParam + _FIXED_FLAG + dynamicParam);
+        }
+        /// <summary>
+        /// 设置固定参数(限制数据域为当前登录用户)
+        /// </summary>
+        /// <param name="dynamicParam">动态参数(多个用;间隔)</param>
+        protected void SetFixedParam(string dynamicParam)
+        {
+            SetFixedParam(DataContext.UserID,dynamicParam);
+        }
+
         protected string GetProjectDir(string FileName)
         {
             return System.Web.HttpContext.Current.Request.PhysicalApplicationPath + FileName;

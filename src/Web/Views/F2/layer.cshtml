@@ -1,0 +1,59 @@
+﻿
+  <blockquote class="layui-elem-quote">
+        大部分演示都在layer独立组件的官网，与内置的layer模块，用法是完全一致的
+    </blockquote>
+    <a class="layui-btn layui-btn-normal" href="http://layer.layui.com/" target="_blank">前去layer官网</a>
+
+    <fieldset class="layui-elem-field layui-field-title site-demo-button" style="margin-top: 30px;">
+        <legend>特殊例子</legend>
+    </fieldset>
+
+    <div class="site-demo-button" id="qx_fram" style="margin-bottom: 0;">
+        <blockquote class="layui-elem-quote layui-quote-nm">
+            Tips：为了更清晰演示，每触发下述一个例子之前，都会关闭所有已经演示的层
+        </blockquote>
+        <a data-method="setTop" class="layui-btn">多窗口模式，层叠置顶</a>
+       
+    </div>
+
+
+    <script>
+  //触发事件
+  var active = {
+    setTop: function(){
+        var that = $(this);
+        console.log(that);
+      //多窗口模式，层叠置顶
+      layer.open({
+        type: 2 //此处以iframe举例
+        ,title: '测试窗口'
+        ,area: ['60%', '60%']
+        ,shade: 0
+        ,maxmin: true
+        ,offset: [ //为了演示，随机坐标
+        50 + Math.random() * 100// Math.random()*($(window).height()-300)
+          , 300 + Math.random() * 100//Math.random()*($(window).width()-390)
+        ]
+        , content: that.data('url')//'http://www.baidu.com'
+        //,btn: ['继续弹出', '全部关闭'] //只是为了演示
+        ,yes: function(){
+          $(that).click();
+        }
+        ,btn2: function(){
+          layer.closeAll();
+        }
+
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
+    }}
+        // $('#wrapper .layui-btn')
+  $('#wrapper a').on('click', function () {
+    var othis = $(this),method = othis.data('method');
+    active[method] ? active[method].call(this, othis) : '';
+  });
+
+
+    </script>

@@ -48,7 +48,7 @@ namespace Web.Controllers.Base
             if (AccountContext == null)//未登录
             {
                 ReturnUrl = Request.RawUrl;
-                filterContext.Result = new RedirectResult("/Account/Login");
+                filterContext.Result = new RedirectResult("/F2/Login");
             }
             else
             {

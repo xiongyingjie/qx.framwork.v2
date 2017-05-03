@@ -44,6 +44,8 @@ namespace CodeTool
             this.tb_area = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lb_action = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -60,6 +62,8 @@ namespace CodeTool
             this.tb_actionNote = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tb_columsTip = new System.Windows.Forms.TextBox();
+            this.tb_nameSpace = new System.Windows.Forms.TextBox();
+            this.tb_projectName = new System.Windows.Forms.TextBox();
             this.tb_viewModel = new System.Windows.Forms.TextBox();
             this.tb_tableName = new System.Windows.Forms.TextBox();
             this.tb_action = new System.Windows.Forms.TextBox();
@@ -82,10 +86,6 @@ namespace CodeTool
             this.rtb_serviceModel = new System.Windows.Forms.RichTextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.rtb_viewModel = new System.Windows.Forms.RichTextBox();
-            this.tb_projectName = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tb_nameSpace = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -225,7 +225,7 @@ namespace CodeTool
             this.tb_controller.Name = "tb_controller";
             this.tb_controller.Size = new System.Drawing.Size(87, 21);
             this.tb_controller.TabIndex = 2;
-            this.tb_controller.Text = "Home";
+            this.tb_controller.Text = "CRUD2";
             this.tb_controller.TextChanged += new System.EventHandler(this.bt_generate_Click);
             // 
             // tb_area
@@ -234,7 +234,7 @@ namespace CodeTool
             this.tb_area.Name = "tb_area";
             this.tb_area.Size = new System.Drawing.Size(87, 21);
             this.tb_area.TabIndex = 3;
-            this.tb_area.Text = "Yxxt";
+            this.tb_area.Text = "Permision2";
             this.tb_area.TextChanged += new System.EventHandler(this.bt_generate_Click);
             // 
             // label14
@@ -254,6 +254,24 @@ namespace CodeTool
             this.label15.Size = new System.Drawing.Size(59, 12);
             this.label15.TabIndex = 1;
             this.label15.Text = "ColumsTip";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(673, 135);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 12);
+            this.label17.TabIndex = 1;
+            this.label17.Text = "NameSpace";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(673, 100);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 12);
+            this.label16.TabIndex = 1;
+            this.label16.Text = "ProjectName";
             // 
             // label9
             // 
@@ -397,6 +415,22 @@ namespace CodeTool
             this.tb_columsTip.TabIndex = 0;
             this.tb_columsTip.TextChanged += new System.EventHandler(this.bt_generate_Click);
             // 
+            // tb_nameSpace
+            // 
+            this.tb_nameSpace.Location = new System.Drawing.Point(752, 127);
+            this.tb_nameSpace.Name = "tb_nameSpace";
+            this.tb_nameSpace.Size = new System.Drawing.Size(87, 21);
+            this.tb_nameSpace.TabIndex = 0;
+            this.tb_nameSpace.TextChanged += new System.EventHandler(this.tb_viewModel_TextChanged);
+            // 
+            // tb_projectName
+            // 
+            this.tb_projectName.Location = new System.Drawing.Point(752, 92);
+            this.tb_projectName.Name = "tb_projectName";
+            this.tb_projectName.Size = new System.Drawing.Size(87, 21);
+            this.tb_projectName.TabIndex = 0;
+            this.tb_projectName.TextChanged += new System.EventHandler(this.tb_viewModel_TextChanged);
+            // 
             // tb_viewModel
             // 
             this.tb_viewModel.Location = new System.Drawing.Point(752, 55);
@@ -490,7 +524,7 @@ namespace CodeTool
             this.tb_service.Name = "tb_service";
             this.tb_service.Size = new System.Drawing.Size(87, 21);
             this.tb_service.TabIndex = 0;
-            this.tb_service.Text = "YxxtService";
+            this.tb_service.Text = "PermissionServices";
             this.tb_service.TextChanged += new System.EventHandler(this.bt_generate_Click);
             // 
             // tb_interface
@@ -499,7 +533,7 @@ namespace CodeTool
             this.tb_interface.Name = "tb_interface";
             this.tb_interface.Size = new System.Drawing.Size(87, 21);
             this.tb_interface.TabIndex = 0;
-            this.tb_interface.Text = "IYxxtService";
+            this.tb_interface.Text = "IPermmisionService";
             this.tb_interface.TextChanged += new System.EventHandler(this.bt_generate_Click);
             // 
             // tb_columsNote
@@ -595,40 +629,6 @@ namespace CodeTool
             this.rtb_viewModel.Size = new System.Drawing.Size(330, 195);
             this.rtb_viewModel.TabIndex = 1;
             this.rtb_viewModel.Text = resources.GetString("rtb_viewModel.Text");
-            // 
-            // tb_projectName
-            // 
-            this.tb_projectName.Location = new System.Drawing.Point(752, 92);
-            this.tb_projectName.Name = "tb_projectName";
-            this.tb_projectName.Size = new System.Drawing.Size(87, 21);
-            this.tb_projectName.TabIndex = 0;
-            this.tb_projectName.TextChanged += new System.EventHandler(this.tb_viewModel_TextChanged);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(673, 100);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(71, 12);
-            this.label16.TabIndex = 1;
-            this.label16.Text = "ProjectName";
-            // 
-            // tb_nameSpace
-            // 
-            this.tb_nameSpace.Location = new System.Drawing.Point(752, 127);
-            this.tb_nameSpace.Name = "tb_nameSpace";
-            this.tb_nameSpace.Size = new System.Drawing.Size(87, 21);
-            this.tb_nameSpace.TabIndex = 0;
-            this.tb_nameSpace.TextChanged += new System.EventHandler(this.tb_viewModel_TextChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(673, 135);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 12);
-            this.label17.TabIndex = 1;
-            this.label17.Text = "NameSpace";
             // 
             // AutoCodeForm
             // 
