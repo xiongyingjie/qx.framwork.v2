@@ -19,11 +19,11 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
         [Display(Name = "角色名称")]
         public string name { get; set; }
 
-        [Required]
+   
         [StringLength(10)]
         [Display(Name = "角色类型")]
         public string role_type { get; set; }
-        
+        [Required]
         [StringLength(20)]
         [Display(Name = "子系统")]
         public string sub_system { get; set; }

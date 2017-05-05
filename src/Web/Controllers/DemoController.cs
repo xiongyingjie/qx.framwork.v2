@@ -9,7 +9,7 @@ using Qx.Contents.Services;
 using Qx.Msg.Interfaces;
 using Qx.Order.Interfaces;
 using Qx.Order.Models;
-using Qx.Permission.Interfaces;
+using qx.permmision.v2.Interfaces;
 using Qx.Tools.CommonExtendMethods;
 using Web.Controllers.Base;
 using Web.ViewModels.Demo;
@@ -31,7 +31,7 @@ namespace Web.Controllers
         private IMsgProvider _msgProvider;
         private IPermissionProvider _permissionProvider;
 
-        public DemoController(IContents contents, IPermission permission, IOrderService orderService, IAccountPayService accountPayService, IWorkFlowService workFlowService, IMsgProvider msgProvider, IPermissionProvider permissionProvider)
+        public DemoController(IContents contents,  IOrderService orderService, IAccountPayService accountPayService, IWorkFlowService workFlowService, IMsgProvider msgProvider, IPermissionProvider permissionProvider)
         {
             _contents = contents;
             _orderService = orderService;

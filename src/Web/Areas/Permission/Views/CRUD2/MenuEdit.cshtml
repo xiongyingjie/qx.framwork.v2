@@ -5,9 +5,9 @@
 }
 
 
-@Html.InputFor(o => o.menu_id,"", true)
+@Html.HiddenFor(o => o.menu_id)
 
-@Html.InputFor(o => o._farther_id)
+@Html.SelectFor(o => o._farther_id,Model._MenSelectListItems)
 
 @Html.InputFor(o => o.name)
 
@@ -19,5 +19,5 @@
 
 @Html.SelectFor(o => o.status, Model.selectItems)
 
- @Html.InputAreaFor(o => o.note)
+@Html.InputAreaFor(o => o.note)
 

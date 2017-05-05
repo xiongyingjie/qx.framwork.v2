@@ -137,8 +137,22 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult RoleAdd()
         {
-            InitForm("添加角色");
-            return View(new RoleAdd_M());
+            InitForm("角色管理");
+            var id = Q("id");
+            if (!id.HasValue()) return View(new RoleAdd_M()
+            {
+                roletype = "0", subSystem = "default"
+            });
+
+            var old = _role.Find(id);
+            return View(new RoleAdd_M()
+            {
+                roleid = old.RoleID,
+                name = old.Name,
+                isDefault =old.IsDefault,
+                roletype = old.RoleType,
+                subSystem =old.subSystem
+            });
         }
         [HttpPost]
         public ActionResult RoleAdd(RoleAdd_M model)
@@ -151,7 +165,7 @@ namespace Web.Areas.Permission.Controllers
                     return Redirect("/Permission/Admin/RoleList?ReportID=Permision_角色列表&Params=;");
                 }
                 else
-                    return Alert("添加失败，请重新添加");
+                    return Alert("提交失败，请重新提交");
             }
             else
             {
@@ -159,6 +173,7 @@ namespace Web.Areas.Permission.Controllers
                 return View(model);
             }
         }
+
         public ActionResult UserRoleAdd(string userid,string roleid)
         {
             roleid = RQ("roleid");

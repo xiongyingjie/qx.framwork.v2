@@ -6,7 +6,7 @@ using qx.permmision.v2.Entity;
 using qx.permmision.v2.Services;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
-
+using System.Data.Entity.Migrations;
 namespace qx.permmision.v2.Repository
 {
 
@@ -16,20 +16,13 @@ namespace qx.permmision.v2.Repository
 
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.permission_user.Select(a => new SelectListItem() { Text = a.user_id, Value = a.nick_name }).ToList();
-            return dest.Format(value);
+            return Db.permission_user.ToItems(v => v.user_id, t => t.nick_name);
+           
         }
 
         public string Add(permission_user model)
         {
-            if (Find(model.user_id) == null)
-            {
-                return Db.SaveAdd(model) ? Pk : null;
-            }
-            else
-            {
-                return "";
-            }
+            return Find(model.user_id) == null ? (Db.SaveAdd(model) ? Pk : null) : "";
         }
 
         public bool Delete(object id)
@@ -39,14 +32,8 @@ namespace qx.permmision.v2.Repository
 
         public bool Update(permission_user model, string note = "")
         {
-            if (Find(model.user_id) != null)
-            {
-                return Db.SaveModified(model);
-            }
-            else
-            {
-                return false;
-            }
+            Db.permission_user.AddOrUpdate(model);
+            return Db.Saved();
         }
 
         public permission_user Find(object id)

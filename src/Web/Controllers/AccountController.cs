@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
-using Qx.Permission.Interfaces;
+using qx.permmision.v2.Interfaces;
 using Qx.Tools;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Ioc.Unity;

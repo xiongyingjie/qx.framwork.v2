@@ -7,9 +7,10 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
 {
     public class MenuEdit_M
     {
-        public static MenuEdit_M ToViewModel(menu menu)
+        public static MenuEdit_M ToViewModel(menu menu, List<SelectListItem> menuSelectListItems)
         {
             return new MenuEdit_M() {
+                _MenSelectListItems= menuSelectListItems,
                 _farther_id =menu.farther_id,
                 status = menu.status, 
                 depth=menu.depth,
@@ -20,7 +21,7 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
         }
         [Required]
         [StringLength(100)]
-        [Display(Name = "父菜单编号")]
+        [Display(Name = "父菜单")]
         public string _farther_id { get; set; }
 
         [Display(Name = "菜单名称")]
@@ -52,6 +53,8 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
         [StringLength(100)]
 
         public string note { get; set; }
+
+        public List<SelectListItem> _MenSelectListItems { get; set; }
         public List<SelectListItem> selectItems = new List<SelectListItem>(){
                   new SelectListItem(){Text="是",Value="1",Selected=true},
                   new SelectListItem(){Text="否",Value="0"}};

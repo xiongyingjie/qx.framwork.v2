@@ -6,7 +6,7 @@ using qx.permmision.v2.Entity;
 using qx.permmision.v2.Services;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
-
+using System.Data.Entity.Migrations;
 namespace qx.permmision.v2.Repository
 {
 
@@ -16,23 +16,14 @@ namespace qx.permmision.v2.Repository
 
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.user_group_relation.Select(a => new SelectListItem() {
-                Text = a.user_group_relation_id,
-                Value = a.user_group_relation_id }).ToList();
-            return dest.Format(value);
+            return Db.user_group_relation.ToItems(v => v.user_group_relation_id, t => t.user_group_relation_id);
+         
         }
 
         public string Add(user_group_relation model)
         {
             model.user_group_relation_id = Pk;
-            if (Find(model.user_group_relation_id) == null)
-            {
-                return Db.SaveAdd(model) ? Pk : null;
-            }
-            else
-            {
-                return "";
-            }
+            return Find(model.user_group_relation_id) == null ? (Db.SaveAdd(model) ? Pk : null) : "";
         }
 
         public bool Delete(object id)
@@ -42,14 +33,8 @@ namespace qx.permmision.v2.Repository
 
         public bool Update(user_group_relation model, string note = "")
         {
-            if (Find(model.user_group_relation_id) != null)
-            {
-                return Db.SaveModified(model);
-            }
-            else
-            {
-                return false;
-            }
+            Db.user_group_relation.AddOrUpdate(model);
+            return Db.Saved();
         }
 
         public user_group_relation Find(object id)

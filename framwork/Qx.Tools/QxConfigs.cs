@@ -9,6 +9,6 @@ namespace Qx.Tools
     public static class QxConfigs
     {
         public readonly static bool IsUnitTest = false;
-
+        public readonly static string FixedParamFlag = "!fixed";
     }
 }

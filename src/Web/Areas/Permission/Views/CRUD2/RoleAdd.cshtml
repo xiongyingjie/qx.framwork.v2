@@ -4,14 +4,14 @@
     Layout = ViewData["Layout"].ToString();
 }
 
+@Html.HiddenFor(o => o.role_id)
 @Html.InputFor(o => o.name)
 
-@Html.InputFor(o => o.role_type)
+@Html.HiddenFor(o => o.role_type)
 
 @Html.InputFor(o => o.sub_system)
 
 @Html.SelectFor(o => o.is_default, Model.selectItems)
-
 
 
 

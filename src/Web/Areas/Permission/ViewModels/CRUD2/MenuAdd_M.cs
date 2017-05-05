@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using qx.permmision.v2.Entity;
+using Qx.Tools.CommonExtendMethods;
 
 namespace Web.Areas.Permission.ViewModels.CRUD2
 {
@@ -21,16 +22,21 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
                 url = url
             };
         }
-        public static MenuAdd_M ToViewModel(string farther_id)
+        public static MenuAdd_M ToViewModel(string farther_id, List<SelectListItem> menuSelectListItems)
         {
-            return new MenuAdd_M() { _farther_id = farther_id };
+            return new MenuAdd_M()
+            {
+                _farther_id = farther_id,
+                menu_id = "".CheckValue(),
+                _MenSelectListItems = menuSelectListItems,
+            };
         }
        
 
 
          [Required]
          [StringLength(100)]
-        [Display(Name = "父菜单编号")]
+        [Display(Name = "父菜单")]
         public string _farther_id { get; set; }
 
         [Display(Name = "菜单名称")]
@@ -62,6 +68,7 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
         [StringLength(100)]
 
         public string note { get; set; }
+        public List<SelectListItem> _MenSelectListItems { get; set; }
         public List<SelectListItem> selectItems = new List<SelectListItem>(){
                   new SelectListItem(){Text="是",Value="1",Selected=true},
                   new SelectListItem(){Text="否",Value="0"}};

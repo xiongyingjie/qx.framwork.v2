@@ -6,7 +6,7 @@ using qx.permmision.v2.Entity;
 using qx.permmision.v2.Services;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
-
+using System.Data.Entity.Migrations;
 namespace qx.permmision.v2.Repository
 {
 
@@ -16,21 +16,13 @@ namespace qx.permmision.v2.Repository
 
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.role_menu.Select(a => new SelectListItem() { Text = a.role_menu_id, Value = a.role_menu_id }).ToList();
-            return dest.Format(value);
+            return Db.role_menu.ToItems(v => v.role_menu_id,t => t.role_menu_id);
         }
 
         public string Add(role_menu model)
         {
             model.role_menu_id = model.role_id+"-"+ model.menu_id;
-            if (Find(model.role_menu_id) == null)
-            {
-                return Db.SaveAdd(model) ? Pk : null;
-            }
-            else
-            {
-                return "";
-            }
+            return Find(model.role_menu_id) == null ? (Db.SaveAdd(model) ? Pk : null) : "";
         }
 
         public bool Delete(object id)
@@ -40,14 +32,8 @@ namespace qx.permmision.v2.Repository
 
         public bool Update(role_menu model, string note = "")
         {
-            if (Find(model.role_menu_id) != null)
-            {
-                return Db.SaveModified(model);
-            }
-            else
-            {
-                return false;
-            }
+            Db.role_menu.AddOrUpdate(model);
+            return Db.Saved();
         }
 
         public role_menu Find(object id)

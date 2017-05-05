@@ -1,21 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using Qx.Permission.Interfaces;
 using Web.Controllers.Base;
 using Web.Domain;
 using Web.Models;
-using Navbar = Qx.Permission.Models.Navbar;
-
+using Navbar = qx.permmision.v2.Models.Navbar;
+using qx.permmision.v2;
 namespace Web.Controllers
 {
     public class NavbarController : BaseController
     {
-        private readonly IPermission _permission;
+        private readonly qx.permmision.v2.Interfaces.IPermmisionService _permmisionService;
 
-        public NavbarController(IPermission permission)
+        public NavbarController(qx.permmision.v2.Interfaces.IPermmisionService permmisionService)
         {
-            _permission = permission;
+            _permmisionService = permmisionService;
         }
 
         // GET: Navbar
@@ -26,7 +25,7 @@ namespace Web.Controllers
             if (Session[DataContext.UserID] == null)
             {
                 //写入缓存
-                model = _permission.GetNavbarByUserId(DataContext.UserID);
+                model = _permmisionService.GetNavbarByUserId(DataContext.UserID);
                 Session[DataContext.UserID] = model;
             }
             else
@@ -35,8 +34,8 @@ namespace Web.Controllers
                 model = Session[DataContext.UserID] as IEnumerable<Navbar>;
             }
             //   return PartialView("_Navbar", new Data().navbarItems().ToList());
-            return PartialView("_Sb2Navbar", NavbarIndex.Init(_permission.GetNavbarByUserId(DataContext.UserID),
-                 _permission.GetForbidenButtonByUserId(DataContext.UserID)));
+            return PartialView("_Sb2Navbar", NavbarIndex.Init(_permmisionService.GetNavbarByUserId(DataContext.UserID),
+                 _permmisionService.GetForbidenButtonByUserId(DataContext.UserID)));
 
         }
     }

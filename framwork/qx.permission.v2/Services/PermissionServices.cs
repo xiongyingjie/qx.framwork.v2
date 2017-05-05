@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 using qx.permmision.v2.Entity;
@@ -127,6 +128,7 @@ namespace qx.permmision.v2.Services
                     Area = a.area,
                     Activeli = a.active_li,
                     ImageClass = a.image_class,
+                    Url = a.url
                 });
             }
             catch (Exception)
@@ -184,6 +186,89 @@ namespace qx.permmision.v2.Services
             }
             fathers.Reverse();
             return fathers;
+        }
+
+
+        public bool UpdateUserGroup(UserGroup model)
+        {
+            Db.user_group.AddOrUpdate(model.ToEntity());
+            var saveOk = Db.SaveChanges() > 0;
+            return saveOk;
+        }
+        public bool UpdateRoleGroup(RoleGroup model)
+        {
+            Db.role_group.AddOrUpdate(model.ToEntity());
+            var saveOk = Db.SaveChanges() > 0;
+            return saveOk;
+        }
+        public bool UpdateRoleGroupRelation(RoleGroupRelation model)
+        {
+            Db.role_group_relation.AddOrUpdate(model.ToEntity());
+            var saveOk = Db.SaveChanges() > 0;
+            return saveOk;
+        }
+        public bool UpdateUserGroupRelation(UserGroupRelation model)
+        {
+            Db.user_group_relation.AddOrUpdate(model.ToEntity());
+            var saveOk = Db.SaveChanges() > 0;
+            return saveOk;
+        }
+
+        public UserGroup FindUserGroup(string id)
+        {
+            return UserGroup.ToModel(Db.user_group.
+                FirstOrDefault(a=>a.user_group_id==id));
+
+        }
+
+        public RoleGroup FindRoleGroup(string id)
+        {
+            return RoleGroup.ToModel(Db.role_group.
+               FirstOrDefault(a => a.role_group_id == id));
+        }
+
+        public RoleGroupRelation FindRoleGroupRelation(string id)
+        {
+            return RoleGroupRelation.ToModel(Db.role_group_relation.
+                FirstOrDefault(a => a.role_group_id == id));
+        }
+
+        public UserGroupRelation FindUserGroupRelation(string id)
+        {
+            return UserGroupRelation.ToModel(Db.user_group_relation.
+                FirstOrDefault(a => a.user_group_relation_id == id));
+        }
+
+        public bool DeleteUserGroup(string id)
+        {
+            var old = Db.user_group.
+                FirstOrDefault(a => a.user_group_id == id);
+            return old!=null && Db.user_group.Remove(old) != null && Db.SaveChanges() > 0;
+         
+        }
+
+        public bool DeleteRoleGroup(string id)
+        {
+            var old = Db.role_group.
+               FirstOrDefault(a => a.role_group_id == id);
+            return old != null && Db.role_group.Remove(old) != null && Db.SaveChanges() > 0;
+
+        }
+
+        public bool DeleteRoleGroupRelation(string id)
+        {
+            var old = Db.role_group_relation.
+             FirstOrDefault(a => a.role_group_relation_id == id);
+            return old != null && Db.role_group_relation.Remove(old) != null && Db.SaveChanges() > 0;
+
+        }
+
+        public bool DeleteUserGroupRelation(string id)
+        {
+            var old = Db.user_group_relation.
+            FirstOrDefault(a => a.user_group_relation_id == id);
+            return old != null && Db.user_group_relation.Remove(old) != null && Db.SaveChanges() > 0;
+
         }
     }
 }

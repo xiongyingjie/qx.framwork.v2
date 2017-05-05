@@ -27,7 +27,7 @@ namespace Web.Controllers.Base
 
         #endregion
 
-        protected const string _FIXED_FLAG= "!fixed";
+        protected  string _FIXED_FLAG= QxConfigs.FixedParamFlag;
         protected  bool IsUnitTest
         {
             get
@@ -434,7 +434,7 @@ namespace Web.Controllers.Base
             fixedParam = fixedParam.Replace(_FIXED_FLAG, "");
                   //容错处理(删除fixedParam最后一个;)
                   fixedParam = fixedParam[fixedParam.Length - 1] == ';' ? fixedParam.Substring(0, fixedParam.Length - 1) : fixedParam;
-            OverWriteParam(fixedParam + _FIXED_FLAG + dynamicParam);
+            OverWriteParam(fixedParam.IsFixedParam() + dynamicParam);
         }
         /// <summary>
         /// 设置固定参数(限制数据域为当前登录用户)
@@ -821,7 +821,7 @@ namespace Web.Controllers.Base
         }
         protected ActionResult Alert(string content)
         {
-            return Content(PageHelper.Tip(content));
+            return Content(PageHelper.Tip(content,-1));
         }
         protected ActionResult Alert(string content, int returnIndex)
         {

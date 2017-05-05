@@ -6,7 +6,7 @@ using qx.permmision.v2.Entity;
 using qx.permmision.v2.Services;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
-
+using System.Data.Entity.Migrations;
 namespace qx.permmision.v2.Repository
 {
 
@@ -16,8 +16,8 @@ namespace qx.permmision.v2.Repository
 
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.role_group_relation.Select(a => new SelectListItem() { Text = a.role_group_relation_id, Value = a.role_group_relation_id }).ToList();
-            return dest.Format(value);
+          
+            return Db.role_group_relation.ToItems( v => v.role_group_relation_id, t => t.role_group_relation_id);
         }
 
         public string Add(role_group_relation model)
@@ -40,14 +40,8 @@ namespace qx.permmision.v2.Repository
 
         public bool Update(role_group_relation model, string note = "")
         {
-            if (Find(model.role_group_relation_id) != null)
-            {
-                return Db.SaveModified(model);
-            }
-            else
-            {
-                return false;
-            }
+            Db.role_group_relation.AddOrUpdate(model);
+            return Db.Saved();
         }
 
         public role_group_relation Find(object id)

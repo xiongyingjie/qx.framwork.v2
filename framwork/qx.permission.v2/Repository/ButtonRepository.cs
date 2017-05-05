@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web.Mvc;
 using qx.permmision.v2.Entity;
@@ -16,21 +17,13 @@ namespace qx.permmision.v2.Repository
 
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.button.Select(a => new SelectListItem() { Text = a.button_id, Value = a.name }).ToList();
-            return dest.Format(value);
+            return Db.button.ToItems(v => v.button_id,t => t.name );
         }
 
         public string Add(button model)
         {
             model.button_id = Pk;
-            if (Find(model.button_id) == null)
-            {
-                return Db.SaveAdd(model) ? Pk : null;
-            }
-            else
-            {
-                return "";
-            }
+            return Find(model.button_id) == null ? (Db.SaveAdd(model) ? Pk : null) : "";
         }
 
         public bool Delete(object id)
@@ -40,14 +33,8 @@ namespace qx.permmision.v2.Repository
 
         public bool Update(button model, string note = "")
         {
-            if (Find(model.button_id) != null)
-            {
-                return Db.SaveModified(model);
-            }
-            else
-            {
-                return false;
-            }
+            Db.button.AddOrUpdate(model);
+            return Db.Saved();
         }
 
         public button Find(object id)

@@ -15,7 +15,7 @@
     <AssemblyName>Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -61,42 +61,6 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Account, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Account.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Contents, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Contents.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Msg, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Msg.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Order, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Order.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Org, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Org.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Permission, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Permission.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Report, Version=2.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Report.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Wechat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Wechat.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.WorkFlow, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.WorkFlow.dll</HintPath>
     </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
@@ -251,21 +215,15 @@
     <Compile Include="Areas\Order\ViewModel\Order_M.cs" />
     <Compile Include="Areas\Order\ViewModel\ShoppingCart_M.cs" />
     <Compile Include="Areas\Permission\Controllers\Admin2Controller.cs" />
-    <Compile Include="Areas\Permission\Controllers\AdminController.cs" />
     <Compile Include="Areas\Permission\Controllers\BasePermissionController.cs" />
     <Compile Include="Areas\Permission\Controllers\CRUD2Controller.cs" />
-    <Compile Include="Areas\Permission\Controllers\CRUDController.cs" />
-    <Compile Include="Areas\Permission\Controllers\HomeController.cs" />
     <Compile Include="Areas\Permission\PermissionAreaRegistration.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\BanButtonList_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\ButtonList_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\MenuList_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\RoleList_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\RoleMenuList_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\UserList_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\Admin\UserRoleList_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\BanButtonAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\ButtonAdd_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\UpdateRoleGroupRelation_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\UpdateRoleGroup_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\UpdateUserGroupRelation_M.cs" />
+    <Compile Include="Areas\Permission\ViewModels\CRUD2\UpdateUserGroup_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\Index_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\MenuAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\MenuEdit_M.cs" />
@@ -273,16 +231,6 @@
     <Compile Include="Areas\Permission\ViewModels\CRUD2\RoleMenuAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\UserAdd_M.cs" />
     <Compile Include="Areas\Permission\ViewModels\CRUD2\UserRoleAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\BanButtonAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\ButtonAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\Index_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\MenuAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\MenuEdit_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\MenuExtension_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\RoleAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\RoleMenuAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\UserAdd_M.cs" />
-    <Compile Include="Areas\Permission\ViewModels\CRUD\UserRoleAdd_M.cs" />
     <Compile Include="Areas\WeChat\Controllers\AdminController.cs" />
     <Compile Include="Areas\WeChat\Controllers\BaseBookTiketController.cs" />
     <Compile Include="Areas\WeChat\Controllers\BaseWebWeChatController.cs" />
@@ -299,10 +247,7 @@
     <Compile Include="Areas\WeChat\Controllers\ReplyVoiceMsgController.cs" />
     <Compile Include="Areas\WeChat\Controllers\WebController.cs" />
     <Compile Include="Areas\WeChat\Controllers\WeChatPayController.cs" />
-    <Compile Include="Areas\WeChat\Models\AccessTokenModel.cs" />
-    <Compile Include="Areas\WeChat\Models\ExceptionModel.cs" />
     <Compile Include="Areas\WeChat\Models\TicketListModel.cs" />
-    <Compile Include="Areas\WeChat\Models\UserInfoModel.cs" />
     <Compile Include="Areas\WeChat\ViewModels\NewsMsgItem_M.cs" />
     <Compile Include="Areas\WeChat\ViewModels\ReplyImageMsg_M.cs" />
     <Compile Include="Areas\WeChat\ViewModels\ReplyMusicMsg_M.cs" />
@@ -344,7 +289,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Navbar.cs" />
     <Compile Include="Models\NavbarIndex.cs" />
     <Compile Include="Models\ProfitTree.cs" />
     <Compile Include="Models\TreeNode.cs" />
@@ -2466,6 +2410,14 @@
     <Content Include="bower_components\raphael\raphael.js" />
     <Content Include="Content\Acounnt\css\css.css" />
     <Content Include="Content\Acounnt\img\back.png" />
+    <Content Include="Content\Acounnt\img\button.png" />
+    <Content Include="Content\Acounnt\img\forbid_button.png" />
+    <Content Include="Content\Acounnt\img\menu.png" />
+    <Content Include="Content\Acounnt\img\partyList.png" />
+    <Content Include="Content\Acounnt\img\partySta.png" />
+    <Content Include="Content\Acounnt\img\user.png" />
+    <Content Include="Content\Acounnt\img\users.png" />
+    <Content Include="Content\Acounnt\img\user_role.png" />
     <Content Include="Content\djk.css" />
     <Content Include="Content\error.css" />
     <Content Include="Content\Acounnt\img\logo.png" />
@@ -9476,29 +9428,6 @@
     <Content Include="Areas\WeChat\Views\BookTiket\TypeEdit.cshtml" />
     <Content Include="Areas\WeChat\Views\BookTiket\MyOrder.cshtml" />
     <Content Include="Areas\WeChat\Views\BookTiket\OrderDetails.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\BanButtonList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\ButtonList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\ChooseBanButtonList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\ChooseMenuList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\ChooseRoleList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\Index.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\MenuList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\RoleList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\RoleMenuList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\UserList.cshtml" />
-    <Content Include="Areas\Permission\Views\Admin\UserRoleList.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\BanButtonAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\ButtonAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\Index.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\MenuAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\MenuEdit.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\MenuExtensionAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\MenuExtensionEdit.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\RoleAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\RoleMenuAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\UserAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD\UserRoleAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\Home\Index.cshtml" />
     <Content Include="Areas\Permission\Views\web.config" />
     <Content Include="Areas\WeChat\Views\BookTiket\Index.cshtml" />
     <Content Include="Areas\WeChat\Views\BookTiketWeb\Main.cshtml" />
@@ -10013,13 +9942,15 @@
     <Content Include="Areas\Permission\Views\CRUD2\Index.cshtml" />
     <Content Include="Areas\Permission\Views\CRUD2\MenuAdd.cshtml" />
     <Content Include="Areas\Permission\Views\CRUD2\MenuEdit.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD2\MenuExtensionAdd.cshtml" />
-    <Content Include="Areas\Permission\Views\CRUD2\MenuExtensionEdit.cshtml" />
     <Content Include="Areas\Permission\Views\CRUD2\RoleAdd.cshtml" />
     <Content Include="Areas\Permission\Views\CRUD2\RoleMenuAdd.cshtml" />
     <Content Include="Areas\Permission\Views\CRUD2\UserAdd.cshtml" />
     <Content Include="Areas\Permission\Views\CRUD2\UserRoleAdd.cshtml" />
     <Content Include="Include\echarts\3.5.2\map\china.json" />
+    <Content Include="Areas\Permission\Views\CRUD2\UpdateUserGroup.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\UpdateRoleGroup.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\UpdateRoleGroupRelation.cshtml" />
+    <Content Include="Areas\Permission\Views\CRUD2\UpdateUserGroupRelation.cshtml" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />
@@ -10239,13 +10170,45 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FramWork\Qx.Account\Qx.Account.csproj">
+      <Project>{f97113ab-39b6-4b3d-9c7a-b3e4162bb50e}</Project>
+      <Name>Qx.Account</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Contents\Qx.Contents.csproj">
+      <Project>{1114166f-3e93-457e-85ef-0a5a3cee7f35}</Project>
+      <Name>Qx.Contents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Msg\Qx.Msg.csproj">
+      <Project>{84334a77-9bb2-4f9b-af9d-acabb56d5162}</Project>
+      <Name>Qx.Msg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Order\Qx.Order.csproj">
+      <Project>{4c6f2cfe-3ccd-4229-8496-8c12bf02cb81}</Project>
+      <Name>Qx.Order</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Org\Qx.Org.csproj">
+      <Project>{c4da04f1-8f45-474e-b2e3-ba06e4e534e3}</Project>
+      <Name>Qx.Org</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FramWork\qx.permission.v2\qx.permmision.v2.csproj">
       <Project>{51c18cb8-5e07-44b9-8aa5-ed3e6823d1f5}</Project>
       <Name>qx.permmision.v2</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Report\Qx.Report.csproj">
+      <Project>{1f0aa8a6-53b9-4670-9109-f7e06553f8fa}</Project>
+      <Name>Qx.Report</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FramWork\Qx.Tools\Qx.Tools.csproj">
       <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
       <Name>Qx.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Wechat\Qx.Wechat.csproj">
+      <Project>{83d95916-e07f-4309-a0bc-de7bef970d6e}</Project>
+      <Name>Qx.Wechat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.WorkFlow\Qx.WorkFlow.csproj">
+      <Project>{adbba880-f593-4594-a63b-249959e33ddb}</Project>
+      <Name>Qx.WorkFlow</Name>
     </ProjectReference>
     <ProjectReference Include="..\Qx.Tools.Ioc.Unity\Qx.Tools.Ioc.Unity.csproj">
       <Project>{8b717824-787e-4c94-a209-ad3d85705310}</Project>
@@ -10270,7 +10233,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>29128</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:28128/</IISUrl>
+          <IISUrl>http://lib.52xyj.cn</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

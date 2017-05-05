@@ -1,4 +1,5 @@
 ﻿
+@using Qx.Tools.CommonExtendMethods
 @model Web.Models.NavbarIndex
 @{
     var user = ViewData["DataContext"] as Qx.Tools.DataContext;
@@ -12,7 +13,7 @@
             $('.{0}').remove();
 
             ",
-            button.ButtonID
+            button.button_id
             )));
         }
     });
@@ -26,7 +27,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/yxxt/web">数字迎新系统</a>
+        <a class="navbar-brand" href="#">研究生奖助管理系统</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
@@ -255,44 +256,34 @@
                         </div>
                         <!-- /input-group -->
                     </li>
-                    @foreach (var item in Model.Navbars)
-                    {
-                        if (!item.IsParent && item.ParentId == "MRoot")
+                    @{
+                        var remainedMenu = Model.Navbars.ToList();
+                        while(remainedMenu.Any())
                         {
-                            var action = item.Action.Replace(" ", "");
-                            var controller = item.Controller.Replace(" ", "");
-                            var area = item.Area.Replace(" ", "");
-                            var url = "/" + area + "/" + controller + "/" + action + "";
-                            var name = item.Name.Replace(" ", "");
-                            var imageClass = item.ImageClass.Replace(" ", "");
-                            <li><a href="@url"><i class="@imageClass"></i> @name</a></li>
-                        }
-                        else
-                        {
+                            var item = remainedMenu[0];
                             if (item.IsParent)
-                            {
+                            {   
+                                var children = remainedMenu.Where(p => p.ParentId == item.Id).ToList();
                                 <li>
-                                    <a href="#"><i class="@item.ImageClass"></i> @item.Name<span class="fa arrow"></span></a>
+                                    <a href="#">
+                                        <i class="@item.ImageClass.CheckValue("fa fa-bar-chart-o fa-fw")"></i>@item.Name
+                                    <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
-                                        @foreach (var child in Model.Navbars.Where(p => p.ParentId == item.Id))
+                                        @while (children.Any())
                                         {
-                                            if (child.Controller == null)
-                                            {
-                                                <li><a href="#">@child.Name.Replace(" ", "")</a></li>
-                                            }
-                                            else
-                                            {
-                                                var action = child.Action.Replace(" ", "");
-                                                var controller = child.Controller.Replace(" ", "");
-                                                var area = child.Area.Replace(" ", "");
-                                                var name = child.Name.Replace(" ", "");
-                                                var url = "/" + area + "/" + controller + "/" + action + "";
-                                                <li><a class="qx-menu"  data-title="@name" data-url="@url">@name</a></li>
-
-                                            }
+                                            var child = children[0];
+                                            var name = child.Name.Replace(" ", "");
+                                            <li>
+                                                <a class="qx-menu" data-title="@name" data-url="@child.FinalUrl">@name</a>
+                                            </li>
+                                            //遍历后删除
+                                            remainedMenu.Remove(remainedMenu.FirstOrDefault(a => a.Id == child.Id));
+                                            children.Remove(children.FirstOrDefault(a => a.Id == child.Id));
                                         }
                                     </ul>
                                 </li>
+                                //遍历后删除
+                                remainedMenu.Remove(remainedMenu.FirstOrDefault(a => a.Id == item.Id));
                             }
                         }
                     }

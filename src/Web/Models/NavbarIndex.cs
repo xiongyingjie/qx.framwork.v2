@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using qx.permmision.v2.Entity;
+using qx.permmision.v2.Models;
 
 namespace Web.Models
 {
     public class NavbarIndex
     {
-        public static NavbarIndex Init(IEnumerable<Qx.Permission.Models.Navbar> navbars,
-             IEnumerable<Qx.Permission.Entity.button> buttons)
+        public static NavbarIndex Init(IEnumerable<Navbar> navbars,
+             IEnumerable<button> buttons)
         {
             return new NavbarIndex()
             {
@@ -16,7 +18,7 @@ namespace Web.Models
                 Buttons = buttons
             };
         }
-        public IEnumerable<Qx.Permission.Models.Navbar> Navbars;
-        public IEnumerable<Qx.Permission.Entity.button> Buttons;
+        public IEnumerable<Navbar> Navbars;
+        public IEnumerable<button> Buttons;
     }
 }

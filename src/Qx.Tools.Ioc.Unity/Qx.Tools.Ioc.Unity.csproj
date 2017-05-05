@@ -44,46 +44,6 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Qx.Account, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Account.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Contents, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Contents.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Msg, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Msg.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Order, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Order.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Org, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Org.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Permission, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Permission.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Report, Version=2.0.0.4, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Report.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Tools, Version=2.0.0.6, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.Wechat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.Wechat.dll</HintPath>
-    </Reference>
-    <Reference Include="Qx.WorkFlow, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Qx.WorkFlow.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -104,9 +64,49 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FramWork\Qx.Account\Qx.Account.csproj">
+      <Project>{f97113ab-39b6-4b3d-9c7a-b3e4162bb50e}</Project>
+      <Name>Qx.Account</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Contents\Qx.Contents.csproj">
+      <Project>{1114166f-3e93-457e-85ef-0a5a3cee7f35}</Project>
+      <Name>Qx.Contents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.MsgTests\Qx.MsgTests.csproj">
+      <Project>{9f580d2e-c052-4307-b8b4-f2217d9211b6}</Project>
+      <Name>Qx.MsgTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Msg\Qx.Msg.csproj">
+      <Project>{84334a77-9bb2-4f9b-af9d-acabb56d5162}</Project>
+      <Name>Qx.Msg</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Order\Qx.Order.csproj">
+      <Project>{4c6f2cfe-3ccd-4229-8496-8c12bf02cb81}</Project>
+      <Name>Qx.Order</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Org\Qx.Org.csproj">
+      <Project>{c4da04f1-8f45-474e-b2e3-ba06e4e534e3}</Project>
+      <Name>Qx.Org</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\FramWork\qx.permission.v2\qx.permmision.v2.csproj">
       <Project>{51c18cb8-5e07-44b9-8aa5-ed3e6823d1f5}</Project>
       <Name>qx.permmision.v2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Report\Qx.Report.csproj">
+      <Project>{1f0aa8a6-53b9-4670-9109-f7e06553f8fa}</Project>
+      <Name>Qx.Report</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Tools\Qx.Tools.csproj">
+      <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
+      <Name>Qx.Tools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.Wechat\Qx.Wechat.csproj">
+      <Project>{83d95916-e07f-4309-a0bc-de7bef970d6e}</Project>
+      <Name>Qx.Wechat</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\FramWork\Qx.WorkFlow\Qx.WorkFlow.csproj">
+      <Project>{adbba880-f593-4594-a63b-249959e33ddb}</Project>
+      <Name>Qx.WorkFlow</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

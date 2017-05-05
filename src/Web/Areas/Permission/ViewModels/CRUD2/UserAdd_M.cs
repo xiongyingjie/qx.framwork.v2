@@ -10,13 +10,13 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
         {
             return new permission_user() { user_id = user_id, user_pwd = user_pwd, user_type_id = user_type, nick_name = nick_name, note = note };
         }
-        [Display(Name = "单位管理员工号")]
+        [Display(Name = "用户ID")]
         [StringLength(20)]
         public string user_id { get; set; }
-        [Display(Name = "单位管理员姓名")]
+        [Display(Name = "用户姓名")]
         [StringLength(100)]
         public string nick_name { get; set; }
-        [Display(Name = "单位管理员密码")]
+        [Display(Name = "用户密码")]
         [Required]
         [StringLength(100)]
         public string user_pwd { get; set; }

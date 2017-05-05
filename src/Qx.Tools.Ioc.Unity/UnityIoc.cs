@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using qx.permmision.v2.Interfaces;
 using Qx.Report.Interfaces;
 using Qx.Report.Services;
 using Qx.Contents.Interfaces;
@@ -25,11 +26,12 @@ using Qx.Order.Repository;
 using Qx.Order.Services;
 using Qx.Org.Interfaces;
 using Qx.Org.Services;
-using Qx.Permission.Entity;
-using Qx.Permission.Interfaces;
-using Qx.Permission.Repository;
-using Qx.Permission.Services;
+//using Qx.Permission.Entity;
+//using Qx.Permission.Interfaces;
+//using Qx.Permission.Repository;
+//using Qx.Permission.Services;
 using Qx.Tools.Interfaces;
+//using IPermissionProvider = Qx.Permission.Interfaces.IPermissionProvider;
 
 namespace Qx.Tools.Ioc.Unity
 {
@@ -67,15 +69,15 @@ namespace Qx.Tools.Ioc.Unity
 
 
             #region Permission Repository
-            container.RegisterType<IRepository<button>, ButtonRepository>();
-            container.RegisterType<IRepository<menu>, MenuRepository>();
-            container.RegisterType<IRepository<role_button_forbid >, RoleButtonForbidRepository>();
-            container.RegisterType<IRepository<role_menu>, RoleMenuRepository>();
-            container.RegisterType<IRepository<role>, RoleRepository>();
-            container.RegisterType<IRepository<Qx.Permission.Entity.permission_user>, Qx.Permission.Repository.UserRepository>();
-            container.RegisterType<IRepository<user_role>, UserRoleRepository>();
-            container.RegisterType<IRepository<menu_extension>, MenuExtensionRepository>();
-            container.RegisterType<IPermissionProvider, PermissionProvider>();
+            //container.RegisterType<IRepository<button>, ButtonRepository>();
+            //container.RegisterType<IRepository<menu>, MenuRepository>();
+            //container.RegisterType<IRepository<role_button_forbid >, RoleButtonForbidRepository>();
+            //container.RegisterType<IRepository<role_menu>, RoleMenuRepository>();
+            //container.RegisterType<IRepository<role>, RoleRepository>();
+            //container.RegisterType<IRepository<Qx.Permission.Entity.permission_user>, Qx.Permission.Repository.UserRepository>();
+            //container.RegisterType<IRepository<user_role>, UserRoleRepository>();
+            //container.RegisterType<IRepository<menu_extension>, MenuExtensionRepository>();
+            //container.RegisterType<IPermissionProvider, PermissionProvider>();
 
 
             #endregion
@@ -88,11 +90,13 @@ namespace Qx.Tools.Ioc.Unity
             container.RegisterType<IRepository<qx.permmision.v2.Entity.role>, qx.permmision.v2.Repository.RoleRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.permission_user>, qx.permmision.v2.Repository.UserRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_role>, qx.permmision.v2.Repository.UserRoleRepository>();
-            container.RegisterType<IPermissionProvider, PermissionProvider>();
+
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group>, qx.permmision.v2.Repository.UserGroupRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group_relation>, qx.permmision.v2.Repository.UserGroupRelationRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.role_group>, qx.permmision.v2.Repository.RoleGroupRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.role_group_relation>, qx.permmision.v2.Repository.RoleGroupRelationRepository>();
+            container.RegisterType<qx.permmision.v2.Interfaces.IPermmisionService, qx.permmision.v2.Services.PermissionServices>();
+            container.RegisterType<qx.permmision.v2.Interfaces.IPermissionProvider, qx.permmision.v2.Services.PermissionProvider>();
 
             #endregion
 
@@ -144,7 +148,7 @@ namespace Qx.Tools.Ioc.Unity
             #region Provider
             //container.RegisterType<IInvoicingProvider, InvoicingProvider>();
             //container.RegisterType<IEmployeeProvider, EmployeeProvider>();
-            container.RegisterType<IPermissionProvider, PermissionProvider>();
+           // container.RegisterType<IPermissionProvider, PermissionProvider>();
            // container.RegisterType<IProductProvider, InvoicingProductProvider>();
             container.RegisterType<IAccountProvider, AccountProvider>();
             container.RegisterType<IOrderProvider, OrderProvider>();
@@ -165,7 +169,7 @@ namespace Qx.Tools.Ioc.Unity
             container.RegisterType<IOrderService, OrderService>();
             container.RegisterType<IReportServices, ReportServices>();
         //    container.RegisterType<IStockRightServices, StockRightServices>();
-            container.RegisterType<IPermission, PermissionServices>();
+          //  container.RegisterType<IPermission, PermissionServices>();
             container.RegisterType<IOrg, OrgServices>();
             //container.RegisterType<IProfitServices, ProfitServices>();
             // container.RegisterType<ITaskServices, TaskServices>();

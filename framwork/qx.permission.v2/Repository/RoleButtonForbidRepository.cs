@@ -6,7 +6,7 @@ using qx.permmision.v2.Entity;
 using qx.permmision.v2.Services;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
-
+using System.Data.Entity.Migrations;
 namespace qx.permmision.v2.Repository
 {
 
@@ -16,21 +16,13 @@ namespace qx.permmision.v2.Repository
 
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.role_button_forbid.Select(a => new SelectListItem() { Text = a.role_Button_forbid_id, Value = a.role_Button_forbid_id }).ToList();
-            return dest.Format(value);
+            return Db.role_button_forbid.ToItems( v => v.role_Button_forbid_id,t => t.role_Button_forbid_id);
         }
 
         public string Add(role_button_forbid model)
         {
             model.role_Button_forbid_id = model.role_id+"-"+ model.button_id;
-            if (Find(model.role_Button_forbid_id) == null)
-            {
-                return Db.SaveAdd(model) ? Pk : null;
-            }
-            else
-            {
-                return "";
-            }
+            return Find(model.role_Button_forbid_id) == null ? (Db.SaveAdd(model) ? Pk : null) : "";
         }
 
         public bool Delete(object id)
@@ -40,14 +32,8 @@ namespace qx.permmision.v2.Repository
 
         public bool Update(role_button_forbid model, string note = "")
         {
-            if (Find(model.role_Button_forbid_id) != null)
-            {
-                return Db.SaveModified(model);
-            }
-            else
-            {
-                return false;
-            }
+            Db.role_button_forbid.AddOrUpdate(model);
+            return Db.Saved();
         }
 
         public role_button_forbid Find(object id)

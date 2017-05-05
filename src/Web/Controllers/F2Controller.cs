@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Qx.Tools.CommonExtendMethods;
 using Web.Controllers.Base;
 using HtmlAgilityPack;
-using Qx.Permission.Interfaces;
+using qx.permmision.v2.Interfaces;
 using Qx.Tools;
 using Qx.Tools.QxClass;
 using Web.ViewModels;
@@ -94,7 +94,7 @@ namespace Web.Controllers
             {
                 return RedirectToAction("index");
             }
-            return View();
+            return View(new Login_M() {UserId = "1325112032"});
         }
         #region Login Logic
         [HttpPost]
@@ -109,7 +109,7 @@ namespace Web.Controllers
                 // if (_permissionProvider.Login(model.UserId, model.UserPsw))
                 if (user != null)
                 {
-                    Session["user"] = user.NickName;
+                    Session["user"] = user.nick_name;
                     return LoginOk(model.UserId, "");
                 }
                 else

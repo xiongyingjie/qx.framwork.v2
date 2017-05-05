@@ -38,9 +38,6 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\src\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Qx.Tools">
-      <HintPath>..\..\lib\Qx.Tools.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -94,6 +91,12 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Qx.Tools\Qx.Tools.csproj">
+      <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
+      <Name>Qx.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,10 +25,10 @@ namespace Qx.Permission.Entity
         [StringLength(100)]
         public string UserPwd { get; set; }
 
-        [StringLength(50)]
+        [Column(TypeName = "text")]
         public string Email { get; set; }
 
-        [StringLength(20)]
+        [Column(TypeName = "text")]
         public string Phone { get; set; }
 
         [Required]

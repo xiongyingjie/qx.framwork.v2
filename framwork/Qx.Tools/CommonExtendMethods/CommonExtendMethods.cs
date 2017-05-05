@@ -662,13 +662,31 @@ namespace Qx.Tools.CommonExtendMethods
             return new List<string>(0);
         }
 
+        public static string CheckValue(this string srcString,string deafultValue="")
+        {
+            return srcString.HasValue() ? srcString :
+                deafultValue.HasValue()? deafultValue:DateTime.Now.Random();
+        }
+        public static string IsFixedParam(this string srcString, string deafultValue = "")
+        {
+            return srcString+
+                (deafultValue.HasValue() ? deafultValue :QxConfigs.FixedParamFlag);
+        }
+         public static string GetFixedParam(this string srcString, string deafultValue = "")
+         {
+             return srcString.TrimString(QxConfigs.FixedParamFlag).CheckValue(deafultValue);
+         }
         public static bool HasValue(this string srcString)
         {
-            if (string.IsNullOrWhiteSpace(srcString))
+            if (string.IsNullOrWhiteSpace(srcString)|| srcString.TrimString()==";")
             {
                 return false;
             }
             return true;
+        }
+        public static string TrimString(this string srcString,string flag=" ")
+        {
+            return srcString?.Trim().Replace(flag,"") ?? "";
         }
         public static string ReplaceFirst(this string src, string oldValue, string newValue,string autoAddFlag="")
         {

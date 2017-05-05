@@ -1,27 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using qx.permmision.v2.Entity;
-using Qx.Permission.Interfaces;
+using qx.permmision.v2.Interfaces;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
-using Web.Areas.Permission.ViewModels.Admin;
 
 namespace Web.Areas.Permission.Controllers
 {
     public class Admin2Controller : BasePermissionController
     {
-        private IPermission _permission;
+        private IPermmisionService _permission;
         private IRepository<role> _role;
         private IRepository<permission_user> _user;
-        public Admin2Controller(IPermission permission, IRepository<role> role,IRepository<permission_user> user)
+        public Admin2Controller(IPermmisionService permission, IRepository<role> role,IRepository<permission_user> user)
         {
             _permission = permission;
             _role = role;
             _user = user;
         }
-
-
-
         //Permision2/Admin2/UserGroupList
         public ActionResult UserGroupList(string reportId, string Params)
         {
@@ -38,11 +34,11 @@ namespace Web.Areas.Permission.Controllers
             }
 
             Search.Add("组名称");
-            InitReport("用户组", "/Permision2/CRUD2/AddUserGrou", "", true, "qx.permmision.v2");
+            InitReport("用户组", "/Permission/CRUD2/AddUserGroup", "", true, "qx.permmision.v2");
             return ReportView();
         }
         //Permision2/Admin2/UserGroupMemberList
-        public ActionResult UserGroupMemberList(string reportId, string Params)
+        public ActionResult UserGroupMemberList(string id, string reportId, string Params)
         {
             if (!reportId.HasValue())
             {
@@ -52,19 +48,19 @@ namespace Web.Areas.Permission.Controllers
                         reportId = "qx.permmision.v2.TWE.用户组成员",
                         Params = ";",
                         pageIndex = 1,
-                        perCount = 10
+                        perCount = 10,
+                        id = id,
                     });
             }
-
-            Search.Add("成员姓名");
-            InitReport("用户组成员", " /Permission/CRUD2/AddUserGroupMember", "", true, "qx.permmision.v2");
+            SetFixedParam(id, Params);
+            Search.Add("成员别名");
+            InitReport("用户组成员", "/Permission/CRUD2/AddUserGroupRelation?id=" + id, "", true, "qx.permmision.v2");
             return ReportView();
         }
-
-
         //Permision2/Admin2/RoleGroupList
         public ActionResult RoleGroupList(string reportId, string Params)
         {
+            
             if (!reportId.HasValue())
             {
                 return RedirectToAction("RoleGroupList",
@@ -78,43 +74,34 @@ namespace Web.Areas.Permission.Controllers
             }
 
             Search.Add("组名称");
-            InitReport("角色组", "/Permission/CRUD2/AddRoleGroupMember", "", true, "qx.permmision.v2");
+            InitReport("角色组", "/Permission/CRUD2/AddRoleGroup", "", true, "qx.permmision.v2");
             return ReportView();
         }
-
-
         //Permision2/Admin2/RoleGroupMemberList
-        public ActionResult RoleGroupMemberList(string reportId, string Params)
+        public ActionResult RoleGroupMemberList(string id,string reportId, string Params)
         {
             if (!reportId.HasValue())
             {
                 return RedirectToAction("RoleGroupMemberList",
                     new
                     {
-                        reportId = "qx.permmision.v2.KX5.角色组",
+                        reportId = "qx.permmision.v2.URM.角色组成员",
                         Params = ";",
                         pageIndex = 1,
-                        perCount = 10
+                        perCount = 10,
+                        id= id,
                     });
             }
-
-            Search.Add("组名称");
-            InitReport("角色组成员", "/Permission/CRUD2/AddRoleGroupMember", "", true, "qx.permmision.v2");
+            SetFixedParam(id, Params);
+            Search.Add("角色名称");
+            InitReport("角色组成员", "/Permission/CRUD2/AddRoleGroupRelation?id="+id, "", true, "qx.permmision.v2");
             return ReportView();
         }
-
-
-       
-
-
-
-
-        ///Permission/Admin/RoleList?ReportID=Permision_角色列表&Params=;
+        ///Permission/Admin2/RoleList
         public ActionResult RoleList(string ReportID, string Params, int pageIndex = 1, int perCount = 10)
         {
             if (!ReportID.HasValue())
             {
-
                 return RedirectToAction("RoleList", new { ReportID = "Permision.v2_角色列表", Params = ";;", pageIndex = 1, perCount = 10 });
             }
             Search.Add("角色编号");
@@ -161,11 +148,11 @@ namespace Web.Areas.Permission.Controllers
             if (!ReportID.HasValue())
             {
 
-                return RedirectToAction("MenuList", new { ReportID = "Permision.v2_菜单列表", Params = "MRoot" + _FIXED_FLAG + ";", pageIndex = 1, perCount = 10 });
+                return RedirectToAction("MenuList", new { ReportID = "Permision.v2_菜单列表", Params = "MRoot" + _FIXED_FLAG , pageIndex = 1, perCount = 10 });
             }
             Search.Add("菜单编号");
             Search.Add("菜单名称");
-            InitReport("菜单列表", "/Permission/CRUD2/MenuAdd?farther_id=" + Params, pageIndex, perCount);
+            InitReport("菜单列表", "/Permission/CRUD2/MenuAdd?father_id=" + Params, pageIndex, perCount);
             return ReportView();
             //var fathers = _permission.FindFather(Params);
             //return View(MenuList_M.ToViewModel(fathers));
@@ -186,12 +173,24 @@ namespace Web.Areas.Permission.Controllers
         }
         public ActionResult RoleMenuList(string ReportID, string Params, int pageIndex = 1, int perCount = 10)
         {
+            
             if (!ReportID.HasValue())
             {
-                return RedirectToAction("RoleMenuList", new { ReportID = "Permision.v2_分配菜单", Params = Params, pageIndex = 1, perCount = 10 });
+                return RedirectToAction("RoleMenuList",
+                    new {
+                        ReportID = "Permision.v2_分配菜单",
+                        Params = Params.IsFixedParam(),//如果在报表操作列未配置参数FixParam,可在此处调用 IsFixedParam()
+                        pageIndex = 1,
+                        perCount = 10 });
             }
-            Search.Add("角色编号");
-            //var role = _role.Find(Params);
+            //注意检测顺序应该在检测ReportID之后
+            var rid = Params.GetFixedParam();
+            if (!rid.HasValue())
+            {
+                return Alert("参数错误");
+            }
+            SetFixedParam(rid,Params);
+            Search.Add("菜单名称");  
             InitReport("分配菜单", "/Permission/Admin2/ChooseMenuList?ReportID=Permision.v2_选择菜单&Params=;&role_id=" + Params, pageIndex, perCount);
             return ReportView();
             //return View(RoleMenuList_M.ToViewModel(role));
@@ -226,6 +225,7 @@ namespace Web.Areas.Permission.Controllers
                 return RedirectToAction("/Permission/admin2/ChooseRoleList", new { ReportID = "Permision.v2_选择分配角色", Params = ";", pageIndex = 1, perCount = 10 });
             }
             Search.Add("角色编号");
+            Search.Add("角色名称");
             InitReport("选择分配角色", "#", pageIndex, perCount, "&user_id=" + user_id);
             return ReportView();
             //return View();

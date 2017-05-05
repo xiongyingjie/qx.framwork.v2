@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using Qx.Permission.Models;
-
+using qx.permmision.v2.Models;
 namespace Web.Areas.Permission.ViewModels.CRUD2
 {
     public class Index_M

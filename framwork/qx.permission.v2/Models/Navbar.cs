@@ -1,4 +1,6 @@
-﻿namespace qx.permmision.v2.Models
+﻿using Qx.Tools.CommonExtendMethods;
+
+namespace qx.permmision.v2.Models
 {
     public class Navbar
     {
@@ -12,5 +14,14 @@
         public bool Status { get; set; }
         public string ParentId { get; set; }
         public bool IsParent { get; set; }
+        public string Url { get; set; }
+        public string FinalUrl {
+            get
+            {
+                return Url.HasValue()
+                    ? Url
+                    : string.Format("/{0}/{1}/{2}", Area.TrimString(), Controller.TrimString(), Name.TrimString());
+            }
+        }
     }
 }

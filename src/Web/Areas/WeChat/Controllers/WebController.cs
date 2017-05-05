@@ -9,15 +9,16 @@ using Qx.Tools.CommonExtendMethods;
 using Web.Areas.WeChat.Models;
 using RestSharp;
 using Qx.Tools;
-using Qx.Permission.Interfaces;
+using qx.permmision.v2.Interfaces;
 using System.Data.Entity.Validation;
 using Qx.Account.Interfaces;
 using Qx.Account.Models;
-
+using Qx.Wechat.Interfaces;
+using Qx.Wechat.Models;
 
 namespace Web.Areas.WeChat.Controllers
 {
-    public class WebController : BaseWebWeChatController
+    public class WebController : BaseWebWeChatController, IWxAuthorizeController
     {
         private IAccountPayService _accountPayService;
         private IPermissionProvider _permissionProvider;
@@ -61,7 +62,7 @@ namespace Web.Areas.WeChat.Controllers
 
         // GET: /WeChat/Web/AuthorizeRouting
         //授权页中转 snsapi_base    snsapi_userinfo
-        private ActionResult AuthorizeRouting(string mode, string return_url)
+        public ActionResult AuthorizeRouting(string mode, string return_url)
         {
             var url = URL_AUTHORIZE +
                "?appid=" + APP_ID +
@@ -107,8 +108,18 @@ namespace Web.Areas.WeChat.Controllers
                 try
                 {
                     //如果该用户已经注册
-                    var find = _permissionProvider.UserInfo(m.openid);                 
-                    return BackToBLL(find.UserID, return_url, m.errmsg,find.NickName);
+                    var find = _permissionProvider.UserInfo(m.openid);  
+                    //还应检测注册信息是否完全   
+                    if (CheckRegistInfo(find.user_id))
+                    {
+                        return BackToBLL(find.user_id, return_url, m.errmsg, find.nick_name);
+                    }
+                    else
+                    {
+                        RollbackRegistInfo(find.user_id);
+                        //重定向到手动授权
+                        return FullAuthorize(return_url);
+                    }
                 }
                 catch
                 {
@@ -118,7 +129,18 @@ namespace Web.Areas.WeChat.Controllers
             }
 
         }
-        public ActionResult UserInfo(AccessTokenModel m, string return_url)
+        public bool CheckRegistInfo(string uid)
+        {
+            //检测注册信息
+            throw new NotImplementedException();
+        }
+
+        public void RollbackRegistInfo(string uid)
+        {//回滚注册
+            throw new NotImplementedException();
+        }
+
+        public ActionResult UserInfo( AccessTokenModel m, string return_url)
         {
             var url = URL_USERINFO +
               "?access_token=" + m.access_token +
@@ -164,7 +186,7 @@ namespace Web.Areas.WeChat.Controllers
             }
         }
 
-        private ActionResult BackToBLL(string uid, string return_url, string msg ,string uName)
+        public ActionResult BackToBLL(string uid, string return_url, string msg ,string uName)
         {
             return Redirect("/Account/LoginOk?uid=" + uid + "&return_url=" + return_url + "&msg=" + msg + "&uName=" + uName);
         }
