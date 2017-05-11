@@ -17,8 +17,8 @@
         return currentdate;
     }
     function _v(v, msg) {
-        if (v == "") {
-            if (msg == undefined || msg == "") {
+        if (v === "") {
+            if (msg === undefined || msg === "") {
                 alert("请填写完整的信息" + v);
             } else {
                 alert(msg);
