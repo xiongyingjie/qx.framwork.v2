@@ -13,14 +13,14 @@ namespace Qx.Contents.Repository
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.content_type.Select(a => new SelectListItem {Text = a.TypeName, Value = a.CT_ID}).ToList();
+            var dest = Db.content_type.Select(a => new SelectListItem {Text = a.type_name, Value = a.ct_id}).ToList();
             return dest.Format(value);
         }
 
         public string Add(content_type model)
         {
-            model.CT_ID = Pk;
-            if (Find(model.CT_ID) == null)
+            model.ct_id = Pk;
+            if (Find(model.ct_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -34,7 +34,7 @@ namespace Qx.Contents.Repository
 
         public bool Update(content_type model, string note = "")
         {
-            if (Find(model.CT_ID) != null)
+            if (Find(model.ct_id) != null)
             {
                 return Db.SaveModified(model);
             }
@@ -43,7 +43,7 @@ namespace Qx.Contents.Repository
 
         public content_type Find(object id)
         {
-            return Db.content_type.NoTrackingFind(a => a.CT_ID == (string) id);
+            return Db.content_type.NoTrackingFind(a => a.ct_id == (string) id);
         }
 
         public List<content_type> All()

@@ -14,14 +14,14 @@ namespace Qx.Contents.Repository
         public List<SelectListItem> ToSelectItems(string value = "")
         {
             var dest =
-                Db.content_column_design.Select(a => new SelectListItem {Text = a.ColumnName, Value = a.CCD_ID}).ToList();
+                Db.content_column_design.Select(a => new SelectListItem {Text = a.column_name, Value = a.ccd_id}).ToList();
             return dest.Format(value);
         }
 
         public string Add(content_column_design model)
         {
-            model.CCD_ID = Pk;
-            if (Find(model.CCD_ID) == null)
+            model.ccd_id = Pk;
+            if (Find(model.ccd_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -35,7 +35,7 @@ namespace Qx.Contents.Repository
 
         public bool Update(content_column_design model, string note = "")
         {
-            if (Find(model.CCD_ID) != null)
+            if (Find(model.ccd_id) != null)
             {
                 return Db.SaveModified(model);
             }
@@ -44,7 +44,7 @@ namespace Qx.Contents.Repository
 
         public content_column_design Find(object id)
         {
-            return Db.content_column_design.NoTrackingFind(a => a.CCD_ID == (string) id);
+            return Db.content_column_design.NoTrackingFind(a => a.ccd_id == (string) id);
         }
 
         public List<content_column_design> All()

@@ -1,4 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Qx.Contents.Models
 {
@@ -25,6 +30,8 @@ namespace Qx.Contents.Models
                     return new HTMLElement { Head = MvcHtmlString.Create(templete), Tail = MvcHtmlString.Create("</td>") };
                 case "th":
                     return new HTMLElement { Head = MvcHtmlString.Create(templete), Tail = MvcHtmlString.Create("</th>") };
+                case "*":
+                    return new HTMLElement { Head = MvcHtmlString.Create(""), Tail = MvcHtmlString.Create("") };
                 default:
                     return new HTMLElement { Head = MvcHtmlString.Create("<unkonw>"), Tail = MvcHtmlString.Create("</unkonw>") };
             }

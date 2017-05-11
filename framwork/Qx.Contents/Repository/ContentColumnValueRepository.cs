@@ -14,14 +14,14 @@ namespace Qx.Contents.Repository
         public List<SelectListItem> ToSelectItems(string value = "")
         {
             var dest =
-                Db.content_column_value.Select(a => new SelectListItem {Text = a.ColumnValue, Value = a.CCV_ID}).ToList();
+                Db.dontent_column_value.Select(a => new SelectListItem {Text = a.column_value, Value = a.ccv_id}).ToList();
             return dest.Format(value);
         }
 
         public string Add(content_column_value model)
         {
-            model.CCV_ID = Pk;
-            if (Find(model.CCV_ID) == null)
+            model.ccv_id = Pk;
+            if (Find(model.ccv_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -33,9 +33,14 @@ namespace Qx.Contents.Repository
             return Db.SaveDelete(Find(id));
         }
 
+        public bool DeleteByRelationkeyID(string relationkey)
+        {
+            return Db.SaveDelete(Db.dontent_column_value.NoTrackingFind(a=>a.relation_key_value == relationkey));
+        }
+
         public bool Update(content_column_value model, string note = "")
         {
-            if (Find(model.CCV_ID) != null)
+            if (Find(model.ccv_id) != null)
             {
                 return Db.SaveModified(model);
             }
@@ -44,17 +49,17 @@ namespace Qx.Contents.Repository
 
         public content_column_value Find(object id)
         {
-            return Db.content_column_value.NoTrackingFind(a => a.CCV_ID == (string) id);
+            return Db.dontent_column_value.NoTrackingFind(a => a.ccv_id == (string) id);
         }
 
         public List<content_column_value> All()
         {
-            return Db.content_column_value.NoTrackingToList();
+            return Db.dontent_column_value.NoTrackingToList();
         }
 
         public List<content_column_value> All(Func<content_column_value, bool> filter)
         {
-            return Db.content_column_value.NoTrackingWhere(filter);
+            return Db.dontent_column_value.NoTrackingWhere(filter);
         }
     }
 }

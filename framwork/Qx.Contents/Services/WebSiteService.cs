@@ -1,40 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
+using System.Runtime.Serialization;
+using Qx.Contents.Repository;
+using Qx.Contents.Interfaces;
+using Qx.Contents.Services;
+using Qx.Tools.CommonExtendMethods;
+using Qx.Contents.Models;
+using System.Web.Helpers;
 using Qx.Contents.Entity;
 using Qx.Contents.Exceptions;
-using Qx.Contents.Interfaces;
-using Qx.Contents.Models;
-using Qx.Contents.Repository;
-using Qx.Tools.CommonExtendMethods;
 
 namespace Qx.Contents.Services
 {
     public class WebSiteService
     {
         private ColumnDesignRepository _columnDesign;
+        private ColumnTempelateRepository _columnTempelate;
         private LibrarysRepository _librarys;
         private IContents _contents;
         private List<string> LibsID =new List<string>();
-        public WebSiteService(IContents contents, ColumnDesignRepository columnDesign, LibrarysRepository librarys)
+        public WebSiteService(IContents contents, ColumnDesignRepository columnDesign, LibrarysRepository librarys, ColumnTempelateRepository columnTempelate)
         {
             _contents = contents;
             _columnDesign = columnDesign;
             _librarys = librarys;
+            _columnTempelate = columnTempelate;
+        }
+
+        public MvcHtmlString GetColumnTemplete(string key)
+        {
+            var columnTemplete = _columnTempelate.Find(new Guid(key));
+            var tempelete = columnTemplete.column_tempelate_html.Replace("\r\n", "");
+            return MvcHtmlString.Create(tempelete);
         }
 
         public MvcHtmlString GetTemplete(string id)
         {
             var columnDesign = GetColumnDesign(id);
-            var tempelete = ProcessTemplate_S(columnDesign.HtmlTemplate, columnDesign.HtmlTemplateParams);
+            var tempelete = ProcessTemplate_S(columnDesign.html_template, columnDesign.html_template_params);
             return MvcHtmlString.Create(tempelete);
         }
 
         public JsonResult GetSigleColumnDesign(string id)
         {
             var columnDesign = GetColumnDesign(id);
-            var tempelete = ProcessTemplate_S(columnDesign.HtmlTemplate, columnDesign.HtmlTemplateParams);
+            var tempelete = ProcessTemplate_S(columnDesign.html_template, columnDesign.html_template_params);
             return new JsonResult()
             {
                 Data =  new APIJsonObject(){ Name=id, Content=tempelete },
@@ -45,7 +60,7 @@ namespace Qx.Contents.Services
         public JsonResult GetMultipleColumnDesign(string id)
         {
             var columnDesign = GetColumnDesign(id);
-            var tempelete = ProcessTemplate_M(columnDesign.HtmlTemplate, columnDesign.HtmlTemplateParams);
+            var tempelete = ProcessTemplate_M(columnDesign.html_template, columnDesign.html_template_params);
 
             //tempelete.Append(MvcHtmlString.Create("<ul class=\"num\" id=\"idNum2\"><li>1</li><li>2</li><li>3</li></ul>"));
             return new JsonResult()
@@ -55,6 +70,10 @@ namespace Qx.Contents.Services
             };
         }
 
+        /// <summary>
+        /// 获取CSS/JS文件
+        /// </summary>
+        /// <returns></returns>
         public JsonResult GetLibrarys()
         {
             var cssBulider =new StringBuilder();
@@ -79,8 +98,7 @@ namespace Qx.Contents.Services
             var configs = configInDb.UnPackString(';');
             if (configs.Count != 4)
             {
-                throw new ParamNumberInccorectException("参数个数不正确，当前参数个数=>" + configs.Count + "\n 正确格式/S单行M多行;ContentTableDesign.CTD_ID;ContentColumnValue.RelationKeyValue;要显示的列索引");
-                
+                throw new ParamNumberInccorectException("参数个数不正确，当前参数个数=>" + configs.Count + "\n 正确格式/S单行M多行;ContentTableDesign.CTD_ID;ContentColumnValue.RelationKeyValue;要显示的列索引");     
             }
             if (configs[0] != "S")
             {
@@ -130,11 +148,15 @@ namespace Qx.Contents.Services
             ToIntList()));
             foreach (var row in rows)
             {
-                var valueArr = row.ToArray();
+                foreach(var cl in row)
+                {
+                    var valueArr = cl.ToArray();
 
-                string temp = string.Format(needed[2], valueArr);
+                    string temp = string.Format(needed[2], cl);
 
-                tempeleteBuilder.Append(MvcHtmlString.Create(temp));
+                    tempeleteBuilder.Append(MvcHtmlString.Create(temp));
+                }
+
             }
 
 
@@ -145,7 +167,7 @@ namespace Qx.Contents.Services
         private column_design GetColumnDesign(string id)
         {
             var columnDesign = _columnDesign.Find(id);
-            columnDesign.HtmlTemplate = columnDesign.HtmlTemplate.Replace("\r\n", "");
+            columnDesign.html_template = columnDesign.html_template.Replace("\r\n", "");
             return columnDesign;
         }
 
@@ -154,7 +176,7 @@ namespace Qx.Contents.Services
             var columnDesign = _columnDesign.All();
             foreach(var item in columnDesign)
             {
-                var temp = item.LibraryID.UnPackString(';');
+                var temp = item.library_id.UnPackString(';');
                 foreach(var l in temp)
                 {
                     LibsID.Add(l);
@@ -163,6 +185,12 @@ namespace Qx.Contents.Services
             LibsID.Distinct().ToList();
         }
 
+        /// <summary>
+        /// 组装CSS/JS
+        /// </summary>
+        /// <param name="cssBulider"></param>
+        /// <param name="jsBuilder"></param>
+        /// <returns></returns>
         private StringBuilder ProcessLibrarys(StringBuilder cssBulider, StringBuilder jsBuilder)
         {
             GetAllColumnDesigns();
@@ -170,13 +198,13 @@ namespace Qx.Contents.Services
             foreach (var item in LibsID)
             {
                 var lib = _librarys.Find(item);
-                switch(lib.TypeID)
+                switch(lib.type_id)
                 {
                     case 1:
-                        jsBuilder.Append(lib.FileUrl);
+                        jsBuilder.Append(lib.fileurl);
                         break;
                     case 2:
-                        cssBulider.Append(lib.FileUrl);
+                        cssBulider.Append(string.Format("<link rel=\"stylesheet\" href=\"{0}\" />",lib.fileurl));
                         break;
                     default:
                         throw new GetLibraryFailException("获取css/js失败!Library 类型未指定");

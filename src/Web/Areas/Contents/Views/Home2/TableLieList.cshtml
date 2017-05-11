@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "/Areas/Contents/Views/Shared/_MyLayOut.cshtml";
+}
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Easy Table - Make your Table Easy</title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="~/Content/EasyTable/jquery.edittable.css" rel="stylesheet" />
+    @*<link href="~/Content/EasyTable/changerow.css" rel="stylesheet" />*@
+    <script src="~/Content/EasyTable/jquery.edittable.js"></script>
+    @*<link href="~/Content/EasyTable/main.css" rel="stylesheet" />*@
+    <script src="~/Content/EasyTable/tablelielistOP.js"></script>
+
+    <script src="~/Include/KindEditor/kindeditor-all-min.js"></script>
+    <script src="~/Include/KindEditor/lang/zh-CN.js"></script>
+
+</head>
+<body>
+    <!--创建默认表格-->
+    <div>
+        <h1>编辑内容表格</h1>
+        <p>表格名称：<input type="text" value='@ViewBag.TableName' id="tableName" name="tableName" class="form-control" style="width:30%"/> </p>
+
+    </div>
+
+
+    <!--创建自定义表格-->
+    <input type="hidden" id="tableid" name="tableid" value='@ViewBag.TableID' />
+    <div id="high_level_table">
+
+        <div id="highleveltable"></div>
+        <a href="#" class="btn btn-success" id="sendJson_high">保存</a>
+        <a href="#" class="btn btn-warning" id="sendJson_high2">返回列表</a>
+
+    </div>
+
+</body>
+</html>  

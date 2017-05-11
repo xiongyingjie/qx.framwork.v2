@@ -13,14 +13,14 @@ namespace Qx.Contents.Repository
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.conlumn_type.Select(a => new SelectListItem { Text = a.ColumnTypeName, Value = a.ColumnTypeID }).ToList();
+            var dest = Db.content_type.Select(a => new SelectListItem { Text = a.type_name, Value = a.ct_id }).ToList();
             return dest.Format(value);
         }
 
         public string Add(conlumn_type model)
         {
-            model.ColumnTypeID = Pk;
-            if (Find(model.ColumnTypeID) == null)
+            model.column_type_id = Pk;
+            if (Find(model.column_type_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -34,7 +34,7 @@ namespace Qx.Contents.Repository
 
         public bool Update(conlumn_type model, string note = "")
         {
-            if (Find(model.ColumnTypeID) != null)
+            if (Find(model.column_type_id) != null)
             {
                 return Db.SaveModified(model);
             }
@@ -43,7 +43,7 @@ namespace Qx.Contents.Repository
 
         public conlumn_type Find(object id)
         {
-            return Db.conlumn_type.NoTrackingFind(a => a.ColumnTypeID == (string)id);
+            return Db.conlumn_type.NoTrackingFind(a => a.column_type_id == (string)id);
         }
 
         public List<conlumn_type> All()

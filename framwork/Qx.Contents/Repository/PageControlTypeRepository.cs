@@ -14,14 +14,14 @@ namespace Qx.Contents.Repository
         public List<SelectListItem> ToSelectItems(string value = "")
         {
             var dest =
-                Db.page_control_type.Select(a => new SelectListItem {Text = a.PCT_Name, Value = a.PCT_ID}).ToList();
+                Db.page_control_type.Select(a => new SelectListItem {Text = a.pct_name, Value = a.pct_id}).ToList();
             return dest.Format(value);
         }
 
         public string Add(page_control_type model)
         {
-            model.PCT_ID = Pk;
-            if (Find(model.PCT_ID) == null)
+            model.pct_id = Pk;
+            if (Find(model.pct_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -35,7 +35,7 @@ namespace Qx.Contents.Repository
 
         public bool Update(page_control_type model, string note = "")
         {
-            if (Find(model.PCT_ID) != null)
+            if (Find(model.pct_id) != null)
             {
                 return Db.SaveModified(model);
             }
@@ -44,7 +44,7 @@ namespace Qx.Contents.Repository
 
         public page_control_type Find(object id)
         {
-            return Db.page_control_type.NoTrackingFind(a => a.PCT_ID == (string) id);
+            return Db.page_control_type.NoTrackingFind(a => a.pct_id == (string) id);
         }
 
         public List<page_control_type> All()

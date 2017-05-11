@@ -17,13 +17,13 @@ namespace Qx.Contents.Entity
 
         [Key]
         [StringLength(50)]
-        public string CTD_ID { get; set; }
+        public string ctd_id { get; set; }
 
         [StringLength(50)]
-        public string CT_ID { get; set; }
+        public string ct_id { get; set; }
 
         [StringLength(50)]
-        public string TableName { get; set; }
+        public string table_name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<content_column_design> content_column_design { get; set; }

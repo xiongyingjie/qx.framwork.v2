@@ -10,9 +10,9 @@ namespace Qx.Contents.Entity
     {
         [Key]
         [StringLength(50)]
-        public string ColumnTypeID { get; set; }
+        public string column_type_id { get; set; }
 
         [StringLength(50)]
-        public string ColumnTypeName { get; set; }
+        public string column_type_name { get; set; }
     }
 }

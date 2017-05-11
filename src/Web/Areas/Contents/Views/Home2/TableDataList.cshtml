@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "/Areas/Contents/Views/Shared/_MyLayOut.cshtml";
+    //List<Qx.Contents.Entity.ContentTableDesign> TableList = ViewBag.TableList;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="~/Content/EasyTable/jquery.edittable.css" rel="stylesheet" />
+    <script src="~/Content/EasyTable/jquery.myedittable.js"></script>
+    @*<link href="~/Content/EasyTable/main.css" rel="stylesheet" />*@
+    <script src="~/Content/EasyTable/tabledatalistOP.js"></script>
+
+    <script src="~/Include/KindEditor/kindeditor-all-min.js"></script>
+    <script src="~/Include/KindEditor/lang/zh-CN.js"></script>
+
+</head>
+<body>
+    <input type="hidden" id="tableid" value="@ViewBag.TableID"/> 
+    <div id="default_table">
+        <span class="label label-info">编辑说明：若控件初始化失败，请刷新重试</span>
+        <div id="defaulttable"></div>
+        <input type="hidden" id="edittableid" name="edittableid" value="" />
+        @*<a href="#" class="sendjson button" id="editJson_default">保存编辑</a>*@
+        @*<a href="#" class="sendjson button" id="sendJson_default">放弃编辑</a>*@
+        @*<a href="#" class="loadjson button" id="loadJson">Load JSON from textarea</a>*@
+        <a href="/Contents/Home2/TableList" class="btn btn-warning" id="backtoList">返回列表</a>
+    </div>
+
+</body>
+</html>

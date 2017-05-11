@@ -10,17 +10,17 @@ namespace Qx.Contents.Entity
     {
         [Key]
         [StringLength(50)]
-        public string CCV_ID { get; set; }
+        public string ccv_id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string CCD_ID { get; set; }
+        public string ccd_id { get; set; }
 
         [StringLength(150)]
-        public string ColumnValue { get; set; }
+        public string column_value { get; set; }
 
         [StringLength(50)]
-        public string RelationKeyValue { get; set; }
+        public string relation_key_value { get; set; }
 
         public virtual content_column_design content_column_design { get; set; }
     }

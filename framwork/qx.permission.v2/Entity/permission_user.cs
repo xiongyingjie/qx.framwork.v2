@@ -26,14 +26,13 @@ namespace qx.permmision.v2.Entity
         [StringLength(100)]
         public string user_pwd { get; set; }
 
-        [StringLength(50)]
+        [Column(TypeName = "text")]
         public string email { get; set; }
 
-        [StringLength(20)]
+        [Column(TypeName = "text")]
         public string phone { get; set; }
 
         [Required]
-        [StringLength(50)]
         public string user_type_id { get; set; }
 
         [Column(TypeName = "text")]

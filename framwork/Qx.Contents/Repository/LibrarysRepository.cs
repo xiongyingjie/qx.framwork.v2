@@ -9,18 +9,18 @@ using Qx.Tools.Interfaces;
 
 namespace Qx.Contents.Repository
 {
-    public class LibrarysRepository : BaseRepository, IRepository<library>
+    public class LibrarysRepository : BaseRepository, IRepository<librarys>
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.library.Select(a => new SelectListItem { Text = a.Name, Value = a.LibraryID }).ToList();
+            var dest = Db.librarys.Select(a => new SelectListItem { Text = a.name, Value = a.library_id }).ToList();
             return dest.Format(value);
         }
 
-        public string Add(library model)
+        public string Add(librarys model)
         {
-            model.LibraryID = Pk;
-            if (Find(model.LibraryID) == null)
+            model.library_id = Pk;
+            if (Find(model.library_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -32,28 +32,28 @@ namespace Qx.Contents.Repository
             return Db.SaveDelete(Find(id));
         }
 
-        public bool Update(library model, string note = "")
+        public bool Update(librarys model, string note = "")
         {
-            if (Find(model.LibraryID) != null)
+            if (Find(model.library_id) != null)
             {
                 return Db.SaveModified(model);
             }
             return false;
         }
 
-        public library Find(object id)
+        public librarys Find(object id)
         {
-            return Db.library.NoTrackingFind(a => a.LibraryID == (string)id);
+            return Db.librarys.NoTrackingFind(a => a.library_id == (string)id);
         }
 
-        public List<library> All()
+        public List<librarys> All()
         {
-            return Db.library.NoTrackingToList();
+            return Db.librarys.NoTrackingToList();
         }
 
-        public List<library> All(Func<library, bool> filter)
+        public List<librarys> All(Func<librarys, bool> filter)
         {
-            return Db.library.NoTrackingWhere(filter);
+            return Db.librarys.NoTrackingWhere(filter);
         }
     }
 }

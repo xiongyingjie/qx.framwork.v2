@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using qx.permmision.v2.Entity;
 using qx.permmision.v2.Exceptions;
@@ -60,13 +61,10 @@ namespace qx.permmision.v2.Services
                     "userPwd=>" + userPwd + "\r\n" +
                     "nickName=>" + nickName + "\r\n" 
                     );
-            }
-
-            if (Db.permission_user.Any(a => a.user_id == userId))
-                return false;
+            }  
 
             //添加用户
-            Db.permission_user.Add(new permission_user()
+            Db.permission_user.AddOrUpdate(new permission_user()
             {
                 user_id = userId,
                 user_pwd = NoneEncrypt(userPwd) ,
@@ -78,21 +76,21 @@ namespace qx.permmision.v2.Services
                 last_login_date = DateTime.Now,
             });
             //寻找默认角色
-             Db.role.Where(a=>a.is_default==1).
-                 ToList().ForEach(b =>
-                 {
-                      //添加默认角色
-                     Db.user_role.Add(new user_role()
-                     {
-                         user_id = userId,
-                         role_id = b.role_id,
-                         note = "新用户注册自动添加默认角色[" + b.name + "];有效期为永久",
-                         expire_time = DateTime.MaxValue,
-                         user_role_id = userId + "-" + b.role_id
-                     });
-                 });
-           
-            return Db.SaveChanges() > 0;
+            //Db.role.Where(a=>a.is_default==1).
+            //    ToList().ForEach(b =>
+            //    {
+            //         //添加默认角色
+            //        Db.user_role.Add(new user_role()
+            //        {
+            //            user_id = userId,
+            //            role_id = b.role_id,
+            //            note = "新用户注册自动添加默认角色[" + b.name + "];有效期为永久",
+            //            expire_time = DateTime.MaxValue,
+            //            user_role_id = userId + "-" + b.role_id
+            //        });
+            //    });
+            Db.SaveChanges();
+            return true;
         }
 
         public permission_user UserInfo(string userId)

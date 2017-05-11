@@ -6,15 +6,15 @@ namespace Qx.Contents.Services
 {
     public class BaseRepository
     {
-        private MyDbContext db;
+        private ContentsContext db;
       
-        protected MyDbContext Db
+        protected ContentsContext Db
         {
             get
             {
                 if (db == null)
                 {
-                    db = new MyDbContext();
+                    db = new ContentsContext();
                 }
                 return db;
             }

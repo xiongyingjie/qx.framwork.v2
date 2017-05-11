@@ -68,7 +68,7 @@
       <Project>{f97113ab-39b6-4b3d-9c7a-b3e4162bb50e}</Project>
       <Name>Qx.Account</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\FramWork\Qx.Contents\Qx.Contents.csproj">
+    <ProjectReference Include="..\..\framwork\Qx.Contents\Qx.Contents.csproj">
       <Project>{1114166f-3e93-457e-85ef-0a5a3cee7f35}</Project>
       <Name>Qx.Contents</Name>
     </ProjectReference>

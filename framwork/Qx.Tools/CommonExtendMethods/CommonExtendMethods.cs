@@ -647,7 +647,7 @@ namespace Qx.Tools.CommonExtendMethods
 
             if (!string.IsNullOrEmpty(srcString)) //是否为空 既然能传入肯定不是null
             {
-                srcString.Trim(); //清除空格
+                srcString.TrimString(); //清除空格
                 var temp = srcString.Split(flag).ToList(); //拆分成数组  
                 if (removeEmpty)
                 {

@@ -14,25 +14,25 @@ namespace Qx.Contents.Services
     {
         public TableDesign GetTableDesign(string tableId)
         {
-            var dest = Db.content_table_design.Where(a => a.CTD_ID == tableId).
+            var dest = Db.content_table_design.Where(a => a.ctd_id == tableId).
                 Select(b => new TableDesign
                 {
-                    TableID = b.CTD_ID,
-                    TypeID = b.CT_ID,
-                    TypeName = b.content_type.TypeName,
-                    TableName = b.TableName,
+                    TableID = b.ctd_id,
+                    TypeID = b.ct_id,
+                    TypeName = b.content_type.type_name,
+                    TableName = b.table_name,
                     Columns = b.content_column_design.
                         Select(c => new TableColumn
                         {
-                            ColumnID = c.CCD_ID,
-                            DateTypeID = c.DT_ID,
-                            PageControlID = c.PCT_ID,
-                            ColumnName = c.ColumnName,
-                            DateTypeName = c.ColumnName,
-                            PageControlName = c.page_control_type.PCT_Name,
-                            Seq = c.Seq,
-                            IsPk = c.IsPk,
-                            DefValue = c.DefValue,
+                            ColumnID = c.ccd_id,
+                            DateTypeID = c.dt_id,
+                            PageControlID = c.pct_id,
+                            ColumnName = c.column_name,
+                            DateTypeName = c.column_name,
+                            PageControlName = c.page_control_type.pct_name,
+                            Seq = c.seq,
+                            IsPk = c.is_pk,
+                            DefValue = c.def_value,
                             Value = "警告:要获取各列的值请调用方法 GetTableValue(string tableId, string relationKeyId)"
                         }).
                         OrderBy(d => d.Seq)
@@ -45,32 +45,29 @@ namespace Qx.Contents.Services
             ;
         }
 
-        public TableValue    
-            GetTableValue(string tableId, string relationKeyId)
+        public TableValue  GetTableValue(string tableId, string relationKeyId)
         {
-            var dest = Db.content_table_design.Where(a => a.CTD_ID == tableId).
+            var dest = Db.content_table_design.Where(a => a.ctd_id == tableId).
                 Select(b => new TableValue
                 {
-                    TableID = b.CTD_ID,
-                    TypeID = b.CT_ID,
+                    TableID = b.ctd_id,
+                    TypeID = b.ct_id,
                     RelationKeyID = relationKeyId,
-                    TypeName = b.content_type.TypeName,
-                    TableName = b.TableName,
-                    Columns = b.content_column_design.
+                    TypeName = b.content_type.type_name,
+                    TableName = b.table_name,
+                    Columns = Db.dontent_column_value.Where(a=>a.relation_key_value==relationKeyId).
                         Select(c => new TableColumn
                         {
-                            ColumnID = c.CCD_ID,
-                            DateTypeID = c.DT_ID,
-                            PageControlID = c.PCT_ID,
-                            ColumnName = c.ColumnName,
-                            DateTypeName = c.ColumnName,
-                            PageControlName = c.page_control_type.PCT_Name,
-                            Seq = c.Seq,
-                            IsPk = c.IsPk,
-                            DefValue = c.DefValue,
-                            Value =
-                                c.content_column_value.FirstOrDefault(
-                                    d => d.CCD_ID == c.CCD_ID && d.RelationKeyValue == relationKeyId).ColumnValue
+                            ColumnID = c.ccd_id,
+                            DateTypeID = c.content_column_design.dt_id,
+                            PageControlID = c.content_column_design.pct_id,
+                            ColumnName = c.content_column_design.column_name,
+                            DateTypeName = c.content_column_design.column_name,
+                            PageControlName = c.content_column_design.page_control_type.pct_name,
+                            Seq = c.content_column_design.seq,
+                            IsPk = c.content_column_design.is_pk,
+                            DefValue = c.content_column_design.def_value,
+                            Value =c.column_value
                         }).
                         OrderBy(d => d.Seq)
                 });
@@ -84,9 +81,15 @@ namespace Qx.Contents.Services
 
         public List<TableValue> GetTableValues(string tableId)
         {
-            var result = Db.content_column_value.Where(a => a.content_column_design.CTD_ID == tableId).
-                GroupBy(b => b.RelationKeyValue).ToList().Select(c => GetTableValue(tableId, c.Key)).ToList();
+            var keys=Db.dontent_column_value.Where(a => a.content_column_design.ctd_id == tableId). GroupBy(b => b.relation_key_value).ToList();
+            var result = keys.Select(c => GetTableValue(tableId, c.Key)).ToList();
             return result;
+        }
+
+        public List<IGrouping<string, content_column_value>> GetTableValuesKeys(string tableId)
+        {
+            var keys = Db.dontent_column_value.Where(a => a.content_column_design.ctd_id == tableId).GroupBy(b => b.relation_key_value).ToList();
+            return keys;
         }
 
         public bool UpdateTable(ContentBag contentValueBag)
@@ -109,21 +112,21 @@ namespace Qx.Contents.Services
             {
                 var model = new content_column_value
                 {
-                    CCV_ID = a.ColumnID + "-" + a.RelationKeyID,
-                    CCD_ID = a.ColumnID,
-                    ColumnValue = a.ColumnValue,
-                    RelationKeyValue = a.RelationKeyID.HasValue()
+                    ccv_id = a.ColumnID + "-" + a.RelationKeyID,
+                    ccd_id = a.ColumnID,
+                    column_value = a.ColumnValue,
+                    relation_key_value = a.RelationKeyID.HasValue()
                         ? a.RelationKeyID
-                        : Db.content_column_design.NoTrackingFind(b => b.CCD_ID == a.ColumnID).DefValue //设置默认值
+                        : Db.content_column_design.NoTrackingFind(b => b.ccd_id == a.ColumnID).def_value //设置默认值
                 };
                 //是否存在旧数据
-                if (Db.content_column_value.Any(b => b.CCV_ID == model.CCV_ID))
+                if (Db.dontent_column_value.Any(b => b.ccv_id == model.ccv_id))
                 {
                     Db.Entry(model).State = EntityState.Modified;
                 }
                 else
                 {
-                    Db.content_column_value.Add(model);
+                    Db.dontent_column_value.Add(model);
                 }
             });
             return Db.Saved();

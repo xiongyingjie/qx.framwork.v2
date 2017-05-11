@@ -5,8 +5,10 @@ using Microsoft.Practices.Unity;
 using qx.permmision.v2.Interfaces;
 using Qx.Report.Interfaces;
 using Qx.Report.Services;
+using Qx.Contents.Entity;
 using Qx.Contents.Interfaces;
 using Qx.Contents.Services;
+using Qx.Contents.Repository;
 using Qx.Wechat.Entity;
 using Qx.Wechat.Repository;
 using Qx.Wechat.Interfaces;
@@ -102,16 +104,31 @@ namespace Qx.Tools.Ioc.Unity
 
 
             #region Contents Repository
-            container.RegisterType<IRepository<Qx.Contents.Entity.content_column_design>, Qx.Contents.Repository.ContentColumnDesignRepository>();
-            container.RegisterType<IRepository<Qx.Contents.Entity.content_column_value>, Qx.Contents.Repository.ContentColumnValueRepository>();
-            container.RegisterType<IRepository<Qx.Contents.Entity.content_table_design>, Qx.Contents.Repository.ContentTableDesignRepository>();
-            container.RegisterType<IRepository<Qx.Contents.Entity.content_table_query>, Qx.Contents.Repository.ContentTableQueryRepository>();
-            container.RegisterType<IRepository<Qx.Contents.Entity.content_type>, Qx.Contents.Repository.ContentTypeRepository>();
-            container.RegisterType<IRepository<Qx.Contents.Entity.data_type>, Qx.Contents.Repository.DataTypeRepository>();
-            container.RegisterType<IRepository<Qx.Contents.Entity.page_control_type>, Qx.Contents.Repository.PageControlTypeRepository>();
+            container.RegisterType<IReportServices, ReportServices>();
+            container.RegisterType<IRepository<content_column_value>, ContentColumnValueRepository>();
+            container.RegisterType<IRepository<content_table_design>, ContentTableDesignRepository>();
+            container.RegisterType<IRepository<content_table_query>, ContentTableQueryRepository>();
+            container.RegisterType<IRepository<content_type>, ContentTypeRepository>();
+            container.RegisterType<IRepository<conlumn_type>, ColumnTypeRepository>();
+            container.RegisterType<IRepository<data_type>, DataTypeRepository>();
+            container.RegisterType<IRepository<page_control_type>, PageControlTypeRepository>();
+
+
+            container.RegisterType<IRepository<content_column_design>, ContentColumnDesignRepository>();
+            container.RegisterType<IContents, ContentService>();
+
             #endregion
 
-          
+            #region Website Repository
+            container.RegisterType<IRepository<column_design>, ColumnDesignRepository>();
+
+            container.RegisterType<IRepository<column_tempelate>, ColumnTempelateRepository>();
+
+            container.RegisterType<IRepository<librarys>, LibrarysRepository>();
+
+            #endregion
+
+
 
 
 

@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+    Web.Infrastructure.WebSiteHelper webSiteHelper = new Web.Infrastructure.WebSiteHelper();
+}
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>  
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/Content/Contents/Home2/css/EastCulture.css" />
+    <script type="text/javascript" src="/Content/Contents/Home2/js/jquery.min.js"></script>
+    @Html.Partial("_DynamicQuote")    
+    <title>东方智慧文化</title>
+
+</head>
+<body> 
+    <div class="wrapper">
+        <div class="header">
+            <div class="Logo">
+                <!--<a class="culture">东方智慧文化</a>
+                <a>www.dfzhwh.com</a>						-->
+                <img src="/Content/Contents/Home2/img/logo.png" />
+            </div>
+            <div class="Column">
+                <ul>
+                    <li class="current toShort"><a href="#">首页</a></li>
+                    <li><a href="http://120.92.51.231:4040">中助魔利公益</a></li>
+                    <li class="toLong"><a href="http://hs.web.52xyj.cn">21世纪海丝风情园</a></li>
+                    <li><a href="http://www.zzgyw.org/index.html">中助公益网</a></li>
+                </ul>
+            </div>
+            <div class="Telephone">
+                <p>24小时资讯热线：</p>
+                <p>0595-0000000</p>
+            </div>
+        </div>
+        
+
+        @webSiteHelper.TempelateFor("9c0e58ca-5209-4eac-9dca-02a74189158d");
+
+
+    </div>
+    <footer>
+        <p>
+            <!--<a href="/UserFiles/Contentsapp.apk">微健康</a>
+            | <a href="http://120.92.51.231:6060">健康商城</a>
+            | <a href="#">关于我们</a>
+            | <a href="#">服务协议</a>
+            | <a href="#">联系邮箱</a>
+            | <a href="#" onClick="toDesktop('http://djk.scsxxt.com', '大健康云平台管理系统')">放至桌面</a>
+            | <a href="javascript:void(0);" onclick="AddFavorite('大健康云平台管理系统', 'http://djk.scsxxt.com')">收藏本站</a><br /><br />-->
+            Copyright © 2016-2017 东方智慧文化产业有限公司版权所有
+        </p>
+    </footer>
+
+
+</body>
+</html>

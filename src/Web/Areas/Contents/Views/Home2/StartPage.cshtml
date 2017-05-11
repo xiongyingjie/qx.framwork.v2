@@ -1,0 +1,62 @@
+﻿@{
+    Layout = "/Areas/Contents/Views/Shared/_MyLayOut.cshtml";
+    List<Qx.Contents.Entity.column_design> columnDesignList = ViewBag.columnDesignList;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>基于内容的可配置门户首页管理子系统 </title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="~/Content/EasyTable/jquery.edittable.css" rel="stylesheet" />
+    <script src="~/Content/EasyTable/jquery.myeasytable.js"></script>
+    @*<link href="~/Content/EasyTable/main.css" rel="stylesheet" />*@
+    <script src="~/Content/EasyTable/startpage.js"></script>
+
+    <script src="~/Include/KindEditor/kindeditor-all-min.js"></script>
+    <script src="~/Include/KindEditor/lang/zh-CN.js"></script>
+</head>
+<body>
+    @*@Html.PartialView("_MyNavBar")*@
+    <h1>基于内容的可配置门户首页管理子系统</h1>
+    <h4><a href="#" class="btn btn-primary">现在开始</a> ->> <a href="#" id="new_ccd" class="btn btn-primary">新建栏目设计</a> ->> <a href="/Contents/Home2/TableList" class="btn btn-primary">录入栏目数据</a> ->> <a href="/Contents/Home2/NextPage" class="btn btn-primary">栏目模板设计</a></h4>
+    <hr />
+    <div id="hasDesignedColumnList">
+        <h5 class="label label-info">已拥有的栏目设计列表</h5>
+        <div style="width:80%" id="columnlist">
+            <table class="table table-striped table-hover ">
+                <thead>
+                    <tr><th>栏目设计名</th><th>操作</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in columnDesignList)
+                    {
+                        <tr>
+                            <td>@item.name</td>
+                            <td>
+                                <a href="#" class="btn btn-success" onclick="init_columntable('@item.column_design_id')">编辑</a>
+                                <a href="#" class="btn btn-danger" onclick="del_columntable('@item.column_design_id')">删除</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
+    <div id="new_columntable" style="display:none">
+        <span class="label label-info">新建栏目设计</span>
+        <div id="newcolumntable"></div>
+        <a href="#" class="btn btn-success" id="sendJson_newcolumn" style="display:none">提交</a>
+        <a href="#" class="btn btn-success" id="sendJson_editcolumn" style="display:none">保存</a>
+        @*<a href="#" class="loadjson button" id="loadJson">Load JSON from textarea</a>*@
+        <a href="#" class="btn btn-warning" id="back_tocollist">返回列表</a>
+        <a href="#" class="btn btn-warning" id="reset_newcolumn">重置表格</a>
+    </div>
+
+</body>
+</html>

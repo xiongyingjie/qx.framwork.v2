@@ -51,6 +51,12 @@ namespace Qx.Wechat.Interfaces
         /// <param name="templateData">模板数据（对象）</param>
         /// <returns>发送成功/失败</returns>
         bool SendTemplateMsg(string toWho, string templateId, string click_url, object templateData);
+
+        bool Send_Receved_Order_Msg(string touser, string click_url,
+            string serve_detail, string server_name, string server_phone, 
+            string arrange_serve_time, string order_id);
+         bool Send_Finished_Order_Msg(string touser, string click_url,
+            string serve_detail, string server_name, string server_phone, string finish_time, string note);
         string ApiHttpGet(string host, string url, Dictionary<string, string> param, string logFileName="");
        
 

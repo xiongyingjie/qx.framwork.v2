@@ -215,6 +215,7 @@ namespace Qx.Wechat.Services
             SaveToken(content.access_token,content.expires_in);
             return content.access_token;
         }
+        #region 模板消息
         public bool Send_Exchange_Ok_Msg(string touser, string click_url,
     string good_name, string time)
         {
@@ -244,6 +245,89 @@ namespace Qx.Wechat.Services
             };
             return SendTemplateMsg(touser, Setting.template_id_exchanged, click_url, data);
         }
+        public bool Send_Receved_Order_Msg(string touser, string click_url,
+            string serve_detail, string server_name, string server_phone,string arrange_serve_time,string order_id)
+        {
+            var data = new
+            {
+                first = new
+                {
+                    value = "您好，您的报修已被接单，服务信息如下",
+                    color = "#173177",
+                },
+                keyword1 = new
+                {
+                    value = arrange_serve_time+"上门服务",
+                    color = "#173177",
+                },
+                keyword2 = new
+                {
+                    value = serve_detail,
+                    color = "#173177",
+                },
+                keyword3 = new
+                {
+                    value = server_name,
+                    color = "#173177",
+                },
+                keyword4 = new
+                {
+                    value = server_phone,
+                    color = "#173177",
+                },
+                remark = new
+                {
+                    value = "如想变更服务时间请联系服务者并提供订单号"+ order_id+"，感谢您的支持！",
+                    color = "#173177",
+                }
+            };
+            return SendTemplateMsg(touser, Setting.template_id_receved_order, click_url, data);
+        }
+
+        public bool Send_Finished_Order_Msg(string touser, string click_url,
+           string serve_detail, string server_name, string server_phone,string finish_time,string note)
+        {
+            var data = new
+            {
+                first = new
+                {
+                    value = "您好，你申请的报修已经处理完成",
+                    color = "#173177",
+                },
+                keyword1 = new
+                {
+                    value = serve_detail,
+                    color = "#173177",
+                },
+                keyword2 = new
+                {
+                    value = server_name,
+                    color = "#173177",
+                },
+                keyword3 = new
+                {
+                    value = server_phone,
+                    color = "#173177",
+                },
+                keyword4 = new
+                {
+                    value = finish_time,
+                    color = "#173177",
+                },
+                keyword5 = new
+                {
+                    value = note,
+                    color = "#173177",
+                },
+                remark = new
+                {
+                    value = "感谢您的支持，请点此详情对本次服务进行评价！",
+                    color = "#173177",
+                }
+            };
+            return SendTemplateMsg(touser, Setting.template_id_finished_order, click_url, data);
+        }
+
         public bool Send_Charge_Ok_Msg(string touser, string click_url,
             string time, string total_fee, string balance)
         {
@@ -363,7 +447,7 @@ namespace Qx.Wechat.Services
             var content = ApiJsonHttpPost(Setting.URL_WECHAT_HOST, action, obj, "template_send", "access_token=" + GetToken());  
             return content.Deserialize<template_msg_result>().errcode==0;
         }
-
+        #endregion
         //private IWeChatBll _chatBll;
 
         //public WechatServices(IWeChatBll chatBll)

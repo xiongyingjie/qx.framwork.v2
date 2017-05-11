@@ -1,0 +1,29 @@
+﻿<!--必要组件-->
+<script src="~/Content/AngularJS/angular.js"></script>
+<script src="~/Content/AngularJS/node_modules/angular-messages/angular-messages.js"></script>
+<script src="~/Content/AngularJS/Angular/js/controller/getColumn.js"></script>
+@*<script src="~/Content/AngularJS/Angular/js/directive/homepage.js"></script>*@
+<!--必要组件-->
+
+
+<!--- 动态JS-->
+<script>
+
+    $.getJSON("/api/json-getDynamicQuote/all", function (data) {
+        var arr_js = data.Content.split(';');
+        var arr_css = data.Name.split(';');
+
+        $.each(arr_css, function (i, item) {
+            $('head').append(item)
+        });
+
+        $.each(arr_js, function (i, item) {
+            $.getScript(item, function () {
+            });
+        });
+
+
+    });
+
+</script>
+<!--- 动态JS-->

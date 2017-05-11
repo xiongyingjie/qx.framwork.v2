@@ -1,0 +1,10 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.UpdateRoleGroup_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.role_group_id, "")
+@Html.InputFor(o => o.role_group_name, "")
+@Html.HiddenFor(o => o.father_id)

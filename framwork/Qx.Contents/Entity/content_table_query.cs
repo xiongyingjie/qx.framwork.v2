@@ -10,13 +10,13 @@ namespace Qx.Contents.Entity
     {
         [Key]
         [StringLength(50)]
-        public string CTQ_ID { get; set; }
+        public string ctq_id { get; set; }
 
         [StringLength(50)]
-        public string CTD_ID { get; set; }
+        public string ctd_id { get; set; }
 
         [StringLength(50)]
-        public string SqlQuery { get; set; }
+        public string sql_query { get; set; }
 
         public virtual content_table_design content_table_design { get; set; }
     }

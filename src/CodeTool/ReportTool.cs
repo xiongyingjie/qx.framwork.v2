@@ -140,7 +140,9 @@ namespace CodeTool
                         nodeTag[2],
                         nodeTag[3],
                         nodeTag[4],
-                        (sequence++).ToString()
+                        (sequence++).ToString(),
+                         nodeTag[5],
+                         nodeTag[6],
                     };
                     lvBody.Add(row);
                 }
@@ -153,6 +155,8 @@ namespace CodeTool
                 "表",
                 "不显示",
                 "排序",
+                 "外键列名",
+                  "外键表名"
             }, lvBody);
         }
         void Step2()
@@ -163,7 +167,7 @@ namespace CodeTool
             {
                 return;
             }
-
+            var tableDic = new Dictionary<string, string>();
             var reportTableName = "";
             var reportDataBase = tb_reportId.Text;
             var reportHeadears = "";
@@ -171,20 +175,44 @@ namespace CodeTool
             var reportSql_select = "Select ";
             var reportSql_from = "From ";
             var reportSql_where = "Where ";
-            var tables = new List<string>();
             var columnIndex = 0;
             foreach (ListViewItem row in rows)
             {
-                var id = row.SubItems[0].Text;
-                var columName = row.SubItems[1].Text;
-                var columNote = row.SubItems[2].Text+ //防止列明重复
+                var id = row.SubItems[0].Text.TrimString();
+                var columName = row.SubItems[1].Text.TrimString();
+                var columNote = row.SubItems[2].Text.TrimString() + //防止列明重复
                     (rows.Cast<ListViewItem>().Count(a=>a.SubItems[2].Text == row.SubItems[2].Text)>1 ?"":"");
-                var tableName = row.SubItems[3].Text;
-                var isHidden = bool.Parse(row.SubItems[4].Text);
+                var tableName = row.SubItems[3].Text.TrimString();
+                var foreginColumName = row.SubItems[6].Text.TrimString();
+                var foreginTableName = row.SubItems[7].Text.TrimString();
+                var isHidden = bool.Parse(row.SubItems[4].Text.TrimString());
+              
                 //加入tables
-                if (!tables.Contains(tableName))
+                if (!tableDic.ContainsKey(tableName))
                 {
-                    tables.Add(tableName);
+                    //加表不加外键
+                    tableDic.Add(tableName,
+                        string.Format("{0};{1};{2};{3}", tableName,
+                            columName, foreginTableName, foreginColumName));
+                }
+                else
+                {
+                    //加外键
+
+                    //第二个外键
+                    if (tableDic[tableName].UnPackString(';')[3].HasValue())
+                    {
+                        throw new Exception();
+                    }
+                    else
+                    {//第一个外键
+                        if (foreginColumName.HasValue())
+                        {
+                            tableDic[tableName] = string.Format("{0};{1};{2};{3}", tableName,
+                                columName, foreginTableName, foreginColumName);
+                        }
+                    }
+                 
                 }
                 //拼接Headears
                 reportHeadears += columNote + ";";
@@ -200,12 +228,25 @@ namespace CodeTool
             //清除select中sql最后一个,
             reportSql_select = reportSql_select.Substring(0, reportSql_select.Length - 2);
             //拼接from和where子句
-            tables.ForEach(table =>
+            foreach (var table in tableDic)
             {
-                reportSql_from += "\n"+ table + ",";
-                reportSql_where += "\n" + table + ".XXX LIKE '%XXX.XXX%' and ";
+                reportSql_from += "\n" + table.Key + ",";
                 reportTableName += table + "|";
-            });
+                if (tableDic.Count == 1)
+                {
+                    //不需要where
+                    reportSql_where = " and";
+                    break;
+                }
+                var valueList = table.Value.UnPackString(';');
+                if (valueList[3].HasValue())
+                {
+                    reportSql_where += string.Format("\n{0}.{1} ={2}.{3}",
+                    valueList[0], valueList[1], valueList[2], valueList[3]) + " and";
+                }
+
+            }
+           
             //清除Headears中最后一个;
             reportHeadears = reportHeadears.Substring(0, reportHeadears.Length - 1);
             //清除from中sql最后一个,
@@ -322,7 +363,7 @@ namespace CodeTool
                  NewNodes(SQL_TABLECOLUMN(e.Node.Text).ExecuteReader2(connStr).
                  Select(row
                  => new string[] { row[1],
-                      string.Format("{0};{1};{2};{3};{4};", DateTime.Now.Random(), row[1], row[2], row[3], row[4]) }).ToArray()));
+                      string.Format("{0};{1};{2};{3};{4};{5};{6}", DateTime.Now.Random(), row[1], row[2], row[3], row[4], row[10], row[11]) }).ToArray()));
                 }
                
                 // MessageBox.Show("正在获字段列表" + e.Node.Text + e.Action.ToString());

@@ -11,33 +11,33 @@ namespace Qx.Contents.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public content_column_design()
         {
-            content_column_value = new HashSet<content_column_value>();
+            dontent_column_value = new HashSet<content_column_value>();
         }
 
         [Key]
         [StringLength(50)]
-        public string CCD_ID { get; set; }
+        public string ccd_id { get; set; }
 
         [StringLength(50)]
-        public string CTD_ID { get; set; }
+        public string ctd_id { get; set; }
 
         [StringLength(20)]
-        public string DT_ID { get; set; }
+        public string dt_id { get; set; }
 
         [StringLength(50)]
-        public string PCT_ID { get; set; }
+        public string pct_id { get; set; }
 
         [StringLength(50)]
-        public string ColumnName { get; set; }
+        public string column_name { get; set; }
 
         [StringLength(50)]
-        public string Seq { get; set; }
+        public string seq { get; set; }
 
         [StringLength(50)]
-        public string IsPk { get; set; }
+        public string is_pk { get; set; }
 
         [StringLength(50)]
-        public string DefValue { get; set; }
+        public string def_value { get; set; }
 
         public virtual content_table_design content_table_design { get; set; }
 
@@ -46,6 +46,6 @@ namespace Qx.Contents.Entity
         public virtual page_control_type page_control_type { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<content_column_value> content_column_value { get; set; }
+        public virtual ICollection<content_column_value> dontent_column_value { get; set; }
     }
 }

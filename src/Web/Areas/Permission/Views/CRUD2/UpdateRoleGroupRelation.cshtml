@@ -1,0 +1,14 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.UpdateRoleGroupRelation_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.role_group_relation_id, "")
+@Html.HiddenFor(o => o.role_group_id, "")
+@Html.SelectFor(o => o.role_id,Model._RoleListItems, "<a href='#'>选择角色</a>")
+@Html.InputFor(o => o.role_name, "")
+@Html.HiddenFor(o => o.create_userid, "")
+@Html.HiddenFor(o => o.create_username, "")
+@Html.HiddenFor(o => o.create_Date, "")

@@ -1,0 +1,51 @@
+﻿@{
+    Layout = "/Areas/Contents/Views/Shared/_MyLayOut.cshtml";
+    List<Qx.Contents.Entity.content_table_design> TableList = ViewBag.TableList;
+}
+ 
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <link href="~/Content/EasyTable/jquery.edittable.css" rel="stylesheet" />
+    <script src="~/Content/EasyTable/jquery.myedittable.js"></script>
+    @*<link href="~/Content/EasyTable/main.css" rel="stylesheet" />*@
+    <script src="~/Content/EasyTable/tableListOP.js"></script>
+
+    <script src="~/Include/KindEditor/kindeditor-all-min.js"></script>
+    <script src="~/Include/KindEditor/lang/zh-CN.js"></script>
+
+</head>
+<body>
+    <div>
+        <h1>内容系统</h1>
+        <h4><a href="#" class="btn btn-primary">现在开始</a> ->> <a href="/Contents/Home2/EasyTable" id="new_ccd" class="btn btn-primary">新建内容表格</a></h4>
+        <table class="table table-striped table-hover " id="tablelist">
+            <thead>
+                <tr><th>表名</th><th>操作</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var item in TableList)
+                {
+                    <tr>
+                        <td>@item.table_name</td>
+                        <td>
+                            <a href="#" class="btn btn-success" onclick="init_defaultlietable('@item.ctd_id','@item.table_name')">编辑列</a>
+                            <a href="#" class="btn btn-success" onclick="init_defaulttable('@item.ctd_id')">编辑数据</a>
+                            <a href="#" class="btn btn-danger" onclick="del_defaulttable('@item.ctd_id')">删除</a>
+                            @*<input type="button" value='@item.CTD_ID' name="editinput" />
+                            <input type="button" value='@item.CTD_ID' name="deleteinput" />*@
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -14,14 +14,14 @@ namespace Qx.Contents.Repository
         public List<SelectListItem> ToSelectItems(string value = "")
         {
             var dest =
-                Db.content_table_query.Select(a => new SelectListItem {Text = a.CTQ_ID, Value = a.CTQ_ID}).ToList();
+                Db.content_table_query.Select(a => new SelectListItem {Text = a.ctq_id, Value = a.ctq_id}).ToList();
             return dest.Format(value);
         }
 
         public string Add(content_table_query model)
         {
-            model.CTQ_ID = Pk;
-            if (Find(model.CTQ_ID) == null)
+            model.ctq_id = Pk;
+            if (Find(model.ctq_id) == null)
             {
                 return Db.SaveAdd(model) ? Pk : null;
             }
@@ -35,7 +35,7 @@ namespace Qx.Contents.Repository
 
         public bool Update(content_table_query model, string note = "")
         {
-            if (Find(model.CTQ_ID) != null)
+            if (Find(model.ctq_id) != null)
             {
                 return Db.SaveModified(model);
             }
@@ -44,7 +44,7 @@ namespace Qx.Contents.Repository
 
         public content_table_query Find(object id)
         {
-            return Db.content_table_query.NoTrackingFind(a => a.CTQ_ID == (string) id);
+            return Db.content_table_query.NoTrackingFind(a => a.ctq_id == (string) id);
         }
 
         public List<content_table_query> All()
