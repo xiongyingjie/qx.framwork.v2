@@ -161,12 +161,13 @@ namespace CodeTool
         }
         void Step2()
         {
-            //读取listView生成配置
+          /*  //读取listView生成配置
             var rows = lv_colums.Items;
             if (rows.Count <= 0)
             {
                 return;
             }
+            var tableList = new List<string>();
             var tableDic = new Dictionary<string, string>();
             var reportTableName = "";
             var reportDataBase = tb_reportId.Text;
@@ -174,7 +175,8 @@ namespace CodeTool
             var reportColumToShow = "";
             var reportSql_select = "Select ";
             var reportSql_from = "From ";
-            var reportSql_where = "Where ";
+            var reportSql_where_table = "Where ";
+            var reportSql_where_relation = " ";
             var columnIndex = 0;
             foreach (ListViewItem row in rows)
             {
@@ -186,7 +188,12 @@ namespace CodeTool
                 var foreginColumName = row.SubItems[6].Text.TrimString();
                 var foreginTableName = row.SubItems[7].Text.TrimString();
                 var isHidden = bool.Parse(row.SubItems[4].Text.TrimString());
-              
+
+                if (!tableList.Contains(tableName))
+                {
+                    tableList.Add(tableName);
+                }
+                tableList.ForEach();
                 //加入tables
                 if (!tableDic.ContainsKey(tableName))
                 {
@@ -272,7 +279,7 @@ namespace CodeTool
                 }
             }
             #endregion
-            rtb_sql.Text = string.Format("{0} {1} {2}", reportSql_select, reportSql_from, reportSql_where);
+            rtb_sql.Text = string.Format("{0} {1} {2}", reportSql_select, reportSql_from, reportSql_where);*/
         }
         private void button1_Click(object sender, EventArgs e)
         {

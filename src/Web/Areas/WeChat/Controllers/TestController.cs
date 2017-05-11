@@ -22,10 +22,10 @@ namespace Web.Areas.WeChat.Controllers
         // GET: WeChat/Test
         public ActionResult Index()
         {
-            _wechatServices.Send_Finished_Order_Msg(test_uid, test_url,
-                "detal", "panda", "phone", DateTime.Now.ToStr(), "");
-            _wechatServices.Send_Receved_Order_Msg(test_uid, test_url,
-                "detal", "poamda", "15502342");
+            //_wechatServices.Send_Finished_Order_Msg(test_uid, test_url,
+            //    "detal", "panda", "phone", DateTime.Now.ToStr(), "");
+            //_wechatServices.Send_Receved_Order_Msg(test_uid, test_url,
+            //    "detal", "poamda", "15502342");
             return View();
         }
     }
