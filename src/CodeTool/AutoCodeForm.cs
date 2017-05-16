@@ -212,6 +212,13 @@ public {3}Controller(
             {5} = {6};
         #right
 
+
+
+
+
+
+
+
  // GET: {2}/{3}/{0}
 public ActionResult {0}()
         #left
@@ -240,7 +247,6 @@ public ActionResult {0}({0}_M m)
                 InitForm(#quote{1}#quote);
                 return View(m);
             #right
-             return View();
         #right
 #right", _action, _actionNote,_area,_controller,_interface, assignInterface, assignInterfaceInConstruct,_apiName ); }
         }

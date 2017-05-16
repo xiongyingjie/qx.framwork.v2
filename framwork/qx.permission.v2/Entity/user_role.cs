@@ -17,12 +17,13 @@ namespace qx.permmision.v2.Entity
         public string user_id { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(100)]
         public string role_id { get; set; }
 
         [StringLength(100)]
         public string note { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime? expire_time { get; set; }
 
         public virtual permission_user permission_user { get; set; }

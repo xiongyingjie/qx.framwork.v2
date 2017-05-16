@@ -63,6 +63,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -78,6 +79,7 @@
   <ItemGroup>
     <Compile Include="AccountContext.cs" />
     <Compile Include="CommonExtendMethods\ReportFormControlExtension.cs" />
+    <Compile Include="Exceptions\Form\FormValitationException.cs" />
     <Compile Include="Exceptions\Report\ReportConfigErrorException.cs" />
     <Compile Include="Exceptions\Report\ReportNotFoundException.cs" />
     <Compile Include="Exceptions\Report\SqlExpressionErrorException.cs" />
@@ -134,6 +136,9 @@
     <Folder Include="Services\" />
     <Folder Include="Web\ViewModel\" />
     <Folder Include="Web\View\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -12,7 +12,7 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>E:\svn\jwxt\lib\ReportTool\</PublishUrl>
+    <PublishUrl>E:\svn\qx.xgxt\lib\ReportTool\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -22,8 +22,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>11</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -69,6 +68,7 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -92,9 +92,22 @@
     <Compile Include="AutoCode.Designer.cs">
       <DependentUpon>AutoCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="DbColumnNoteHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DbColumnNoteHelper.Designer.cs">
+      <DependentUpon>DbColumnNoteHelper.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entity\MyDbContext.cs" />
     <Compile Include="Entity\report_data.cs" />
+    <Compile Include="Extension\ModelExtension.cs" />
     <Compile Include="Extension\DataBaseExtension.cs" />
+    <Compile Include="FormTool2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTool2.Designer.cs">
+      <DependentUpon>FormTool2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\BaseDbForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +116,8 @@
     </Compile>
     <Compile Include="Helper\ListViewSort.cs" />
     <Compile Include="Models\CheckStateEnum.cs" />
+    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\FormColumSetting.cs" />
     <Compile Include="Models\ColumSetting.cs" />
     <Compile Include="Models\FormStateEnum.cs" />
     <Compile Include="FormTool.cs">
@@ -111,6 +126,8 @@
     <Compile Include="FormTool.Designer.cs">
       <DependentUpon>FormTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\TableModel.cs" />
+    <Compile Include="Models\TableRelationModel.cs" />
     <Compile Include="ReportTool.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,8 +148,14 @@
     <EmbeddedResource Include="AutoCode.resx">
       <DependentUpon>AutoCode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DbColumnNoteHelper.resx">
+      <DependentUpon>DbColumnNoteHelper.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormTool.resx">
       <DependentUpon>FormTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTool2.resx">
+      <DependentUpon>FormTool2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportTool.resx">
       <DependentUpon>ReportTool.cs</DependentUpon>

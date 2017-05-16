@@ -57,7 +57,12 @@
     <Compile Include="Entity\button.cs" />
     <Compile Include="Entity\menu.cs" />
     <Compile Include="Entity\MyContext.cs" />
+    <Compile Include="Entity\orgnization.cs" />
+    <Compile Include="Entity\orgnization_position.cs" />
+    <Compile Include="Entity\orgnization_type.cs" />
     <Compile Include="Entity\permission_user.cs" />
+    <Compile Include="Entity\position.cs" />
+    <Compile Include="Entity\position_type.cs" />
     <Compile Include="Entity\role.cs" />
     <Compile Include="Entity\role_button_forbid.cs" />
     <Compile Include="Entity\role_group.cs" />
@@ -65,6 +70,10 @@
     <Compile Include="Entity\role_menu.cs" />
     <Compile Include="Entity\user_group.cs" />
     <Compile Include="Entity\user_group_relation.cs" />
+    <Compile Include="Entity\user_group_role_group_relation.cs" />
+    <Compile Include="Entity\user_group_role_relation.cs" />
+    <Compile Include="Entity\user_orgnization.cs" />
+    <Compile Include="Entity\user_position.cs" />
     <Compile Include="Entity\user_role.cs" />
     <Compile Include="Entity\user_type.cs" />
     <Compile Include="Exceptions\ParamNotEnoughException.cs" />
@@ -76,6 +85,13 @@
     <Compile Include="Models\RoleGroupRelation.cs" />
     <Compile Include="Models\UserGroup.cs" />
     <Compile Include="Models\UserGroupRelation.cs" />
+    <Compile Include="Repository\UserPositionRepository.cs" />
+    <Compile Include="Repository\UserOrgnizationRepository.cs" />
+    <Compile Include="Repository\PositionTypeRepository.cs" />
+    <Compile Include="Repository\PositionRepository.cs" />
+    <Compile Include="Repository\OrgnizationTypeRepository.cs" />
+    <Compile Include="Repository\OrgnizationPositionRepository.cs" />
+    <Compile Include="Repository\OrgnizationRepository.cs" />
     <Compile Include="Repository\RoleGroupRepository.cs" />
     <Compile Include="Repository\UserTypeRepository.cs" />
     <Compile Include="Repository\ButtonRepository.cs" />

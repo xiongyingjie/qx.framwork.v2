@@ -277,5 +277,7 @@ namespace CodeTool
             var f = new AutoCodeForm(tb_database.Text,tb_tables.Text,rtb_colums.Text,rtb_columsNote.Text);
             f.Show();
         }
+
+       
     }
 }

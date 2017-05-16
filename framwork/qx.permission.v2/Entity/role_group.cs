@@ -12,6 +12,7 @@ namespace qx.permmision.v2.Entity
         public role_group()
         {
             role_group_relation = new HashSet<role_group_relation>();
+            user_group_role_group_relation = new HashSet<user_group_role_group_relation>();
         }
 
         [Key]
@@ -27,5 +28,8 @@ namespace qx.permmision.v2.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<role_group_relation> role_group_relation { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user_group_role_group_relation> user_group_role_group_relation { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace qx.permmision.v2.Entity
         [StringLength(40)]
         public string name { get; set; }
 
-        [StringLength(10)]
+        [StringLength(100)]
         public string note { get; set; }
 
         [Required]

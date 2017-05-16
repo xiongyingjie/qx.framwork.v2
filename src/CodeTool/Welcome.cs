@@ -38,8 +38,21 @@ namespace CodeTool
             }
             if (checkOk)
             {
-                TipInfo("环境配置正确，正在启动报表助手...");
-                new ReportTool().ShowDialog();
+                if (cb_function.SelectedIndex == 0)
+                {
+                    TipInfo("环境配置正确，正在启动报表助手...");
+                    new ReportTool().Show();
+                }
+                else if (cb_function.SelectedIndex == 1)
+                {
+                    TipInfo("环境配置正确，正在启动验证配置助手...");
+                    new DbColumnNoteHelper().Show();
+                }
+                else
+                {
+                    TipInfo("环境检查失败，请尝试更新版本!");
+                }
+
             }
             else
             {
@@ -56,6 +69,11 @@ namespace CodeTool
             {
                 new FormTool().Show();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

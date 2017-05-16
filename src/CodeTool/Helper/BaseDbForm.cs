@@ -122,69 +122,25 @@ namespace CodeTool.Helper
             return @"SELECT Name FROM [" + dataBaseName + "]..SysObjects Where XType='U' ORDER BY Name";
         }
         protected string SQL_TABLECOLUMN(string tableName)
+        {            /*
+             
+GUID	列名	说明	表	 不显示 	主键	字段类型	长度	允许空	默认值	外键列明	外键表名
+  0	      1	      2	     3	    4	     5	        6	     7	      8       9        10          11
+
+             */
+            return  tableName.SqlTableInfo();
+        }
+        protected string SQL_Regex()
         {
-            return string.Format(@"
-declare @table_name varchar(100) --声明变量
-set @table_name='{0}'   ---赋值
- SELECT 
-'GUID' as GUID,--0
-列名 = Rtrim(b.name),--1
-说明 = Isnull(c.VALUE,'_'+b.name),@table_name as 表,'false'as 不显示,--2
-主键 = CASE WHEN h.id IS NOT NULL THEN 'PK'ELSE ''END,--3
-字段类型 = Type_name(b.xusertype)--4
-                + CASE 
-                    WHEN b.colstat & 1 = 1 THEN '[ID('
-                                                 + CONVERT(VARCHAR,Ident_seed(a.name))
-                                                 + ','
-                                                 + CONVERT(VARCHAR,Ident_incr(a.name))
-                                                 + ')]'
-                    ELSE ''
-                  END,
-长度 = b.length,--5
-允许空 = CASE b.isnullable --6
-                WHEN 0 THEN 'N'
-                ELSE 'Y'
-              END,
-默认值 = Isnull(e.TEXT,''),--7
-外键列明 = (SELECT top 1 RC.name 被引用列名--8
-					      FROM sys.foreign_key_columns 
-						  JOIN sys.objects PT ON sys.foreign_key_columns.parent_object_id=PT.object_id
-						  JOIN sys.objects RT ON sys.foreign_key_columns.referenced_object_id=RT.object_id
-						  JOIN sys.columns PC ON sys.foreign_key_columns.parent_object_id=PC.object_id 
-						       AND sys.foreign_key_columns.parent_column_id=PC.column_id
-						  JOIN sys.columns RC ON sys.foreign_key_columns.referenced_object_id=RC.object_id 
-							   AND sys.foreign_key_columns.referenced_column_id=RC.column_id
-						  JOIN sys.foreign_keys FK ON sys.foreign_key_columns.constraint_object_id=FK.object_id where PT.name=@table_name and RC.name=Rtrim(b.name)),
-外键表名 =(SELECT top 1 RT.name 被引用表名--9
-					      FROM sys.foreign_key_columns 
-						  JOIN sys.objects PT ON sys.foreign_key_columns.parent_object_id=PT.object_id
-						  JOIN sys.objects RT ON sys.foreign_key_columns.referenced_object_id=RT.object_id
-						  JOIN sys.columns PC ON sys.foreign_key_columns.parent_object_id=PC.object_id 
-						       AND sys.foreign_key_columns.parent_column_id=PC.column_id
-						  JOIN sys.columns RC ON sys.foreign_key_columns.referenced_object_id=RC.object_id 
-							   AND sys.foreign_key_columns.referenced_column_id=RC.column_id
-						  JOIN sys.foreign_keys FK ON sys.foreign_key_columns.constraint_object_id=FK.object_id where PT.name=@table_name and RC.name=Rtrim(b.name))
-      
-FROM     sysobjects a
-         INNER JOIN  sys.all_objects aa ON a.id=aa.object_id 
-              AND  schema_name(schema_id)='dbo' ,syscolumns b
-         LEFT OUTER JOIN sys.extended_properties c ON b.id = c.major_id
-              AND b.colid = c.minor_id
-         LEFT OUTER JOIN syscomments e ON b.cdefault = e.id
-         LEFT OUTER JOIN (SELECT g.id
-                                 ,g.colid
-                          FROM   sysindexes f
-                                 ,sysindexkeys g
-                          WHERE  (f.id = g.id)
-                                 AND (f.indid = g.indid)
-                                 AND (f.indid > 0)
-                                 AND (f.indid < 255)
-                                 AND (f.status & 2048) <> 0) h ON (b.id = h.id)
-              AND (b.colid = h.colid)
-WHERE    (a.id = b.id)
-         AND (a.id = Object_id(@table_name))  --要查询的表改成你要查询表的名称
-ORDER BY b.colid",
- tableName);
+            return @"
+SELECT 
+regex_id
+,name
+,regex_string
+,input_tip
+,false_tip
+,note
+  FROM regex_data";
         }
         #endregion
 
@@ -201,6 +157,7 @@ ORDER BY b.colid",
         protected void ComBoxBinding(ComboBox cb, IEnumerable<string> itemList)
         {
             cb.Items.Clear();
+          
             foreach (var item in itemList)
             {
                 cb.Items.Add(item);
@@ -253,8 +210,9 @@ ORDER BY b.colid",
             }
         }
 
-        protected void FreshListView(ListView lv)
+        protected virtual void FreshListView(ListView lv)
         {
+           
             lv.ListViewItemSorter = new ListViewSort();
             lv.Sort();
         }

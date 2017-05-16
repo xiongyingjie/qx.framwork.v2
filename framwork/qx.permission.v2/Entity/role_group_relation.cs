@@ -17,7 +17,7 @@ namespace qx.permmision.v2.Entity
         public string role_group_id { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(100)]
         public string role_id { get; set; }
 
         [StringLength(100)]

@@ -15,11 +15,12 @@ namespace qx.permmision.v2.Entity
             role_button_forbid = new HashSet<role_button_forbid>();
             role_group_relation = new HashSet<role_group_relation>();
             role_menu = new HashSet<role_menu>();
+            user_group_role_relation = new HashSet<user_group_role_relation>();
             user_role = new HashSet<user_role>();
         }
 
         [Key]
-        [StringLength(20)]
+        [StringLength(100)]
         public string role_id { get; set; }
 
         [Required]
@@ -43,6 +44,9 @@ namespace qx.permmision.v2.Entity
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<role_menu> role_menu { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user_group_role_relation> user_group_role_relation { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<user_role> user_role { get; set; }

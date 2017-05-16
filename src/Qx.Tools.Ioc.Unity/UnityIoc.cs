@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Microsoft.Practices.Unity;
+using qx.permmision.v2.Entity;
 using qx.permmision.v2.Interfaces;
+using qx.permmision.v2.Repository;
 using Qx.Report.Interfaces;
 using Qx.Report.Services;
 using Qx.Contents.Entity;
@@ -97,8 +99,21 @@ namespace Qx.Tools.Ioc.Unity
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group_relation>, qx.permmision.v2.Repository.UserGroupRelationRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.role_group>, qx.permmision.v2.Repository.RoleGroupRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.role_group_relation>, qx.permmision.v2.Repository.RoleGroupRelationRepository>();
-            container.RegisterType<qx.permmision.v2.Interfaces.IPermmisionService, qx.permmision.v2.Services.PermissionServices>();
+
+            container.RegisterType<IRepository<orgnization> , qx.permmision.v2.Repository.OrgnizationRepository>();
+             container.RegisterType<IRepository<orgnization_position> , qx.permmision.v2.Repository.OrgnizationPositionRepository>();
+             container.RegisterType<IRepository<orgnization_type> , qx.permmision.v2.Repository.OrgnizationTypeRepository>();
+             container.RegisterType<IRepository<position> , qx.permmision.v2.Repository.PositionRepository>();
+             container.RegisterType<IRepository<position_type> , qx.permmision.v2.Repository.PositionTypeRepository>();
+             container.RegisterType<IRepository<user_orgnization> , qx.permmision.v2.Repository.UserOrgnizationRepository>();
+             container.RegisterType<IRepository<user_position> , qx.permmision.v2.Repository.UserPositionRepository>();
+
+
+        container.RegisterType<qx.permmision.v2.Interfaces.IPermmisionService, qx.permmision.v2.Services.PermissionServices>();
             container.RegisterType<qx.permmision.v2.Interfaces.IPermissionProvider, qx.permmision.v2.Services.PermissionProvider>();
+
+
+
 
             #endregion
 

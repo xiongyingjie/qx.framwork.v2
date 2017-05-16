@@ -16,7 +16,7 @@ using CodeTool.Models;
 using CodeTool.Properties;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Models.Report;
-
+using Microsoft.VisualBasic;
 namespace CodeTool
 {
     public partial class ReportTool : BaseDbForm
@@ -25,20 +25,23 @@ namespace CodeTool
         {
             InitializeComponent();
         }
-
+        string dbName = "";
+        private List<string> cbItems;
         private void ReportTool_Load(object sender, EventArgs e)
         {
             // 初始化状态
             tb_reportId.Visible = false;
             ChangeStateTo(CheckStateEnum.NeverCheck);
             ChangeStateTo(FormStateEnum.AddReport);
+            //可用数据库列表
+            cbItems = ConnectionStrings.Select(a => a.Name).ToList();
             //创建根节点
             tv_dataBase.Nodes.Add(NewNodeWithEmptyChild("数据源"));
            // tv_dataBase.Nodes[0].Expand();
             //加载报表
            // ListViewBinding(lv_reports, REPORT_HEADER, SQL_REPORTS(tb_queryReportId.Text,tb_queryReportName.Text).ExecuteQuery());
             //加载连接字符串
-            ComBoxBinding(cb_connString,ConnectionStrings.Select(a=>a.Name));
+            ComBoxBinding(cb_connString, cbItems);
             // tv_dataBase.ExpandAll();
         }
         private List<TreeNode> TreeNodes
@@ -68,15 +71,21 @@ namespace CodeTool
         private void tv_dataBase_AfterUnChecked(object sender, TreeViewEventArgs e)
         {
             var children = e.Node.Nodes;
+            if (children.Count == 0)
+            {
+                
+            }
             foreach (TreeNode child in children)
             {
                 child.Checked = false;
             }
+          
         }
         #endregion
         //勾选状态发生更改
         private void tv_dataBase_AfterCheck(object sender, TreeViewEventArgs e)
         {
+            
             #region 自动展开节点
             if (e.Node.Level == 2&&!e.Node.IsExpanded)
             {
@@ -94,22 +103,13 @@ namespace CodeTool
             Step1();
             Step2();
             #region 自动选择数据源
-
-            //foreach (ObjectCollection cbItem in cb_connString.Items)
-            //{
-            //    if(cbItem.)
-            //}
-            //var index = cb_connString.Items.Cast<string>().(cb_connString.SelectedText);
-            //if (index>0)
-            //{
-            //    cb_connString.SelectedIndex = index;
-            //}
+            cb_connString.SelectedIndex = cb_connString.Items.IndexOf(dbName);
             #endregion
         }
 
         void Step1()
         {
-            var dbName = "";
+           
             var sequence = 1;
             var lvBody = new List<List<string>>();
             TreeNodes.ForEach(node =>
@@ -120,7 +120,6 @@ namespace CodeTool
                     if (!dbName.HasValue())
                     {
                         dbName = node.Parent.Parent.Text;
-                        tb_reportId.Text = dbName;
                     }
                     else
                     {
@@ -159,24 +158,25 @@ namespace CodeTool
                   "外键表名"
             }, lvBody);
         }
-        void Step2()
+       
+        public void Step2()
         {
-          /*  //读取listView生成配置
+            //读取listView生成配置
             var rows = lv_colums.Items;
             if (rows.Count <= 0)
             {
                 return;
             }
-            var tableList = new List<string>();
-            var tableDic = new Dictionary<string, string>();
+            var tableList = new List<TableModel>();
+            var tableRelationList = new List<TableRelationModel>();
             var reportTableName = "";
-            var reportDataBase = tb_reportId.Text;
+            var reportDataBase = dbName;
             var reportHeadears = "";
             var reportColumToShow = "";
             var reportSql_select = "Select ";
             var reportSql_from = "From ";
-            var reportSql_where_table = "Where ";
-            var reportSql_where_relation = " ";
+            var reportSql_where = " ";
+            //var reportSql_where_relation = " ";
             var columnIndex = 0;
             foreach (ListViewItem row in rows)
             {
@@ -189,40 +189,21 @@ namespace CodeTool
                 var foreginTableName = row.SubItems[7].Text.TrimString();
                 var isHidden = bool.Parse(row.SubItems[4].Text.TrimString());
 
-                if (!tableList.Contains(tableName))
-                {
-                    tableList.Add(tableName);
-                }
-                tableList.ForEach();
                 //加入tables
-                if (!tableDic.ContainsKey(tableName))
+                tableList.AddIfNotExsit(tableName);
+                //加入relation
+                if (foreginTableName.HasValue())
                 {
-                    //加表不加外键
-                    tableDic.Add(tableName,
-                        string.Format("{0};{1};{2};{3}", tableName,
-                            columName, foreginTableName, foreginColumName));
-                }
-                else
-                {
-                    //加外键
-
-                    //第二个外键
-                    if (tableDic[tableName].UnPackString(';')[3].HasValue())
-                    {
-                        throw new Exception();
-                    }
-                    else
-                    {//第一个外键
-                        if (foreginColumName.HasValue())
-                        {
-                            tableDic[tableName] = string.Format("{0};{1};{2};{3}", tableName,
-                                columName, foreginTableName, foreginColumName);
-                        }
-                    }
-                 
+                    tableRelationList.AddIfNotExsit(tableName, columName, columNote,
+                    foreginTableName, foreginColumName);
                 }
                 //拼接Headears
                 reportHeadears += columNote + ";";
+                //处理重复columNote
+                if (reportHeadears.UnPackString(';').FindAll(a => a == columNote).Count > 1)
+                {
+                    columNote += columNote + "_1";
+                }
                 reportSql_select += string.Format("\n  {0}.{1} as '{2}' ,", tableName, columName, columNote);
                 if (!isHidden)
                 {
@@ -232,43 +213,41 @@ namespace CodeTool
                 //计数累加
                 columnIndex++;
             }
+            //拼接relation
+            tableRelationList.ForEach(r =>
+            {
+                //关系的主表 和 引用表 都存在于 已勾选的表 中时才生成连接语句
+                if (tableList.Contains(r.TableName)&& tableList.Contains(r.ForeginTableName))
+                {
+                    reportSql_where += string.Format("\n {0}.{1}={2}.{3} and", r.TableName,
+                        r.ColumName, r.ForeginTableName, r.ForeginColumName);
+                }
+            });
+
             //清除select中sql最后一个,
             reportSql_select = reportSql_select.Substring(0, reportSql_select.Length - 2);
             //拼接from和where子句
-            foreach (var table in tableDic)
+            foreach (var table in tableList)
             {
-                reportSql_from += "\n" + table.Key + ",";
-                reportTableName += table + "|";
-                if (tableDic.Count == 1)
-                {
-                    //不需要where
-                    reportSql_where = " and";
-                    break;
-                }
-                var valueList = table.Value.UnPackString(';');
-                if (valueList[3].HasValue())
-                {
-                    reportSql_where += string.Format("\n{0}.{1} ={2}.{3}",
-                    valueList[0], valueList[1], valueList[2], valueList[3]) + " and";
-                }
-
+                reportSql_from += "\n" + table.TableName + ",";
+                reportTableName += table.TableName + "|";
             }
-           
-            //清除Headears中最后一个;
-            reportHeadears = reportHeadears.Substring(0, reportHeadears.Length - 1);
+             //清除Headears中最后一个;
+             reportHeadears = reportHeadears.Substring(0, reportHeadears.Length - 1);
             //清除from中sql最后一个,
-            reportSql_from = reportSql_from.Substring(0, reportSql_from.Length - 1);
+            reportSql_from = reportSql_from.Substring(0, reportSql_from.Length - 1); 
             //清除where中sql最后一个and
-            reportSql_where = reportSql_where.Substring(0, reportSql_where.Length - 4);
+            reportSql_where = reportSql_where.HasValue() ? "\n Where "+reportSql_where.Substring(0, reportSql_where.Length - 4):"";
             //清除reportTableName中最后一个-
             reportTableName = reportTableName.Substring(0, reportTableName.Length - 1);
+      
             //赋值
             tb_reportName.Text = DateTime.Now.Random();
             tb_reportId.Text = string.Format("{0}.{1}.{2}", reportDataBase, DateTime.Now.Random().Substring(0,3), tb_reportName.Text);
             rtb_headears.Text = reportHeadears;
             tb_columToShow.Text = reportColumToShow;
             #region 不更新CheckError和CheckPass状态的where子句
-            if (_checkState == CheckStateEnum.CheckError|| _checkState == CheckStateEnum.CheckPass)
+           /* if (_checkState == CheckStateEnum.CheckError|| _checkState == CheckStateEnum.CheckPass)
             {
                 var oldSql = rtb_sql.Text;
                 var indexOfWhere = oldSql.ToLower().IndexOf("where", StringComparison.Ordinal);
@@ -277,9 +256,9 @@ namespace CodeTool
                     var oldSqlOfWhere = oldSql.Substring(indexOfWhere, oldSql.Length - indexOfWhere);
                     reportSql_where = oldSqlOfWhere;
                 }
-            }
+            }*/
             #endregion
-            rtb_sql.Text = string.Format("{0} {1} {2}", reportSql_select, reportSql_from, reportSql_where);*/
+            rtb_sql.Text = string.Format("{0} {1} {2}", reportSql_select, reportSql_from, reportSql_where);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -349,6 +328,7 @@ namespace CodeTool
                 
                 e.Node.Nodes.AddRange(
                     NewNodesWithEmptyChild(SQL_DATABASE.ExecuteQuery().
+                    Where(a=> cbItems.Contains(a[0])).
                     Select(row
                     => row[0]).ToArray()));
                 //MessageBox.Show("正在获取数据库"+e.Node.Text + e.Action.ToString());
@@ -707,6 +687,113 @@ namespace CodeTool
         private void bt_add_Click(object sender, EventArgs e)
         {
             ChangeStateTo(FormStateEnum.AddReport);
+        }
+
+        private void lv_colums_KeyDown(object sender, KeyEventArgs e)
+        {
+            //按键过滤
+            var key = e.KeyCode.ToString().ToLower();
+            if (!(key == "w" || key == "s" || key == "a" || key == "d" || key == "e"))
+                return;
+            //按键判断
+            int moveUp=0;
+            int showThis=0;
+            int editThis=0;
+            switch (key)
+            {
+                case "w":
+                    moveUp = 1;
+                    break;
+                case "s":
+                    moveUp = 2;
+                    break;
+                case "a":
+                    showThis = 1;
+                    break;
+                case "d":
+                    showThis = 2;
+                    break;
+                case "e":
+                    editThis = 1;
+                    break;
+                default:
+                    moveUp = 0;
+                    showThis = 0;
+                    editThis = 0;
+                    break;
+            }
+           
+           
+            var items = (ListView)sender;
+            if (items.SelectedItems.Count > 0)
+            {
+                //定位
+                var selectItem = items.SelectedItems[0];
+                for (var index=0 ;index< lv_colums.Items.Count;index++)
+                {
+                    var item = lv_colums.Items[index];
+                    if (item.Text.ToLower() == selectItem.Text.ToLower())//匹配
+                    {
+                        //编辑
+                        if (editThis == 1)
+                        {
+                            Rectangle rect = Screen.GetWorkingArea(this);
+                            item.SubItems[2].Text = Interaction.InputBox("请输入修改后的字段说明",
+                                "修改字段说明", item.SubItems[2].Text, rect.Width/3, rect.Height/3).CheckValue(item.SubItems[2].Text);
+                        }
+                        //显示/不显示
+                        if (showThis == 1)
+                        {
+                            item.SubItems[4].Text = true.ToString();
+                        }else if (showThis == 2)
+                        {
+                            item.SubItems[4].Text = false.ToString();
+                        }
+                        //上移/下移
+                        var currSeq = item.SubItems[5].Text;
+                        if (moveUp==1)
+                        {
+                            if (index > 0)
+                            {
+                                var preSeq = lv_colums.Items[index - 1].SubItems[5].Text;
+                                item.SubItems[5].Text = preSeq;
+                                lv_colums.Items[index - 1].SubItems[5].Text = currSeq;
+                            }
+                            else
+                            {
+                                TipInfo("已经移到最上面了！");
+                            }
+                        }
+                        else if (moveUp == 2)
+                        {
+                            if (index < lv_colums.Items.Count-1)
+                            {
+                                var afterSeq = lv_colums.Items[index + 1].SubItems[5].Text;
+                                item.SubItems[5].Text = afterSeq;
+                                lv_colums.Items[index + 1].SubItems[5].Text = currSeq;
+                            }
+                            else
+                            {
+                                TipInfo("已经移到最下面了！");
+                            }
+                        }
+                        
+                       
+                    }
+                }
+                //刷新
+                FreshListView(lv_colums);
+                Step2();
+            }
+           
+        }
+        protected override void FreshListView(ListView lv)
+        {
+            if (lv.Items.Count == 0)
+            {
+                dbName = "";
+            }
+            base.FreshListView(lv);
         }
     }
 }

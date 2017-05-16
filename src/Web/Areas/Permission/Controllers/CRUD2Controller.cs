@@ -25,11 +25,20 @@ namespace Web.Areas.Permission.Controllers
         private IRepository<role_group_relation> _roleGroupRelation;
         private IRepository<user_group> _userGroup;
         private IRepository<user_group_relation> _userGroupRelation;
+        private IRepository<orgnization> _orgnization;
+        private IRepository<orgnization_position> _orgnizationPosition;
+        private IRepository<orgnization_type> _orgnizationType;
+        private IRepository<position> _position;
+        private IRepository<position_type> _positionType;
+        private IRepository<user_orgnization> _userOrgnization;
+        private IRepository<user_position> _userPosition;
+
+
         public CRUD2Controller(IRepository<button> funcObject, IRepository<menu> module,
             IRepository<role_button_forbid> roleFuncObjForbid, IRepository<role_menu> roleModule,
             IRepository<role> role, IRepository<permission_user> user,
             IRepository<user_role> userRole, IRepository<role_group> roleGroup, IRepository<user_group> userGroup,
-            IRepository<role_group_relation> roleGroupRelation, IRepository<user_group_relation> userGroupRelation, IPermmisionService iPermmisionService)
+            IRepository<role_group_relation> roleGroupRelation, IRepository<user_group_relation> userGroupRelation, IPermmisionService iPermmisionService, IRepository<orgnization> orgnization, IRepository<orgnization_position> orgnizationPosition, IRepository<orgnization_type> orgnizationType, IRepository<position> position, IRepository<position_type> positionType, IRepository<user_orgnization> userOrgnization, IRepository<user_position> userPosition)
         {
             _button = funcObject;
             _menu = module;
@@ -43,8 +52,15 @@ namespace Web.Areas.Permission.Controllers
             _roleGroupRelation = roleGroupRelation;
             _userGroupRelation = userGroupRelation;
             _iPermmisionService = iPermmisionService;
+            _orgnization = orgnization;
+            _orgnizationPosition = orgnizationPosition;
+            _orgnizationType = orgnizationType;
+            _position = position;
+            _positionType = positionType;
+            _userOrgnization = userOrgnization;
+            _userPosition = userPosition;
         }
-
+        //AddOrgnization
         // GET: /Permission/CRUD2/
 
         public ActionResult Index()
@@ -59,6 +75,33 @@ namespace Web.Areas.Permission.Controllers
             });
             return View();
         }
+        #region 用户组
+        // GET: Permision2/CRUD2/UpdateOrgnization
+        public ActionResult UpdateOrgnization(string id)
+        {
+            InitForm("机构信息");
+            return View(id.HasValue() ? 
+                _orgnization.Find(id):
+                new orgnization() {orgnization_id = DateTime.Now.Random()});
+        }
+
+        // Post:  Permision2/CRUD2/UpdateOrgnization
+        [HttpPost]
+        public ActionResult UpdateOrgnization(orgnization m)
+        {
+            if (ModelState.IsValid)
+            {
+                return Alert(_orgnization.Update(m) ? "提交成功" : "提交失败");
+            }
+            else
+            {
+                InitForm("机构信息");
+                return View(m);
+            }
+        }
+
+        #endregion
+
 
         #region 用户组
         public ActionResult AddUserGroup()

@@ -38,7 +38,7 @@ $(document).ready(function () {
                 setValue: function (input, value) {
                     var select = $(input);
                     select.find('option').filter(function () {
-                        return $(this).val() == value;
+                        return $(this).val() === value;
                     }).attr('selected', true);
                     return select;
                 }
@@ -75,7 +75,7 @@ $(document).ready(function () {
 
             $.each(value, function(i, v)
             {
-                if(i == 0)
+                if(i === 0)
                 {
                     lie.push(v);
                 }
@@ -100,7 +100,7 @@ $(document).ready(function () {
         $.each($.parseJSON(obj), function (index, value) {
 
             $.each(value, function (i, v) {
-                if (i == 0) {
+                if (i === 0) {
                     lie.push(v);
                 }
                 else {
@@ -224,7 +224,7 @@ function selfdefinition(lie, type)
                 setValue: function (input, value) {
                     var select = $(input);
                     select.find('option').filter(function () {
-                        return $(this).val() == value;
+                        return $(this).val() === value;
                     }).attr('selected', true);
                     return select;
                 }

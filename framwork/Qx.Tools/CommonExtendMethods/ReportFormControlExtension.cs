@@ -18,34 +18,53 @@ namespace Qx.Tools.CommonExtendMethods
             return controls;
         }
       
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, string value="", string id="")
+        //提示
+        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
+            string lable, string value="", string id="",
+            string regex = "", string inputTip = "", string errorTip = "")
         {
-            var cfg=new FormControlConfig(lable, id,  value,-1);
+            var cfg=new FormControlConfig(lable, id,  value,-1, regex, inputTip, errorTip);
             return Add(controls,cfg);
         }
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, FormControlType type, string value = "", string id = "")
+
+        //按钮
+        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
+            string lable, FormControlType type, 
+            string value = "", string id = "",
+            string regex = "", string inputTip = "", string errorTip = "")
         {
            
-            var cfg = new FormControlConfig(lable, id, value, type,-1);
+            var cfg = new FormControlConfig(lable, id, value, type,-1, regex, inputTip, errorTip);
             return Add(controls, cfg);
         }
         //tip
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, FormControlType type)
+        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
+            string lable, FormControlType type )
         {
             var value = "";
             var id = "";
-            return Add(controls, lable, type, value, id);
+            var regex = "";
+            var inputTip = "";
+            var errorTip = "";
+            return Add(controls, lable, type, value, id, regex, inputTip, errorTip);
         }
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, List<DropDownListItem> items, string value = "", string id = "")
+        //下拉
+        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
+            string lable, List<DropDownListItem> items, string value = "", string id = "",
+            string regex = "", string inputTip = "", string errorTip = "")
         {
            
-            var cfg = new FormControlConfig(lable, id, value, items,-1);
+            var cfg = new FormControlConfig(lable, id, value, items,-1, regex, inputTip, errorTip);
             return Add(controls, cfg);
         }
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, string name, FormControlType type,
-            string crossWidth, List<DropDownListItem> items, string value = "", string id = "")
+        //其他
+        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
+            string lable, string name, FormControlType type,
+            string crossWidth, List<DropDownListItem> items,
+            string value = "", string id = "",
+            string regex = "", string inputTip = "", string errorTip = "")
         {
-            var cfg = new FormControlConfig(lable, id, name, value, type, crossWidth, items,-1);
+            var cfg = new FormControlConfig(lable, id, name, value, type, crossWidth, items,-1,regex,inputTip,errorTip);
             return Add(controls, cfg);
         }
         #region 兼容 SelectListItem

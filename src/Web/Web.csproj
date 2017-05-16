@@ -9999,6 +9999,7 @@
     <Content Include="Content\AngularJS\node_modules\angular-messages\LICENSE.md" />
     <Content Include="Content\AngularJS\node_modules\angular-messages\package.json" />
     <Content Include="Content\AngularJS\node_modules\angular-messages\README.md" />
+    <Content Include="Areas\Permission\Views\CRUD2\UpdateOrgnization.cshtml" />
     <None Include="Properties\PublishProfiles\pub.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />

@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using qx.permmision.v2.Entity;
 using Qx.Tools.CommonExtendMethods;
+using Qx.Tools.Exceptions.Form;
+
 namespace Test
 {
     class Program
@@ -24,17 +27,18 @@ namespace Test
         }
         static void Main(string[] args)
         {
-            Console.Write(Sql_Query_Template(@"
-select 
-StuClass.StuClassID as 班级ID,
-StuClassName as 班级名称,
-BatchID as 迎新批次,
-count(StuClass_NewStudent.StuClassID) as 总人数
-from StuClass,StuClass_NewStudent 
-where StuClass.StuClassID=StuClass_NewStudent.StuClassID
-group by StuClass_NewStudent.StuClassID,StuClassName,BatchID,StuClass.StuClassID
-
-", 1,10));
+            // Console.Write("角色ID#ll^[0-9]*$#rr".PickUp("#ll", "#rr"));
+            try
+            {
+                var db = new MyContext();
+                var role = (new role() {name = "test", role_id = DateTime.Now.Random()});
+                db.SaveAdd(role);
+            }
+            catch (FormValitationException ex)
+            {
+                Console.Write(ex.ValidationErrors.FirstOrDefault().ErrorMessage);
+            }
+             
         }
     }
 }

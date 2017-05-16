@@ -16,7 +16,7 @@ namespace qx.permmision.v2.Entity
         [StringLength(100)]
         public string user_id { get; set; }
 
-        [StringLength(10)]
+        [StringLength(100)]
         public string nick_name { get; set; }
 
         [Required]

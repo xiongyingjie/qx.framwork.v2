@@ -13,16 +13,17 @@ namespace qx.permmision.v2.Entity
         public string role_Button_forbid_id { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [StringLength(100)]
         public string role_id { get; set; }
 
         [Required]
         [StringLength(60)]
         public string button_id { get; set; }
 
-        public DateTimeOffset? expire_time { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? expire_time { get; set; }
 
-        [StringLength(10)]
+        [StringLength(100)]
         public string note { get; set; }
 
         public virtual button button { get; set; }

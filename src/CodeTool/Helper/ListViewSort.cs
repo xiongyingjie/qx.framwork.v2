@@ -15,7 +15,7 @@ namespace CodeTool.Helper
 
         public ListViewSort()
         {
-            col = 5;
+            col = 1;
         }
 
         public ListViewSort(int column, object Desc)
@@ -26,9 +26,9 @@ namespace CodeTool.Helper
 
         public int Compare(object x, object y)
         {
-            int tempInt = String.Compare(((ListViewItem) x).SubItems[col].Text, ((ListViewItem) y).SubItems[col].Text);
-            if (descK) return -tempInt;
-            else return tempInt;
+            var tempInt = int.Parse(((ListViewItem)x).SubItems[col].Text)-int.Parse(((ListViewItem)y).SubItems[col].Text);
+            //var tempInt = String.Compare(((ListViewItem) x).SubItems[col].Text, ((ListViewItem) y).SubItems[col].Text);
+            return descK ? -tempInt : tempInt;
         }
     }
 }

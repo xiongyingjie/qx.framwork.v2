@@ -18,8 +18,33 @@ namespace Web.Areas.Permission.Controllers
             _role = role;
             _user = user;
         }
+
+
+        //Permission/Admin2/OrgnizationList
+        public ActionResult OrgnizationList(string reportId, string Params)
+        {
+            if (!reportId.HasValue())
+            {
+                return RedirectToAction("OrgnizationList",
+                    new
+                    {
+                        reportId = "qx.permmision.v2.Z3F.机构管理",
+                        Params = ";",
+                        pageIndex = 1,
+                        perCount = 10
+                    });
+            }
+
+            Search.Add("机构名称");
+            InitReport("机构管理", "/Permission/CRUD2/UpdateOrgnization", "", true, "qx.permmision.v2");
+            return ReportView();
+        }
+
+
+
+
         //Permision2/Admin2/UserGroupList
-        public ActionResult UserGroupList(string reportId, string Params)
+        public ActionResult UserGroupList(string reportId, string Params) 
         {
             if (!reportId.HasValue())
             {
