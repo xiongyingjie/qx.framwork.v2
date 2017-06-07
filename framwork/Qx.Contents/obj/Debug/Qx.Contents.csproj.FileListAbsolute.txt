@@ -1,9 +1,0 @@
-E:\git\qx.framwork.v2\framwork\Qx.Contents\bin\Debug\Qx.Contents.dll.config
-E:\git\qx.framwork.v2\framwork\Qx.Contents\bin\Debug\Qx.Contents.dll
-E:\git\qx.framwork.v2\framwork\Qx.Contents\bin\Debug\Qx.Contents.pdb
-E:\git\qx.framwork.v2\framwork\Qx.Contents\obj\Debug\Qx.Contents.Migrations.ChangeDbName.resources
-E:\git\qx.framwork.v2\framwork\Qx.Contents\obj\Debug\Qx.Contents.csproj.GenerateResource.Cache
-E:\git\qx.framwork.v2\framwork\Qx.Contents\obj\Debug\Qx.Contents.dll
-E:\git\qx.framwork.v2\framwork\Qx.Contents\obj\Debug\Qx.Contents.pdb
-E:\git\qx.framwork.v2\framwork\Qx.Contents\bin\Debug\Newtonsoft.Json.dll
-E:\git\qx.framwork.v2\framwork\Qx.Contents\obj\Debug\Qx.Contents.csprojResolveAssemblyReference.cache
