@@ -303,7 +303,7 @@ namespace Web.Controllers
 
         public ActionResult Form()
         {
-            var temp = _contents.GetTableValue("10001", "我是relationKeyId");
+            var temp = _contents.GetTableValue("10001", "123");
             InitForm("FormDemo");
             return View(Form_M.ToViewModel(1, "我是string", DateTime.Now, 1.23f, 2.42343243432434d, 'a'));
         }
@@ -313,7 +313,7 @@ namespace Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                Request.UpdateTable("10001", "我是relationKeyId");
+                Request.UpdateTable("10001", "123");
                 return Alert("提交成功");
             }
             else
