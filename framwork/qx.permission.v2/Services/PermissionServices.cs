@@ -33,7 +33,7 @@ namespace qx.permmision.v2.Services
             var myMenus1 = Db.user_role.Where(a => a.user_id == userId).
               SelectMany(b => b.role.role_menu.Where(z=>z.include_children==1).Select(c => c.menu)).
               ToList().
-              Distinct(CommonExtendMethods.Equality<menu>.CreateComparer(z => z.menu_id)).//去重
+              Distinct(this.CreateEqualityComparer<menu, string>(z => z.menu_id)).//去重
               ToList();
 
             //补全缺失子菜单
@@ -63,8 +63,7 @@ namespace qx.permmision.v2.Services
 
            //去重后的所有子菜单
             var myAllChilren =
-                myMenus0ExceptRoot.Distinct(CommonExtendMethods.Equality<menu>.
-                CreateComparer(z => z.menu_id)).//去重
+                myMenus0ExceptRoot.Distinct(this.CreateEqualityComparer<menu,string>(z => z.menu_id)).//去重
                 OrderBy(c => c.sequence).//排序
                 ToList();
 

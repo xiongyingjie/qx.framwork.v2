@@ -61,8 +61,8 @@ namespace CodeTool.Extension
         {
             var tables= list.Select(a => new TableModel() {TableName = a.TableName});
             var foreginables = list.Select(a => new TableModel() { TableName = a.ForeginTableName });
-            return  tables.Union(foreginables, 
-                CommonExtendMethods.Equality<TableModel>.
+            return  tables.Union(foreginables,
+                Qx.Tools.Equality<TableModel>.
                 CreateComparer(x => x.TableName)).
                 ToList();
         }

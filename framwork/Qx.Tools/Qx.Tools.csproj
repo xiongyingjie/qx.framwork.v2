@@ -78,7 +78,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountContext.cs" />
+    <Compile Include="CommonExtendMethods\ListListStringExtension.cs" />
+    <Compile Include="CommonExtendMethods\ListSelectListItemExtension.cs" />
+    <Compile Include="CommonExtendMethods\DoubleExtension.cs" />
+    <Compile Include="CommonExtendMethods\HttpExtension.cs" />
+    <Compile Include="CommonExtendMethods\EntityExtension.cs" />
+    <Compile Include="CommonExtendMethods\StringExtension.cs" />
+    <Compile Include="CommonExtendMethods\TypeExtension.cs" />
+    <Compile Include="CommonExtendMethods\IntExtension.cs" />
+    <Compile Include="CommonExtendMethods\DateTimeExtension.cs" />
+    <Compile Include="CommonExtendMethods\ListTExtension.cs" />
+    <Compile Include="CommonExtendMethods\ListStringExtension.cs" />
     <Compile Include="CommonExtendMethods\ReportFormControlExtension.cs" />
+    <Compile Include="Comparison.cs" />
+    <Compile Include="Equality.cs" />
     <Compile Include="Exceptions\Form\FormValitationException.cs" />
     <Compile Include="Exceptions\Report\ReportConfigErrorException.cs" />
     <Compile Include="Exceptions\Report\ReportNotFoundException.cs" />

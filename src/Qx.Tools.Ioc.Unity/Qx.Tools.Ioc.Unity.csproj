@@ -53,8 +53,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DailyReport.cs" />
-    <Compile Include="Models\Invoicing\SellRecord.cs" />
     <Compile Include="UnityIoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnityDependencyResolver.cs" />
