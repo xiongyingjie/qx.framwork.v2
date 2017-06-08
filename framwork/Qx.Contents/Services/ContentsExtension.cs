@@ -33,48 +33,48 @@ namespace Qx.Contents.Services
             //判断控件类型
             table.Columns.ToList().ForEach(t =>
             {
-                switch (t.DateTypeID)
+                var temp=new MvcHtmlString("");
+                switch (t.GetPageControlType())
                 {
-                    case "file":
+                    case PageControlTypeEnum.File:
                     {
-                        var a = htmlHelper.File(t.ColumnName, t.ColumnID, t.ColumnID, SAVE_DIR, "请上传" + t.ColumnName);
-                        dest.Append(htmlHelper.File(t.ColumnName, t.ColumnID, t.ColumnID, SAVE_DIR, "请上传" + t.ColumnName));
-                        break;
+                         temp = htmlHelper.File(t.ColumnName, t.ColumnID, t.ColumnID, SAVE_DIR, "请上传" + t.ColumnName);
+                         break;
                     }
-                        
-                    case "DateTime":
+                    case PageControlTypeEnum.RichTextBox:
+                        {
+                            temp = htmlHelper.RichBox(t.ColumnName, t.ColumnID, t.Value);
+                            break;
+                        }
+                    case PageControlTypeEnum.Date:
                     {
                         throw new NotImplementedException("日期时间控件->>>请提醒英杰加入拓展，详见Demo页");
                     }
-                    case "string":
+                    case PageControlTypeEnum.Datetime:
                     {
-                        var a = htmlHelper.TimeFor(expression, tipString);
-                        dest.Append(htmlHelper.InputFor(expression, tipString));
+                        temp= htmlHelper.TimeFor(expression, tipString);
                         break;
                     }
-                    case "html":
-                    {
-                        throw new NotImplementedException("富文本控件->>>请提醒英杰加入拓展，详见Demo页");
-                    }
-                    case "decemal":
+                 
+                    case PageControlTypeEnum.Number:
                     {
                         throw new NotImplementedException("数值控件->>>请提醒英杰加入拓展，详见Demo页");
                     }
-                    case "url":
+                    case PageControlTypeEnum.DropDownList:
                     {
-                        throw new NotImplementedException("URL输入框控件->>>请提醒英杰加入拓展，详见Demo页");
+                        throw new NotImplementedException("下拉输入框控件->>>请提醒英杰加入拓展，详见Demo页");
                     }
-                    case "color":
+                    case PageControlTypeEnum.Color:
                     {
                         throw new NotImplementedException("颜色输入框控件->>>请提醒英杰加入拓展，详见Demo页");
                     }
                         
                     default:
-                        dest.Append(htmlHelper.InputFor(expression, tipString));
+                        temp=htmlHelper.InputFor(expression, tipString);
                         break;
                 }
+                 dest.Append(temp);
             });
-
             return new MvcHtmlString(dest.ToString());
         }
 

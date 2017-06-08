@@ -20,6 +20,7 @@ namespace Qx.Report.Interfaces
         List<List<string>> CrossDb(string id, string parms, List<List<string>> dataRows, List<CrossDbParam> paramList, int pageIndex = 1, int perCount = 10);
         List<List<string>> Test(ReportModel report, string parms, string dbConnStringKey, int pageIndex = 1, int perCount = 10);
         ReportViewModel ToView(string id, string parms, string dbConnStringKey, int pageIndex = 1, int perCount = 10);
+        ReportViewModel ToView(string id, string parms, List<List<string>> dataSource, int pageIndex = 1, int perCount = 10);
 
     }
 }

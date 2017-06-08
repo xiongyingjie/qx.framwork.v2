@@ -9,7 +9,8 @@ namespace Qx.Tools.Models.Report
 
     public class ReportControlConfig: BaseControlConfig
     {
-        public ReportControlConfig(string lable, string id, string name, string value, FormControlType type, string crossWidth, List<DropDownListItem> items, int sequence) : base(lable, id, name, value, type, crossWidth, items, sequence)
+        public ReportControlConfig(string lable, string id, string name, string value, FormControlType type, string crossWidth, List<DropDownListItem> items, int sequence)
+            : base(lable, id, name, value, type, crossWidth, items, sequence)
         {
         }
 

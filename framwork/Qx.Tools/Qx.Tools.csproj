@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountContext.cs" />
+    <Compile Include="CommonExtendMethods\FormControlExtension.cs" />
     <Compile Include="CommonExtendMethods\ListListStringExtension.cs" />
     <Compile Include="CommonExtendMethods\ListSelectListItemExtension.cs" />
     <Compile Include="CommonExtendMethods\DoubleExtension.cs" />
@@ -96,12 +97,16 @@
     <Compile Include="Exceptions\Report\ReportConfigErrorException.cs" />
     <Compile Include="Exceptions\Report\ReportNotFoundException.cs" />
     <Compile Include="Exceptions\Report\SqlExpressionErrorException.cs" />
+    <Compile Include="Models\BaseControlConfig.cs" />
+    <Compile Include="Models\FormControlType.cs" />
+    <Compile Include="Models\Form\FormConfig.cs" />
+    <Compile Include="Models\Form\FormControlConfig.cs" />
     <Compile Include="Models\Report\CrossDbParam.cs" />
     <Compile Include="Models\Report\DropDownListItem.cs" />
     <Compile Include="Models\Report\FormControlConfig.cs" />
-    <Compile Include="Models\Report\FormControlType.cs" />
     <Compile Include="Models\Report\PageParam.cs" />
     <Compile Include="Models\Report\Report.cs" />
+    <Compile Include="Models\Report\ReportControlConfig.cs" />
     <Compile Include="Models\Report\ReportViewModel.cs" />
     <Compile Include="QxClass\HttpRequest.cs" />
     <Compile Include="CommonExtendMethods\CommonExtendMethods.cs" />

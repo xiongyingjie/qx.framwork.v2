@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Qx.Tools.Models;
 using Qx.Tools.Models.Report;
 
 namespace Qx.Tools.CommonExtendMethods
@@ -10,72 +11,53 @@ namespace Qx.Tools.CommonExtendMethods
     {
 
         //base
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, FormControlConfig newControl)
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, ReportControlConfig newControl)
         {
             newControl.id = newControl.id.HasValue() ? newControl.id : DateTime.Now.Random();
             newControl.sequence = controls.Count + 1;
             controls.Add(newControl);
             return controls;
         }
-      
-        //提示
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
-            string lable, string value="", string id="",
-            string regex = "", string inputTip = "", string errorTip = "")
-        {
-            var cfg=new FormControlConfig(lable, id,  value,-1, regex, inputTip, errorTip);
-            return Add(controls,cfg);
-        }
 
-        //按钮
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
-            string lable, FormControlType type, 
-            string value = "", string id = "",
-            string regex = "", string inputTip = "", string errorTip = "")
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, string value = "", string id = "")
         {
-           
-            var cfg = new FormControlConfig(lable, id, value, type,-1, regex, inputTip, errorTip);
+            var cfg = new ReportControlConfig(lable, id, value, -1);
+            return Add(controls, cfg);
+        }
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, FormControlType type, string value = "", string id = "")
+        {
+
+            var cfg = new ReportControlConfig(lable, id, value, type, -1);
             return Add(controls, cfg);
         }
         //tip
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
-            string lable, FormControlType type )
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, FormControlType type)
         {
             var value = "";
             var id = "";
-            var regex = "";
-            var inputTip = "";
-            var errorTip = "";
-            return Add(controls, lable, type, value, id, regex, inputTip, errorTip);
+            return Add(controls, lable, type, value, id);
         }
-        //下拉
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
-            string lable, List<DropDownListItem> items, string value = "", string id = "",
-            string regex = "", string inputTip = "", string errorTip = "")
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, List<DropDownListItem> items, string value = "", string id = "")
         {
-           
-            var cfg = new FormControlConfig(lable, id, value, items,-1, regex, inputTip, errorTip);
+
+            var cfg = new ReportControlConfig(lable, id, value, items, -1);
             return Add(controls, cfg);
         }
-        //其他
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, 
-            string lable, string name, FormControlType type,
-            string crossWidth, List<DropDownListItem> items,
-            string value = "", string id = "",
-            string regex = "", string inputTip = "", string errorTip = "")
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, string name, FormControlType type,
+            string crossWidth, List<DropDownListItem> items, string value = "", string id = "")
         {
-            var cfg = new FormControlConfig(lable, id, name, value, type, crossWidth, items,-1,regex,inputTip,errorTip);
+            var cfg = new ReportControlConfig(lable, id, name, value, type, crossWidth, items, -1);
             return Add(controls, cfg);
         }
         #region 兼容 SelectListItem
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, List<SelectListItem> items, string value = "", string id = "")
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, List<SelectListItem> items, string value = "", string id = "")
         {
             return Add(controls, lable, items.ToDropDownListItem(), value, id);
         }
-        public static List<FormControlConfig> Add(this List<FormControlConfig> controls, string lable, string name, FormControlType type,
+        public static List<ReportControlConfig> Add(this List<ReportControlConfig> controls, string lable, string name, FormControlType type,
             string crossWidth, List<SelectListItem> items, string value = "", string id = "")
         {
-            return Add(controls, lable, name, type, crossWidth,items.ToDropDownListItem(), value, id);
+            return Add(controls, lable, name, type, crossWidth, items.ToDropDownListItem(), value, id);
         }
         #endregion
     }

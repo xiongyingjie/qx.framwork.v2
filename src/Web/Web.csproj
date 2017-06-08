@@ -15,7 +15,7 @@
     <AssemblyName>Web</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -10054,9 +10054,6 @@
     <Content Include="Views\Templates\_KindEditor.cshtml" />
     <Content Include="Views\Templates\_List.cshtml" />
     <Content Include="Views\Templates\_Select.cshtml" />
-    <Content Include="Views\Shared\_PandaFormLayout.cshtml" />
-    <Content Include="Views\Shared\_PandaLayout.cshtml" />
-    <Content Include="Views\Shared\_PandaLayout_Menu.cshtml" />
     <Content Include="Views\Shared\_Report.cshtml" />
     <Content Include="Views\Report\Add.cshtml" />
     <Content Include="Views\Report\Edit.cshtml" />
@@ -10068,7 +10065,6 @@
     <Content Include="Views\Demo\Report2.cshtml" />
     <Content Include="Views\Shared\_Report2.cshtml" />
     <Content Include="Views\Demo\Form.cshtml" />
-    <Content Include="Views\Shared\_PandaReportLayout.cshtml" />
     <Content Include="Views\Shared\_SbLayout.cshtml" />
     <Content Include="Views\Shared\_SbFormLayout.cshtml" />
     <Content Include="Views\Shared\_SbReportLayout.cshtml" />
@@ -10164,6 +10160,11 @@
     <Content Include="Views\F2Demo\FormView.cshtml" />
     <Content Include="Views\F2Demo\Map.cshtml" />
     <Content Include="Views\F2Demo\ReportDemo.cshtml" />
+    <Content Include="Views\Shared\_Sb2FormLayout.cshtml" />
+    <Content Include="Views\Shared\_Sb2FormViewLayout.cshtml" />
+    <Content Include="Views\Shared\_Sb2ReportLayout.cshtml" />
+    <Content Include="Views\Shared\_src_css_sb2.cshtml" />
+    <Content Include="Views\Shared\_src_js_sb2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -10283,7 +10284,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>29128</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:12128/</IISUrl>
+          <IISUrl>http://cloud.52xyj.cn</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

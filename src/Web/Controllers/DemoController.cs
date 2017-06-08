@@ -303,7 +303,7 @@ namespace Web.Controllers
 
         public ActionResult Form()
         {
-            var temp = _contents.GetTableValue("10001", "123");
+            var temp = _contents.GetTableValue("demo", "123");
             InitForm("FormDemo");
             return View(Form_M.ToViewModel(1, "我是string", DateTime.Now, 1.23f, 2.42343243432434d, 'a'));
         }

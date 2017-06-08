@@ -110,9 +110,12 @@ namespace Web.Controllers
         }
         //Report/Report2
         [HttpPost]
-        public ActionResult Report2(string ReportID, string Params, string dbConnStringKey, int pageIndex = 1, int perCount = 10)
+        public ActionResult Report2(string ReportID, string Params, List<List<string>> dataSource,
+         string dbConnStringKey, int pageIndex = 1, int perCount = 10)
         {
-            var config = reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount);
+            var config = dataSource==null ? 
+                reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount) :
+                reportServices.ToView(ReportID, Params, dataSource, pageIndex, perCount);
             return Json(config, JsonRequestBehavior.AllowGet);        
         }
         private string ToVirtualPath(string path)

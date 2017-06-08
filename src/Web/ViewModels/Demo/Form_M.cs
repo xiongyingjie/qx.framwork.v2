@@ -40,7 +40,7 @@ namespace Web.ViewModels.Demo
                         Text = "女",Value = "2"
                     }
                 },
-                _TestContentFile = "10001"//TableId
+                _TestContentFile = "demo"//TableId
             };
         }
         [Required]

@@ -330,7 +330,7 @@ namespace Web.Controllers.Base
                // var dataSource = _reportServices.ToHtml(ReportID, Params, dbConnStringKey, pageIndex, perCount);
                 V("dbConnStringKey", dbConnStringKey);
                 V("deleteLink", deleteLink);
-                V("formControlConfig", Search.Serialize());
+               
                 _InitReport(ReportID, Params, new List<List<string>>(), 
                     Title, AddLink,
                     ExtraParam, showDeafultButton,
@@ -349,6 +349,7 @@ namespace Web.Controllers.Base
             V("ExtraParam", ExtraParam); V("showDeafultButton", showDeafultButton);
             V("pageIndex", pageIndex ); V("perCount", perCount);//分页参数
             V("Url", CurrentUrl()); V("UserID", DataContext.UserID);
+            V("formControlConfig", Search.Serialize());
             _BaseInitLayout(Title, "_Sb2ReportLayout");
         }
 

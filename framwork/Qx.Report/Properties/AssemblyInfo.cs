@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Qx.Report")]
 [assembly:
     AssemblyDescription(
-"2.1重大更新，依赖于iqx.tool2.1可能不兼容旧版本/2.0.0.4 增加跨库函数CrossDb/2.0.0.3 增加对跨数据库的支持/2.0.0.2操作类配置新增对运算符的支持/2.0.0.1增加报表layout,简化报表View/2.0.0.0独立框架/1.0.3新增操作列转义字符/1.0.2修正报表异常提示,新增报表数据连接串参数/1.0.1.0重新制定参数规则，新增无条件2个参数")]
+"2.1.0.1增加基于service的方式/2.1重大更新，依赖于iqx.tool2.1可能不兼容旧版本/2.0.0.4 增加跨库函数CrossDb/2.0.0.3 增加对跨数据库的支持/2.0.0.2操作类配置新增对运算符的支持/2.0.0.1增加报表layout,简化报表View/2.0.0.0独立框架/1.0.3新增操作列转义字符/1.0.2修正报表异常提示,新增报表数据连接串参数/1.0.1.0重新制定参数规则，新增无条件2个参数")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Qx.Report")]
@@ -37,5 +37,5 @@ using System.Runtime.InteropServices;
 // 方法是按如下所示使用“*”: 
 // [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("2.1")]
-[assembly: AssemblyFileVersion("2.1")]
+[assembly: AssemblyVersion("2.1.0.1")]
+[assembly: AssemblyFileVersion("2.1.0.1")]

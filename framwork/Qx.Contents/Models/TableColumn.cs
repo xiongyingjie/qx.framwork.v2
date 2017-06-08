@@ -1,10 +1,19 @@
-﻿namespace Qx.Contents.Models
+﻿using System;
+
+namespace Qx.Contents.Models
 {
     public class TableColumn
     {
         public string ColumnID { get; set; }
         public string DateTypeID { get; set; }
         public string PageControlID { get; set; }
+
+        public PageControlTypeEnum GetPageControlType()
+        {
+            PageControlTypeEnum type;
+            Enum.TryParse(PageControlID, out type);
+            return type;
+        }
         public string PageControlName { get; set; }
         public string DateTypeName { get; set; }
         public string ColumnName { get; set; }

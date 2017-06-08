@@ -48,19 +48,20 @@ namespace Qx.Report.Services
         private List<string> _operatCol;
         private ReportModel _report;
         private ReportViewModel _reportViewModel;
-
-        public void Init(string id, string parms, string dbConnStringKey, int pageIndex , int perCount )
-        {
-            var report = GetReprot(id);
-            Init(report, parms, dbConnStringKey, pageIndex, perCount);
-        }
-
+       
+        //基于service
         public void Init(string id, string parms, List<List<string>> dataRows, int pageIndex , int perCount )
         {
             var report = GetReprot(id);
             Init(report, parms, dataRows); 
         }
-
+        //基于报表
+        public void Init(string id, string parms, string dbConnStringKey, int pageIndex, int perCount)
+        {
+            var report = GetReprot(id);
+            Init(report, parms, dbConnStringKey, pageIndex, perCount);
+        }
+        //基于报表2
         public void Init(ReportModel report, string parms, string dbConnStringKey, int pageIndex , int perCount )
         {
             //默认false,若垮库则更改
@@ -704,6 +705,18 @@ namespace Qx.Report.Services
         public ReportViewModel ToView(string id, string parms, string dbConnStringKey, int pageIndex = 1, int perCount = 10)
         {
             Init(id, parms, dbConnStringKey, pageIndex, perCount);
+            Do();
+            _reportViewModel.pageParam.pageIndex = pageIndex;
+            _reportViewModel.pageParam.perPage = perCount;
+            _reportViewModel.pageParam.title = _report.ReportName;
+            _reportViewModel.pageParam.maxIndex = 999;
+            return _reportViewModel;
+        }
+
+        public ReportViewModel ToView(string id, string parms, List<List<string>> dataSource
+            , int pageIndex = 1, int perCount = 10)
+        {
+            Init(id, parms, dataSource, pageIndex, perCount);
             Do();
             _reportViewModel.pageParam.pageIndex = pageIndex;
             _reportViewModel.pageParam.perPage = perCount;

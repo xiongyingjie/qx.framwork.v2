@@ -102,6 +102,7 @@
     <Compile Include="Models\APIJsonObject.cs" />
     <Compile Include="Models\ContentBag.cs" />
     <Compile Include="Models\HTMLElement.cs" />
+    <Compile Include="Models\PageControlTypeEnum.cs" />
     <Compile Include="Models\TableColumn.cs" />
     <Compile Include="Models\TableDesign.cs" />
     <Compile Include="Models\ContentValue.cs" />

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Qx.Report.Interfaces;
 using Qx.Tools.CommonExtendMethods;
+using Qx.Tools.Models;
 using Web.Controllers.Base;
 using Web.ViewModels.Demo;
 using Qx.Tools.Models.Report;
