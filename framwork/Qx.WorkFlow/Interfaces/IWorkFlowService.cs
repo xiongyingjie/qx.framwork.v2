@@ -1,14 +1,20 @@
-﻿using Qx.WorkFlow.Models;
+﻿using System;
+using System.Collections.Generic;
+using Qx.Tools.Interfaces;
+using Qx.WorkFlow.Models;
 
 namespace Qx.WorkFlow.Interfaces
 {
-    public interface IWorkFlowService
+    public interface IWorkFlowService : IAutoInject
     {
-        WorkFlowBag CreateInstance(string workFlowId);
+        List<WorkFlowBag> FindInstances(List<string> workFlowInstanceIdArray);
+        WorkFlowBag CreateInstance(string workFlowId, string uid, string unitId);
         WorkFlowBag FindInstance(string workFlowInstanceId);
-        MoveResult MoveNext(WorkFlowBag workFlowBag, object moveParam, string operatorId, string reason = "未填写");
-        MoveResult  MoveNext(WorkFlowBag workFlowBag, string nextNodeId, string operatorId, string reason = "未填写");
-        bool DeleteInstance(WorkFlowBag workFlowBag);
+        bool CreateAndMoveNext(WorkFlowParams param);
+        bool MoveNext(WorkFlowParams param);
+        bool DeleteInstance(WorkFlowBag workFlowBag, string operatorId, string reason = "未填写");
+        bool AbortInstance(WorkFlowBag workFlowBag, string operatorId, string reason);
+        Task GetToDo(string uid, List<string> roleList, List<string> unitList);
         bool IsFinished(WorkFlowBag workFlowBag);
     }
 }

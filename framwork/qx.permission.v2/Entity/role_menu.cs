@@ -25,7 +25,8 @@ namespace qx.permmision.v2.Entity
 
         public int include_children { get; set; }
 
-        public DateTimeOffset? expire_time { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime? expire_time { get; set; }
 
         public virtual menu menu { get; set; }
 

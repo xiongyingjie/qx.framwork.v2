@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Qx.Tools;
-using Qx.Wechat.Entity;
 
-namespace Qx.Wechat.Interfaces
+namespace qx.wechat.Interfaces
 {
   public static class WechatExtension
     {

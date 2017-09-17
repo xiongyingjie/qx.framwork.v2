@@ -53,7 +53,7 @@ namespace Qx.Tools.Models
         {
             this.id = id;
             this.name = id;
-            this.type = FormControlType.DropDownList;
+            this.type = FormControlType.Select;
             this.sequence = sequence;
             this.lable = lable;
             this.crossWidth ="1";

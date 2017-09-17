@@ -1,0 +1,22 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.AddSuggestPath_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.suggest_path_id, "")
+@Html.HiddenFor(o => o.user_id, "")
+@Html.InputFor(o => o.create_time, "", true)
+@Html.InputFor(o => o.name, "", true)
+@Html.InputFor(o => o.sequence, "", true)
+
+<div class="form-group">
+    <label class="col-md-3 control-label" for="contents">路径详情</label>
+    <div class="col-md-9">
+        <lable readonly="" class="form-control" cols="20" id="contents" name="contents" rows="2" style="width: 550px; height: 230px">
+            @(new HtmlString(Model.description))
+
+        </lable><span class="help-block"> </span>
+    </div>
+</div>

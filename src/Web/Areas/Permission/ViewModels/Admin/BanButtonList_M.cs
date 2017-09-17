@@ -1,5 +1,4 @@
-﻿using Qx.Permission.Entity;
-
+﻿using qx.permmision.v2.Entity;
 namespace Web.Areas.Permission.ViewModels.Admin
 {
     public class BanButtonList_M

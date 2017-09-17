@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>新生用品预订</title>
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript">
+         addEventListener("load", function()
+        { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
+    <!-- //Custom Theme files -->
+    <link href="~/Areas/Yxxt/Content/css/bootstrap.css" rel="stylesheet"/>
+    <link href="~/Areas/Yxxt/Content/css/style.css" rel="stylesheet"/>
+
+    <!-- js -->
+    <script src="~/Areas/Yxxt/Content/js/jquery.min.js"></script>
+
+    <script src="~/Areas/Yxxt/Content/js/bootstrap-3.1.1.min.js"></script>
+
+    <!-- //js -->
+    <!-- cart -->
+
+    <script src="~/Areas/Yxxt/Content/js/simpleCart.min.js"></script>
+    <!-- cart -->
+
+</head>
+
+<body>
+    <!--header-->
+    <div class="header">
+        <div class="container">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <h1 class="navbar-brand"><a href="#">新生用品预订</a></h1>
+                </div>
+                <!--navbar-header-->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav" style="float: right;">
+                        <ul class="nav navbar-nav">
+                            @*<li><a href="/Yxxt/Home/EditNewStu" class="">信息采集</a></li>*@
+                            @*<li><a href="/Yxxt/AutoReport/QueryChargeItem" class="">缴费查询</a></li>
+                <li><a href="/Yxxt/AutoReport/AllNewStudentGroup" class="">新生广场</a></li>
+                <li><a href="/Yxxt/AutoReport/FriendSuggest" class="">行程推荐</a></li>
+                <li><a href="/Yxxt/AutoReport/SuggestWay" class="">到校信息</a></li>*@
+                            <li class="dropdown" >
+                                <a href="@Url.Action("Products", "Web", new {area = "Yxxt"})" class="dropdown-toggle" data-toggle="dropdown">预定物品<b class="caret"></b></a>
+                                <ul class="dropdown-menu multi-column columns-4">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h4>军训用品</h4>
+                                            <ul class="multi-column-dropdown">
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="1"})">军训服装</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="2"})">水壶</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="3"})">鞋垫</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h4>生活用品</h4>
+                                            <ul class="multi-column-dropdown">
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="4"})">衣架</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="5"})">毛巾</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="6"})">收纳箱</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="7"})">洗发水</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt",id="8"})"> 蚊帐</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h4>学习用品</h4>
+                                            <ul class="multi-column-dropdown">
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "9"})">笔记本</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "10"})">笔 </a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "11"})">画板</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h4>床上用品</h4>
+                                            <ul class="multi-column-dropdown">
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "12"})">被子</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "13"})">床单</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "14"})">枕头</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "15"})">枕套</a></li>
+                                                <li><a class="list" href="@Url.Action("ProductDetail", "Web", new {area = "Yxxt", id = "16"})">小书桌</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ul>
+
+
+                    <!--/.navbar-collapse-->
+                </div>
+                <!--//navbar-header-->
+            </nav>
+            <div class="header-info">
+                <div class="header-right search-box">
+                    <a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>
+                    <div class="search">
+                        <form class="navbar-form">
+                            <input type="text" class="form-control">
+                            <button type="submit" class="btn btn-default" aria-label="Left Align">
+                                搜索
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-right login">
+                    <a href="/f2/index"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+
+                </div>
+                <div class="header-right cart">
+                    <a href="@Url.Action("Cart", "Web", new {area = "Yxxt"})"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                    <div class="cart-box">
+                        <h4>
+                            <a href="/Yxxt/Web/Cart">
+                                <span class="simpleCart_total"> ¥0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>)
+                            </a>
+                        </h4>
+                        <p><a href="javascript:;" class="simpleCart_empty">清空购物车</a>
+                        </p>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!--//header-->
+    <!--banner-->
+
+    @RenderBody()
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p>Copyright &copy; 2017 迎新网 All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

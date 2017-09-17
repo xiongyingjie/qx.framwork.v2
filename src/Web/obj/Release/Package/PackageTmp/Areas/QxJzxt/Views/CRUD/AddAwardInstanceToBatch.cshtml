@@ -1,0 +1,10 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AddAwardInstanceToBatch_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o=>o.instanceid)
+@Html.SelectFor(o => o.batchid,Model.batch)
+

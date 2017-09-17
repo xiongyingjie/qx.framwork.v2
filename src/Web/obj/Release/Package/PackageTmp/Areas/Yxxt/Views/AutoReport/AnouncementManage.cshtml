@@ -1,0 +1,17 @@
+﻿                  
+<label>
+    公告标题:&nbsp;
+    @Html.TextBox("公告标题", "", new
+       {
+           @class = "form-control input-sm",
+           PlaceHolder = "请输入要查询的公告标题"
+       })
+</label>
+<script>
+                                        function Search()
+                                           {
+                                             var Params =  v("公告标题");
+                                             return Params;
+                                           }
+
+</script>

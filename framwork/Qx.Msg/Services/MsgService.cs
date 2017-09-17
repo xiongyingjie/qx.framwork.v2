@@ -20,6 +20,8 @@ namespace Qx.Msg.Services
         //    _msg_type = msg_type;
         //    _msg_send_record =msg_send_record;
         //}
+
+            //添加联系人
        public  bool AddContacter(string loginid, string membersId)
         {
             contact contact = new contact()
@@ -30,11 +32,16 @@ namespace Qx.Msg.Services
             };
             return Db.SaveAdd(contact);
         }
+
+        //获取群组人数
         public int GetGroupNum(string groupId)
         {
             return Db.group_member.Count(a => a.GroupID == groupId);
         }
-        public List<List<string>> MyContacter(string loginid, string name)//我的联系人
+
+
+        //我的联系人
+        public List<List<string>> MyContacter(string loginid, string name)
         {
             var body = Db.contact.Where(a => a.OwnerID == loginid).Select(b => new List<string>()
                 {
@@ -48,7 +55,9 @@ namespace Qx.Msg.Services
             body = body.Where(a => a[1].Contains(name)).ToList();
             return body;
         }
-        public List<List<string>> MyGroup(string loginid, string groupname)//我的群组
+
+        //我的群组
+        public List<List<string>> MyGroup(string loginid, string groupname)
         {
             var body = Db.msg_group.Where(a => a.OwnerID == loginid).Select(b => new List<string>()
                 { 
@@ -65,7 +74,10 @@ namespace Qx.Msg.Services
             body = body.Where(a => a[1].Contains(groupname)).ToList();
             return body;
         }
-        public List<List<string>> GroupDetails(string groupId, string groupname)//我的群组详情
+
+
+        //我的群组详情
+        public List<List<string>> GroupDetails(string groupId, string groupname)
         {
             var body = Db.group_member.Where(a => a.GroupID == groupId).Select(b => new List<string>()
                 {
@@ -126,11 +138,16 @@ namespace Qx.Msg.Services
                 b.SendTime.ToString(),
                 b.in_state.StateName
             }).ToList();
-            if (subject == ";")
+         
+            if(subject.HasValue())
             {
-                subject = "";
+                if (subject == ";")
+                {
+                    subject = "";
+                }
+                body = body.Where(a => a[1].Contains(subject)).ToList();
             }
-            body = body.Where(a => a[1].Contains(subject)).ToList();
+           
             return body;
         }
         public List<List<string>> MyCollectionBoxMsg(string loginId, string msgsubject)//我收藏的消息
@@ -151,6 +168,8 @@ namespace Qx.Msg.Services
             body = body.Where(a => a[1].Contains(msgsubject)).ToList();
             return body;
         }
+
+        //添加消息
         public bool AddMsg(string Subjects,string Contents,string SenderID,string msgID, string MsgTypeID)
         {
             msg msg = new Entity.msg()
@@ -162,7 +181,8 @@ namespace Qx.Msg.Services
                 CreationTime=DateTime.Now,
                 SenderID = SenderID
             };
-            return Db.SaveAdd(msg);
+            Db.msg.Add(msg);
+            return Db.Saved();
         }//添加消息内容(消息存为草稿是只有内容名为没有发送记录)
         public bool AddSendRecord(string ReceiverID, string msgID)
         {

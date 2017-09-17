@@ -34,5 +34,27 @@ namespace Web.Controllers
             return ReportView();
         }
 
+
+
+        ///AutoReport/RCTUBMF788K
+        public ActionResult RCTUBMF788K(string reportId, string Params)
+        {
+            if (!reportId.HasValue())
+            {
+                return RedirectToAction("RCTUBMF788K",
+                    new
+                    {
+                        reportId = "ecampus.yxxt.UTL.UV8NEU5Q82",
+                        Params = ";;",
+                        pageIndex = 1,
+                        perCount = 10
+                    });
+            }
+
+            Search.Add("公告标题");
+            Search.Add("作者");
+            InitReport("UV8NEU5Q82", "#", "", true, "ecampus.yxxt");
+            return ReportView();
+        }
     }
 }

@@ -1,0 +1,62 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+<input type="file" id="xlf" name="xlf" style="display: none"/>
+<input type="hidden" id="orgnization_position_id" name="orgnization_position_id" value="@ViewData["orgnization_position_id"]"/>
+<a id="xls" href="~/UserFiles/Import/导入模板.xls" download=""></a>
+<script src="~/Include/inportxls/js/shim.js"></script>
+<script src="~/Include/inportxls/js/xls.js"></script>
+<script src="~/Include/inportxls/js/excel.acc.js"></script>
+
+<script>
+    window.onload = function () {
+        $("#bt_download").click(function () {
+            document.getElementById("xls").click();
+        });
+       $("#bt_import").click(function () {
+           document.getElementById("xlf").click();
+           var drop = document.getElementById('xlf');
+           //添加Change绑定事件  
+           if (drop.addEventListener) {
+               drop.addEventListener('change', handleFile, false);
+           }
+        });
+   };
+
+   function getJsonLength(jsonData) {
+       var jsonLength = 0;
+       for (var item in jsonData) {
+           jsonLength++;
+       }
+       return jsonLength;
+   }
+   function excelReader(data, json) {
+       ////输出 
+       //console.log(data);
+       //console.log(json);
+
+       var jsonLength = 0;
+       for (var item in data.Sheet1) {
+           jsonLength++;
+       }
+
+     //  console.log(jsonLength);
+       $.ajax({
+           type: "POST",
+           url: "/QxJzxt/OrgCRUD/ImportStaff",
+           data: {
+               data: JSON.stringify(data.Sheet1),
+               orgnization_position_id: $("#orgnization_position_id").val()
+           },
+           success: function (data) {
+               var yetcount = jsonLength - data;
+               var failcount = jsonLength - data;
+               alert("总共" + jsonLength + "条数据，已存在相同" + yetcount + "条记录，成功导入" + data + "条，所以导入失败" + failcount + "条");
+             //  alert("总共" + jsonLength + "条数据");
+               window.location.href = "/QxJzxt/Org/Org_Position_User?Params=" + $("#orgnization_position_id").val();
+           }
+       });
+   }
+</script>
+
+

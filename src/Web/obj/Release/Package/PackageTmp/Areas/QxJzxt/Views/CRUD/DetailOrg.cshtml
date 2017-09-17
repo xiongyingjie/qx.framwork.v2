@@ -1,0 +1,13 @@
+﻿
+
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.DetailOrg_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.InputFor(o => o.orgname,1,"",true)
+@Html.InputAreaFor(o => o.description,1,"",230,true)
+
+

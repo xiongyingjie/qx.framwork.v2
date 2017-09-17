@@ -8,5 +8,12 @@ namespace Qx.Msg.Exceptions
 {
     public class ErrorTimeMoreThan3Exception: Exception
     {
+        public ErrorTimeMoreThan3Exception()
+        {
+        }
+
+        public ErrorTimeMoreThan3Exception(string message) : base(message)
+        {
+        }
     }
 }

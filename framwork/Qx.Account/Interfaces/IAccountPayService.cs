@@ -1,9 +1,10 @@
 ﻿using Qx.Account.Models;
 using Qx.Tools;
+using Qx.Tools.Interfaces;
 
 namespace Qx.Account.Interfaces
 {
-  public  interface IAccountPayService
+  public  interface IAccountPayService: IAutoInject
     {
         AccountBag CreateAccount(DataContext dataContext, AccountTypeEnum accountType);
         AccountBag CreateAccount(string  accId, AccountTypeEnum accountType);

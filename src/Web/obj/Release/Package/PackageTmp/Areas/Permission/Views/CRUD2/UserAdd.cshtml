@@ -1,0 +1,16 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.UserAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.InputFor(o => o.user_id)
+
+@Html.InputFor(o => o.nick_name)
+
+@Html.InputFor(o => o.user_pwd)
+
+@Html.HiddenFor(o => o.user_type)
+
+@Html.InputAreaFor(o => o.note)
+

@@ -1,0 +1,10 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AddBaseInfo_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.InputFor(o => o.infoname)
+@Html.SelectFor(o => o.infodatatype,Model.typeList)
+

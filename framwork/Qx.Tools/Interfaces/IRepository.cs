@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
-
+using Qx.Tools.Models.Db;
 namespace Qx.Tools.Interfaces
 {
-    public interface IRepository<T>
+    //泛型
+    public interface IRepository<T> : IAutoInject
     {
         List<SelectListItem> ToSelectItems(string value = "");
         string Add(T model);

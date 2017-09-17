@@ -1,0 +1,99 @@
+﻿@{
+    Layout = "~/Areas/Yxxt/Views/Shared/_YxxtWeb.cshtml";
+}
+<script>
+    $(document).ready(function() {
+        getData();
+    });
+
+    function getData() {
+        //clean data
+        $("#container").html("");
+        var count = 0;
+        var html = "";
+        var storage = window.localStorage;
+        for (var m = 0; m < storage.length-1; m++) {
+            var key = storage.key(m);
+            if (key == "simpleCart_items" || key.indexOf("orderid")==-1) {
+                console.log("tiao guo " + key);
+                continue;
+            }
+            console.log("print " + key);
+            count++;
+            var json = storage.getItem(key);
+            var jsonObj = JSON.parse(json);
+            console.log(jsonObj);
+            html += 
+                    '<div class="cart-header">' +
+                     '<input type="hidden" name="goodid" id="goodid" value="' + jsonObj.GoodID + '"/>' +
+                    '<input type="hidden" name="namelist" id="goodname" value="' + jsonObj.GoodName + '"/>' +
+                    '<input type="hidden" name="numlist" id="goodnum" value="' + jsonObj.GoodNum + '"/>' +
+                    '<input type="hidden" name="pricelist" id="goodprice" value="' + jsonObj.GoodPrice + '"/>' +
+                    '<input type="hidden" name="size" id="goodsize" value="' + jsonObj.GoodSize + '"/>' +
+                    '<input type="hidden" name="moneylist" id="money" value="' + jsonObj.GoodPrice * jsonObj.GoodNum + '"/>' +                   
+                    '<div class="close1" onclick="Delete(\'' + key + '\')"> </div>' +
+                    '<div class="cart-sec simpleCart_shelfItem">' +
+                    '<a href="/Yxxt/Web/ProductDetail?id=' + jsonObj.GoodID + '">' +
+                    '  <div class="cart-item cyc">'+
+                    '<img src=' + jsonObj.GoodPic + ' class="img-responsive" alt="">' +
+                    '</div>' +
+                    '</a>' +
+                    '<div class="cart-item-info">' +
+                    '<h3><a href="#">' + jsonObj.GoodName + ' </a><span></span></h3>' +
+                    '<ul class="qty">' +
+                    '<li>' +
+                    '<p>数量:</p>' +
+                    '</li>' +
+                    '<li>' +
+                    '<p>X' + jsonObj.GoodNum + '</p>' +
+                    '</li>' +
+                    '<br/>' +
+                    '<li>' +
+                    '<p>尺寸:</p>' +
+                    '</li>' +
+                    '<li>' +
+                    '<p>' + jsonObj.GoodSize + '</p>' +
+                    '</li>' +
+                    '<div class="delivery">' +
+                    '<p>价钱: ' + jsonObj.GoodPrice + '</p>' +
+                    '<span>总计：' + jsonObj.GoodPrice* jsonObj.GoodNum + '</span>' +
+                    '<div class="clearfix"></div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="clearfix"></div>' +
+                    '</div>' +
+                    '</div>';
+        }
+        if (html == "") {
+            html = "购物车中没有商品";
+        }
+        $("#container").html(html);
+        $("#count").html(count);
+    }
+    function Delete(id) {
+        var storage = window.localStorage;
+        storage.removeItem(id);
+        getData();
+        // console.log(storage.a);
+    }
+</script>
+
+<!--cart-items-->
+<form method="post">
+    <div class="cart-items">
+        <div class="container">
+            <h2>
+                购物车(<a id="count"></a>)
+            </h2>
+            <div id="container"></div>
+            @*<input type="hidden" name="namelist" id="goodname"/>
+            <input type="hidden" name="numlist" id="goodnum" />
+            <input type="hidden" name="pricelist" id="goodprice"/>*@
+            <div class="btn_form" >
+                <button  class="add-cart item_add" style="float: right; width: 100px; text-align: center;">提&nbsp;交</button>
+            </div>
+        </div>
+    </div>
+ 
+</form>
+<!--//checkout-->	

@@ -1,0 +1,13 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AddMaterialToAwardInstance_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.SelectFor(o => o.materialtypeid, Model.materialtype)
+@Html.InputFor(o=>o.count)
+@Html.HiddenFor(o => o.instanceid)
+
+
+

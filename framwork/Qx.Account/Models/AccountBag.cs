@@ -26,7 +26,7 @@ namespace Qx.Account.Models
            // AccountType = accountType;
             Account = new Entity.account
             {
-                AccountID = dataContext.UserID + DateTime.Now.Random().ToString(),
+                AccountID = dataContext.UserId + DateTime.Now.Random().ToString(),
                 Balance = 0,
                 LastUpdateTime = DateTime.Now,
                 AccType = accountType.ToString()

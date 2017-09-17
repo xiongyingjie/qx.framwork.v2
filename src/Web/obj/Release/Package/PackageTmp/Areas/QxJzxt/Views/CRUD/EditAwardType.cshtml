@@ -1,0 +1,13 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.EditAwardType_M
+
+   @{
+       Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.HiddenFor(o=>o.awardtypeid)
+@Html.InputFor(o => o.awardname)
+@Html.InputAreaFor(o => o.description)
+
+

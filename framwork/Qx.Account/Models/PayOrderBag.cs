@@ -26,7 +26,7 @@ namespace Qx.Account.Models
             //receiver.Charge(payNum);
             PayOrder = new pay_order
             {
-                PO_ID =  DateTime.Now.Random().ToString(),
+                PO_ID =  DateTime.Now.FormatTime(false)+"-"+DateTime.Now.Random(),
                 PayerAccID = payer.Account.AccountID,
                 ReceiverAccID = receiver.Account.AccountID,
                 CreateTime = DateTime.Now,
@@ -59,74 +59,86 @@ namespace Qx.Account.Models
             };
         }
 
-
-        private PayOrderBag ChangeState(PayStateEnum state)
-       {
-            PayOrder.PayStateID = state.ToString();
-           return this;
-       }
-        public PayOrderBag Pending(string alipayId)
-        {
-            //如果是Created才处理
-            if (PayOrder.PayStateID == PayStateEnum.Created.ToString())
-            {
-                var payOrder = ChangeState(PayStateEnum.Pending);
-                payOrder.PayOrder.AliPayID = alipayId;
-                return payOrder;
-            }
-            else
-            {
+       public PayOrderBag FinishOrder()
+       {//手动完成订单
+           if (PayOrder.PayStateID == PayStateEnum.Created.ToString())
+           {
+                PayOrder.AliPayID = "---";
+                PayOrder.PayStateID = PayStateEnum.Finished.ToString();
+                //扣款
+                Payer.Expense(PayOrder.PayNum);
+                Receiver.Charge(PayOrder.PayNum);
                 return this;
             }
-         
-        }
-        public bool IsValid(string alipayId)
+           else
+           {
+               throw new Exception("手动完成只支持状态为Created的订单");
+           }
+       }
+
+        public PayOrderBag ToNextState(string alipayId="")
+       {
+            if (PayOrder.PayStateID == PayStateEnum.Created.ToString())
+            {
+                if(!alipayId.HasValue())
+                { return    this;}
+                PayOrder.AliPayID = alipayId;
+                PayOrder.PayStateID = PayStateEnum.Pending.ToString();
+            }
+           else if (PayOrder.PayStateID == PayStateEnum.Pending.ToString())
+            {
+                PayOrder.PayStateID = PayStateEnum.Successful.ToString();
+                //充值订单
+                if (PayOrder.PayOrderTypeID == PayOrderTypeEnum.AliPay.ToString())
+                {
+
+                    Payer.Expense(PayOrder.PayNum);
+                    Receiver.Charge(PayOrder.PayNum);
+                }
+                else
+                {//转账订单
+                    Payer.Expense(PayOrder.PayNum);
+                    Receiver.Charge(PayOrder.PayNum);
+                }
+            }
+            else if (PayOrder.PayStateID == PayStateEnum.Successful.ToString())
+            {
+                PayOrder.PayStateID = PayStateEnum.Finished.ToString();
+            }
+           return this;
+       }
+     
+
+       public bool IsValid(string alipayId)
         {
-          return PayOrder.AliPayID == alipayId;
+          return PayOrder.AliPayID == alipayId&&!IsEnd;
         }
         public bool IsFinished
         {
             get
-            {
-                return PayOrder.PayStateID == PayStateEnum.Successful.ToString() || PayOrder.PayStateID == PayStateEnum.Finished.ToString();
+            {//此时表示接受到通知，且已经将金额写到数据库
+                return  PayOrder.PayStateID == PayStateEnum.Finished.ToString();
             }
             
         }
-        public PayOrderBag Successful()
-       {
-            //充值订单
-            if (PayOrder.PayOrderTypeID == PayOrderTypeEnum.AliPay.ToString())
+        public bool IsSuccessful
+        {//此时表示接受到通知，但是还没做出反应
+            get
             {
-
-                Payer.Expense(PayOrder.PayNum);
-                Receiver.Charge(PayOrder.PayNum);
+                return PayOrder.PayStateID == PayStateEnum.Successful.ToString();
             }
-            else
-            {
-                Payer.Expense(PayOrder.PayNum);
-                Receiver.Charge(PayOrder.PayNum);
-            }
-            //转账订单
-        
-            return ChangeState(PayStateEnum.Successful);
-       }
-        public PayOrderBag Finished()
-        {
 
-            return ChangeState(PayStateEnum.Finished);
         }
+        public bool IsEnd
+        {//订单终结
+            get { return PayOrder.PayStateID == PayStateEnum.Failed.ToString()|| PayOrder.PayStateID == PayStateEnum.Finished.ToString(); }
+
+        }
+
         public PayOrderBag Failed()
         {
-            //如果不是Finished或Successful才处理
-            if (PayOrder.PayStateID == PayStateEnum.Finished.ToString()|| 
-                PayOrder.PayStateID == PayStateEnum.Successful.ToString())
-            {
-                return ChangeState(PayStateEnum.Failed);
-            }else
-            {
-                return this;
-            }
-               
+            PayOrder.PayStateID = PayStateEnum.Failed.ToString();
+            return this;
         }
     }
 }

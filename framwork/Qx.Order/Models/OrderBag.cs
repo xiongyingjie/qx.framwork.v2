@@ -17,7 +17,7 @@ namespace Qx.Order.Models
         public OrderBag(DataContext dataContext,string sellerId,string shopId, OrderTypeEnum orderType, string buyerId)
         {
             _dataContext = dataContext;
-            buyerId = buyerId.HasValue() ? buyerId : dataContext.UserID;
+            buyerId = buyerId.HasValue() ? buyerId : dataContext.UserId;
             Order = new Entity.order()
             {
                 ShopID=shopId,

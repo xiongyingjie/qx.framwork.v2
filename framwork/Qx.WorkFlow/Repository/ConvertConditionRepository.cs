@@ -14,7 +14,7 @@ namespace Qx.WorkFlow.Repository
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.ConvertConditions.Select(a => new SelectListItem() { Text = a.ConvertConditionID, Value = a.ConditionNote }).ToList();
+            var dest = Db.ConvertCondition.Select(a => new SelectListItem() { Text = a.ConvertConditionID, Value = a.ConditionNote }).ToList();
             return dest.Format(value);
         }
 
@@ -50,17 +50,17 @@ namespace Qx.WorkFlow.Repository
 
         public ConvertCondition Find(object id)
         {
-            return Db.ConvertConditions.NoTrackingFind(a=>a.ConvertConditionID == (string) id);
+            return Db.ConvertCondition.NoTrackingFind(a=>a.ConvertConditionID == (string) id);
         }
 
         public List<ConvertCondition> All()
         {
-            return Db.ConvertConditions.NoTrackingToList();
+            return Db.ConvertCondition.NoTrackingToList();
         }
 
         public List<ConvertCondition> All(Func<ConvertCondition, bool> filter)
         {
-            return Db.ConvertConditions.NoTrackingWhere(filter);
+            return Db.ConvertCondition.NoTrackingWhere(filter);
         }
     }
 }

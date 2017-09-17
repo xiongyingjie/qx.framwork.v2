@@ -177,7 +177,7 @@ namespace Web.Areas.Permission.Controllers
             }
             Search.Add("菜单编号");
             Search.Add("菜单名称");
-            InitReport("菜单列表", "/Permission/CRUD2/MenuAdd?father_id=" + Params, pageIndex, perCount);
+            InitReport("菜单列表", "/Permission/CRUD2/MenuAdd?father_id=" + Params.GetFixedParam(), pageIndex, perCount);
             return ReportView();
             //var fathers = _permission.FindFather(Params);
             //return View(MenuList_M.ToViewModel(fathers));

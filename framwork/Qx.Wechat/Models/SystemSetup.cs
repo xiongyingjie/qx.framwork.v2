@@ -1,7 +1,5 @@
 ﻿
-using Qx.Tools;
-
-namespace Qx.Wechat.Models
+namespace qx.wechat.Models
 {
     public  class SystemSetup
     {

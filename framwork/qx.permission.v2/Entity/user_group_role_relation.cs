@@ -20,7 +20,7 @@ namespace qx.permmision.v2.Entity
         [StringLength(100)]
         public string role_id { get; set; }
 
-        [Column(TypeName = "text")]
+        [StringLength(50)]
         public string note { get; set; }
 
         [StringLength(100)]

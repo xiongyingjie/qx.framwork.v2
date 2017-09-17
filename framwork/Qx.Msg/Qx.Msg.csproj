@@ -99,18 +99,18 @@
     <Compile Include="Services\MsgProvider.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Qx.Tools\Qx.Tools.csproj">
-      <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
-      <Name>Qx.Tools</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Interfaces\IMsgService.cs" />
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
     <Compile Include="Services\MsgService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Qx.Tools\Qx.Tools.csproj">
+      <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
+      <Name>Qx.Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

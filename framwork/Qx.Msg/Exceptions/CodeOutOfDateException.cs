@@ -8,5 +8,13 @@ namespace Qx.Msg.Exceptions
 {
     public class CodeOutOfDateException: Exception
     {
+        public CodeOutOfDateException()
+        {
+        }
+
+        public CodeOutOfDateException(string message) : base(message)
+        {
+        }
     }
+   
 }

@@ -1,0 +1,154 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.Mvc;
+using System.Web.UI.WebControls;
+using qx.wechat.Interfaces;
+using qx.wechat.Models;
+using Qx.Account.Models;
+using Qx.Account.WeixinPay.business;
+using Qx.Account.WeixinPay.lib;
+using Qx.Tools;
+using Qx.Tools.CommonExtendMethods;
+using RestSharp;
+using Web.Areas.WeChat.ViewModels.WeChatPay;
+
+namespace Web.Areas.WeChat.Common
+{
+    public class WxPayHelper
+    {
+        private static string WID = "WxPayHelper";
+        public static JsApiPayPage_M JsApiPayPage(HttpContextBase HttpContext,string openid,double total_fee, string return_url)
+        {
+            var money = (int)(total_fee * 100);
+            var wxJsApiParam = "";
+            //若传递了相关参数，则调统一下单接口，获得后续相关接口的入口参数
+            var jsApiPay = new JsApiPay(HttpContext);
+            jsApiPay.openid = openid;
+            jsApiPay.total_fee = money;
+            var poid = "";
+            //JSAPI支付预处理
+            try
+            {
+                //1.创建支付订单
+                var chargePayOrder = _accountPayService.CreatePayOrder(PLATE_WECHATPAY_ACCOUNT,
+                   openid,
+                    total_fee,
+                    PayOrderTypeEnum.WeChatPay,
+                    PaymentTypeEnum.Rmb);
+                poid = chargePayOrder.PayOrder.PO_ID;
+                var trade_no = chargePayOrder.PayOrder.PO_ID;
+                //2.同步支付订单
+                _accountPayService.SyncPayOrder(chargePayOrder);
+
+                //3.通知微信服务器
+                WxPayData unifiedOrderResult = jsApiPay.GetUnifiedOrderResult(trade_no, "充值" + (total_fee) + "元");
+                wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数                    
+
+
+                //在页面上显示订单信息
+                return JsApiPayPage_M.Init(wxJsApiParam,
+                    "<span style='color:#00CD00;font-size:20px'>充值" + total_fee +
+                    "元</span><br/><span style='color:#00CD00;font-size:20px'>" + "</span>",
+                    //"<span style='color:#00CD00;font-size:20px'>订单详情：</span><br/><span style='color:#00CD00;font-size:20px'>" + unifiedOrderResult.ToPrintStr() + "</span>",
+                    total_fee + "", poid, openid, return_url
+                    );
+
+            }
+            catch (Exception ex)
+            {
+                return JsApiPayPage_M.Init(wxJsApiParam,
+                    "<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试" + "<hr/>" + ex.Data + "<hr/>" +
+                    ex.InnerException + "<hr/>" + ex.Message + "<hr/>" + ex.StackTrace + "</span>", "",
+                    poid, openid, return_url);
+            }
+
+        }
+        // GET: /WeChat/WeChatPay/ResultNotifyPage/
+        public static string ResultNotifyPage(HttpContextBase HttpContext, Dictionary<string, string> RequstParam)
+        {
+            var res = new WxPayData();
+            var appid = RequstParam["appid"];
+            var attach = RequstParam["attach"];
+            var bank_type = RequstParam["bank_type"];
+            var cash_fee = RequstParam["cash_fee"];
+            var fee_type = RequstParam["fee_type"];
+            var is_subscribe = RequstParam["is_subscribe"];
+            var mch_id = RequstParam["mch_id"];
+            var nonce_str = RequstParam["nonce_str"];
+            var openid = RequstParam["openid"];
+            var out_trade_no = RequstParam["out_trade_no"];
+            var result_code = RequstParam["result_code"];
+            var return_code = RequstParam["return_code"];
+            var sign = RequstParam["sign"];
+            var time_end = RequstParam["time_end"];
+            var total_fee = RequstParam["total_fee"];
+            var transaction_id = RequstParam["transaction_id"];
+
+            //检查支付结果中transaction_id是否存在
+            if (transaction_id.HasValue() && out_trade_no.HasValue())
+            {
+                //1.开始处理
+                var chargePayOrder = _accountPayService.FindPayOrder(out_trade_no);
+                chargePayOrder.Pending(transaction_id);
+
+                if (chargePayOrder != null)
+                {
+                    if (result_code.ToUpper().Contains("SUCCESS") &&
+                        return_code.ToUpper().Contains("SUCCESS") &&
+                            chargePayOrder.IsValid(transaction_id))
+                    {
+                        //防止重复处理
+                        if (!chargePayOrder.IsFinished)
+                        {
+                            chargePayOrder.Successful();
+                            chargePayOrder.Finished();
+                            //2.同步支付订单
+                            _accountPayService.SyncPayOrder(chargePayOrder);
+
+                            //3.发送成功通知
+                            var url = "http://wx.52xyj.cn/WeChat/BookTiketWeb/MyWallet";
+                            var acc = _accountPayService.FindAccount(openid);
+                            _wechatServices.Send_Charge_Ok_Msg(openid, url,
+                                acc.Account.LastUpdateTime.ToStr(),
+                                (int.Parse(total_fee) / 100.0) + "元",
+                               (acc.Account.Balance / 100.0) + "元");
+                        }
+                        res.SetValue("return_code", "SUCCESS");
+                        res.SetValue("return_msg", "OK");
+                        Log.Info(WID, "order query success : " + res.ToXml());
+          
+
+                    }
+                    else
+                    {
+                        chargePayOrder.Failed();
+                        res.SetValue("return_code", "FAIL");
+                        res.SetValue("return_msg", "订单查询失败");
+                        Log.Error(WID, "Order query failure : " + res.ToXml());
+                    }
+
+
+                }
+
+
+            }
+            else
+            {
+                //若transaction_id不存在，则立即返回结果给微信支付后台
+                res.SetValue("return_code", "FAIL");
+                res.SetValue("return_msg", "支付结果中微信订单号不存在");
+                Log.Error("ResultNotifyPage", "The Pay result is error : " + res.ToXml());
+            }
+          
+            ResultNotify resultNotify = new ResultNotify(HttpContext);
+            resultNotify.ProcessNotify();
+            // return RedirectToAction(redirectAction, "BookTiketWeb", new { transaction_id = transaction_id });
+        }
+        private static  string BackToBll(string uid, string return_url, string msg)
+        {
+            return "/F2/LoginOk?uid=" + uid + "&return_url=" + return_url + "&msg=" + msg;
+        }
+
+    }
+}

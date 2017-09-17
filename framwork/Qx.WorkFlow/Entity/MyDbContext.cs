@@ -10,13 +10,15 @@ namespace Qx.WorkFlow.Entity
         {
         }
 
-
-        public virtual DbSet<ConvertCondition> ConvertConditions { get; set; }
-        public virtual DbSet<NodeRelation> NodeRelations { get; set; }
-        public virtual DbSet<Node> Nodes { get; set; }
-        public virtual DbSet<WorkFlowInstanceLog> WorkFlowInstanceLogs { get; set; }
-        public virtual DbSet<WorkFlowInstance> WorkFlowInstances { get; set; }
-        public virtual DbSet<WorkFlow> WorkFlows { get; set; }
+        public virtual DbSet<ConvertCondition> ConvertCondition { get; set; }
+        public virtual DbSet<InstanceChangeLog> InstanceChangeLog { get; set; }
+        public virtual DbSet<InstanceChangeLogType> InstanceChangeLogType { get; set; }
+        public virtual DbSet<InstanceHistory> InstanceHistory { get; set; }
+        public virtual DbSet<InstanceHistoryType> InstanceHistoryType { get; set; }
+        public virtual DbSet<Node> Node { get; set; }
+        public virtual DbSet<NodeRelation> NodeRelation { get; set; }
+        public virtual DbSet<WorkFlow> WorkFlow { get; set; }
+        public virtual DbSet<WorkFlowInstance> WorkFlowInstance { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -44,20 +46,85 @@ namespace Qx.WorkFlow.Entity
                 .Property(e => e.PropertyValue)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NodeRelation>()
-                .Property(e => e.NodeRelationID)
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.InstanceChangeLogID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NodeRelation>()
-                .Property(e => e.NodeID)
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.WorkFlowInstanceID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NodeRelation>()
-                .Property(e => e.ChildID)
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.FromNodeID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NodeRelation>()
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.ToNodeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.Operator)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.Reason)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLog>()
                 .Property(e => e.Note)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLog>()
+                .Property(e => e.InstanceChangeLogTypeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLogType>()
+                .Property(e => e.InstanceChangeLogTypeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLogType>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceChangeLogType>()
+                .HasMany(e => e.InstanceChangeLog)
+                .WithOptional(e => e.InstanceChangeLogType)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.WorkFlowInstanceID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.WorkFlowID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.CurrentNodeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.Note)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.InstancePeople)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.InstanceHistoryTypeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistory>()
+                .Property(e => e.UnitID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistoryType>()
+                .Property(e => e.InstanceHistoryTypeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<InstanceHistoryType>()
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Node>()
@@ -81,73 +148,42 @@ namespace Qx.WorkFlow.Entity
                 .IsUnicode(false);
 
             modelBuilder.Entity<Node>()
-                .HasMany(e => e.NodeRelations)
-                .WithRequired(e => e.Node)
-                .HasForeignKey(e => e.NodeID);
+                .Property(e => e.RoleID)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Node>()
-                .HasMany(e => e.NodeRelations1)
-                .WithOptional(e => e.Node1)
-                .HasForeignKey(e => e.ChildID);
-
-            modelBuilder.Entity<Node>()
-                .HasMany(e => e.WorkFlowInstanceLogs)
-                .WithOptional(e => e.Node)
-                .HasForeignKey(e => e.FromNodeID);
-
-            modelBuilder.Entity<Node>()
-                .HasMany(e => e.WorkFlowInstances)
-                .WithOptional(e => e.Node)
-                .HasForeignKey(e => e.CurrentNodeID)
-                .WillCascadeOnDelete();
-
-            modelBuilder.Entity<Node>()
-                .HasMany(e => e.WorkFlows)
-                .WithOptional(e => e.Node)
-                .HasForeignKey(e => e.StartNodeID)
-                .WillCascadeOnDelete();
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
-                .Property(e => e.WorkFlowInstanceLogId)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
-                .Property(e => e.WorkFlowInstanceID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
-                .Property(e => e.FromNodeID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
-                .Property(e => e.ToNodeID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
-                .Property(e => e.Operator)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
-                .Property(e => e.Reason)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<WorkFlowInstanceLog>()
                 .Property(e => e.Note)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<WorkFlowInstance>()
-                .Property(e => e.WorkFlowInstanceID)
+            modelBuilder.Entity<Node>()
+                .HasMany(e => e.InstanceChangeLog)
+                .WithOptional(e => e.Node)
+                .HasForeignKey(e => e.FromNodeID)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<Node>()
+                .HasMany(e => e.WorkFlowInstance)
+                .WithOptional(e => e.Node)
+                .HasForeignKey(e => e.CurrentNodeID);
+
+            modelBuilder.Entity<Node>()
+                .HasMany(e => e.WorkFlow)
+                .WithOptional(e => e.Node)
+                .HasForeignKey(e => e.StartNodeID);
+
+            modelBuilder.Entity<NodeRelation>()
+                .Property(e => e.NodeRelationID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<WorkFlowInstance>()
-                .Property(e => e.WorkFlowID)
+            modelBuilder.Entity<NodeRelation>()
+                .Property(e => e.NodeID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<WorkFlowInstance>()
-                .Property(e => e.CurrentNodeID)
+            modelBuilder.Entity<NodeRelation>()
+                .Property(e => e.ChildID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<WorkFlowInstance>()
+            modelBuilder.Entity<NodeRelation>()
                 .Property(e => e.Note)
                 .IsUnicode(false);
 
@@ -168,9 +204,39 @@ namespace Qx.WorkFlow.Entity
                 .IsUnicode(false);
 
             modelBuilder.Entity<WorkFlow>()
-                .HasMany(e => e.WorkFlowInstances)
+                .HasMany(e => e.Node1)
+                .WithOptional(e => e.WorkFlow1)
+                .HasForeignKey(e => e.WorkFlowID)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<WorkFlow>()
+                .HasMany(e => e.WorkFlowInstance)
                 .WithRequired(e => e.WorkFlow)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<WorkFlowInstance>()
+                .Property(e => e.WorkFlowInstanceID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<WorkFlowInstance>()
+                .Property(e => e.WorkFlowID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<WorkFlowInstance>()
+                .Property(e => e.CurrentNodeID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<WorkFlowInstance>()
+                .Property(e => e.Note)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<WorkFlowInstance>()
+                .Property(e => e.InstancePeople)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<WorkFlowInstance>()
+                .Property(e => e.UnitID)
+                .IsUnicode(false);
         }
     }
 }

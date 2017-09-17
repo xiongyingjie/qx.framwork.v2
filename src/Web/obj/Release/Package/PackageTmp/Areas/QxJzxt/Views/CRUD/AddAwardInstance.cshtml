@@ -1,0 +1,18 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AddAwardInstance_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.HiddenFor(o => o.awardtypebaseInfolist)
+@Html.ShowInputFor(o => o._awardtypename)
+@Html.InputFor(o => o.instancename)
+@Html.InputFor(o => o.bonus)
+@Html.TimeFor(o => o.starttime,"")
+@Html.TimeFor(o => o.endtime,"")
+
+
+
+

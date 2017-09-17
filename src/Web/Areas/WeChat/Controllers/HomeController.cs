@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using qx.wechat.Configs;
+using qx.wechat.Interfaces;
 using Qx.Tools.CommonExtendMethods;
-using Qx.Wechat.Interfaces;
+using Web.Controllers.Base;
+using Web.Controllers.Filter;
 
 namespace Web.Areas.WeChat.Controllers
 {
-    public class HomeController : BaseWeChatController
+    public class HomeController : WxHostFilter
     {
 
         private IWechatServices _wechatServices;
 
+        public string _Token
+        {
+            get { return _wechatServices.GetToken(); }
+        }
         public HomeController(IWechatServices wechatServices)
         {
             _wechatServices = wechatServices;
@@ -80,9 +87,9 @@ namespace Web.Areas.WeChat.Controllers
             var action = "Token";
 
             Param.Add("grant_type", "client_credential");
-            Param.Add("appid", APP_ID);
-            Param.Add("secret", APP_SECRET);
-            var content = _wechatServices.ApiHttpGet(URL_WECHAT_HOST,action, Param, action);
+            Param.Add("appid", Setting.WxConfig.APP_ID);
+            Param.Add("secret", Setting.WxConfig.APP_SECRET);
+            var content = _wechatServices.ApiHttpGet(Setting.WxConfig.URL_WECHAT_HOST,action, Param, action);
             WriteFile(
                 string.Format("UserFiles\\Test\\log-GetCallBackIp-{0}.txt", DateTime.Now.ToString("yyyy.MM.dd.dd.hh")),
                 content, false);
@@ -97,7 +104,7 @@ namespace Web.Areas.WeChat.Controllers
             var action = "GetCallBackIp";
 
             Param.Add("access_token", _Token);
-            var content = _wechatServices.ApiHttpGet(URL_WECHAT_HOST, action, Param, action);
+            var content = _wechatServices.ApiHttpGet(Setting.WxConfig.URL_WECHAT_HOST, action, Param, action);
             WriteFile(
                 string.Format("UserFiles\\Test\\log-GetCallBackIp-{0}.txt", DateTime.Now.ToString("yyyy.MM.dd.dd.hh")),
                 content, false);
@@ -117,7 +124,7 @@ namespace Web.Areas.WeChat.Controllers
                 action = "long2short",
                 long_url = "http://www.jikexueyuan.com/course/1946_2.html?ss=2"
             };
-            var content = _wechatServices.ApiJsonHttpPost(URL_WECHAT_HOST, action, obj, "ShortUrl", "access_token=" + _Token);
+            var content = _wechatServices.ApiJsonHttpPost(Setting.WxConfig.URL_WECHAT_HOST, action, obj, "ShortUrl", "access_token=" + _Token);
             WriteFile(
                 string.Format("UserFiles\\Test\\log-ShortUrl-{0}.txt", DateTime.Now.ToString("yyyy.MM.dd.dd.hh")),
                 content, false);
@@ -170,7 +177,7 @@ namespace Web.Areas.WeChat.Controllers
                     }
                 }
             };
-            var content = _wechatServices.ApiJsonHttpPost(URL_WECHAT_HOST, action, obj, "ShortUrl", "access_token=" + _Token);
+            var content = _wechatServices.ApiJsonHttpPost(Setting.WxConfig.URL_WECHAT_HOST, action, obj, "ShortUrl", "access_token=" + _Token);
             WriteFile(
                 string.Format("UserFiles\\Test\\log-CreateMenu-{0}.txt", DateTime.Now.ToString("yyyy.MM.dd.dd.hh")),
                 content, false);
@@ -219,7 +226,7 @@ namespace Web.Areas.WeChat.Controllers
                     },
                 }
             };
-            var content =_wechatServices.ApiJsonHttpPost(URL_WECHAT_HOST, action, obj, "template_send", "access_token=" + _Token);
+            var content =_wechatServices.ApiJsonHttpPost(Setting.WxConfig.URL_WECHAT_HOST, action, obj, "template_send", "access_token=" + _Token);
             WriteFile(
                 string.Format("UserFiles\\Test\\log-template_send-{0}.txt", DateTime.Now.ToString("yyyy.MM.dd.dd.hh")),
                 content, false);

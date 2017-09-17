@@ -7,12 +7,14 @@ namespace Web.Areas.WeChat.ViewModels.WeChatPay
 {
     public class JsApiPayPage_M
     {
+        public string _return_url;
         public string _total_fee;
         public string _wxJsApiParam;
         public string _html;
         public string _po_id;
         public string _userId;
-        public static JsApiPayPage_M Init(string wxEditAddrParam, string html,string total_fee,string po_id,string userID)
+        public static JsApiPayPage_M Init(string wxEditAddrParam, string html,
+            string total_fee,string po_id,string userID, string return_url)
         {
             return new JsApiPayPage_M()
             {
@@ -20,7 +22,8 @@ namespace Web.Areas.WeChat.ViewModels.WeChatPay
                 _html = html,
                 _total_fee = total_fee,
                 _po_id=po_id,
-                _userId=userID
+                _userId=userID,
+                _return_url = return_url,
             };
         }
     }

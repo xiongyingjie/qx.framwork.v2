@@ -1,0 +1,20 @@
+﻿
+
+
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.DistributionTotalCount_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.batchinstanceid)
+
+@Html.HiddenFor(o => o.batchid)
+
+@Html.HiddenFor(o => o.instanceid)
+
+@Html.ShowInputFor(o=>o.batch_name,2)
+
+@Html.ShowInputFor(o => o.award_instance_name, 2)
+
+@Html.InputFor(o=>o.total_count)

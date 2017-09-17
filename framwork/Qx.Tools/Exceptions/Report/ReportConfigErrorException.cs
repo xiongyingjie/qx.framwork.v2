@@ -1,12 +1,11 @@
-﻿namespace Qx.Tools.Exceptions.Report
-{
-    public class ReportConfigErrorException : System.Exception
-    {
-        private string v;
+﻿using System;
 
-        public ReportConfigErrorException(string v)
+namespace Qx.Tools.Exceptions.Report
+{
+    public class ReportConfigErrorException : Exception
+    {
+        public ReportConfigErrorException(string message) : base(message)
         {
-            this.v = v;
         }
     }
 }

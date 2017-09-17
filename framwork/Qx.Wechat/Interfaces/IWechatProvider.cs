@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Qx.Tools.Interfaces;
 
-namespace Qx.Wechat.Interfaces
+namespace qx.wechat.Interfaces
 {
-   public interface IWechatProvider
+   public interface IWechatProvider : IAutoInject
     {
         string MsgHandle(string xmlBody);
     }

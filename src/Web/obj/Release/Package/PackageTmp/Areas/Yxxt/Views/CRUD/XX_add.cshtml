@@ -1,0 +1,14 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.XX_add_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.XX_ID)
+
+@Html.InputFor(o=>o.XX_Name)
+
+@Html.SelectFor(o => o.WhetherHandel, Model._WhetherHandel) <!--小项是否必处理 -->
+
+@Html.HiddenFor(o => o.YX_LinkID)
+
+@Html.HiddenFor(o=>o.Link_Name)

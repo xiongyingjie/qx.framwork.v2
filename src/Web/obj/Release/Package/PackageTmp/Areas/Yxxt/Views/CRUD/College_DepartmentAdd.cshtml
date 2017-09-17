@@ -1,0 +1,13 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.College_DepartmentAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.CollegeID)
+
+@Html.HiddenFor(o => o.DepartmentID)   <!--系ID-->
+
+@Html.InputFor(o => o.DepartmentName)   <!--系名称-->
+
+@Html.InputFor(o => o.College_Name, "", true)   <!--所属学院名称-->

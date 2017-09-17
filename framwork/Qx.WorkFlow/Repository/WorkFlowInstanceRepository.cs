@@ -14,7 +14,7 @@ namespace Qx.WorkFlow.Repository
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.WorkFlowInstances.Select(a => new SelectListItem() { Text = a.WorkFlowInstanceID, Value = a.Note }).ToList();
+            var dest = Db.WorkFlowInstance.Select(a => new SelectListItem() { Text = a.WorkFlowInstanceID, Value = a.Note }).ToList();
             return dest.Format(value);
         }
 
@@ -50,17 +50,17 @@ namespace Qx.WorkFlow.Repository
 
         public WorkFlowInstance Find(object id)
         {
-            return Db.WorkFlowInstances.NoTrackingFind(a=>a.WorkFlowInstanceID == (string) id);
+            return Db.WorkFlowInstance.NoTrackingFind(a=>a.WorkFlowInstanceID == (string) id);
         }
 
         public List<WorkFlowInstance> All()
         {
-            return Db.WorkFlowInstances.NoTrackingToList();
+            return Db.WorkFlowInstance.NoTrackingToList();
         }
 
         public List<WorkFlowInstance> All(Func<WorkFlowInstance, bool> filter)
         {
-            return Db.WorkFlowInstances.NoTrackingWhere(filter);
+            return Db.WorkFlowInstance.NoTrackingWhere(filter);
         }
     }
 }

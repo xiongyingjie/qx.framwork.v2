@@ -1,0 +1,26 @@
+﻿@using Qx.Tools.CommonExtendMethods;
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.ButtonAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@if(Model.menu_id.HasValue())
+{
+    @Html.InputFor(o => o.menu_id, "" ,true)
+}
+else
+{ 
+    @Html.InputFor(o => o.menu_id)
+}
+<a href="/Permission/Admin/ChooseMenuList?ReportID=Permision_选择菜单&Params=;">查看菜单列表</a>
+
+@Html.InputFor(o => o.name)
+
+@Html.InputFor(o => o.value)
+
+@Html.InputAreaFor(o => o.note)
+
+
+
+

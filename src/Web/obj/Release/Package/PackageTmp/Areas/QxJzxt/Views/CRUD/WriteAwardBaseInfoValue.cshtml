@@ -1,0 +1,63 @@
+﻿
+
+@using Qx.Contents.Services
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.WriteAwardBaseInfoValue_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o=>o.instanceid)
+@Html.HiddenFor(o=>o.batchinstanceid)
+@foreach (var item in Model.data)
+{
+    switch (item.infodataytype)
+    {
+        case "001": //文本
+            <div class="form-group col-lg-6">
+                <label>@item.infoname</label>
+                <input type="hidden" name="instancebaseinfoid" value="@item.instancebaseinfoid" />
+                <input class="form-control" id="item_attrname" name="baseinfoValue" placeholder="" type="text" value="">
+                <p class="help-block">&nbsp;</p>
+            </div>
+            break;
+        case "002": //文本域
+            <div class="form-group col-lg-12">
+                <label>@item.infoname</label>
+                <input type="hidden" name="instancebaseinfoid" value="@item.instancebaseinfoid" />
+                <textarea class="form-control" rows="3" name="baseinfoValue" style="height: 230px"></textarea>
+                <p class="help-block">&nbsp;</p>
+            </div>
+            break;
+        case "003": //时间
+            <div class="form-group col-lg-6">
+                <label>@item.infoname</label>
+                <input type="hidden" name="instancebaseinfoid" value="@item.instancebaseinfoid" />
+                <div class="input-group date form_datetime">
+                    <input type="text" size="16" id="item_attrname" name="baseinfoValue" value="2017-07-02 14:59" readonly="" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success date-set" type="button">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+                <p class="help-block">&nbsp;</p>
+            </div>
+            break;
+        default: //附件
+            <div class="form-group col-lg-12">
+                <input type="hidden" name="instancebaseinfoid" value="@item.instancebaseinfoid" />
+                <input id="fileValue" type="hidden" name="baseinfoValue" value="" />
+                @Html.FileFor(o => item.instancebaseinfoid, "/UserFiles/Test/")
+                <p class="help-block">&nbsp;</p>
+            </div>
+                break;
+        }
+    }
+<script>
+    function onUploadFinish(path,id)
+    {
+        $("#fileValue").val(path);
+    }
+</script>

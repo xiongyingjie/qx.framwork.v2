@@ -7,8 +7,8 @@
     <ProjectGuid>{83D95916-E07F-4309-A0BC-DE7BEF970D6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Qx.Wechat</RootNamespace>
-    <AssemblyName>Qx.Wechat</AssemblyName>
+    <RootNamespace>qx.wechat</RootNamespace>
+    <AssemblyName>qx.wechat</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -66,36 +66,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configs\Setting.cs" />
-    <Compile Include="Entity\ImageMsg.cs" />
-    <Compile Include="Entity\LinkMsg.cs" />
-    <Compile Include="Entity\LocationEvent.cs" />
-    <Compile Include="Entity\LocationMsg.cs" />
-    <Compile Include="Entity\Log.cs" />
-    <Compile Include="Entity\MenuEvent.cs" />
+    <Compile Include="Entity\ImageMsgs.cs" />
+    <Compile Include="Entity\LinkMsgs.cs" />
+    <Compile Include="Entity\LocationEvents.cs" />
+    <Compile Include="Entity\LocationMsgs.cs" />
+    <Compile Include="Entity\Logs.cs" />
+    <Compile Include="Entity\MenuEvents.cs" />
     <Compile Include="Entity\MyDbContext.cs" />
-    <Compile Include="Entity\NewsMsgItem.cs" />
-    <Compile Include="Entity\ReplyImageMsg.cs" />
-    <Compile Include="Entity\ReplyMsg.cs" />
-    <Compile Include="Entity\ReplyMusicMsg.cs" />
-    <Compile Include="Entity\ReplyNewsMsg.cs" />
-    <Compile Include="Entity\ReplySetup.cs" />
-    <Compile Include="Entity\ReplyTextMsg.cs" />
-    <Compile Include="Entity\ReplyVideoMsg.cs" />
-    <Compile Include="Entity\ReplyVoiceMsg.cs" />
-    <Compile Include="Entity\ShortVideoMsg.cs" />
-    <Compile Include="Entity\SubscribeEvent.cs" />
-    <Compile Include="Entity\SystemSetup.cs" />
-    <Compile Include="Entity\TextMsg.cs" />
-    <Compile Include="Entity\Token.cs" />
-    <Compile Include="Entity\User.cs" />
-    <Compile Include="Entity\VideoMsg.cs" />
-    <Compile Include="Entity\VoiceMsg.cs" />
+    <Compile Include="Entity\NewsMsgItems.cs" />
+    <Compile Include="Entity\ReplyImageMsgs.cs" />
+    <Compile Include="Entity\ReplyMsgs.cs" />
+    <Compile Include="Entity\ReplyMusicMsgs.cs" />
+    <Compile Include="Entity\ReplyNewsMsgs.cs" />
+    <Compile Include="Entity\ReplySetups.cs" />
+    <Compile Include="Entity\ReplyTextMsgs.cs" />
+    <Compile Include="Entity\ReplyVideoMsgs.cs" />
+    <Compile Include="Entity\ReplyVoiceMsgs.cs" />
+    <Compile Include="Entity\reply_template_msg.cs" />
+    <Compile Include="Entity\ShortVideoMsgs.cs" />
+    <Compile Include="Entity\SubscribeEvents.cs" />
+    <Compile Include="Entity\SystemSetups.cs" />
+    <Compile Include="Entity\template.cs" />
+    <Compile Include="Entity\templatedata.cs" />
+    <Compile Include="Entity\template_type.cs" />
+    <Compile Include="Entity\TextMsgs.cs" />
+    <Compile Include="Entity\Tokens.cs" />
+    <Compile Include="Entity\Users.cs" />
+    <Compile Include="Entity\VideoMsgs.cs" />
+    <Compile Include="Entity\VoiceMsgs.cs" />
     <Compile Include="Interfaces\IWeChatBinding.cs" />
     <Compile Include="Interfaces\IWechatProvider.cs" />
     <Compile Include="Interfaces\IWeChatBll.cs" />
     <Compile Include="Interfaces\IWechatServices.cs" />
     <Compile Include="Interfaces\IWxAuthorize.cs" />
     <Compile Include="Interfaces\WechatExtension.cs" />
+    <Compile Include="Models\EntAccessTokenModel.cs" />
     <Compile Include="Models\AccessTokenModel.cs" />
     <Compile Include="Models\access_token_model.cs" />
     <Compile Include="Models\EventTypeEnum.cs" />
@@ -104,33 +109,14 @@
     <Compile Include="Models\MsgTypeEnum.cs" />
     <Compile Include="Models\SystemSetup.cs" />
     <Compile Include="Models\template_msg_result.cs" />
+    <Compile Include="Models\EntUserInfoModel.cs" />
     <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\ImageMsgRepository.cs" />
-    <Compile Include="Repository\LinkMsgRepository.cs" />
-    <Compile Include="Repository\LocationEventRepository.cs" />
-    <Compile Include="Repository\LocationMsgRepository.cs" />
-    <Compile Include="Repository\LogRepository.cs" />
-    <Compile Include="Repository\MenuEventRepository.cs" />
-    <Compile Include="Repository\NewsMsgItemRepository.cs" />
-    <Compile Include="Repository\ReplyImageMsgRepository.cs" />
-    <Compile Include="Repository\ReplyMsgRepository.cs" />
-    <Compile Include="Repository\ReplyMusicMsgRepository.cs" />
-    <Compile Include="Repository\ReplyNewsMsgRepository.cs" />
-    <Compile Include="Repository\ReplySetupRepository.cs" />
-    <Compile Include="Repository\ReplyTextMsgRepository.cs" />
-    <Compile Include="Repository\ReplyVideoMsgRepository.cs" />
-    <Compile Include="Repository\ReplyVoiceMsgRepository.cs" />
-    <Compile Include="Repository\ShortVideoMsgRepository.cs" />
-    <Compile Include="Repository\SubscribeEventRepository.cs" />
-    <Compile Include="Repository\SystemSetupRepository.cs" />
-    <Compile Include="Repository\TextMsgRepository.cs" />
-    <Compile Include="Repository\TokenRepository.cs" />
-    <Compile Include="Repository\VideoMsgRepository.cs" />
-    <Compile Include="Repository\VoiceMsgRepository.cs" />
     <Compile Include="Services\BaseRepository.cs" />
+    <Compile Include="Interfaces\IEntWechatServices.cs" />
     <Compile Include="Services\WeChatBll.cs" />
     <Compile Include="Services\WechatProvider.cs" />
+    <Compile Include="Services\EntWechatServices.cs" />
     <Compile Include="Services\WechatServices.cs" />
   </ItemGroup>
   <ItemGroup>

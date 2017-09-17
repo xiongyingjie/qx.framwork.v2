@@ -22,7 +22,7 @@ namespace qx.permmision.v2.Entity
         [StringLength(50)]
         public string name { get; set; }
 
-        [StringLength(50)]
+        [Column(TypeName = "text")]
         public string note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

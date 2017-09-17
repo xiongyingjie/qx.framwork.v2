@@ -1,0 +1,33 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Xgxt.ViewModel.LeaveSch_Step_Edit_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            getStep_Name();
+        });
+        function getStep_Name() {
+            $("#chooseFuStep2").mouseover(function () {
+                var LeaveSch_Step_ID = $("#LeaveSch_Step_ID").val().toString();
+                var Step_Name = $("#Step_Name").val().toString();
+                var LeaveSch_Batch_ID = $("#LeaveSch_Batch_ID").val().toString();
+                var Step_Sequence = $("#Step_Sequence").val().toString();
+                var Is_Effect_ALL_Stu = $("#Is_Effect_ALL_Stu").val().toString();
+                $("#chooseFuStep2").attr('href', '/Xgxt/admin/FatherStepChoose_Edit?AllParams=' + LeaveSch_Step_ID +';'+ Step_Name + ';' + LeaveSch_Batch_ID + ';' + Step_Sequence + ';' + Is_Effect_ALL_Stu);
+            })
+        }
+    </script>
+}
+@Html.HiddenFor(o => o.LeaveSch_Step_ID)
+@Html.InputFor(o => o.Step_Name)
+@Html.InputFor(o => o.LeaveSch_Batch_ID)
+@Html.InputFor(o => o.Father_LeaveSch_Step_ID)
+<a id="chooseFuStep2" href="/Xgxt/admin/FatherStepChoose_Edit?AllParams=@Model.Step_Name+';'+@Model.LeaveSch_Batch_ID">选择父步骤</a>
+<!--@@Html.ActionLink("选择父步骤", "/FatherStepChoose", "Admin", new { AllParams = Model.Step_Name + ";" + Model.LeaveSch_Batch_ID }, new { @@class = "col-lg-offset-3" ,id="chooseFuStep"})-->
+@Html.InputFor(o => o.Step_Sequence)
+@Html.SelectFor(o => o.Is_Effect_ALL_Stu, Model._Is_Effect_ALL_Stu)
+
+
+

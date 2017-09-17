@@ -1,0 +1,14 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.UpdateUserGroupRelation_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.user_group_relation_id, "")
+@Html.SelectFor(o => o.user_id,Model._UserListItems, "<a href='#'>选择用户</a>")
+@Html.InputFor(o => o.nick_name, "")
+@Html.HiddenFor(o => o.user_group_id, "")
+@Html.HiddenFor(o => o.create_user_id, "")
+@Html.HiddenFor(o => o.create_user_name, "")
+@Html.HiddenFor(o => o.create_date, "")

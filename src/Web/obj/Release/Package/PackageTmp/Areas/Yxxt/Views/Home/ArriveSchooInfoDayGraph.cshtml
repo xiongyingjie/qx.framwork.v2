@@ -1,0 +1,252 @@
+﻿
+@section scripts{
+    <script type="text/javascript">
+        var day = "@ViewData["day2"]";
+        $(document).ready(function () {
+            getChart(day,1);
+            $("button").click(function () {
+                $(".disabled").removeClass("disabled");
+                $(this).addClass("disabled");
+                var numType = $(this).attr("id");
+                if (numType == "twoHour") { getChart(day,1); }
+                else if (numType == "threeHour") { getChart(day,2); }
+                else if (numType == "fourHour") { getChart(day,3); }
+                else if (numType == "sixHour") { getChart(day,4); }
+                else if (numType == "eightHour") { getChart(day,5); }
+            });
+        });
+        function getDateTwelve0() {
+            var xData = ['00:00-2:00', '2:00-4:00', '4:00-6:00', '6:00-8:00', '8:00-10:00', '10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '20:00-22:00', '22:00-24:00'];
+            var motorData = [3, 8, 22, 55, 100, 20, 150, 180, 200, 400, 50, 10];
+            var trainData = [5, 9, 11, 22, 30, 100, 500, 200, 100, 50, 20, 10];
+            var busData = [8, 40, 191, 234, 290, 330, 310, 255, 100, 40, 20, 10];
+            var airportData = [55, 88, 40, 100, 190, 330, 410, 200, 210, 100, 10, 5];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateEight0() {
+            var xData = ['00:00-3:00', '3:00-6:00', '6:00-9:00', '9:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00', '21:00-24:00'];
+            var motorData = [6, 27, 100, 170, 230, 300, 360, 100];
+            var trainData = [5, 20, 42, 110, 550, 250, 60, 20];
+            var busData = [45, 194, 290, 564, 365, 300, 50, 20];
+            var airportData = [100, 83, 190, 430, 510, 310, 105, 10];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateSix0() {
+            var xData = ['00:00-4:00','4:00-8:00',  '8:00-12:00', '12:00-16:00','16:00-20:00', '20:00-24:00'];
+            var motorData = [11, 77, 120, 330, 600, 60];
+            var trainData = [14, 33, 130, 700, 150, 30];
+            var busData = [48, 425, 620, 565, 140, 30];
+            var airportData = [143, 140, 520, 610, 410, 15];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateFour0() {
+        
+            var xData = ['00:00-6:00', '6:00-12:00', '12:00-18:00', '18:00-24:00'];
+            var motorData = [33, 270, 530, 460];
+            var trainData = [25, 152, 800, 80];
+            var busData = [239, 854, 665, 70];
+            var airportData = [182, 620, 820, 115];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateThree0() {
+            var xData = ['00:00-8:00', '8:00-16:00','16:00-24:00'];
+            var motorData = [88, 450, 660];
+            var trainData = [47, 830, 180];
+            var busData = [473, 1185, 170];
+            var airportData = [283, 1130, 425];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+      
+        function getDateTwelve1() {
+            var xData = ['00:00-2:00', '2:00-4:00', '4:00-6:00', '6:00-8:00', '8:00-10:00', '10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '20:00-22:00', '22:00-24:00'];
+            var motorData = [3, 40, 60, 120, 180, 260, 100, 50, 35, 27, 10, 5];
+            var trainData = [5, 9, 11, 22, 30, 243, 500, 200, 100, 50, 20, 10];
+            var busData = [8, 20, 63, 114, 170, 106, 155, 94, 100, 40, 20, 10];
+            var airportData = [10, 33, 40, 62, 90, 230, 310, 200, 210, 100, 10, 5];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateEight1() {
+            var xData = ['00:00-3:00', '3:00-6:00', '6:00-9:00', '9:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00', '21:00-24:00'];
+            var motorData = [6, 97, 200, 360, 130, 55, 30, 12];
+            var trainData = [9, 16, 50, 245, 600, 200, 60, 20];
+            var busData = [20, 71, 170, 220, 200, 149, 50, 20];
+            var airportData = [33, 50, 100, 282, 410, 310, 105, 10];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateSix1() {
+            var xData = ['00:00-4:00', '4:00-8:00', '8:00-12:00', '12:00-16:00', '16:00-20:00', '20:00-24:00'];
+            var motorData = [43, 180, 440, 150, 62, 15];
+            var trainData = [14, 33, 273, 700, 150, 30];
+            var busData = [28, 177, 276, 249, 140, 30];
+            var airportData = [43, 102, 320, 510, 310, 15];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateFour1() {
+
+            var xData = ['00:00-6:00', '6:00-12:00', '12:00-18:00', '18:00-24:00'];
+            var motorData = [103, 560, 185, 42];
+            var trainData = [25, 295, 800, 80];
+            var busData = [91, 390, 349, 70];
+            var airportData = [83, 382, 720, 115];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateThree1() {
+            var xData = ['00:00-8:00', '8:00-16:00', '16:00-24:00'];
+            var motorData = [223, 590, 77];
+            var trainData = [47, 973, 180];
+            var busData = [205, 525, 170];
+            var airportData = [145, 830, 325];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+
+        function getDateTwelve2() {
+            var xData = ['00:00-2:00', '2:00-4:00', '4:00-6:00', '6:00-8:00', '8:00-10:00', '10:00-12:00', '12:00-14:00', '14:00-16:00', '16:00-18:00', '18:00-20:00', '20:00-22:00', '22:00-24:00'];
+            var motorData = [3, 40, 60, 120, 180, 360, 200, 150, 35, 27, 10, 5];
+            var trainData = [5, 9, 11, 22, 30, 143, 200, 120, 80, 50, 20, 10];
+            var busData = [8, 20, 63, 64, 70, 86, 125, 54, 50, 40, 20, 10];
+            var airportData = [10, 33, 40, 62, 90, 130, 210, 100, 60, 50, 10, 5];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateEight2() {
+            var xData = ['00:00-3:00', '3:00-6:00', '6:00-9:00', '9:00-12:00', '12:00-15:00', '15:00-18:00', '18:00-21:00', '21:00-24:00'];
+            var motorData = [6, 97, 200, 460, 300, 85, 30, 12];
+            var trainData = [9, 16, 50, 145, 300, 100, 60, 20];
+            var busData = [20, 71, 100, 120, 150, 79, 50, 20];
+            var airportData = [30, 53, 100, 182, 300, 70, 55, 10];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateSix2() {
+            var xData = ['00:00-4:00', '4:00-8:00', '8:00-12:00', '12:00-16:00', '16:00-20:00', '20:00-24:00'];
+            var motorData = [43, 180, 540, 350, 62, 15];
+            var trainData = [14, 33, 173, 320, 130, 30];
+            var busData = [28, 127, 156, 179, 90, 30];
+            var airportData = [43, 102, 220, 310, 110, 15];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateFour2() {
+
+            var xData = ['00:00-6:00', '6:00-12:00', '12:00-18:00', '18:00-24:00'];
+            var motorData = [103, 660, 385, 42];
+            var trainData = [25, 195, 400, 80];
+            var busData = [91, 220, 229, 70];
+            var airportData = [83, 282, 370, 65];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+        function getDateThree2() {
+            var xData = ['00:00-8:00', '8:00-16:00', '16:00-24:00'];
+            var motorData = [223, 890, 77];
+            var trainData = [47, 493, 160];
+            var busData = [155, 335, 120];
+            var airportData = [145, 530, 125];
+            var myObj = new Array(xData, motorData, trainData, busData, airportData);
+            return myObj;
+        }
+
+        function getChart(day, num) { // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'));
+            var locationType = ['动车站', '火车站', '汽车站', '机场'];
+            var day = day;
+            var num = num;
+            if (day == 3) {
+                if (num == 1) { var obj = getDateTwelve0(); }
+                else if (num == 2) { var obj = getDateEight0(); }
+                else if (num == 3) { var obj = getDateSix0(); }
+                else if (num == 4) { var obj = getDateFour0(); }
+                else if (num == 5) { var obj = getDateThree0(); }
+
+            }
+            else if (day == 4) {
+                if (num == 1) { var obj = getDateTwelve1(); }
+                else if (num == 2) { var obj = getDateEight1(); }
+                else if (num == 3) { var obj = getDateSix1(); }
+                else if (num == 4) { var obj = getDateFour1(); }
+                else if (num == 5) { var obj = getDateThree1(); }
+
+            }
+            else if (day == 5) {
+                if (num == 1) { var obj = getDateTwelve2(); }
+                else if (num == 2) { var obj = getDateEight2(); }
+                else if (num == 3) { var obj = getDateSix2(); }
+                else if (num == 4) { var obj = getDateFour2(); }
+                else if (num == 5) { var obj = getDateThree2(); }
+
+            }
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: 'ECharts Demo'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+                        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                    }
+                },
+                legend: {
+                    data: locationType
+                },
+                xAxis: {
+                    type: 'category',
+                    data: obj[0]
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                series: [{
+                    name: '动车站',
+                    type: 'bar',
+                    data: obj[1]
+                },
+                {
+                    name: '火车站',
+                    type: 'bar',
+                    data: obj[2]
+                },
+                {
+                    name: '汽车站',
+                    type: 'bar',
+                    data: obj[3]
+                },
+                {
+                    name: '机场',
+                    type: 'bar',
+                    data: obj[4]
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+
+
+    </script>
+
+
+}
+ <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 85%; height: 768px;float:left;"></div>
+<div style="float:left;padding:80px 0;width:10%;text-align:center;">
+    <p>请选择展示区间</p><br />
+    <button type="button" class="btn btn-default disabled" id="twoHour">2小时</button><br />
+    <button type="button" class="btn btn-default" id="threeHour">3小时</button><br />
+    <button type="button" class="btn btn-default" id="fourHour">4小时</button><br />
+    <button type="button" class="btn btn-default" id="sixHour">6小时</button><br />
+    <button type="button" class="btn btn-default" id="eightHour">8小时</button>
+</div>
+<div style="clear:both;"></div>
+<a href="http://echarts.baidu.com/examples.html">点击查看样式大全</a>

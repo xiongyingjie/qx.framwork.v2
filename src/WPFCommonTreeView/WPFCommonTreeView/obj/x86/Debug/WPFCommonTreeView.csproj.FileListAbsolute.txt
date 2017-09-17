@@ -1,0 +1,16 @@
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\bin\Debug\WPFCommonTreeView.exe
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\bin\Debug\WPFCommonTreeView.pdb
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView.csprojResolveAssemblyReference.cache
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\CommonTreeView.g.cs
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\MainWindow.g.cs
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\App.g.cs
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView_MarkupCompile.cache
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView_MarkupCompile.lref
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\CommonTreeView.baml
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\MainWindow.baml
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView.g.resources
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView.Properties.Resources.resources
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView.csproj.GenerateResource.Cache
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView.exe
+E:\git\qx.framwork.v2\src\WPFCommonTreeView\WPFCommonTreeView\obj\x86\Debug\WPFCommonTreeView.pdb

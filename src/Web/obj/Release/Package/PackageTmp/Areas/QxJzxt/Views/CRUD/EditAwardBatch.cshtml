@@ -1,0 +1,10 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.EditAwardBatch_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o=>o.batchid)
+@Html.InputFor(o => o.batchname)
+@Html.InputAreaFor(o => o.description)
+@Html.HiddenFor(o=>o.IsCurrentBatch)

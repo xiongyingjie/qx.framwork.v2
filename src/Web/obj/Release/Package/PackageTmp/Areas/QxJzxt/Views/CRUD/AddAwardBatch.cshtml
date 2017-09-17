@@ -1,0 +1,10 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AddAwardBatch_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.InputFor(o => o.batchname)
+@Html.InputAreaFor(o => o.description)
+

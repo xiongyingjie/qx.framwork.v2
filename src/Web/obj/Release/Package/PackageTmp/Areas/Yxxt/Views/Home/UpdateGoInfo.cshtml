@@ -1,0 +1,18 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.UpdateGoInfo_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.user_id, "")
+@Html.TimeFor(o => o.go_time, "请填写出行时间")
+@Html.SelectFor(o => o.go_city_id, Model._cityItems, "请选择出行城市")
+@Html.TimeFor(o => o.arrive_time, "请填写到达时间")
+@Html.SelectFor(o => o.arrive_city_id,Model._cityItems, "请选择到达城市")
+@Html.SelectFor(o => o.share_info,
+    new List<SelectListItem>()
+    {
+        new SelectListItem() {Text = "是",Value = "是"},
+        new SelectListItem() {Text = "否",Value = "否"}
+    } , "如想结伴出行，请选择是，系统将为你推荐同城市同学;如不想结伴出行，请将选择否")

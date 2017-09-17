@@ -1,0 +1,12 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model qx.permmision.v2.Entity.orgnization
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.InputFor(o => o.orgnization_id, "")
+@Html.InputFor(o => o.father_id, "")
+@Html.InputFor(o => o.name, "")
+@Html.InputFor(o => o.descripe, "")
+@Html.InputFor(o => o.orgnization_type_id, "")
+@Html.InputFor(o => o.note, "")
+@Html.InputFor(o => o.sub_system, "")

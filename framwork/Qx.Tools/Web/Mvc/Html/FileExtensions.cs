@@ -9,7 +9,7 @@ namespace Qx.Tools.Web.Mvc.Html
     public static class FileExtensions
     {
         public static MvcHtmlString FileFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper,
-            Expression<Func<TModel, TProperty>> expression, string saveDirectory, string tipString
+            Expression<Func<TModel, TProperty>> expression, string saveDirectory, string tipString, int crossWidth
             )
         {
             return File(htmlHelper,
@@ -17,64 +17,69 @@ namespace Qx.Tools.Web.Mvc.Html
                 htmlHelper.IdFor(expression).ToString(),
                 htmlHelper.NameFor(expression).ToString(),
                 saveDirectory,
-                tipString
+                tipString,
+                crossWidth
                 );
-            //var dest = new StringBuilder();
-            //dest.Append("<div class='form-group'>");
-            //dest.Append(htmlHelper.LabelFor(expression, new { @class = "col-md-3 control-label" }));
-            //dest.Append(" <div class='col-md-9'>");
-            //dest.Append(htmlHelper.Partial("/Views/Templates/_FileUpload.cshtml", new ViewDataDictionary()
-            //{
-            //    {"saveDirectory", saveDirectory},
-            //    {"id", htmlHelper.IdFor(expression).ToString()},
-            //    {"name", htmlHelper.NameFor(expression).ToString()}
-            //}));
-            //dest.Append("<span class='help-block'>");
-            //dest.Append(tipString);
-            //dest.Append(" </span>");
-            //dest.Append(" </div>");
-            //dest.Append(" </div>");
-
-            //return new MvcHtmlString(dest.ToString());
         }
 
         public static MvcHtmlString FileFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper,
-            Expression<Func<TModel, TProperty>> expression, string saveDirectory
+            Expression<Func<TModel, TProperty>> expression, string saveDirectory, int crossWidth = 4
             )
         {
             var dest = new StringBuilder();
+            if (crossWidth != -1)
+            {
+                dest.Append("<div class='col-lg-" + crossWidth + "'>");
+            }
             dest.Append(htmlHelper.Partial("/Views/Templates/_FileUpload.cshtml", new ViewDataDictionary
             {
                 {"saveDirectory", saveDirectory},
                 {"id", htmlHelper.IdFor(expression).ToString()},
                 {"name", htmlHelper.NameFor(expression).ToString()}
             }));
+            if (crossWidth != -1)
+            {
+                dest.Append(" </div>");
+            }
             return new MvcHtmlString(dest.ToString());
         }
 
         public static MvcHtmlString File<TModel>(this HtmlHelper<TModel> htmlHelper,
-            string lable, string id, string name, string saveDirectory, string tipString
+            string lable, string id, string name, string saveDirectory, string tipString, int crossWidth=4
             )
         {
             var dest = new StringBuilder();
+            if (crossWidth != -1)
+            {
+                dest.Append("<div class='col-lg-" + crossWidth + "'>");
+            }
             dest.Append("<div class='form-group'>");
-            dest.Append("<Lable  class='col-md-3 control-label'>");
+            dest.Append("<label>");
             dest.Append(lable);
-            dest.Append("</Lable>");
-            dest.Append(" <div class='col-md-9'>");
+            dest.Append("</label>");
             dest.Append(htmlHelper.Partial("/Views/Templates/_FileUpload.cshtml", new ViewDataDictionary
             {
                 {"saveDirectory", saveDirectory},
                 {"id", id},
                 {"name", name}
             }));
-            dest.Append("<span class='help-block'>");
-            dest.Append(tipString);
-            dest.Append(" </span>");
-            dest.Append(" </div>");
-            dest.Append(" </div>");
+          
+            dest.Append("</div>");
 
+            if (crossWidth != -1)
+            {
+                dest.Append(" </div>");
+            }
             return new MvcHtmlString(dest.ToString());
+        }
+
+        public static MvcHtmlString FileFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper,
+     Expression<Func<TModel, TProperty>> expression,
+      int numberOfOneRow = 3, string saveDirectory="")
+        {
+            //宽度转换
+            numberOfOneRow = 12 / numberOfOneRow;
+            return FileFor(htmlHelper, expression, saveDirectory, numberOfOneRow);
         }
     }
 }

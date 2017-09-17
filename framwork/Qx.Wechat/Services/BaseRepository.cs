@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using qx.wechat.Entity;
 using Qx.Tools.CommonExtendMethods;
-using Qx.Wechat.Entity;
 
-namespace Qx.Wechat.Services
+namespace qx.wechat.Services
 {
     public class BaseRepository
     {

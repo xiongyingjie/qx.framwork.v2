@@ -15,9 +15,9 @@ namespace Qx.Tools.CommonExtendMethods
         {
             return items.Select(i => new DropDownListItem()
             {
-                selected = i.Selected,
-                text = i.Text,
-                value = i.Value
+                Selected = i.Selected,
+                Text = i.Text,
+                Value = i.Value
             }).ToList();
         }
         public static List<SelectListItem> ToSelectListItem(this List<DropDownListItem> items)
@@ -27,7 +27,7 @@ namespace Qx.Tools.CommonExtendMethods
                 Selected = i.selected,
                 Text = i.text,
                 Value = i.value
-            }).ToList().Format();
+            }).ToList();
         }
 
         //从db层获取数据源
@@ -51,13 +51,13 @@ namespace Qx.Tools.CommonExtendMethods
             items = items.Distinct(Equality<DropDownListItem>.CreateComparer(p => p.value)).ToList();
             if (!items.Any(a => a.text == defaultText && a.value == defaultValue))
             {
-                items.Insert(0, new DropDownListItem { text = defaultText, value = defaultValue, selected = true });
+                items.Insert(0, new DropDownListItem { Text = defaultText, Value = defaultValue, Selected = true });
             }
             items.ForEach(a =>
             {
                 if (a.value == selectedValue || a.text == selectedValue)
                 {
-                    a.selected = true;
+                    a.Selected  = true;
                 }
             });
             return items;

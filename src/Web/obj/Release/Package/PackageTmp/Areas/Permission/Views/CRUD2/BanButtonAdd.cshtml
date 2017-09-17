@@ -1,0 +1,25 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.BanButtonAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.InputFor(o => o.role_id,"",true)
+
+@Html.InputFor(o => o.role_name, "", true)
+
+@Html.InputFor(o => o.button_id,"",true)
+<a href="@Url.Action("ChooseBanButtonList", "Admin", new { area = "Permission", ReportID="Permision_选择禁用按钮",Params=";", role_id=Model.role_id})">选择禁用按钮</a>
+
+@Html.InputFor(o => o._button_name,"",true)
+
+@Html.InputAreaFor(o => o.note)     
+
+
+
+
+
+
+
+

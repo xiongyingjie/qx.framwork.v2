@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using qx.wechat.Interfaces;
 using Qx.Account.Interfaces;
 using Qx.Account.Models;
 using Qx.Account.WeixinPay.business;
 using Qx.Account.WeixinPay.lib;
-using Qx.Wechat.Interfaces;
 using Web.Areas.WeChat.ViewModels.WeChatPay;
+using Web.Controllers.Base;
 
 namespace Web.Areas.WeChat.Controllers
 {
-    public class WeChatPayController : BaseWebWeChatController
+    public class WeChatPayController : BaseController
     {
         private IWechatServices _wechatServices;
 
@@ -35,29 +36,29 @@ namespace Web.Areas.WeChat.Controllers
         {
             var wxEditAddrParam = "";
             var openid = "";
-            JsApiPay jsApiPay = new JsApiPay(HttpContext);
-            try
-            {
-                //调用【网页授权获取用户信息】接口获取用户的openid和access_token
-                jsApiPay.GetOpenidAndAccessToken();
-                //获取收货地址js函数入口参数
-                wxEditAddrParam = jsApiPay.GetEditAddressParameters();
-                openid = jsApiPay.openid;
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<span style='color:#FF0000;font-size:20px'>" + "页面加载出错，请重试" + "</span>" + ex.Message + "<hr/>" + ex.InnerException + "<hr/>" + ex.StackTrace);
-            }
+            //JsApiPay jsApiPay = new JsApiPay(HttpContext);
+            //try
+            //{
+            //    //调用【网页授权获取用户信息】接口获取用户的openid和access_token
+            //    jsApiPay.GetOpenidAndAccessToken();
+            //    //获取收货地址js函数入口参数
+            //    wxEditAddrParam = jsApiPay.GetEditAddressParameters();
+            //    openid = jsApiPay.openid;
+            //}
+            //catch (Exception ex)
+            //{
+            //    Response.Write("<span style='color:#FF0000;font-size:20px'>" + "页面加载出错，请重试" + "</span>" + ex.Message + "<hr/>" + ex.InnerException + "<hr/>" + ex.StackTrace);
+            //}
 
             return View(ProductPage_M.Init(wxEditAddrParam, openid, total_fee));
         }
 
-        public ActionResult BuyProduct(string openid, double total_fee)
+        public ActionResult BuyProduct(double total_fee)
         {
-
+            string openid = DataContext.UserId;
             if (openid != null)
             {
-                return RedirectToAction("JsApiPayPage", new { openid = openid, total_fee = total_fee });
+                return RedirectToAction("JsApiPayPage", new { openid = openid, total_fee = total_fee, return_url= "/WeChat/WeChatPay/ChargeResult" });
                // return Content("/WeChat/WeChatPay/JsApiPayPage?openid="+ openid + "&total_fee="+ total_fee);
             }
             else
@@ -65,8 +66,14 @@ namespace Web.Areas.WeChat.Controllers
                 return Content("error");
             }
         }
-        public ActionResult JsApiPayPage(string openid, double total_fee)
+        //   /WeChat/WeChatPay/JsApiPayPage?uid=123&total_fee=0.01return_url=oksMlwPF5Y1KQvoi8AklF-lUwnYQ&
+        public ActionResult JsApiPayPage( double total_fee,string return_url)
         {
+            string openid = DataContext.UserId;
+            if (!openid.HasValue() || !return_url.HasValue())
+            {
+                return Content("参数错误");
+            }
             var money = (int) (total_fee*100);
             var wxJsApiParam = "";
             //检测是否给当前页面传递了相关参数
@@ -84,7 +91,7 @@ namespace Web.Areas.WeChat.Controllers
             try
             {
                 //1.创建支付订单
-                var chargePayOrder = _accountPayService.CreatePayOrder(PLATE_WECHATPAY_ACCOUNT,
+                var chargePayOrder = _accountPayService.CreatePayOrder(Qx.Account.Configs.Setting.PLATE_WECHAT_ACCOUNT,
                    openid,
                     total_fee,
                     PayOrderTypeEnum.WeChatPay,
@@ -96,27 +103,26 @@ namespace Web.Areas.WeChat.Controllers
 
                 //3.通知微信服务器
                 WxPayData unifiedOrderResult = jsApiPay.GetUnifiedOrderResult(trade_no,"充值"+ (total_fee) +"元");
-                wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数                    
-
-
-             
+                wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数   
+                if (!wxJsApiParam.HasValue()) throw new Exception("下单失败");
+                               
                 //在页面上显示订单信息
                 return View("JsApiPayPage", JsApiPayPage_M.Init(wxJsApiParam,
                                         "<span style='color:#00CD00;font-size:20px'>充值" + total_fee + "元</span><br/><span style='color:#00CD00;font-size:20px'>" + "</span>",
                     //"<span style='color:#00CD00;font-size:20px'>订单详情：</span><br/><span style='color:#00CD00;font-size:20px'>" + unifiedOrderResult.ToPrintStr() + "</span>",
-                    total_fee + "", poid, DataContext.UserID
+                    total_fee + "", poid, DataContext.UserId, return_url
                     ));
 
             }
             catch (Exception ex)
             {
                 return View("JsApiPayPage", JsApiPayPage_M.Init(wxJsApiParam,
-                    "<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试" + "<hr/>" + ex.Data + "<hr/>" + ex.InnerException + "<hr/>" + ex.Message + "<hr/>" + ex.StackTrace + "</span>", "", poid, DataContext.UserID));
+                    "<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试" + "<hr/>" + ex.Data + "<hr/>" + ex.InnerException + "<hr/>" + ex.Message + "<hr/>" + ex.StackTrace + "</span>", "", poid, DataContext.UserId, return_url));
             }
 
         }
         // GET: /WeChat/WeChatPay/ResultNotifyPage/
-        public ActionResult ResultNotifyPage()
+        public void ResultNotifyPage()
         {
             var redirectAction = "";
 
@@ -142,30 +148,30 @@ namespace Web.Areas.WeChat.Controllers
             if (transaction_id.HasValue() && out_trade_no.HasValue())
             {
                 //1.开始处理
-                var chargePayOrder = _accountPayService.FindPayOrder(out_trade_no);
-                chargePayOrder.Pending(transaction_id);
-
+                var chargePayOrder = _accountPayService.FindPayOrder(out_trade_no); 
                 if (chargePayOrder != null)
                 {
+                    chargePayOrder.ToNextState(transaction_id);
+                    _accountPayService.SyncPayOrder(chargePayOrder);
+
                     if (result_code.ToUpper().Contains("SUCCESS") &&
                         return_code.ToUpper().Contains("SUCCESS") &&
                             chargePayOrder.IsValid(transaction_id))
                     {
                         //防止重复处理
-                        if (!chargePayOrder.IsFinished)
+                        if (!chargePayOrder.IsEnd)
                         {
-                            chargePayOrder.Successful();
-                            chargePayOrder.Finished();
+                            chargePayOrder.ToNextState();
                             //2.同步支付订单
                             _accountPayService.SyncPayOrder(chargePayOrder);
 
                             //3.发送成功通知
-                            var url = "http://wx.52xyj.cn/WeChat/BookTiketWeb/MyWallet";
-                            var acc = _accountPayService.FindAccount(openid);
-                            _wechatServices.Send_Charge_Ok_Msg(openid, url, 
-                                acc.Account.LastUpdateTime.ToStr(),
-                                (int.Parse(total_fee)/100.0)+"元",
-                               (acc.Account.Balance/100.0) + "元");
+                            //var url = "http://wx.52xyj.cn/WeChat/BookTiketWeb/MyWallet";
+                            //var acc = _accountPayService.FindAccount(openid);
+                            //_wechatServices.Send_Charge_Ok_Msg(openid, url, 
+                            //    acc.Account.LastUpdateTime.ToStr(),
+                            //    (int.Parse(total_fee)/100.0)+"元",
+                            //   (acc.Account.Balance/100.0) + "元");
                         }
                         res.SetValue("return_code", "SUCCESS");
                         res.SetValue("return_msg", "OK");
@@ -175,7 +181,9 @@ namespace Web.Areas.WeChat.Controllers
                     }
                     else
                     {
-                        chargePayOrder.Failed();
+                       // chargePayOrder.Failed();
+                       // _accountPayService.SyncPayOrder(chargePayOrder);
+
                         res.SetValue("return_code", "FAIL");
                         res.SetValue("return_msg", "订单查询失败");
                         Log.Error(this.GetType().ToString(), "Order query failure : " + res.ToXml());
@@ -196,12 +204,16 @@ namespace Web.Areas.WeChat.Controllers
                 Log.Error(this.GetType().ToString(), "The Pay result is error : " + res.ToXml());
                 redirectAction = "ChargeFailed";
             }
-            Response.Write(res.ToXml());
-            Response.End();
+           // Response.Write(res.ToXml());
+           // Response.End();
             ResultNotify resultNotify = new ResultNotify(HttpContext);
             resultNotify.ProcessNotify();
-            return RedirectToAction(redirectAction, "BookTiketWeb", new { transaction_id = transaction_id });
+           // return RedirectToAction(redirectAction, "BookTiketWeb", new { transaction_id = transaction_id });
         }
 
+        public ActionResult ChargeResult(string num)
+        {
+            return Content("成功充值"+ num+"元");
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Collections.Generic;
+using System.Reflection;
+using Newtonsoft.Json.Linq;
 
 namespace Qx.Tools
 {
@@ -15,20 +18,46 @@ namespace Qx.Tools
         {
             var t = obj.GetType();
             var p = t.GetProperties();
-            var Properties = new string[p.Length];
-            var Values = new string[p.Length];
+            var properties = new string[p.Length];
+            var values = new string[p.Length];
             for (var i = 0; i < p.Length; i++)
             {
-                Properties[i] = p[i].Name;
+                properties[i] = p[i].Name;
                 var temp = t.GetProperty(p[i].Name).GetValue(obj);
-
-                Values[i] = temp == null ? "未填写" : temp.ToString();
+                values[i] = temp == null ? "未填写" : temp.ToString();
             }
-            var result = new[] {Properties, Values};
-
+            var result = new[] {properties, values};
             return result;
         }
+        public static Dictionary<string,object> GetObjDic(object obj)
+        {
+            
+            var dic = new Dictionary<string, object>();
+            var t = obj.GetType();
 
+            if (t==typeof(JObject))
+            {
+                var jObj = (Newtonsoft.Json.Linq.JObject) obj;
+                var properties = jObj.Properties();
+                foreach (var p in properties)
+                {
+                    dic.Add(p.Name, p.Value+"");
+                }
+            }
+            else
+            {
+                var p = t.GetProperties();
+                for (var i = 0; i < p.Length; i++)
+                {
+                    var propertie = p[i].Name;
+                    var temp = t.GetProperty(p[i].Name).GetValue(obj);
+                    var value = temp == null ? "" : temp.ToString();
+                    dic.Add(propertie, value);
+                }
+            }
+           
+            return dic;
+        }
         #endregion
 
         #region 取到对象的属性集合
@@ -36,28 +65,46 @@ namespace Qx.Tools
         /// <summary>
         ///     取到对象的属性集合
         /// </summary>
-        /// <param name="FullobjName">对象的类全名</param>
+        /// <param name="fullObjName">对象的类全名</param>
         /// <returns>属性集合</returns>
-        public static string[] GetProperties(string FullobjName)
+        public static string[] GetProperties(string fullObjName,Type type=null)
         {
-            var p = Assembly.GetExecutingAssembly().CreateInstance(FullobjName).GetType().GetProperties();
-            var result = new string[p.Length];
-            for (var i = 0; i < p.Length; i++)
-            {
-                result[i] = p[i].Name;
-            }
-            return result;
+            return GetProperties((type == null ? Assembly.GetExecutingAssembly() 
+                : Assembly.GetAssembly(type)), fullObjName);
+           
         }
 
+        private static string[] GetProperties(Assembly assembly, string fullObjName)
+        {
+            var instance = assembly.CreateInstance(fullObjName);
+            if (instance != null)
+            {
+                var p = instance.GetType().GetProperties();
+                var result = new string[p.Length];
+                for (var i = 0; i < p.Length; i++)
+                {
+                    result[i] = p[i].Name;
+                }
+                return result;
+            }
+            else
+            {
+                return new string[0];
+            }
+        }
+        public static string[] GetProperties(Type type)
+        {
+            return GetProperties(Assembly.GetAssembly(type), type.FullName);
+        }
         /// <summary>
         ///     取到对象的属性集合
         /// </summary>
         /// <param name="objName">对象的类名</param>
         /// <param name="nameSpace">对象的命名空间</param>
         /// <returns>属性集合</returns>
-        public static string[] GetProperties(string objName, string nameSpace)
+        public static string[] GetProperties(string objName, string nameSpace,Type type=null)
         {
-            return GetProperties(nameSpace + "." + objName);
+            return GetProperties(nameSpace + "." + objName, type);
         }
 
         #endregion
@@ -72,11 +119,16 @@ namespace Qx.Tools
         /// <returns>属性名+属性值 object[0]+object[1]</returns>
         public static object GetObjPropertieValue(object obj, string PropertieName)
         {
-            if (obj != null)
+            object value="";
+            try
             {
                 return obj.GetType().GetProperty(PropertieName).GetValue(obj);
             }
-            return null;
+            catch (Exception)
+            {
+                return value;
+            }
+           
         }
 
         /// <summary>

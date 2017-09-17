@@ -6,12 +6,13 @@ namespace Qx.WorkFlow.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("NodeRelation")]
     public partial class NodeRelation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NodeRelation()
         {
-            ConvertConditions = new HashSet<ConvertCondition>();
+            ConvertCondition = new HashSet<ConvertCondition>();
         }
 
         [StringLength(50)]
@@ -28,10 +29,8 @@ namespace Qx.WorkFlow.Entity
         public string Note { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ConvertCondition> ConvertConditions { get; set; }
+        public virtual ICollection<ConvertCondition> ConvertCondition { get; set; }
 
         public virtual Node Node { get; set; }
-
-        public virtual Node Node1 { get; set; }
     }
 }

@@ -1,0 +1,26 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.ROOT.OrgnizationEdit_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.orgnization_id)
+
+@Html.InputFor(o => o.father_id, "", true)
+
+@Html.InputFor(o => o.name)
+
+@Html.InputFor(o => o.descripe)
+
+@Html.HiddenFor(o => o.note)
+
+@Html.HiddenFor(o => o.sub_system)
+
+@Html.HiddenFor(o => o.orgnization_type_id)
+
+@Html.InputFor(o => o.type_name)
+@*@Html.ActionLink("选择组织机构类型", "/Org_TypeChoose", "Org", new { url = "/Twxt/OrgCRUD/LevelZeroEdit?orgnization_id=" + Model.orgnization_id }, new { @class = "col-lg-offset-3" })*@
+
+@Html.HiddenFor(o => o.organization_level_id)
+
+@Html.InputFor(o => o.level_name,"",true)

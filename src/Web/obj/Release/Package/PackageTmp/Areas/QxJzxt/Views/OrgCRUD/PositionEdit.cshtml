@@ -1,0 +1,14 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.ROOT.Position_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.position_id)
+
+@Html.InputFor(o => o.name)
+
+@Html.SelectFor(o => o.position_type_id, Model.typeItem)
+
+@Html.InputAreaFor(o => o.descripe)
+
+@Html.InputAreaFor(o => o.note)

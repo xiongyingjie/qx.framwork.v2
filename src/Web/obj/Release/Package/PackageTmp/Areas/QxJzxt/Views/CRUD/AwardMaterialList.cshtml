@@ -1,0 +1,37 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AwardMaterialList_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@if (Model.data.Count != 0)
+{
+    foreach (var item in Model.data)
+    {
+        @Html.BeginGroup("材料",1)
+                <div class="form-group col-lg-6">
+                    <label>材料类型</label>
+                    <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.typename" readonly="readonly">
+                    <p class="help-block">&nbsp;</p>
+                </div>
+                <div class="form-group col-lg-6">
+                    <label>数量</label> 
+                    <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.count" readonly="readonly">
+                    <p class="help-block">&nbsp;</p>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label>材料描述</label>
+                    <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" readonly="readonly">@item.description</textarea>
+                    <p class="help-block">&nbsp;</p>
+                </div>           
+                @Html.EndGroup()
+        }
+    }
+else
+{
+    <div class="form-group">
+        <label>暂无该奖项所需的材料</label>
+        <p class="help-block">&nbsp;</p>
+    </div>
+}

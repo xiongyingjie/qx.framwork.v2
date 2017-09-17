@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Qx.Wechat.Interfaces;
+﻿using qx.wechat.Interfaces;
 
-namespace Qx.Wechat.Services
+namespace qx.wechat.Services
 {
   public  class WechatProvider: IWechatProvider
   {

@@ -1,0 +1,22 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+
+@model Web.Areas.Yxxt.ViewModels.AddAnouncement_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.anouncement_id, "")
+@Html.ShowInputFor(o => o.title)
+@Html.ShowInputFor(o => o.author)
+@Html.ShowInputFor(o => o.create_time)
+<div class="form-group">
+
+    <div class="col-md-12">
+        <lable readonly="" class="form-control" cols="20" id="contents" name="contents" rows="2" style="width: 100%; height: 100%">
+           @(new HtmlString(Model.contents))
+       
+        </lable><span class="help-block"> </span> 
+    </div>
+</div>
+

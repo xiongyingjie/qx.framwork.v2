@@ -1,0 +1,12 @@
+﻿
+
+@using Qx.Contents.Services
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.UpdateDistributionCount_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.orgawardinstanceid)
+@Html.InputFor(o => o.count)
+

@@ -1,0 +1,2653 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JinianNet.JNTemplate</name>
+    </assembly>
+    <members>
+        <member name="T:JinianNet.JNTemplate.Caching.ICache">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.ICache.Set(System.String,System.Object)">
+            <summary>
+            添加缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.ICache.Get(System.String)">
+            <summary>
+            获取键为key的缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.ICache.Remove(System.String)">
+            <summary>
+            移除键为key的缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Caching.ICache.Count">
+            <summary>
+            当前缓存数量
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Caching.MemoryCache">
+            <summary>
+            简易内存缓存
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.MemoryCache.#ctor">
+            <summary>
+            内存缓存
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.MemoryCache.Set(System.String,System.Object)">
+            <summary>
+            添加缓存
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.MemoryCache.Get(System.String)">
+            <summary>
+            获取键为key的缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.MemoryCache.Remove(System.String)">
+            <summary>
+            移除键为key的缓存
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.MemoryCache.GetEnumerator">
+            <summary>
+            Enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Caching.MemoryCache.Dispose">
+            <summary>
+            释放非托管资源
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Caching.MemoryCache.Count">
+            <summary>
+            当前缓存数量
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Common.Calculator">
+            <summary>
+            计算器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.ProcessExpression(System.String)">
+            <summary>
+            处理表达式
+            </summary>
+            <param name="value">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.ProcessExpression(System.Object[])">
+            <summary>
+            处理表达式
+            </summary>
+            <param name="value">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Object,System.Object,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Collections.Generic.Stack{System.Object})">
+            <summary>
+            计算后缀表达式
+            </summary>
+            <param name="value">后缀表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Object[])">
+            <summary>
+            计算表达式
+            </summary>
+            <param name="value">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.String)">
+            <summary>
+            计算表达式
+            </summary>
+            <param name="value">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Boolean,System.Boolean,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.String,System.String,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.DateTime,System.DateTime,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Double,System.Double,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Single,System.Single,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Decimal,System.Decimal,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Int32,System.Int32,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Int64,System.Int64,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Calculator.Calculate(System.Int16,System.Int16,System.String)">
+            <summary>
+            计算结果
+            </summary>
+            <param name="x">值一</param>
+            <param name="y">值二</param>
+            <param name="value">操作符</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Common.Calculator.LetterType">
+            <summary>
+            字符类型
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Common.Calculator.LetterType.None">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Common.Calculator.LetterType.Operator">
+            <summary>
+            操作符
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Common.Calculator.LetterType.LeftParentheses">
+            <summary>
+            左圆括号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Common.Calculator.LetterType.RightParentheses">
+            <summary>
+            右中括号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Common.Calculator.LetterType.Number">
+            <summary>
+            数字
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Common.Calculator.LetterType.Other">
+            <summary>
+            其它
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Common.OperatorHelpers">
+            <summary>
+            操作符处理类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.OperatorHelpers.ToString(JinianNet.JNTemplate.Operator)">
+            <summary>
+            将枚举的操作符转换为字符串形式
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.OperatorHelpers.Parse(System.String)">
+            <summary>
+            将操作符转换为枚举形式
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Common.ParserHelpers">
+            <summary>
+            分析辅助类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.ParserHelpers.IsLetter(System.Char)">
+            <summary>
+            是否英文字母
+            </summary>
+            <param name="value">字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.ParserHelpers.IsWord(System.Char)">
+            <summary>
+            是否单词
+            </summary>
+            <param name="value">字符</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.ParserHelpers.IsEqual(System.String,System.String)">
+            <summary>
+            字符串是否相同
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Common.Utility">
+            <summary>
+            公用类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Common.Utility.ToBoolean(System.String)">
+            <summary>
+            字符串转布尔
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Configuration.ConfigBase">
+            <summary>
+            基本配置信息
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Configuration.ConfigBase.ToDictionary">
+            <summary>
+            将配置转换成字典形式
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.Charset">
+            <summary>
+            字符编码
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.ResourceDirectories">
+            <summary>
+            资源路径
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.TagPrefix">
+            <summary>
+            标签前缀
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.TagSuffix">
+            <summary>
+            标签后缀
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.TagFlag">
+            <summary>
+            简写标签前缀
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.ThrowExceptions">
+            <summary>
+            是否抛出异常
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.StripWhiteSpace">
+            <summary>
+            是否处理标签前后空白字符
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.IgnoreCase">
+            <summary>
+            是否忽略大小写
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.CachingProvider">
+            <summary>
+            缓存提供器
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Configuration.ConfigBase.TagParsers">
+            <summary>
+            标签分析器
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Configuration.EngineConfig">
+            <summary>
+            模板配置
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Configuration.EngineConfig.CreateDefault">
+            <summary>
+            创建默认配置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Configuration.VariableAttribute">
+            <summary>
+            变量标记
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.DynamicHelpers">
+            <summary>
+            动态辅助类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.DynamicHelpers.ExcuteMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            动态执行方法
+            </summary>
+            <param name="container">对象</param>
+            <param name="methodName">方法名</param>
+            <param name="args">实参</param>
+            <returns>执行结果（Void返回NULL）</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.DynamicHelpers.GetPropertyOrField(System.Object,System.String)">
+            <summary>
+            动态获取属性或字段
+            </summary>
+            <param name="value">对象</param>
+            <param name="propertyName">属性或字段名</param>
+            <returns>返回结果</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.DynamicHelpers.ToIEnumerable(System.Object)">
+            <summary>
+            将对象转换为IEnumerable
+            </summary>
+            <param name="dataSource">源对象</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Dynamic.DynamicHelpers.Instance">
+            <summary>
+            DynamicHelpers
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.DynamicMethodInfo">
+            <summary>
+            动态方法信息
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Dynamic.DynamicMethodInfo.Delegate">
+            <summary>
+            执行方法委托
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Dynamic.DynamicMethodInfo.Parameters">
+            <summary>
+            形参
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Dynamic.DynamicMethodInfo.Name">
+            <summary>
+            方法名称
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Dynamic.DynamicMethodInfo.FullName">
+            <summary>
+            方法完整名称
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.ExcuteMethodDelegate">
+            <summary>
+            动态执行方法委托
+            </summary>
+            <param name="container">对象</param>
+            <param name="args">参数</param>
+            <returns>返回结果（Void返回NULL）</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.GetPropertyOrFieldDelegate">
+            <summary>
+            获取属性（包括有参属性）或字段委托
+            </summary>
+            <param name="model">对象</param>
+            <param name="propertyName">属性名称</param>
+            <returns>返回结果</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.IDynamicOperation">
+            <summary>
+            动态帮助类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.IDynamicOperation.ExcuteMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            动态执行方法
+            </summary>
+            <param name="container">对象</param>
+            <param name="methodName">方法名</param>
+            <param name="args">实参</param>
+            <returns>执行结果（Void返回NULL）</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.IDynamicOperation.GetPropertyOrField(System.Object,System.String)">
+            <summary>
+            动态获取属性或字段
+            </summary>
+            <param name="value">对象</param>
+            <param name="propertyName">属性或字段名</param>
+            <returns>返回结果</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.ILOperation">
+            <summary>
+            IL操作类
+            注：本类并非最终版本，请勿使用本类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ILOperation.#ctor">
+            <summary>
+            IL构造函数
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ILOperation.GetPropertyOrField(System.Object,System.String)">
+            <summary>
+            获取属性或字段
+            </summary>
+            <param name="value"></param>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ILOperation.ExcuteMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            执行方法
+            </summary>
+            <param name="container">对象</param>
+            <param name="methodName">方法名</param>
+            <param name="args">实参</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Dynamic.ReflectionOperation">
+            <summary>
+            反射辅助类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.#ctor">
+            <summary>
+            反射构造函数
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.GetIndexedProperty(System.Object,System.Boolean,System.Object)">
+            <summary>
+            获取索引值
+            </summary>
+            <param name="container">对象</param>
+            <param name="propIndex">索引名称</param>
+            <param name="isNumber">索引名称是否数字</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.GetPropertyOrField(System.Object,System.String)">
+            <summary>
+            获取属性或字段的值
+            </summary>
+            <param name="container">原对象</param>
+            <param name="propName">属性或字段名，有参数属性为参数值</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.Eval(System.Object,System.String,System.String)">
+            <summary>
+            执行表达式
+            </summary>
+            <param name="container">对象</param>
+            <param name="expression">表达式</param>
+            <param name="format">格式化对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.Eval(System.Object,System.String)">
+            <summary>
+            执行表达式
+            </summary>
+            <param name="container">对象</param>
+            <param name="expression">表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.Eval(System.Object,System.String[])">
+            <summary>
+            执行表达式
+            </summary>
+            <param name="container">对象</param>
+            <param name="expressionParts">表达式集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.Eval(System.Object,System.String[],System.Int32,System.Int32)">
+            <summary>
+            执行表达式
+            </summary>
+            <param name="container">对像</param>
+            <param name="expressionParts">表达式</param>
+            <param name="start">开始索引</param>
+            <param name="end">结束索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.GetMethod(System.Type,System.String,System.Type[]@,System.Boolean@)">
+            <summary>
+            根据形参与方法名获取MethodInfo
+            </summary>
+            <param name="type">目标TYPE</param>
+            <param name="methodName">方法名</param>
+            <param name="args">形参</param>
+            <param name="hasParam">是否有params参数</param>
+            <returns>MethodInfo</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Dynamic.ReflectionOperation.ExcuteMethod(System.Object,System.String,System.Object[])">
+            <summary>
+            调用实例方法
+            </summary>
+            <param name="container">实例对象</param>
+            <param name="methodName">方法名</param>
+            <param name="args">形参</param>
+            <returns>Object</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Exception.CompileException">
+            <summary>
+            编译错误
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Exception.ParseException">
+            <summary>
+            分析异常类
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Exception.TemplateException">
+            <summary>
+            常规性错误
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.TemplateException.#ctor">
+            <summary>
+            模板错误
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.TemplateException.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            模板错误
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="line">行</param>
+            <param name="column">字符</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.TemplateException.#ctor(System.String)">
+            <summary>
+            模板错误
+            </summary>
+            <param name="message">错误信息</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.TemplateException.#ctor(System.String,System.Exception)">
+            <summary>
+            模板错误
+            </summary>
+            <param name="message">错误信息</param>
+            <param name="innerException">基础信息</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Exception.TemplateException.Line">
+            <summary>
+            所在行
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Exception.TemplateException.Column">
+            <summary>
+            所在字符
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Exception.TemplateException.Code">
+            <summary>
+            错误代码
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.ParseException.#ctor">
+            <summary>
+            模板错误
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.ParseException.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            模板错误
+            </summary>
+            <param name="message">异常信息</param>
+            <param name="line">行</param>
+            <param name="column">字符</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.ParseException.#ctor(System.String)">
+            <summary>
+            模板错误
+            </summary>
+            <param name="message">错误信息</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Exception.ParseException.#ctor(System.String,System.Exception)">
+            <summary>
+            模板错误
+            </summary>
+            <param name="message">错误信息</param>
+            <param name="innerException">基础信息</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.BlockTag">
+            <summary>
+            标签块
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.TagBase">
+            <summary>
+            基本标签
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.Tag">
+            <summary>
+            标签基类
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Tag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析结果
+            </summary>
+            <param name="context">TemplateContext</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Tag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析结果
+            </summary>
+            <param name="context">TemplateContext</param>
+            <param name="write">TextWriter</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Tag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            转换为 Boolean 
+            </summary>
+            <param name="context">TemplateContext</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Tag.AddChild(JinianNet.JNTemplate.Parser.Node.Tag)">
+            <summary>
+            添加一个子标签
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Tag.Children">
+            <summary>
+            子标签
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Tag.FirstToken">
+            <summary>
+            开始Token
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Tag.LastToken">
+            <summary>
+            结束Token
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TagBase.ToString">
+            <summary>
+            获取标签内容的字符串引用
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TagBase.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.BlockTag.#ctor">
+            <summary>
+            标签块
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.BlockTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.BlockTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.BlockTag.Render(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            呈现标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="writer">writer</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.BlockTag.TemplateKey">
+            <summary>
+            模板KEY(用于缓存，默认为文路径)
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.BlockTag.TemplateContent">
+            <summary>
+            模板内容
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.BooleanTag">
+            <summary>
+            布尔标签
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.TypeTag`1">
+            <summary>
+            基本类型标签
+            </summary>
+            <typeparam name="T">类型</typeparam>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TypeTag`1.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析结果
+            </summary>
+            <param name="context">TemplateContext</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TypeTag`1.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析结果
+            </summary>
+            <param name="context">TemplateContext</param>
+            <param name="write">TextWriter</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.TypeTag`1.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.BooleanTag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            获取布布值
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.ElseifTag">
+            <summary>
+            ELSE if 标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ElseifTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ElseifTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ElseifTag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            获取布布值
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.ElseifTag.Test">
+            <summary>
+            条件
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.ElseTag">
+            <summary>
+            else标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ElseTag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            获取布布值
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.EndTag">
+            <summary>
+            结束标签，用于if for等复合标签的结束
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.EndTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.EndTag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            获取布布值
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.EndTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.ExpressionTag">
+            <summary>
+            表达式
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ExpressionTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.ForeachTag">
+            <summary>
+            Foreach标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ForeachTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="writer">writer</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ForeachTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.ForeachTag.Name">
+            <summary>
+            节点名
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.ForeachTag.Source">
+            <summary>
+            源对象
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.ForTag">
+            <summary>
+            FOR标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ForTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ForTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.ForTag.Initial">
+            <summary>
+            初始标签 
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.ForTag.Test">
+            <summary>
+            逻辑标签
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.ForTag.Do">
+            <summary>
+            Do 
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.FunctaionTag">
+            <summary>
+            函数（方法）标签
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.SimpleTag">
+            <summary>
+            简单标签
+            可以组合的标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.SimpleTag.Parse(System.Object,JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析结果
+            </summary>
+            <param name="baseValue">基本值</param>
+            <param name="context">TemplateContext</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.FunctaionTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.FunctaionTag.Parse(System.Object,JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="baseValue">baseValue</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.FunctaionTag.Name">
+            <summary>
+            方法名
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.IfTag">
+            <summary>
+            IF标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.IfTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.IncludeTag">
+            <summary>
+            INCLUDE标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.IncludeTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.IncludeTag.Path">
+            <summary>
+            模板路径
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.LoadTag">
+            <summary>
+            LOAD标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.LoadTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.LoadTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.LoadTag.Path">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.NullTag">
+            <summary>
+            空标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.NullTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.NullTag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            获取标签的BOOLEAN
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.NullTag.ToString">
+            <summary>
+            获取对象的字符串引用
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.NumberTag">
+            <summary>
+            数字标签
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.ReferenceTag">
+            <summary>
+            组合标签
+            用于执于复杂的方法或变量
+            类似于
+            $User.CreateDate.ToString("yyyy-MM-dd")
+            $Db.Query().Result.Count
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ReferenceTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.ReferenceTag.Parse(System.Object,JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="baseValue">基本值</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.SetTag">
+            <summary>
+            赋值标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.SetTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.SetTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.SetTag.Name">
+            <summary>
+            变量名
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.SetTag.Value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.StringTag">
+            <summary>
+            字符串标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.StringTag.ToBoolean(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            转换成BOOLEAN
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.TextTag">
+            <summary>
+            文本标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TextTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TextTag.Parse(JinianNet.JNTemplate.TemplateContext,System.IO.TextWriter)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="write">write</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TextTag.ToString">
+            <summary>
+            获取对象的字符串引用
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.Token">
+            <summary>
+            TOKEN
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Token.#ctor(JinianNet.JNTemplate.TokenKind,System.String)">
+            <summary>
+            TOKEN
+            </summary>
+            <param name="kind"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Token.ToString">
+            <summary>
+            获取文本值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.Token.CompareTo(JinianNet.JNTemplate.Parser.Node.Token)">
+            <summary>
+            比较对象
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.BeginLine">
+            <summary>
+            开始行
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.BeginColumn">
+            <summary>
+            开始列
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.EndLine">
+            <summary>
+            结束行
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.EndColumn">
+            <summary>
+            结束列
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.TokenKind">
+            <summary>
+            TOKEN标记
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.Token.Next">
+            <summary>
+            下一个NEXT
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.TokenCollection">
+            <summary>
+            TOKEN集合
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.#ctor">
+            <summary>
+            TOKEN集合
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.#ctor(System.Int32)">
+            <summary>
+            TOKEN集合
+            </summary>
+            <param name="capacity"></param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.#ctor(System.Collections.Generic.IEnumerable{JinianNet.JNTemplate.Parser.Node.Token})">
+            <summary>
+            TOKEN集合
+            </summary>
+            <param name="collection">集合</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.#ctor(System.Collections.Generic.IList{JinianNet.JNTemplate.Parser.Node.Token},System.Int32,System.Int32)">
+            <summary>
+            TOKEN集合
+            </summary>
+            <param name="collection"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Add(System.Collections.Generic.IList{JinianNet.JNTemplate.Parser.Node.Token},System.Int32,System.Int32)">
+            <summary>
+            添加多个TOKEN
+            </summary>
+            <param name="list"></param>
+            <param name="start"></param>
+            <param name="end"></param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.ToString">
+            <summary>
+            获取所有TOKEN的字符串值
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.IndexOf(JinianNet.JNTemplate.Parser.Node.Token)">
+            <summary>
+            搜索指定的对象，并返回整个集合中第一个匹配项的从零开始的索引。
+            </summary>
+            <param name="item">要在集合中查找的对象。对于引用类型，该值可以为 null。</param>
+            <returns>如果在整个集合中找到 item 的第一个匹配项，则为该项的从零开始的索引；否则为-1</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Insert(System.Int32,JinianNet.JNTemplate.Parser.Node.Token)">
+            <summary>
+            将元素插入集合的指定索引处。
+            </summary>
+            <param name="index">从零开始的索引，应在该位置插入 item。</param>
+            <param name="item">要插入的对象。对于引用类型，该值可以为 null。</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.RemoveAt(System.Int32)">
+            <summary>
+            移除集合的指定索引处的元素。
+            </summary>
+            <param name="index">要移除的元素的从零开始的索引。</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Add(JinianNet.JNTemplate.Parser.Node.Token)">
+            <summary>
+            将对象添加到集合的结尾处。
+            </summary>
+            <param name="item">要添加到集合的末尾处的对象。</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Clear">
+            <summary>
+             从集合中移除所有元素。
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Contains(JinianNet.JNTemplate.Parser.Node.Token)">
+            <summary>
+            确定某元素是否在集合中。
+            </summary>
+            <param name="item">要在集合中查找的对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.CopyTo(JinianNet.JNTemplate.Parser.Node.Token[],System.Int32)">
+            <summary>
+            将整个集合复制到兼容的一维数组中，从目标数组的指定索引位置开始放置。
+            </summary>
+            <param name="array"> 作为从集合复制的元素的目标位置的一维Token数组</param>
+            <param name="arrayIndex">必须具有从零开始的索引。</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Remove(JinianNet.JNTemplate.Parser.Node.Token)">
+            <summary>
+             从集合中移除特定对象的第一个匹配项。
+            </summary>
+            <param name="item">要从集合中移除的对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.GetEnumerator">
+            <summary>
+            返回循环访问集合的枚举器。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回循环访问集合的枚举器。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Equals(JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            比列二个集合是否相同
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.Equals(System.Object)">
+            <summary>
+            重载Equals
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.TokenCollection.GetHashCode">
+            <summary>
+            计算HASH CODE
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.TokenCollection.First">
+            <summary>
+            获取第一个FTOKEN
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.TokenCollection.Last">
+            <summary>
+            获取最后一个FTOKEN
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.TokenCollection.Item(System.Int32)">
+            <summary>
+            获取或设置指定索引的值
+            </summary>
+            <param name="index">从零开始的索引。</param>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.TokenCollection.Count">
+            <summary>
+            集合的对象
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.TokenCollection.IsReadOnly">
+            <summary>
+            是否只读集合
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.Node.VariableTag">
+            <summary>
+            变量标签
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.VariableTag.Parse(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.Node.VariableTag.Parse(System.Object,JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="context">上下文</param>
+            <param name="baseValue">baseValue</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.Node.VariableTag.Name">
+            <summary>
+            变量名
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.BooleanParser">
+            <summary>
+            Boolean标签分析器
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.ITagParser">
+            <summary>
+            标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.ITagParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.BooleanParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.CharScanner">
+            <summary>
+            字符扫描器
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.CharScanner.EOF">
+            <summary>
+            结束字符
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.#ctor(System.String)">
+            <summary>
+            CharScanner
+            </summary>
+            <param name="text">扫描内容</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.Next">
+            <summary>
+            前进1个字符
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.Next(System.Int32)">
+            <summary>
+            前进指定介字符
+            </summary>
+            <param name="i">数目</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.Back">
+            <summary>
+            后退一个字符
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.Back(System.Int32)">
+            <summary>
+            后退指定字符
+            </summary>
+            <param name="i">数目</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.Read">
+            <summary>
+            读取当前字符
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.Read(System.Int32)">
+            <summary>
+            读取当前索引位开始后第i个字符
+            </summary>
+            <param name="i">数目</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.IsMatch(System.Char[])">
+            <summary>
+            当前是否匹配指定对象
+            </summary>
+            <param name="list">匹配对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.IsEnd">
+            <summary>
+            是否扫描结束
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.IsMatch(System.Char[],System.Int32)">
+            <summary>
+            是否匹配指定对象
+            </summary>
+            <param name="list">匹配对象</param>
+            <param name="n">从当前索引后第N位开始</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.GetEscapeString">
+            <summary>
+            获取当前start到index的字符串(会处理转义符)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.GetString">
+            <summary>
+            截取start到index的字符串
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.GetEscapeString(System.Int32,System.Int32)">
+            <summary>
+            截取x到y的转义字符串
+            </summary>
+            <param name="x">开始索引</param>
+            <param name="y">结束索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.CharScanner.GetString(System.Int32,System.Int32)">
+            <summary>
+            截取x到y的字符串
+            </summary>
+            <param name="x">开始索引</param>
+            <param name="y">结束索引</param>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.CharScanner.Index">
+            <summary>
+            当前索引
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.ComplexParser">
+            <summary>
+            Complex标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.ComplexParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.EleseParser">
+            <summary>
+            ELSE标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.EleseParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.ElseifParser">
+            <summary>
+            ELSE IF标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.ElseifParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.EndParser">
+            <summary>
+            End标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.EndParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.ForeachParser">
+            <summary>
+            Foreach标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.ForeachParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.ForParser">
+            <summary>
+            For标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.ForParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.FunctionParser">
+            <summary>
+            Function标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.FunctionParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.IfParser">
+            <summary>
+            IF标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.IfParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.IncludeParser">
+            <summary>
+            Include标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.IncludeParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.ITagTypeResolver">
+            <summary>
+            标签类型分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.ITagTypeResolver.Resolver(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.LoadParser">
+            <summary>
+            Load标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.LoadParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.NumberParser">
+            <summary>
+            数字标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.NumberParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.SetParser">
+            <summary>
+            SET标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.SetParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.StringParser">
+            <summary>
+            String标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.StringParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.TagTypeResolver">
+            <summary>
+            分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.#ctor">
+            <summary>
+            标签类型分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.#ctor(System.Collections.Generic.IEnumerable{JinianNet.JNTemplate.Parser.ITagParser})">
+            <summary>
+            标签类型分析器
+            </summary>
+            <param name="parsers">各类标签分析器集合</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.Resolver(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            解析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.Add(JinianNet.JNTemplate.Parser.ITagParser)">
+            <summary>
+            添加一个标签分析器
+            </summary>
+            <param name="item">标签分析器</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.Insert(System.Int32,JinianNet.JNTemplate.Parser.ITagParser)">
+            <summary>
+            插入一个标签分析器
+            </summary>
+            <param name="index">插入索引</param>
+            <param name="item">标签分析器</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.Clear">
+            <summary>
+            清除所有分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.Contains(JinianNet.JNTemplate.Parser.ITagParser)">
+            <summary>
+            如果在集合中找到 item，则为 true，否则为 false。
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.CopyTo(JinianNet.JNTemplate.Parser.ITagParser[],System.Int32)">
+            <summary>
+            将整个 ITagParser[] 复制到兼容的一维数组中，从目标数组的指定索引位置开始放置。
+            </summary>
+            <param name="array">待复制的集合</param>
+            <param name="arrayIndex">开始位置</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.Remove(JinianNet.JNTemplate.Parser.ITagParser)">
+            <summary>
+            从 分析器中 中移除特定对象的第一个匹配项。
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.GetEnumerator">
+            <summary>
+            返回循环访问 ITagParser的枚举器。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TagTypeResolver.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            返回循环访问 ITagParser的枚举器。
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.TagTypeResolver.Count">
+            <summary>
+            返回集合个数
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.TagTypeResolver.IsReadOnly">
+            <summary>
+            集合是否只读
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.TagTypeResolver.Item(System.Int32)">
+            <summary>
+            获取或设置集合的指定索引位置的值
+            </summary>
+            <param name="index">索引</param>
+            <returns>ITagParser</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.TemplateLexer">
+            <summary>
+            词素分析器
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._flagMode">
+            <summary>
+            标记模式
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._document">
+            <summary>
+            当前文档
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._column">
+            <summary>
+            当前列
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._line">
+            <summary>
+            当前行
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._kind">
+            <summary>
+            当前TokenKind
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._startColumn">
+            <summary>
+            起始列
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._startLine">
+            <summary>
+            起始行
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._scanner">
+            <summary>
+            扫描器
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._collection">
+            <summary>
+            token集合
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Parser.TemplateLexer._pos">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateLexer.#ctor(System.String)">
+            <summary>
+            TemplateLexer
+            </summary>
+            <param name="text">待分析内容</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateLexer.Reset">
+            <summary>
+            重置分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateLexer.Parse">
+            <summary>
+            分析所有Token
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.TemplateParser">
+            <summary>
+            TemplateParser
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateParser.#ctor(JinianNet.JNTemplate.Parser.Node.Token[])">
+            <summary>
+            模板分模器
+            </summary>
+            <param name="ts">TOKEN集合</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateParser.MoveNext">
+            <summary>
+            读取下一个标签
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateParser.Reset">
+            <summary>
+            重置
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateParser.Read(JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            读取一个标签
+            </summary>
+            <param name="tc">TOKEN集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateParser.Dispose">
+            <summary>
+            Dispose
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.TemplateParser.ToArray">
+            <summary>
+            将解析结果复制到数组中
+            </summary>
+            <returns>Tag[]</returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.TemplateParser.Current">
+            <summary>
+            当前标签
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.VariableParser">
+            <summary>
+            Variable标签分析器
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableParser.Parse(JinianNet.JNTemplate.Parser.TemplateParser,JinianNet.JNTemplate.Parser.Node.TokenCollection)">
+            <summary>
+            分析标签
+            </summary>
+            <param name="parser">TemplateParser</param>
+            <param name="tc">Token集合</param>
+            <returns>标签</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Parser.VariableScope">
+            <summary>
+            变量域
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.#ctor">
+            <summary>
+            无参构造函数
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            以字典来初始化对象
+            </summary>
+            <param name="dictionary">初始化字典</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.#ctor(JinianNet.JNTemplate.Parser.VariableScope,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            以父VariableScope与字典来初始化对象
+            </summary>
+            <param name="parent">父VariableScope</param>
+            <param name="dictionary">初始化字典</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.#ctor(JinianNet.JNTemplate.Parser.VariableScope)">
+            <summary>
+            以父VariableScope来初始化对象
+            </summary>
+            <param name="parent">父VariableScope</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.Clear(System.Boolean)">
+            <summary>
+            清空数据
+            </summary>
+            <param name="all">是否清空父数据</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.Clear">
+            <summary>
+            清空数据
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.SetValue(System.String,System.Object)">
+            <summary>
+            为已有键设置新的值(本方法供set标签做特殊处理使用)
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.Push(System.String,System.Object)">
+            <summary>
+            添加数据
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.ContainsKey(System.String)">
+            <summary>
+            是否包含指定键
+            </summary>
+            <param name="key">键</param>
+            <returns>Boolean</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Parser.VariableScope.Remove(System.String)">
+            <summary>
+            移除指定对象
+            </summary>
+            <param name="key"></param>
+            <returns>是否移除成功</returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.VariableScope.Parent">
+            <summary>
+            父对象
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Parser.VariableScope.Item(System.String)">
+            <summary>
+            获取索引值
+            </summary>
+            <param name="name">索引名称</param>
+            <returns>Object</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Engine">
+            <summary>
+            引擎入口
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.Configure(JinianNet.JNTemplate.Configuration.ConfigBase,JinianNet.JNTemplate.Parser.VariableScope)">
+            <summary>
+            引擎配置
+            </summary>
+            <param name="conf">配置内容</param>
+            <param name="scope">初始化全局数据</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.Configure(System.Collections.Generic.IDictionary{System.String,System.String},System.String[],System.String[],JinianNet.JNTemplate.Parser.VariableScope)">
+            <summary>
+            引擎配置
+            </summary>
+            <param name="directories">模板目录，默认为当前程序目录</param>
+            <param name="parsers">解析器，可空</param>
+            <param name="conf">配置参数</param>
+            <param name="scope">全局数据，可空</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.InitializationEnvironment(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            初始化环境变量配置
+            </summary>
+            <param name="conf">配置内容</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.InitializationParser(System.String[])">
+            <summary>
+            初始化标签分析器
+            </summary>
+            <param name="parsers">解析器类型</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.Configure(JinianNet.JNTemplate.Configuration.ConfigBase)">
+            <summary>
+            引擎配置
+            </summary>
+            <param name="conf">配置内容</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.CreateContext">
+            <summary>
+            创建模板上下文
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.CreateTemplate(System.String)">
+            <summary>
+            从指定模板内容创建Template实例
+            </summary>
+            <param name="text">文本</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.LoadTemplate(System.String)">
+            <summary>
+            从指定路径加载模板
+            </summary>
+            <param name="path">模板文件</param>
+            <returns>ITemplate</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.LoadTemplate(System.String,JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            从指定路径加载模板
+            </summary>
+            <param name="path">模板文件</param>
+            <param name="ctx">模板上下文</param>
+            <returns>ITemplate</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.GetEnvironmentVariable(System.String)">
+            <summary>
+            获取环境变量
+            </summary>
+            <param name="variable">变量名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.GetEnvironmentVariables">
+            <summary>
+            获取所有环境变量
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Engine.SetEnvironmentVariable(System.String,System.String)">
+            <summary>
+            设置环境变量
+            </summary>
+            <param name="variable">变量名</param>
+            <param name="value">值</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Engine.Cache">
+            <summary>
+            缓存
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Engine.TagResolver">
+            <summary>
+            标签类型解析器
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Engine.ComparisonIgnoreCase">
+            <summary>
+            字符串大小写排序配置
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Engine.BindIgnoreCase">
+            <summary>
+            绑定大小写配置
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Engine.ComparerIgnoreCase">
+            <summary>
+            字符串大小写比较配置
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.Engine.ResourceDirectories">
+            <summary>
+            资源路径
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Field">
+            <summary>
+            系统常用字段
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Field.Version">
+            <summary>
+            当前程序版本
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Field.RSEOLVER_TYPES">
+            <summary>
+            默认标签解析器
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.FlagMode">
+            <summary>
+            标记模式
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.FlagMode.None">
+            <summary>
+            无。
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.FlagMode.Logogram">
+            <summary>
+            简写
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.FlagMode.Full">
+            <summary>
+            完整
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.FlagMode.Comment">
+            <summary>
+            注释
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.FuncHandler">
+            <summary>
+            方法标签委托
+            </summary>
+            <param name="args">方法参数</param>
+            <returns>Object</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.ITemplate">
+            <summary>
+            Template 接口
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.ITemplate.Render(System.IO.TextWriter)">
+            <summary>
+            结果呈现
+            </summary>
+            <param name="writer"></param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.ITemplate.Context">
+            <summary>
+            模板上下文
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.ITemplate.TemplateContent">
+            <summary>
+            模板内容
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.LexerMode">
+            <summary>
+            表示词法分析模式的枚举值。
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:JinianNet.JNTemplate.LexerMode.None">
+            <summary>
+            未定义状态。
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.LexerMode.EnterLabel">
+            <summary>
+            进入标签。
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.LexerMode.LeaveLabel">
+            <summary>
+            脱离标签。
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Operator">
+            <summary>
+            操作符
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.None">
+            <summary>
+            <![CDATA[none]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Plus">
+            <summary>
+            <![CDATA[+]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Minus">
+            <summary>
+            <![CDATA[-]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Times">
+            <summary>
+            <![CDATA[*]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Percent">
+            <summary>
+            <![CDATA[%]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Divided">
+            <summary>
+            <![CDATA[/]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.LogicalOr">
+            <summary>
+            <![CDATA[|]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Or">
+            <summary>
+            <![CDATA[||]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.LogicAnd">
+            <summary>
+            <![CDATA[&]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.And">
+            <summary>
+            <![CDATA[&&]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.GreaterThan">
+            <summary>
+            <![CDATA[>]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.GreaterThanOrEqual">
+            <summary>
+            <![CDATA[>=]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.LessThan">
+            <summary>
+            <![CDATA[<]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.LessThanOrEqual">
+            <summary>
+            <![CDATA[<=]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.Equal">
+            <summary>
+            <![CDATA[==]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.NotEqual">
+            <summary>
+            <![CDATA[!=]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.LeftParentheses">
+            <summary>
+            <![CDATA[(]]>
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.Operator.RightParentheses">
+            <summary>
+            <![CDATA[)]]>
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Resources">
+             <summary>
+            资源操作
+             </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.MergerPaths(System.Collections.Generic.IEnumerable{System.String},System.String[])">
+            <summary>
+            合并集合
+            </summary>
+            <param name="oldPaths">原路径集合</param>
+            <param name="newPaths">待合并的路径集合</param>
+            <returns>新的路径集合</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.FindPath(System.String,System.String@)">
+            <summary>
+            查找指定文件
+            </summary>
+            <param name="filename">文件名 允许相对路径.路径分隔符只能使用/</param>
+            <param name="fullPath">查找结果：完整路径</param>
+            <returns>路径索引</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.FindPath(System.Collections.Generic.IEnumerable{System.String},System.String,System.String@)">
+            <summary>
+            查找指定文件
+            </summary>
+            <param name="paths">检索路径</param>
+            <param name="filename">文件名 允许相对路径.路径分隔符只能使用/</param>
+            <param name="fullPath">查找结果：完整路径</param>
+            <returns>路径索引</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.Load(System.Collections.Generic.IEnumerable{System.String},System.String,System.Text.Encoding)">
+            <summary>
+            加载资源
+            </summary>
+            <param name="paths">检索路径</param>
+            <param name="filename">文件名</param>
+            <param name="encoding">编码</param>
+            <returns>文本内容</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.Load(System.String,System.Text.Encoding)">
+            <summary>
+            加载资源
+            </summary>
+            <param name="filename">文件名</param>
+            <param name="encoding">编码</param>
+            <returns>文本内容</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.LoadResource(System.String,System.Text.Encoding)">
+            <summary>
+            载入文件
+            </summary>
+            <param name="fullPath">完整文件路径</param>
+            <param name="encoding">编码</param>
+            <returns>文本内容</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.Load(System.Collections.Generic.IEnumerable{System.String},System.String,System.Text.Encoding,System.String@)">
+            <summary>
+            根据文件名(允许有相对路径)查找并读取文件
+            </summary>
+            <param name="paths">检索目录</param>
+            <param name="filename">文件名</param>
+            <param name="encoding">编码</param>
+            <param name="fullName">完整路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.IsLocalPath(System.String)">
+            <summary>
+            是否本地路径表达形式
+            </summary>
+            <param name="path">路径</param>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Resources.NormalizePath(System.String)">
+            <summary>
+            路径处理
+            </summary>
+            <param name="filename">待处理文件</param>
+            <returns>处理后的路径</returns>
+        </member>
+        <member name="T:JinianNet.JNTemplate.Template">
+            <summary>
+            模板实例类
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.TemplateRender">
+            <summary>
+            基本模板呈现
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateRender.Render(System.IO.TextWriter)">
+            <summary>
+            呈现内容
+            </summary>
+            <param name="writer">TextWriter</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateRender.ParseTag">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateRender.ThrowException(JinianNet.JNTemplate.Exception.TemplateException,JinianNet.JNTemplate.Parser.Node.Tag,System.IO.TextWriter)">
+            <summary>
+            异常处理
+            </summary>
+            <param name="e">异常信息</param>
+            <param name="tag">影响标签</param>
+            <param name="writer">TextWriter</param>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateRender.TemplateKey">
+            <summary>
+            模板KEY(用于缓存，默认为文路径)
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateRender.Context">
+            <summary>
+            模板上下文
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateRender.TemplateContent">
+            <summary>
+            模板内容
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Template.#ctor">
+            <summary>
+            Template
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Template.#ctor(System.String)">
+            <summary>
+            Template
+            </summary>
+            <param name="text">模板内容</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Template.#ctor(JinianNet.JNTemplate.TemplateContext,System.String)">
+            <summary>
+            Template
+            </summary>
+            <param name="ctx">TemplateContext 对象</param>
+            <param name="text">模板内容</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Template.Render">
+            <summary>
+            模板解析结果呈现
+            </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Template.Set(System.String,System.Object)">
+            <summary>
+            设置数据
+            </summary>
+            <param name="key">键</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.Template.Set(System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            批量设置数据
+            </summary>
+            <param name="dic">字典</param>
+        </member>
+        <member name="T:JinianNet.JNTemplate.TemplateContext">
+            <summary>
+            Context
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateContext.#ctor">
+            <summary>
+            模板上下文
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateContext.#ctor(JinianNet.JNTemplate.Parser.VariableScope)">
+            <summary>
+            模板上下文
+            </summary>
+            <param name="data">数据</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateContext.AddError(System.Exception)">
+            <summary>
+            将异常添加到当前 异常集合中。
+            </summary>
+            <param name="e">异常</param>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateContext.ClearError">
+            <summary>
+            清除所有异常
+            </summary>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateContext.CreateContext(JinianNet.JNTemplate.TemplateContext)">
+            <summary>
+            从指定TemplateContext创建一个类似的实例
+            </summary>
+            <param name="context"></param>
+            <returns>TemplateContext</returns>
+        </member>
+        <member name="M:JinianNet.JNTemplate.TemplateContext.Clone">
+            <summary>
+            浅克隆当前实例
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.StripWhiteSpace">
+            <summary>
+            处理标签前后空格
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.TempData">
+            <summary>
+            模板数据
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.CurrentPath">
+            <summary>
+            当前资源路径
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.Charset">
+            <summary>
+            当前资源编码
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.ThrowExceptions">
+            <summary>
+            是否抛出异常(默认为true)
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.AllErrors">
+            <summary>
+            当前异常集合（当ThrowExceptions为false时有效）
+            </summary>
+        </member>
+        <member name="P:JinianNet.JNTemplate.TemplateContext.Error">
+            <summary>
+            获取当前第一个异常信息（当ThrowExceptions为false时有效）
+            </summary>
+        </member>
+        <member name="T:JinianNet.JNTemplate.TokenKind">
+            <summary>
+            Token种类
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.None">
+            <summary>
+            无
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Text">
+            <summary>
+            文本
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.TextData">
+            <summary>
+            文本数据
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Tag">
+            <summary>
+            标签
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.TagStart">
+            <summary>
+            标签开始标记
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.TagEnd">
+            <summary>
+            标签结束标记
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.String">
+            <summary>
+            字符串
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Number">
+            <summary>
+            数字
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.LeftBracket">
+            <summary>
+            左中括号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.RightBracket">
+            <summary>
+            右中括号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.LeftParentheses">
+            <summary>
+            左圆括号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.RightParentheses">
+            <summary>
+            右员括号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.NewLine">
+            <summary>
+            新行（换行符）
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Dot">
+            <summary>
+            点
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.StringStart">
+            <summary>
+            字符串开始
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.StringEnd">
+            <summary>
+            字符串结束
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Space">
+            <summary>
+            空格
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Punctuation">
+            <summary>
+            标点
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Operator">
+            <summary>
+            运算符
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.Comma">
+            <summary>
+            逗号
+            </summary>
+        </member>
+        <member name="F:JinianNet.JNTemplate.TokenKind.EOF">
+            <summary>
+            结束
+            </summary>
+        </member>
+    </members>
+</doc>

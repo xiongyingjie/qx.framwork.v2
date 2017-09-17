@@ -10,7 +10,6 @@ namespace Qx.Tools.Exceptions.Form
         public FormValitationException(List<DbValidationError> validationErrors)
         {
             this.ValidationErrors = validationErrors;
-         
         }
     }
 }

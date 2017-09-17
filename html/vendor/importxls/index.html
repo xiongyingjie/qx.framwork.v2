@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html>  
+ <head>  
+  <title> New Document </title>  
+     <script src="../jquery/jquery.js"></script>
+    <!-- Excel插件 -->  
+  <script type="text/javascript" src="js/shim.js" ></script>
+  <script type="text/javascript" src="js/xls.js" ></script>
+  <!-- 自定义JS -->  
+  <script type="text/javascript" src="js/excel.acc.js" ></script>
+ </head>  
+  
+ <body>  
+    <!-- 必须有个文件上传 -->  
+   <input type="file" id="xlf" name="xlf" />  
+    <br>  
+    <!-- 输出查看 -->  
+    <textarea id="txtArea" cols=50 rows=10></textarea>  
+  
+    <script type='text/javascript'>  
+  
+        var drop = document.getElementById('xlf');  
+        //添加Change绑定事件  
+        if(drop.addEventListener) {  
+            drop.addEventListener('change', handleFile, false);  
+        }  
+        function excelReader(data,json) {  
+            //输出  
+            document.getElementById('txtArea').innerText = json;  
+            console.log(json);
+        }  
+  
+    </script>  
+ </body>  
+</html>  

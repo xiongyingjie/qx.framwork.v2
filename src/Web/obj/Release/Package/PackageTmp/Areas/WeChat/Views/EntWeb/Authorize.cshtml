@@ -1,0 +1,83 @@
+﻿@model Web.Areas.WeChat.ViewModels.Web.Authorize_M
+@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>加载中，请稍后..</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+    <link href="~/Areas/WxApp/Content/lib/weui.min.css" rel="stylesheet" />
+    <link href="~/Areas/WxApp/Content/css/jquery-weui.min.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+        function jump() {
+            location.href = "@(new HtmlString(Model._Url))";
+        }
+
+        jump();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            jump();
+        }
+    </script>
+    <style>
+        body {
+            font-family: '幼圆';
+        }
+
+        .placeholder {
+            margin: 5px;
+            padding: 0 10px;
+            background-color: #ebebeb;
+            height: 2.3em;
+            line-height: 2.3em;
+            text-align: center;
+            color: #cfcfcf;
+        }
+
+        .contain {
+            margin-top: 8rem;
+        }
+    </style>
+</head>
+
+<body ontouchstart>
+    <div class="contain">
+        <div class="weui-msg">
+            <div class="weui-msg__icon-area"><i class="weui-icon-waiting weui-icon_msg"></i></div>
+            <div class="weui-msg__text-area">
+                <i class="weui-loading"></i><h2 class="weui-msg__title">加载中</h2>
+                <p class="weui-msg__desc"><a href="javascript:void(0);"></a></p>
+            </div>
+            <div class="weui-msg__opr-area">
+
+            </div>
+            <div class="weui-msg__extra-area">
+
+            </div>
+        </div>
+
+    </div>
+    <script src="~/Areas/WxApp/Content/lib/jquery-2.1.4.js"></script>
+
+    <script src="~/Areas/WxApp/Content/lib/fastclick.js"></script>
+    <script src="~/Areas/WxApp/Content/js/jquery-weui.js"></script>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+        });
+    </script>
+
+</body>
+</html>
+
+

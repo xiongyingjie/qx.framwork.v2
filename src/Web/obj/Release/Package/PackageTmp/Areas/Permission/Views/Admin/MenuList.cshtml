@@ -1,0 +1,29 @@
+﻿@model Web.Areas.Permission.ViewModels.Admin.MenuList_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@if(Model.fathers.Count!=0)
+{
+    <div class="col-md-12">
+    <ol class="page-breadcrumb breadcrumb">
+        @for (var i = 0; i < Model.fathers.Count; i++)
+        {
+        @*@Html.ActionLink("[" + (i + 1) + "级]" + Model.fathers[i].Name, "MenuList", "Admin",new {ReportID="Permision_菜单列表",Params=Model.fathers[i].FartherID})*@
+                <li><a href="/Permission/Admin/MenuList?ReportID=Permision_菜单列表&Params=@Model.fathers[i].FartherID">@("[" + (i + 1) + "级]" + Model.fathers[i].Name)</a> 
+        <i class="fa fa-angle-right"></i></li>
+        }
+    </ol>
+
+   </div>
+}
+<label>
+    菜单编号:&nbsp;
+    @Html.TextBox("菜单编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的菜单编号" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("菜单编号");
+        return Params;
+    }
+</script>

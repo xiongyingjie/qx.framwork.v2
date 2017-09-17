@@ -1,0 +1,20 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+<label>
+    &nbsp;
+    @Html.TextBox("小项ID", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的小项ID" })
+</label>
+<script>
+</script>
+<script>
+    function Search() {
+        var Params = v("小项");//在这里构造参数
+        return Params;
+    }
+
+</script>
+
+
+

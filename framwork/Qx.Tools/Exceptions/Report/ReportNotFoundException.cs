@@ -2,11 +2,8 @@
 {
     public class ReportNotFoundException : System.Exception
     {
-        private string v;
-
-        public ReportNotFoundException(string v)
+        public ReportNotFoundException(string message) : base(message)
         {
-            this.v = v;
         }
     }
 }

@@ -5,8 +5,8 @@ using Qx.Tools.Interfaces;
 
 namespace Qx.Order.Interfaces
 {
- public  interface IOrderService
- {
+ public  interface IOrderService : IAutoInject
+    {
        
         CartBag CreateCart(DataContext dataContext);
         CartBag FindCart(DataContext dataContext, IProductProvider provider);

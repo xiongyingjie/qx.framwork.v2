@@ -10,7 +10,11 @@ namespace qx.permmision.v2.Entity
         {
         }
         public virtual DbSet<button> button { get; set; }
+        public virtual DbSet<data_filter> data_filter { get; set; }
+        public virtual DbSet<filter_script> filter_script { get; set; }
         public virtual DbSet<menu> menu { get; set; }
+        public virtual DbSet<organization_level> organization_level { get; set; }
+        public virtual DbSet<organization_relation> organization_relation { get; set; }
         public virtual DbSet<orgnization> orgnization { get; set; }
         public virtual DbSet<orgnization_position> orgnization_position { get; set; }
         public virtual DbSet<orgnization_type> orgnization_type { get; set; }
@@ -53,6 +57,42 @@ namespace qx.permmision.v2.Entity
                 .Property(e => e.value)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<data_filter>()
+                .Property(e => e.data_filter_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<data_filter>()
+                .Property(e => e.role_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<data_filter>()
+                .Property(e => e.report_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<data_filter>()
+                .Property(e => e.note)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<data_filter>()
+                .Property(e => e.filter_script_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<filter_script>()
+                .Property(e => e.filter_script_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<filter_script>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<filter_script>()
+                .Property(e => e.script)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<filter_script>()
+                .Property(e => e.note)
+                .IsUnicode(false);
+
             modelBuilder.Entity<menu>()
                 .Property(e => e.menu_id)
                 .IsUnicode(false);
@@ -67,7 +107,7 @@ namespace qx.permmision.v2.Entity
 
             modelBuilder.Entity<menu>()
                 .Property(e => e.note)
-                .IsFixedLength();
+                .IsUnicode(false);
 
             modelBuilder.Entity<menu>()
                 .Property(e => e.url)
@@ -105,6 +145,30 @@ namespace qx.permmision.v2.Entity
                 .Property(e => e.active_li)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<organization_level>()
+                .Property(e => e.organization_level_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<organization_level>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<organization_level>()
+                .Property(e => e.note)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<organization_relation>()
+                .Property(e => e.organization_relation_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<organization_relation>()
+                .Property(e => e.orgnization_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<organization_relation>()
+                .Property(e => e.other_orgnization_id)
+                .IsUnicode(false);
+
             modelBuilder.Entity<orgnization>()
                 .Property(e => e.orgnization_id)
                 .IsUnicode(false);
@@ -132,6 +196,21 @@ namespace qx.permmision.v2.Entity
             modelBuilder.Entity<orgnization>()
                 .Property(e => e.sub_system)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<orgnization>()
+                .Property(e => e.organization_level_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<orgnization>()
+                .HasMany(e => e.organization_relation)
+                .WithRequired(e => e.orgnization)
+                .HasForeignKey(e => e.orgnization_id);
+
+            modelBuilder.Entity<orgnization>()
+                .HasMany(e => e.organization_relation1)
+                .WithRequired(e => e.orgnization1)
+                .HasForeignKey(e => e.other_orgnization_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<orgnization_position>()
                 .Property(e => e.orgnization_position_id)

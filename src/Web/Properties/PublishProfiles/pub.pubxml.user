@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>E:\pub\wx</_PublishTargetUrl>
+    <_PublishTargetUrl>E:\pub\ent.wx.sever</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="Areas/Alipay/Views/Charge/Index.cshtml">
@@ -255,6 +255,9 @@
     <File Include="Areas/CreditCard/Views/WithdrawalRecord/MyWithdrawalRecord.cshtml">
       <publishTime>01/11/2017 17:54:30</publishTime>
     </File>
+    <File Include="Areas/Csj/Views/web.config">
+      <publishTime>09/13/2017 12:08:46</publishTime>
+    </File>
     <File Include="Areas/Employee/Views/Admin/Index.cshtml">
       <publishTime>10/19/2016 19:43:26</publishTime>
     </File>
@@ -389,6 +392,12 @@
     </File>
     <File Include="Areas/Employee/Views/_ViewStart.cshtml">
       <publishTime>01/11/2017 17:54:26</publishTime>
+    </File>
+    <File Include="Areas/ent/Views/web.config">
+      <publishTime>07/24/2017 10:03:59</publishTime>
+    </File>
+    <File Include="Areas/fake_api/Views/web.config">
+      <publishTime>07/14/2017 20:52:07</publishTime>
     </File>
     <File Include="Areas/FastCar/Views/Admin/CarBrand.cshtml">
       <publishTime>01/11/2017 17:54:27</publishTime>
@@ -933,6 +942,201 @@
     <File Include="Areas/Invoicing/Views/web.config">
       <publishTime>01/11/2017 17:54:29</publishTime>
     </File>
+    <File Include="Areas/join_party/Content/css/party.css">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/accept_male_user_72px_501087_easyicon.net.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/add_male_user_72px_501090_easyicon.net.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/edit_male_user_72px_501102_easyicon.net.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/male_user_72px_501106_easyicon.net.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/male_user_comment_72px_501107_easyicon.net.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/party.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/partyAdd.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/partyList.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/partySta.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/partyTalk.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/partyWrite.png">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Content/img/warning.gif">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ActivistThoughtReportDetail.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/activist_thought_report.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/AddAddPartyIntro.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/AddCultivationConnector.cshtml">
+      <publishTime>04/02/2017 16:22:14</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ChangeConnector.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ChangeLeaguebranch.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ChangeParty.cshtml">
+      <publishTime>04/06/2017 21:47:33</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/CheckGet_prize.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/CheckHold_position.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/CheckJoin_activity.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/CheckSocial_practice.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/CheckVolunteer_service.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/CultivationObjectInfo.cshtml">
+      <publishTime>04/01/2017 10:20:25</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/cultivation_connector.cshtml">
+      <publishTime>04/01/2017 10:20:25</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/develop_object.cshtml">
+      <publishTime>04/01/2017 10:20:25</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/EditTime.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/EditUserInfo.cshtml">
+      <publishTime>04/02/2017 16:22:14</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/FormalApplication.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/Get_prize.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/hold_position.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/Index.cshtml">
+      <publishTime>04/21/2017 15:16:28</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/JoinPartyIntro.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/Join_activity.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/MyCultivationObject.cshtml">
+      <publishTime>04/10/2017 21:46:16</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/PartySchoolStu.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/PartyTalkRecord.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/PreThoughtReportDetail.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/pre_party_thought_report.cshtml">
+      <publishTime>04/01/2017 10:20:25</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/SetThoughtReportTime.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/Social_practice.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/TalkAdd.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/TalkEdit.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ThoughtReportSubTime.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ToActivity.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/ToPreParty.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UnAuthorize.cshtml">
+      <publishTime>04/10/2017 21:46:16</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadActivistThoughtReport.cshtml">
+      <publishTime>06/29/2017 20:54:08</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadAutobiography.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadGet_prize.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadJoinPartyApplication.cshtml">
+      <publishTime>06/29/2017 20:48:29</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadJoin_activity.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadPosition_hold.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadPrePartyThoughtReport.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadSocial_practice.cshtml">
+      <publishTime>09/03/2017 21:45:57</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadSubmitJoinPartyVolunte.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UploadVolunteer_service.cshtml">
+      <publishTime>06/29/2017 20:59:58</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UserInfo.cshtml">
+      <publishTime>04/10/2017 21:46:16</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/UserInfoDetail.cshtml">
+      <publishTime>04/10/2017 21:46:16</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Admin/Volunteer_service.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/Home/Index.cshtml">
+      <publishTime>04/01/2017 10:20:25</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/web.config">
+      <publishTime>04/02/2017 16:22:14</publishTime>
+    </File>
+    <File Include="Areas/join_party/Views/_ViewStart.cshtml">
+      <publishTime>04/01/2017 10:20:25</publishTime>
+    </File>
     <File Include="Areas/Json/Views/web.config">
       <publishTime>01/25/2017 14:21:25</publishTime>
     </File>
@@ -1240,37 +1444,37 @@
       <publishTime>01/11/2017 17:54:29</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/BanButtonList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/ButtonList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/ChooseBanButtonList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/ChooseMenuList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/ChooseRoleList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/Index.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/MenuList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/RoleList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/RoleMenuList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/UserList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/Admin/UserRoleList.cshtml">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>06/30/2017 10:42:11</publishTime>
     </File>
     <File Include="Areas/Permission/Views/CRUD/BanButtonAdd.cshtml">
       <publishTime>01/25/2017 14:22:27</publishTime>
@@ -1305,14 +1509,284 @@
     <File Include="Areas/Permission/Views/CRUD/UserRoleAdd.cshtml">
       <publishTime>01/25/2017 14:22:27</publishTime>
     </File>
+    <File Include="Areas/Permission/Views/CRUD2/BanButtonAdd.cshtml">
+      <publishTime>06/30/2017 10:42:11</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/ButtonAdd.cshtml">
+      <publishTime>06/30/2017 10:42:11</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/Index.cshtml">
+      <publishTime>06/30/2017 10:42:11</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/MenuAdd.cshtml">
+      <publishTime>07/01/2017 23:17:22</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/MenuEdit.cshtml">
+      <publishTime>06/30/2017 10:42:11</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/RoleAdd.cshtml">
+      <publishTime>06/30/2017 10:42:11</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/RoleMenuAdd.cshtml">
+      <publishTime>06/30/2017 10:42:11</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UpdateOrgnization.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UpdateRoleGroup.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UpdateRoleGroupRelation.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UpdateUserGroup.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UpdateUserGroupRelation.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UserAdd.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/CRUD2/UserRoleAdd.cshtml">
+      <publishTime>06/30/2017 10:42:12</publishTime>
+    </File>
     <File Include="Areas/Permission/Views/Home/Index.cshtml">
       <publishTime>01/25/2017 14:22:26</publishTime>
     </File>
     <File Include="Areas/Permission/Views/web.config">
-      <publishTime>01/25/2017 14:22:26</publishTime>
+      <publishTime>07/01/2017 23:17:22</publishTime>
+    </File>
+    <File Include="Areas/Permission/Views/_ViewStart.cshtml">
+      <publishTime>07/01/2017 23:17:22</publishTime>
+    </File>
+    <File Include="Areas/plate/Views/web.config">
+      <publishTime>07/23/2017 17:16:41</publishTime>
     </File>
     <File Include="Areas/Punishment/Views/web.config">
       <publishTime>03/05/2017 11:31:05</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/AutoReport/SpecialistCollegeAwardExamineList.cshtml">
+      <publishTime>07/30/2017 14:30:06</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAttrsToMaterialType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAwardBatch.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAwardInstance.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAwardInstanceBaseInfo.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAwardInstanceFromBatch.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAwardInstanceToBatch.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddAwardType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddBaseInfo.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddBaseInfoToAward.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddMaterialAttrs.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddMaterialToAward.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddMaterialToAwardInstance.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddMaterialType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddMyMaterial.cshtml">
+      <publishTime>08/07/2017 15:04:11</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AddOrg.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AwardInstanceDistributionToOrg.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/AwardMaterialList.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/CollegeAwardExamineNoPass.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/CollegeAwardExaminePass.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/CollegeChangeAward.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailAwardBatch.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailAwardInstance.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailAwardType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailCollegeAwardExamine.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailMaterialApply.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailMaterialType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailOrg.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailSchoolAwardExamine.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DetailUserApplyAward.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/DistributionTotalCount.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditATBI.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditAwardBatch.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditAwardInstance.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditAwardInstanceBaseInfo.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditAwardInstanceMaterial.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditAwardType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditBaseInfo.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditMaterialAttrs.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditMaterialType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditMTA.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditMyMaterialApply.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditOrg.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/EditUserApplyAward.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/MaterialExamineNoPass.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/MaterialExaminePass.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/SchoolAwardExamineNoPass.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/SchoolAwardExaminePass.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/SpecialistExamine.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/UpdateDistributionCount.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/UserApplyAward.cshtml">
+      <publishTime>08/07/2017 15:04:11</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/CRUD/WriteAwardBaseInfoValue.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/Org/Org_Position_User.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/AddOrgLevel.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/AddOrgType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/Add_Org_Position.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/EditOrgLevel.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/EditOrgType.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelOneAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelOneEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelThreeAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelThreeEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelTwoAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelTwoEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelZeroAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/LevelZeroEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/Org_CommonAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/Org_CommonEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/Org_PositionAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/PositionAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/PositionEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/PositionTypeAdd.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/OrgCRUD/PositionTypeEdit.cshtml">
+      <publishTime>07/30/2017 14:30:08</publishTime>
+    </File>
+    <File Include="Areas/QxJzxt/Views/web.config">
+      <publishTime>07/30/2017 14:30:09</publishTime>
     </File>
     <File Include="Areas/R/Views/AccountFastCarInvoicingOrder/FastCar.cshtml">
       <publishTime>01/11/2017 17:54:30</publishTime>
@@ -1554,6 +2028,279 @@
     <File Include="Areas/R/Views/web.config">
       <publishTime>01/11/2017 17:54:30</publishTime>
     </File>
+    <File Include="Areas/school/Views/web.config">
+      <publishTime>07/23/2017 17:18:22</publishTime>
+    </File>
+    <File Include="Areas/sports/Views/web.config">
+      <publishTime>09/01/2017 00:04:15</publishTime>
+    </File>
+    <File Include="Areas/Test/Views/web.config">
+      <publishTime>08/12/2017 15:37:15</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Contents/css/answerrecord.css">
+      <publishTime>07/24/2017 16:06:04</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Contents/css/question.css">
+      <publishTime>07/26/2017 14:30:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Contents/js/answerrecord.js">
+      <publishTime>07/26/2017 14:30:34</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Contents/js/jquery.min.js">
+      <publishTime>07/04/2017 14:40:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Contents/js/questionnaire.js">
+      <publishTime>07/23/2017 18:31:16</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Contents/js/QuestionnaireAnswerDetail.js">
+      <publishTime>07/26/2017 14:30:34</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/ApplyAssociationActivity.cshtml">
+      <publishTime>07/03/2017 15:43:10</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/ApplyCreateAssociation.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/EditAssociation.cshtml">
+      <publishTime>06/11/2017 17:37:20</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/EditTakeIn.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/InformInterview.cshtml">
+      <publishTime>06/11/2017 22:02:56</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/LookInterviewInfo.cshtml">
+      <publishTime>06/15/2017 15:04:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/PublishTakeIn.cshtml">
+      <publishTime>07/03/2017 15:43:10</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/SignUp.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/UpdateAssociationLeader.cshtml">
+      <publishTime>07/03/2017 15:43:10</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Association/WriteGrade.cshtml">
+      <publishTime>06/13/2017 15:41:25</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Cadre/AddAssociation.cshtml">
+      <publishTime>06/15/2017 15:04:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Cadre/EidtAssociation.cshtml">
+      <publishTime>06/15/2017 15:04:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Interaction/AnswerMyMessageBoard.cshtml">
+      <publishTime>06/13/2017 10:54:53</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Interaction/LeavingMessage.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Interaction/SendMessage.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/League/Emigration.cshtml">
+      <publishTime>06/13/2017 15:41:25</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/League/Imigration.cshtml">
+      <publishTime>06/13/2017 15:41:25</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/League/MyDocument.cshtml">
+      <publishTime>06/15/2017 15:04:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/League/MyInfo.cshtml">
+      <publishTime>06/13/2017 15:41:25</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelOneAdd.cshtml">
+      <publishTime>07/23/2017 18:31:17</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelOneEdit.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelThreeAdd.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelThreeEdit.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelTwoAdd.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelTwoEdit.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelZeroAdd.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/LevelZeroEdit.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/Org_CommonAdd.cshtml">
+      <publishTime>07/23/2017 18:31:17</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/Org_CommonEdit.cshtml">
+      <publishTime>06/30/2017 16:09:26</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/Org_PositionAdd.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/PositionAdd.cshtml">
+      <publishTime>06/28/2017 09:36:03</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/OrgCRUD/PositionEdit.cshtml">
+      <publishTime>06/28/2017 09:36:03</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/CreatePartyMemberInfo.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/DetailPartyMemberInfo.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/EditPartyMemberInfo.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/Emigrant.cshtml">
+      <publishTime>06/13/2017 15:41:24</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/MyInfo.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/MyPartyMemberInfo.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyMember/PersonalInfo.cshtml">
+      <publishTime>06/15/2017 11:14:54</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/CreatePartyMemberDues.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/CreatePartyWorkActivity.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/CreatePartyWorkActivityType.cshtml">
+      <publishTime>07/04/2017 14:40:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/CreateSignIn.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/DetailPartyWorkActivity.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/EditPartyMemberDues.cshtml">
+      <publishTime>06/15/2017 15:04:56</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/EditPartyWorkActivity.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/PartyWorkActivity/EditPartyWorkActivityType.cshtml">
+      <publishTime>07/04/2017 14:40:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/AddOption.cshtml">
+      <publishTime>06/13/2017 19:38:51</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/AddQuestion.cshtml">
+      <publishTime>06/13/2017 19:38:51</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/AddQuestionnair.cshtml">
+      <publishTime>06/13/2017 15:41:25</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/AnswerQuestionnaire.cshtml">
+      <publishTime>07/04/2017 14:40:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/EditOption.cshtml">
+      <publishTime>06/13/2017 19:38:51</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/EditQuestion.cshtml">
+      <publishTime>06/13/2017 19:38:51</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/EditQuestionnair.cshtml">
+      <publishTime>06/13/2017 15:41:25</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/QuestionnaireAnswerDetail.cshtml">
+      <publishTime>07/23/2017 18:31:17</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/Questionnaire/QuestionnaireDetail.cshtml">
+      <publishTime>07/09/2017 19:18:07</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/CreateStudyMaterial.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/CreateStudyMission.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/CreateStudyMissionAppoint.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/CreateStudyMissionDefinition.cshtml">
+      <publishTime>06/11/2017 17:37:20</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/EditMyStudyMaterial.cshtml">
+      <publishTime>07/04/2017 14:40:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/EditStudyMaterial.cshtml">
+      <publishTime>07/03/2017 13:12:33</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/EditStudyMission.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/LookStudyRecord.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/StudyOnline/StudyStatus.cshtml">
+      <publishTime>06/15/2017 11:14:55</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/Add_voluntary_service_activity_applyfor.cshtml">
+      <publishTime>06/28/2017 09:36:03</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/Add_voluntary_service_object.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/ApplyNoPass.cshtml">
+      <publishTime>06/12/2017 17:36:08</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/ApplyPass.cshtml">
+      <publishTime>06/12/2017 17:36:08</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/Detail_voluntary_service_activity_applyfor.cshtml">
+      <publishTime>06/28/2017 09:36:03</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/Detail_voluntary_service_object.cshtml">
+      <publishTime>06/13/2017 15:41:24</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/Edit_voluntary_service_activity_applyfor.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/Edit_voluntary_service_object.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/EnrollDetail.cshtml">
+      <publishTime>06/13/2017 15:41:24</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/EnrollStu.cshtml">
+      <publishTime>06/13/2017 15:41:24</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/NoEnrollStu.cshtml">
+      <publishTime>06/13/2017 15:41:24</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/NoPassIInterview.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/PassIInterview.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/StuActivityApplyDetail.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/StuApplyDetail.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/VoluntaryService/StuInterviewDetail.cshtml">
+      <publishTime>06/13/2017 19:38:50</publishTime>
+    </File>
+    <File Include="Areas/Twxt/Views/web.config">
+      <publishTime>06/09/2017 16:27:20</publishTime>
+    </File>
     <File Include="Areas/VipCard/Views/Admin/ChooseCard.cshtml">
       <publishTime>01/11/2017 17:54:30</publishTime>
     </File>
@@ -1622,6 +2369,108 @@
     </File>
     <File Include="Areas/VipCard/Views/web.config">
       <publishTime>01/11/2017 17:54:30</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/CourseManage.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/GetCourseList.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/GetHomeWorkList.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/GetModeList.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/Help.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/HomeWorkManage.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/Index.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/ModeManage.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/ModeWorkManage.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/ShareCoursePage.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/SyncPage.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/UpdateCourse.cshtml">
+      <publishTime>08/12/2017 16:05:11</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/UpdateHomeWork.cshtml">
+      <publishTime>08/12/2017 16:05:11</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/FNK/UpdateMode.cshtml">
+      <publishTime>05/17/2017 21:59:29</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Home/AddGroup.cshtml">
+      <publishTime>04/13/2017 11:00:54</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Home/AddUser.cshtml">
+      <publishTime>04/13/2017 12:07:43</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Home/AddUserGroup.cshtml">
+      <publishTime>04/13/2017 13:25:45</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Home/Index.cshtml">
+      <publishTime>04/13/2017 10:26:51</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/CourseManage.cshtml">
+      <publishTime>05/09/2017 03:45:58</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/GetCourseList.cshtml">
+      <publishTime>05/09/2017 02:51:13</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/GetHomeWorkList.cshtml">
+      <publishTime>05/09/2017 03:49:18</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/GetModeList.cshtml">
+      <publishTime>05/09/2017 03:53:25</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/Help.cshtml">
+      <publishTime>05/09/2017 04:39:17</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/HomeWorkManage.cshtml">
+      <publishTime>05/09/2017 03:48:08</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/Index.cshtml">
+      <publishTime>05/09/2017 04:40:50</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/ModeManage.cshtml">
+      <publishTime>05/09/2017 03:44:46</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/ModeWorkManage.cshtml">
+      <publishTime>05/08/2017 22:49:41</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/ShareCoursePage.cshtml">
+      <publishTime>05/08/2017 20:59:57</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/SyncPage.cshtml">
+      <publishTime>05/09/2017 03:54:45</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/UpdateCourse.cshtml">
+      <publishTime>08/12/2017 16:05:11</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/UpdateHomeWork.cshtml">
+      <publishTime>08/12/2017 16:05:11</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/Mode/UpdateMode.cshtml">
+      <publishTime>05/09/2017 11:46:48</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/web.config">
+      <publishTime>04/13/2017 10:21:25</publishTime>
+    </File>
+    <File Include="Areas/Wb/Views/_ViewStart.cshtml">
+      <publishTime>05/08/2017 11:37:26</publishTime>
     </File>
     <File Include="Areas/WbsHqu/Views/Admin/Index.cshtml">
       <publishTime>01/11/2017 17:54:25</publishTime>
@@ -1712,6 +2561,9 @@
     </File>
     <File Include="Areas/WbsHqu/Views/web.config">
       <publishTime>01/11/2017 17:54:25</publishTime>
+    </File>
+    <File Include="Areas/WeChat/Common/JsApiPay.js">
+      <publishTime>09/07/2017 14:21:52</publishTime>
     </File>
     <File Include="Areas/WeChat/Content/BookeTicket/css/A景点.css">
       <publishTime>01/25/2017 14:21:29</publishTime>
@@ -2019,6 +2871,9 @@
     <File Include="Areas/WeChat/Views/BookTiketWeb/SpotIntroduction.cshtml">
       <publishTime>02/20/2017 11:34:36</publishTime>
     </File>
+    <File Include="Areas/WeChat/Views/EntWeb/Authorize.cshtml">
+      <publishTime>08/01/2017 22:57:28</publishTime>
+    </File>
     <File Include="Areas/WeChat/Views/Home/Index.cshtml">
       <publishTime>01/25/2017 14:22:05</publishTime>
     </File>
@@ -2116,7 +2971,7 @@
       <publishTime>01/25/2017 14:22:08</publishTime>
     </File>
     <File Include="Areas/WeChat/Views/Web/Authorize.cshtml">
-      <publishTime>01/26/2017 12:00:30</publishTime>
+      <publishTime>08/30/2017 19:40:28</publishTime>
     </File>
     <File Include="Areas/WeChat/Views/Web/WeChatPay.cshtml">
       <publishTime>01/25/2017 14:22:08</publishTime>
@@ -2125,10 +2980,10 @@
       <publishTime>01/25/2017 14:22:08</publishTime>
     </File>
     <File Include="Areas/WeChat/Views/WeChatPay/JsApiPayPage.cshtml">
-      <publishTime>02/19/2017 11:08:33</publishTime>
+      <publishTime>09/07/2017 14:16:24</publishTime>
     </File>
     <File Include="Areas/WeChat/Views/WeChatPay/ProductPage.cshtml">
-      <publishTime>02/20/2017 11:30:31</publishTime>
+      <publishTime>08/31/2017 22:26:28</publishTime>
     </File>
     <File Include="Areas/WeChat/Views/WeChatPay/ResultNotifyPage.cshtml">
       <publishTime>01/25/2017 14:22:08</publishTime>
@@ -2540,6 +3395,438 @@
     </File>
     <File Include="Areas/WorkFlow/Views/web.config">
       <publishTime>01/25/2017 14:21:28</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/.project">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/css/jquery-weui.css">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/css/jquery-weui.min.css">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/js/city-picker.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/js/city-picker.min.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/js/jquery-weui.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/js/jquery-weui.min.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/js/swiper.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/js/swiper.min.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/lib/fastclick.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/lib/jquery-2.1.4.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/lib/weui.css">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/lib/weui.min.css">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Content/lib/zepto.js">
+      <publishTime>08/01/2017 18:48:37</publishTime>
+    </File>
+    <File Include="Areas/WxApp/Views/web.config">
+      <publishTime>08/01/2017 16:02:24</publishTime>
+    </File>
+    <File Include="Areas/Xgxt/Views/CRUD/LeaveSch_Batch_Add.cshtml">
+      <publishTime>05/31/2017 14:52:08</publishTime>
+    </File>
+    <File Include="Areas/Xgxt/Views/CRUD/LeaveSch_Batch_Edit.cshtml">
+      <publishTime>05/31/2017 14:52:08</publishTime>
+    </File>
+    <File Include="Areas/Xgxt/Views/CRUD/LeaveSch_Step_Add.cshtml">
+      <publishTime>05/31/2017 14:52:08</publishTime>
+    </File>
+    <File Include="Areas/Xgxt/Views/CRUD/LeaveSch_Step_Edit.cshtml">
+      <publishTime>05/31/2017 14:52:08</publishTime>
+    </File>
+    <File Include="Areas/Xgxt/Views/CRUD/Step_Handle.cshtml">
+      <publishTime>06/30/2017 16:09:26</publishTime>
+    </File>
+    <File Include="Areas/Xgxt/Views/web.config">
+      <publishTime>05/31/2017 14:52:08</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/account.html">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/checkout.html">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/contact.html">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/css/bootstrap.css">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/css/flexslider.css">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/css/form.css">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/css/jquery-ui.css">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/css/style.css">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/fonts/Marvel-Regular.ttf">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/fonts/Roboto-Regular.ttf">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/close_1.png">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g1.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g10.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g11.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g12.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g13.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g14.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g15.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g16.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g17.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g2.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g3.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g3.png">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g4.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g5.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g6.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g7.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g8.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/g9.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/m.jpg">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/m.png">
+      <publishTime>04/03/2017 23:36:45</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/s.png">
+      <publishTime>04/03/2017 23:36:45</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/star.png">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/tick1.png">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/军训2.jpg">
+      <publishTime>04/06/2017 21:47:32</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/军训服装.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/台灯.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/小书桌.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/床单.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/枕头.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/枕套.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/毛巾.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/水壶.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/沐浴露.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/洗发水.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/画板.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/笔.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/笔记本.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/蚊帐.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/images/鞋垫.jpg">
+      <publishTime>04/12/2017 22:03:57</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/index.html">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/bootstrap-3.1.1.min.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/imagezoom.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/jquery-ui.min.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/jquery.flexslider.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/jquery.jscrollpane.min.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/jquery.min.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/jquery.mousewheel.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/js/simpleCart.min.js">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/price.html">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/products.html">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Content/single.html">
+      <publishTime>04/04/2017 13:48:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/Index.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/User_LinkCheck.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/User_Link_XXCheck.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/XXList.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/YxHjStyleChoose.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/YxHJ_XX.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/YX_LinkCheck.cshtml">
+      <publishTime>04/12/2017 22:03:56</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/YX_LinkChoose.cshtml">
+      <publishTime>04/04/2017 21:47:43</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Admin/YX_LinkList.cshtml">
+      <publishTime>04/12/2017 22:03:56</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/AllNewStudentGroup.cshtml">
+      <publishTime>04/15/2017 11:01:23</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/Anouncement.cshtml">
+      <publishTime>04/10/2017 18:10:49</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/AnouncementManage.cshtml">
+      <publishTime>04/04/2017 15:26:11</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/ArriveSchooInfoGraph.cshtml">
+      <publishTime>04/15/2017 17:35:48</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/FriendSuggest.cshtml">
+      <publishTime>04/05/2017 10:13:52</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/MyJoinedNewStudentGroup.cshtml">
+      <publishTime>04/03/2017 16:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/MyNewStudentGroup.cshtml">
+      <publishTime>04/05/2017 10:45:31</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/MyOrder.cshtml">
+      <publishTime>04/10/2017 21:46:15</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/NewStudentGroupManage.cshtml">
+      <publishTime>04/03/2017 16:07:27</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/NewStudentGroupMember.cshtml">
+      <publishTime>04/05/2017 10:45:31</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/NewStuList.cshtml">
+      <publishTime>04/02/2017 23:39:32</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/QueryChargeItem.cshtml">
+      <publishTime>04/05/2017 10:45:31</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/SuggestWay.cshtml">
+      <publishTime>04/05/2017 10:45:31</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/SuggestWayManage.cshtml">
+      <publishTime>04/05/2017 10:45:31</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/AutoReport/ViewNewStudentGroupMember.cshtml">
+      <publishTime>04/03/2017 16:57:13</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/CollegeAdd.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/CollegeEdit.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/College_DepartmentAdd.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/College_DepartmentEdit.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/FenBan_add.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/Link_StateChange.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/Link_XX_StateChange.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/XX_add.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/XX_edit.cshtml">
+      <publishTime>04/20/2017 10:48:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/YX_LinkListAdd.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/CRUD/YX_LinkListEdit.cshtml">
+      <publishTime>04/12/2017 10:28:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/AddAnouncement.cshtml">
+      <publishTime>04/04/2017 02:11:18</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/AddNewStu.cshtml">
+      <publishTime>04/02/2017 23:46:29</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/AddNewStudentGroup.cshtml">
+      <publishTime>04/15/2017 11:09:01</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/AddSuggestPath.cshtml">
+      <publishTime>04/12/2017 13:38:04</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/ArriveSchooInfoDayGraph.cshtml">
+      <publishTime>04/17/2017 20:01:48</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/ArriveSchooInfoGraph.cshtml">
+      <publishTime>04/17/2017 20:06:55</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/ArriveSchoolInfo.cshtml">
+      <publishTime>04/13/2017 17:00:34</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/eChart.cshtml">
+      <publishTime>04/17/2017 10:14:35</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/EChart2.cshtml">
+      <publishTime>04/17/2017 10:14:35</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/Index.cshtml">
+      <publishTime>04/03/2017 15:41:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/JoinNewStudentGroup.cshtml">
+      <publishTime>04/03/2017 14:41:29</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/UpdateGoInfo.cshtml">
+      <publishTime>04/04/2017 00:14:28</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/ViewAnouncement.cshtml">
+      <publishTime>04/15/2017 18:47:46</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Home/ViewSuggestWay.cshtml">
+      <publishTime>04/12/2017 14:40:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Products.cshtml">
+      <publishTime>04/03/2017 22:03:56</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Shared/_YxxtWeb.cshtml">
+      <publishTime>04/14/2017 15:03:20</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/web.config">
+      <publishTime>04/15/2017 20:45:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Web/Buy.cshtml">
+      <publishTime>04/03/2017 22:07:33</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Web/Cart.cshtml">
+      <publishTime>04/13/2017 10:16:53</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Web/Index.cshtml">
+      <publishTime>04/06/2017 21:47:32</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Web/ProductDetail.cshtml">
+      <publishTime>04/14/2017 15:03:20</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Web/Products.cshtml">
+      <publishTime>04/15/2017 20:45:38</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/Web/ViewAnouncement.cshtml">
+      <publishTime>04/15/2017 20:48:45</publishTime>
+    </File>
+    <File Include="Areas/Yxxt/Views/_ViewStart.cshtml">
+      <publishTime>03/31/2017 10:05:01</publishTime>
     </File>
     <File Include="assets/css/animate.css">
       <publishTime>01/25/2017 14:32:09</publishTime>
@@ -4096,7 +5383,7 @@
       <publishTime>01/25/2017 14:30:40</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js">
-      <publishTime>01/25/2017 14:30:41</publishTime>
+      <publishTime>04/15/2017 21:42:19</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js">
       <publishTime>01/25/2017 14:30:41</publishTime>
@@ -4354,7 +5641,7 @@
       <publishTime>01/25/2017 14:31:41</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.js">
-      <publishTime>01/25/2017 14:31:41</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js">
       <publishTime>01/25/2017 14:31:41</publishTime>
@@ -4528,13 +5815,13 @@
       <publishTime>01/25/2017 14:30:46</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-switch/examples/index.html">
-      <publishTime>01/25/2017 14:30:46</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-switch/LICENSE">
       <publishTime>01/25/2017 14:30:46</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-switch/README.md">
-      <publishTime>01/25/2017 14:30:46</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="assets/plugins/bootstrap-switch/static/js/bootstrap-switch.js">
       <publishTime>01/25/2017 14:30:46</publishTime>
@@ -7192,7 +8479,7 @@
       <publishTime>01/25/2017 14:30:30</publishTime>
     </File>
     <File Include="assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.js">
-      <publishTime>01/25/2017 14:30:30</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="assets/plugins/jquery-ui/jquery-ui-1.10.3.custom.min.css">
       <publishTime>01/25/2017 14:30:30</publishTime>
@@ -7480,7 +8767,7 @@
       <publishTime>01/25/2017 14:31:57</publishTime>
     </File>
     <File Include="assets/plugins/jquery-validation/lib/jquery-1.9.0.js">
-      <publishTime>01/25/2017 14:31:57</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="assets/plugins/jquery-validation/lib/jquery.form.js">
       <publishTime>01/25/2017 14:31:57</publishTime>
@@ -7645,7 +8932,7 @@
       <publishTime>01/25/2017 14:32:00</publishTime>
     </File>
     <File Include="assets/plugins/jquery-validation/test/firebug/firebug.js">
-      <publishTime>01/25/2017 14:32:00</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="assets/plugins/jquery-validation/test/firebug/firebugx.js">
       <publishTime>01/25/2017 14:32:00</publishTime>
@@ -8124,6 +9411,24 @@
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>01/25/2017 14:43:10</publishTime>
     </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>01/25/2017 14:43:10</publishTime>
+    </File>
+    <File Include="bin/app.focus.dll">
+      <publishTime>08/17/2017 19:17:28</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>08/31/2017 22:56:05</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>08/31/2017 22:56:05</publishTime>
+    </File>
+    <File Include="bin/Autofac.dll">
+      <publishTime>08/18/2016 15:15:34</publishTime>
+    </File>
+    <File Include="bin/Autofac.Integration.Mvc.dll">
+      <publishTime>04/10/2017 15:40:32</publishTime>
+    </File>
     <File Include="bin/Djk.Account.dll">
       <publishTime>03/11/2017 13:53:00</publishTime>
     </File>
@@ -8154,6 +9459,27 @@
     <File Include="bin/Djk.VipCard.dll">
       <publishTime>01/11/2017 18:01:49</publishTime>
     </File>
+    <File Include="bin/ecampus.IEET.dll">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
+    <File Include="bin/ecampus.IEET.pdb">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
+    <File Include="bin/ecampus.join_party.dll">
+      <publishTime>08/18/2017 08:42:33</publishTime>
+    </File>
+    <File Include="bin/ecampus.twxt.dll">
+      <publishTime>09/16/2017 14:31:38</publishTime>
+    </File>
+    <File Include="bin/ecampus.twxt.pdb">
+      <publishTime>09/16/2017 14:31:38</publishTime>
+    </File>
+    <File Include="bin/ecampus.yxxt.dll">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
+    <File Include="bin/ecampus.yxxt.pdb">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>01/25/2017 14:41:17</publishTime>
     </File>
@@ -8163,11 +9489,23 @@
     <File Include="bin/FastExcel.dll">
       <publishTime>01/25/2017 14:39:49</publishTime>
     </File>
+    <File Include="bin/hqu.scsxxt.v2.dll">
+      <publishTime>09/15/2017 12:26:53</publishTime>
+    </File>
+    <File Include="bin/hqu.scsxxt.v2.pdb">
+      <publishTime>09/15/2017 12:26:53</publishTime>
+    </File>
     <File Include="bin/HtmlAgilityPack.dll">
       <publishTime>01/25/2017 14:43:53</publishTime>
     </File>
+    <File Include="bin/HtmlAgilityPack.pdb">
+      <publishTime>01/25/2017 14:43:53</publishTime>
+    </File>
+    <File Include="bin/JinianNet.JNTemplate.dll">
+      <publishTime>04/12/2016 21:59:50</publishTime>
+    </File>
     <File Include="bin/LitJson.dll">
-      <publishTime>01/25/2017 14:13:16</publishTime>
+      <publishTime>07/03/2017 15:43:11</publishTime>
     </File>
     <File Include="bin/Microsoft.Practices.ServiceLocation.dll">
       <publishTime>09/14/2016 16:13:16</publishTime>
@@ -8178,8 +9516,17 @@
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>01/25/2017 14:33:02</publishTime>
     </File>
+    <File Include="bin/NetDimension.OpenAuth.dll">
+      <publishTime>04/18/2017 16:56:25</publishTime>
+    </File>
+    <File Include="bin/NetDimension.OpenAuth.Sina.dll">
+      <publishTime>04/18/2017 16:56:26</publishTime>
+    </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>01/25/2017 14:38:59</publishTime>
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="bin/Oracle.ManagedDataAccess.dll">
+      <publishTime>08/20/2017 23:54:37</publishTime>
     </File>
     <File Include="bin/Punishment.dll">
       <publishTime>03/11/2017 14:00:13</publishTime>
@@ -8187,44 +9534,98 @@
     <File Include="bin/QRCoder.dll">
       <publishTime>01/25/2017 14:36:45</publishTime>
     </File>
+    <File Include="bin/Qx.Account.dll">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
+    <File Include="bin/Qx.Account.pdb">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
     <File Include="bin/Qx.Contents.dll">
-      <publishTime>03/11/2017 13:52:52</publishTime>
+      <publishTime>07/31/2017 01:45:12</publishTime>
+    </File>
+    <File Include="bin/Qx.Jzxt.dll">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
+    <File Include="bin/Qx.Jzxt.pdb">
+      <publishTime>09/16/2017 14:31:39</publishTime>
     </File>
     <File Include="bin/Qx.Msg.dll">
-      <publishTime>03/11/2017 13:53:01</publishTime>
+      <publishTime>07/31/2017 01:45:10</publishTime>
+    </File>
+    <File Include="bin/Qx.Order.dll">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
+    <File Include="bin/Qx.Order.pdb">
+      <publishTime>09/16/2017 14:31:32</publishTime>
     </File>
     <File Include="bin/Qx.Permission.dll">
       <publishTime>03/11/2017 13:52:52</publishTime>
     </File>
+    <File Include="bin/qx.permmision.v2.dll">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
+    <File Include="bin/qx.permmision.v2.pdb">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
     <File Include="bin/Qx.Report.dll">
-      <publishTime>03/11/2017 13:53:02</publishTime>
+      <publishTime>09/16/2017 14:31:31</publishTime>
+    </File>
+    <File Include="bin/Qx.Report.pdb">
+      <publishTime>09/16/2017 14:31:31</publishTime>
     </File>
     <File Include="bin/Qx.Tools.dll">
-      <publishTime>02/24/2017 12:00:11</publishTime>
+      <publishTime>09/16/2017 14:31:30</publishTime>
     </File>
     <File Include="bin/Qx.Tools.Ioc.Unity.dll">
       <publishTime>03/11/2017 14:00:15</publishTime>
+    </File>
+    <File Include="bin/Qx.Tools.pdb">
+      <publishTime>09/16/2017 14:31:30</publishTime>
     </File>
     <File Include="bin/Qx.Wbs.Hqu.dll">
       <publishTime>01/11/2017 18:01:49</publishTime>
     </File>
     <File Include="bin/Qx.Wechat.dll">
-      <publishTime>03/11/2017 13:53:00</publishTime>
+      <publishTime>09/16/2017 14:31:32</publishTime>
     </File>
     <File Include="bin/Qx.Wechat.LostAndFound.exe">
       <publishTime>01/11/2017 18:01:51</publishTime>
     </File>
+    <File Include="bin/qx.wechat.pdb">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
     <File Include="bin/Qx.WorkFlow.dll">
-      <publishTime>01/26/2017 11:24:46</publishTime>
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
+    <File Include="bin/Qx.WorkFlow.pdb">
+      <publishTime>09/16/2017 14:31:32</publishTime>
+    </File>
+    <File Include="bin/qx.xgxt.dll">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
+    <File Include="bin/qx.xgxt.pdb">
+      <publishTime>09/16/2017 14:31:39</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>01/25/2017 14:38:24</publishTime>
     </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>08/07/2017 15:04:12</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/25/2017 14:39:43</publishTime>
     </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>08/07/2017 15:04:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>08/07/2017 15:04:14</publishTime>
+    </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>01/25/2017 14:35:57</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.resources.dll">
+      <publishTime>01/25/2017 14:43:24</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>01/25/2017 14:43:26</publishTime>
@@ -8245,7 +9646,10 @@
       <publishTime>01/25/2017 14:36:45</publishTime>
     </File>
     <File Include="bin/Web.dll">
-      <publishTime>03/11/2017 14:00:16</publishTime>
+      <publishTime>09/16/2017 14:40:39</publishTime>
+    </File>
+    <File Include="bin/Web.pdb">
+      <publishTime>09/16/2017 14:40:39</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/25/2017 14:42:52</publishTime>
@@ -8256,8 +9660,23 @@
     <File Include="bin/wx.book_tiket.dll">
       <publishTime>03/11/2017 13:53:02</publishTime>
     </File>
+    <File Include="bin/wx.ent.xmyxy.dll">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
+    <File Include="bin/wx.ent.xmyxy.pdb">
+      <publishTime>09/16/2017 14:31:39</publishTime>
+    </File>
     <File Include="bin/wx.kt.dll">
       <publishTime>03/11/2017 14:00:12</publishTime>
+    </File>
+    <File Include="bin/wx.sports.dll">
+      <publishTime>09/07/2017 11:05:49</publishTime>
+    </File>
+    <File Include="bin/XiaoTuan.dll">
+      <publishTime>08/17/2017 19:17:30</publishTime>
+    </File>
+    <File Include="bin/yxg.test.dll">
+      <publishTime>08/17/2017 19:17:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/EntityFramework.resources.dll">
       <publishTime>03/02/2015 09:32:38</publishTime>
@@ -8265,8 +9684,17 @@
     <File Include="bin/zh-Hans/EntityFramework.SqlServer.resources.dll">
       <publishTime>03/02/2015 09:32:38</publishTime>
     </File>
+    <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
+      <publishTime>01/28/2015 04:02:44</publishTime>
+    </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
       <publishTime>01/25/2017 14:39:42</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
+      <publishTime>01/28/2015 04:02:56</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
+      <publishTime>01/28/2015 04:03:48</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Optimization.resources.dll">
       <publishTime>09/14/2016 16:13:16</publishTime>
@@ -10465,7 +11893,7 @@
       <publishTime>01/25/2017 14:18:24</publishTime>
     </File>
     <File Include="bower_components/raphael/raphael.js">
-      <publishTime>01/25/2017 14:18:24</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="cert/apiclient_cert.p12">
       <publishTime>01/25/2017 14:22:30</publishTime>
@@ -10704,6 +12132,15 @@
     <File Include="Global.asax">
       <publishTime>01/25/2017 14:22:28</publishTime>
     </File>
+    <File Include="Include/echarts/3.5.2/echarts.js">
+      <publishTime>04/08/2017 16:19:42</publishTime>
+    </File>
+    <File Include="Include/echarts/3.5.2/echarts.min.js">
+      <publishTime>04/08/2017 16:18:28</publishTime>
+    </File>
+    <File Include="Include/echarts/3.5.2/map/china.json">
+      <publishTime>04/08/2017 18:42:34</publishTime>
+    </File>
     <File Include="Include/EXT-JS/V3/adapter/ext/ext-base-debug.js">
       <publishTime>02/18/2017 17:21:01</publishTime>
     </File>
@@ -10723,13 +12160,13 @@
       <publishTime>02/18/2017 17:21:02</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/adapter/jquery/jquery.js">
-      <publishTime>02/18/2017 17:21:02</publishTime>
+      <publishTime>08/12/2017 16:05:09</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/adapter/jquery/vssver.scc">
       <publishTime>02/18/2017 17:21:02</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/adapter/prototype/effects.js">
-      <publishTime>02/18/2017 17:21:01</publishTime>
+      <publishTime>08/12/2017 16:05:09</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/adapter/prototype/ext-prototype-adapter-debug.js">
       <publishTime>02/18/2017 17:21:01</publishTime>
@@ -10738,7 +12175,7 @@
       <publishTime>02/18/2017 17:21:01</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/adapter/prototype/prototype.js">
-      <publishTime>02/18/2017 17:21:01</publishTime>
+      <publishTime>08/12/2017 16:05:09</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/adapter/prototype/scriptaculous.js">
       <publishTime>02/18/2017 17:21:01</publishTime>
@@ -10837,7 +12274,7 @@
       <publishTime>02/18/2017 17:20:37</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/air/samples/tasks/ext-2.0/ext-all.js">
-      <publishTime>02/18/2017 17:20:37</publishTime>
+      <publishTime>08/12/2017 16:05:11</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/air/samples/tasks/ext-2.0/LICENSE.txt">
       <publishTime>02/18/2017 17:20:37</publishTime>
@@ -24322,10 +25759,10 @@
       <publishTime>02/18/2017 17:21:01</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/ext-all-debug-w-comments.js">
-      <publishTime>02/18/2017 17:22:01</publishTime>
+      <publishTime>08/12/2017 16:05:10</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/ext-all-debug.js">
-      <publishTime>02/18/2017 17:20:31</publishTime>
+      <publishTime>08/12/2017 16:05:10</publishTime>
     </File>
     <File Include="Include/EXT-JS/V3/ext-all.js">
       <publishTime>02/18/2017 17:21:28</publishTime>
@@ -30166,7 +31603,10 @@
       <publishTime>01/25/2017 14:18:58</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/31/2017 20:43:17</publishTime>
+      <publishTime>08/07/2017 15:04:11</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>08/31/2017 22:56:03</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>01/25/2017 14:21:18</publishTime>
@@ -30232,23 +31672,29 @@
       <publishTime>01/25/2017 14:27:02</publishTime>
     </File>
     <File Include="Views/Account/Index.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>07/15/2017 18:28:19</publishTime>
     </File>
     <File Include="Views/Account/Login.cshtml">
       <publishTime>12/11/2016 21:41:38</publishTime>
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>04/02/2017 13:46:42</publishTime>
     </File>
     <File Include="Views/Account/Login_Mobile.cshtml">
       <publishTime>01/25/2017 14:22:30</publishTime>
     </File>
     <File Include="Views/Account/Regist.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>04/03/2017 10:29:40</publishTime>
     </File>
     <File Include="Views/Demo/CutPage.cshtml">
       <publishTime>01/25/2017 14:22:28</publishTime>
     </File>
     <File Include="Views/Demo/Form.cshtml">
-      <publishTime>01/25/2017 14:22:28</publishTime>
+      <publishTime>07/23/2017 18:31:17</publishTime>
+    </File>
+    <File Include="Views/Demo/Form2.cshtml">
+      <publishTime>06/11/2017 17:04:05</publishTime>
+    </File>
+    <File Include="Views/Demo/Form3.cshtml">
+      <publishTime>07/23/2017 18:31:17</publishTime>
     </File>
     <File Include="Views/Demo/Index.cshtml">
       <publishTime>01/25/2017 14:22:28</publishTime>
@@ -30263,7 +31709,7 @@
       <publishTime>01/25/2017 14:22:28</publishTime>
     </File>
     <File Include="Views/Demo/TestMap.cshtml">
-      <publishTime>01/25/2017 14:22:28</publishTime>
+      <publishTime>07/14/2017 20:52:10</publishTime>
     </File>
     <File Include="Views/Demo/TestMap2.cshtml">
       <publishTime>01/25/2017 14:22:28</publishTime>
@@ -30376,6 +31822,66 @@
     <File Include="Views/ExtJs/test1.cshtml">
       <publishTime>02/18/2017 17:22:07</publishTime>
     </File>
+    <File Include="Views/F2/blank.cshtml">
+      <publishTime>03/27/2017 14:59:07</publishTime>
+    </File>
+    <File Include="Views/F2/buttons.cshtml">
+      <publishTime>03/25/2017 12:41:28</publishTime>
+    </File>
+    <File Include="Views/F2/flot.cshtml">
+      <publishTime>03/26/2017 21:03:09</publishTime>
+    </File>
+    <File Include="Views/F2/forms.cshtml">
+      <publishTime>03/25/2017 13:48:20</publishTime>
+    </File>
+    <File Include="Views/F2/grap.cshtml">
+      <publishTime>03/27/2017 14:36:30</publishTime>
+    </File>
+    <File Include="Views/F2/grid.cshtml">
+      <publishTime>03/25/2017 13:48:09</publishTime>
+    </File>
+    <File Include="Views/F2/icons.cshtml">
+      <publishTime>03/25/2017 12:41:28</publishTime>
+    </File>
+    <File Include="Views/F2/index.cshtml">
+      <publishTime>07/06/2017 19:56:15</publishTime>
+    </File>
+    <File Include="Views/F2/layer.cshtml">
+      <publishTime>03/26/2017 23:59:41</publishTime>
+    </File>
+    <File Include="Views/F2/morris.cshtml">
+      <publishTime>03/26/2017 21:02:41</publishTime>
+    </File>
+    <File Include="Views/F2/notifications.cshtml">
+      <publishTime>03/25/2017 12:41:28</publishTime>
+    </File>
+    <File Include="Views/F2/notlogin.cshtml">
+      <publishTime>05/09/2017 10:48:46</publishTime>
+    </File>
+    <File Include="Views/F2/panelsWells.cshtml">
+      <publishTime>03/25/2017 12:41:28</publishTime>
+    </File>
+    <File Include="Views/F2/tables.cshtml">
+      <publishTime>03/25/2017 12:39:14</publishTime>
+    </File>
+    <File Include="Views/F2/typography.cshtml">
+      <publishTime>03/25/2017 12:41:26</publishTime>
+    </File>
+    <File Include="Views/F2/welcome.cshtml">
+      <publishTime>03/27/2017 00:05:56</publishTime>
+    </File>
+    <File Include="Views/F2Demo/eChart.cshtml">
+      <publishTime>04/15/2017 16:26:25</publishTime>
+    </File>
+    <File Include="Views/F2Demo/FormView.cshtml">
+      <publishTime>06/10/2017 16:01:32</publishTime>
+    </File>
+    <File Include="Views/F2Demo/Map.cshtml">
+      <publishTime>04/08/2017 18:57:37</publishTime>
+    </File>
+    <File Include="Views/F2Demo/ReportDemo.cshtml">
+      <publishTime>04/09/2017 17:33:48</publishTime>
+    </File>
     <File Include="Views/Home/Blank.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
     </File>
@@ -30419,19 +31925,67 @@
       <publishTime>01/25/2017 14:22:29</publishTime>
     </File>
     <File Include="Views/Report/Add.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>06/11/2017 12:02:25</publishTime>
     </File>
     <File Include="Views/Report/Edit.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>06/11/2017 16:42:29</publishTime>
     </File>
     <File Include="Views/Report/Index.cshtml">
       <publishTime>01/25/2017 14:22:30</publishTime>
     </File>
     <File Include="Views/Report/Report.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>04/09/2017 17:26:31</publishTime>
     </File>
     <File Include="Views/Report/Report2.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>06/01/2017 17:15:14</publishTime>
+    </File>
+    <File Include="Views/Sb/blank.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/buttons.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/flot.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/forms.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/grap.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/grid.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/icons.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/index.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/layer.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/login.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/morris.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/notifications.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/panelsWells.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/tables.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/typography.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
+    </File>
+    <File Include="Views/Sb/welcome.cshtml">
+      <publishTime>05/02/2017 10:56:12</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
@@ -30439,8 +31993,17 @@
     <File Include="Views/Shared/_EJLayout.cshtml">
       <publishTime>02/18/2017 17:22:07</publishTime>
     </File>
+    <File Include="Views/Shared/_empty.cshtml">
+      <publishTime>04/10/2017 20:03:16</publishTime>
+    </File>
+    <File Include="Views/Shared/_FrLayout.cshtml">
+      <publishTime>05/13/2017 17:50:40</publishTime>
+    </File>
+    <File Include="Views/Shared/_Fr_Navbar.cshtml">
+      <publishTime>05/08/2017 23:33:49</publishTime>
+    </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/25/2017 14:22:29</publishTime>
+      <publishTime>07/23/2017 18:31:17</publishTime>
     </File>
     <File Include="Views/Shared/_Map.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
@@ -30449,7 +32012,7 @@
       <publishTime>01/25/2017 14:22:29</publishTime>
     </File>
     <File Include="Views/Shared/_Navbar.cshtml">
-      <publishTime>01/25/2017 14:22:29</publishTime>
+      <publishTime>05/04/2017 19:18:50</publishTime>
     </File>
     <File Include="Views/Shared/_PandaFormLayout.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
@@ -30464,10 +32027,37 @@
       <publishTime>01/25/2017 14:22:29</publishTime>
     </File>
     <File Include="Views/Shared/_Report.cshtml">
-      <publishTime>01/25/2017 14:22:29</publishTime>
+      <publishTime>04/05/2017 17:46:01</publishTime>
     </File>
     <File Include="Views/Shared/_Report2.cshtml">
-      <publishTime>01/25/2017 14:22:29</publishTime>
+      <publishTime>07/03/2017 15:43:11</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2AdminLayout.cshtml">
+      <publishTime>06/10/2017 18:49:33</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2FormLayout.cshtml">
+      <publishTime>07/24/2017 11:49:27</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2FormViewLayout.cshtml">
+      <publishTime>06/10/2017 18:49:15</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2Layout.cshtml">
+      <publishTime>06/10/2017 18:49:58</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2Navbar - 备份.cshtml">
+      <publishTime>04/06/2017 21:47:31</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2Navbar.cshtml">
+      <publishTime>06/11/2017 18:43:38</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2Navbar.cshtml.bak">
+      <publishTime>03/26/2017 20:54:52</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2ReportLayout.cshtml">
+      <publishTime>06/10/2017 18:50:10</publishTime>
+    </File>
+    <File Include="Views/Shared/_Sb2ReportLayout.cshtml.bak">
+      <publishTime>04/08/2017 22:30:46</publishTime>
     </File>
     <File Include="Views/Shared/_SbAdminLayout.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
@@ -30484,6 +32074,12 @@
     <File Include="Views/Shared/_SbTableLayout.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
     </File>
+    <File Include="Views/Shared/_src_css_sb2.cshtml">
+      <publishTime>06/10/2017 18:56:26</publishTime>
+    </File>
+    <File Include="Views/Shared/_src_js_sb2.cshtml">
+      <publishTime>06/11/2017 20:10:05</publishTime>
+    </File>
     <File Include="Views/Shared/_Table.cshtml">
       <publishTime>01/25/2017 14:22:29</publishTime>
     </File>
@@ -30497,13 +32093,13 @@
       <publishTime>01/25/2017 14:22:30</publishTime>
     </File>
     <File Include="Views/Templates/_FileUpload.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>07/03/2017 13:19:34</publishTime>
     </File>
     <File Include="Views/Templates/_Input.cshtml">
       <publishTime>01/25/2017 14:22:30</publishTime>
     </File>
     <File Include="Views/Templates/_KindEditor.cshtml">
-      <publishTime>01/25/2017 14:22:30</publishTime>
+      <publishTime>06/12/2017 20:02:12</publishTime>
     </File>
     <File Include="Views/Templates/_List.cshtml">
       <publishTime>01/25/2017 14:22:30</publishTime>
@@ -30512,13 +32108,13 @@
       <publishTime>01/25/2017 14:22:30</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>01/25/2017 14:22:28</publishTime>
+      <publishTime>07/23/2017 18:31:17</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
-      <publishTime>02/18/2017 17:22:07</publishTime>
+      <publishTime>03/27/2017 00:21:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/05/2017 11:32:32</publishTime>
+      <publishTime>09/16/2017 14:35:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

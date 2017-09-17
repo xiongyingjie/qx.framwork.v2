@@ -1,18 +1,19 @@
 ﻿using System.Web.Mvc;
-using Qx.Wechat.Models;
+using qx.wechat.Models;
+using Qx.Tools.Interfaces;
 
-namespace Qx.Wechat.Interfaces
+namespace qx.wechat.Interfaces
 {
-    public interface IWxAuthorizeController
+    public interface IEntWxAuthorize
     {
+        bool Regist(EntUserInfoModel userInfo);
         bool CheckRegistInfo(string uid);
         void RollbackRegistInfo(string uid);
-        ActionResult Authorize(string return_url);
-        ActionResult AuthorizeRouting(string mode, string return_url);
-        ActionResult BaseAuthorize(string return_url);
-        ActionResult FullAuthorize(string return_url);
-        ActionResult return_notify(string code, string state);
-        ActionResult UserInfo(AccessTokenModel m, string return_url);
-        ActionResult BackToBLL(string uid, string return_url, string msg ,string uName);
+    }
+    public interface IWxAuthorize 
+    {
+        bool Regist(UserInfoModel userInfo);
+        bool CheckRegistInfo(string uid);
+        void RollbackRegistInfo(string uid);
     }
 }

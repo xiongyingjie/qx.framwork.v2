@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.InteropServices;
 using Qx.Report.Configs;
-using Qx.Tools.Exceptions.Report;
 using Qx.Report.Interfaces;
 using Qx.Tools;
 using Qx.Tools.CommonExtendMethods;
+using Qx.Tools.Exceptions.Report;
 using Qx.Tools.Models.Report;
+
 namespace Qx.Report.Services
 {
     public class ReportServices : IReportServices
@@ -15,15 +17,48 @@ namespace Qx.Report.Services
 
         #region Sql报表模板
 
-        private string Sql_Query_Template(string sql, int pageIndex, int perCount)
+        private string Sql_Query_Template(string sql, int pageIndex, int perCount,string filterScript)
         {
             sql = sql.ToLower();
-            sql = sql.ReplaceFirst("select", "select IDENTITY(INT,1,1) as 序号,").
-                ReplaceFirst("from", " into #TEMPTABLE from ", 
-                sql.Contains("#from") ? "#" : "");
+
+         
+            #region 行过滤
+            //未预置标识符?  系统自动添加标识符
+            if (!sql.Contains("#filter"))
+                { //存在where 子句?
+                    if (sql.Contains("where"))
+                    {
+                        if (!sql.Replace("where", "").Contains("where"))
+                        {
+                            //存在1个where子句
+                            sql = sql.Replace("where", "where #filter and ");
+                        }
+                        else
+                    {//存在多个where子句(使用#where标识)
+                        sql = sql.Replace("#where", "where #filter and ");
+                    }
+                    }
+                    else
+                    {//sql中无where的系统自动添加where子句
+                        if (!sql.Contains("order by"))
+                        {
+                            sql += "where #filter";
+                        }
+                        else
+                        {
+                            throw new DataFilterScriptException("该sql脚本过于复杂，系统无法自动解析行权限，请手动在主where后前加#或在相应位置添加标识符：#filter");
+                        }
+                    }
+                }
+                //处理sql脚本
+                sql = sql.Replace("#filter", filterScript);
+            #endregion
+
+            sql = sql.ReplaceFirst("select", "select IDENTITY(INT,1,1) as _序号xh,").
+                ReplaceFirst("from", " into #TEMPTABLE from ", sql.Contains("#from") ? "#" : "");
 
             sql += string.Format(@"
-                select top {0} * from #TEMPTABLE where 序号>(({1}-1)*{0})
+                select top {0} * from #TEMPTABLE where _序号xh>(({1}-1)*{0})
                 DROP TABLE #TEMPTABLE;", perCount, pageIndex);
             return sql;
 
@@ -35,7 +70,8 @@ namespace Qx.Report.Services
         private List<List<string>> _dataRowsWithOperat;
         private string _dbConnStringKey;
 
-
+        private string _filterScript;
+        private string _finalSql;
         private string _id;
         private bool _isDbSource;
         private bool _isCrossDb;
@@ -81,6 +117,7 @@ namespace Qx.Report.Services
             _dataRowsToShow = new List<List<string>>();//只是申请空间
             _titleToShow = new List<string>();//只是申请空间
             _dataRowsCrossDb = new List<List<string>>();//只是申请空间
+            _reportViewModel = new ReportViewModel();//只是申请空间
             _report = report; 
              _title = _report.HeadFields.UnPackString(';');
             _colunmToShowConfig = _report.ColunmToShow.UnPackString(';').ToList();//读取列配置
@@ -106,16 +143,24 @@ namespace Qx.Report.Services
                     parms.UnPackString(';').ToArray<object>()
                     // )
                     );
-                sql = Sql_Query_Template(sql, pageIndex, perCount);
+                _finalSql = Sql_Query_Template(sql, pageIndex, perCount,_filterScript);
+            
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                //throw ex;
-                throw new SqlExpressionErrorException("请检查填入的参数个数和Sql中预留的参数个数是否相同！\n" + ex.Message);
+                throw new SqlErrorException("请检查parms个数和Sql中预留参数个数是否相同！\n" + ex.Message);
             }
-            //读取数据行
-            var connStr = ConfigurationManager.ConnectionStrings[dbConnStringKey].ConnectionString;
-            var dataRows = sql.ExecuteReader2(connStr);
+            var connStr = "";
+            try
+            {
+                //读取数据行
+                 connStr = ConfigurationManager.ConnectionStrings[dbConnStringKey].ConnectionString;
+            }
+            catch (Exception ex)
+            {
+                throw new DataBaseNotFoundException("没有在web.config的connectionStrings节点中找到name为" + dbConnStringKey+ "的connectionString，请添加");
+            }
+            var dataRows = _finalSql.ExecuteReader2(connStr);
             //删除第一列
             dataRows = dataRows.RemoveCol(0);
             return dataRows;
@@ -151,16 +196,14 @@ namespace Qx.Report.Services
             _titleToShow.AddRange(_title.FilterRow(_colunmToShowConfig));//*赋值
             _dataRowsToShow.AddRange(dataRowToDeal.FilterRows(_colunmToShowConfig));//*赋值
             _dataRowsWithOperat.AddRange(_PackTable(_titleToShow,_dataRowsToShow,_operatCol)); //*赋值
-            _reportViewModel = new ReportViewModel() {
-                report = _report,
-                header = _titleToShow, 
-                tableBody = _dataRowsToShow,
-                header_all = _title,
-                tableBody_all = dataRowToDeal,
-                operatCol = _operatCol,
-                FinalView = _dataRowsWithOperat,
-                pageParam = new PageParam()
-            };
+
+            _reportViewModel.report = _report;
+            _reportViewModel.header = _titleToShow;
+            _reportViewModel.tableBody = _dataRowsToShow;
+            _reportViewModel.header_all = _title;
+            _reportViewModel.tableBody_all = dataRowToDeal;
+            _reportViewModel.operatCol = _operatCol;
+            _reportViewModel.FinalView = _dataRowsWithOperat;
         }
 
         private List<List<string>> _PackTable(List<string> title,List<List<string>>body, List<string>op)
@@ -401,12 +444,26 @@ namespace Qx.Report.Services
         //  >=                  大于等于    
         //  <=                  小于等于  
 
+        // v2.0.3 配置帮助
+
+        //类型    说明                     配置参数个数      带类型的参数格式
+        //  N0    无条件无参数                  2            类型:内容
+        //  N1    无条件带1个参数               3            类型:内容:参数1列索引;
+        //  N2    无条件带2个参数               4            类型:内容:参数1列索引:参数2列索引;
+        //  Y0    带条件不带参数                4            类型:条件列索引:条件值:内容;
+        //  Y1    带条件带1个参数               5            类型:条件列索引:条件值:内容:参数1列索引;
+        //  Y2    带条件带2个参数               6            类型:条件列索引:条件值:内容:参数1列索引:参数2列索引;
+
+        //  YC0   带条件带运算符不带参数        5            类型:条件列索引:条件运算符:条件值:内容;
+        //  YC1   带条件带运算符带1个参数       6            类型:条件列索引:条件运算符:条件值:内容:参数1列索引;
+        //  YC2   带条件带运算符带2个参数       7            类型:条件列索引:条件运算符:条件值:内容:参数1列索引:参数2列索引;
+
         #endregion
 
         private string __GetOperatColFactory(List<string> row, string operateConfig)
         {
             //var v1 = __GetOperatCol(row, operateConfig);
-            var v2 = __GetOperatColExtend(row, operateConfig);
+            var v2 = __GetOperatColExtend(row, operateConfig).Replace("<a", "<a class='qx-operate' ");
             return //v1 + 
                 v2;
         }
@@ -420,6 +477,7 @@ namespace Qx.Report.Services
 
         private string __GetOperatCol(List<string> row, string operateConfig)
         {
+            //单条配置
             var _operateConfig = operateConfig.Replace("\r\n", "")
                 .Replace("$semicolon", ";") //2016-09-05 新增转义规则
                 .Trim().UnPackString(':');
@@ -477,8 +535,17 @@ namespace Qx.Report.Services
             return html;
         }
 
-      
 
+        private object[] __GetOperatColV22(List<string> row,int startIndex, char paramCountString, List<string> operateConfig)
+        {//生成参数数组
+            var paramCount = int.Parse(paramCountString+"");
+            var paramArray = new List<object>();
+            for (var index = startIndex; index < startIndex + paramCount; index++)
+            {
+                paramArray.Add(row[int.Parse(operateConfig[index])]);
+            }
+            return paramArray.ToArray();
+        }
         private string __GetOperatColExtend(List<string> row, string operateConfig)
         {
             var _operateConfig = operateConfig.Replace("\r\n", "")
@@ -501,69 +568,25 @@ namespace Qx.Report.Services
 
             for (var i = 0; i < row.Count; i++)
             {
-                switch (_operateConfig[0])
+                if (_operateConfig[0][0]== 'Y' && _operateConfig[0][1] == 'C')
+                {//YC系列
+                    if (int.Parse(_operateConfig[1]) == i && OpFactory(row[i], _operateConfig[2], _operateConfig[3]))
+                        html += string.Format(_operateConfig[4], __GetOperatColV22(row,5, _operateConfig[0][2], _operateConfig)).AddSpace();
+                }
+                else if (_operateConfig[0][0] == 'Y')
+                {//Y系列-先处理条件再理参数
+                    if (int.Parse(_operateConfig[1]) == i && _operateConfig[2] == row[i])
+                        html += string.Format(_operateConfig[3], __GetOperatColV22(row, 4, _operateConfig[0][1], _operateConfig)).AddSpace();
+
+                }
+                else if (_operateConfig[0][0] == 'N')
+                {//N系列-只处理参数
+                    var p = __GetOperatColV22(row, 2, _operateConfig[0][1], _operateConfig);
+                    return string.Format(_operateConfig[1],p).AddSpace();
+                }
+                else 
                 {
-                    case "N0":
-                    {
-//不带条件直接中断
-                        return _operateConfig[1] .AddSpace();
-                    }
-                    case "N1":
-                    {
-//不带条件直接中断
-                        return string.Format(_operateConfig[1], row[int.Parse(_operateConfig[2])]) .AddSpace();
-                    }
-
-                    case "N2":
-                    {
-//不带条件直接中断
-                        return
-                            string.Format(_operateConfig[1], row[int.Parse(_operateConfig[2])],
-                                row[int.Parse(_operateConfig[3])]) .AddSpace();
-                    }
-
-                    case "Y0":
-                        if (int.Parse(_operateConfig[1]) == i)
-                        {
-                            html += _operateConfig[3] .AddSpace();
-                        }
-                        break;
-                    case "Y1":
-                        if (int.Parse(_operateConfig[1]) == i && _operateConfig[2] == row[i])
-                        {
-                            html += string.Format(_operateConfig[3], row[int.Parse(_operateConfig[4])]).AddSpace();
-                        }
-                        break;
-                    case "Y2":
-                        if (int.Parse(_operateConfig[1]) == i && _operateConfig[2] == row[i])
-                        {
-                            html +=
-                                string.Format(_operateConfig[3], row[int.Parse(_operateConfig[4])],
-                                    row[int.Parse(_operateConfig[5])]) .AddSpace();
-                        }
-                        break;
-                    case "YC0":
-                        if (int.Parse(_operateConfig[1]) == i && OpFactory(row[i], _operateConfig[2], _operateConfig[3]))
-                        {
-                            html += _operateConfig[4] .AddSpace();
-                        }
-                        break;
-                    case "YC1":
-                        if (int.Parse(_operateConfig[1]) == i && OpFactory(row[i], _operateConfig[2], _operateConfig[3]))
-                        {
-                            html += string.Format(_operateConfig[4], row[int.Parse(_operateConfig[5])]).AddSpace();
-                        }
-                        break;
-                    case "YC2":
-                        if (int.Parse(_operateConfig[1]) == i && OpFactory(row[i], _operateConfig[2], _operateConfig[3]))
-                        {
-                            html +=
-                                string.Format(_operateConfig[4], row[int.Parse(_operateConfig[5])],
-                                    row[int.Parse(_operateConfig[6])]) .AddSpace();
-                        }
-                        break;
-                    default:
-                        throw new NotSupportedException("操作列配置格式错误,请仔细核查操作列的配置规则！");
+                    throw new NotSupportedException("操作列配置格式错误,请仔细核查操作列的配置规则！\n出错的配置为：" + _operateConfig.PackString());
                 }
             }
             return html;
@@ -643,7 +666,8 @@ namespace Qx.Report.Services
         {
             Init(id, parms, dbConnStringKey, pageIndex, perCount);
             Do();
-            return new ExcelUtility(_dataRows, templateFileDir, outputFileDir).ToExcel().FullName;
+            var content = _dataRows.AddRowToFirst(_titleToShow.Where(a=>!a.Contains("操作")).Select(b=>b).ToList());
+            return new ExcelUtility(content, templateFileDir, outputFileDir).ToExcel().FullName;
         }
 
         public List<List<string>> ToHtml(string id, string parms, string dbConnStringKey, 
@@ -696,33 +720,30 @@ namespace Qx.Report.Services
         public List<List<string>> Test(ReportModel report, string parms,string dbConnStringKey,
             int pageIndex = 1, int perCount = 10)
         {
+            _filterScript = "1=1";
             Init(report, parms, dbConnStringKey, pageIndex, perCount);
             Do();
             return _dataRowsWithOperat;
         }
         #endregion
 
-        public ReportViewModel ToView(string id, string parms, string dbConnStringKey, int pageIndex = 1, int perCount = 10)
+        public ReportViewModel ToView(string id, string parms, string dbConnStringKey, int pageIndex = 1, int perCount = 10, string filterScript = "")
         {
+            _filterScript = filterScript;
+           
             Init(id, parms, dbConnStringKey, pageIndex, perCount);
             Do();
-            _reportViewModel.pageParam.pageIndex = pageIndex;
-            _reportViewModel.pageParam.perPage = perCount;
-            _reportViewModel.pageParam.title = _report.ReportName;
-            _reportViewModel.pageParam.maxIndex = 999;
-            return _reportViewModel;
+            return _reportViewModel.SetPageParam(pageIndex, perCount, filterScript,_finalSql);
+           
         }
 
         public ReportViewModel ToView(string id, string parms, List<List<string>> dataSource
-            , int pageIndex = 1, int perCount = 10)
+            , int pageIndex = 1, int perCount = 10, string filterScript = "")
         {
+            _filterScript = filterScript;
             Init(id, parms, dataSource, pageIndex, perCount);
             Do();
-            _reportViewModel.pageParam.pageIndex = pageIndex;
-            _reportViewModel.pageParam.perPage = perCount;
-            _reportViewModel.pageParam.title = _report.ReportName;
-            _reportViewModel.pageParam.maxIndex = 999;
-            return _reportViewModel;
+            return _reportViewModel.SetPageParam(pageIndex, perCount, filterScript, _finalSql);
         }
     }
 }

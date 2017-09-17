@@ -1,0 +1,23 @@
+﻿
+
+
+
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.OrgCRUD.Org_Position_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o=> o.org)
+
+@Html.HiddenFor(o=>o.orgnization_id)
+
+@Html.ShowInputFor(o=>o.org_name,2)
+
+@Html.SelectFor(o=>o.position_id,Model.positionSelect)
+
+
+
+
+

@@ -57,16 +57,24 @@
   <ItemGroup>
     <Compile Include="Configs\Setting.cs" />
     <Compile Include="Entity\ConvertCondition.cs" />
+    <Compile Include="Entity\InstanceChangeLog.cs" />
+    <Compile Include="Entity\InstanceChangeLogType.cs" />
+    <Compile Include="Entity\InstanceHistory.cs" />
+    <Compile Include="Entity\InstanceHistoryType.cs" />
     <Compile Include="Entity\MyDbContext.cs" />
     <Compile Include="Entity\Node.cs" />
     <Compile Include="Entity\NodeRelation.cs" />
     <Compile Include="Entity\WorkFlow.cs" />
     <Compile Include="Entity\WorkFlowInstance.cs" />
-    <Compile Include="Entity\WorkFlowInstanceLog.cs" />
+    <Compile Include="Exceptions\MoveFailByBllException.cs" />
+    <Compile Include="Exceptions\MismatchConditionException.cs" />
     <Compile Include="Interfaces\IWorkFlowProvider.cs" />
     <Compile Include="Interfaces\IWorkFlowService.cs" />
     <Compile Include="Interfaces\WorkFlowExtensions.cs" />
-    <Compile Include="Models\MoveParams.cs" />
+    <Compile Include="Models\RelationMoveParam.cs" />
+    <Compile Include="Models\ToDoMsg.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\WorkFlowParams.cs" />
     <Compile Include="Models\MoveResult.cs" />
     <Compile Include="Models\WorkFlowBag.cs" />
     <Compile Include="Models\WorkFlowPath.cs" />
@@ -81,14 +89,14 @@
     <Compile Include="Services\WorkFlowService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\Qx.Tools\Qx.Tools.csproj">
       <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
       <Name>Qx.Tools</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

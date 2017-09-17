@@ -1,0 +1,17 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.FenBan_add_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.StuClassID)
+
+@Html.InputFor(o => o.StuClassName)   <!--班级名称-->
+
+@Html.SelectFor(o => o.BatchID, Model._BatchID) <!--批次ID -->
+
+@Html.HiddenFor(o => o.major_id) <!--专业ID-->
+
+@Html.InputFor(o => o.name) <!--专业名称-->
+
+@Html.HiddenFor(o => o.major_class_id) <!--专业_班级ID-->

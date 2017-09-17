@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,7 +10,7 @@ using HtmlAgilityPack;
 using qx.permmision.v2.Interfaces;
 using Qx.Tools;
 using Qx.Tools.QxClass;
-using Web.ViewModels;
+using Web.Models;
 
 
 namespace Web.Controllers
@@ -17,10 +18,14 @@ namespace Web.Controllers
     public class F2Controller : BaseController
     {
         private IPermissionProvider _permissionProvider;
-        
-        public F2Controller(IPermissionProvider permissionProvider)
+ 
+     
+
+
+    public F2Controller(IPermissionProvider permissionProvider)
         {
             _permissionProvider = permissionProvider;
+      
         }
 
         // GET: F2
@@ -76,25 +81,38 @@ namespace Web.Controllers
         {
             return View();
         }
-        public ActionResult index()
+        public ActionResult Index()
         {
-            if (!DataContext.UserID.HasValue())
-            {
-                return RedirectToAction("Login");}
-            V("uid", Session["user"]);
-            return View();
+            //if (!DataContext.UserId.HasValue())
+            //{
+            //    return RedirectToAction("Login");}
+            //V("uid", Session["user"]);
+            return Content(DateTime.Now+"服务器启动成功!");
         }
         public ActionResult welcome()
         {
             return View();
         }
+        
+        public ActionResult notlogin(string uid)
+        {
+            //if (uid.HasValue())
+            //{
+            //    return Redirect("/Wb/Mode/index");}
+            InitFrLayout("请注册成为会员");
+            return View();
+        }
         public ActionResult login()
         {
-            if (DataContext.UserID.HasValue())
+            if (DataContext.UserId.HasValue())
             {
                 return RedirectToAction("index");
             }
-            return View(new Login_M() {UserId = "1325112033"});
+            return View(new Login_M()
+            {
+                UserId = "1325112032",
+         
+            });
         }
         #region Login Logic
         [HttpPost]
@@ -123,17 +141,20 @@ namespace Web.Controllers
             }
      
         }
-        // GET: /Account/LoginOk?uid=panda&return_url=http://52xyj.cn&msg=测试
+        // GET: /F2/LoginOk?uid=panda&return_url=http://52xyj.cn&msg=测试
         public ActionResult LoginOk(string uid, string return_url, string msg = "", string uName = "未设置")
         {
             var accountContext = new AccountContext();
-            DataContext.UserID =
-                accountContext.UserID = uid;
-            DataContext.UserName =
-             accountContext.UserName = uName;
+            //DataContext.UserId =
+            //    accountContext.UserID = uid;
+            //DataContext.UserName =
+            // accountContext.UserName = uName;
+            DataContext=new DataContext(HttpContext,uid,"",uName);
             Session["AccountContext"] = accountContext;
             if (return_url.HasValue())
             {
+                //加入参数
+                return_url += (return_url.Contains("?") ? "&" : "?" )+"uid="+ uid + "&msg=" + msg;
                 return Redirect(return_url);
             }
             else if (ReturnUrl.HasValue() && ReturnUrl != "/" && !return_url.ToLower().Contains("login"))

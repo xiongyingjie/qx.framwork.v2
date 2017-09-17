@@ -3,30 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Qx.Tools.CommonExtendMethods;
-using Qx.Wechat.Interfaces;
+using qx.wechat.Interfaces;
+using Web.Controllers.Base;
 
 namespace Web.Areas.WeChat.Controllers
 {
-    public class TestController : Controller
+    public class TestController : BaseController
     {
-        private IWechatServices _wechatServices;
+        private IEntWechatServices _entWechatServices;
 
-        public TestController(IWechatServices wechatServices)
+        public TestController(IEntWechatServices entWechatServices)
         {
-            _wechatServices = wechatServices;
+            _entWechatServices = entWechatServices;
         }
 
-        private string test_uid = "oksMlwPF5Y1KQvoi8AklF-lUwnYQ";
-        private string test_url = "http://baidu.com";
-        // GET: WeChat/Test
-        public ActionResult Index()
+        // GET: /WeChat/Test/Index?id=
+        public ActionResult Index(string id= "xiongyingjie")
         {
-            //_wechatServices.Send_Finished_Order_Msg(test_uid, test_url,
-            //    "detal", "panda", "phone", DateTime.Now.ToStr(), "");
-            //_wechatServices.Send_Receved_Order_Msg(test_uid, test_url,
-            //    "detal", "poamda", "15502342");
-            return View();
+            return Content(""+_entWechatServices.Send_Card_Msg(id,
+                "BAIDU.COM",
+                "领奖通知",
+                "<div class='gray'>2017年9月16日</div> <div class='normal'>恭喜你抽中iPhone X一台，领奖码：xxxx</div><div class='highlight'>请于2017年10月10日前联系行政同事领取</div>"));
         }
+        /*
+         灰色(gray)
+         高亮(highlight)
+         默认黑色(normal)
+         */
     }
 }

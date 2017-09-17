@@ -1,6 +1,8 @@
-﻿namespace Qx.WorkFlow.Interfaces
+﻿using Qx.Tools.Interfaces;
+
+namespace Qx.WorkFlow.Interfaces
 {
-    public interface IWorkFlowProvider
+    public interface IWorkFlowProvider : IAutoInject
     {
        
     }

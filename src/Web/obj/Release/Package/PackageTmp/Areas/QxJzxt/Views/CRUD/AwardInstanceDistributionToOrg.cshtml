@@ -1,0 +1,104 @@
+﻿
+
+@using Qx.Contents.Services
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.AwardInstanceDistributionToOrg_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE FORM PORTLET-->
+            <div class="portlet ">
+                <div class="portlet-body form">
+                    <form class="form-horizontal" method="POST" role="form" action="/QxJzxt/CRUD/UserApplyAward">
+                        <div class="form-body">
+                            <input type="hidden" name="batchinstanceid" value="@Model.batchinstanceid">
+                            <input type="hidden" name="total_count" value="@Model.total_count">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            <h4 class="list-group-item-heading">
+                                                将奖项分配给学院
+                                            </h4>
+                                        </a>
+                                        <div class="list-group-item list-group-item-heading">
+                                            <div class="row">
+
+                                                <div class="col-lg-12">
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active">
+                                                            <a href="#RRC8HZU73U4" data-toggle="tab" aria-expanded="true">
+                                                                @Model.award_name 总名额： @Model.total_count
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+
+                                                    <div class="tab-content">
+
+                                                        <div class="tab-pane fade active in" id="RRC8HZU73U4">
+                                                            @if (Model.DistributionList.Count > 0)//已经填写了名额分配，将数据反填
+                                                            {
+                                                                foreach (var item in Model.allCollege)//所有的组织机构（学院）
+                                                                {
+                                                                    foreach (var item2 in Model.DistributionList)//已经填写的名额分配情况
+                                                                    {
+                                                                        if (item.orgnization_id == item2.orgid)
+                                                                        {
+                                                                            <div class="col-lg-4">
+                                                                                <div class="form-group">
+                                                                                    <label>@item.name</label>
+                                                                                    <input type="hidden" value="@item.orgnization_id" name="orgid">
+                                                                                    <input type="hidden" value="@item2.orgawardinstanceid" name="orgawardinstanceid">
+                                                                                    <input class="form-control" id="count" name="count" placeholder="请填写数量" type="text" value="@item2.count" />
+                                                                                    <p class="help-block">&nbsp;</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            continue;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                            else//没有填写名额分配
+                                                            {
+                                                                foreach (var item in Model.allCollege)
+                                                                {
+                                                                    <div class="col-lg-4">
+                                                                        <div class="form-group">
+                                                                            <label>@item.name</label>
+                                                                            <input type="hidden" value="@item.orgnization_id" name="orgid">
+                                                                            <input class="form-control" id="count" name="count" placeholder="请填写数量" type="text" value="" />
+                                                                            <p class="help-block">&nbsp;</p>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions fluid">
+                            <div class="col-md-offset-5 col-md-8">
+                                <button type="submit" class="btn btn-success" onclick="totalCount()">保存</button>
+                                <button type="button" class="btn btn-default back">返回</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

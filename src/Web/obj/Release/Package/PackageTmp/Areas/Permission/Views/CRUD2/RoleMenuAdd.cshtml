@@ -1,0 +1,24 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.RoleMenuAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.InputFor(o => o.role_id,"",true)
+
+@Html.InputFor(o => o._role_name,"",true)
+
+@Html.InputFor(o => o.menu_id,"" ,true)
+<a href="/Permission/Admin/ChooseMenuList?ReportID=Permision_选择菜单&Params=;&roleid=@Model.role_id">重新选择菜单</a>
+
+@Html.InputFor(o => o.menu_name)
+
+@Html.SelectFor(o => o.include_children, Model.selectItems)
+
+@Html.InputAreaFor(o => o.note)
+
+
+
+
+
+

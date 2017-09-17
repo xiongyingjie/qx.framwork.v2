@@ -1,4 +1,4 @@
-﻿namespace Qx.Wechat.Models
+﻿namespace qx.wechat.Models
 {
     public class ExceptionModel
     {

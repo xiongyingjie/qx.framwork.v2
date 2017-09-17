@@ -7,42 +7,122 @@ using qx.permmision.v2.Entity;
 using qx.permmision.v2.Interfaces;
 using qx.permmision.v2.Models;
 using Qx.Tools.CommonExtendMethods;
+using Qx.Tools.Models.Report;
 
 namespace qx.permmision.v2.Services
 {
     public class PermissionServices : BaseRepository,IPermmisionService
     {
+     
+
+        public List<orgnization> GetOrgIdByUserId(string userId,bool includeSub=true)
+        {
+            //从用户机构获取
+            var myOrg = Db.user_orgnization.Where(a => a.user_id == userId).Select(b => b.orgnization.orgnization_id).ToList();
+            //从用户岗位获取
+            var org2 = Db.user_position.Where(a => a.user_id == userId).Select(b => b.orgnization_position.orgnization.orgnization_id).ToList();
+            //合并 去重  用户所在所有组织机构
+            myOrg = myOrg.Union(org2).ToList();
+           //查找子机构
+           if (includeSub)
+            {
+                var subOrg = Db.orgnization.Where(a => myOrg.Contains(a.father_id)).Select(b => b.orgnization_id).ToList();
+                while (subOrg.Any())
+                {
+                    myOrg = myOrg.Union(subOrg).ToList(); //用户所在机构以及子机构
+                    subOrg = Db.orgnization.Where(a => subOrg.Contains(a.father_id)).Select(b => b.orgnization_id).ToList();
+                }
+            }
+          
+            return Db.orgnization.Where(a=>myOrg.Contains(a.orgnization_id)).ToList();
+        }
+        //获取全局权限
+        public List<DataFilter> GetFilterByUserId(string userId)
+        {
+            var query = Db.user_role.Where(a => a.user_id == userId).
+                SelectMany(b => b.role.data_filter).Where(a => a.report_id == "#");
+             return query.OrderBy(o => o.seq).Select(c => new DataFilter()
+            {
+                data_filter_id = c.data_filter_id,
+                role_id = c.role_id,
+                role_name = c.role.name,
+                note = c.note,
+                seq = (int)c.seq,
+                report_id = c.report_id,
+                filter_script = c.filter_script.script,
+                expire_time = c.expire_time,
+            }).ToList();
+        }
+        //获取指定报表的权限
+        public List<DataFilter> GetFilterByUserId(string userId, string reportId)
+        {
+            //报表权限优先
+            var query = Db.user_role.Where(a => a.user_id == userId).
+                SelectMany(b => b.role.data_filter);
+            if (reportId.HasValue())
+            {
+                query = query.Where(a => a.report_id == reportId);
+            }
+            //如果未找针对该报表的规则，则尝试获取全局规则
+            if (!query.Any())
+            {
+                var all = GetFilterByUserId(userId);
+                if (all.Any())
+                {//全局权限优先
+                    return all;
+                }
+            }
+            return query.OrderBy(o => o.seq).Select(c => new DataFilter()
+            {
+                data_filter_id = c.data_filter_id,
+                role_id = c.role_id,
+                role_name = c.role.name,
+                note = c.note,
+                seq = (int)c.seq,
+                report_id = c.report_id,
+                filter_script = c.filter_script.script,
+                expire_time = c.expire_time,
+            }).ToList();
+        }
+
 
         public List<MenuItem> GetMenuByUserId(string userId)
         {
             var allMenus = Db.menu.ToList();
 
-        var myAllMenus=new List<menu>();
+            List<string> myAllMenus;
+         
+            //我被直接分配的菜单配置
+            var cfg = Db.user_role.Where(a => a.user_id == userId).
+                SelectMany(b => b.role.role_menu);
+            //踢出根节点后加入全集
+            myAllMenus = cfg.Where(a => a.menu.farther_id != "MRoot").Select(a => a.menu.menu_id).ToList();//,));
+            
+            //取出直接分配中包含包含子菜单的部分
+            var _myMenus1 = cfg.Where(a => a.include_children == 1).Select(b=>b.menu.menu_id).ToList();
+            var subMenu = allMenus.Where(a => _myMenus1.Contains(a.farther_id)).Select(b=>b.menu_id).ToList();
+            myAllMenus= myAllMenus.Union(subMenu).ToList();
+            //寻找子菜单
+            while (subMenu.Any())
+            {
+                subMenu = allMenus.Where(a => subMenu.Contains(a.farther_id)).Select(b=>b.menu_id).ToList();
+                myAllMenus = myAllMenus.Union(subMenu).ToList();
+            }
+          
+            ////我的所有包含孩子的菜单
+            //var myMenus1 = Db.user_role.Where(a => a.user_id == userId).
+            //  SelectMany(b => b.role.role_menu.Where(z=>z.include_children==1).Select(c => c.menu)).
+            //  ToList().
+            //  Distinct(this.CreateEqualityComparer<menu, string>(z => z.menu_id)).//去重
+            //  ToList();
 
-            //我的所有不包含孩子的菜单
-            var myMenus0 = Db.user_role.Where(a => a.user_id == userId).
-              SelectMany(b => b.role.role_menu.Where(z => z.include_children == 0).Select(c => c.menu)).
-              //  ToList().
-              // Distinct(CommonExtendMethods.Equality<Menu>.CreateComparer(z => z.menu_id)).//去重
-              ToList();
-
-            //踢出根节点
-          var myMenus0ExceptRoot= myMenus0.Where(a => a.farther_id != "MRoot").Select(b => b).ToList();
-
-            //我的所有包含孩子的菜单
-            var myMenus1 = Db.user_role.Where(a => a.user_id == userId).
-              SelectMany(b => b.role.role_menu.Where(z=>z.include_children==1).Select(c => c.menu)).
-              ToList().
-              Distinct(this.CreateEqualityComparer<menu, string>(z => z.menu_id)).//去重
-              ToList();
-
-            //补全缺失子菜单
-            var myMenus1ChildMenus =
-                myMenus1.SelectMany(a => allMenus.
-                Where(b => b.farther_id == a.menu_id).
-                Select(c => c)).
-               // OrderBy(c => c.sequence).//根菜单排序
-                ToList();
+            ////补全缺失子菜单
+            //var myMenus1ChildMenus =
+            //    myMenus1.SelectMany(a => allMenus.
+            //    Where(b => b.farther_id == a.menu_id).
+            //    Select(c => c)).
+            //   // OrderBy(c => c.sequence).//根菜单排序
+            //    ToList();
 
 
 
@@ -59,17 +139,17 @@ namespace qx.permmision.v2.Services
             //var myChildMenus = myMenus.Except(myRootMenus).ToList();
 
             //myMenus0ExceptRoot+myMenus1ChildMenus
-            myMenus0ExceptRoot.AddRange(myMenus1ChildMenus);
+            // myMenus0ExceptRoot.AddRange(myMenus1ChildMenus);
 
-           //去重后的所有子菜单
-            var myAllChilren =
-                myMenus0ExceptRoot.Distinct(this.CreateEqualityComparer<menu,string>(z => z.menu_id)).//去重
-                OrderBy(c => c.sequence).//排序
-                ToList();
+            //去重后的所有子菜单
+            //var myAllChilren =
+            //    myMenus0ExceptRoot.Distinct(this.CreateEqualityComparer<menu,string>(z => z.menu_id)).//去重
+            //    OrderBy(c => c.sequence).//排序
+            //    ToList();
 
             //分组后找父亲
 
-          var dest=  myAllChilren.GroupBy(a => a.farther_id).Select(g => new MenuItem()
+            var dest= allMenus.Where(z=> myAllMenus.Contains(z.menu_id)).GroupBy(a => a.farther_id).Select(g => new MenuItem()
             {
                 Father = allMenus.FirstOrDefault(b => b.menu_id == g.Key),
                 Children = g.AsEnumerable().Select(c => c).ToList()

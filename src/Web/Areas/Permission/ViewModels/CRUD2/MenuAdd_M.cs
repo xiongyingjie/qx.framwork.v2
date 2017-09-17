@@ -27,7 +27,7 @@ namespace Web.Areas.Permission.ViewModels.CRUD2
             return new MenuAdd_M()
             {
                 _farther_id = farther_id,
-                menu_id = "".CheckValue(),
+                menu_id = farther_id+"."+"".CheckValue(),
                 _MenSelectListItems = menuSelectListItems,
             };
         }

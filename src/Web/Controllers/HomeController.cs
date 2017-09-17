@@ -1,7 +1,8 @@
 ﻿using Qx.Tools.CommonExtendMethods;
 using System.Web.Mvc;
-using Web.Areas.WeChat.Controllers;
+//using Web.Areas.WeChat.Controllers;
 using Web.Controllers.Base;
+using Web.Controllers.Filter;
 
 namespace Web.Controllers
 {

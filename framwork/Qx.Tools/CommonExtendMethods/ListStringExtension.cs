@@ -86,9 +86,8 @@ namespace Qx.Tools.CommonExtendMethods
             return dest;
         }
 
-      
 
-        public static string PackString(this List<string> srcList, char flag = ';')
+        public static string PackString(this List<string> srcList, string flag)
         {
             var tempString = "";
 
@@ -106,13 +105,59 @@ namespace Qx.Tools.CommonExtendMethods
 
             return tempString;
         }
+        public static string PackString(this List<string> srcList, char flag = ';')
+        {
+            return PackString(srcList, flag.ToString());
+        }
 
         public static string[] FormatString(this List<string> srcString, char flag = '%')
         {
             return srcString.Select(o => flag + o + flag).ToArray();
         }
 
+        public static List<string> GetDuplicate(this List<string> srcList)
+        {
+            var temp = new List<string>();
+            var duplicated = new List<string>();
 
+            foreach (var item in srcList)
+            {
+                if (!temp.Contains(item))
+                {
+                    temp.Add(item);
+                }
+                else
+                {
+                    duplicated.Add(item);
+                }
+            }
+            return duplicated;
+        }
 
+        public static List<string> DealDuplicate(this List<string> srcList,string flag="")
+        {
+            if (!flag.HasValue())
+            {
+                flag = DateTime.Now.Random();
+            }
+            var dest=new List<string>(srcList);
+            var duplicate = dest.GetDuplicate();
+            if (duplicate.Any())
+            {
+                duplicate.ForEach(item =>
+                {
+                    for (var i = 0; i < dest.Count; i++)
+                    {
+                        if (dest[i] == item)
+                        {
+                            dest[i] = item + flag;
+                        }
+                    }
+                });
+                //throw new Exception("报表标题中存在重复项:" + duplicate.PackString());
+            }
+            return dest;
+        }
     }
+       
 }

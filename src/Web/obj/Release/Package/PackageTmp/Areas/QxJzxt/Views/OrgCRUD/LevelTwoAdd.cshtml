@@ -1,0 +1,83 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.ROOT.OrgnizationAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            getParams();
+        });
+        function getParams() {
+            $("#orgnization_id,#father_id,#name,#descripe,#note,#sub_system,#orgnization_type_id,#type_name,#organization_level_id,#level_name").keyup(function () {
+                var orgnization_id = $("#orgnization_id").val().toString();
+                var father_id = $("#father_id").val().toString();
+                var name = $("#name").val().toString();
+                var descripe = $("#descripe").val().toString();
+                var note = $("#note").val().toString();
+                var sub_system = $("#sub_system").val().toString();
+                var orgnization_type_id = $("#orgnization_type_id").val().toString();
+                var type_name = $("#type_name").val().toString();
+                var organization_level_id = $("#organization_level_id").val().toString();
+                var level_name = $("#level_name").val().toString();
+                //$("#chooseFuOrg").attr('href', '/Twxt/Org/Org_FatherChoose?AllParams=' + orgnization_id + ";"
+                //    + father_id + ";"
+                //    + name + ";"
+                //    + descripe + ";"
+                //    + note + ";"
+                //    + sub_system + ";"
+                //    + orgnization_type_id + ";"
+                //    + type_name + ";"
+                //    + organization_level_id + ";"
+                //    + level_name);
+                $("#chooseOrgType").attr('href', '/Twxt/Org/Org_TypeChoose_OneToALL?AllParams=' + orgnization_id + ";"
+                  + father_id + ";"
+                  + name + ";"
+                  + descripe + ";"
+                  + note + ";"
+                  + sub_system + ";"
+                  + orgnization_type_id + ";"
+                  + type_name + ";"
+                  + organization_level_id + ";"
+                  + level_name);
+                $("#chooseOrgLevel").attr('href', '/Twxt/Org/Org_LevelChoose?AllParams=' + orgnization_id + ";"
+                  + father_id + ";"
+                  + name + ";"
+                  + descripe + ";"
+                  + note + ";"
+                  + sub_system + ";"
+                  + orgnization_type_id + ";"
+                  + type_name + ";"
+                  + organization_level_id + ";"
+                  + level_name);
+            })
+        }
+    </script>
+}
+
+@Html.HiddenFor(o => o.orgnization_id)
+
+@Html.InputFor(o => o.father_id, "", true)
+
+@Html.InputFor(o => o.name)
+
+@Html.InputFor(o => o.descripe)
+
+@Html.HiddenFor(o => o.note)
+
+@Html.HiddenFor(o => o.sub_system)
+
+@Html.InputFor(o => o.orgnization_type_id)
+
+@Html.HiddenFor(o => o.type_name)
+<a id="chooseOrgType" title="先填写以上组织机构信息">
+    选择组织机构类型
+</a>
+
+@Html.InputFor(o => o.organization_level_id)
+
+@Html.HiddenFor(o => o.level_name)
+<a id="chooseOrgLevel" title="先填写以上组织机构信息">
+    选择组织机构级别
+</a>
+

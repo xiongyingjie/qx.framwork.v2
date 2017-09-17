@@ -1,0 +1,23 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.MenuEdit_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.HiddenFor(o => o.menu_id)
+
+@Html.SelectFor(o => o._farther_id,Model._MenSelectListItems)
+
+@Html.InputFor(o => o.name)
+
+@Html.InputFor(o => o.url)
+
+@Html.InputFor(o => o.depth)
+
+@Html.InputFor(o => o.sequence)
+
+@Html.SelectFor(o => o.status, Model.selectItems)
+
+@Html.InputAreaFor(o => o.note)
+

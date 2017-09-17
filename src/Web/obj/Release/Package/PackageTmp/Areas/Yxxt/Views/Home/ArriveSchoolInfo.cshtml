@@ -1,0 +1,55 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.ArriveSchoolInfo_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.arrive_school_info_id, "")
+@Html.HiddenFor(o => o.user_id, "")
+@Html.SelectFor(o => o.from_city_id, Model._CityItems)
+@Html.SelectFor(o => o.traficway_id, Model._TraficwayItems)
+@Html.SelectFor(o => o.arrive_station_id, new List<SelectListItem>())
+@Html.InputFor(o => o.together_count, "")
+@Html.SelectFor(o => o.need_pick_up, new List<SelectListItem>()
+{ new SelectListItem()
+{ Text = "是",Value = "是"},
+    new SelectListItem() { Text = "否", Value = "否" } })
+@Html.TimeFor(o => o.arrive_time, "")
+@section scripts{
+    <script type="text/javascript">
+        $().ready(function () {
+            if (hasValue('@Model.arrive_station_id')) {
+                $.post("/Yxxt/Home/GetArriveStationItems",
+                 { wid: wid },
+                 function (data) {
+                     var obj = data;
+                     for (var i = 0; i < obj.length; i++) {
+                         // 先清空
+                         $("#arrive_station_id").empty();
+                         // 实际的应用中，这里的option一般都是用循环生成多个了
+                         var option = $("<option>").val(obj[i].Value).text(obj[i].Text);
+                         $("#arrive_station_id").append(option);
+                     }
+
+                 });
+            }
+        });
+        $("#traficway_id").change(function () {
+            var wid = $("#traficway_id").val();
+            $.post("/Yxxt/Home/GetArriveStationItems",
+           { wid: wid },
+           function (data) {
+               var obj = data;
+               for (var i = 0; i < obj.length; i++) {
+                   // 先清空
+                   $("#arrive_station_id").empty();
+                   // 实际的应用中，这里的option一般都是用循环生成多个了
+                   var option = $("<option>").val(obj[i].Value).text(obj[i].Text);
+                   $("#arrive_station_id").append(option);
+               }
+
+           });
+        })
+    </script>
+}

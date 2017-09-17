@@ -1,0 +1,20 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.DetailAwardInstance_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.instanceid)
+@Html.HiddenFor(o => o.state)
+
+@Html.InputFor(o => o.awardtypename,"",true)
+@Html.InputFor(o => o.instancename, "", true)
+@Html.InputFor(o => o.starttime, "", true)
+@Html.InputFor(o => o.endtime, "", true)
+@Html.InputFor(o => o.bonus, "", true)
+
+
+
+
+

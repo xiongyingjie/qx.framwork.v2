@@ -19,11 +19,11 @@ namespace Qx.Order.Models
            {
                return CartItems.Select(a => new shopping_cart()
                {
-                   BuyerID = _dataContext.UserID,
+                   BuyerID = _dataContext.UserId,
                    SellerID = a.SellerId,
                    Num = 1,
                    ProductID = a.ProductId,
-                   SC_ID = _dataContext.UserID + "-" +
+                   SC_ID = _dataContext.UserId + "-" +
                            a.SellerId + "-" +
                            a.ProductId
                }).ToList();
@@ -51,7 +51,7 @@ namespace Qx.Order.Models
                 var product=new ShoppingCartItem()
                 {
                     Price = provider.GetPrice(_dataContext, productId).EncodeingPrice(),
-                    BuyerId = _dataContext.UserID,
+                    BuyerId = _dataContext.UserId,
                     Name = provider.GetName(_dataContext,productId),
                     Num =1,
                     ProductId = productId,

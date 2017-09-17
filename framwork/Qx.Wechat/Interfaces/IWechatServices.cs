@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Qx.Wechat.Models;
+﻿using System.Collections.Generic;
+using qx.wechat.Models;
+using Qx.Tools.Interfaces;
 
-namespace Qx.Wechat.Interfaces
+namespace qx.wechat.Interfaces
 {
-    public interface IWechatServices
+    public interface IWechatServices : IAutoInject
     {
         /// <summary>
         /// 发送兑换成功通知

@@ -1,0 +1,25 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.YX_LinkListAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.InputFor(o=>o.YX_LinkID)
+
+@Html.InputFor(o=>o.Link_Name)   <!--环节名称-->
+
+@Html.InputFor(o => o.Link_Type)  <!--环节类型-->
+
+@Html.SelectFor(o => o.XX_Whether_HC, Model._XX_Whether_HC) <!--小项是否互斥 -->
+<!--小项名称/内容-->
+<!--环节提示-->
+@Html.InputFor(o => o.Tip_Msg)
+
+@Html.HiddenFor(o => o.CollegeID)
+
+ @Html.HiddenFor(o => o.Link_TypeID)
+
+@Html.HiddenFor(o => o.YX_ProcessID)
+
+<!--@Html.ActionLink("重新选择充值赠送规则", "RechargeGivingRuleChoose", "Admin", new { Model.YX_LinkID }, new { @class = "col-lg-offset-3" })
+-->

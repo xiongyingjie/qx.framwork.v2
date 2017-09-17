@@ -1,0 +1,27 @@
+﻿<Window x:Class="CodeTool.V2.Welcome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CodeTool.V2"
+        mc:Ignorable="d"
+        Title="Welcome" Height="270" Width="444" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid >
+        <StackPanel Orientation="Vertical">
+
+            <StackPanel  HorizontalAlignment="Center">
+                <Label  Margin="5"  Content="更新日志："></Label>
+
+                <TextBox Margin="5,0,5,5"   Text="1.全新界面,操作更顺畅" Style="{StaticResource input-lg}" Width="398" Height="189" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" FlowDirection="LeftToRight"  Orientation="Horizontal">
+                <RadioButton IsChecked="True" Name="rbt_report" Margin="5" Content="报表生成器" Style="{DynamicResource radio has-success}"></RadioButton>
+                <RadioButton Name="rbt_form" Margin="5" Content="表单生成器" Style="{DynamicResource radio has-warning}"></RadioButton>
+                <RadioButton Name="rbt_project" Margin="5" Content="项目生成器" Style="{DynamicResource radio has-error}" ></RadioButton>
+                <Button Content="启动" Click="ButtonBase_OnClick"  Margin="5,0,0,0"  Style="{DynamicResource btn-primary}" />
+                <Button  Click="ButtonExit_OnClick" Content="退出" Margin="5,0,0,0"  Style="{DynamicResource btn-warning}" />
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>

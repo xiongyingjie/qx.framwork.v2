@@ -1,0 +1,127 @@
+﻿.hidden {
+    display:none
+}
+
+.red {
+    color: red;
+}
+.form-control {
+    width: 99% !important;
+}
+
+.form-group {
+    margin-left: 5px !important;
+}
+
+.list-group {
+    width: 99% !important;
+}
+
+.panel {
+    width: 99% !important;
+}
+
+.tab-content {
+    margin-top: 10px;
+}
+
+pre {
+    width: 99% !important;
+}
+
+a {
+    cursor: pointer;
+}
+
+th {
+    text-align: center;
+}
+
+.tophide {
+    /* text-overflow : clip ;ellipsis
+            white-space:nowrap;overflow:hidden;*/
+    display: block;
+    width: 100%;
+    -moz-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100px;
+}
+
+.tophide:hover {
+        display: block;
+        width: 100%;
+        overflow: auto;
+        white-space: normal;
+        max-width: 200px;
+    }
+ /* 报表*/
+label{
+	width:60%;
+}
+.input_w{
+	width:80% !important;
+}
+.text_w{
+	text-align: center;
+	font-size: 14px;
+	word-spacing: 2px;
+}
+.panel-body
+{
+	margin-top: 10px !important;
+}
+.form-pd{
+	padding-bottom: 17px;
+
+}
+.label-wid{
+	width: 70px;
+	color: rgb(109,109,109);
+}
+.form-control-size{
+width: 210px !important;
+border-radius: 4px !important;
+
+	
+}
+.info
+{
+table-layout:fixed;
+	
+}
+.overOut{
+	overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+	}
+
+.list-ul
+{
+  padding: 0 0;
+}
+.list-ul li
+{
+  float: left;
+  margin-right: 25px;
+}
+li
+{
+  list-style-type: none;
+}
+.table-div
+{
+  min-width:100%;max-width:100%;overflow-x:auto;
+}
+ .hide 
+{
+    display: none;
+}
+.warning-block
+{
+   color: rgb(255, 0, 0);
+}
+ .warning
+ {
+      border: 1px solid rgb(255, 0, 0)!important;
+ }
+

@@ -20,8 +20,11 @@ namespace qx.permmision.v2.Services
                 {
                     _permission = new PermissionServices();
                 }
-
-                public List<MenuItem> GetMenuByUserId(string userId)
+        public IPermmisionService Services()
+        {
+            return _permission;
+        }
+        public List<MenuItem> GetMenuByUserId(string userId)
                 {
                     return _permission.GetMenuByUserId(userId);
                 }
@@ -41,7 +44,7 @@ namespace qx.permmision.v2.Services
                     return _permission.FindFather(menuid);
                 }
         #endregion
-
+    
         public bool Login(string userId, string userPwd)
         {
             userPwd = NoneEncrypt(userPwd);
@@ -75,20 +78,77 @@ namespace qx.permmision.v2.Services
                 register_date = DateTime.Now,
                 last_login_date = DateTime.Now,
             });
-            //寻找默认角色
-            //Db.role.Where(a=>a.is_default==1).
-            //    ToList().ForEach(b =>
-            //    {
-            //         //添加默认角色
-            //        Db.user_role.Add(new user_role()
-            //        {
-            //            user_id = userId,
-            //            role_id = b.role_id,
-            //            note = "新用户注册自动添加默认角色[" + b.name + "];有效期为永久",
-            //            expire_time = DateTime.MaxValue,
-            //            user_role_id = userId + "-" + b.role_id
-            //        });
-            //    });
+            //分配默认组织机构
+            #region 组织机构数据完整性检测
+            var orgId = "deafalt";
+            var orgLevelId = "0";
+            var orgTypeId = "deafalt";
+            if (Db.organization_level.Find(orgLevelId) == null)
+            {
+                Db.organization_level.AddOrUpdate(new organization_level()
+                {
+                    organization_level_id = orgLevelId,
+                    name = "根组织（虚拟）",
+                    note = "由PermissionProvider.Regist于" + DateTime.Now + "自动创建"
+                });
+            }
+            if (Db.orgnization_type.Find(orgTypeId) == null)
+            {
+                Db.orgnization_type.AddOrUpdate(new orgnization_type()
+                {
+                    orgnization_type_id = orgTypeId,
+                    name = "默认",
+                    note = "由PermissionProvider.Regist于"+DateTime.Now+"自动创建"
+                });
+            }
+            if (Db.orgnization.Find(orgId)==null)
+            {
+                Db.orgnization.AddOrUpdate(new orgnization()
+                {
+                    orgnization_id = orgId,
+                    descripe = "系统自动注册的用户均放在该节点下",
+                    father_id = "Root",
+                    name = "会员",
+                    note = "由PermissionProvider.Regist于" + DateTime.Now + "自动创建",
+                    organization_level_id = orgLevelId,
+                    orgnization_type_id = orgTypeId
+                });
+            }
+            #endregion
+            Db.user_orgnization.AddOrUpdate(new user_orgnization()
+            {
+                user_orgnization_id = userId+"-"+ orgId,
+                user_id = userId,
+                orgnization_id = orgId
+            });
+            #region 角色完整性检测
+            var roleId = "deafalt";
+            if (Db.role.Find(roleId) == null)
+            {
+                Db.role.AddOrUpdate(new role()
+                {
+                    role_id = roleId,
+                    name = "默认角色",
+                    is_default = 1,
+                    sub_system = "system",
+                    role_type = "系统默认角色" 
+                });
+            }
+            #endregion
+            //分配默认角色
+            Db.role.Where(a => a.is_default == 1).
+                ToList().ForEach(b =>
+                {
+                    //添加默认角色
+                    Db.user_role.AddOrUpdate(new user_role()
+                    {
+                        user_id = userId,
+                        role_id = b.role_id,
+                        note = "新用户注册自动添加默认角色[" + b.name + "];有效期为永久",
+                        expire_time = DateTime.MaxValue,
+                        user_role_id = userId + "-" + b.role_id
+                    });
+                });
             Db.SaveChanges();
             return true;
         }
@@ -133,9 +193,14 @@ namespace qx.permmision.v2.Services
         }
         public bool DeleteUser(string userid)
         {
-            var user = Db.permission_user.Find(userid);  
-            Db.Entry(user).State = EntityState.Deleted;
-            return Db.SaveChanges() > 0;
+            var user = Db.permission_user.Find(userid);
+            if (user != null)
+            {
+                Db.Entry(user).State = EntityState.Deleted;
+                return Db.SaveChanges() > 0;
+            }
+            return true;
+
         }
     }
 }

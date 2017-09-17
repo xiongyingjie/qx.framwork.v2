@@ -14,7 +14,7 @@ namespace Qx.WorkFlow.Repository
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.Nodes.Select(a => new SelectListItem() { Text = a.NodeID, Value = a.Name }).ToList();
+            var dest = Db.Node.Select(a => new SelectListItem() { Text = a.NodeID, Value = a.Name }).ToList();
             return dest.Format(value);
         }
 
@@ -50,17 +50,17 @@ namespace Qx.WorkFlow.Repository
 
         public Node Find(object id)
         {
-            return Db.Nodes.NoTrackingFind(a=>a.NodeID == (string) id);
+            return Db.Node.NoTrackingFind(a=>a.NodeID == (string) id);
         }
 
         public List<Node> All()
         {
-            return Db.Nodes.NoTrackingToList();
+            return Db.Node.NoTrackingToList();
         }
 
         public List<Node> All(Func<Node, bool> filter)
         {
-            return Db.Nodes.NoTrackingWhere(filter);
+            return Db.Node.NoTrackingWhere(filter);
         }
     }
 }

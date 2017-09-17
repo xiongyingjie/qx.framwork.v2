@@ -94,6 +94,11 @@ namespace Qx.Tools.Ioc.Unity
             container.RegisterType<IRepository<qx.permmision.v2.Entity.role>, qx.permmision.v2.Repository.RoleRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.permission_user>, qx.permmision.v2.Repository.UserRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_role>, qx.permmision.v2.Repository.UserRoleRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.data_filter>, qx.permmision.v2.Repository.DataFilterRepository>();
+            container.RegisterType<IRepository<qx.permmision.v2.Entity.filter_script>, qx.permmision.v2.Repository.FilterScriptRepository>();
+
+            
+
 
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group>, qx.permmision.v2.Repository.UserGroupRepository>();
             container.RegisterType<IRepository<qx.permmision.v2.Entity.user_group_relation>, qx.permmision.v2.Repository.UserGroupRelationRepository>();

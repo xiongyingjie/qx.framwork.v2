@@ -1,122 +1,54 @@
 ﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Web.Mvc;
+using qx.permmision.v2.Interfaces;
 using Qx.Report.Interfaces;
+using Qx.Tools;
 using Qx.Tools.CommonExtendMethods;
+using Qx.Tools.Models.Report;
+using Qx.Tools.QxClass;
 using Web.Controllers.Base;
-using Web.ViewModels.Report;
+
 
 namespace Web.Controllers
 {
     public class ReportController : BaseController
     {
         // GET: Report
-         private readonly IReportServices reportServices;
-         public ReportController(IReportServices reportServices)
+         private readonly IReportServices _reportServices;
+        private readonly IPermmisionService _permmisionService;
+        public ReportController( IPermmisionService permmisionService, IReportServices reportServices1)
         {
-            this.reportServices = reportServices;
+            _permmisionService = permmisionService;
+            _reportServices = reportServices1;
         }
 
-         //Report/Index?ReportID=System&Params=;
-        public ActionResult Index(string ReportID , string Params , int pageIndex=1, int perCount=10)
-        {
-            if (!ReportID.HasValue())
-            {
-                return RedirectToAction("Index", new { ReportID = "System", Params = ";", pageIndex = 1, perCount = 10 });
-            }
-            Search.Add("报表ID");
-            InitReport("报表引擎", "/Report/Add",  "", true, "Qx.System");
-             return ReportView();
-        }
-        public ActionResult Add()
-        {
-            InitForm("添加报表");
-            return View(new Add_M() {RecordsPerPage = 10});
-        }
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Add(Add_M model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (reportServices.Add(model.ToModel()))
-                    return RedirectToAction("Index");
-                else
-                {
-                    return Alert("添加失败", -1);
-                }
-            }
-            else
-            {
-                InitForm("添加报表");
-                return View(model);
-            }
-           
-        }
-        public ActionResult Edit(string id)
-        {
-            InitForm("编辑报表");
-            return View(Edit_M.ToViewModel(reportServices.GetReprot(id)));
-        }
-        [ValidateInput(false)]
-        [HttpPost]
-        public ActionResult Edit(Edit_M model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (reportServices.Update(model.ToModel()))
-                    return RedirectToAction("Index");
-                else
-                {
-                    return Alert("保存失败", -1);
-                }
-            }
-            else
-            {
-                InitForm("编辑报表");
-                return View(model);
-            }
-                
-        }
-        public ActionResult Delete(string id,string key="")
-        {
-            if (string.IsNullOrEmpty(key))
-            {
-                return   Alert("请输入删除确认码！", -1);
-            }
-            if (reportServices.Delete(id)& key=="1")
-            {
-                return Alert("删除成功");
-            }
-            else
-            {
-                return Alert("删除失败:报表不存在");
-            }
-        }
-      
-        public ActionResult Report(string ReportID, string Params, string ExtraParam, string AddLink, string Title, 
-            int pageIndex, int perCount, List<List<string>> dataSource,bool showDeafultButton)
-        {
-            ViewData["ReportID"] = ReportID; ViewData["Params"] = Params;
-            ViewData["AddLink"] = AddLink; ViewData["ExtraParam"] = ExtraParam;
-            ViewData["Title"] = Title; ViewData["showDeafultButton"] = showDeafultButton;
-            var table = dataSource;
-            //计算maxPage
-            InitCutPage(table, pageIndex, perCount);
-            //var header = new List<string>(table[0]);
-            //table.Remove(table[0]);
-            //table = InitCutPage(table, pageIndex, perCount);
-            //table.Insert(0, header);
-            return PartialView(table);
-        }
         //Report/Report2
-        [HttpPost]
-        public ActionResult Report2(string ReportID, string Params, List<List<string>> dataSource,
-         string dbConnStringKey, int pageIndex = 1, int perCount = 10)
-        {
-            var config = dataSource==null ? 
-                reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount) :
-                reportServices.ToView(ReportID, Params, dataSource, pageIndex, perCount);
-            return Json(config, JsonRequestBehavior.AllowGet);        
+        //[HttpPost]
+        public ActionResult Report2(string ReportID, string Params,string dataSourceUrl,
+         string dbConnStringKey,string filterId, int pageIndex= 1, int perCount = 10)
+        { 
+            //获取用户权限列表
+            var list = _permmisionService.GetFilterByUserId(DataContext.UserId, ReportID);
+            var filter = "#all";//未配置数据权限时 默认取所有数据
+            if (list.Any())
+            {
+                filter = list[0].filter_script;
+            }
+            //过滤脚本
+            //1=1
+            //#self
+            //unitid in 
+            var filterScript = filter.Replace("#self","uid='"+ DataContext.UserId + "'").
+                Replace("#all","1=1").
+                Replace("#unit", "unit_id in (" + WorkFlowDoman.Select(a=>"'"+a+"'").ToList().PackString(',')+")");
+            var config = dataSourceUrl.HasValue() ?
+                  _reportServices.ToView(ReportID, Params, HttpGet<List<List<string>>>(GeRootUrl(dataSourceUrl)), pageIndex, perCount, filterScript) :
+                  _reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount, filterScript);
+            config.DataFilter = list;
+            config.pageParam.uid = DataContext.UserId;
+            return Json(State.Success,config,false);
         }
         private string ToVirtualPath(string path)
         {
@@ -125,29 +57,61 @@ namespace Web.Controllers
             path2 = path2.Replace(@"\", @"/");
             return path2;
         }
-        public ActionResult ReportToExcel2(string ReportID, string Params, string dbConnStringKey, int pageIndex = 1, int perCount = 99999)
+        public ActionResult ReportToExcel2(string ReportID, string Params,string dataSourceUrl, string dbConnStringKey, int pageIndex = 1, int perCount = 99999)
         {
-            var path = reportServices.ToExcel(
-                ReportID,
-                Params,
-                GetProjectDir("UserFiles\\Report\\Template.xlsx"),
-                GetProjectDir("UserFiles\\Report\\报表.xlsx"),
-                dbConnStringKey);
-           return Content("/"+ToVirtualPath(path));
-            //return Content(path,
-            //    "application/zip-x-compressed", "报表.xlsx"
-            //    );
+            //获取用户权限列表
+            var list = _permmisionService.GetFilterByUserId(DataContext.UserId, ReportID);
+            var filter = "#all";//未配置数据权限时 默认取所有数据
+            if (list.Any())
+            {
+                filter = list[0].filter_script;
+            }
+            //过滤脚本
+            //1=1
+            //#self
+            //unitid in 
+            var filterScript = filter.Replace("#self", "uid='" + DataContext.UserId + "'").
+                Replace("#all", "1=1").
+                Replace("#unit", "unit_id in (" + WorkFlowDoman.Select(a => "'" + a + "'").ToList().PackString(',') + ")");
+            var config = dataSourceUrl.HasValue() ?
+                  _reportServices.ToView(ReportID, Params, HttpGet<List<List<string>>>(GeRootUrl(dataSourceUrl)), pageIndex, perCount, filterScript) :
+                  _reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount, filterScript);
+            config.DataFilter = list;
+            config.pageParam.uid = DataContext.UserId;
+
+            return Json(State.Success, config.tableBody.AddRowToFirst(config.header), false);
+            //var outputDir = GetProjectDir("UserFiles\\Report\\" + uid+"\\") ;
+            //if (!Directory.Exists(outputDir))
+            //{
+            //    Directory.CreateDirectory(outputDir);
+            //}
+            //var excel = new ExcelUtility(config.tableBody.AddRowToFirst(config.header),
+            //    GetProjectDir("UserFiles\\Report\\Template.xlsx"),
+            //   outputDir + config.report.ReportName+".xlsx").ToExcel();
+            //return Json(State.Success,new {path= ToVirtualPath(excel.FullName) } );
         }
-        public ActionResult ReportToExcel(string ReportID, string Params, List<List<string>> dataSource)
+
+        //导入模板
+        public ActionResult ExcelTemplate( string ReportID)
         {
-            return File((reportServices.ToExcel(
-                ReportID, 
-                Params,
-                GetProjectDir("UserFiles\\Report\\Template.xlsx"), 
-                GetProjectDir("UserFiles\\Report\\报表.xlsx"),
-                dataSource)),
-                "application/zip-x-compressed", "报表.xlsx"
-                ) ;
+            var report = _reportServices.GetReprot(ReportID);
+
+            //var outputDir = GetProjectDir("UserFiles\\Report\\" + uid+"_template_" + report.ReportID+ "\\");
+            //if (!Directory.Exists(outputDir))
+            //{
+            //    Directory.CreateDirectory(outputDir);
+            //}
+            //var excel = new ExcelUtility(new List<List<string>>().AddRowToFirst(report.HeadFields.UnPackString(';')),
+            //    GetProjectDir("UserFiles\\Report\\Template.xlsx"),
+            //   outputDir + report.ReportName + "_Template.xlsx").ToExcel();
+            //return Json(State.Success, new { path = ToVirtualPath(excel.FullName) });
+
+            return Json(State.Success, new List<List<string>>().AddRowToFirst(report.HeadFields.UnPackString(';')), false);
+           
+           // return File(ToVirtualPath(excel.FullName), "application/vnd.ms-excel", Url.Encode(report.ReportName + "_Template.xlsx"));
+          
         }
+      
+       
     }
 }

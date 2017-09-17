@@ -1,0 +1,19 @@
+﻿<label style="color:red">
+    如下列表显示的是群成员详情，你可以通过群成员的联系方式联系他们并制定出行计划，若因联系不上的某位成员等原因想移除该成员，请点击[操作]中的[移除本群]（移除后不可撤销，请谨慎操作！)
+</label><br />
+<label>
+    群成员姓名:&nbsp;
+    @Html.TextBox("群成员姓名", "", new
+{
+    @class = "form-control input-sm",
+    PlaceHolder = "请输入要查询的群成员姓名"
+})
+</label>
+<script>
+                                        function Search()
+                                           {
+                                            var Params = v("群成员姓名");
+                                             return Params;
+                                           }
+</script>
+

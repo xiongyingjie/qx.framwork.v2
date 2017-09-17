@@ -1,0 +1,134 @@
+﻿
+
+
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.UserApplyAward_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE FORM PORTLET-->
+            <div class="portlet ">
+                <div class="portlet-body form">
+                    <form class="form-horizontal" method="POST" role="form" action="/QxJzxt/CRUD/UserApplyAward">
+                        <div class="form-body">
+                            <input type="hidden" name="instanceid" value="@Model.instanceid">
+                            <input type="hidden" name="batchinstanceid" value="@Model.batchinstanceid">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            <h4 class="list-group-item-heading">
+                                                奖项申请详情
+                                            </h4>
+                                        </a>
+                                        <div class="list-group-item list-group-item-heading">
+                                            <div class="row">
+
+
+                                                <div class="col-lg-12">
+
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active">
+                                                            <a href="#RRC8HZU73U4" data-toggle="tab" aria-expanded="true">
+                                                                基本信息
+                                                            </a>
+                                                        </li>
+                                                    
+                                                        @foreach (var item in Model.MaterialList)    //材料类型
+                                                        {
+                                                            <li class="">
+                                                                <a href="#@item.awardmaterialinstanceid" data-toggle="tab" aria-expanded="false">
+                                                                    @item.typename
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+
+                                                    <div class="tab-content">
+
+                                                        <div class="tab-pane fade active in" id="RRC8HZU73U4">
+                                                            @foreach (var item in Model.BaseInfoList)
+                                                            {
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label>@item.infoname</label>
+                                                                        @if (item.infodatatype == "001")//文本
+                                                                        {
+                                                                            <input type="hidden" value="@item.instancebaseinfoid" name="instancebaseinfoid">
+                                                                            <input class="form-control" id="instancebaseinfoid" name="baseinfoValue" placeholder="请填写内容" type="text" value="" />
+                                                                        }
+                                                                        @if (item.infodatatype == "002")//文本域
+                                                                        {
+                                                                            <input type="hidden" value="@item.instancebaseinfoid" name="instancebaseinfoid">
+                                                                            <textarea class="form-control" rows="3" id="instancebaseinfoid" name="baseinfoValue" placeholder="请填写内容" style="height: 230px" width="50%"></textarea>
+                                                                        }
+                                                                        @if (item.infodatatype == "003")//时间
+                                                                        {
+                                                                            <input type="hidden" value="@item.instancebaseinfoid" name="instancebaseinfoid">
+                                                                            <div class="input-group date form_datetime">
+                                                                                <input type="text" size="16" id="instancebaseinfoid" name="baseinfoValue" value="" readonly="" class="form-control">
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-success date-set" type="button">
+                                                                                        <i class="fa fa-calendar"></i>
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                        }
+                                                                        <p class="help-block">&nbsp;</p>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+
+                                                        @foreach (var item1 in Model.MaterialList)//要求的材料
+                                                        {
+                                                            <div class="tab-pane fade" id="@item1.awardmaterialinstanceid">
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group form-pd">
+                                                                        @for (int i = 0; i < item1.count; i++)//所有要求的该类型的材料的数量
+                                                                        {
+                                                                            var myMaterial = Model.UserMaterial.Where(a => a.materialtypeid == item1.materialtypeid);
+                                                                            <label class="label-wid">@(item1.typename +(i + 1))</label>
+                                                                                <select class="form-control form-control-size" name="usermaterialid">
+                                                                                    @foreach (var item3 in myMaterial)
+                                                                                    {
+                                                                                        <option value="@item3.usermaterialid">@item3.material_name</option>
+                                                                                    }
+                                                                                </select>                                                                               
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                                <br />
+                                                             <br />
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="form-actions fluid">
+                                <div class="col-md-offset-5 col-md-8">
+                                    <button type="submit" class="btn btn-success">保存</button>
+                                    <button type="button" class="btn btn-de fault back">返回</button>
+                                </div> 
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

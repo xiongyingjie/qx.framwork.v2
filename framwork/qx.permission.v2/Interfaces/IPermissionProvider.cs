@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using qx.permmision.v2.Entity;
 using qx.permmision.v2.Models;
+using Qx.Tools.Interfaces;
 
 namespace qx.permmision.v2.Interfaces
 {
-    public interface IPermissionProvider
+    public interface IPermissionProvider : IAutoInject
     {
+        IPermmisionService Services();
         List<MenuItem> GetMenuByUserId(string userId);
         List<button> GetForbidenButtonByUserId(string userId);
         IEnumerable<Navbar> GetNavbarByUserId(string userId);

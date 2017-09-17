@@ -1,0 +1,108 @@
+﻿
+
+@using Qx.Contents.Services
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.DetailMaterialApply_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+<input type="hidden" name="usermaterialid"  value="@Model.MaterialApplyDetail.usermaterialid"/>
+<div class="form-group col-lg-6">
+    <label>用户材料名称</label>
+    <input class="form-control"  name="user_material_name" placeholder="填写形如“第x篇xx类型材料申请”" type="text" readonly="readonly" value="@Model.MaterialApplyDetail.name">
+    <p class="help-block">&nbsp;</p>
+</div>
+@foreach (var item in Model.MaterialAttrAndValue)
+{
+    switch (item.infodatatype)
+    {
+        case "001": //文本
+            <div class="form-group col-lg-6">
+                <label>@item.attrname</label>
+                <input class="form-control"  name="attrValue" placeholder="" readonly="readonly" type="text" value="@item.materialvalue">
+                <p class="help-block">&nbsp;</p>
+            </div>
+            break;
+        case "002": //文本域
+            <div class="form-group col-lg-12">
+                <label>@item.attrname</label>
+                <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" readonly="readonly">@item.materialvalue</textarea>
+                <p class="help-block">&nbsp;</p>
+            </div>
+            break;
+        case "003": //时间
+            <div class="form-group col-lg-6">
+                <label>@item.attrname</label>
+                <input class="form-control"  name="attrValue" placeholder="" readonly="readonly" type="text" value="@item.materialvalue">
+                <p class="help-block">&nbsp;</p>
+            </div>
+            break;
+        default: //附件
+            var nameList = item.materialvalue.Split('/');
+            <div class="form-group col-lg-12">
+                <a href="@item.materialvalue" download="@nameList[nameList.Count()-1]">@nameList[nameList.Count() - 1] </a>
+            </div>
+            break;
+    }
+}
+<div class="form-group col-lg-6">
+    <label>审核时间</label>
+    <input class="form-control" id="item_attrname" name="attrValue" placeholder="" readonly="readonly" type="text" value="@Model.MaterialApplyDetail.examine_time">
+    <p class="help-block">&nbsp;</p>
+</div>
+
+<div class="form-group col-lg-6">
+    <label>审核状态</label>
+    @if (Model.MaterialApplyDetail.statusid == 0)//草稿
+    {
+        <input class="form-control"  name="attrValue" style="color: red" placeholder="" readonly="readonly" type="text" value="草稿">
+    }
+    @if (Model.MaterialApplyDetail.statusid == 1)//待审核
+    {
+        <input class="form-control"  name="attrValue" style="color: red" placeholder="" readonly="readonly" type="text" value="待审核">
+    }
+    @if (Model.MaterialApplyDetail.statusid == 2)//审核通过
+    {
+        <input class="form-control"  name="attrValue" style="color: red" placeholder="" readonly="readonly" type="text" value="审核通过">
+    }
+    @if (Model.MaterialApplyDetail.statusid == 3)//审核不通过
+    {
+        <input class="form-control" name="attrValue" style="color: red" placeholder="" readonly="readonly" type="text" value="审核未通过">
+    }
+    <p class="help-block">&nbsp;</p>
+</div>
+
+<div class="form-group col-lg-12">
+    <label>审核意见</label>
+    <textarea class="form-control" rows="3" name="opinion" style="height: 230px">@Model.MaterialApplyDetail.opinion</textarea>
+    <p class="help-block">&nbsp;</p>
+</div>
+
+<div class="form-actions fluid">
+    <div class="col-md-offset-5 col-md-8">
+        @if (Model.MaterialApplyDetail.statusid == 0)//草稿
+        {
+            //<button type="submit" class="btn btn-success">保存</button>
+            <button type="button" class="btn btn-de fault back">返回</button>
+        }
+        @if (Model.MaterialApplyDetail.statusid == 1)//待审核
+        {
+            <button type="submit" class="btn btn-success" name="but_name" value="2">审核通过</button>
+            <button type="submit" class="btn btn-success" name="but_name" value="3">审核不通过</button>
+            <button type="button" class="btn btn-de fault back">返回</button>
+        }
+        @if (Model.MaterialApplyDetail.statusid == 2)//审核通过
+        {
+            <button type="submit" class="btn btn-success" name="but_name" value="3">审核不通过</button>
+            <button type="button" class="btn btn-de fault back">返回</button>
+        }
+        @if (Model.MaterialApplyDetail.statusid == 3)//审核不通过
+        {
+            <button type="submit" class="btn btn-success" name="but_name" value="2">审核通过</button>
+            <button type="button" class="btn btn-de fault back">返回</button>
+        }
+    </div>
+</div>
+
+

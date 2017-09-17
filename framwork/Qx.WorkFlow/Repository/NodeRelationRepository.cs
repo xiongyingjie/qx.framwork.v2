@@ -14,7 +14,7 @@ namespace Qx.WorkFlow.Repository
     {
         public List<SelectListItem> ToSelectItems(string value = "")
         {
-            var dest = Db.NodeRelations.Select(a => new SelectListItem() { Text = a.NodeRelationID, Value = a.Note }).ToList();
+            var dest = Db.NodeRelation.Select(a => new SelectListItem() { Text = a.NodeRelationID, Value = a.Note }).ToList();
             return dest.Format(value);
         }
 
@@ -50,17 +50,17 @@ namespace Qx.WorkFlow.Repository
 
         public NodeRelation Find(object id)
         {
-            return Db.NodeRelations.NoTrackingFind(a=>a.NodeRelationID == (string) id);
+            return Db.NodeRelation.NoTrackingFind(a=>a.NodeRelationID == (string) id);
         }
 
         public List<NodeRelation> All()
         {
-            return Db.NodeRelations.NoTrackingToList();
+            return Db.NodeRelation.NoTrackingToList();
         }
 
         public List<NodeRelation> All(Func<NodeRelation, bool> filter)
         {
-            return Db.NodeRelations.NoTrackingWhere(filter);
+            return Db.NodeRelation.NoTrackingWhere(filter);
         }
     }
 }

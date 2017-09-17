@@ -55,8 +55,12 @@
   <ItemGroup>
     <Compile Include="Configs\Setting.cs" />
     <Compile Include="Entity\button.cs" />
+    <Compile Include="Entity\data_filter.cs" />
+    <Compile Include="Entity\filter_script.cs" />
     <Compile Include="Entity\menu.cs" />
     <Compile Include="Entity\MyContext.cs" />
+    <Compile Include="Entity\organization_level.cs" />
+    <Compile Include="Entity\organization_relation.cs" />
     <Compile Include="Entity\orgnization.cs" />
     <Compile Include="Entity\orgnization_position.cs" />
     <Compile Include="Entity\orgnization_type.cs" />
@@ -76,15 +80,23 @@
     <Compile Include="Entity\user_position.cs" />
     <Compile Include="Entity\user_role.cs" />
     <Compile Include="Entity\user_type.cs" />
+    <Compile Include="Exceptions\MultipleOrganizationException.cs" />
     <Compile Include="Exceptions\ParamNotEnoughException.cs" />
+    <Compile Include="Interfaces\IOrgService.cs" />
     <Compile Include="Interfaces\IPermmisionService.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\MenuItemExtend.cs" />
     <Compile Include="Models\Navbar.cs" />
+    <Compile Include="Models\Orgnization.cs" />
+    <Compile Include="Models\Position.cs" />
     <Compile Include="Models\RoleGroup.cs" />
     <Compile Include="Models\RoleGroupRelation.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGroup.cs" />
     <Compile Include="Models\UserGroupRelation.cs" />
+    <Compile Include="Repository\DataFilterRepository.cs" />
+    <Compile Include="Repository\FilterScriptRepository.cs" />
     <Compile Include="Repository\UserPositionRepository.cs" />
     <Compile Include="Repository\UserOrgnizationRepository.cs" />
     <Compile Include="Repository\PositionTypeRepository.cs" />
@@ -100,6 +112,7 @@
     <Compile Include="Repository\UserGroupRepository.cs" />
     <Compile Include="Repository\MenuRepository.cs" />
     <Compile Include="Interfaces\IPermissionProvider.cs" />
+    <Compile Include="Services\OrgService.cs" />
     <Compile Include="Services\PermissionProvider.cs" />
     <Compile Include="Services\PermissionServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

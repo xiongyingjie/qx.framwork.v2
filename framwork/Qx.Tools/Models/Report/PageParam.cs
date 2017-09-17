@@ -22,5 +22,7 @@
         /// 测试
         /// </summary>
         public string title { get; set; }
+        public string uid { get; set; }
+        public string filter_script { get; set; }
     }
 }

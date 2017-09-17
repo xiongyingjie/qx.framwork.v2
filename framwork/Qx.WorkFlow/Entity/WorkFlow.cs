@@ -6,12 +6,14 @@ namespace Qx.WorkFlow.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("WorkFlow")]
     public partial class WorkFlow
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkFlow()
         {
-            WorkFlowInstances = new HashSet<WorkFlowInstance>();
+            Node1 = new HashSet<Node>();
+            WorkFlowInstance = new HashSet<WorkFlowInstance>();
         }
 
         [StringLength(50)]
@@ -29,9 +31,14 @@ namespace Qx.WorkFlow.Entity
         [StringLength(50)]
         public string StartNodeID { get; set; }
 
+        public int? RollbackTypeID { get; set; }
+
         public virtual Node Node { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WorkFlowInstance> WorkFlowInstances { get; set; }
+        public virtual ICollection<Node> Node1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WorkFlowInstance> WorkFlowInstance { get; set; }
     }
 }

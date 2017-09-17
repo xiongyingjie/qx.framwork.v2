@@ -1,0 +1,20 @@
+﻿
+
+
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.OrgCRUD.PositionTypeEdit_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.position_type_id)
+
+@Html.HiddenFor(o=>o.father_id)
+
+@Html.InputFor(o => o.name)
+
+
+
+
+
+

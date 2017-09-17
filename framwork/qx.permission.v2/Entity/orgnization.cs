@@ -12,6 +12,8 @@ namespace qx.permmision.v2.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public orgnization()
         {
+            organization_relation = new HashSet<organization_relation>();
+            organization_relation1 = new HashSet<organization_relation>();
             orgnization_position = new HashSet<orgnization_position>();
             user_orgnization = new HashSet<user_orgnization>();
         }
@@ -40,6 +42,17 @@ namespace qx.permmision.v2.Entity
 
         [StringLength(50)]
         public string sub_system { get; set; }
+
+        [StringLength(50)]
+        public string organization_level_id { get; set; }
+
+        public virtual organization_level organization_level { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<organization_relation> organization_relation { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<organization_relation> organization_relation1 { get; set; }
 
         public virtual orgnization_type orgnization_type { get; set; }
 

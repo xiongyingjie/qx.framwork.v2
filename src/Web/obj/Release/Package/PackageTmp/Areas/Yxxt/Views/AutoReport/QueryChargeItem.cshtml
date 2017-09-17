@@ -1,0 +1,19 @@
+﻿<label style="color:red">
+    (根据你被录取的专业查询到开学时你需要缴纳如下费用，请在开学前准备好相应费用)
+</label>
+
+<label>
+    &nbsp;&nbsp;&nbsp;&nbsp;项目名称:&nbsp;
+    @Html.TextBox("项目名称", "", new
+       {
+           @class = "form-control input-sm",
+           PlaceHolder = "请输入要查询的项目名称"
+       })
+</label>
+<script>
+                                        function Search()
+                                           {
+                                             var Params =  v("项目名称");
+                                             return Params;
+                                           }
+</script>

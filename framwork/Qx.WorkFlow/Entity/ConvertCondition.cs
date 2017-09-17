@@ -6,6 +6,7 @@ namespace Qx.WorkFlow.Entity
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("ConvertCondition")]
     public partial class ConvertCondition
     {
         [StringLength(50)]

@@ -1,0 +1,254 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.DetailUserApplyAward_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o => o.applyid)
+
+@*@Html.BeginGroup("基本信息", 1)
+
+    @foreach (var item in Model.BaseInfoList)
+    {
+        if (item.infodataytype == "001")//文本
+        {
+            <div class="form-group col-lg-6">
+                <label>@item.infoname</label>
+                <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.value" readonly="readonly">
+                <p class="help-block">&nbsp;</p>
+            </div>
+        }
+        if (item.infodataytype == "002")//文本域
+        {
+            <div class="form-group col-lg-12">
+                <label>@item.infoname</label>
+                <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" readonly="readonly">@item.value</textarea>
+                <p class="help-block">&nbsp;</p>
+            </div>
+        }
+        if (item.infodataytype == "003")//时间，在这里也显示在文本框里面
+        {
+            <div class="form-group col-lg-6">
+                <label>@item.infoname</label>
+                <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.value" readonly="readonly">
+                <p class="help-block">&nbsp;</p>
+            </div>
+        }
+    }
+    @Html.EndGroup()
+
+    @Html.BeginGroup("材料", 1)
+    @foreach (var item in Model.UserAwardMaterialList)
+    {
+        <div class="form-group col-lg-6">
+            <label>@item.typename</label>
+            <a href="/QxJzxt/CRUD/DetailMaterialApply?id=@item.usermaterialid">@item.material_name</a>
+            <p class="help-block">&nbsp;</p>
+        </div>
+    }
+    @Html.EndGroup()
+
+    <div class="form-actions fluid">
+        <div class="col-md-offset-5 col-md-8">
+            @if (Model.data.statusid == 0) //草稿
+            {
+                //<button type="submit" class="btn btn-success">保存</button>
+                <button type="button" class="btn btn-de fault back">返回</button>
+            }
+            @if (Model.data.statusid == 1) //待学院审核
+            {
+                <button type="submit" class="btn btn-success" name="but_name" value="2">初审通过</button>
+                <button type="submit" class="btn btn-success" name="but_name" value="3">初审不通过</button>
+                <button type="button" class="btn btn-de fault back">返回</button>
+            }
+            @if (Model.data.statusid == 2) //学院初审通过
+            {
+                <button type="submit" class="btn btn-success" name="but_name" value="3">初审不通过</button>
+                <button type="button" class="btn btn-de fault back">返回</button>
+            }
+            @if (Model.data.statusid == 3) //学院初审不通过
+            {
+                <button type="submit" class="btn btn-success" name="but_name" value="2">初审通过</button>
+                <button type="button" class="btn btn-de fault back">返回</button>
+            }
+        </div>
+    </div>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <!-- BEGIN SAMPLE FORM PORTLET-->
+            <div class="portlet ">
+                <div class="portlet-body form">
+                    <form class="form-horizontal" method="POST" role="form" action="/QxJzxt/CRUD/UserApplyAward">
+                        <div class="form-body">
+                            <input type="hidden" name="instanceid" value="@Model.instanceid">
+                            <input type="hidden" name="batchinstanceid" value="@Model.batchinstanceid">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item active">
+                                            <h4 class="list-group-item-heading">
+                                                奖项申请详情
+                                            </h4>
+                                            <h2 class="list-group-item-heading" style="color: red">
+                                                状态： @Model.data.apply_status.statusname
+                                            </h2>
+                                        </a>
+                                        <div class="list-group-item list-group-item-heading">
+                                            <div class="row">
+
+
+                                                <div class="col-lg-12">
+
+                                                    <ul class="nav nav-tabs">
+                                                        <li class="active">
+                                                            <a href="#RRC8HZU73U4" data-toggle="tab" aria-expanded="true">
+                                                                基本信息
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="#RRC8HZU73U45" data-toggle="tab" aria-expanded="true">
+                                                                材料
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="#RRC8HZU73U46" data-toggle="tab" aria-expanded="true">
+                                                                学院意见
+                                                            </a>
+                                                        </li>
+                                                        <li class="">
+                                                            <a href="#RRC8HZU73U47" data-toggle="tab" aria-expanded="true">
+                                                                学校意见
+                                                            </a>
+                                                        </li>
+
+                                                    </ul>
+
+                                                    <div class="tab-content">
+
+                                                        <div class="tab-pane fade active in" id="RRC8HZU73U4">
+                                                            @foreach (var item in Model.BaseInfoList)
+                                                            {
+                                                                if (item.infodataytype == "001") //文本
+                                                                {
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>@item.infoname</label>
+                                                                        <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.value" readonly="readonly">
+                                                                        <p class="help-block">&nbsp;</p>
+                                                                    </div>
+                                                                }
+                                                                if (item.infodataytype == "002") //文本域
+                                                                {
+                                                                    <div class="form-group col-lg-12">
+                                                                        <label>@item.infoname</label>
+                                                                        <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" readonly="readonly">@item.value</textarea>
+                                                                        <p class="help-block">&nbsp;</p>
+                                                                    </div>
+                                                                }
+                                                                if (item.infodataytype == "003") //时间，在这里也显示在文本框里面
+                                                                {
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>@item.infoname</label>
+                                                                        <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.value" readonly="readonly">
+                                                                        <p class="help-block">&nbsp;</p>
+                                                                    </div>
+                                                                }
+                                                            }
+                                                        </div>
+
+                                                        <div class="tab-pane fade" id="RRC8HZU73U45">
+                                                            <div class="col-lg-6">
+                                                                <div class="form-group form-pd">
+                                                                    @foreach (var item in Model.UserAwardMaterialList)
+                                                                    {
+                                                                    <div class="form-group col-lg-6">
+                                                                        <label>@item.typename</label>
+                                                                        <a href="/QxJzxt/CRUD/DetailMaterialApply?id=@item.usermaterialid">@item.material_name</a>
+                                                                        <p class="help-block">&nbsp;</p>
+                                                                    </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="tab-pane fade" id="RRC8HZU73U46">
+                                                            @*学院意见*@
+                                                        <div class="col-lg-12">
+                                                            <div class="form-group form-pd">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label></label>
+                                                                        <textarea class="form-control" rows="3" name="college_opinion" style="height: 230px">@Model.data.college_opinion</textarea>
+                                                           
+                                                                    <p class="help-block">&nbsp;</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane fade" id="RRC8HZU73U47">
+                                                        @*学校意见*@
+                                                    <div class="col-lg-12">
+                                                        <div class="form-group form-pd">
+                                                            <div class="form-group col-lg-12">
+                                                                <label></label>
+                                                                @if (Model.data.school_opinion != null)
+                                                                {
+                                                                    <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" readonly="readonly">@Model.data.school_opinion</textarea>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" readonly="readonly">暂无</textarea>
+                                                                }
+                                                                <p class="help-block">&nbsp;</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions fluid">
+                    <div class="col-md-offset-5 col-md-8">
+                        @if (Model.data.statusid == 0) //草稿
+                                {
+                                    //<button type="submit" class="btn btn-success">保存</button>
+                                <button type="button" class="btn btn-de fault back">返回</button>
+                                }
+                        @if (Model.data.statusid == 1) //待学院审核
+                                {
+                                <button type="submit" class="btn btn-success" name="but_name" value="2">初审通过</button>
+                                <button type="submit" class="btn btn-success" name="but_name" value="3">初审不通过</button>
+                                <button type="button" class="btn btn-de fault back">返回</button>
+                                }
+                        @if (Model.data.statusid == 2) //学院初审通过
+                                {
+                                <button type="submit" class="btn btn-success" name="but_name" value="3">初审不通过</button>
+                                <button type="button" class="btn btn-de fault back">返回</button>
+                                }
+                        @if (Model.data.statusid == 3) //学院初审不通过
+                                {
+                                <button type="submit" class="btn btn-success" name="but_name" value="2">初审通过</button>
+                                <button type="button" class="btn btn-de fault back">返回</button>
+                                }
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>
+</div>

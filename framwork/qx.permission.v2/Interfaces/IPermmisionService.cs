@@ -2,11 +2,17 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using qx.permmision.v2.Entity;
 using qx.permmision.v2.Models;
+using Qx.Tools.Interfaces;
+using Qx.Tools.Models.Report;
 
 namespace qx.permmision.v2.Interfaces
 {
-    public interface IPermmisionService
+    public interface IPermmisionService : IAutoInject
     {
+        List<orgnization> GetOrgIdByUserId(string userId, bool includeSub = true);
+        //获取待办的数据角色
+        List<DataFilter> GetFilterByUserId(string userId);
+        List<DataFilter> GetFilterByUserId(string userId, string reportId);
         List<MenuItem>  GetMenuByUserId(string userId);
         List<button> GetForbidenButtonByUserId(string userId);
         List<SelectListItem> GetMenu(string selectedMenuId = "-1", string rootFather = "MRoot");

@@ -11,6 +11,7 @@ namespace Qx.Tools.Models.Report
 
 
         public string SqlStr { get; set; }
+        public string FinalSqlStr { get; set; }
 
 
         public string HeadFields { get; set; }

@@ -1,0 +1,18 @@
+﻿
+
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.OrgCRUD.EditOrgType_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.orgnization_type_id)
+
+@Html.InputFor(o => o.name)
+
+@Html.InputAreaFor(o => o.note)
+
+
+
+
+

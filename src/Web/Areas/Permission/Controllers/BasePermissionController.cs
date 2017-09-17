@@ -1,5 +1,6 @@
 ﻿using System;
 using Web.Controllers.Base;
+using Web.Controllers.Filter;
 
 namespace Web.Areas.Permission.Controllers
 {

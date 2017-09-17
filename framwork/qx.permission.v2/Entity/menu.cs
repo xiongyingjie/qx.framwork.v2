@@ -28,7 +28,7 @@ namespace qx.permmision.v2.Entity
         [StringLength(100)]
         public string farther_id { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string note { get; set; }
 
         [Column(TypeName = "text")]
@@ -36,7 +36,7 @@ namespace qx.permmision.v2.Entity
         public string url { get; set; }
 
         [Required]
-        [StringLength(10)]
+        [StringLength(50)]
         public string depth { get; set; }
 
         public int? sequence { get; set; }

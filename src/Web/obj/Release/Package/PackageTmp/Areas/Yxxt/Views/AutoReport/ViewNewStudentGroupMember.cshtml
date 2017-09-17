@@ -1,0 +1,18 @@
+﻿
+<label>
+    群成员姓名:&nbsp;
+    @Html.TextBox("群成员姓名", "", new
+{
+    @class = "form-control input-sm",
+    PlaceHolder = "请输入要查询的群成员姓名"
+})
+</label>
+<script>
+                                        function Search()
+                                           {
+                                            var Params = v("群成员姓名");
+                                             return Params;
+                                           }
+</script>
+
+

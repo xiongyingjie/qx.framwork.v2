@@ -1,0 +1,19 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.EditAwardInstanceBaseInfo_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.InputFor(o => o.sequence)
+
+@Html.HiddenFor(o => o.baseInfoid)
+
+@Html.HiddenFor(o => o.instanceid)
+
+@Html.HiddenFor(o => o.instancebaseinfoid)
+
+
+
+

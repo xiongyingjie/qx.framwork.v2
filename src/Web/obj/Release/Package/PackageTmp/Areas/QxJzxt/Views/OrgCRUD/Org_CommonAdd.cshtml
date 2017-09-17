@@ -1,0 +1,24 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.Org.ROOT.OrgnizationAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.orgnization_id)
+
+@Html.ShowInputFor(o=>o.fatherOrgName,2)
+
+@Html.InputFor(o => o.name,2)
+
+@Html.SelectFor(o=>o.orgnization_type_id,Model.typeSelect,2)
+
+
+@Html.SelectFor(o => o.organization_level_id, Model.levelSelect,2)
+
+@Html.InputFor(o => o.note, 2)
+
+@Html.InputAreaFor(o => o.descripe)
+
+
+
+

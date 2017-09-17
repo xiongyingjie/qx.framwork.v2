@@ -1,0 +1,10 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.CollegeEdit_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.InputFor(o => o.CollegeID,"",true)
+
+@Html.InputFor(o => o.College_Name)   <!--学院名称-->
+

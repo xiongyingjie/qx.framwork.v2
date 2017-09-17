@@ -1,0 +1,9 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.EditMaterialType_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o=>o.materialtypeid)
+@Html.InputFor(o => o.typename)
+@Html.InputAreaFor(o => o.description)

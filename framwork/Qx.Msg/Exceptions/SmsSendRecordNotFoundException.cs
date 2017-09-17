@@ -8,5 +8,12 @@ namespace Qx.Msg.Exceptions
 {
     public class SmsSendRecordNotFoundException: Exception
     {
+        public SmsSendRecordNotFoundException()
+        {
+        }
+
+        public SmsSendRecordNotFoundException(string message) : base(message)
+        {
+        }
     }
 }

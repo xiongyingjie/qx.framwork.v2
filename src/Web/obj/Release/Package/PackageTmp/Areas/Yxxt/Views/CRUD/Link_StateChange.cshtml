@@ -1,0 +1,16 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.Link_StateChange_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.StudentID)
+@Html.HiddenFor(o => o.YX_LinkID) <!--迎新环节ID-->
+@Html.HiddenFor(o => o.Link_HandleID) <!--环节处理ID-->
+@Html.HiddenFor(o => o.Handle_StateID) <!--环节处理状态ID-->
+@Html.InputFor(o => o.Handle_Time) <!--处理时间-->
+@Html.InputFor(o => o.Link_Name,"",true)   <!--环节名称-->
+
+@Html.SelectFor(o => o.Handle_State, Model._Handle_State) <!--环节处理状态 -->
+
+
+

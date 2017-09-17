@@ -1,0 +1,14 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+<label>
+    按钮编号:&nbsp;
+    @Html.TextBox("按钮编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的按钮编号" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("按钮编号");
+        return Params;
+    }
+</script>

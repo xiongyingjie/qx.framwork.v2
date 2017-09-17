@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Qx.Wechat.Models
+﻿namespace qx.wechat.Models
 {
    public class access_token_model
    {

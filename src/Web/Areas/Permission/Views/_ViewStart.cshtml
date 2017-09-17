@@ -1,0 +1,14 @@
+﻿@using Qx.Tools.CommonExtendMethods
+@{
+    var defultLayout = "~/Views/Shared/_Sb2AdminLayout.cshtml";
+    try
+    {
+        var layout = Context.Items["Layout"].ToString();
+        Layout = layout.HasValue() ? layout : defultLayout;
+    }
+    catch (Exception)
+    {
+
+        Layout = defultLayout;
+    }
+}

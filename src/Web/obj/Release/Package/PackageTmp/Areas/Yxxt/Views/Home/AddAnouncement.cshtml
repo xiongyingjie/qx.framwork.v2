@@ -1,0 +1,12 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Yxxt.ViewModels.AddAnouncement_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.anouncement_id, "")
+@Html.InputFor(o => o.title, "")
+@Html.InputFor(o => o.author, "")
+@Html.RichBoxFor(o => o.contents, "")
+@Html.HiddenFor(o => o.create_time, "")

@@ -7,9 +7,10 @@ namespace Qx.Tools.CommonExtendMethods
     public static class DateTimeExtension
     {
 
-        public static string Random(this DateTime time)
+        public static string Random(this DateTime time,int length=-1,string pre="R")
         {
-            return UUID.NewUUID();
+            var dest = UUID.NewUUID();
+            return pre + (length==-1? dest: dest.Substring(0, length));
         }
 
         public static string TimeToNow(this DateTime time)
@@ -39,6 +40,30 @@ namespace Qx.Tools.CommonExtendMethods
         public static string ToTimeStr(this DateTime time)
         {
             return time.ToLongDateString() + " " + time.ToLongTimeString();
+        }
+
+        public static DateTime ToDateTime(this string timeString)
+        {
+            var time = DateTime.Now;
+            try
+            {
+                var realTime = DateTime.Parse(timeString);
+                if (realTime != DateTime.MinValue)
+                {
+                    time = realTime;
+                }
+            }
+            catch (Exception ex) { }
+            return time;
+          
+        }
+        public static string FormatTime(this DateTime time,bool blankSpace=true)
+        {
+            return time.ToString(blankSpace?"yyyy-MM-dd HH:mm": "yyyy-MM-dd-HH-mm-ss");
+        }
+        public static string FormatDate(this DateTime time)
+        {
+            return time.ToString("yyyy-MM-dd");
         }
     }
 }

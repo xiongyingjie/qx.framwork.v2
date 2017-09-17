@@ -1,0 +1,70 @@
+﻿
+
+@using Qx.Contents.Services
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.EditMyMaterialApply_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+<div class="form-group col-lg-6">
+    <label>用户材料名称</label>
+    <input class="form-control" id="item_attrname" name="user_material_name" placeholder="填写形如“第x篇xx类型材料申请”" type="text" value="@Model.materialApply.FirstOrDefault().name" width="50%">
+    <p class="help-block">&nbsp;</p>
+</div>
+@Html.HiddenFor(o => o.usermaterialid)
+@foreach (var item in Model.materialApply)
+{
+    if (item.infodatatype == "001")
+    {
+        <div class="form-group col-lg-6">
+            <label>@item.attrname</label>
+            <input type="hidden" name="marterialvaluesid" value="@item.marterialvaluesid" />
+            <input class="form-control" id="item_attrname" name="attrValue" placeholder="" type="text" value="@item.materialvalue" width="50%">
+            <p class="help-block">&nbsp;</p>
+        </div>
+    }
+    if (item.infodatatype == "002")
+    {
+        <div class="form-group col-lg-12">
+            <label>@item.attrname</label>
+            <input type="hidden" name="marterialvaluesid" value="@item.marterialvaluesid" />
+            <textarea class="form-control" rows="3" name="attrValue" style="height: 230px" width="50%">@item.materialvalue</textarea>
+            <p class="help-block">&nbsp;</p>
+        </div>
+    }
+    if (item.infodatatype == "003")
+    {
+        <div class="form-group col-lg-6">
+            <label>@item.attrname</label>
+            <input type="hidden" name="marterialvaluesid" value="@item.marterialvaluesid" />
+            <div class="input-group date form_datetime">
+                <input type="text" size="16" id="item_attrname" name="attrValue" value="@item.materialvalue" readonly="" class="form-control" width="50%">
+                <span class="input-group-btn">
+                    <button class="btn btn-success date-set" type="button">
+                        <i class="fa fa-calendar"></i>
+                    </button>
+                </span>
+            </div>
+            <p class="help-block">&nbsp;</p>
+        </div>
+    }
+    if (item.infodatatype == "004")
+    {
+        var nameList = item.materialvalue.Split('/');
+        <div class="form-group col-lg-12">
+            <a href="@item.materialvalue" download="@nameList[nameList.Count()-1]">@nameList[nameList.Count() - 1] </a>
+        </div>
+        <div class="form-group col-lg-12">
+            <input type="hidden" name="marterialvaluesid" value="@item.marterialvaluesid" />
+            <input id="fileValue" type="hidden" name="attrValue" value="@item.materialvalue" />
+            @Html.FileFor(o => item.materialtypeattrid, "/UserFiles/Test/")
+        </div>
+    }
+}
+<script>
+    function onUploadFinish(path, id) {
+        $("#fileValue").val(path);
+    }
+</script>

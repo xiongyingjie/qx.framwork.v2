@@ -1,0 +1,17 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.RoleAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+@Html.HiddenFor(o => o.role_id)
+@Html.InputFor(o => o.name)
+
+@Html.HiddenFor(o => o.role_type)
+
+@Html.InputFor(o => o.sub_system)
+
+@Html.SelectFor(o => o.is_default, Model.selectItems)
+
+
+

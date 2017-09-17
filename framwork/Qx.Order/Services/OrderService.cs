@@ -24,7 +24,7 @@ namespace Qx.Order.Services
         {
             var cart = CreateCart(dataContext);
             cart.CartItems = Db.shopping_cart.
-                 Where(a => a.BuyerID == dataContext.UserID).
+                 Where(a => a.BuyerID == dataContext.UserId).
                  ToList().
                  Select(b=>new ShoppingCartItem
                  {
@@ -68,7 +68,7 @@ namespace Qx.Order.Services
             if (shopId.HasValue())            
                  orders = Db.order.Where(a => a.ShopID == shopId).ToList();
             else
-                 orders = Db.order.Where(a => a.BuyerID == dataContext.UserID).ToList();
+                 orders = Db.order.Where(a => a.BuyerID == dataContext.UserId).ToList();
             return orders.Select(b => new OrderBag(dataContext, b)).
                 ToList();
         }
@@ -92,7 +92,7 @@ namespace Qx.Order.Services
         }
         public int ProductInCartCount(DataContext dataContext, string productid)
         {
-            return Db.shopping_cart.Count(a => a.BuyerID == dataContext.UserID && a.ProductID == productid);
+            return Db.shopping_cart.Count(a => a.BuyerID == dataContext.UserId && a.ProductID == productid);
         }
     }
 }

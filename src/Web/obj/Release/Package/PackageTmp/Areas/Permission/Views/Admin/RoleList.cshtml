@@ -1,0 +1,23 @@
+﻿@model Web.Areas.Permission.ViewModels.Admin.RoleList_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@if(Model.roleid!=";")
+{
+    <div class="col-md-12">
+       <ol class="page-breadcrumb breadcrumb">
+           <li><a href="/Permission/Admin/RoleList?ReportID=Permision_角色列表&Params=;">[角色列表]所有角色列表</a> <i class="fa fa-angle-right"></i></li>
+       </ol>
+   </div>
+}
+<label>
+    角色编号:&nbsp;
+    @Html.TextBox("角色编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的角色编号" })
+</label>
+
+<script>
+    function Search() {
+        var Params = v("角色编号");
+        return Params;
+    }
+</script>

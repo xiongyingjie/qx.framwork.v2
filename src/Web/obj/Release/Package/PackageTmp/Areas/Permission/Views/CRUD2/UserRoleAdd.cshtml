@@ -1,0 +1,16 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.Permission.ViewModels.CRUD2.UserRoleAdd_M
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+
+@Html.InputFor(o => o.user_id)
+
+@Html.InputFor(o => o.role_id, "<a href='/Permission/Admin2/ChooseRoleList?ReportID=Permision.v2_选择分配角色&Params=;&user_id=@Model.user_id'>重新选择角色</a>", true)
+
+
+
+@Html.InputFor(o => o._role_name)
+
+@Html.InputAreaFor(o => o.note)

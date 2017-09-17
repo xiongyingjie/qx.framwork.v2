@@ -1,0 +1,23 @@
+﻿@{
+    Layout = ViewData["Layout"].ToString();
+}
+
+<label>
+    小项列表:&nbsp;
+    @Html.TextBox("小项编号", "", new { @class = "form-control input-sm", PlaceHolder = "请输入要查询的小项名称" })
+</label>
+<script>
+    function Delete(id) {
+        if (confirm('确认删除吗?')) {
+            window.location.href = "/Yxxt/CRUD/XX_Delete?YX_LinkID=" + id;
+        }
+    };
+</script>
+<script>
+    function Search() {
+        var Params = v("小项编号");//在这里构造参数
+        return Params;
+    }
+
+</script>
+

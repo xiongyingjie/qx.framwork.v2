@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Qx.Tools.Interfaces;
 
-namespace Qx.Wechat.Interfaces
+namespace qx.wechat.Interfaces
 {
-  public  interface IWeChatBinding
-  {
+  public  interface IWeChatBinding : IAutoInject
+    {
         bool Binding(string openId);
         bool HasBinding(string openId);
         T Find<T>(string openId);

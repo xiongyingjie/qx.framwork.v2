@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using HtmlAgilityPack;
+using qx.wechat.Configs;
+using qx.wechat.Entity;
+using qx.wechat.Interfaces;
+using qx.wechat.Models;
 using Qx.Tools.CommonExtendMethods;
-using Qx.Wechat.Entity;
-using Qx.Wechat.Interfaces;
-using Qx.Wechat.Models;
 using RestSharp;
-using HtmlAgilityPack;
-using Qx.Wechat.Configs;
-using SystemSetup = Qx.Wechat.Models.SystemSetup;
+using SystemSetup = qx.wechat.Models.SystemSetup;
 
-namespace Qx.Wechat.Services
+namespace qx.wechat.Services
 {
    
 
@@ -21,7 +19,7 @@ namespace Qx.Wechat.Services
     {
 
         #region 微信开发工具类
-        private Qx.Wechat.Models.Msg _message;
+        private Msg _message;
 
         private Dictionary<string, string> _param;
         private string _requstLog;
@@ -205,9 +203,9 @@ namespace Qx.Wechat.Services
             var action = "Token";
 
             Param.Add("grant_type", "client_credential");
-            Param.Add("appid", Setting.APP_ID);
-            Param.Add("secret", Setting.APP_SECRET);
-            var content = ApiHttpGet(Setting.URL_WECHAT_HOST, action, Param, action).Deserialize<access_token_model>();
+            Param.Add("appid", Setting.WxConfig.APP_ID);
+            Param.Add("secret", Setting.WxConfig.APP_SECRET);
+            var content = ApiHttpGet(Setting.WxConfig.URL_WECHAT_HOST, action, Param, action).Deserialize<access_token_model>();
             if (content == null)
             {
                 throw new Exception("获取access_token失败!");
@@ -243,7 +241,7 @@ namespace Qx.Wechat.Services
                     color = "#173177",
                 }
             };
-            return SendTemplateMsg(touser, Setting.template_id_exchanged, click_url, data);
+            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.Exchanged, click_url, data);
         }
         public bool Send_Receved_Order_Msg(string touser, string click_url,
             string serve_detail, string server_name, string server_phone,string arrange_serve_time,string order_id)
@@ -281,7 +279,7 @@ namespace Qx.Wechat.Services
                     color = "#173177",
                 }
             };
-            return SendTemplateMsg(touser, Setting.template_id_receved_order, click_url, data);
+            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.RecevedOrder, click_url, data);
         }
 
         public bool Send_Finished_Order_Msg(string touser, string click_url,
@@ -325,7 +323,7 @@ namespace Qx.Wechat.Services
                     color = "#173177",
                 }
             };
-            return SendTemplateMsg(touser, Setting.template_id_finished_order, click_url, data);
+            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.FinishedOrder, click_url, data);
         }
 
         public bool Send_Charge_Ok_Msg(string touser, string click_url,
@@ -359,7 +357,7 @@ namespace Qx.Wechat.Services
                     color = "#173177",
                 }
             };
-            return SendTemplateMsg(touser, Setting.template_id_charge, click_url, data);
+            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.Charge, click_url, data);
         }
         public bool Send_Expence_Ok_Msg(string touser, string click_url,  
             string total_fee, string payment_type, string good_name, string trade_no, string balance)
@@ -402,7 +400,7 @@ namespace Qx.Wechat.Services
                     color = "#173177",
                 }
             };
-            return SendTemplateMsg(touser, Setting.template_id_expence, click_url, data);
+            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.Expence, click_url, data);
         }
 
         public bool SendTemplateMsg(string toWho,string templateId,string click_url,object templateData)
@@ -444,7 +442,7 @@ namespace Qx.Wechat.Services
                 //    },
                 //}
             };
-            var content = ApiJsonHttpPost(Setting.URL_WECHAT_HOST, action, obj, "template_send", "access_token=" + GetToken());  
+            var content = ApiJsonHttpPost(Setting.WxConfig.URL_WECHAT_HOST, action, obj, "template_send", "access_token=" + GetToken());  
             return content.Deserialize<template_msg_result>().errcode==0;
         }
         #endregion
@@ -467,28 +465,29 @@ namespace Qx.Wechat.Services
                     WECHAT_HOST = a.WECHAT_HOST
                 }).FirstOrDefault();
       }
-      public string GetToken()
+        public string GetToken()
       {
-          var token= Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now);;
+          var token= Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == Setting.WxConfig.APP_ID);;
           if (token == null)
           {
               RefreshToken();
-              token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now);
+              token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now&&a.APP_ID==Setting.WxConfig.APP_ID);
               if (token == null)
                     throw new Exception("数据库没有有效的Token!");
             }
           return token.TokenId;
       }
-      public bool SaveToken(string tokenId,int expireTime)
+        public bool SaveToken(string tokenId,int expireTime)
         {
             if (!tokenId.HasValue())
             {
                 throw new Exception("tokenId 为空!");
             }
-            Db.Tokens.Add(new Token()
+            Db.Tokens.Add(new Tokens()
             {
                 TokenId = tokenId,
                 GetTime = DateTime.Now,
+                APP_ID = Setting.WxConfig.APP_ID,
                 ExpireTime = DateTime.Now.AddSeconds(expireTime)
             });
             return Db.SaveChanges() > 0;
@@ -550,7 +549,7 @@ namespace Qx.Wechat.Services
 
         public bool Log(string logString, bool hasError)
         {
-            var model = new Log()
+            var model = new Logs()
             {
                 LogId = hasError ? "false" : "success" + DateTime.Now.Random().ToString(),
                 Contents = logString,
@@ -571,7 +570,7 @@ namespace Qx.Wechat.Services
                 case MsgTypeEnum.Text:
                 {
                         //WriteFile(message.Serialize() + "\r\n" + "\r\n", false);
-                        //     WriteFile(message.Serialize().Deserialize<TextMsg>().Serialize() + "\r\n" + "\r\n" + "\r\n", false);
+                        //     WriteFile(message.Serialize().Deserialize<TextMsgs>().Serialize() + "\r\n" + "\r\n" + "\r\n", false);
                         //var model = new TextMsg()
                         //{
                         //    MsgId = "6348073328791966656",
@@ -582,7 +581,7 @@ namespace Qx.Wechat.Services
                         //    ToUserName = "gh_fc4c31ef2ade"
                         //};
                     WriteFile(message.Serialize(),false);
-                    var model = message.Serialize().Deserialize<TextMsg>();
+                    var model = message.Serialize().Deserialize<TextMsgs>();
                     if (Db.TextMsgs.Find(model.MsgId) == null)
                     {
                             Db.TextMsgs.Add(model);
@@ -591,7 +590,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Voice:
                     {
-                        var model = message.Serialize().Deserialize<VoiceMsg>();
+                        var model = message.Serialize().Deserialize<VoiceMsgs>();
                         if (Db.VoiceMsgs.Find(model.MsgId) == null)
                         {
                             Db.VoiceMsgs.Add(model);
@@ -600,7 +599,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Video:
                     {
-                        var model = message.Serialize().Deserialize<VideoMsg>();
+                        var model = message.Serialize().Deserialize<VideoMsgs>();
                         if (Db.VideoMsgs.Find(model.MsgId) == null)
                         {
                             Db.VideoMsgs.Add(model);
@@ -609,9 +608,10 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Image:
                     {
-                        var model = message.Serialize().Deserialize<ImageMsg>();
+                        var model = message.Serialize().Deserialize<ImageMsgs>();
                         if (Db.ImageMsgs.Find(model.MsgId) == null)
                         {
+                          //  Msg > ()
                             Db.ImageMsgs.Add(model);
                             Db.SaveChanges();
                         }
@@ -619,7 +619,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Link:
                     {
-                        var model = message.Serialize().Deserialize<LinkMsg>();
+                        var model = message.Serialize().Deserialize<LinkMsgs>();
                         if (Db.LinkMsgs.Find(model.MsgId) == null)
                         {
                             Db.LinkMsgs.Add(model);
@@ -629,7 +629,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Location:
                     {
-                        var model = message.Serialize().Deserialize<LocationMsg>();
+                        var model = message.Serialize().Deserialize<LocationMsgs>();
                         if (Db.LocationMsgs.Find(model.MsgId) == null)
                         {
                             Db.LocationMsgs.Add(model);
@@ -639,7 +639,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Shortvideo:
                     {
-                        var model = message.Serialize().Deserialize<ShortVideoMsg>();
+                        var model = message.Serialize().Deserialize<ShortVideoMsgs>();
                         if (Db.ShortVideoMsgs.Find(model.MsgId) == null)
                         {
                             Db.ShortVideoMsgs.Add(model);
@@ -664,7 +664,7 @@ namespace Qx.Wechat.Services
             {
                 case EventTypeEnum.CLICK:
                     {
-                        var model = message.Serialize().Deserialize<MenuEvent>();
+                        var model = message.Serialize().Deserialize<MenuEvents>();
                         if (Db.MenuEvents.Find(model.EventId) == null)
                         {
                             Db.MenuEvents.Add(model);
@@ -674,7 +674,7 @@ namespace Qx.Wechat.Services
                     break;
                 case EventTypeEnum.VIEW:
                     {
-                        var model = message.Serialize().Deserialize<MenuEvent>();
+                        var model = message.Serialize().Deserialize<MenuEvents>();
                         if (Db.MenuEvents.Find(model.EventId) == null)
                         {
                             Db.MenuEvents.Add(model);
@@ -683,7 +683,7 @@ namespace Qx.Wechat.Services
                     break;
                 case EventTypeEnum.SCAN:
                     {
-                        var model = message.Serialize().Deserialize<MenuEvent>();
+                        var model = message.Serialize().Deserialize<MenuEvents>();
                         if (Db.MenuEvents.Find(model.EventId) == null)
                         {
                             Db.MenuEvents.Add(model);
@@ -692,7 +692,7 @@ namespace Qx.Wechat.Services
                     break;
                 case EventTypeEnum.SUBSRIBE:
                     {
-                        var model = message.Serialize().Deserialize<SubscribeEvent>();
+                        var model = message.Serialize().Deserialize<SubscribeEvents>();
                         if (Db.SubscribeEvents.Find(model.EventId) == null)
                         {
                             Db.SubscribeEvents.Add(model);
@@ -702,7 +702,7 @@ namespace Qx.Wechat.Services
                     break;
                 case EventTypeEnum.UNSUBSRIBE:
                     {
-                        var model = message.Serialize().Deserialize<SubscribeEvent>();
+                        var model = message.Serialize().Deserialize<SubscribeEvents>();
                         if (Db.SubscribeEvents.Find(model.EventId) == null)
                         {
                             Db.SubscribeEvents.Add(model);
@@ -711,7 +711,7 @@ namespace Qx.Wechat.Services
                     break;
                 case EventTypeEnum.LOCATION:
                     {
-                        var model = message.Serialize().Deserialize<LocationEvent>();
+                        var model = message.Serialize().Deserialize<LocationEvents>();
                         if (Db.LocationEvents.Find(model.EventId) == null)
                         {
                             Db.LocationEvents.Add(model);
@@ -817,7 +817,7 @@ namespace Qx.Wechat.Services
             //记得解决发送2次重复问题
             if (Db.ReplyMsgs.Find(replySrc.MsgId) == null)
             {
-                var fatherModel = new ReplyMsg()
+                var fatherModel = new ReplyMsgs()
                 {
                     ReplyMsgId = replySrc.MsgId,
                     FromUserName = replySrc.FromUserName,
@@ -835,7 +835,7 @@ namespace Qx.Wechat.Services
                     WriteFile(replySrc.Serialize(),false);
                     if (Db.ReplyTextMsgs.Find(replySrc.MsgId) == null)
                     {
-                        var model = new ReplyTextMsg()
+                        var model = new ReplyTextMsgs()
                         {
                             ReplyMsgId = replySrc.MsgId,
                             Content = replySrc.Content,
@@ -848,7 +848,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Voice:
                 {
-                    var model = replySrc.Serialize().Deserialize<ReplyVoiceMsg>();
+                    var model = replySrc.Serialize().Deserialize<ReplyVoiceMsgs>();
                     if (Db.ReplyVoiceMsgs.Find(model.ReplyMsgId) == null)
                     {
                         Db.ReplyVoiceMsgs.Add(model);
@@ -858,7 +858,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Video:
                 {
-                    var model = replySrc.Serialize().Deserialize<ReplyVideoMsg>();
+                    var model = replySrc.Serialize().Deserialize<ReplyVideoMsgs>();
                     if (Db.ReplyVideoMsgs.Find(model.ReplyMsgId) == null)
                     {
                         Db.ReplyVideoMsgs.Add(model);
@@ -868,7 +868,7 @@ namespace Qx.Wechat.Services
                     break;
                 case MsgTypeEnum.Image:
                 {
-                    var model = replySrc.Serialize().Deserialize<ReplyImageMsg>();
+                    var model = replySrc.Serialize().Deserialize<ReplyImageMsgs>();
                     if (Db.ReplyImageMsgs.Find(model.ReplyMsgId) == null)
                     {
                         Db.ReplyImageMsgs.Add(model);

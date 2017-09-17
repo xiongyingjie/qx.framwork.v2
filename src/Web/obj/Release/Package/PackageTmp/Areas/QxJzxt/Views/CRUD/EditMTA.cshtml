@@ -1,0 +1,28 @@
+﻿
+@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.EditMTA_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.HiddenFor(o=>o.materialtypeattrid)
+
+@Html.InputFor(o=>o.materialtype,"",true)
+
+@Html.InputFor(o => o.attrname, "", true)
+
+@Html.InputFor(o => o.sequence)
+
+
+@Html.HiddenFor(o => o.materialtypeid)
+
+@Html.HiddenFor(o => o.materialattrid)
+
+@Html.HiddenFor(o => o.attrtypeid)
+
+@Html.HiddenFor(o => o.isprimarykey)
+
+@Html.HiddenFor(o => o.defaultvalue)
+
+
+

@@ -1,549 +1,630 @@
 using System.Data.Entity;
-using Qx.Wechat.Configs;
+using qx.wechat.Configs;
 
-
-namespace Qx.Wechat.Entity
+namespace qx.wechat.Entity
 {
     public partial class MyDbContext : DbContext
     {
         public MyDbContext()
-            : base(Setting.ConnectionString)
+            : base((string) Setting.ConnectionString)
         {
         }
-        public virtual DbSet<ImageMsg> ImageMsgs { get; set; }
-        public virtual DbSet<LinkMsg> LinkMsgs { get; set; }
-        public virtual DbSet<LocationEvent> LocationEvents { get; set; }
-        public virtual DbSet<LocationMsg> LocationMsgs { get; set; }
-        public virtual DbSet<Log> Logs { get; set; }
-        public virtual DbSet<MenuEvent> MenuEvents { get; set; }
-        public virtual DbSet<NewsMsgItem> NewsMsgItems { get; set; }
-        public virtual DbSet<ReplyImageMsg> ReplyImageMsgs { get; set; }
-        public virtual DbSet<ReplyMsg> ReplyMsgs { get; set; }
-        public virtual DbSet<ReplyMusicMsg> ReplyMusicMsgs { get; set; }
-        public virtual DbSet<ReplyNewsMsg> ReplyNewsMsgs { get; set; }
-        public virtual DbSet<ReplySetup> ReplySetups { get; set; }
-        public virtual DbSet<ReplyTextMsg> ReplyTextMsgs { get; set; }
-        public virtual DbSet<ReplyVideoMsg> ReplyVideoMsgs { get; set; }
-        public virtual DbSet<ReplyVoiceMsg> ReplyVoiceMsgs { get; set; }
-        public virtual DbSet<ShortVideoMsg> ShortVideoMsgs { get; set; }
-        public virtual DbSet<SubscribeEvent> SubscribeEvents { get; set; }
-        public virtual DbSet<SystemSetup> SystemSetups { get; set; }
-        public virtual DbSet<TextMsg> TextMsgs { get; set; }
-        public virtual DbSet<Token> Tokens { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<VideoMsg> VideoMsgs { get; set; }
-        public virtual DbSet<VoiceMsg> VoiceMsgs { get; set; }
+        public virtual DbSet<ImageMsgs> ImageMsgs { get; set; }
+        public virtual DbSet<LinkMsgs> LinkMsgs { get; set; }
+        public virtual DbSet<LocationEvents> LocationEvents { get; set; }
+        public virtual DbSet<LocationMsgs> LocationMsgs { get; set; }
+        public virtual DbSet<Logs> Logs { get; set; }
+        public virtual DbSet<MenuEvents> MenuEvents { get; set; }
+        public virtual DbSet<NewsMsgItems> NewsMsgItems { get; set; }
+        public virtual DbSet<reply_template_msg> reply_template_msg { get; set; }
+        public virtual DbSet<ReplyImageMsgs> ReplyImageMsgs { get; set; }
+        public virtual DbSet<ReplyMsgs> ReplyMsgs { get; set; }
+        public virtual DbSet<ReplyMusicMsgs> ReplyMusicMsgs { get; set; }
+        public virtual DbSet<ReplyNewsMsgs> ReplyNewsMsgs { get; set; }
+        public virtual DbSet<ReplySetups> ReplySetups { get; set; }
+        public virtual DbSet<ReplyTextMsgs> ReplyTextMsgs { get; set; }
+        public virtual DbSet<ReplyVideoMsgs> ReplyVideoMsgs { get; set; }
+        public virtual DbSet<ReplyVoiceMsgs> ReplyVoiceMsgs { get; set; }
+        public virtual DbSet<ShortVideoMsgs> ShortVideoMsgs { get; set; }
+        public virtual DbSet<SubscribeEvents> SubscribeEvents { get; set; }
+        public virtual DbSet<SystemSetups> SystemSetups { get; set; }
+        public virtual DbSet<template> template { get; set; }
+        public virtual DbSet<template_type> template_type { get; set; }
+        public virtual DbSet<templatedata> templatedata { get; set; }
+        public virtual DbSet<TextMsgs> TextMsgs { get; set; }
+        public virtual DbSet<Tokens> Tokens { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<VideoMsgs> VideoMsgs { get; set; }
+        public virtual DbSet<VoiceMsgs> VoiceMsgs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.MsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.PicUrl)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ImageMsg>()
+            modelBuilder.Entity<ImageMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.MsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LinkMsg>()
+            modelBuilder.Entity<LinkMsgs>()
                 .Property(e => e.Url)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.EventId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.Event)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.Latitude)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.Longitude)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationEvent>()
+            modelBuilder.Entity<LocationEvents>()
                 .Property(e => e.Precision)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.MsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.Location_X)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.Location_Y)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.Scale)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LocationMsg>()
+            modelBuilder.Entity<LocationMsgs>()
                 .Property(e => e.Label)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Log>()
+            modelBuilder.Entity<Logs>()
                 .Property(e => e.LogId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Log>()
+            modelBuilder.Entity<Logs>()
                 .Property(e => e.Contents)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.EventId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.Event)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<MenuEvent>()
+            modelBuilder.Entity<MenuEvents>()
                 .Property(e => e.EventKey)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NewsMsgItem>()
+            modelBuilder.Entity<NewsMsgItems>()
                 .Property(e => e.NewsMsgItemId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NewsMsgItem>()
+            modelBuilder.Entity<NewsMsgItems>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NewsMsgItem>()
+            modelBuilder.Entity<NewsMsgItems>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NewsMsgItem>()
+            modelBuilder.Entity<NewsMsgItems>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NewsMsgItem>()
+            modelBuilder.Entity<NewsMsgItems>()
                 .Property(e => e.PicUrl)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NewsMsgItem>()
+            modelBuilder.Entity<NewsMsgItems>()
                 .Property(e => e.Url)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyImageMsg>()
+            modelBuilder.Entity<reply_template_msg>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyImageMsg>()
+            modelBuilder.Entity<reply_template_msg>()
+                .Property(e => e.TemplateId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<reply_template_msg>()
+                .Property(e => e.Content)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ReplyImageMsgs>()
+                .Property(e => e.ReplyMsgId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ReplyImageMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyImageMsg>()
-                .HasOptional(e => e.ReplyMsg)
-                .WithRequired(e => e.ReplyImageMsg)
+            modelBuilder.Entity<ReplyImageMsgs>()
+                .HasOptional(e => e.ReplyMsgs)
+                .WithRequired(e => e.ReplyImageMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ReplyMsg>()
+            modelBuilder.Entity<ReplyMsgs>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMsg>()
+            modelBuilder.Entity<ReplyMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMsg>()
+            modelBuilder.Entity<ReplyMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMsg>()
+            modelBuilder.Entity<ReplyMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMsg>()
+            modelBuilder.Entity<ReplyMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
+            modelBuilder.Entity<ReplyMsgs>()
+                .HasOptional(e => e.reply_template_msg)
+                .WithRequired(e => e.ReplyMsgs);
+
+            modelBuilder.Entity<ReplyMusicMsgs>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
+            modelBuilder.Entity<ReplyMusicMsgs>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
+            modelBuilder.Entity<ReplyMusicMsgs>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
+            modelBuilder.Entity<ReplyMusicMsgs>()
                 .Property(e => e.MusicURL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
+            modelBuilder.Entity<ReplyMusicMsgs>()
                 .Property(e => e.HQMusicUrl)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
+            modelBuilder.Entity<ReplyMusicMsgs>()
                 .Property(e => e.ThumbMediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyMusicMsg>()
-                .HasOptional(e => e.ReplyMsg)
-                .WithRequired(e => e.ReplyMusicMsg)
+            modelBuilder.Entity<ReplyMusicMsgs>()
+                .HasOptional(e => e.ReplyMsgs)
+                .WithRequired(e => e.ReplyMusicMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ReplyNewsMsg>()
+            modelBuilder.Entity<ReplyNewsMsgs>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyNewsMsg>()
+            modelBuilder.Entity<ReplyNewsMsgs>()
                 .HasMany(e => e.NewsMsgItems)
-                .WithOptional(e => e.ReplyNewsMsg)
+                .WithOptional(e => e.ReplyNewsMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ReplyNewsMsg>()
-                .HasOptional(e => e.ReplyMsg)
-                .WithRequired(e => e.ReplyNewsMsg)
+            modelBuilder.Entity<ReplyNewsMsgs>()
+                .HasOptional(e => e.ReplyMsgs)
+                .WithRequired(e => e.ReplyNewsMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ReplySetup>()
+            modelBuilder.Entity<ReplySetups>()
                 .Property(e => e.ReplySetupId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplySetup>()
+            modelBuilder.Entity<ReplySetups>()
                 .Property(e => e.KeyWord)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplySetup>()
+            modelBuilder.Entity<ReplySetups>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplySetup>()
+            modelBuilder.Entity<ReplySetups>()
                 .Property(e => e.ReplyTypeId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyTextMsg>()
+            modelBuilder.Entity<ReplyTextMsgs>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyTextMsg>()
+            modelBuilder.Entity<ReplyTextMsgs>()
                 .Property(e => e.Content)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyTextMsg>()
-                .HasOptional(e => e.ReplyMsg)
-                .WithRequired(e => e.ReplyTextMsg)
+            modelBuilder.Entity<ReplyTextMsgs>()
+                .HasOptional(e => e.ReplyMsgs)
+                .WithRequired(e => e.ReplyTextMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ReplyVideoMsg>()
+            modelBuilder.Entity<ReplyVideoMsgs>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyVideoMsg>()
+            modelBuilder.Entity<ReplyVideoMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyVideoMsg>()
+            modelBuilder.Entity<ReplyVideoMsgs>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyVideoMsg>()
+            modelBuilder.Entity<ReplyVideoMsgs>()
                 .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyVideoMsg>()
-                .HasOptional(e => e.ReplyMsg)
-                .WithRequired(e => e.ReplyVideoMsg)
+            modelBuilder.Entity<ReplyVideoMsgs>()
+                .HasOptional(e => e.ReplyMsgs)
+                .WithRequired(e => e.ReplyVideoMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ReplyVoiceMsg>()
+            modelBuilder.Entity<ReplyVoiceMsgs>()
                 .Property(e => e.ReplyMsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyVoiceMsg>()
+            modelBuilder.Entity<ReplyVoiceMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ReplyVoiceMsg>()
-                .HasOptional(e => e.ReplyMsg)
-                .WithRequired(e => e.ReplyVoiceMsg)
+            modelBuilder.Entity<ReplyVoiceMsgs>()
+                .HasOptional(e => e.ReplyMsgs)
+                .WithRequired(e => e.ReplyVoiceMsgs)
                 .WillCascadeOnDelete();
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.MsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ShortVideoMsg>()
+            modelBuilder.Entity<ShortVideoMsgs>()
                 .Property(e => e.ThumbMediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.EventId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.Event)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.EventKey)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SubscribeEvent>()
+            modelBuilder.Entity<SubscribeEvents>()
                 .Property(e => e.Ticket)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SystemSetup>()
-                .Property(e => e.WECHAT_HOST)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SystemSetup>()
+            modelBuilder.Entity<SystemSetups>()
                 .Property(e => e.APP_ID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SystemSetup>()
+            modelBuilder.Entity<SystemSetups>()
+                .Property(e => e.WECHAT_HOST)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<SystemSetups>()
                 .Property(e => e.APP_SECRET)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TextMsg>()
-                .Property(e => e.MsgId)
+            modelBuilder.Entity<template>()
+                .Property(e => e.TemplateID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TextMsg>()
-                .Property(e => e.ToUserName)
+            modelBuilder.Entity<template>()
+                .Property(e => e.Title)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TextMsg>()
-                .Property(e => e.FromUserName)
+            modelBuilder.Entity<template>()
+                .Property(e => e.TemplateTypeID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TextMsg>()
-                .Property(e => e.CreateTime)
+            modelBuilder.Entity<template>()
+                .Property(e => e.Contents)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TextMsg>()
-                .Property(e => e.MsgType)
+            modelBuilder.Entity<template>()
+                .Property(e => e.Example)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TextMsg>()
-                .Property(e => e.Content)
+            modelBuilder.Entity<template>()
+                .HasMany(e => e.templatedata)
+                .WithOptional(e => e.template)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<template_type>()
+                .Property(e => e.TemplateTypeID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Token>()
-                .Property(e => e.TokenId)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
-                .Property(e => e.OpenID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<template_type>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<template_type>()
+                .HasMany(e => e.template)
+                .WithOptional(e => e.template_type)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<templatedata>()
+                .Property(e => e.TemplatedataID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<templatedata>()
+                .Property(e => e.TemplateID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<templatedata>()
+                .Property(e => e.Value)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<templatedata>()
+                .Property(e => e.Color)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TextMsgs>()
+                .Property(e => e.MsgId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TextMsgs>()
+                .Property(e => e.ToUserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TextMsgs>()
+                .Property(e => e.FromUserName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TextMsgs>()
+                .Property(e => e.CreateTime)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TextMsgs>()
+                .Property(e => e.MsgType)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TextMsgs>()
+                .Property(e => e.Content)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tokens>()
+                .Property(e => e.TokenId)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tokens>()
+                .Property(e => e.APP_ID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Tokens>()
+                .Property(e => e.Note)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Users>()
+                .Property(e => e.OpenID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Users>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Users>()
                 .Property(e => e.Phone)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Users>()
                 .Property(e => e.Sex)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Users>()
                 .Property(e => e.IDCardNo)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Users>()
                 .Property(e => e.StuNo)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.MsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VideoMsg>()
+            modelBuilder.Entity<VideoMsgs>()
                 .Property(e => e.ThumbMediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.MsgId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.ToUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.FromUserName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.CreateTime)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.MsgType)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.MediaId)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<VoiceMsg>()
+            modelBuilder.Entity<VoiceMsgs>()
                 .Property(e => e.Format)
                 .IsUnicode(false);
         }

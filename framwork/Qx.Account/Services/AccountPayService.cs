@@ -31,7 +31,7 @@ namespace Qx.Account.Services
             var account = Db.account.Find(accoutId);
             if (account == null)
             {
-                throw new Exception("不存在该账户：" + accoutId);
+                return true;
             }
           Db.account.Remove(account);
           return Db.SaveChanges()>0;

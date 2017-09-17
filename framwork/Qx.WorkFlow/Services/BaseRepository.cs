@@ -28,6 +28,7 @@ namespace Qx.WorkFlow.Services
             return value;
         }
 
-        protected string Pk { get { return DateTime.Now.Random().ToString(); } }
+        protected string Pk { get { return DateTime.Now.Random(); } }
+        protected DateTime Now { get { return DateTime.Now; } }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace Qx.Wechat.Models
+namespace qx.wechat.Models
 {
     public class Msg
     {

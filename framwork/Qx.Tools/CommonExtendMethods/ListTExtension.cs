@@ -1,15 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using Qx.Tools.Models.Service;
 
 namespace Qx.Tools.CommonExtendMethods
 {
     public static class ListTExtension
     {
 
-        public static List<T> GetPage<T>(this IQueryable<T> list, int currentPage, int pageSize)
+        class TempObject<T>
         {
-            return list.Take(pageSize * currentPage).Skip(pageSize * (currentPage - 1)).ToList();
+            public int index;
+            public T data;
+        }
+    
+        public static QueryReult<T> GetPage<T>(this IQueryable<T> list, Expression<Func<T, string>> keySelector, int currentPage, int pageSize)
+        {
+            //Expression<Func<T, int, TempObject<T>>> selectExpression = 
+            //    (x, i) => new TempObject<T>() { data = x, index = i };
+            //Expression<Func<TempObject<T>, int>> ordereExpression = 
+            //    x => x.index;
+            //Expression<Func<TempObject<T>, T>> selectExpression2 =
+            //    x => x.data;
+            var data= list.OrderBy(keySelector).
+                Take(pageSize * currentPage).
+                Skip(pageSize * (currentPage - 1));     
+            return new QueryReult<T>
+            {
+                CurrentPage = currentPage,
+                PageData = data,
+                PageSize = pageSize,
+                TotalSize = list.Count()
+            }; 
         }
 
         public static List<T> Grap<T>(this List<T> data, int start, int end)

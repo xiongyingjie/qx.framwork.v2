@@ -1,0 +1,11 @@
+﻿@using Qx.Tools.Web.Mvc.Html
+@model Web.Areas.QxJzxt.ViewModels.CRUD.DetailAwardType_M
+
+@{
+    Layout = ViewData["Layout"].ToString();
+}
+@Html.InputFor(o => o.awardname,"",true)
+@Html.InputAreaFor(o => o.description,1,"",300,true)
+
+
+
