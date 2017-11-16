@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
@@ -13,9 +14,9 @@ using SystemSetup = qx.wechat.Models.SystemSetup;
 
 namespace qx.wechat.Services
 {
-   
 
-    public  class WechatServices: BaseRepository, IWechatServices
+
+    public class WechatServices : BaseRepository, IWechatServices
     {
 
         #region 微信开发工具类
@@ -198,222 +199,106 @@ namespace qx.wechat.Services
 
         #endregion
 
-        public string RefreshToken()
+        public string RefreshToken<T>() where T : new()
         {
+            var cfg = (IWxApp)new T();
             var action = "Token";
 
             Param.Add("grant_type", "client_credential");
-            Param.Add("appid", Setting.WxConfig.APP_ID);
-            Param.Add("secret", Setting.WxConfig.APP_SECRET);
-            var content = ApiHttpGet(Setting.WxConfig.URL_WECHAT_HOST, action, Param, action).Deserialize<access_token_model>();
+            Param.Add("appid", cfg.AppId);
+            Param.Add("secret", cfg.AppSecret);
+            var content = ApiHttpGet(cfg.Host, action, Param, action).Deserialize<access_token_model>();
             if (content == null)
             {
                 throw new Exception("获取access_token失败!");
             }
-            SaveToken(content.access_token,content.expires_in);
+            SaveToken<T>(content.access_token, content.expires_in);
             return content.access_token;
         }
-        #region 模板消息
-        public bool Send_Exchange_Ok_Msg(string touser, string click_url,
-    string good_name, string time)
-        {
-            var data = new
-            {
-                first = new
-                {
-                    value = "亲，兑换码已验证成功！",
-                    color = "#173177",
-                },
-                keyword1 = new
-                {
-                    value = good_name,
-                    color = "#173177",
-                },
-                keyword2 = new
-                {
-                    value = time,
-                    color = "#173177",
-                },
-               
-                remark = new
-                {
-                    value = "如有疑问，请尽快与我们的客服联系！",
-                    color = "#173177",
-                }
-            };
-            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.Exchanged, click_url, data);
-        }
-        public bool Send_Receved_Order_Msg(string touser, string click_url,
-            string serve_detail, string server_name, string server_phone,string arrange_serve_time,string order_id)
-        {
-            var data = new
-            {
-                first = new
-                {
-                    value = "您好，您的报修已被接单，服务信息如下",
-                    color = "#173177",
-                },
-                keyword1 = new
-                {
-                    value = arrange_serve_time+"上门服务",
-                    color = "#173177",
-                },
-                keyword2 = new
-                {
-                    value = serve_detail,
-                    color = "#173177",
-                },
-                keyword3 = new
-                {
-                    value = server_name,
-                    color = "#173177",
-                },
-                keyword4 = new
-                {
-                    value = server_phone,
-                    color = "#173177",
-                },
-                remark = new
-                {
-                    value = "如想变更服务时间请联系服务者并提供订单号"+ order_id+"，感谢您的支持！",
-                    color = "#173177",
-                }
-            };
-            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.RecevedOrder, click_url, data);
-        }
 
-        public bool Send_Finished_Order_Msg(string touser, string click_url,
-           string serve_detail, string server_name, string server_phone,string finish_time,string note)
+
+        public bool SendTemplateMsg<T>(string toWho, string templateId, string title, string[] body, string note, string click_url) where T : new()
         {
-            var data = new
+
+            for (var i = 0; i < 9; i++)
+            {
+                body[i] = body.Length > i ? body[i] : "";
+            }
+            var templateData = new
             {
                 first = new
                 {
-                    value = "您好，你申请的报修已经处理完成",
+                    value = title,
                     color = "#173177",
                 },
                 keyword1 = new
                 {
-                    value = serve_detail,
+                    value = body[0],
                     color = "#173177",
                 },
                 keyword2 = new
                 {
-                    value = server_name,
+                    value = body[1],
                     color = "#173177",
                 },
                 keyword3 = new
                 {
-                    value = server_phone,
+                    value = body[2],
                     color = "#173177",
                 },
                 keyword4 = new
                 {
-                    value = finish_time,
+                    value = body[3],
                     color = "#173177",
                 },
                 keyword5 = new
+                {
+                    value = body[4],
+                    color = "#173177",
+                },
+                keyword6 = new
+                {
+                    value = body[5],
+                    color = "#173177",
+                },
+                keyword7 = new
+                {
+                    value = body[6],
+                    color = "#173177",
+                },
+                keyword8 = new
+                {
+                    value = body[7],
+                    color = "#173177",
+                },
+                keyword9 = new
+                {
+                    value = body[8],
+                    color = "#173177",
+                },
+                remark = new
                 {
                     value = note,
                     color = "#173177",
-                },
-                remark = new
-                {
-                    value = "感谢您的支持，请点此详情对本次服务进行评价！",
-                    color = "#173177",
                 }
+
             };
-            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.FinishedOrder, click_url, data);
+            return SendTemplateMsg<T>(toWho, templateId, click_url, templateData);
         }
 
-        public bool Send_Charge_Ok_Msg(string touser, string click_url,
-            string time, string total_fee, string balance)
+        public bool SendTemplateMsg<T>(string toWho, string templateId, string click_url, object templateData) where T : new()
         {
-            var data = new
-            {
-                first = new
-                {
-                    value = "尊敬的用户，您已成功充值！",
-                    color = "#173177",
-                },
-                keyword1 = new
-                {
-                    value = time,
-                    color = "#173177",
-                },
-                keyword2 = new
-                {
-                    value = total_fee,
-                    color = "#173177",
-                },
-                keyword3 = new
-                {
-                    value = balance,
-                    color = "#173177",
-                },
-                remark = new
-                {
-                    value = "感谢您的支持！",
-                    color = "#173177",
-                }
-            };
-            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.Charge, click_url, data);
-        }
-        public bool Send_Expence_Ok_Msg(string touser, string click_url,  
-            string total_fee, string payment_type, string good_name, string trade_no, string balance)
-        {
-            var data = new
-            {
-                first = new
-                {
-                    value = "您好，您成功购买门票。",
-                    color = "#173177",
-                },
-                keyword1 = new
-                {
-                    value = total_fee,
-                    color = "#173177",
-                },
-                keyword2 = new
-                {
-                    value = payment_type,
-                    color = "#173177",
-                },
-                keyword3 = new
-                {
-                    value = good_name,
-                    color = "#173177",
-                },
-                keyword4 = new
-                {
-                    value = trade_no,
-                    color = "#173177",
-                },
-                keyword5 = new
-                {
-                    value = balance,
-                    color = "#173177",
-                },
-                remark = new
-                {
-                    value = "你购买的商品已支付成功，查看详情了解更多信息！",
-                    color = "#173177",
-                }
-            };
-            return SendTemplateMsg(touser, Setting.WxConfig.TemplateMsg.Expence, click_url, data);
-        }
+            var cfg = (IWxApp)new T();
 
-        public bool SendTemplateMsg(string toWho,string templateId,string click_url,object templateData)
-        {
             var action = "message/template/send";
 
             var obj = new
             {
-                access_token = GetToken(),
+                access_token = GetToken<T>(),
                 touser = toWho,// "oksMlwPF5Y1KQvoi8AklF-lUwnYQ",
                 template_id = templateId,// "aP5WSx_hkcCEbDJSu1Takrch4tTB1-3YkpRI6ESjeeE",
                 url = click_url,// "http://wx.52xyj.cn/WeChat/BookTiketWeb/MyWallet",
-                data= templateData// = new
+                data = templateData// = new
                 //{
                 //    first = new
                 //    {
@@ -442,10 +327,10 @@ namespace qx.wechat.Services
                 //    },
                 //}
             };
-            var content = ApiJsonHttpPost(Setting.WxConfig.URL_WECHAT_HOST, action, obj, "template_send", "access_token=" + GetToken());  
-            return content.Deserialize<template_msg_result>().errcode==0;
+            var content = ApiJsonHttpPost(cfg.Host, action, obj, "template_send", "access_token=" + GetToken<T>());
+            return content.Deserialize<template_msg_result>().errcode == 0;
         }
-        #endregion
+
         //private IWeChatBll _chatBll;
 
         //public WechatServices(IWeChatBll chatBll)
@@ -455,45 +340,49 @@ namespace qx.wechat.Services
         //}
 
         public SystemSetup GetSetup()
-      {
-          return Db.SystemSetups.
-                Select(a=> 
-                new SystemSetup()
-                {
-                    APP_ID = a.APP_ID,
-                    APP_SECRET = a.APP_SECRET,
-                    WECHAT_HOST = a.WECHAT_HOST
-                }).FirstOrDefault();
-      }
-        public string GetToken()
-      {
-          var token= Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == Setting.WxConfig.APP_ID);;
-          if (token == null)
-          {
-              RefreshToken();
-              token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now&&a.APP_ID==Setting.WxConfig.APP_ID);
-              if (token == null)
+        {
+            return Db.SystemSetups.
+                  Select(a =>
+                  new SystemSetup()
+                  {
+                      APP_ID = a.APP_ID,
+                      APP_SECRET = a.APP_SECRET,
+                      WECHAT_HOST = a.WECHAT_HOST
+                  }).FirstOrDefault();
+        }
+        public string GetToken<T>() where T : new()
+        {
+            var cfg = (IWxApp)new T();
+            var token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == cfg.AppId && a.Note == cfg.AppSecret); ;
+            if (token == null)
+            {
+                RefreshToken<T>();
+                token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == cfg.AppId && a.Note == cfg.AppSecret);
+                if (token == null)
                     throw new Exception("数据库没有有效的Token!");
             }
-          return token.TokenId;
-      }
-        public bool SaveToken(string tokenId,int expireTime)
+            return token.TokenId;
+        }
+        public bool SaveToken<T>(string tokenId, int expireTime) where T : new()
         {
+            var cfg = (IWxApp)new T();
             if (!tokenId.HasValue())
             {
                 throw new Exception("tokenId 为空!");
             }
-            Db.Tokens.Add(new Tokens()
+            Db.Tokens.AddOrUpdate(new Tokens()
             {
                 TokenId = tokenId,
                 GetTime = DateTime.Now,
-                APP_ID = Setting.WxConfig.APP_ID,
-                ExpireTime = DateTime.Now.AddSeconds(expireTime)
+                ExpireTime = DateTime.Now.AddSeconds(expireTime),
+                APP_ID = cfg.AppId,
+                Note = cfg.AppSecret
             });
+
             return Db.SaveChanges() > 0;
         }
 
-      
+
         //private List<KeyValuePair<string, string>> XmlToKeyValues(string xmlBody)
         //{
         //    if (!xmlBody.HasValue())
@@ -568,7 +457,7 @@ namespace qx.wechat.Services
             switch (message.GetMsgType())
             {
                 case MsgTypeEnum.Text:
-                {
+                    {
                         //WriteFile(message.Serialize() + "\r\n" + "\r\n", false);
                         //     WriteFile(message.Serialize().Deserialize<TextMsgs>().Serialize() + "\r\n" + "\r\n" + "\r\n", false);
                         //var model = new TextMsg()
@@ -580,10 +469,10 @@ namespace qx.wechat.Services
                         //    FromUserName = "oe4J2uAJoapkwmf039OcFy_YwVMw",
                         //    ToUserName = "gh_fc4c31ef2ade"
                         //};
-                    WriteFile(message.Serialize(),false);
-                    var model = message.Serialize().Deserialize<TextMsgs>();
-                    if (Db.TextMsgs.Find(model.MsgId) == null)
-                    {
+                        WriteFile(message.Serialize(), false);
+                        var model = message.Serialize().Deserialize<TextMsgs>();
+                        if (Db.TextMsgs.Find(model.MsgId) == null)
+                        {
                             Db.TextMsgs.Add(model);
                         }
                     }
@@ -611,7 +500,7 @@ namespace qx.wechat.Services
                         var model = message.Serialize().Deserialize<ImageMsgs>();
                         if (Db.ImageMsgs.Find(model.MsgId) == null)
                         {
-                          //  Msg > ()
+                            //  Msg > ()
                             Db.ImageMsgs.Add(model);
                             Db.SaveChanges();
                         }
@@ -648,18 +537,18 @@ namespace qx.wechat.Services
                     }
                     break;
                 case MsgTypeEnum.NotMsg:
-                {
+                    {
                         throw new Exception("框架不支持记录NotMsg消息");
                     }
             }
-          
+
 
             return true;
         }
 
         private bool _LogEvent(Msg message)
         {
-          
+
             switch (message.GetEventType())
             {
                 case EventTypeEnum.CLICK:
@@ -669,7 +558,7 @@ namespace qx.wechat.Services
                         {
                             Db.MenuEvents.Add(model);
                         }
-                      
+
                     }
                     break;
                 case EventTypeEnum.VIEW:
@@ -697,7 +586,7 @@ namespace qx.wechat.Services
                         {
                             Db.SubscribeEvents.Add(model);
                         }
-                      
+
                     }
                     break;
                 case EventTypeEnum.UNSUBSRIBE:
@@ -716,11 +605,11 @@ namespace qx.wechat.Services
                         {
                             Db.LocationEvents.Add(model);
                         }
-                       
+
                     }
                     break;
                 case EventTypeEnum.NotEvent:
-                {
+                    {
                         throw new Exception("框架不支持回复NotEvent事件");
                     }
             }
@@ -756,7 +645,7 @@ namespace qx.wechat.Services
         }
         public string MsgHandle(string xmlBody)
         {
-          
+
 
             //记录处理前日志
             var msg = BeforeHandleLog(xmlBody);
@@ -769,8 +658,8 @@ namespace qx.wechat.Services
             //var result= _chatBll.Main(msg);
             //记录处理后日志
             object reply;
-          //  AfterHandleLog(result,out reply);
-           //根据不同消息生成不同消息
+            //  AfterHandleLog(result,out reply);
+            //根据不同消息生成不同消息
 
             #region 响应请求
             //var reply = Db.ReplySetups.
@@ -804,13 +693,13 @@ namespace qx.wechat.Services
             #endregion
 
             //格式化为xml返回微信服务器
-           // return result.ToXml();
+            // return result.ToXml();
             return null;
         }
 
-        private bool AfterHandleLog(Msg replySrc,out object replyResult)
+        private bool AfterHandleLog(Msg replySrc, out object replyResult)
         {
-            replyResult=new object();
+            replyResult = new object();
 
 
 
@@ -831,73 +720,73 @@ namespace qx.wechat.Services
             switch (replySrc.GetMsgType())
             {
                 case MsgTypeEnum.Text:
-                {
-                    WriteFile(replySrc.Serialize(),false);
-                    if (Db.ReplyTextMsgs.Find(replySrc.MsgId) == null)
                     {
-                        var model = new ReplyTextMsgs()
+                        WriteFile(replySrc.Serialize(), false);
+                        if (Db.ReplyTextMsgs.Find(replySrc.MsgId) == null)
                         {
-                            ReplyMsgId = replySrc.MsgId,
-                            Content = replySrc.Content,
-                        };
-                        Db.ReplyTextMsgs.Add(model);
+                            var model = new ReplyTextMsgs()
+                            {
+                                ReplyMsgId = replySrc.MsgId,
+                                Content = replySrc.Content,
+                            };
+                            Db.ReplyTextMsgs.Add(model);
+                        }
+                        //直接返回msg类型，如果不可以则返回具体类型
+                        replyResult = replySrc;
                     }
-                    //直接返回msg类型，如果不可以则返回具体类型
-                    replyResult= replySrc;
-                }
                     break;
                 case MsgTypeEnum.Voice:
-                {
-                    var model = replySrc.Serialize().Deserialize<ReplyVoiceMsgs>();
-                    if (Db.ReplyVoiceMsgs.Find(model.ReplyMsgId) == null)
                     {
-                        Db.ReplyVoiceMsgs.Add(model);
+                        var model = replySrc.Serialize().Deserialize<ReplyVoiceMsgs>();
+                        if (Db.ReplyVoiceMsgs.Find(model.ReplyMsgId) == null)
+                        {
+                            Db.ReplyVoiceMsgs.Add(model);
+                        }
+                        replyResult = model;
                     }
-                    replyResult = model;
-                }
                     break;
                 case MsgTypeEnum.Video:
-                {
-                    var model = replySrc.Serialize().Deserialize<ReplyVideoMsgs>();
-                    if (Db.ReplyVideoMsgs.Find(model.ReplyMsgId) == null)
                     {
-                        Db.ReplyVideoMsgs.Add(model);
-                    }
+                        var model = replySrc.Serialize().Deserialize<ReplyVideoMsgs>();
+                        if (Db.ReplyVideoMsgs.Find(model.ReplyMsgId) == null)
+                        {
+                            Db.ReplyVideoMsgs.Add(model);
+                        }
                         replyResult = model;
                     }
                     break;
                 case MsgTypeEnum.Image:
-                {
-                    var model = replySrc.Serialize().Deserialize<ReplyImageMsgs>();
-                    if (Db.ReplyImageMsgs.Find(model.ReplyMsgId) == null)
                     {
-                        Db.ReplyImageMsgs.Add(model);
-                    }
+                        var model = replySrc.Serialize().Deserialize<ReplyImageMsgs>();
+                        if (Db.ReplyImageMsgs.Find(model.ReplyMsgId) == null)
+                        {
+                            Db.ReplyImageMsgs.Add(model);
+                        }
                         replyResult = model;
                     }
                     break;
                 case MsgTypeEnum.Link:
-                {
-                    throw new Exception("框架不支持回复Link消息");
-                }
+                    {
+                        throw new Exception("框架不支持回复Link消息");
+                    }
                     break;
                 case MsgTypeEnum.Location:
-                {
-                    throw new Exception("框架不支持回复Location消息");
-                }
+                    {
+                        throw new Exception("框架不支持回复Location消息");
+                    }
                     break;
                 case MsgTypeEnum.Shortvideo:
-                {
-                    throw new Exception("框架不支持回复Shortvideo消息");
-                }
+                    {
+                        throw new Exception("框架不支持回复Shortvideo消息");
+                    }
                     break;
                 case MsgTypeEnum.NotMsg:
-                {
-                    throw new Exception("框架不支持回复NotMsg消息");
-                }
+                    {
+                        throw new Exception("框架不支持回复NotMsg消息");
+                    }
             }
             return Db.SaveChanges() > 0;
-            }
+        }
 
         public MsgTypeEnum ParseMsgType(string msgType)
         {

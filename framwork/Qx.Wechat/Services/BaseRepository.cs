@@ -6,7 +6,11 @@ using Qx.Tools.CommonExtendMethods;
 
 namespace qx.wechat.Services
 {
-    public class BaseRepository
+    public interface IBaseRepository
+    {
+    }
+
+    public class BaseRepository : IBaseRepository
     {
         private MyDbContext db;
 

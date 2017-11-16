@@ -54,5 +54,43 @@ namespace CodeTool.Models
             dest += "'{" + count + "}' ";
             return dest;
         }
+        public string ToJsString(int count)
+        {
+            var dest = TableName + "." + ColumName;
+            switch (QueryType)
+            {
+                case QueryTypeEnum.None:
+                    {
+                        return "";
+                    }
+                case QueryTypeEnum.Like:
+                {
+                    return ".lk";
+                }
+
+                case QueryTypeEnum.Equal:
+                {
+                    dest += ".eq";
+                }
+                    break;
+                case QueryTypeEnum.Greater:
+                {
+                    dest += ".bg";
+                }
+                    break;
+                case QueryTypeEnum.Lower:
+                {
+                    dest += ".ls";
+                }
+                    break;
+                case QueryTypeEnum.NotEqual:
+                    {
+                        dest += ".neq";
+                    }
+                    break;
+            }
+            dest += "('" + ColumName + "' ,'{" + count + "}') ";
+            return dest;
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Linq;
+using Qx.Account.Configs;
 using Qx.Account.Entity;
 using Qx.Account.Models;
 using Qx.Tools.CommonExtendMethods;
@@ -20,10 +22,10 @@ namespace Qx.Account.Interfaces
 
             lock (locker)
             {   // 同步代码块
-                var old =  db.pay_order.Find(payOrderBag.PayOrder.PO_ID);
-                if (old != null &&
-                    (old.PayStateID == PayStateEnum.Failed.ToString() ||
-                      old.PayStateID == PayStateEnum.Finished.ToString()))
+                var old = ("SELECT  PayStateID FROM pay_order where PO_ID='"+ payOrderBag .PayOrder.PO_ID+ "'").ExecuteReader(Setting.ConnectionString);
+                if (old.Any() &&
+                    (old[0][0] == PayStateEnum.Failed.ToString() ||
+                     old[0][0] == PayStateEnum.Finished.ToString()))
                 {//同步检查是否 已完成
                     return false;
                 }

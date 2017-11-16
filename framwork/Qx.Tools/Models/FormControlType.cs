@@ -24,6 +24,7 @@
         ShowEditor = 220,
         ShowCheckbox = 221,
         ShowSwitch = 222,
+        HideTime=223,
         //Input = 1,
         //DateTime = 2,
         //TextArea = 3,

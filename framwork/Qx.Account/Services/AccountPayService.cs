@@ -75,7 +75,7 @@ namespace Qx.Account.Services
             {
                 throw new Exception("不存在该订单：" + payOrderBagId);
             }
-            return new PayOrderBag(payOrder.PO_ID,FindAccount(payOrder.PayerAccID),
+            return new PayOrderBag(payOrder,FindAccount(payOrder.PayerAccID),
                 FindAccount(payOrder.ReceiverAccID), ToOrderType(payOrder.PayOrderTypeID), 
                 ToPaymentType(payOrder.PaymentTypeID),payOrder.PayNum);
         }

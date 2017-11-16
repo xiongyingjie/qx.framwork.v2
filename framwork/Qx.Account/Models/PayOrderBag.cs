@@ -26,7 +26,8 @@ namespace Qx.Account.Models
             //receiver.Charge(payNum);
             PayOrder = new pay_order
             {
-                PO_ID =  DateTime.Now.FormatTime(false)+"-"+DateTime.Now.Random(),
+                PO_ID =  //DateTime.Now.FormatTime(false)+"-"+
+                DateTime.Now.Random(),
                 PayerAccID = payer.Account.AccountID,
                 ReceiverAccID = receiver.Account.AccountID,
                 CreateTime = DateTime.Now,
@@ -36,7 +37,7 @@ namespace Qx.Account.Models
                 PayStateID = PayStateEnum.Created.ToString()
             };
         }
-        public PayOrderBag(string PO_ID,AccountBag payer, AccountBag receiver,
+        public PayOrderBag(pay_order payOrder, AccountBag payer, AccountBag receiver,
            PayOrderTypeEnum payOrderType, PaymentTypeEnum paymentType,
            int payNum)
         {
@@ -44,19 +45,20 @@ namespace Qx.Account.Models
 
             Payer = payer;
             Receiver = receiver;
+            PayOrder = payOrder;
             //payer.Expense(payNum);
             //receiver.Charge(payNum);
-            PayOrder = new pay_order
-            {
-                PO_ID = PO_ID,
-                PayerAccID = payer.Account.AccountID,
-                ReceiverAccID = receiver.Account.AccountID,
-                CreateTime = DateTime.Now,
-                PayNum = payNum,
-                PayOrderTypeID = payOrderType.ToString(),
-                PaymentTypeID = paymentType.ToString(),
-                PayStateID = PayStateEnum.Created.ToString()
-            };
+            //PayOrder = new pay_order
+            //{
+            //    PO_ID = PO_ID,
+            //    PayerAccID = payer.Account.AccountID,
+            //    ReceiverAccID = receiver.Account.AccountID,
+            //    CreateTime = DateTime.Now,
+            //    PayNum = payNum,
+            //    PayOrderTypeID = payOrderType.ToString(),
+            //    PaymentTypeID = paymentType.ToString(),
+            //    PayStateID = PayStateEnum.Created.ToString()
+            //};
         }
 
        public PayOrderBag FinishOrder()

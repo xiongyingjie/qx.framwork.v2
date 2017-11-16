@@ -2,13 +2,21 @@
 using System.Web;
 using System.Web.Security;
 using LitJson;
+using Qx.Account.Configs;
 using Qx.Account.WeixinPay.lib;
 using Qx.Tools.CommonExtendMethods;
 
 namespace Qx.Account.WeixinPay.business
 {
-    public class JsApiPay
+    public class JsApiPay<T> where T : new()
     {
+        private IWxPayApp  cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+         }
         /// <summary>
         /// 保存页面对象，因为要在类的方法中使用Page的Request对象
         /// </summary>
@@ -32,7 +40,7 @@ namespace Qx.Account.WeixinPay.business
         /// <summary>
         /// 统一下单接口返回结果
         /// </summary>
-        public WxPayData unifiedOrderResult { get; set; } 
+        public WxPayData<T> unifiedOrderResult { get; set; } 
 
         public JsApiPay(HttpContextBase page)
         {
@@ -54,7 +62,7 @@ namespace Qx.Account.WeixinPay.business
             {
                 //获取code码，以获取openid和access_token
                 string code = page.Request.QueryString["code"];
-                Log.Debug(this.GetType().ToString(), "Get code : " + code);
+                Log<T>.Debug(this.GetType().ToString(), "Get code : " + code);
                 GetOpenidAndAccessTokenFromCode(code);
             }
             else
@@ -63,14 +71,14 @@ namespace Qx.Account.WeixinPay.business
                 string host = page.Request.Url.Host;
                 string path = page.Request.Path;
                 string redirect_uri = HttpUtility.UrlEncode("http://" + host + path);
-                WxPayData data = new WxPayData();
-                data.SetValue("appid", WxPayConfig.APPID);
+                WxPayData<T> data = new WxPayData<T>();
+                data.SetValue("appid", cfg.APPID);
                 data.SetValue("redirect_uri", redirect_uri);
                 data.SetValue("response_type", "code");
                 data.SetValue("scope", "snsapi_base");
                 data.SetValue("state", "STATE" + "#wechat_redirect");
                 string url = "https://open.weixin.qq.com/connect/oauth2/authorize?" + data.ToUrl();
-                Log.Debug(this.GetType().ToString(), "Will Redirect to URL : " + url);
+                Log<T>.Debug(this.GetType().ToString(), "Will Redirect to URL : " + url);
                 try
                 {
                     //触发微信返回code码         
@@ -104,17 +112,17 @@ namespace Qx.Account.WeixinPay.business
             try
             {
                 //构造获取openid及access_token的url
-                WxPayData data = new WxPayData();
-                data.SetValue("appid", WxPayConfig.APPID);
-                data.SetValue("secret", WxPayConfig.APPSECRET);
+                WxPayData<T> data = new WxPayData<T>();
+                data.SetValue("appid", cfg.APPID);
+                data.SetValue("secret", cfg.APPSECRET);
                 data.SetValue("code", code);
                 data.SetValue("grant_type", "authorization_code");
                 string url = "https://api.weixin.qq.com/sns/oauth2/access_token?" + data.ToUrl();
 
                 //请求url以获取数据
-                string result = HttpService.Get(url);
+                string result = HttpService<T>.Get(url);
 
-                Log.Debug(this.GetType().ToString(), "GetOpenidAndAccessTokenFromCode response : " + result);
+                Log<T>.Debug(this.GetType().ToString(), "GetOpenidAndAccessTokenFromCode response : " + result);
 
                 //保存access_token，用于收货地址获取
                 JsonData jd = JsonMapper.ToObject(result);
@@ -123,12 +131,12 @@ namespace Qx.Account.WeixinPay.business
                 //获取用户openid
                 openid = (string)jd["openid"];
 
-                Log.Debug(this.GetType().ToString(), "Get openid : " + openid);
-                Log.Debug(this.GetType().ToString(), "Get access_token : " + access_token);
+                Log<T>.Debug(this.GetType().ToString(), "Get openid : " + openid);
+                Log<T>.Debug(this.GetType().ToString(), "Get access_token : " + access_token);
             }
             catch (Exception ex)
             {
-                Log.Error(this.GetType().ToString(), ex.ToString());
+                Log<T>.Error(this.GetType().ToString(), ex.ToString());
                 throw new WxPayException(ex.ToString());
             }
         }
@@ -138,13 +146,13 @@ namespace Qx.Account.WeixinPay.business
          * @return 统一下单结果
          * @失败时抛异常WxPayException
          */
-        public WxPayData GetUnifiedOrderResult(string TradeNo,string goods_name)
+        public WxPayData<T> GetUnifiedOrderResult(string TradeNo,string goods_name)
         {
             //统一下单
-            WxPayData data = new WxPayData();
+            WxPayData<T> data = new WxPayData<T>();
             data.SetValue("body", goods_name);
             data.SetValue("attach", goods_name);
-            data.SetValue("out_trade_no", TradeNo );//WxPayApi.GenerateOutTradeNo()
+            data.SetValue("out_trade_no", TradeNo );//WxPayApi<T>.GenerateOutTradeNo()
             data.SetValue("total_fee", total_fee);
             data.SetValue("time_start", DateTime.Now.ToString("yyyyMMddHHmmss"));
             data.SetValue("time_expire", DateTime.Now.AddMinutes(10).ToString("yyyyMMddHHmmss"));
@@ -152,10 +160,10 @@ namespace Qx.Account.WeixinPay.business
             data.SetValue("trade_type", "JSAPI");
             data.SetValue("openid", openid);
             
-            WxPayData result = WxPayApi.UnifiedOrder(data);
+            WxPayData<T> result = WxPayApi<T>.UnifiedOrder(data);
             if (!result.IsSet("appid") || !result.IsSet("prepay_id") || result.GetValue("prepay_id").ToString() == "")
             {
-                Log.Error(this.GetType().ToString(), "UnifiedOrder response error!");
+                Log<T>.Error(this.GetType().ToString(), "UnifiedOrder response error!");
                 throw new WxPayException("UnifiedOrder response error!"+ "<br/>" +
                     "appid=>" + result.GetSetedValue("appid") + "<br/>"+
                      "prepay_id=>" + result.GetSetedValue("prepay_id") + "<br/>" +
@@ -185,21 +193,21 @@ namespace Qx.Account.WeixinPay.business
         * 更详细的说明请参考网页端调起支付API：http://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=7_7
         * 
         */
-        public string GetJsApiParameters()
+        public string GetJsApiParameters() 
         {
-            Log.Debug(this.GetType().ToString(), "JsApiPay::GetJsApiParam is processing...");
+            Log<T>.Debug(this.GetType().ToString(), "JsApiPay::GetJsApiParam is processing...");
 
-            WxPayData jsApiParam = new WxPayData();
+            WxPayData<T> jsApiParam = new WxPayData<T>();
             jsApiParam.SetValue("appId", unifiedOrderResult.GetValue("appid"));
-            jsApiParam.SetValue("timeStamp", WxPayApi.GenerateTimeStamp());
-            jsApiParam.SetValue("nonceStr", WxPayApi.GenerateNonceStr());
+            jsApiParam.SetValue("timeStamp", WxPayApi<T>.GenerateTimeStamp());
+            jsApiParam.SetValue("nonceStr", WxPayApi<T>.GenerateNonceStr());
             jsApiParam.SetValue("package", "prepay_id=" + unifiedOrderResult.GetValue("prepay_id"));
             jsApiParam.SetValue("signType", "MD5");
             jsApiParam.SetValue("paySign", jsApiParam.MakeSign());
 
             string parameters = jsApiParam.ToJson();
 
-            Log.Debug(this.GetType().ToString(), "Get jsApiParam : " + parameters);
+            Log<T>.Debug(this.GetType().ToString(), "Get jsApiParam : " + parameters);
             return parameters;
         }
 
@@ -221,22 +229,22 @@ namespace Qx.Account.WeixinPay.business
                 string url = "http://" + host + path + queryString;
 
                 //构造需要用SHA1算法加密的数据
-                WxPayData signData = new WxPayData();
-                signData.SetValue("appid",WxPayConfig.APPID);
+                WxPayData<T> signData = new WxPayData<T>();
+                signData.SetValue("appid",cfg.APPID);
                 signData.SetValue("url", url);
-                signData.SetValue("timestamp",WxPayApi.GenerateTimeStamp());
-                signData.SetValue("noncestr",WxPayApi.GenerateNonceStr());
+                signData.SetValue("timestamp",WxPayApi<T>.GenerateTimeStamp());
+                signData.SetValue("noncestr",WxPayApi<T>.GenerateNonceStr());
                 signData.SetValue("accesstoken",access_token);
                 string param = signData.ToUrl();
 
-                Log.Debug(this.GetType().ToString(), "SHA1 encrypt param : " + param);
+                Log<T>.Debug(this.GetType().ToString(), "SHA1 encrypt param : " + param);
                 //SHA1加密
                 string addrSign = FormsAuthentication.HashPasswordForStoringInConfigFile(param, "SHA1");
-                Log.Debug(this.GetType().ToString(), "SHA1 encrypt result : " + addrSign);
+                Log<T>.Debug(this.GetType().ToString(), "SHA1 encrypt result : " + addrSign);
 
                 //获取收货地址js函数入口参数
-                WxPayData afterData = new WxPayData();
-                afterData.SetValue("appId",WxPayConfig.APPID);
+                WxPayData<T> afterData = new WxPayData<T>();
+                afterData.SetValue("appId",cfg.APPID);
                 afterData.SetValue("scope","jsapi_address");
                 afterData.SetValue("signType","sha1");
                 afterData.SetValue("addrSign",addrSign);
@@ -245,11 +253,11 @@ namespace Qx.Account.WeixinPay.business
 
                 //转为json格式
                 parameter = afterData.ToJson();
-                Log.Debug(this.GetType().ToString(), "Get EditAddressParam : " + parameter);
+                Log<T>.Debug(this.GetType().ToString(), "Get EditAddressParam : " + parameter);
             }
             catch (Exception ex)
             {
-                Log.Error(this.GetType().ToString(), ex.ToString());
+                Log<T>.Error(this.GetType().ToString(), ex.ToString());
                 throw new WxPayException(ex.ToString());
             }
 

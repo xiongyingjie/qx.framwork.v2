@@ -1,11 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Web;
+using Qx.Account.Configs;
 
 namespace Qx.Account.WeixinPay.lib
 {
-    public class Log
+    public class Log<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         //在网站根目录下创建日志目录
         public static string path = HttpContext.Current.Request.PhysicalApplicationPath + "logs";
 
@@ -16,7 +24,7 @@ namespace Qx.Account.WeixinPay.lib
          */
         public static void Debug(string className, string content)
         {
-            if(WxPayConfig.LOG_LEVENL >= 3)
+            if(cfg.LOG_LEVENL >= 3)
             {
                 WriteLog("DEBUG", className, content);
             }
@@ -29,7 +37,7 @@ namespace Qx.Account.WeixinPay.lib
         */
         public static void Info(string className, string content)
         {
-            if (WxPayConfig.LOG_LEVENL >= 2)
+            if (cfg.LOG_LEVENL >= 2)
             {
                 WriteLog("INFO", className, content);
             }
@@ -42,7 +50,7 @@ namespace Qx.Account.WeixinPay.lib
         */
         public static void Error(string className, string content)
         {
-            if(WxPayConfig.LOG_LEVENL >= 1)
+            if(cfg.LOG_LEVENL >= 1)
             {
                 WriteLog("ERROR", className, content);
             }

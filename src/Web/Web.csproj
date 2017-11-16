@@ -87,6 +87,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Oracle.ManagedDataAccess\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
+    <Reference Include="qx.wechat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -352,6 +353,15 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="Web.config.bak">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.config.Debug.bak">
+      <DependentUpon>Web.config.bak</DependentUpon>
+    </None>
+    <None Include="Web.config.Release.bak">
+      <DependentUpon>Web.config.bak</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -390,10 +400,6 @@
     <ProjectReference Include="..\..\framwork\Qx.Tools\Qx.Tools.csproj">
       <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
       <Name>Qx.Tools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\framwork\Qx.Wechat\qx.wechat.csproj">
-      <Project>{83d95916-e07f-4309-a0bc-de7bef970d6e}</Project>
-      <Name>qx.wechat</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\framwork\Qx.WorkFlow\Qx.WorkFlow.csproj">
       <Project>{adbba880-f593-4594-a63b-249959e33ddb}</Project>

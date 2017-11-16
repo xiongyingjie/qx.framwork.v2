@@ -51,6 +51,10 @@ namespace Qx.Tools.CommonExtendMethods
                         {
                             value = reader.GetDouble(i) + "";
                         }
+                        else if (type.Contains("date"))
+                        {
+                            value = reader.GetDateTime(i).ToString("yyyy-MM-dd") + "";
+                        }
                         else if (type.Contains("datetime"))
                         {
                             value = reader.GetDateTime(i).ToString("yyyy-MM-dd HH:mm") + "";
@@ -107,6 +111,10 @@ namespace Qx.Tools.CommonExtendMethods
                         {
                             value = reader.GetInt16(i) + "";
                         }
+                        else if (type == ("int64"))
+                        {
+                            value = reader.GetInt64(i) + "";
+                        }
                         else if (type.Contains("int"))
                         {
                             value = reader.GetInt32(i) + "";
@@ -121,15 +129,19 @@ namespace Qx.Tools.CommonExtendMethods
                             //    value = reader.GetInt32(i) + "";
                             //}
                         }
+                        else if (type.Contains("clob"))
+                        {
+                            value = reader.GetOracleClob(i).Value + "";
+                        }
                         else if (type.Contains("float"))
                         {
                             value = reader.GetDouble(i) + "";
                         }
-                        else if (type.Contains("datetime"))
+                        else if (type.Contains("datetime")|| type.Contains("date"))
                         {
                             value = reader.GetDateTime(i).ToString("yyyy-MM-dd HH:mm") + "";
                         }
-                        else if (type.Contains("char") || type.Contains("text"))
+                        else if (type.Contains("char") || type.Contains("text") || type.Contains("varchar"))
                         {
                             value = reader.GetString(i) + "";
                         }

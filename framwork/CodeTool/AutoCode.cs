@@ -88,11 +88,8 @@ if (!reportId.HasValue())
   {10}
   InitReport(#quote{7}#quote, #quote{8}#quote, #quote#quote, true,#quote{9}#quote);
   return ReportJson();
-#right
-
-
-", _area, _controller, _action, _reportId, _params, _pageIndex,
-                    _perCount, _reportName, _addLink, _dbKey, searchCfg);
+#right", _area, _controller, _action, _reportId, _params, _pageIndex,
+                  _perCount, _reportName, _addLink, _dbKey, searchCfg);
             }
         }
 

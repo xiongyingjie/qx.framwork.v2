@@ -1,9 +1,17 @@
-﻿using Qx.Account.WeixinPay.lib;
+﻿using Qx.Account.Configs;
+using Qx.Account.WeixinPay.lib;
 
 namespace Qx.Account.WeixinPay.business
 {
-    public class DownloadBill
+    public class DownloadBill<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         /***
          * 下载对账单完整业务流程逻辑
          * @param bill_date 下载对账单的日期（格式：20140603，一次只能下载一天的对账单）
@@ -16,14 +24,14 @@ namespace Qx.Account.WeixinPay.business
          */
         public static string Run(string bill_date, string bill_type)
         {
-            Log.Info("DownloadBill", "DownloadBill is processing...");
+            Log<T>.Info("DownloadBill", "DownloadBill is processing...");
 
-            WxPayData data = new WxPayData();
+            WxPayData<T> data = new WxPayData<T>();
             data.SetValue("bill_date", bill_date);//账单日期
             data.SetValue("bill_type", bill_type);//账单类型
-            WxPayData result = WxPayApi.DownloadBill(data);//提交下载对账单请求给API，接收返回结果
+            WxPayData<T> result = WxPayApi<T>.DownloadBill(data);//提交下载对账单请求给API，接收返回结果
 
-            Log.Info("DownloadBill", "DownloadBill process complete, result : " + result.ToXml());
+            Log<T>.Info("DownloadBill", "DownloadBill process complete, result : " + result.ToXml());
             return result.ToPrintStr();
         }
     }

@@ -114,6 +114,10 @@
       <Project>{39913dc6-dbb8-41a8-a397-d531d4549aa1}</Project>
       <Name>Qx.Tools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Qx.Wechat\qx.wechat.csproj">
+      <Project>{83D95916-E07F-4309-A0BC-DE7BEF970D6E}</Project>
+      <Name>qx.wechat</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

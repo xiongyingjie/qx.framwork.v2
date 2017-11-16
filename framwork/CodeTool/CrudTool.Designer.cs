@@ -31,8 +31,8 @@ namespace CodeTool
         private void InitializeComponent()
         {
             this.rtb_output = new System.Windows.Forms.RichTextBox();
-            this.bt_exit = new System.Windows.Forms.Button();
-            this.bt_check = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lv_colums = new System.Windows.Forms.ListView();
             this.label3 = new System.Windows.Forms.Label();
             this.gp_addReport = new System.Windows.Forms.GroupBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
@@ -78,13 +78,14 @@ namespace CodeTool
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssl_State = new System.Windows.Forms.ToolStripStatusLabel();
             this.p_addReport = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtb_jsQuery = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tv_dataBase = new System.Windows.Forms.TreeView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.pg_colum = new System.Windows.Forms.PropertyGrid();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lv_colums = new System.Windows.Forms.ListView();
+            this.bt_exit = new System.Windows.Forms.Button();
+            this.bt_check = new System.Windows.Forms.Button();
+            this.groupBox2.SuspendLayout();
             this.gp_addReport.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -98,7 +99,6 @@ namespace CodeTool
             this.p_addReport.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // rtb_output
@@ -109,24 +109,27 @@ namespace CodeTool
             this.rtb_output.TabIndex = 24;
             this.rtb_output.Text = "";
             // 
-            // bt_exit
+            // groupBox2
             // 
-            this.bt_exit.Location = new System.Drawing.Point(841, 305);
-            this.bt_exit.Name = "bt_exit";
-            this.bt_exit.Size = new System.Drawing.Size(75, 44);
-            this.bt_exit.TabIndex = 25;
-            this.bt_exit.Text = "退出";
-            this.bt_exit.UseVisualStyleBackColor = true;
+            this.groupBox2.Controls.Add(this.lv_colums);
+            this.groupBox2.Location = new System.Drawing.Point(9, 364);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(931, 282);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "2.配置字段  (a隐藏,d显示,w上移，s下移,t控件类型,e编辑标签,r设置正则式,q查询类型,f下拉选项)";
             // 
-            // bt_check
+            // lv_colums
             // 
-            this.bt_check.Location = new System.Drawing.Point(736, 305);
-            this.bt_check.Name = "bt_check";
-            this.bt_check.Size = new System.Drawing.Size(75, 44);
-            this.bt_check.TabIndex = 26;
-            this.bt_check.Text = "4.提交";
-            this.bt_check.UseVisualStyleBackColor = true;
-            this.bt_check.Click += new System.EventHandler(this.bt_check_Click);
+            this.lv_colums.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lv_colums.HoverSelection = true;
+            this.lv_colums.Location = new System.Drawing.Point(3, 17);
+            this.lv_colums.Name = "lv_colums";
+            this.lv_colums.Size = new System.Drawing.Size(925, 262);
+            this.lv_colums.TabIndex = 0;
+            this.lv_colums.UseCompatibleStateImageBehavior = false;
+            this.lv_colums.SelectedIndexChanged += new System.EventHandler(this.lv_colums_SelectedIndexChanged);
+            this.lv_colums.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lv_colums_KeyDown);
             // 
             // label3
             // 
@@ -545,7 +548,7 @@ namespace CodeTool
             // 
             // p_addReport
             // 
-            this.p_addReport.Controls.Add(this.richTextBox1);
+            this.p_addReport.Controls.Add(this.rtb_jsQuery);
             this.p_addReport.Controls.Add(this.groupBox1);
             this.p_addReport.Controls.Add(this.groupBox6);
             this.p_addReport.Controls.Add(this.bt_exit);
@@ -555,13 +558,13 @@ namespace CodeTool
             this.p_addReport.Size = new System.Drawing.Size(936, 362);
             this.p_addReport.TabIndex = 29;
             // 
-            // richTextBox1
+            // rtb_jsQuery
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(726, 20);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(197, 279);
-            this.richTextBox1.TabIndex = 24;
-            this.richTextBox1.Text = "";
+            this.rtb_jsQuery.Location = new System.Drawing.Point(656, 20);
+            this.rtb_jsQuery.Name = "rtb_jsQuery";
+            this.rtb_jsQuery.Size = new System.Drawing.Size(267, 279);
+            this.rtb_jsQuery.TabIndex = 24;
+            this.rtb_jsQuery.Text = "";
             // 
             // groupBox1
             // 
@@ -589,41 +592,39 @@ namespace CodeTool
             this.groupBox6.Controls.Add(this.pg_colum);
             this.groupBox6.Location = new System.Drawing.Point(418, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(283, 340);
+            this.groupBox6.Size = new System.Drawing.Size(204, 340);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "3.编辑字段属性";
             // 
             // pg_colum
             // 
+            this.pg_colum.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.pg_colum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg_colum.Location = new System.Drawing.Point(3, 17);
             this.pg_colum.Name = "pg_colum";
-            this.pg_colum.Size = new System.Drawing.Size(277, 320);
+            this.pg_colum.Size = new System.Drawing.Size(198, 320);
             this.pg_colum.TabIndex = 0;
             this.pg_colum.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.pg_colum_PropertyValueChanged);
             // 
-            // groupBox2
+            // bt_exit
             // 
-            this.groupBox2.Controls.Add(this.lv_colums);
-            this.groupBox2.Location = new System.Drawing.Point(9, 364);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(931, 282);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "2.配置字段  (a隐藏,d显示,w上移，s下移,t控件类型,e编辑标签,r设置正则式,q查询类型,f下拉选项)";
+            this.bt_exit.Location = new System.Drawing.Point(816, 305);
+            this.bt_exit.Name = "bt_exit";
+            this.bt_exit.Size = new System.Drawing.Size(75, 44);
+            this.bt_exit.TabIndex = 25;
+            this.bt_exit.Text = "退出";
+            this.bt_exit.UseVisualStyleBackColor = true;
             // 
-            // lv_colums
+            // bt_check
             // 
-            this.lv_colums.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lv_colums.HoverSelection = true;
-            this.lv_colums.Location = new System.Drawing.Point(3, 17);
-            this.lv_colums.Name = "lv_colums";
-            this.lv_colums.Size = new System.Drawing.Size(925, 262);
-            this.lv_colums.TabIndex = 0;
-            this.lv_colums.UseCompatibleStateImageBehavior = false;
-            this.lv_colums.SelectedIndexChanged += new System.EventHandler(this.lv_colums_SelectedIndexChanged);
-            this.lv_colums.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lv_colums_KeyDown);
+            this.bt_check.Location = new System.Drawing.Point(692, 305);
+            this.bt_check.Name = "bt_check";
+            this.bt_check.Size = new System.Drawing.Size(75, 44);
+            this.bt_check.TabIndex = 26;
+            this.bt_check.Text = "4.提交";
+            this.bt_check.UseVisualStyleBackColor = true;
+            this.bt_check.Click += new System.EventHandler(this.bt_check_Click);
             // 
             // CrudTool
             // 
@@ -639,8 +640,9 @@ namespace CodeTool
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.p_addReport);
             this.Name = "CrudTool";
-            this.Text = "快速增删改 V1.0";
+            this.Text = "js查询生成器 V1.0";
             this.Load += new System.EventHandler(this.CrudTool_Load);
+            this.groupBox2.ResumeLayout(false);
             this.gp_addReport.ResumeLayout(false);
             this.gp_addReport.PerformLayout();
             this.groupBox12.ResumeLayout(false);
@@ -659,7 +661,6 @@ namespace CodeTool
             this.p_addReport.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,6 +722,6 @@ namespace CodeTool
         private System.Windows.Forms.Panel p_manageReport;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel p_addReport;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb_jsQuery;
     }
 }

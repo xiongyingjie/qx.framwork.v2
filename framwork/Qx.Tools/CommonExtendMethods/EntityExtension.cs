@@ -13,8 +13,7 @@ namespace Qx.Tools.CommonExtendMethods
 
         public static bool Saved(this DbContext db)
         {
-            db.SaveChanges();
-            return true;
+            return db.SaveChanges()>0;
         }
 
         /*

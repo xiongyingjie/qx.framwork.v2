@@ -189,32 +189,38 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度	允许空	默认�
         }
         protected void ListViewBinding(ListView lv, List<string> head, List<List<string>> body)//  为ListView绑定数据源//static
         {
-            if (head != null)
+          
             {
-                lv.View = View.Details;
-                lv.GridLines = true;//显示网格线
-                lv.MultiSelect = false;//多选
-                lv.FullRowSelect = true;//选中整行
-                lv.Items.Clear();//所有的项
-                lv.Columns.Clear();//标题
-                for (int i = 0; i < head.Count; i++)
+                if (head != null)
                 {
-                    lv.Columns.Add(head[i]);//增加标题
-                }
-                var listBody = new List<ListViewItem>();
-                for (int i = 0; i < body.Count; i++)
-                {
-                    ListViewItem lvi = new ListViewItem(body[i][0].ToString());
-                    for (int j = 1; j < body[i].Count; j++)
+                    lv.View = View.Details;
+                    lv.GridLines = true;//显示网格线
+                    lv.MultiSelect = false;//多选
+                    lv.FullRowSelect = true;//选中整行
+                    lv.Items.Clear();//所有的项
+                    lv.Columns.Clear();//标题
+                    for (int i = 0; i < head.Count; i++)
                     {
-                        // lvi.ImageIndex = 0;
-                        lvi.SubItems.Add(body[i][j]);
+                        lv.Columns.Add(head[i]);//增加标题
                     }
-                    listBody.Add(lvi);
+                    var listBody = new List<ListViewItem>();
+                    for (int i = 0; i < body.Count; i++)
+                    {
+                        ListViewItem lvi = new ListViewItem(body[i][0].ToString());
+                        for (int j = 1; j < body[i].Count; j++)
+                        {
+                            // lvi.ImageIndex = 0;
+                            lvi.SubItems.Add(body[i][j]);
+                        }
+                        listBody.Add(lvi);
+                    }
+                    lv.Items.AddRange(listBody.ToArray());
+                    lv.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);//调整列的宽度
                 }
-                lv.Items.AddRange(listBody.ToArray());
-                lv.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);//调整列的宽度
             }
+        
+
+        
 
         }
 

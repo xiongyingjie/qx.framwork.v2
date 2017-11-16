@@ -63,7 +63,7 @@ namespace CodeTool
             // ListViewBinding(lv_reports, REPORT_HEADER, SQL_REPORTS(tb_queryReportId.Text,tb_queryReportName.Text).ExecuteQuery());
        
         }
-
+        private CrudTool.Config _cfg;
         private void tv_dataBase_AfterExpand(object sender, TreeViewEventArgs e)
         {
 
@@ -99,10 +99,18 @@ namespace CodeTool
                        // TipInfo("已更换数据库"+ dbName);
                     }
                 }
-                e.Node.Nodes.AddRange(
-                    NewNodesWithEmptyChild(SQL_TABLE().ExecuteQuery(e.Node.Text).
-                        Select(row
-                            => row[0]).ToArray()));
+                var temp = SQL_TABLE().ExecuteQuery(e.Node.Text).
+                       Select(row
+                           => new { name = row[0], note = row[1] }).ToList();
+                if (temp.Any())
+                {
+                    _cfg = new CrudTool.Config();
+                    var _t = temp.FirstOrDefault();
+                    _cfg.table_name = _t.name;
+                    _cfg.table_note = _t.note;
+                    e.Node.Nodes.AddRange(
+                        NewNodesWithEmptyChild(temp.Select(a => a.note.HasValue() ? a.name : a.name + "#").ToArray()));
+                }
                 // MessageBox.Show("正在获取数据表" + e.Node.Text + e.Action.ToString());
             }
             if (e.Node.Level == 2)
@@ -110,12 +118,13 @@ namespace CodeTool
                 var connStr = ConnectionString(e.Node.Parent.Text);
                 if (connStr.HasValue())
                 {
+
                     e.Node.Nodes.AddRange(
                         NewNodes(SQL_TABLECOLUMN(e.Node.Text).ExecuteReader2(connStr).
                             Select(row
                                 => new string[]
                                 {
-                                    row[1],
+                                    row[2].HasValue()?row[1]:row[1]+"#",
                                     string.Format("{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10};{11}",
                                         DateTime.Now.Random(),
                                         row[1], row[2], row[3],
@@ -125,7 +134,6 @@ namespace CodeTool
                                 }).ToArray()));
 
                 }
-
 
             }
         }
@@ -326,7 +334,7 @@ namespace CodeTool
                             split_flag = "";
                         }
                         //加入tables
-                        tableList.AddIfNotExsit(obj.TableName);
+                        tableList.AddIfNotExsit(obj.TableName, ColumSettings.FirstOrDefault(a=>a.IsPrimaryKey).ColumName);
                         //加入relation
                         if (obj.ForeignTable.HasValue())
                         {
@@ -571,7 +579,21 @@ function List() {{
                             obj.ColumNote, obj.ColumName);
                     }
                     break;
-                    defaut:
+                case FormControlType.Hide:
+                    {
+                        //function hide(name,value)
+                        html += string.Format("hide('{0}')",
+                            obj.ColumName);
+                    }
+                    break;
+                case FormControlType.HideTime:
+                    {
+                        //function hide(name,value)
+                        html += string.Format("hideTime('{0}')",
+                            obj.ColumName);
+                    }
+                    break;
+                defaut:
                     {
                         html += string.Format("//暂不支持该类型控件的生成" + obj.ControlType.ToString() + "\n");
                     }
@@ -657,7 +679,21 @@ function List() {{
                             obj.ColumNote, obj.ColumName);
                     }
                     break;
-                    defaut:
+                case FormControlType.Hide:
+                    {
+                        //function hide(name,value)
+                        html += string.Format("hide('{0}')",
+                            obj.ColumName);
+                    }
+                    break;
+                case FormControlType.HideTime:
+                    {
+                        //function hide(name,value)
+                        html += string.Format("hideTime('{0}')",
+                            obj.ColumName);
+                    }
+                    break;
+                defaut:
                     {
                         html += string.Format("//暂不支持该类型控件的生成" + obj.ControlType.ToString() + "\n");
                     }
@@ -693,7 +729,9 @@ function List() {{
                 obj.DefaultValue = item[10].Text.TrimString();
                 obj.ForeignKey = item[11].Text.TrimString();
                 obj.ForeignTable = item[12].Text.TrimString();
-                obj.ControlType = item[13].Text.TrimString().ToControlType();
+                obj.ControlType = obj.IsHidden?
+                    (obj.Type.ToLower().Contains("datetime") ? FormControlType.HideTime:FormControlType.Hide):
+                    item[13].Text.TrimString().ToControlType();
                 obj.Regex = item[14].Text.TrimString();
                 obj.ShowControlType = item[15].Text.TrimString().ToControlType();
 
@@ -777,7 +815,7 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
                 }
             }
             FreshListView(lv_colums);
-            Step2();
+            Step2(ck_pre.Checked);
         }
         private void lv_colums_KeyDown(object sender, KeyEventArgs e)
         {
@@ -938,7 +976,7 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
                 }
                 //刷新
                 FreshListView(lv_colums);
-                Step2();
+                Step2(ck_pre.Checked);
             }
 
         }

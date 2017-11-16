@@ -126,12 +126,13 @@ namespace CodeTool
         //private string _cfg.db_name = "";
         private void CrudTool_Load(object sender, EventArgs e)
         {
-           
-         
+
             // 初始化状态
             tb_form_Id.Visible = false;
              //创建根节点
             tv_dataBase.Nodes.Add(NewNodeWithEmptyChild("数据源"));
+            tv_dataBase.Nodes[0].Expand();
+
         }
         private void tv_dataBase_AfterExpand(object sender, TreeViewEventArgs e)
         {
@@ -162,7 +163,7 @@ namespace CodeTool
                     else
                     {
                         DbName = e.Node.Text;
-                        TipInfo("已更换数据库" + DbName);
+                       // TipInfo("已更换数据库" + DbName);
                     }
                 }
                 var temp = SQL_TABLE().ExecuteQuery(e.Node.Text).
@@ -375,10 +376,12 @@ namespace CodeTool
             {
                 return;
             }
+            //查询生成器
+            rtb_jsQuery.Text = ToJsQuery(rows, _cfg.db_name);
             //报表
-            _cfg.report =ReportTool.ToReport(rows.Select(a => a.CopyToAll<ReportColumSetting>()).ToList(), _cfg.db_name);
+         //   _cfg.report =ReportTool.ToReport(rows.Select(a => a.CopyToAll<ReportColumSetting>()).ToList(), _cfg.db_name);
             //表单
-            _cfg.form = FormTool2.ToForm(rows.Select(a=>a.CopyToAll<FormColumSetting>()).ToList(),DbName);
+       //     _cfg.form = FormTool2.ToForm(rows.Select(a=>a.CopyToAll<FormColumSetting>()).ToList(),DbName);
             var tableList = new List<TableModel>();
             var columnIndex = 0;
             foreach (var obj in rows)
@@ -409,6 +412,203 @@ namespace CodeTool
 
         }
 
+        private string ToJsQuery(List<FormReportColumSetting> rows, string db_name)
+        {
+
+                var tableList = new List<TableModel>();
+            var tableNotAutoJoinList = new List<TableModel>();
+            var queryConditionList = new List<QueryCondition>();
+
+                var tableRelationList = new List<TableRelationModel>();
+              
+                var reportDataBase = db_name;
+                var jsQeury = new List<string>();
+             
+                var columnIndex = 0;
+            var tableIndex = 0;
+            var gp = rows.GroupBy(a => a.TableName).OrderByDescending(b => b.AsEnumerable().Count(bb => bb.ForeignKey.HasValue()));
+            gp.ToList().ForEach(g =>
+            {
+                var currntTableName = g.Key;//表名称
+                var currntTableColumns = g.AsEnumerable();//当前表的列集合
+                if (tableIndex == 0)
+                {//主表
+                    jsQeury.Add(string.Format("'{0}.{1}@list'", reportDataBase, currntTableName));
+                }
+                else
+                {
+                   
+                    var pk = rows.FirstOrDefault(t => t.TableName == g.Key && t.IsPrimaryKey);
+                    var pkName = pk == null ? "请勾选" + currntTableName + "的主键" : pk.ColumName;
+                    string fkName;
+                    string fkTableName;
+                    //找该表引用的表
+                    var currentTableQuote = currntTableColumns.Where(c => c.ForeignKey.HasValue()).ToList();
+                    if (currentTableQuote.Any())
+                    {//找到有引用的表-寻找引用表
+               
+                        var quotedTable = currentTableQuote.FirstOrDefault(t => gp.Select(gg=>gg.Key).Contains(t.ColumName));
+                         if (quotedTable == null)
+                        {//在勾选的表中没有匹配到
+                            fkTableName = "目标表";
+                            fkName = "目标列";
+                        }
+                        else
+                        {
+                            fkName = quotedTable.ColumName;
+                            fkTableName = quotedTable.TableName;
+                        }
+                    }
+                    else
+                    {//未找到有引用的表
+                        fkTableName = "目标表";
+                        fkName = "目标列";
+                    }
+                    jsQeury.Add(string.Format(".jn('{0}.{1}','{2}.{3}')",
+                        currntTableName, pkName, fkTableName, fkName
+                        ));
+                }
+                tableIndex++;
+            });
+            //查询条件
+                rows.Where(o => o.QuerType != QueryTypeEnum.None).ToList().ForEach(oo =>
+                {
+                    var tp = new QueryCondition()
+                    {
+                        ColumName = oo.ColumName,
+                        TableName = oo.TableName,
+                        QueryType = oo.QuerType
+                    };
+                    jsQeury.Add(tp.ToJsString(0));
+
+                }
+                );
+
+            return jsQeury.PackString("");
+//                foreach (var obj in rows)
+//                {
+
+
+            //                //加入tables
+            //                    var hasPk = rows.FirstOrDefault(a => a.IsPrimaryKey);
+            //                    if (hasPk != null)
+            //                    {
+            //                        var columName = hasPk.ColumName;
+            //                        if (columName != null)
+            //                        {
+            //                            tableList.AddIfNotExsit(obj.TableName, columName);
+
+            //                            //加入relation
+            //                            if (obj.ForeignTable.HasValue())
+            //                            {
+            //                                tableRelationList.AddIfNotExsit(obj.TableName, obj.ColumName, obj.ColumNote,
+            //                                    obj.ForeignTable, obj.ForeignKey);
+            //                            }
+            //                            else
+            //                            {
+            //                                tableNotAutoJoinList.AddIfNotExsit(obj.TableName, columName);
+
+
+            //                            }
+            //                        }
+            //                    }
+
+            //                    //计数累加
+            //                columnIndex++;
+            //                }
+
+            //                //生成jn
+            //                tableRelationList.ForEach(r =>
+            //                {
+            //                    jsQeury.Add(r.ToJsString()); //连表
+
+            //                });
+            //            //生成jn
+            //            tableNotAutoJoinList.ForEach(r =>
+            //            {
+            //                if(tableRelationList.All(g => g.ColumName != r.TableName))
+            //                jsQeury.Add(string.Format(".jn('{0}.{1}','目标表.目标列')", r.TableName,r.PkName));
+
+            //            });
+            //            //生成查询条件
+            //            for (var i = 0; i < queryConditionList.Count; i++)
+            //                {
+            //                    var t = queryConditionList[i];
+            //                    if (t.CanQuery)
+            //                    {
+            //                    jsQeury.Add(t.ToJsString(i));//加条件
+
+            //                   }
+            //                }
+            //            //final
+            //            var allTable = tableRelationList;;
+            //            tableNotAutoJoinList.ForEach(a =>
+            //            {
+            //                if (allTable.All(item => item.TableName != a.TableName))
+            //                {
+            //                    allTable.Add(new TableRelationModel() { TableName = a.TableName, PkName = a.PkName,ForeginTableName = "目标表",ForeginColumName = "目标列"});
+            //                }
+            //            });
+
+
+            //            if (!allTable.Any())
+            //            {
+            //                return "请在左侧勾选数据表";
+            //            }
+            //            else if (allTable.Count() == 1)
+            //            {
+            ////单表
+            //                return string.Format("'{0}.{1}@list'", reportDataBase, (tableNotAutoJoinList.Any()
+            //                    ? tableNotAutoJoinList[0].TableName
+            //                    : tableRelationList[0].TableName));
+            //            }
+            //            else
+            //            {//多表
+            //                if (tableNotAutoJoinList.Any() || tableRelationList.Any())
+            //                {
+            //                    if (tableRelationList.Any())
+            //                    {//有关系
+
+            //                        return string.Format("'{0}.{1}@list'{2}", reportDataBase,
+            //                        tableRelationList[0].TableName, jsQeury.Where(a => !a.Contains(tableRelationList[0].ToJsString())).
+            //                        //Where(a => !a.Contains(string.Format(".jn('{0}.{1}','目标表.目标列')", tableRelationList[0].TableName, tableRelationList[0].ColumName))).
+            //                                ToList().PackString(""));
+
+            //                        //if (tableRelationList.Count() == allTable.Count)
+            //                        //{
+
+
+            //                        //}
+            //                        //else
+            //                        //{
+            //                        //    ////部分有关系-把有关系的放前面且过滤掉第一个
+            //                        //    //return string.Format("'{0}.{1}@list'{2}", reportDataBase,
+            //                        //    //    tableRelationList[0].TableName, jsQeury.
+            //                        //    //         Where(a => !a.Contains(tableRelationList[0].ToJsString())).
+            //                        //    //    ToList().PackString(""));
+            //                        //}
+
+
+            //                    }
+            //                    else
+            //                    {//均无关系
+            //                        return string.Format("'{0}.{1}@list'{2}", reportDataBase,
+            //                           tableNotAutoJoinList[0].TableName, jsQeury.
+            //                           Where(a => !a.Contains(string.Format(".jn('{0}.{1}','目标表.目标列')", tableNotAutoJoinList[0].TableName, tableNotAutoJoinList[0].PkName))).
+            //                           ToList().PackString(""));
+            //                    }
+            //                }
+            //            }
+
+
+
+
+        //    return "请在左侧勾选数据表";
+
+
+
+
+        }
 
         private void lv_colums_SelectedIndexChanged(object sender, EventArgs e)
         {

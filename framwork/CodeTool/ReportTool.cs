@@ -47,7 +47,7 @@ namespace CodeTool
             //创建根节点
             tv_dataBase.Nodes.Clear();
             tv_dataBase.Nodes.Add(NewNodeWithEmptyChild("数据源"));
-           // tv_dataBase.Nodes[0].Expand();
+            tv_dataBase.Nodes[0].Expand();
             //加载报表
            // ListViewBinding(lv_reports, REPORT_HEADER, SQL_REPORTS(tb_queryReportId.Text,tb_queryReportName.Text).ExecuteQuery());
             //加载连接字符串
@@ -62,8 +62,7 @@ namespace CodeTool
             }
         }
 
-        
-        //勾选状态发生更改
+         //勾选状态发生更改
         private void tv_dataBase_AfterCheck(object sender, TreeViewEventArgs e)
         {
             
@@ -74,7 +73,8 @@ namespace CodeTool
             }
             #endregion
             if (e.Node.Level == 2)
-            {
+            {//勾选表
+               
                 var children = e.Node.Nodes;
                 foreach (TreeNode child in children)
                 {
@@ -83,35 +83,27 @@ namespace CodeTool
                 var lastChild = children[children.Count - 1];
                 Step1(lastChild, e.Node.Checked);
             }
+            if (e.Node.Level == 3)
+            {//勾选字段
+               Step1(null, null);
+            }
             #region 自动选择数据源
             cb_connString.SelectedIndex = cb_connString.Items.IndexOf(DbName);
             #endregion
+
+         
         }
 
-        void Step1(TreeNode lastChild, bool checkOrUnChek)
+        void Step1(TreeNode lastChild, bool? checkOrUnChek)
         {
-            new Thread(() =>
+            var sequence = 1;
+            var lvBody = new List<List<string>>();
+            TreeNodes.ForEach(node =>
             {
-                Cursor = Cursors.WaitCursor;
-                while (true)
+                if (node.Checked && node.Level == 3)
                 {
-                    if (lastChild.Checked == checkOrUnChek)
-                    {
-//检测是否完成
-                        break;
-                    }
-                    Thread.Sleep(100);
-                } //恢复鼠标
-                Cursor = Cursors.Default;
-
-                var sequence = 1;
-                var lvBody = new List<List<string>>();
-                TreeNodes.ForEach(node =>
-                {
-                    if (node.Checked && node.Level == 3)
-                    {
-                        var nodeTag = node.Tag.ToString().UnPackString(';');
-                        var row = new List<string>
+                    var nodeTag = node.Tag.ToString().UnPackString(';');
+                    var row = new List<string>
                         {
                             nodeTag[0],
                             nodeTag[1],
@@ -123,10 +115,10 @@ namespace CodeTool
                             nodeTag[6],
                             QueryTypeEnum.None.ToString()
                         };
-                        lvBody.Add(row);
-                    }
-                });
-                ListViewBinding(lv_colums, new List<string>()
+                    lvBody.Add(row);
+                }
+            });
+            ListViewBinding(lv_colums, new List<string>()
                 {
                     "GUID",
                     "列名",
@@ -139,9 +131,8 @@ namespace CodeTool
                     "查询条件"
                 }, lvBody);
 
-                //执行第二步
-                Step2();
-            }).Start();
+            //执行第二步
+            Step2();
         }
 
        public static ReportModel ToReport(List<ReportColumSetting> rows,string db_name)
@@ -172,7 +163,9 @@ namespace CodeTool
 
                 }
                 //加入tables
-                tableList.AddIfNotExsit(obj.TableName);
+                var hasPk = rows.FirstOrDefault(a => a.IsPrimaryKey);
+         
+               tableList.AddIfNotExsit(obj.TableName , hasPk != null?hasPk.ColumName:"目标列名");
                 //加入relation
                 if (obj.ForeignTable.HasValue())
                 {
@@ -556,7 +549,7 @@ namespace CodeTool
             if (_checkState == CheckStateEnum.CheckPass)
             {
                 ChangeStateTo(CheckStateEnum.NeverCheck);
-                if (UpdateReport(FormReport))
+                if (UpdateReport(FormReport)&&ck_autocode.Checked)
                 {
                     var f = new AutoCode(tb_reportId.Text,tb_reportName.Text,tb_deafultParam.Text,tb_perCount.Text,cb_connString.Text);
                     f.Show();

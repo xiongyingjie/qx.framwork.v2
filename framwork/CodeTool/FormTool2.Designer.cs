@@ -277,6 +277,7 @@ namespace CodeTool
             // 
             // pg_colum
             // 
+            this.pg_colum.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.pg_colum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg_colum.Location = new System.Drawing.Point(3, 17);
             this.pg_colum.Name = "pg_colum";
@@ -360,7 +361,7 @@ namespace CodeTool
             this.groupBox2.Size = new System.Drawing.Size(829, 239);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "2.配置字段  (w上移，s下移,t类型,c详情类型,e编辑标签,r设置正则式)";
+            this.groupBox2.Text = "2.配置字段  (a隐藏,d显示,w上移，s下移,t类型,c详情类型,e编辑标签,r设置正则式)";
             // 
             // lv_colums
             // 
@@ -488,7 +489,7 @@ namespace CodeTool
             this.MinimizeBox = false;
             this.Name = "FormTool2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "表单生成器 V1.1.0.46";
+            this.Text = "表单生成器 V1.1.0.47";
             this.Load += new System.EventHandler(this.FormTool2_Load);
             this.p_addReport.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);

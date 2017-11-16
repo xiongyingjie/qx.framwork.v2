@@ -20,16 +20,16 @@ namespace CodeTool.Extension
        {
            return list.Any(a=>a.TableName== tableName);
        }
-        public static List<TableModel> Add(this List<TableModel> list, string tableName)
+        public static List<TableModel> Add(this List<TableModel> list, string tableName, string pkName)
         {
-            list.Add(new TableModel() {TableName = tableName});
+            list.Add(new TableModel() {TableName = tableName, PkName = pkName });
             return list;
         }
-        public static List<TableModel> AddIfNotExsit(this List<TableModel> list, string tableName)
+        public static List<TableModel> AddIfNotExsit(this List<TableModel> list, string tableName, string pkName)
         {
             if (!list.Contains(tableName))
             {
-                list.Add(tableName);
+                list.Add(tableName, pkName);
             }
             return list;
         }

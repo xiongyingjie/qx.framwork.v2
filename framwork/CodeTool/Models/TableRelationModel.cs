@@ -17,5 +17,10 @@ namespace CodeTool.Models
             return string.Format("{0}.{1}={2}.{3} and", TableName,
                  ColumName, ForeginTableName, ForeginColumName);
         }
+        public  string ToJsString()
+        {
+            return string.Format(".jn('{0}.{1}','{2}.{3}')", TableName,
+                 ColumName, ForeginTableName, ForeginColumName);
+        }
     }
 }

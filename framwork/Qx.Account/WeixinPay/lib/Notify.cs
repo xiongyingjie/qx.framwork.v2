@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Web;
+using Qx.Account.Configs;
 
 namespace Qx.Account.WeixinPay.lib
 {
@@ -8,8 +9,15 @@ namespace Qx.Account.WeixinPay.lib
     /// 主要负责接收微信支付后台发送过来的数据，对数据进行签名验证
     /// 子类在此类基础上进行派生并重写自己的回调处理过程
     /// </summary>
-    public class Notify
+    public class Notify<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         public HttpContextBase page {get;set;}
         public Notify(HttpContextBase page)
         {
@@ -20,7 +28,7 @@ namespace Qx.Account.WeixinPay.lib
         /// 接收从微信支付后台发送过来的数据并验证签名
         /// </summary>
         /// <returns>微信支付后台返回的数据</returns>
-        public WxPayData GetNotifyData()
+        public WxPayData<T> GetNotifyData()
         {
             //接收从微信后台POST过来的数据
             System.IO.Stream s = page.Request.InputStream;
@@ -35,10 +43,10 @@ namespace Qx.Account.WeixinPay.lib
             s.Close();
             s.Dispose();
 
-            Log.Info(this.GetType().ToString(), "Receive data from WeChat : " + builder.ToString());
+            Log<T>.Info(this.GetType().ToString(), "Receive data from WeChat : " + builder.ToString());
 
             //转换数据格式并验证签名
-            WxPayData data = new WxPayData();
+            WxPayData<T> data = new WxPayData<T>();
             try
             {
                 data.FromXml(builder.ToString());
@@ -46,15 +54,15 @@ namespace Qx.Account.WeixinPay.lib
             catch(WxPayException ex)
             {
                 //若签名错误，则立即返回结果给微信支付后台
-                WxPayData res = new WxPayData();
+                WxPayData<T> res = new WxPayData<T>();
                 res.SetValue("return_code", "FAIL");
                 res.SetValue("return_msg", ex.Message);
-                Log.Error(this.GetType().ToString(), "Sign check error : " + res.ToXml());
+                Log<T>.Error(this.GetType().ToString(), "Sign check error : " + res.ToXml());
                 page.Response.Write(res.ToXml());
                 page.Response.End();
             }
 
-            Log.Info(this.GetType().ToString(), "Check sign success");
+            Log<T>.Info(this.GetType().ToString(), "Check sign success");
             return data;
         }
 

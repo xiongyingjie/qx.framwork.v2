@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
@@ -198,86 +199,101 @@ namespace qx.wechat.Services
 
         #endregion
 
-        public string RefreshToken()
+        public string RefreshToken<T>() where T : new()
         {
- 
-
-            Param.Add("corpid",Setting.EntWxConfig.CORP_ID);
-            Param.Add("corpsecret", Setting.EntWxConfig.APP_SECRET);
+            var cfg = (IEntWxApp)new T();
+            var p = new Dictionary<string, object>();
+            p.Add("corpid",Setting.EntWxConfig.CORP_ID);
+            p.Add("corpsecret", cfg.AppSecret);
          
-            var content = ApiHttpGet(Setting.EntWxConfig.URL_HOST, "gettoken", Param, "RefreshToken");
+            var content = ApiHttpGet(Setting.EntWxConfig.URL_HOST, "gettoken", p, "RefreshToken");
             if (content == null)
             {
                 throw new Exception("获取access_token失败!");
             }
             var m = content.Deserialize<access_token_model>();
-            SaveToken(m.access_token, m.expires_in);
+            SaveToken<T>(m.access_token, m.expires_in);
             return m.access_token;
         }
-        #region 发消息
-        public bool Send_Card_Msg(string touser, string url,
-                                        string title, string description)
+        #region 发消息 toparty
+        public bool Send_Card_Msg<T>(string touser, string url,
+                                        string title, string description) where T : new()
         {
-          
-            Param.Add("touser", touser);
-            Param.Add("msgtype", "textcard");
-            Param.Add("agentid", Setting.EntWxConfig.APP_ID);
-            Param.Add("textcard", new
+            var cfg = (IEntWxApp) new T();
+            var p = new Dictionary<string, object>();
+            p.Add("touser", touser);
+            p.Add("msgtype", "textcard");
+            p.Add("agentid", cfg.AppId);
+            if (url.HasValue())
             {
-                title = "领奖通知",
-                description = "<div class=\"gray\">2016年9月26日</div> <div class=\"normal\">恭喜你抽中iPhone 7一台，领奖码：xxxx</div><div class=\"highlight\">请于2016年10月10日前联系行政同事领取</div>",
-                url = url,
-                btntxt ="更多"
-            });
+                p.Add("textcard", new
+                {
+                    title = title,
+                    description = description,
+                    url = cfg.FrontHost+url,
+                    btntxt = "详情"
+                });
+            }
+            else
+            {
+                p.Add("textcard", new
+                {
+                    title = title,
+                    description = description,
+                    url = url,
+                });
+            }
+           
           
 
-            var content = ApiJsonHttpPost(Setting.EntWxConfig.URL_HOST, "message/send", Param, "MsgSend", "access_token=" + GetToken());
+            var content = ApiJsonHttpPost(Setting.EntWxConfig.URL_HOST, "message/send", p, "MsgSend", "access_token=" + GetToken<T>());
             return content.Deserialize<template_msg_result>().errcode == 0;
 
         }
 
         public bool SendTemplateMsg(string toWho,string templateId,string click_url,object templateData)
         {
-            var action = "message/template/send";
+            throw new NotImplementedException();
+            //var action = "message/template/send";
 
-            var obj = new
-            {
+            //var obj = new
+            //{
 
-                access_token = GetToken(),
-                touser = toWho,// "oksMlwPF5Y1KQvoi8AklF-lUwnYQ",
-                template_id = templateId,// "aP5WSx_hkcCEbDJSu1Takrch4tTB1-3YkpRI6ESjeeE",
-                url = click_url,// "http://wx.52xyj.cn/WeChat/BookTiketWeb/MyWallet",
-                data= templateData// = new
-                //{
-                //    first = new
-                //    {
-                //        value = "尊敬的用户，您已成功充值！",
-                //        color = "#173177",
-                //    },
-                //    keyword1 = new
-                //    {
-                //        value = "巧克力",
-                //        color = "#173177",
-                //    },
-                //    keyword2 = new
-                //    {
-                //        value = "39.8元",
-                //        color = "#173177",
-                //    },
-                //    keyword3 = new
-                //    {
-                //        value = "2017年1月26日",
-                //        color = "#173177",
-                //    },
-                //    remark = new
-                //    {
-                //        value = "欢迎再次充值！",
-                //        color = "#173177",
-                //    },
-                //}
-            };
-            var content = ApiJsonHttpPost(Setting.EntWxConfig.URL_HOST, Setting.EntWxConfig.URL_MSG(GetToken()), obj, "Msg_Send", "access_token=" + GetToken());  
-            return content.Deserialize<template_msg_result>().errcode==0;
+            //    access_token = GetToken(),
+            //    touser = toWho,// "oksMlwPF5Y1KQvoi8AklF-lUwnYQ",
+            //    template_id = templateId,// "aP5WSx_hkcCEbDJSu1Takrch4tTB1-3YkpRI6ESjeeE",
+            //    url = click_url,// "http://wx.52xyj.cn/WeChat/BookTiketWeb/MyWallet",
+            //    data= templateData// = new
+            //    //{
+            //    //    first = new
+            //    //    {
+            //    //        value = "尊敬的用户，您已成功充值！",
+            //    //        color = "#173177",
+            //    //    },
+            //    //    keyword1 = new
+            //    //    {
+            //    //        value = "巧克力",
+            //    //        color = "#173177",
+            //    //    },
+            //    //    keyword2 = new
+            //    //    {
+            //    //        value = "39.8元",
+            //    //        color = "#173177",
+            //    //    },
+            //    //    keyword3 = new
+            //    //    {
+            //    //        value = "2017年1月26日",
+            //    //        color = "#173177",
+            //    //    },
+            //    //    remark = new
+            //    //    {
+            //    //        value = "欢迎再次充值！",
+            //    //        color = "#173177",
+            //    //    },
+            //    //}
+            //};
+            //var content = ApiJsonHttpPost(Setting.EntWxConfig.URL_HOST, Setting.EntWxConfig.URL_MSG(GetToken()), obj, "Msg_Send", "access_token=" + GetToken());  
+            //return content.Deserialize<template_msg_result>().errcode==0;
         }
         #endregion
         //private IWeChatBll _chatBll;
@@ -299,30 +315,33 @@ namespace qx.wechat.Services
                     WECHAT_HOST = a.WECHAT_HOST
                 }).FirstOrDefault();
       }
-        public string GetToken()
-      {
-          var token= Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == Setting.EntWxConfig.APP_ID);;
+        public string GetToken<T>() where T : new()
+        {
+            var cfg = (IEntWxApp)new T();
+            var token= Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == cfg.AppId && a.Note == cfg.AppSecret);;
           if (token == null)
           {
-              RefreshToken();
-              token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == Setting.EntWxConfig.APP_ID);
+              RefreshToken<T>();
+              token = Db.Tokens.FirstOrDefault(a => a.ExpireTime > DateTime.Now && a.APP_ID == cfg.AppId && a.Note == cfg.AppSecret);
               if (token == null)
                     throw new Exception("数据库没有有效的Token!");
             }
           return token.TokenId;
       }
-        public bool SaveToken(string tokenId,int expireTime)
+        public bool SaveToken<T>(string tokenId,int expireTime) where T : new()
         {
+            var cfg = (IEntWxApp)new T();
             if (!tokenId.HasValue())
             {
                 throw new Exception("tokenId 为空!");
             }
-            Db.Tokens.Add(new Tokens()
+            Db.Tokens.AddOrUpdate(new Tokens()
             {
                 TokenId = tokenId,
                 GetTime = DateTime.Now,
                 ExpireTime = DateTime.Now.AddSeconds(expireTime),
-                APP_ID = Setting.EntWxConfig.APP_ID
+                APP_ID = cfg.AppId,
+                Note = cfg.AppSecret
             });
             return Db.SaveChanges() > 0;
         }

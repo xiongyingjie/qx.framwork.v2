@@ -63,7 +63,15 @@ namespace Qx.Tools.Services
         public ExcuteResult Add(Dictionary<string, object> paramDictionary)
         {//失败时返回""
             var result = new ExcuteResult(Operate.Add, _connString,_table.Name);
+            if (!paramDictionary.ContainsKey(_table.PrimaryKey))
+            {
+                throw new Exception("传入参数中没有找到" + _table.Name + "的主键值（" + _table.PrimaryKey + ")");
+            }
             var primaryKeyValue = paramDictionary[_table.PrimaryKey]+"";
+            //容错处理，自动赋值为id
+            paramDictionary[_table.PrimaryKey] =
+                primaryKeyValue = primaryKeyValue.HasValue() ? primaryKeyValue : paramDictionary["_id"] +"";
+            
             var old = Find(primaryKeyValue);
             if (old.HasData)
             {//存在旧记录
@@ -92,6 +100,10 @@ namespace Qx.Tools.Services
         public ExcuteResult Update(Dictionary<string, object> paramDictionary)
         {
             var result = new ExcuteResult(Operate.Update, _connString,_table.Name);
+            if (!paramDictionary.ContainsKey(_table.PrimaryKey))
+            {
+                throw new Exception("传入参数中没有找到"+_table.Name+"的主键值（"+ _table.PrimaryKey+")");
+            }
             var old = Find(paramDictionary[_table.PrimaryKey]+"");
             if (old.HasData)
             {
@@ -132,6 +144,7 @@ namespace Qx.Tools.Services
         public ExcuteResult Delete(string id)
         {
             var result = new ExcuteResult(Operate.Delete, _connString,_table.Name);
+
             var old = Find(id);
             if (old.HasData)
             {
@@ -208,7 +221,19 @@ namespace Qx.Tools.Services
            return result;
         }
 
-    
+       string GetConditionValue(string value)
+        {
+            //判断是否未表关键字
+            if (value.Length > 2 && value[0] == '[' && value.Contains("]"))
+            {
+                value = value.Replace("[", "").Replace("]", "");
+            }
+            else
+            {
+                value = "'" + value + "'";
+            }
+            return " "+value+ " ";
+        }
 
         public ExcuteResult All(Dictionary<string, string> searchCondition)
         {
@@ -216,7 +241,10 @@ namespace Qx.Tools.Services
             var sql = _querySql;
             var sqlFrom = "";
             var sqlWhere = "";
-           var anotherTables=new List<Table>();
+            var sqlOrder = "";
+            var sqlGroup = "";
+            var anotherTables=new List<Table>();
+            var groupbyItems = new List<string>();
             if (searchCondition != null)
             {
                 foreach (string key in searchCondition.Keys)
@@ -248,7 +276,7 @@ namespace Qx.Tools.Services
                                 {
                                     cmd[1] = _table.Name + "." + cmd[1];
                                 }
-                                sqlWhere +=cmd[1] + op + "'" + value + "' and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+                                sqlWhere +=cmd[1] + op + "" + value + " and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
                             }
                             break;
                         case "equal":
@@ -259,7 +287,7 @@ namespace Qx.Tools.Services
                                     cmd[1] = _table.Name + "." + cmd[1];
                                 }
                                 var op = " = ";
-                                sqlWhere +=  cmd[1] + op + "'" + value + "' and ";
+                                sqlWhere +=  cmd[1] + op +  GetConditionValue(value) + " and ";
                             }
                             break;
                         case "notequal":
@@ -270,7 +298,7 @@ namespace Qx.Tools.Services
                                     cmd[1] = _table.Name + "." + cmd[1];
                                 }
                                 var op = " != ";
-                                sqlWhere += cmd[1] + op + "'" + value + "' and ";
+                                sqlWhere += cmd[1] + op + GetConditionValue(value) +" and ";
                             }
                             break;
                         case "biger": case "bg":
@@ -280,7 +308,18 @@ namespace Qx.Tools.Services
                                     cmd[1] = _table.Name + "." + cmd[1];
                                 }
                                 var op = " > ";
-                                sqlWhere +=  cmd[1] + op + "'" + value + "' and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+                                sqlWhere +=  cmd[1] + op + GetConditionValue(value) + " and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+                            }
+                            break;
+                        case "bigerequal":
+                        case "be":
+                            {//equal:user_id=_uid 
+                                if (!cmd[1].Contains("."))
+                                {
+                                    cmd[1] = _table.Name + "." + cmd[1];
+                                }
+                                var op = " >= ";
+                                sqlWhere += cmd[1] + op + GetConditionValue(value) + " and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
                             }
                             break;
                         case "less": case "ls":
@@ -290,10 +329,103 @@ namespace Qx.Tools.Services
                                     cmd[1] = _table.Name + "." + cmd[1];
                                 }
                                 var op = " < ";
-                                sqlWhere += cmd[1] + op + "'" + value + "' and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+                                sqlWhere += cmd[1] + op + GetConditionValue(value) + " and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
 
                             }
-                            break; 
+                            break;
+                        case "lessequal":
+                        case "le":
+                            {//equal:user_id=_uid 
+                                if (!cmd[1].Contains("."))
+                                {
+                                    cmd[1] = _table.Name + "." + cmd[1];
+                                }
+                                var op = " <= ";
+                                sqlWhere += cmd[1] + op + GetConditionValue(value) + " and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+
+                            }
+                            break;
+                        case "like":
+                        case "lk":
+                            {//like:user_id=_uid 
+                                if (!cmd[1].Contains("."))
+                                {
+                                    cmd[1] = _table.Name + "." + cmd[1];
+                                }
+                                if (!value.Contains("-"))
+                                {
+                                    value = "-" + value + "-";
+                                }
+                                value= value.Replace("-", "%");
+                                var op = " like ";
+                                sqlWhere += cmd[1] + op + GetConditionValue(value) + " and ";// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+
+                            }
+                            break;
+                        case "groupby":
+                        case "gp":
+                            {//groupby:user_id,name=_auto 
+                                if (sqlGroup.Any())
+                                {
+                                    throw new NotSupportedException("不支持2次groupby");
+                                }
+                                //取出from之前的
+                                var fromIndex = sql.ToLower().IndexOf("from");
+                                var selectString = sql.Substring(0, fromIndex);
+                                var fromString = sql.Substring(fromIndex);
+                                //用户想group的字段
+                                groupbyItems= cmd[1].Split(',').Select(column =>column.Contains(".") ? column : (_table.Name + "." + column)).ToList();
+                                sqlGroup += " group by " + groupbyItems.PackString(',');
+                                selectString = "select " + groupbyItems.PackString(',')+",count(*) as _total ";
+                                groupbyItems.Add("_total");//最后添加汇总字段,用于转json
+                                //更新sql
+                                sql = selectString + fromString;
+                                #region 调整select
+                              
+
+                                //value = value.CheckValue("_auto");
+                                //var selectItems = new List<string>();
+                            
+                                //if (value == "_auto")
+                                //{//取所有，select不变，只变groupby后面的
+                                //    sqlGroup += " group by " + selectString.ToLower().Replace("select","");
+                                //}
+                                //else
+                                //{//自定义哪些列，select和groupby后面的一致
+                                //    value.Split(',').ToList().ForEach(column =>
+                                //    {
+                                //        selectItems.Add(column.Contains(".")?column:(_table.Name + "." + column));
+                                //    });
+
+                                //    sqlGroup += " group by " + selectItems.PackString(',');
+                                //    selectString ="select "+ selectItems.PackString(',');
+                                //    //更新sql
+                                //    sql = selectString + fromString;
+                                //}
+
+                                #endregion
+
+
+
+
+                            }
+                            break;
+                        case "orderby":
+                        case "ob":
+                            {//orderby:user_id=+ 
+                                if (sqlOrder.Any())
+                                {
+                                    throw new NotSupportedException("不支持2次orderby");
+                                }
+                                if (!cmd[1].Contains("."))
+                                {
+                                    cmd[1] = _table.Name + "." + cmd[1];
+                                }
+                               
+                                sqlOrder += " order by "+ cmd[1] + (value=="+"? " asc ": " DESC ");// sqlWhere += (_table.ColumnNames.Contains(cmd[1]) ? (cmd[1] + op + "(" + value + ") and ") : "");
+
+                            }
+                            break;
                     }
                 }
                 if (sqlWhere.Any())
@@ -302,10 +434,11 @@ namespace Qx.Tools.Services
                 }
             }
            
-            sql += sqlFrom + sqlWhere;
+            sql += sqlFrom + sqlWhere+ sqlGroup+ sqlOrder;
             var temp = sql.ExecuteReader2(_connString);
             result.HasData = temp.Any();
-            result.Value = ToJson(temp, anotherTables);
+            result.Value = sqlGroup.HasValue() ? ToJson(temp, groupbyItems) : ToJson(temp, anotherTables);//group和非froup分开处理
+            
             return result;
         }
         public ExcuteResult Find(string id)
@@ -324,7 +457,7 @@ namespace Qx.Tools.Services
         public ExcuteResult Download(string id,string fileColumnName)
         {
             var result = new ExcuteResult(Operate.Download, _connString,_table.Name);
-            var old = Find(id).Value.ToObject();
+            var old = (Find(id).Value as string).ToObject();
             old.name = fileColumnName;
             result.Value = old;
             return result;
@@ -364,10 +497,10 @@ namespace Qx.Tools.Services
             var script = sql + "";
             foreach (var name in _table.ColumnNames)
             {
-                var value = paramDictionary.ContainsKey(name) ? paramDictionary[name]+"" : "";
-                script = script.Replace("#" + name, value);
+                var value = paramDictionary.ContainsKey(name) ? paramDictionary[name]+"" : "NULL";
+                script = script.Replace("#" + name, value, '\'');
             }
-            return script;
+            return script.Replace("'NULL'","NULL");
         }
         /// <summary>
         /// 转换脚本
@@ -379,7 +512,7 @@ namespace Qx.Tools.Services
         {//针对delete
             var script = sql + "";
             //只需要替换PrimaryKey
-            script = script.Replace("#" + _table.PrimaryKey, id);
+            script = script.Replace("#" + _table.PrimaryKey, id,'\'');
             return script;
         }
         private int Excute(string sql, string id)
@@ -402,8 +535,9 @@ namespace Qx.Tools.Services
         //    var jsonData = ToJson(sql.ExecuteReader2(_connString));
         //    return jsonData=="[]"?"{}":jsonData.Substring(1, jsonData.Length-2);
         //}
+       
         private string ToJson(List<List<string>> dataList)
-        {
+        {//数据+单表表
             //格式转换
             var json = "[";
             for (var i = 0; i < dataList.Count; i++)
@@ -413,8 +547,19 @@ namespace Qx.Tools.Services
             json += "]";
             return json;
         }
+        private string ToJson(List<List<string>> dataList, List<string> diyHeaders)
+        {//数据+自定义列
+            //格式转换
+            var json = "[";
+            for (var i = 0; i < dataList.Count; i++)
+            {
+                json += _table.GetJson(dataList[i], diyHeaders) + (i == dataList.Count - 1 ? "" : ",");
+            }
+            json += "]";
+            return json;
+        }
         private string ToJson(List<List<string>> dataList, Table anotherTable)
-        {
+        {//数据+2表
             if (anotherTable == null) return ToJson(dataList);
             var count = anotherTable.Columns.Count;
             //格式转换
@@ -429,8 +574,8 @@ namespace Qx.Tools.Services
             return json;
         }
         private string ToJson(List<List<string>> dataList, List<Table> anotherTables)
-        {
-          
+        {//数据+多表
+
             var json = "[";
             for (var i = 0; i < dataList.Count; i++)
             {

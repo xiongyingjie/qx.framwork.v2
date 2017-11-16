@@ -46,5 +46,16 @@ namespace Qx.Tools.Models.Db
             json += "}";
             return json;
         }
+        public string GetJson(List<string> data,List<string> diyHeaders)
+        {
+            var json = "{";
+            for (var i = 0; i < data.Count; i++)
+            {
+                json += "\"" + diyHeaders[i].Replace(".","-") + "\":\"" + data[i] + "\"" +
+                    (i == data.Count - 1 ? "" : ",");
+            }
+            json += "}";
+            return json;
+        }
     }
 }

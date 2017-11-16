@@ -52,7 +52,12 @@ namespace qx.permmision.v2.Services
                                 a.user_pwd ==userPwd 
                 );
         }
-
+        public List<permission_user> FindUsers(List<string> userIdOrUserNameArray)
+        {
+            return Db.permission_user.Where(a => userIdOrUserNameArray.Contains(a.user_id)||
+                               userIdOrUserNameArray.Contains(a.nick_name)
+                ).ToList();
+        }
         public bool Regist(string userId, string userPwd, 
             string nickName,string email="none",string phone="none", string userTypeId="0")
         {
@@ -202,5 +207,138 @@ namespace qx.permmision.v2.Services
             return true;
 
         }
+        public bool AddOrgnization(string father_id, string name, string orgnization_type_id, string orgnization_id ="")
+        {
+            orgnization_id = orgnization_id.CheckValue(Pk);
+            if (orgnization_id.HasValue() && father_id.HasValue() && name.HasValue() && orgnization_type_id.HasValue())
+            {
+                Db.orgnization.AddOrUpdate(new orgnization()
+                {
+                    orgnization_id= orgnization_id,
+                    father_id= father_id,
+                    name= name,
+                    orgnization_type_id= orgnization_type_id,
+                });
+               return Db.SaveChanges() > 0 ? true : false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public orgnization FindOrgnizationByUserId(string userid)
+        {
+            var data = Db.user_orgnization.FirstOrDefault(o => o.user_id == userid);
+            return Db.orgnization.FirstOrDefault(o => o.orgnization_id == data.orgnization_id);
+        }
+
+        public bool AddUser(string userId, string userPwd, string nickName, string userTypeId, string email = "none", string phone = "none")
+        {
+            var data= new permission_user();
+            data.user_id = userId;
+            data.user_pwd = userPwd;
+            data.nick_name = nickName;
+            data.user_type_id = userTypeId;
+            data.email = email;
+            data.phone = phone;
+            Db.permission_user.AddOrUpdate(data);
+            return Db.SaveChanges() > 0 ? true : false;
+        }
+
+        public List<orgnization> FindRelationByOrgnizationId(string orgnization_id)
+        {
+            var relation_orgnization=new List<orgnization>();
+            var items = Db.organization_relation.Where(a => a.orgnization_id == orgnization_id).ToList();
+            foreach (var item in items)
+            {
+                var data = Db.orgnization.FirstOrDefault(o=>o.orgnization_id==item.other_orgnization_id);
+                relation_orgnization.Add(data);
+            }
+            return relation_orgnization;
+        }
+
+        public position FindPositionByUserId(string userid)
+        {
+            var data = Db.user_position.FirstOrDefault(o => o.user_id == userid);
+            var data2 =Db.orgnization_position.FirstOrDefault(o => o.orgnization_position_id == data.orgnization_position_id);
+            return Db.position.FirstOrDefault(o => o.position_id == data2.position_id);
+        }
+
+        public List<position> FindPositionsByOgnizationId(string orgnization_id)
+        {
+            var datas=new List<position>();
+            var items = Db.orgnization_position.Where(o => o.orgnization_id == orgnization_id).ToList();
+            foreach (var item in items)
+            {
+                var data = Db.position.FirstOrDefault(o => o.position_id == item.position_id);
+                datas.Add(data);
+            }
+            return datas;
+        }
+
+        public string AddUserToOrgnization(string user_id, string orgnization_id)
+        {
+            string user_orgnization_id = orgnization_id + "-" + user_id;
+            Db.user_orgnization.Add(new user_orgnization()
+            {
+                user_orgnization_id = user_orgnization_id,
+                user_id = user_id,
+                orgnization_id = orgnization_id
+            });
+            return Db.SaveChanges() > 0 ? user_orgnization_id : "";
+        }
+
+       public bool AddPosition(string position_id, string position_type_id, string name, string descripe = "none",
+            string note = "none")
+        {
+            Db.position.Add(new position()
+            {
+                position_id = position_id,
+                position_type_id = position_type_id,
+                name = name,
+                descripe= descripe,
+                note= note
+            });
+            return Db.SaveChanges() > 0 ? true : false;
+        }
+
+        public bool AddPositionToOgnization( string orgnization_id, string position_id)
+        {
+            string orgnization_position_id = orgnization_id + "-" + position_id;
+            Db.orgnization_position.Add(new orgnization_position()
+            {
+                orgnization_position_id = orgnization_position_id,
+                position_id = position_id,
+                orgnization_id = orgnization_id
+            });
+            return Db.SaveChanges() > 0 ? true : false;
+        }
+
+        public bool AddRoleToUser(string user_id, string role_id)
+        {
+            string user_role_id = user_id + "-" + role_id;
+            Db.user_role.Add(new user_role()
+            {
+                user_role_id = user_role_id,
+                user_id = user_id,
+                role_id = role_id
+            });
+            return Db.SaveChanges() > 0 ? true : false;
+        }
+
+        public bool AddPositionToUser(string orgnization_position_id, string user_id)
+        {
+            Db.user_position.Add(new user_position()
+            {
+                user_position_id = DateTime.Now.Random(),
+                user_id = user_id,
+                orgnization_position_id = orgnization_position_id
+            });
+            return Db.SaveChanges() > 0 ? true : false;
+        }
+
+
+
     }
 }

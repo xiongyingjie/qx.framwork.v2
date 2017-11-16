@@ -3,7 +3,7 @@ using Qx.Account.WeixinPay.lib;
 
 namespace Qx.Account.WeixinPay.business
 {
-    public class MicroPay
+    public class MicroPay<T> where T : new()
     {
         /**
         * 刷卡支付完整业务流程逻辑
@@ -15,33 +15,33 @@ namespace Qx.Account.WeixinPay.business
         */
         public static string Run(string body, string total_fee, string auth_code)
         {
-            Log.Info("MicroPay", "Micropay is processing...");
+            Log<T>.Info("MicroPay", "Micropay is processing...");
 
-            WxPayData data = new WxPayData();
+            WxPayData<T> data = new WxPayData<T>();
             data.SetValue("auth_code", auth_code);//授权码
             data.SetValue("body", body);//商品描述
             data.SetValue("total_fee", int.Parse(total_fee));//总金额
-            data.SetValue("out_trade_no", WxPayApi.GenerateOutTradeNo());//产生随机的商户订单号
+            data.SetValue("out_trade_no", WxPayApi<T>.GenerateOutTradeNo());//产生随机的商户订单号
 
-            WxPayData result = WxPayApi.Micropay(data, 10); //提交被扫支付，接收返回结果
+            WxPayData<T> result = WxPayApi<T>.Micropay(data, 10); //提交被扫支付，接收返回结果
 
 		    //如果提交被扫支付接口调用失败，则抛异常
             if (!result.IsSet("return_code") || result.GetValue("return_code").ToString() == "FAIL")
 		    {
                 string returnMsg = result.IsSet("return_msg") ? result.GetValue("return_msg").ToString() : "";
-                Log.Error("MicroPay", "Micropay API interface call failure, result : " + result.ToXml());
+                Log<T>.Error("MicroPay", "Micropay API interface call failure, result : " + result.ToXml());
                 throw new WxPayException("Micropay API interface call failure, return_msg : " + returnMsg);
 		    }
 
 		    //签名验证
             result.CheckSign();
-            Log.Debug("MicroPay", "Micropay response check sign success");
+            Log<T>.Debug("MicroPay", "Micropay response check sign success");
 
             //刷卡支付直接成功
             if(result.GetValue("return_code").ToString() == "SUCCESS" &&
 		        result.GetValue("result_code").ToString() == "SUCCESS")
             {
-                Log.Debug("MicroPay", "Micropay business success, result : " + result.ToXml());
+                Log<T>.Debug("MicroPay", "Micropay business success, result : " + result.ToXml());
                 return result.ToPrintStr();
             }
 
@@ -52,7 +52,7 @@ namespace Qx.Account.WeixinPay.business
 		    if(result.GetValue("err_code").ToString() != "USERPAYING" && 
 		    result.GetValue("err_code").ToString() != "SYSTEMERROR")
 		    {
-                Log.Error("MicroPay", "micropay API interface call success, business failure, result : " + result.ToXml());
+                Log<T>.Error("MicroPay", "micropay API interface call success, business failure, result : " + result.ToXml());
                 return result.ToPrintStr();
 		    }
 
@@ -65,7 +65,7 @@ namespace Qx.Account.WeixinPay.business
 		    while(queryTimes-- > 0)
 		    {
 			    int succResult = 0;//查询结果
-			    WxPayData queryResult = Query(out_trade_no, out succResult);
+			    WxPayData<T> queryResult = Query(out_trade_no, out succResult);
 			    //如果需要继续查询，则等待2s后继续
 			    if(succResult == 2)
                 {
@@ -75,22 +75,22 @@ namespace Qx.Account.WeixinPay.business
                 //查询成功,返回订单查询接口返回的数据
                 else if(succResult == 1)
                 {
-                    Log.Debug("MicroPay", "Mircopay success, return order query result : " + queryResult.ToXml());
+                    Log<T>.Debug("MicroPay", "Mircopay success, return order query result : " + queryResult.ToXml());
                     return queryResult.ToPrintStr();
 			    }
                 //订单交易失败，直接返回刷卡支付接口返回的结果，失败原因会在err_code中描述
                 else
                 {
-                    Log.Error("MicroPay", "Micropay failure, return micropay result : " + result.ToXml());
+                    Log<T>.Error("MicroPay", "Micropay failure, return micropay result : " + result.ToXml());
                     return result.ToPrintStr();
 			    }
 		    }
 
             //确认失败，则撤销订单
-            Log.Error("MicroPay", "Micropay failure, Reverse order is processing...");
+            Log<T>.Error("MicroPay", "Micropay failure, Reverse order is processing...");
 		    if(!Cancel(out_trade_no))
 		    {
-                Log.Error("MicroPay", "Reverse order failure");
+                Log<T>.Error("MicroPay", "Reverse order failure");
                 throw new WxPayException("Reverse order failure！");
 		    }
 
@@ -105,11 +105,11 @@ namespace Qx.Account.WeixinPay.business
 	    * @param int succCode         查询订单结果：0表示订单不成功，1表示订单成功，2表示继续查询
 	    * @return 订单查询接口返回的数据，参见协议接口
 	    */
-        public static WxPayData Query(string out_trade_no, out int succCode)
+        public static WxPayData<T> Query(string out_trade_no, out int succCode)
 	    {
-		    WxPayData queryOrderInput = new WxPayData();
+		    WxPayData<T> queryOrderInput = new WxPayData<T>();
 		    queryOrderInput.SetValue("out_trade_no",out_trade_no);
-		    WxPayData result = WxPayApi.OrderQuery(queryOrderInput);
+		    WxPayData<T> result = WxPayApi<T>.OrderQuery(queryOrderInput);
 		
 		    if(result.GetValue("return_code").ToString() == "SUCCESS" 
 			    && result.GetValue("result_code").ToString() == "SUCCESS")
@@ -156,9 +156,9 @@ namespace Qx.Account.WeixinPay.business
 			    return false;
 		    }
 		
-		    WxPayData reverseInput = new WxPayData();
+		    WxPayData<T> reverseInput = new WxPayData<T>();
 		    reverseInput.SetValue("out_trade_no",out_trade_no);
-		    WxPayData result = WxPayApi.Reverse(reverseInput);
+		    WxPayData<T> result = WxPayApi<T>.Reverse(reverseInput);
 		
 		    //接口调用失败
 		    if(result.GetValue("return_code").ToString() != "SUCCESS")

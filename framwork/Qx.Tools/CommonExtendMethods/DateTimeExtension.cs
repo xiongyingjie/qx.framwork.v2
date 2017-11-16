@@ -57,13 +57,15 @@ namespace Qx.Tools.CommonExtendMethods
             return time;
           
         }
-        public static string FormatTime(this DateTime time,bool blankSpace=true)
+        public static string FormatTime(this DateTime time,bool blankSpace=true,bool onlyHMS=false)
         {
-            return time.ToString(blankSpace?"yyyy-MM-dd HH:mm": "yyyy-MM-dd-HH-mm-ss");
+            return time.ToString(onlyHMS ?
+                (blankSpace ? "HH:mm" : "HHmmss"):              
+                (blankSpace ? "yyyy-MM-dd HH:mm" : "yyyyMMddHHmmss"));
         }
-        public static string FormatDate(this DateTime time)
+        public static string FormatDate(this DateTime time, bool removeSplit = false)
         {
-            return time.ToString("yyyy-MM-dd");
+            return time.ToString(removeSplit? "yyyyMMdd" : "yyyy-MM-dd");
         }
     }
 }

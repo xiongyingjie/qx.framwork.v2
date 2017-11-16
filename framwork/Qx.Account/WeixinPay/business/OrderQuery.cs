@@ -1,9 +1,17 @@
-﻿using Qx.Account.WeixinPay.lib;
+﻿using Qx.Account.Configs;
+using Qx.Account.WeixinPay.lib;
 
 namespace Qx.Account.WeixinPay.business
 {
-    public class OrderQuery
+    public class OrderQuery<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         /***
         * 订单查询完整业务流程逻辑
         * @param transaction_id 微信订单号（优先使用）
@@ -12,9 +20,9 @@ namespace Qx.Account.WeixinPay.business
         */
         public static string Run(string transaction_id, string out_trade_no)
         {
-            Log.Info("OrderQuery", "OrderQuery is processing...");
+            Log<T>.Info("OrderQuery", "OrderQuery is processing...");
 
-            WxPayData data = new WxPayData();
+            WxPayData<T> data = new WxPayData<T>();
             if(!string.IsNullOrEmpty(transaction_id))//如果微信订单号存在，则以微信订单号为准
             {
                 data.SetValue("transaction_id", transaction_id);
@@ -24,9 +32,9 @@ namespace Qx.Account.WeixinPay.business
                 data.SetValue("out_trade_no", out_trade_no);
             }
 
-            WxPayData result = WxPayApi.OrderQuery(data);//提交订单查询请求给API，接收返回数据
+            WxPayData<T> result = WxPayApi<T>.OrderQuery(data);//提交订单查询请求给API，接收返回数据
 
-            Log.Info("OrderQuery", "OrderQuery process complete, result : " + result.ToXml());
+            Log<T>.Info("OrderQuery", "OrderQuery process complete, result : " + result.ToXml());
             return result.ToPrintStr();
         }
     }

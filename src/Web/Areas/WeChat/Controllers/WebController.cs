@@ -12,27 +12,32 @@ namespace Web.Areas.WeChat.Controllers
     {
         private IAccountPayService _accountPayService;
         private IPermissionProvider _permissionProvider;
- 
+
+
 
         public WebController(IAccountPayService accountPayService, IPermissionProvider permissionProvider)
         {
-           
+
             _accountPayService = accountPayService;
             _permissionProvider = permissionProvider;
-     
         }
-        // GET: /WeChat/Web/Authorize
+        // GET: /WeChat/Web/Authorize?app=metting
         //加载授权页面
-        public ActionResult Authorize(string return_url)
+        public ActionResult Authorize(string return_url,string app)
         {
-            if((return_url.HasValue()&&return_url.Contains("Authorize"))||
+            if (app == "metting")
+            {
+                return_url = "http://baidu.com?subsystem=" + app;
+            }
+
+            if ((return_url.HasValue() && return_url.Contains("Authorize")) ||
                 !return_url.HasValue())
             {
                 throw new Exception("return_url为空");
                 //return_url = "/WeChat/BookTiketWeb/Main";
             }
             //默认基本授权
-            return Redirect(AuthorizeHelper.Authorize(return_url));
+            return Redirect(AuthorizeHelper.Authorize<qx.wechat.Configs.Setting.WxConfig.QxSoft>(return_url));
             //  return View(Authorize_M.Init(AuthorizeHelper.Authorize(return_url)));
         }
         // GET: /WeChat/Web/return_notify
@@ -49,16 +54,26 @@ namespace Web.Areas.WeChat.Controllers
 
                 //    }
                 default:
-                {
-                        return Redirect(AuthorizeHelper.Handle(code, state, new DefaultWxAuthorize(_accountPayService, _permissionProvider)));
+                    {
+                        var url = AuthorizeHelper.Handle<qx.wechat.Configs.Setting.WxConfig.QxSoft>(code, state,
+                            new DefaultWxAuthorize(_accountPayService, _permissionProvider));
+                        if (url.HasValue())
+                        {
+                            return Redirect(url);
+                        }
+                        else
+                        {
+                            return Content("参数错误");
+                        }
 
-                }
+
+                    }
             }
-          }
+        }
         //http://wx.52xyj.cn/wechat/web/return_notify_debug?returnUrl=http://localhost:3456/web/app/sports/framework-m/login-wx.html?subSystem=sports&openid=olzsX1c4_xcaVFaEp0KN8ST-qxGk
-        public ActionResult return_notify_debug( string returnUrl, string openid )
+        public ActionResult return_notify_debug(string returnUrl, string openid)
         {
-             return Redirect(AuthorizeHelper.HandleDebug("snsapi_base", returnUrl, openid, new DefaultWxAuthorize(_accountPayService, _permissionProvider)));
+            return Redirect(AuthorizeHelper.HandleDebug<qx.wechat.Configs.Setting.WxConfig.QxSoft>("snsapi_base", returnUrl, openid, new DefaultWxAuthorize(_accountPayService, _permissionProvider)));
 
         }
         //

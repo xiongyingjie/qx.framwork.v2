@@ -7,7 +7,7 @@ using RestSharp;
 
 namespace Web.Areas.WeChat.Common
 {
-    public class EntAuthorizeHelper : Setting.EntWxConfig
+    public class EntAuthorizeHelper : Setting.EntWxConfig 
     {
         private static T HttpGet<T>(string url)
         {
@@ -52,29 +52,30 @@ namespace Web.Areas.WeChat.Common
 
         // GET: /WeChat/Web/AuthorizeRouting
         //授权页中转 snsapi_base    snsapi_userinfo
-        private static string AuthorizeRouting(string mode, string return_url)
+        private static string AuthorizeRouting<APP>(string mode, string return_url) where APP : new()
         {
-            return URL_AUTHORIZE(return_url + "; " + mode, mode);
+
+            return URL_AUTHORIZE<APP>(return_url + "; " + mode, mode);
         }
         // GET: /WeChat/Web/Authorize
         //加载授权页面
-        public static string Authorize(string return_url)
+        public static string Authorize<APP>(string return_url) where APP : new()
         {
-            return BaseAuthorize(return_url);
+            return BaseAuthorize<APP>(return_url);
         }
         // GET: /WeChat/Web/BaseAuthorize
         //加载授权页面(基本)
-        private static string BaseAuthorize(string return_url)
+        private static string BaseAuthorize<APP>(string return_url) where APP : new()
         {
-            return AuthorizeRouting("snsapi_base", return_url);
+            return AuthorizeRouting<APP>("snsapi_base", return_url);
         }
         // GET: /WeChat/Web/FullAuthorize
         //加载授权页面(完全)
-        private static string FullAuthorize(string return_url)
+        private static string FullAuthorize<APP>(string return_url) where APP : new()
         {
-            return AuthorizeRouting("snsapi_userinfo", return_url);
+            return AuthorizeRouting<APP>("snsapi_userinfo", return_url);
         }
-        public static string Handle(string code, string state,string token, IEntWxAuthorize wxAuthorize )
+        public static string Handle<APP>(string code, string state,string token, IEntWxAuthorize wxAuthorize ) where APP : new()
         {
             var t = state.UnPackString(';');
             var returnUrl = t[0];
@@ -98,26 +99,26 @@ namespace Web.Areas.WeChat.Common
                             "UserInfoModel=>" + userInfo.Serialize() + "\r\n"
                             );
                     }
-                return BackToBll(m.UserId, returnUrl, "恭喜绑定成功");
+                return BackToBll<APP>(m.UserId, returnUrl, "恭喜绑定成功");
             }
             //静默授权
             else
             {
                 if (wxAuthorize.CheckRegistInfo(m.UserId))
                 {//注册信息完整，返回业务代码
-                    return BackToBll(m.UserId, returnUrl, "老用户");
+                    return BackToBll<APP>(m.UserId, returnUrl, "老用户");
                 }
                 else
                 {//注册信息不完整，回滚注册信息并重新授权
                     wxAuthorize.RollbackRegistInfo(m.UserId);
                     //重定向到手动授权
-                    return FullAuthorize(returnUrl);
+                    return FullAuthorize<APP>(returnUrl);
                 }
             }
         }
-        public static string HandleDebug(string type, string returnUrl,string userId, IEntWxAuthorize wxAuthorize)
+        public static string HandleDebug<APP>(string type, string returnUrl,string userId, IEntWxAuthorize wxAuthorize) where APP : new()
         {
-           
+          
             //-----------------判断授权模式
 
             //全新授权
@@ -131,30 +132,29 @@ namespace Web.Areas.WeChat.Common
                 {
                     throw new Exception("绑定失败");
                 }
-                return BackToBll(userId, returnUrl, "恭喜绑定成功");
+                return BackToBll<APP>(userId, returnUrl, "恭喜绑定成功");
             }
             //静默授权
             else
             {
                 if (wxAuthorize.CheckRegistInfo(userId))
                 {//注册信息完整，返回业务代码
-                    return BackToBll(userId, returnUrl, "老用户");
+                    return BackToBll<APP>(userId, returnUrl, "老用户");
                 }
                 else
                 {//注册信息不完整，回滚注册信息并重新授权
                     wxAuthorize.RollbackRegistInfo(userId);
                     //重定向到手动授权
-                    return FullAuthorize(returnUrl);
+                    return FullAuthorize<APP>(returnUrl);
                 }
             }
         }
 
-        private static  string BackToBll(string uid, string return_url, string msg)
+        private static  string BackToBll<APP>(string uid, string return_url, string msg) where APP : new()
         {
-            return "/F2/LoginOk?uid=" + uid.Encrypt() + "&return_url=" + return_url + "&msg=" + msg;
+            var cfg = (IEntWxApp)new APP();
+
+            return cfg.Host+ "/F2/LoginOk?uid=" + uid.Encrypt() + "&return_url=" + return_url + "&msg=" + msg;
         }
-
-
-
     }
 }

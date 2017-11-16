@@ -88,8 +88,13 @@ namespace Qx.Tools.CommonExtendMethods
         {
             return src + "&nbsp;" + splitFlag;
         }
+        public static List<string> UnPackString(this string srcString, string  targetString, bool removeEmpty = false)
+        {
 
-        
+            return srcString.Replace(targetString, "~").Split('~').ToList();
+        }
+
+
         public static List<string> UnPackString(this string srcString, char flag, bool removeEmpty = false)
         {
             //关于控制检测
@@ -244,6 +249,27 @@ namespace Qx.Tools.CommonExtendMethods
         {
             return srcString?.Trim().Replace(flag, "") ?? "";
         }
+        //public static List<int> IndexsOf(this string srcString, string targetString)
+        //{
+        //    var tempString = srcString;
+        //    var indexs = new List<int>();
+        //  //  var currentIndex = 0;
+        //    while(tempString .Length< targetString.Length)
+        //    {
+        //        var foundIndex = srcString.IndexOf(targetString);
+        //        if (foundIndex > -1)
+        //        {//匹配成功,截断字符串并加入集合
+        //            tempString = tempString.Substring(foundIndex);
+        //            indexs.Add(foundIndex);
+        //        }
+        //    }
+        //    return indexs;
+        //}
+        public static string Replace(this string src, string oldValue, string newValue,char  endFlag)
+        {
+            return src.Replace(oldValue + endFlag, newValue + endFlag); ;
+        }
+
         public static string ReplaceFirst(this string src, string oldValue, string newValue, string autoAddFlag = "")
         {
             oldValue = autoAddFlag + oldValue;
@@ -451,11 +477,14 @@ ORDER BY b.colid",
             return str;
         }
 
-        public static string Encrypt(this string src)
+        public static string Encrypt(this string src,EncryptType encryptType= EncryptType.Normal)
         {//编码后
+            if(encryptType == EncryptType.Normal)
             return EncryptUtility.Encode("" + src).EnCode(); //.Replace("=","-equl-").Replace("/", "-sprit-").Replace("+", "-add-"); 
+            else
+                return EncryptUtility.Md5Encrypt("" + src);
         }
-        public static string Decrypt(this string src)
+        public static string Decrypt(this string src, EncryptType encryptType = EncryptType.Normal)
         {//解码前
             return EncryptUtility.Decode(src.DeCode());//.Replace("-equl-", "=").Replace("-sprit-", "/").Replace("-add-", "+"));
         }

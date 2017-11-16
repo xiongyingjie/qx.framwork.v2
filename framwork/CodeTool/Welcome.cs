@@ -87,20 +87,20 @@ namespace CodeTool
                 if (cb_function.SelectedIndex == 0)
                 {
                     //TipInfo("环境配置正确，正在启动报表生成器...");
-                    new ReportTool().ShowDialog();
+                    new ReportTool().Show();
 
                 }
                 else if (cb_function.SelectedIndex == 1)
                 {
                     //TipInfo("环境配置正确，正在启动表单生成器...");
-                    new FormTool2().ShowDialog();
+                    new FormTool2().Show();
                 
                 }
                 else if (cb_function.SelectedIndex == 2)
                 {
                     //TipInfo("开发中...");
-                   // TipInfo("环境配置正确，正在启动一键增删改...");
-                    //new DbColumnNoteHelper().Show();
+                    //TipInfo("环境配置正确，正在启动一键增删改...");
+                    new CrudTool().Show();
                 }
                 else if (cb_function.SelectedIndex == 3)
                 {

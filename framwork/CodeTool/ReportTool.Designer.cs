@@ -83,7 +83,7 @@ namespace CodeTool
             this.tb_reportId = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.ck_deletes = new System.Windows.Forms.CheckBox();
-            this.ck_import = new System.Windows.Forms.CheckBox();
+            this.ck_autocode = new System.Windows.Forms.CheckBox();
             this.cb_connString = new System.Windows.Forms.ComboBox();
             this.bt_submit = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -110,7 +110,7 @@ namespace CodeTool
             this.groupBox7.Controls.Add(this.lv_preview);
             this.groupBox7.Location = new System.Drawing.Point(798, 400);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(363, 160);
+            this.groupBox7.Size = new System.Drawing.Size(363, 204);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "调试窗口";
@@ -120,7 +120,7 @@ namespace CodeTool
             this.lv_preview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv_preview.Location = new System.Drawing.Point(3, 17);
             this.lv_preview.Name = "lv_preview";
-            this.lv_preview.Size = new System.Drawing.Size(357, 140);
+            this.lv_preview.Size = new System.Drawing.Size(357, 184);
             this.lv_preview.TabIndex = 0;
             this.lv_preview.UseCompatibleStateImageBehavior = false;
             // 
@@ -191,6 +191,7 @@ namespace CodeTool
             // 
             // pg_colum
             // 
+            this.pg_colum.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.pg_colum.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pg_colum.Location = new System.Drawing.Point(3, 17);
             this.pg_colum.Name = "pg_colum";
@@ -202,7 +203,7 @@ namespace CodeTool
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tssl_State});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 636);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 687);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1163, 22);
             this.statusStrip1.TabIndex = 17;
@@ -383,15 +384,15 @@ namespace CodeTool
             this.gp_addReport.Controls.Add(this.tb_reportId);
             this.gp_addReport.Location = new System.Drawing.Point(5, 360);
             this.gp_addReport.Name = "gp_addReport";
-            this.gp_addReport.Size = new System.Drawing.Size(783, 277);
+            this.gp_addReport.Size = new System.Drawing.Size(783, 324);
             this.gp_addReport.TabIndex = 4;
             this.gp_addReport.TabStop = false;
             // 
             // rtb_sql
             // 
-            this.rtb_sql.Location = new System.Drawing.Point(63, 166);
+            this.rtb_sql.Location = new System.Drawing.Point(63, 198);
             this.rtb_sql.Name = "rtb_sql";
-            this.rtb_sql.Size = new System.Drawing.Size(691, 97);
+            this.rtb_sql.Size = new System.Drawing.Size(708, 114);
             this.rtb_sql.TabIndex = 2;
             this.rtb_sql.Text = "";
             // 
@@ -417,7 +418,7 @@ namespace CodeTool
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Location = new System.Drawing.Point(6, 16);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(771, 255);
+            this.groupBox5.Size = new System.Drawing.Size(771, 302);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "4.检查报表配置";
@@ -465,7 +466,7 @@ namespace CodeTool
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 149);
+            this.label3.Location = new System.Drawing.Point(6, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 12);
             this.label3.TabIndex = 1;
@@ -475,7 +476,7 @@ namespace CodeTool
             // 
             this.rtb_headears.Location = new System.Drawing.Point(58, 59);
             this.rtb_headears.Name = "rtb_headears";
-            this.rtb_headears.Size = new System.Drawing.Size(350, 79);
+            this.rtb_headears.Size = new System.Drawing.Size(350, 117);
             this.rtb_headears.TabIndex = 2;
             this.rtb_headears.Text = "";
             // 
@@ -483,7 +484,7 @@ namespace CodeTool
             // 
             this.rtb_oprate.Location = new System.Drawing.Point(424, 80);
             this.rtb_oprate.Name = "rtb_oprate";
-            this.rtb_oprate.Size = new System.Drawing.Size(324, 60);
+            this.rtb_oprate.Size = new System.Drawing.Size(341, 96);
             this.rtb_oprate.TabIndex = 2;
             this.rtb_oprate.Text = "";
             // 
@@ -555,7 +556,7 @@ namespace CodeTool
             // 
             this.tb_perCount.Location = new System.Drawing.Point(696, 28);
             this.tb_perCount.Name = "tb_perCount";
-            this.tb_perCount.Size = new System.Drawing.Size(52, 21);
+            this.tb_perCount.Size = new System.Drawing.Size(69, 21);
             this.tb_perCount.TabIndex = 0;
             this.tb_perCount.Text = "10";
             // 
@@ -593,13 +594,13 @@ namespace CodeTool
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.ck_deletes);
-            this.groupBox12.Controls.Add(this.ck_import);
+            this.groupBox12.Controls.Add(this.ck_autocode);
             this.groupBox12.Controls.Add(this.cb_connString);
             this.groupBox12.Controls.Add(this.bt_submit);
             this.groupBox12.Controls.Add(this.label9);
             this.groupBox12.Controls.Add(this.bt_exit);
             this.groupBox12.Controls.Add(this.bt_check);
-            this.groupBox12.Location = new System.Drawing.Point(799, 565);
+            this.groupBox12.Location = new System.Drawing.Point(799, 610);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(362, 66);
             this.groupBox12.TabIndex = 13;
@@ -616,15 +617,17 @@ namespace CodeTool
             this.ck_deletes.Text = "批量删除";
             this.ck_deletes.UseVisualStyleBackColor = true;
             // 
-            // ck_import
+            // ck_autocode
             // 
-            this.ck_import.AutoSize = true;
-            this.ck_import.Location = new System.Drawing.Point(21, 46);
-            this.ck_import.Name = "ck_import";
-            this.ck_import.Size = new System.Drawing.Size(72, 16);
-            this.ck_import.TabIndex = 13;
-            this.ck_import.Text = "导入导出";
-            this.ck_import.UseVisualStyleBackColor = true;
+            this.ck_autocode.AutoSize = true;
+            this.ck_autocode.Checked = true;
+            this.ck_autocode.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ck_autocode.Location = new System.Drawing.Point(21, 46);
+            this.ck_autocode.Name = "ck_autocode";
+            this.ck_autocode.Size = new System.Drawing.Size(72, 16);
+            this.ck_autocode.TabIndex = 13;
+            this.ck_autocode.Text = "生成代码";
+            this.ck_autocode.UseVisualStyleBackColor = true;
             // 
             // cb_connString
             // 
@@ -678,7 +681,7 @@ namespace CodeTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 658);
+            this.ClientSize = new System.Drawing.Size(1163, 709);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.p_addReport);
             this.Controls.Add(this.groupBox12);
@@ -689,7 +692,7 @@ namespace CodeTool
             this.MaximizeBox = false;
             this.Name = "ReportTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "报表生成器1.0.0.30";
+            this.Text = "报表生成器1.0.0.31";
             this.Load += new System.EventHandler(this.ReportTool_Load);
             this.groupBox7.ResumeLayout(false);
             this.p_addReport.ResumeLayout(false);
@@ -772,7 +775,7 @@ namespace CodeTool
         private System.Windows.Forms.CheckBox ck_update;
         private System.Windows.Forms.CheckBox ck_add;
         private System.Windows.Forms.CheckBox ck_deletes;
-        private System.Windows.Forms.CheckBox ck_import;
+        private System.Windows.Forms.CheckBox ck_autocode;
         private System.Windows.Forms.Button bt_exit;
     }
 }

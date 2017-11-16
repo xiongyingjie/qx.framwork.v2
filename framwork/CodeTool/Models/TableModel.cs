@@ -10,6 +10,7 @@ namespace CodeTool.Models
     {
        
         public string TableName { get; set; }
+       public string PkName { get; set; }
     }
    
 }

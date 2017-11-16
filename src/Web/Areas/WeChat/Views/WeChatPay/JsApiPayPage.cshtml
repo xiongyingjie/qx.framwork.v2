@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>充值确认</title>
+    <title>支付确认</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.css" rel="stylesheet" />
     <link href="~/Areas/WeChat/Content/BookeTicket/css/weui.min.css" rel="stylesheet" />
@@ -20,7 +20,7 @@
     <script type="text/javascript">
         var g_jsonParam = @(new HtmlString(Model._wxJsApiParam));
             var g_num=@Model._total_fee;
-            var g_return_url='@Model._return_url';
+        var g_return_url=decodeURIComponent('@Model._return_url');
         window.onload = function() {
             callpay();
         }
@@ -34,7 +34,7 @@
 
     <div class="weui-form-preview__hd">
         <div class="weui-form-preview__item">
-            <label class="weui-form-preview__label">充值金额</label>
+            <label class="weui-form-preview__label">支付金额</label>
             <em class="weui-form-preview__value">¥@Model._total_fee</em>
         </div>
     </div><div class="content">
@@ -47,28 +47,28 @@
 
                     <div class="weui-form-preview__bd">
                         <div class="weui-form-preview__item">
-                            <label class="weui-form-preview__label">充值方式</label>
+                            <label class="weui-form-preview__label">支付方式</label>
                             <span class="weui-form-preview__value">微信支付</span>
                         </div>
 
 
                         <div class="weui-form-preview__item">
-                            <label class="weui-form-preview__label">充值时间</label>
+                            <label class="weui-form-preview__label">支付时间</label>
                             <span class="weui-form-preview__value">@DateTime.Now.ToStr()</span>
                         </div>
                         <div class="weui-form-preview__item">
-                            <label class="weui-form-preview__label">充值单号</label>
+                            <label class="weui-form-preview__label">支付单号</label>
                             <span class="weui-form-preview__value">@Model._po_id</span>
                         </div>
                         <div class="weui-form-preview__item">
-                            <label class="weui-form-preview__label">充值流水号</label>
+                            <label class="weui-form-preview__label">支付流水号</label>
                             <span class="weui-form-preview__value">@Model._userId</span>
                         </div>
 
 
 
                         <div class="weui-form-preview__ft">
-                            <a class="weui-form-preview__btn weui-form-preview__btn_default" onclick="cancel()">取消充值</a>
+                            <a class="weui-form-preview__btn weui-form-preview__btn_default" onclick="cancel()">取消支付</a>
                             <a class="weui-form-preview__btn weui-form-preview__btn_primary" OnClick="callpay()">立刻支付</a>
                         </div>
                     </div>

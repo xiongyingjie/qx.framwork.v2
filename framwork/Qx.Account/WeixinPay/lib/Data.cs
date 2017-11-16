@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 using LitJson;
+using Qx.Account.Configs;
 
 namespace Qx.Account.WeixinPay.lib
 {
@@ -12,8 +13,15 @@ namespace Qx.Account.WeixinPay.lib
     /// 这样设计的好处是可扩展性强，用户可随意对协议进行更改而不用重新设计数据结构，
     /// 还可以随意组合出不同的协议数据包，不用为每个协议设计一个数据包结构
     /// </summary>
-    public class WxPayData
+    public class WxPayData<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         public WxPayData()
         {
 
@@ -77,8 +85,8 @@ namespace Qx.Account.WeixinPay.lib
             //数据为空时不能转化为xml格式
             if (0 == m_values.Count)
             {
-                Log.Error(this.GetType().ToString(), "WxPayData数据为空!");
-                throw new WxPayException("WxPayData数据为空!");
+                Log<T>.Error(this.GetType().ToString(), "WxPayData<T>数据为空!");
+                throw new WxPayException("WxPayData<T>数据为空!");
             }
 
             string xml = "<xml>";
@@ -87,8 +95,8 @@ namespace Qx.Account.WeixinPay.lib
                 //字段值不能为null，会影响后续流程
                 if (pair.Value == null)
                 {
-                    Log.Error(this.GetType().ToString(), "WxPayData内部含有值为null的字段!");
-                    throw new WxPayException("WxPayData内部含有值为null的字段!");
+                    Log<T>.Error(this.GetType().ToString(), "WxPayData<T>内部含有值为null的字段!");
+                    throw new WxPayException("WxPayData<T>内部含有值为null的字段!");
                 }
 
                 if (pair.Value.GetType() == typeof(int))
@@ -101,8 +109,8 @@ namespace Qx.Account.WeixinPay.lib
                 }
                 else//除了string和int类型不能含有其他数据类型
                 {
-                    Log.Error(this.GetType().ToString(), "WxPayData字段数据类型错误!");
-                    throw new WxPayException("WxPayData字段数据类型错误!");
+                    Log<T>.Error(this.GetType().ToString(), "WxPayData<T>字段数据类型错误!");
+                    throw new WxPayException("WxPayData<T>字段数据类型错误!");
                 }
             }
             xml += "</xml>";
@@ -110,7 +118,7 @@ namespace Qx.Account.WeixinPay.lib
         }
 
         /**
-        * @将xml转为WxPayData对象并返回对象内部的数据
+        * @将xml转为WxPayData<T>对象并返回对象内部的数据
         * @param string 待转换的xml串
         * @return 经转换得到的Dictionary
         * @throws WxPayException
@@ -119,8 +127,8 @@ namespace Qx.Account.WeixinPay.lib
         {
             if (string.IsNullOrEmpty(xml))
             {
-                Log.Error(this.GetType().ToString(), "将空的xml串转换为WxPayData不合法!");
-                throw new WxPayException("将空的xml串转换为WxPayData不合法!");
+                Log<T>.Error(this.GetType().ToString(), "将空的xml串转换为WxPayData<T>不合法!");
+                throw new WxPayException("将空的xml串转换为WxPayData<T>不合法!");
             }
 
             XmlDocument xmlDoc = new XmlDocument();
@@ -130,7 +138,7 @@ namespace Qx.Account.WeixinPay.lib
             foreach (XmlNode xn in nodes)
             {
                 XmlElement xe = (XmlElement)xn;
-                m_values[xe.Name] = xe.InnerText;//获取xml的键值对到WxPayData内部的数据中
+                m_values[xe.Name] = xe.InnerText;//获取xml的键值对到WxPayData<T>内部的数据中
             }
 			
             try
@@ -161,8 +169,8 @@ namespace Qx.Account.WeixinPay.lib
             {
                 if (pair.Value == null)
                 {
-                    Log.Error(this.GetType().ToString(), "WxPayData内部含有值为null的字段!");
-                    throw new WxPayException("WxPayData内部含有值为null的字段!");
+                    Log<T>.Error(this.GetType().ToString(), "WxPayData<T>内部含有值为null的字段!");
+                    throw new WxPayException("WxPayData<T>内部含有值为null的字段!");
                 }
 
                 if (pair.Key != "sign" && pair.Value.ToString() != "")
@@ -195,13 +203,13 @@ namespace Qx.Account.WeixinPay.lib
             {
                 if (pair.Value == null)
                 {
-                    Log.Error(this.GetType().ToString(), "WxPayData内部含有值为null的字段!");
-                    throw new WxPayException("WxPayData内部含有值为null的字段!");
+                    Log<T>.Error(this.GetType().ToString(), "WxPayData<T>内部含有值为null的字段!");
+                    throw new WxPayException("WxPayData<T>内部含有值为null的字段!");
                 }
 
                 str += string.Format("{0}={1}<br>", pair.Key, pair.Value.ToString());
             }
-            Log.Debug(this.GetType().ToString(), "Print in Web Page : " + str);
+            Log<T>.Debug(this.GetType().ToString(), "Print in Web Page : " + str);
             return str;
         }
 
@@ -214,7 +222,7 @@ namespace Qx.Account.WeixinPay.lib
             //转url格式
             string str = ToUrl();
             //在string后加入API KEY
-            str += "&key=" + WxPayConfig.KEY;
+            str += "&key=" + cfg.KEY;
             //MD5加密
             var md5 = MD5.Create();
             var bs = md5.ComputeHash(Encoding.UTF8.GetBytes(str));
@@ -237,14 +245,14 @@ namespace Qx.Account.WeixinPay.lib
             //如果没有设置签名，则跳过检测
             if (!IsSet("sign"))
             {
-               Log.Error(this.GetType().ToString(), "WxPayData签名存在但不合法!");
-               throw new WxPayException("WxPayData签名存在但不合法!");
+               Log<T>.Error(this.GetType().ToString(), "WxPayData<T>签名存在但不合法!");
+               throw new WxPayException("WxPayData<T>签名存在但不合法!");
             }
             //如果设置了签名但是签名为空，则抛异常
             else if(GetValue("sign") == null || GetValue("sign").ToString() == "")
             {
-                Log.Error(this.GetType().ToString(), "WxPayData签名存在但不合法!");
-                throw new WxPayException("WxPayData签名存在但不合法!");
+                Log<T>.Error(this.GetType().ToString(), "WxPayData<T>签名存在但不合法!");
+                throw new WxPayException("WxPayData<T>签名存在但不合法!");
             }
 
             //获取接收到的签名
@@ -258,8 +266,8 @@ namespace Qx.Account.WeixinPay.lib
                 return true;
             }
 
-            Log.Error(this.GetType().ToString(), "WxPayData签名验证错误!");
-            throw new WxPayException("WxPayData签名验证错误!");
+            Log<T>.Error(this.GetType().ToString(), "WxPayData<T>签名验证错误!");
+            throw new WxPayException("WxPayData<T>签名验证错误!");
         }
 
         /**

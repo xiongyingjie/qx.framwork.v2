@@ -1,19 +1,27 @@
 ﻿using System;
+using Qx.Account.Configs;
 
 namespace Qx.Account.WeixinPay.lib
 {
-    public class WxPayApi
+    public class WxPayApi<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         /**
         * 提交被扫支付API
         * 收银员使用扫码设备读取微信用户刷卡授权码以后，二维码或条码信息传送至商户收银台，
         * 由商户收银台或者商户后台调用该接口发起支付。
-        * @param WxPayData inputObj 提交给被扫支付API的参数
+        * @param WxPayData<T> inputObj 提交给被扫支付API的参数
         * @param int timeOut 超时时间
         * @throws WxPayException
         * @return 成功时返回调用结果，其他抛异常
         */
-        public static WxPayData Micropay(WxPayData inputObj, int timeOut = 10)
+        public static WxPayData<T> Micropay(WxPayData<T> inputObj, int timeOut = 10)
         {
             string url = "https://api.mch.weixin.qq.com/pay/micropay";
             //检测必填参数
@@ -34,24 +42,24 @@ namespace Qx.Account.WeixinPay.lib
                 throw new WxPayException("提交被扫支付API接口中，缺少必填参数auth_code！");
             }
        
-            inputObj.SetValue("spbill_create_ip", WxPayConfig.IP);//终端ip
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("spbill_create_ip", cfg.IP);//终端ip
+            inputObj.SetValue("appid", cfg.APPID);//公众账号ID
+            inputObj.SetValue("mch_id", cfg.MCHID);//商户号
             inputObj.SetValue("nonce_str", Guid.NewGuid().ToString().Replace("-", ""));//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
             string xml = inputObj.ToXml();
 
             var start = DateTime.Now;//请求开始时间
 
-            Log.Debug("WxPayApi", "MicroPay request : " + xml);
-            string response = HttpService.Post(xml, url, false, timeOut);//调用HTTP通信接口以提交数据到API
-            Log.Debug("WxPayApi", "MicroPay response : " + response);
+            Log<T>.Debug("WxPayApi", "MicroPay request : " + xml);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);//调用HTTP通信接口以提交数据到API
+            Log<T>.Debug("WxPayApi", "MicroPay response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);//获得接口耗时
 
             //将xml格式的结果转换为对象以返回
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
             ReportCostTime(url, timeCost, result);//测速上报
@@ -63,12 +71,12 @@ namespace Qx.Account.WeixinPay.lib
         /**
         *    
         * 查询订单
-        * @param WxPayData inputObj 提交给查询订单API的参数
+        * @param WxPayData<T> inputObj 提交给查询订单API的参数
         * @param int timeOut 超时时间
         * @throws WxPayException
         * @return 成功时返回订单查询结果，其他抛异常
         */
-        public static WxPayData OrderQuery(WxPayData inputObj, int timeOut = 6)
+        public static WxPayData<T> OrderQuery(WxPayData<T> inputObj, int timeOut = 6)
         {
             string url = "https://api.mch.weixin.qq.com/pay/orderquery";
             //检测必填参数
@@ -77,24 +85,24 @@ namespace Qx.Account.WeixinPay.lib
                 throw new WxPayException("订单查询接口中，out_trade_no、transaction_id至少填一个！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
-            inputObj.SetValue("nonce_str", WxPayApi.GenerateNonceStr());//随机字符串
+            inputObj.SetValue("appid", cfg.APPID);//公众账号ID
+            inputObj.SetValue("mch_id", cfg.MCHID);//商户号
+            inputObj.SetValue("nonce_str", WxPayApi<T>.GenerateNonceStr());//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
 
             string xml = inputObj.ToXml();
 
             var start = DateTime.Now;
 
-            Log.Debug("WxPayApi", "OrderQuery request : " + xml);
-            string response = HttpService.Post(xml, url, false, timeOut);//调用HTTP通信接口提交数据
-            Log.Debug("WxPayApi", "OrderQuery response : " + response);
+            Log<T>.Debug("WxPayApi", "OrderQuery request : " + xml);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);//调用HTTP通信接口提交数据
+            Log<T>.Debug("WxPayApi", "OrderQuery response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);//获得接口耗时
 
             //将xml格式的数据转化为对象以返回
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
             ReportCostTime(url, timeCost, result);//测速上报
@@ -106,12 +114,12 @@ namespace Qx.Account.WeixinPay.lib
         /**
         * 
         * 撤销订单API接口
-        * @param WxPayData inputObj 提交给撤销订单API接口的参数，out_trade_no和transaction_id必填一个
+        * @param WxPayData<T> inputObj 提交给撤销订单API接口的参数，out_trade_no和transaction_id必填一个
         * @param int timeOut 接口超时时间
         * @throws WxPayException
         * @return 成功时返回API调用结果，其他抛异常
         */
-        public static WxPayData Reverse(WxPayData inputObj, int timeOut = 6)
+        public static WxPayData<T> Reverse(WxPayData<T> inputObj, int timeOut = 6)
         {
             string url = "https://api.mch.weixin.qq.com/secapi/pay/reverse";
             //检测必填参数
@@ -120,24 +128,24 @@ namespace Qx.Account.WeixinPay.lib
                 throw new WxPayException("撤销订单API接口中，参数out_trade_no和transaction_id必须填写一个！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", cfg.APPID);//公众账号ID
+            inputObj.SetValue("mch_id", cfg.MCHID);//商户号
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
             string xml = inputObj.ToXml();
 
             var start = DateTime.Now;//请求开始时间
 
-            Log.Debug("WxPayApi", "Reverse request : " + xml);
+            Log<T>.Debug("WxPayApi", "Reverse request : " + xml);
 
-            string response = HttpService.Post(xml, url, true, timeOut);
+            string response = HttpService<T>.Post(xml, url, true, timeOut);
 
-            Log.Debug("WxPayApi", "Reverse response : " + response);
+            Log<T>.Debug("WxPayApi", "Reverse response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);
 
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
             ReportCostTime(url, timeCost, result);//测速上报
@@ -149,12 +157,12 @@ namespace Qx.Account.WeixinPay.lib
         /**
         * 
         * 申请退款
-        * @param WxPayData inputObj 提交给申请退款API的参数
+        * @param WxPayData<T> inputObj 提交给申请退款API的参数
         * @param int timeOut 超时时间
         * @throws WxPayException
         * @return 成功时返回接口调用结果，其他抛异常
         */
-        public static WxPayData Refund(WxPayData inputObj, int timeOut = 6)
+        public static WxPayData<T> Refund(WxPayData<T> inputObj, int timeOut = 6)
         {
             string url = "https://api.mch.weixin.qq.com/secapi/pay/refund";
             //检测必填参数
@@ -179,23 +187,23 @@ namespace Qx.Account.WeixinPay.lib
                 throw new WxPayException("退款申请接口中，缺少必填参数op_user_id！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", cfg.APPID);//公众账号ID
+            inputObj.SetValue("mch_id", cfg.MCHID);//商户号
             inputObj.SetValue("nonce_str", Guid.NewGuid().ToString().Replace("-", ""));//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
             
             string xml = inputObj.ToXml();
             var start = DateTime.Now;
 
-            Log.Debug("WxPayApi", "Refund request : " + xml);
-            string response = HttpService.Post(xml, url, true, timeOut);//调用HTTP通信接口提交数据到API
-            Log.Debug("WxPayApi", "Refund response : " + response);
+            Log<T>.Debug("WxPayApi", "Refund request : " + xml);
+            string response = HttpService<T>.Post(xml, url, true, timeOut);//调用HTTP通信接口提交数据到API
+            Log<T>.Debug("WxPayApi", "Refund response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);//获得接口耗时
 
             //将xml格式的结果转换为对象以返回
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
             ReportCostTime(url, timeCost, result);//测速上报
@@ -210,12 +218,12 @@ namespace Qx.Account.WeixinPay.lib
 	    * 提交退款申请后，通过该接口查询退款状态。退款有一定延时，
 	    * 用零钱支付的退款20分钟内到账，银行卡支付的退款3个工作日后重新查询退款状态。
 	    * out_refund_no、out_trade_no、transaction_id、refund_id四个参数必填一个
-	    * @param WxPayData inputObj 提交给查询退款API的参数
+	    * @param WxPayData<T> inputObj 提交给查询退款API的参数
 	    * @param int timeOut 接口超时时间
 	    * @throws WxPayException
 	    * @return 成功时返回，其他抛异常
 	    */
-	    public static WxPayData RefundQuery(WxPayData inputObj, int timeOut = 6)
+	    public static WxPayData<T> RefundQuery(WxPayData<T> inputObj, int timeOut = 6)
 	    {
 		    string url = "https://api.mch.weixin.qq.com/pay/refundquery";
 		    //检测必填参数
@@ -225,8 +233,8 @@ namespace Qx.Account.WeixinPay.lib
 			    throw new WxPayException("退款查询接口中，out_refund_no、out_trade_no、transaction_id、refund_id四个参数必填一个！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
+		    inputObj.SetValue("appid",cfg.APPID);//公众账号ID
+		    inputObj.SetValue("mch_id",cfg.MCHID);//商户号
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串
 		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
 
@@ -234,15 +242,15 @@ namespace Qx.Account.WeixinPay.lib
 		
 		    var start = DateTime.Now;//请求开始时间
 
-            Log.Debug("WxPayApi", "RefundQuery request : " + xml);
-            string response = HttpService.Post(xml, url, false, timeOut);//调用HTTP通信接口以提交数据到API
-            Log.Debug("WxPayApi", "RefundQuery response : " + response);
+            Log<T>.Debug("WxPayApi", "RefundQuery request : " + xml);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);//调用HTTP通信接口以提交数据到API
+            Log<T>.Debug("WxPayApi", "RefundQuery response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end-start).TotalMilliseconds);//获得接口耗时
 
             //将xml格式的结果转换为对象以返回
-		    WxPayData result = new WxPayData();
+		    WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
 		    ReportCostTime(url, timeCost, result);//测速上报
@@ -253,12 +261,12 @@ namespace Qx.Account.WeixinPay.lib
 
         /**
         * 下载对账单
-        * @param WxPayData inputObj 提交给下载对账单API的参数
+        * @param WxPayData<T> inputObj 提交给下载对账单API的参数
         * @param int timeOut 接口超时时间
         * @throws WxPayException
         * @return 成功时返回，其他抛异常
         */
-        public static WxPayData DownloadBill(WxPayData inputObj, int timeOut = 6)
+        public static WxPayData<T> DownloadBill(WxPayData<T> inputObj, int timeOut = 6)
         {
             string url = "https://api.mch.weixin.qq.com/pay/downloadbill";
             //检测必填参数
@@ -267,18 +275,18 @@ namespace Qx.Account.WeixinPay.lib
                 throw new WxPayException("对账单接口中，缺少必填参数bill_date！");
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
+            inputObj.SetValue("appid", cfg.APPID);//公众账号ID
+            inputObj.SetValue("mch_id", cfg.MCHID);//商户号
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
             inputObj.SetValue("sign", inputObj.MakeSign());//签名
 
             string xml = inputObj.ToXml();
 
-            Log.Debug("WxPayApi", "DownloadBill request : " + xml);
-            string response = HttpService.Post(xml, url, false, timeOut);//调用HTTP通信接口以提交数据到API
-            Log.Debug("WxPayApi", "DownloadBill result : " + response);
+            Log<T>.Debug("WxPayApi", "DownloadBill request : " + xml);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);//调用HTTP通信接口以提交数据到API
+            Log<T>.Debug("WxPayApi", "DownloadBill result : " + response);
 
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             //若接口调用失败会返回xml格式的结果
             if (response.Substring(0, 5) == "<xml>")
             {
@@ -297,12 +305,12 @@ namespace Qx.Account.WeixinPay.lib
 	    * 转换短链接
 	    * 该接口主要用于扫码原生支付模式一中的二维码链接转成短链接(weixin://wxpay/s/XXXXXX)，
 	    * 减小二维码数据量，提升扫描速度和精确度。
-	    * @param WxPayData inputObj 提交给转换短连接API的参数
+	    * @param WxPayData<T> inputObj 提交给转换短连接API的参数
 	    * @param int timeOut 接口超时时间
 	    * @throws WxPayException
 	    * @return 成功时返回，其他抛异常
 	    */
-	    public static WxPayData ShortUrl(WxPayData inputObj, int timeOut = 6)
+	    public static WxPayData<T> ShortUrl(WxPayData<T> inputObj, int timeOut = 6)
 	    {
 		    string url = "https://api.mch.weixin.qq.com/tools/shorturl";
 		    //检测必填参数
@@ -311,22 +319,22 @@ namespace Qx.Account.WeixinPay.lib
 			    throw new WxPayException("需要转换的URL，签名用原串，传输需URL encode！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
+		    inputObj.SetValue("appid",cfg.APPID);//公众账号ID
+		    inputObj.SetValue("mch_id",cfg.MCHID);//商户号
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串	
 		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
 		    string xml = inputObj.ToXml();
 		
 		    var start = DateTime.Now;//请求开始时间
 
-            Log.Debug("WxPayApi", "ShortUrl request : " + xml);
-            string response = HttpService.Post(xml, url, false, timeOut);
-            Log.Debug("WxPayApi", "ShortUrl response : " + response);
+            Log<T>.Debug("WxPayApi", "ShortUrl request : " + xml);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);
+            Log<T>.Debug("WxPayApi", "ShortUrl response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);
 
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 			ReportCostTime(url, timeCost, result);//测速上报
 		
@@ -342,7 +350,7 @@ namespace Qx.Account.WeixinPay.lib
         * @throws WxPayException
         * @return 成功时返回，其他抛异常
         */
-        public static WxPayData UnifiedOrder(WxPayData inputObj, int timeOut = 6)
+        public static WxPayData<T> UnifiedOrder(WxPayData<T> inputObj, int timeOut = 6)
         {
             string url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
             //检测必填参数
@@ -376,12 +384,12 @@ namespace Qx.Account.WeixinPay.lib
             //异步通知url未设置，则使用配置文件中的url
             if (!inputObj.IsSet("notify_url"))
             {
-                inputObj.SetValue("notify_url", WxPayConfig.NOTIFY_URL);//异步通知url
+                inputObj.SetValue("notify_url", cfg.NOTIFY_URL);//异步通知url
             }
 
-            inputObj.SetValue("appid", WxPayConfig.APPID);//公众账号ID
-            inputObj.SetValue("mch_id", WxPayConfig.MCHID);//商户号
-            inputObj.SetValue("spbill_create_ip", WxPayConfig.IP);//终端ip	  	    
+            inputObj.SetValue("appid", cfg.APPID);//公众账号ID
+            inputObj.SetValue("mch_id", cfg.MCHID);//商户号
+            inputObj.SetValue("spbill_create_ip", cfg.IP);//终端ip	  	    
             inputObj.SetValue("nonce_str", GenerateNonceStr());//随机字符串
 
             //签名
@@ -390,14 +398,14 @@ namespace Qx.Account.WeixinPay.lib
 
             var start = DateTime.Now;
 
-            Log.Debug("WxPayApi", "UnfiedOrder request : " + xml);
-            string response = HttpService.Post(xml, url, false, timeOut);
-            Log.Debug("WxPayApi", "UnfiedOrder response : " + response);
+            Log<T>.Debug("WxPayApi", "UnfiedOrder request : " + xml);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);
+            Log<T>.Debug("WxPayApi", "UnfiedOrder response : " + response);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);
 
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
             ReportCostTime(url, timeCost, result);//测速上报
@@ -409,12 +417,12 @@ namespace Qx.Account.WeixinPay.lib
         /**
 	    * 
 	    * 关闭订单
-	    * @param WxPayData inputObj 提交给关闭订单API的参数
+	    * @param WxPayData<T> inputObj 提交给关闭订单API的参数
 	    * @param int timeOut 接口超时时间
 	    * @throws WxPayException
 	    * @return 成功时返回，其他抛异常
 	    */
-	    public static WxPayData CloseOrder(WxPayData inputObj, int timeOut = 6)
+	    public static WxPayData<T> CloseOrder(WxPayData<T> inputObj, int timeOut = 6)
 	    {
 		    string url = "https://api.mch.weixin.qq.com/pay/closeorder";
 		    //检测必填参数
@@ -423,20 +431,20 @@ namespace Qx.Account.WeixinPay.lib
 			    throw new WxPayException("关闭订单接口中，out_trade_no必填！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
+		    inputObj.SetValue("appid",cfg.APPID);//公众账号ID
+		    inputObj.SetValue("mch_id",cfg.MCHID);//商户号
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串		
 		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
 		    string xml = inputObj.ToXml();
 		
 		    var start = DateTime.Now;//请求开始时间
 
-            string response = HttpService.Post(xml, url, false, timeOut);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);
 
             var end = DateTime.Now;
             int timeCost = (int)((end - start).TotalMilliseconds);
 
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 
 		    ReportCostTime(url, timeCost, result);//测速上报
@@ -450,25 +458,25 @@ namespace Qx.Account.WeixinPay.lib
 	    * 测速上报
 	    * @param string interface_url 接口URL
 	    * @param int timeCost 接口耗时
-	    * @param WxPayData inputObj参数数组
+	    * @param WxPayData<T> inputObj参数数组
 	    */
-        private static void ReportCostTime(string interface_url, int timeCost, WxPayData inputObj)
+        private static void ReportCostTime(string interface_url, int timeCost, WxPayData<T> inputObj)
 	    {
 		    //如果不需要进行上报
-		    if(WxPayConfig.REPORT_LEVENL == 0)
+		    if(cfg.REPORT_LEVENL == 0)
             {
 			    return;
 		    } 
 
 		    //如果仅失败上报
-		    if(WxPayConfig.REPORT_LEVENL == 1 && inputObj.IsSet("return_code") && inputObj.GetValue("return_code").ToString() == "SUCCESS" &&
+		    if(cfg.REPORT_LEVENL == 1 && inputObj.IsSet("return_code") && inputObj.GetValue("return_code").ToString() == "SUCCESS" &&
 			 inputObj.IsSet("result_code") && inputObj.GetValue("result_code").ToString() == "SUCCESS")
             {
 		 	    return;
 		    }
 		 
 		    //上报逻辑
-		    WxPayData data = new WxPayData();
+		    WxPayData<T> data = new WxPayData<T>();
             data.SetValue("interface_url",interface_url);
 		    data.SetValue("execute_time_",timeCost);
 		    //返回状态码
@@ -521,12 +529,12 @@ namespace Qx.Account.WeixinPay.lib
         /**
 	    * 
 	    * 测速上报接口实现
-	    * @param WxPayData inputObj 提交给测速上报接口的参数
+	    * @param WxPayData<T> inputObj 提交给测速上报接口的参数
 	    * @param int timeOut 测速上报接口超时时间
 	    * @throws WxPayException
 	    * @return 成功时返回测速上报接口返回的结果，其他抛异常
 	    */
-	    public static WxPayData Report(WxPayData inputObj, int timeOut = 1)
+	    public static WxPayData<T> Report(WxPayData<T> inputObj, int timeOut = 1)
 	    {
 		    string url = "https://api.mch.weixin.qq.com/payitil/report";
 		    //检测必填参数
@@ -551,21 +559,21 @@ namespace Qx.Account.WeixinPay.lib
 			    throw new WxPayException("接口耗时，缺少必填参数execute_time_！");
 		    }
 
-		    inputObj.SetValue("appid",WxPayConfig.APPID);//公众账号ID
-		    inputObj.SetValue("mch_id",WxPayConfig.MCHID);//商户号
-		    inputObj.SetValue("user_ip",WxPayConfig.IP);//终端ip
+		    inputObj.SetValue("appid",cfg.APPID);//公众账号ID
+		    inputObj.SetValue("mch_id",cfg.MCHID);//商户号
+		    inputObj.SetValue("user_ip",cfg.IP);//终端ip
 		    inputObj.SetValue("time",DateTime.Now.ToString("yyyyMMddHHmmss"));//商户上报时间	 
 		    inputObj.SetValue("nonce_str",GenerateNonceStr());//随机字符串
 		    inputObj.SetValue("sign",inputObj.MakeSign());//签名
 		    string xml = inputObj.ToXml();
 
-            Log.Info("WxPayApi", "Report request : " + xml);
+            Log<T>.Info("WxPayApi", "Report request : " + xml);
 
-            string response = HttpService.Post(xml, url, false, timeOut);
+            string response = HttpService<T>.Post(xml, url, false, timeOut);
 
-            Log.Info("WxPayApi", "Report response : " + response);
+            Log<T>.Info("WxPayApi", "Report response : " + response);
 
-            WxPayData result = new WxPayData();
+            WxPayData<T> result = new WxPayData<T>();
             result.FromXml(response);
 		    return result;
 	    }
@@ -577,7 +585,7 @@ namespace Qx.Account.WeixinPay.lib
         public static string GenerateOutTradeNo()
         {
             var ran = new Random();
-            return string.Format("{0}{1}{2}", WxPayConfig.MCHID, DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(999));
+            return string.Format("{0}{1}{2}", cfg.MCHID, DateTime.Now.ToString("yyyyMMddHHmmss"), ran.Next(999));
         }
 
         /**

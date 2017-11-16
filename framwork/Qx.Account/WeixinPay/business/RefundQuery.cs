@@ -1,9 +1,17 @@
-﻿using Qx.Account.WeixinPay.lib;
+﻿using Qx.Account.Configs;
+using Qx.Account.WeixinPay.lib;
 
 namespace Qx.Account.WeixinPay.business
 {
-    public class RefundQuery
+    public class RefundQuery<T> where T : new()
     {
+        private static IWxPayApp cfg
+        {
+            get
+            {
+                return (IWxPayApp)new T();
+            }
+        }
         /***
         * 退款查询完整业务流程逻辑
         * @param refund_id 微信退款单号（优先使用）
@@ -14,9 +22,9 @@ namespace Qx.Account.WeixinPay.business
         */
         public static string Run(string refund_id, string out_refund_no, string transaction_id, string out_trade_no)
         {
-            Log.Info("RefundQuery", "RefundQuery is processing...");
+            Log<T>.Info("RefundQuery", "RefundQuery is processing...");
 
-            WxPayData data = new WxPayData();
+            WxPayData<T> data = new WxPayData<T>();
             if(!string.IsNullOrEmpty(refund_id))
             {
                 data.SetValue("refund_id", refund_id);//微信退款单号，优先级最高
@@ -34,9 +42,9 @@ namespace Qx.Account.WeixinPay.business
                 data.SetValue("out_trade_no", out_trade_no);//商户订单号，优先级最低
             }
 
-            WxPayData result = WxPayApi.RefundQuery(data);//提交退款查询给API，接收返回数据
+            WxPayData<T> result = WxPayApi<T>.RefundQuery(data);//提交退款查询给API，接收返回数据
 
-            Log.Info("RefundQuery", "RefundQuery process complete, result : " + result.ToXml());
+            Log<T>.Info("RefundQuery", "RefundQuery process complete, result : " + result.ToXml());
             return result.ToPrintStr();
         }
     }

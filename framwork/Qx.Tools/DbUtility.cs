@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JinianNet.JNTemplate;
 using Qx.Tools.CommonExtendMethods;
 using Oracle.ManagedDataAccess.Client;
 namespace Qx.Tools

@@ -42,28 +42,30 @@ namespace Qx.Tools
                 HttpContext.Current.Request[key] :
                 _httpContext.Request[key]);
             #region 转换特殊标志
+        
+            #endregion
+            return ConvertString(v);
+        }
+        private string ConvertString(string v)
+        {
             if (v == "_uid")
             {
                 v = UserId;
-            }else  if (v == "_unitid")
-                {
-                    v = UnitId;
-              
-                }
+            }
+            else if (v == "_unitid")
+            {
+                v = UnitId;
+            }
             else if (v == "_now")
             {
                 v = DateTime.Now.FormatTime();
-
             }
             else if (v == "_id")
             {
                 v = DateTime.Now.Random();
-
             }
-            #endregion
             return v;
         }
-
         #region 数据库操作相关
 
         private string _cmd;
@@ -146,12 +148,12 @@ namespace Qx.Tools
                     }
                     var index = _cmd.LastIndexOf('.');
                     _dataBase = _cmd.Substring(0, index);//数据库信息 wx.sports  
-                    var operateString = _cmd.Substring(index + 1).Split('|');//操作数组 user-add|user_info-add
+                    var operateString = _cmd.Substring(index + 1).Split('|');//操作数组 user-add-123|user_info-add
                     _currentOperate = new DbOperateCollection();
                     foreach (var o in operateString)
                     {
-                       var currentTable = o.Split('-')[0];
-
+                        var operateStringArray = o.Split('-');
+                       var currentTable = operateStringArray[0];
                         #region 默认操作第一张表
                         if (!_currentTable.HasValue())
                         {
@@ -170,23 +172,20 @@ namespace Qx.Tools
                                     Replace("#now", DateTime.Now.FormatTime())
                                     .Replace("#id", DateTime.Now.Random()).ToDictionary<object>();
                             //_paramDictionary["_conditionObject"] = "列明=值";
-                            _paramDictionary["_id"] = GetParam("id");
+                            _paramDictionary["_id"] = operateStringArray.Length > 2 ? ConvertString(operateStringArray.Skip(2).ToList().PackString('-')): GetParam("id");
                             _paramDictionary["_name"] = GetParam("name");
                             _paramDictionary["_value"] = GetParam("value");
+                            _paramDictionary["_file"] = GetParam("file");
+
+                            
                             var searchCondition = new Dictionary<string, string>();
                             foreach (string key in HttpContext.Current.Request.Params.Keys)
                             {
                                 if (key.StartsWith("search."))
                                 {
                                     var v = HttpContext.Current.Request.Params[key];
-                                    if (v == "_uid")
-                                    {
-                                        v = UserId;
-                                    }else if (v == "_unitid")
-                                        {
-                                            v = UnitId;
-                                        }
-                                    searchCondition.Add(key.Replace("search.",""), v);
+                               
+                                    searchCondition.Add(key.Replace("search.",""), ConvertString(v));
                                 }
                                    
                             }
@@ -200,7 +199,7 @@ namespace Qx.Tools
                             _paramDictionary["_isDebug"] = _isDebug.ToString();
                         }
                         _currentOperate.Add(new DbOperate(_paramDictionary,
-                            o.Split('-')[1].ToOperate(), _dataBase, currentTable));
+                           operateStringArray[1].ToOperate(), _dataBase, currentTable));
                     }
                  
                 }

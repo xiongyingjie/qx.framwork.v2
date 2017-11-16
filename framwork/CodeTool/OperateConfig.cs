@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CodeTool.Extension;
 using CodeTool.Helper;
+using Qx.Tools.CommonExtendMethods;
 
 namespace CodeTool
 {
@@ -41,28 +43,86 @@ namespace CodeTool
             get
             {
                 var t = "";
-                if (cb_can_click.SelectedIndex == 0)
+                switch (cb_can_click.SelectedIndex)
                 {
-                    //可点击
-                    tb_url.Enabled = true;
-                    switch (_param)
-                    {
-                        case 0:
-                            t = "<a href='" + tb_url.Text + "'>" + tb_operate.Text + "</a>";
-                            break;
-                        case 1:
-                            t = "<a href='" + tb_url.Text + "?id={0}'>" + tb_operate.Text + "</a>";
-                            break;
-                        case 2:
-                            t = "<a href='" + tb_url.Text + "?id1={0}&?id2={1}'>" + tb_operate.Text + "</a>";
-                            break;
-                    }
+                    case 0:
+                        //是表单
+                        tb_url.Enabled = true;
+                        switch (_param)
+                        {
+                            case 0:
+                                t = "<a href='*f" + tb_url.Text + "'>" + tb_operate.Text + "</a>";
+                                break;
+                            case 1:
+                                t = "<a href='*f" + tb_url.Text + "?id={0}'>" + tb_operate.Text + "</a>";
+                                break;
+                            case 2:
+                                t = "<a href='*f" + tb_url.Text + "?id1={0}&?id2={1}'>" + tb_operate.Text + "</a>";
+                                break;
+                        }
+                        break;
+                    case 1:
+                        //是报表
+                        tb_url.Enabled = true;
+                        switch (_param)
+                        {
+                            case 0:
+                                t = "<a href='*r" + tb_url.Text + "'>" + tb_operate.Text + "</a>";
+                                break;
+                            case 1:
+                                t = "<a href='*r" + tb_url.Text + "?id={0}'>" + tb_operate.Text + "</a>";
+                                break;
+                            case 2:
+                                t = "<a href='*r" + tb_url.Text + "?id1={0}&?id2={1}'>" + tb_operate.Text + "</a>";
+                                break;
+                        }
+                        break;
+                    case 2:
+                        //是删除
+                        tb_url.Enabled = true;
+                        switch (_param)
+                        {
+                            case 0:
+                                TipError("删除操作至少设置一个参数");
+                                   break;
+                            case 1:
+                                if (!cb_db.Text.HasValue() || !cb_table.Text.HasValue())
+                                {
+                                    TipError("删除操作必须选择目标库和表");
+                                    cb_db.Focus();
+                                }
+                                else
+                                {
+                                    t = "<a href='" + cb_db.Text + "." + cb_table.Text + "@delete-{0}'>" + tb_operate.Text + "</a>";
+                                }
+                                break;
+                            case 2:
+                                TipError("删除操作只能设置一个参数");
+                                break;
+                        }
+                        break;
+                    case 3:
+                        //可点击
+                        tb_url.Enabled = true;
+                        switch (_param)
+                        {
+                            case 0:
+                                t = "<a href='" + tb_url.Text + "'>" + tb_operate.Text + "</a>";
+                                break;
+                            case 1:
+                                t = "<a href='" + tb_url.Text + "?id={0}'>" + tb_operate.Text + "</a>";
+                                break;
+                            case 2:
+                                t = "<a href='" + tb_url.Text + "?id1={0}&?id2={1}'>" + tb_operate.Text + "</a>";
+                                break;
+                        }
+                        break;
+                    case 4:
+                        //不可点击
+                        tb_url.Enabled = false;
+                        t = tb_operate.Text;
+                        break;
                   
-                }
-                else
-                {
-                    tb_url.Enabled = false;
-                    t = tb_operate.Text;
                 }
                 return t;
             }
@@ -137,8 +197,29 @@ namespace CodeTool
             nud_condition.Value = 0; 
             nud_condition.Value = 0;
             cb_can_click.SelectedIndex = 0;
+            panel3.Visible =false;
             cb_condition_oprator.SelectedIndex = 0;
+            ComBoxBinding(cb_db, SQL_DATABASE.ExecuteQuery().
+                    Select(row => row[0]));
             UpdateOutPut(sender, e);
+        }
+
+        private void cb_can_click_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tb_operate.Text = cb_can_click.SelectedIndex == 2 ? "删除" : "添加，编辑，详情";
+            panel1.Visible = cb_can_click.SelectedIndex != 2;
+            panel3.Visible = !panel1.Visible;
+        }
+
+        private void cb_db_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComBoxBinding(cb_table, SQL_TABLE().ExecuteQuery(cb_db.Text).
+                  Select(row => row[0]));
+        }
+
+        private void tb_op2_TextChanged(object sender, EventArgs e)
+        {
+            tb_operate.Text = tb_op2.Text;
         }
     }
 }
