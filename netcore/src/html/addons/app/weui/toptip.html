@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+
+ <script src="framework-m/js/head.min-m.js"></script>
+
+
+  </head>
+
+  <body ontouchstart>
+
+
+    <header class='demos-header'>
+      <h1 class="demos-title">Toptip</h1>
+    </header>
+
+    <div class='demos-content-padded'>
+      <a href="javascript:;" id='show-success' class="weui-btn weui-btn_primary">显示成功</a>
+      <a href="javascript:;" id='show-error' class="weui-btn weui-btn_primary">显示失败</a>
+      <a href="javascript:;" id='show-warning' class="weui-btn weui-btn_primary">显示警告</a>
+    </div>
+
+
+<script>
+  head.ready(function() {
+   
+  });
+</script>
+
+
+    <script>
+      $.ready(document)
+      .on('click', '#show-success', function() {
+        head.ready.toptip('操作成功', 'success');
+      })
+      .on('click', '#show-error', function() {
+        head.ready.toptip('操作失败', 'error');
+      })
+      .on('click', '#show-warning', function() {
+        head.ready.toptip('警告', 'warning');
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+﻿render([
+    group([
+input('实习编号', 'practice_no', '', '4'),
+input('用户ID', 'user_id', '', '4'),
+input('实习批次id', 'prac_batch_id', '', '4'),
+input('周记评分', 'week_record_score', '', '4'),
+input('实习案例评分', 'practice_case_score', '', '4'),
+input('周记评论', 'week_record_comment', '', '4'),
+input('实习案例评论', 'practice_case_comment', '', '4'),
+input('实习内容', 'practice_content', '', '4'),
+input('实习报告', 'practice_report', '', '4'),
+input('实习报告文件', 'practice_report_file', '', '4'),
+input('实习部门', 'practice_dept', '', '4'),
+input('实习分部门', 'practice_div_dept', '', '4'),
+input('最后得分', 'review_score', '', '4'),
+input('实习单位评价', 'prac_unit_comment', '', '4'),
+input('学校评价', 'school_comment', '', '4'),
+input('导师评价', 'tutor_comment', '', '4'),
+input('职业状态id', 'career_status_id', '', '4'),
+input('学生评价企业分数', 'stu_eva_ent_score', '', '4'),
+input('是否生效', 'is_effect', '', '4'),
+input('已审定企业id', 'authorized_ent_no', '', '4'),
+input('证明文档', 'proof_text', '', '4'),
+input('证明材料', 'proof_file', '', '4'),
+input('分散状态id', 'disperse_state_id', '', '4'),
+input('学生评价学校分数', 'stu_eva_school_score', '', '4')
+    ],"")], 'hqu.scsxxt.v2.t_stu_batch_reg@add', '', '添加');

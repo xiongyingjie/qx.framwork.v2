@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="/head-js/head.min-m.js"></script>
+
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Views -->
+<div class="views">
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                <div class="center sliding" style="left: 150px;">我的钱包</div>
+            </div>
+        </div>
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+            <!-- Page, "data-page" contains page name -->
+            <div data-page="index" class="page">
+                <!-- Scrollable page content -->
+                <div class="page-content">
+                    <div class="page-content">
+                        <div class="content-block-title">活动:充200送10元,充500送20元 </div>
+                        <form class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">钱包余额</div>
+                                            <div class="item-input">
+                                                <input id="balance" readonly="readonly" type="text" placeholder="余额">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">&nbsp;</div>
+                                            <div class="item-button">
+                                                <a id="charge">余额充值</a>
+                                            </div>
+                                            <div class="item-button">
+                                                <a id="withdrew">申请提现</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+    <script>
+        ready(function () {
+            $.Ajax({
+                url: "/open/balance",
+                success: function (data) {
+                    $("#balance").val(data.Balance/100.0);
+                }
+            });
+            $("#charge").click(function () {
+                $.go($.res("app/wxpay/charge.html"));
+            });
+            $("#withdrew").click(function () {
+                $.msg("暂不支持");
+            });
+    })
+    </script>
+</body>
+</html> 

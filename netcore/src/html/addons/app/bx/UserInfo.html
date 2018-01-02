@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>个人中心</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <script src="framework-m/js/head.min-m.js"></script>
+    <link rel="stylesheet" href="css/Repair.css">
+    <style>
+        .weui-flex {
+            background-color: #ffffff;
+        }
+
+        .weui-tab {
+            margin-top: 10px;
+        }
+
+        .weui-navbar {
+            background-color: #ffffff;
+        }
+
+        .placeholder {
+            margin: 5px;
+            padding: 0 10px;
+            text-align: center;
+            color: #000000;
+        }
+
+        .personalInformation {
+            text-align: left;
+            margin-top: 20px;
+            color: #cac8c8;
+            overflow: hidden;
+            padding-bottom: 10px;
+        }
+
+            .personalInformation > p {
+                font-size: 20px;
+                color: #000000;
+                font-weight: bold;
+            }
+
+        .placeholder2 {
+            margin: 5px;
+            padding: 0 10px;
+            background-color: #f7f7f7;
+            height: 2.3em;
+            line-height: 2.3em;
+            text-align: center;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+        }
+
+        .returner {
+            position: fixed;
+            bottom: 10px;
+            width: 90%;
+            margin: 0 5%;
+        }
+
+        .return {
+            border: 1px solid #d5d5d5;
+            border-radius: 5px;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        ul li {
+            list-style-type: none;
+            float: left;
+            height: 30px;
+            line-height: 32px;
+        }
+
+        .card-content {
+            padding: 0 20px;
+        }
+
+            .card-content table th {
+                font-size: 0.7em;
+                font-weight: normal;
+                font-family: "微软雅黑";
+                color: rgb(102,102,102);
+                width: 5em;
+                height: 2em;
+                text-align: left;
+            }
+
+            .card-content table td {
+                font-size: 0.7em;
+                font-family: "微软雅黑";
+                color: rgb(159,159,159);
+            }
+
+        .weui-navbar {
+            background-color: white;
+            border-bottom: 1px solid rgb(213,213,213);
+            font-size: 1.2em;
+        }
+
+        #mycheck {
+            margin-top: 50px;
+        }
+        #tab1 {
+            margin-top: 60px
+        }
+        .weui-navbar__item.weui-bar__item--on { /*被选中时*/
+            color: rgb(68,146,235);
+            background-color: white;
+            border-bottom: 3px solid rgb(68,146,235);
+        }
+
+        .facebook-card .facebook-name {
+            margin-left: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .facebook-card .facebook-date {
+            margin-left: 5px;
+            font-size: 13px;
+            color: #8e8e93;
+        }
+    </style>
+</head>
+<body ontouchstart="">
+    <div class="weui-flex">
+        <div><div class="placeholder"><img src="images/头像.png" style="width:80%;margin-top: 16%;" /></div></div>
+        <div class="weui-flex__item">
+            <div class="placeholder personalInformation">
+                <p id="nick_name"></p>
+                <span id="emmployee_type">未认证</span>
+                <br>
+                <span id="user_id"></span>
+                <ul class="phone"><li><img src="images/phone.png" /></li><li></li></ul>
+            </div>
+        </div>
+        <div><div class="placeholder"></div></div>
+    </div>
+
+    <div class="weui-tab">
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                待修记录
+            </a>
+            <a class="weui-navbar__item " href="#tab2">
+                已修记录
+            </a>
+            <a class="weui-navbar__item" href="#tab3">
+                待回访记录
+            </a>
+            <a class="weui-navbar__item" href="#tab4">
+                已回访记录
+            </a>
+        </div>
+    </div>
+    <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+        </div>
+        <div id="tab2" class="weui-tab__bd-item">
+        </div>
+        <div id="tab3" class="weui-tab__bd-item">
+        </div>
+        <div id="tab4" class="weui-tab__bd-item">
+        </div>
+    </div>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/jquery-weui.js"></script>
+
+
+
+</body>
+</html>

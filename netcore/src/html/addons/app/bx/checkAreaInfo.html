@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+	   <link rel="stylesheet" href="css/weui.min.css">
+	   <link rel="stylesheet" href="css/jquery-weui.css">
+        <link rel="stylesheet" href="css/Repair.css">
+	    <link href="css/Repair.css" rel="stylesheet"/>
+        <script src="framework-m/js/head.min-m.js"></script>
+		<title>被检地点信息</title>
+		<style>
+		
+			.weui-navbar .word1{
+				float: left;margin-left: 3%;
+				color: #3d3d3d;
+			}
+			.weui-navbar .word2{
+				float: left;margin-left: 3%;
+				color: #8a8a8a;
+			}
+			.weui-navbar .word3{
+				float: right;margin-right: 3%;
+				color: #4492eb;
+			}
+			
+			.weui-btn_mini {
+   				 display: inline-block;
+   				 padding: 0.5em 0em;
+    			line-height: 1.4em;
+    			font-size: 1.2em;
+    			width: 80%;
+    			color: gray;
+    			margin-left: 9%;
+    			margin-top: 10px;
+			}
+			.weui-btn_blue{
+				background-color:rgb(68,146,235);
+				color: white;
+			}
+			.weui-cells {
+    			margin-top: 50px;
+			}
+			.weui-cell:before {
+     			left: 0px; 
+			}
+            .weui-dialog__btn{
+                color:rgb(68,146,235) !important;
+            }
+		</style>
+	</head>
+	<body>
+		<div class="weui-navbar">
+        <a class="weui-navbar__item weui-bar__item--on"  style="background-color: #eef2f3;">
+          <div class="word1">地点</div>
+          <div class="word2">放疗楼/物理组</div>
+          <div class="word3">已检0</div>
+        </a>
+     	 </div>
+        <div class="weui-cells" id="AreaInfo">
+            <!--<a class="weui-cell weui-cell_access open-popup" href="javascript:;"data-target="#half">
+                <div class="weui-cell__bd">
+                    <p>空调</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <div id="half" class="weui-popup__container popup-bottom" style="display: none;">
+                <div class="weui-popup__overlay"></div>
+                <div class="weui-popup__modal">
+                    <div class="toolbar">
+                        <div class="toolbar-inner">
+                            <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                            <h1 class="title">设备详情</h1>
+                        </div>
+                    </div>
+                    <div class="modal-content">
+                        <div class="weui-cells">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>正常</p>
+                                </div>
+                                <div class="weui-cell__ft">0</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>维护中</p>
+                                </div>
+                                <div class="weui-cell__ft">0</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>未修理</p>
+                                </div>
+                                <div class="weui-cell__ft">0</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <textarea class="weui-textarea" placeholder="备注" rows="3" id="i"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <a class="weui-cell weui-cell_access open-popup" href="javascript:;"data-target="#half1">
+                <div class="weui-cell__bd">
+                    <p>下水管</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p>水龙头</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p>插座</p>
+                </div>
+                <div class="weui-cell__ft">
+                </div>
+            </a>-->
+        </div>
+      	<div class="demos-content-padded" >
+      		<div class="weui-flex">
+      			<div class="weui-flex__item"><div class="placeholder"><a class="weui-btn weui-btn_mini weui-btn_default">返回</a></div></div>
+      			<div class="weui-flex__item"><div class="placeholder"><a  class="weui-btn weui-btn_mini weui-btn_default"  id="save" >保存</a></div></div>
+     			<div class="weui-flex__item"><div class="placeholder"><a class="weui-btn weui-btn_mini weui-btn_blue" id="submit">确认</a></div></div>
+    		</div>
+        </div>
+        <!--<div id="half" class="weui-popup__container popup-bottom" style="display: none;">
+            <div class="weui-popup__overlay"></div>
+            <div class="weui-popup__modal">
+                <div class="toolbar">
+                    <div class="toolbar-inner">
+                        <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                        <h1 class="title">设备详情</h1>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>正常</p>
+                            </div>
+                            <div class="weui-cell__ft">0</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>维护中</p>
+                            </div>
+                            <div class="weui-cell__ft">0</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>未修理</p>
+                            </div>
+                            <div class="weui-cell__ft">0</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <textarea class="weui-textarea" placeholder="备注" rows="3" id="i"></textarea>
+                            </div>
+                        </div>
+                     </div>
+               
+                  </div>
+            </div>
+        </div>
+        <div id="half1" class="weui-popup__container popup-bottom" style="display: none;">
+            <div class="weui-popup__overlay"></div>
+            <div class="weui-popup__modal">
+                <div class="toolbar">
+                    <div class="toolbar-inner">
+                        <a href="javascript:;" class="picker-button close-popup">关闭</a>
+                        <h1 class="title">设备详情</h1>
+                    </div>
+                </div>
+                <div class="modal-content">
+                    <div class="weui-cells">
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>正常</p>
+                            </div>
+                            <div class="weui-cell__ft">0</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>维护中</p>
+                            </div>
+                            <div class="weui-cell__ft">0</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <p>未修理</p>
+                            </div>
+                            <div class="weui-cell__ft">0</div>
+                        </div>
+                        <div class="weui-cell">
+                            <div class="weui-cell__bd">
+                                <textarea class="weui-textarea" placeholder="备注" rows="3" id="i"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>-->
+
+         <script src="js/jquery-2.1.4.js"></script>
+         <script src="js/fastclick.js"></script>
+         <script src="js/jquery-weui.js"></script>
+        <script>
+            $(document).on("click", "#save", function () {
+                $.alert("保存成功");
+            });
+            $(document).on("click", "#submit", function () {
+                $.alert("提交成功");
+            });
+        </script>
+
+	</body>
+</html>

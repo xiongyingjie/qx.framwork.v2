@@ -1,0 +1,53 @@
+﻿render([
+    group([
+showInput('工号', 'cultivation_object_info-UserId', '', '4'),
+showInput('姓名', 'cultivation_object_info-name', '', '4'),
+showInput('团支部名称', 'league_branch-Name', '', '4'),
+showInput('民族', 'cultivation_object_info-natiion', '', '4'),
+showInput('性别', 'cultivation_object_info-sex', '', '4'),
+showInput('联系方式', 'cultivation_object_info-phone', '', '4'),
+hide('cultivation_object_info-Grade', '),
+showFile('附件', 'thought_report-Attachment'),
+hide('thought_report-thought_report_id', ''),
+hide('thought_report-UserId', ''),
+hide('thought_report-Describe', ''),
+hide('thought_report-UploadTime', ''),
+hide('thought_report-StateID', ''),
+hide('thought_report-is_read', ''),
+hide('league_branch-unitid', ''),
+hide('league_branch-Party_branch_id', ''),
+hide('cultivation_object_info-Class', ''),
+hide('cultivation_object_info-birthday', ''),
+hide('cultivation_object_info-qualification', ''),
+hide('cultivation_object_info-join_application_time', ''),
+hide('cultivation_object_info-league_branch_Id', ''),
+hide('cultivation_object_info-be_activist_time', ''),
+hide('cultivation_object_info-graduation_time', ''),
+hide('cultivation_object_info-point', ''),
+hide('cultivation_object_info-rank', ''),
+hide('cultivation_object_info-community_representation', ''),
+hide('cultivation_object_info-development_object_time', ''),
+hide('cultivation_object_info-join_party_time', ''),
+hide('cultivation_object_info-party_Id', ''),
+hide('cultivation_object_info-party_committee_eaxm_time', ''),
+hide('cultivation_object_info-join_train_class_time', ''),
+hide('cultivation_object_info-join_party_volunte',''),
+hide('cultivation_object_info-sub_time_of_vlolunte', ''),
+hide('cultivation_object_info-sub_formal_application_Time', ''),
+hide('cultivation_object_info-formal_application',''),
+hide('cultivation_object_info-formal_time', ''),
+hide('cultivation_object_info-cultivation_object_stateId', ''),
+hide('cultivation_object_info-alutobiography',''),
+hide('cultivation_object_info-swear_time', ''),
+hide('cultivation_object_info-qq', ''),
+hide('cultivation_object_info-weixin', ''),
+hide('cultivation_object_info-join_application',''),
+hide('cultivation_object_info-public_opinion',''),
+hide('cultivation_object_info-politics_careful',''),
+hide('cultivation_object_info-community_representation_attach','')
+    ], '标题')], '', 'ecampus.join_party.cultivation_object_info@list'
+    .jn('league_branch.unitid', 'league_branch_Id')
+    .eq('UserId', q.id), '', '详情');
+
+
+//下载文件写报表：列：提交时间，行：思想汇报，标题：思想汇报管理，操作列：下载

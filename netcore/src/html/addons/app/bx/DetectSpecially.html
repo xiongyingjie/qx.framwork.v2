@@ -1,0 +1,104 @@
+﻿<html class="pixel-ratio-2 retina android android-6 android-6-0"><head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.css">
+<link rel="stylesheet" href="css/Repair.css">
+<script src="framework-m/js/head.min-m.js"></script>
+<style>
+  .weui-search-bar {
+    height: 45px;
+   }
+   	.content{
+		padding: 5px;
+	}
+	.content_title{
+		color:#4499ee;
+		padding: 5px;
+	}
+	.weui-col-50{
+		background-color: white;
+		overflow: hidden;
+		height: 53px;
+		border-radius:3px;
+		text-align: center;
+		width:49.2% !important;
+	}
+	.weui-col-context{
+		float: left;
+		width:72%;
+		height: 53px;
+		line-height: 53px;
+	}
+	.weui-col-after{
+		float: left;
+		width:28%;
+		background-color:rgb(68,146,235);
+		color:#ffffff;
+        height: 53px;
+        padding-top:10px;
+	}
+	.weui-col-after p{
+		font-size:6px;
+	}
+	.weui-col-after p span{
+		font-size:16px;
+		font-weight: bold;
+	}
+</style>
+
+  </head>
+
+  <body ontouchstart="">
+
+    <div class="weui-search-bar" id="searchBar">
+   
+      <form class="weui-search-bar__form">
+        <div class="weui-search-bar__box">
+          <i class="weui-icon-search"></i>
+          <input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+          <a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+        </div>
+        <label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+          <i class="weui-icon-search"></i>
+          <span>搜索</span>
+        </label>
+      </form>
+      <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+    </div>
+    <div class="content">
+		<div class="content_title">全部检测点</div>
+		<div class="weui-row">
+		      <div class="weui-col-50">
+		      	    <div class="weui-col-context">科研楼1-1配电箱</div>
+			      	<div class="weui-col-after">
+			      		<p><span>2</span></p>
+			      		<p>台设备</p>
+			        </div>
+		      </div>
+		      <div class="weui-col-50">
+		      	    <div class="weui-col-context">科研楼1-1配电箱</div>
+			      	<div class="weui-col-after">
+			      		<p><span>2</span></p>
+			      		<p>台设备</p>
+			        </div>
+		      </div>
+		</div>  
+
+	</div>
+    <script src="js/jquery-2.1.4.js"></script>
+<script src="js/fastclick.js"></script>
+<script>
+  $(function() {
+    FastClick.attach(document.body);
+  });
+</script>
+<script src="js/jquery-weui.js"></script>
+
+</body></html>

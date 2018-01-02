@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jQuery WeUI</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+<link rel="stylesheet" type="text/css" href="css/applicationMeeting.css">
+<script src="js/jquery.min.js"></script>
+ <style>
+ 	.weui-select {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 100%;
+    font-size: inherit;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    z-index: 1;
+    padding-left: 15px;
+}
+.card-footer{
+	color: #333;
+}
+.card-footer span{
+	color: #6d6d72;
+}
+ </style>
+  </head>
+ 
+  <body ontouchstart>
+<div class="weui-navbar">
+		<div class="colortitle weui-navbar__item1">
+	  	<div class="weui-flex ">
+	            <div style="width:60px"><div class="placeholder"><img src="img/return.png" class="return"></div></div>
+	            <div class="weui-flex__item"><div class="placeholder">开始点名</div></div>
+	           
+	            	<a href="javascript:;" class="weui-btn1 weui-btn_mini">提交</a>
+	         
+	    </div>
+	    </div>    
+	</div>
+	<div class="weui-tab__bd">
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
+    	<div class="card facebook-card" style="margin-top:20px;">
+                <div class="card-footer" >数据结构<span>15软一</span><span>第10次</span></div>
+      </div>
+        <div class="card facebook-card " style="margin-top: 12px;">
+            <div class="card-footer">
+            	陈琳琳<span>1525121004</span>
+            	<span>
+            	<select class="weui-select" name="select">
+			               <option value="1">到勤</option>
+			               <option value="2">迟到</option>
+			               <option value="3">早退</option>
+			           </select>
+               </span>
+            </div> 
+             <div class="card-footer">
+            	曹绍军<span>1525121001</span>
+            	<span>
+            	<select class="weui-select" name="select">
+			               <option value="1">到勤</option>
+			               <option value="2">迟到</option>
+			               <option value="3">早退</option>
+			           </select>
+               </span>
+            </div> 
+            <div class="card-footer">
+            	陈琳琳<span>1525121004</span>
+            	<span>
+            	<select class="weui-select" name="select">
+			               <option value="1">到勤</option>
+			               <option value="2">迟到</option>
+			               <option value="3">早退</option>
+			           </select>
+               </span>
+            </div> 
+             <div class="card-footer">
+            	曹绍军<span>1525121001</span>
+            	<span>
+            	<select class="weui-select" name="select">
+			               <option value="1">到勤</option>
+			               <option value="2">迟到</option>
+			               <option value="3">早退</option>
+			           </select>
+               </span>
+            </div> 
+        </div>
+      
+    </div>
+    </div>
+  <script>
+  	$(".facebook-card .card-footer:odd").css("background-color", "#FFFFFF"); 
+  	$("#student1").click(function(){
+ 
+      $("#student1").val("qq");
+  	})
+  </script>
+   </body>
+</html>
+

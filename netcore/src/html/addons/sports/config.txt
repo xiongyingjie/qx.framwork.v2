@@ -1,0 +1,4 @@
+﻿ route: [
+            { src: "/sports/crud/", target: "" },
+            { src: "/sports/admin/", target: "" }
+        ]

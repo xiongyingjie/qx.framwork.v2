@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+	   <link rel="stylesheet" href="css/weui.min.css">
+	   <link rel="stylesheet" href="css/jquery-weui.css">
+	    <link href="css/Repair.css" rel="stylesheet"/>
+        <script src="framework-m/js/head.min-m.js"></script>
+	    <style>
+              .weui-navbar__item{
+               border-bottom:1px solid #6ab9fa;
+               background-color:#e1edfa !important;
+               color:#6ab9fa !important;
+              
+               
+            }
+            .weui-cell__bd table th{
+		        font-size:0.7em;
+		        font-weight:normal;
+		        font-family: "微软雅黑";
+		        color:rgb(102,102,102);
+		        width: 5em;
+		        height: 2em;
+    	        text-align: left;
+	        }
+	        .weui-cell__bd table td{
+		        font-size:0.7em;
+		        font-family: "微软雅黑";
+		        color:rgb(159,159,159);
+	        }
+            .weui-cell__hd img{
+                    margin-right: 30px;
+                    width:80%;
+            }
+            .card{
+                    margin: 3px;
+            }
+            .facebook-card .card-footer{
+                background-color:#eef2f3;
+            }
+            .return {
+                border: 1px solid #d5d5d5;
+                border-radius: 5px;
+                height: 35px;
+                line-height: 35px;
+                background-color:#ffffff;
+             
+            }
+            .placeholder {
+
+                margin: 5px;
+                margin-top:20px;
+                padding: 0 10px;
+                text-align: center;
+                color: #000000;
+            }
+            .button_sp_area {
+                position: fixed;
+                width: 90%;
+                bottom: 10px;
+                left: 5%;
+                right: 5%;
+            }
+            .return {
+                height: 40px;
+                width: 44%;
+                float: left;
+                text-align: center;
+                line-height: 40px;
+                color: black;
+                background-color: white;
+            }
+            .submit {
+                height: 40px;
+                width: 44%;
+                float: right;
+                text-align: center;
+                line-height: 40px;
+                color: white;
+                background-color: rgb(68,146,235);
+               
+                padding: 0;
+            }
+            .weui-btn+.weui-btn{
+                 margin-top: 0;
+            }
+            #nick_name {
+                display: none;
+            }
+        </style>
+	</head>
+    <body ontouchstart="">
+
+        <div class="weui-tab">
+         
+
+            <div class="weui-tab__bd">
+                <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+              
+                    <div class="card facebook-card">
+                        <div class="card-footer">故障信息 </div>
+                        <div id="contain"></div>
+                        <div class="weui-cells deletemargin">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>报修人</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-request_man" value="" type="text" name="device_record-request_man">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>设备名称</p>
+                                </div>
+                                <input class="weui-cell__ft device-name" value="" type="text">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>设备编号</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-device_id" value="" type="text" name="device_record-device_id">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>报修点</p>
+                                </div>
+                                <input class="weui-cell__ft device-address_id" value="" type="text" >
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>报修时间</p>
+                                </div>
+                                <div class="weui-cell__ft">
+                                    <span class="device_record-req_time"></span>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>故障描述</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-remark" value="" type="text" name="device_record-remark">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>派工时间</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-arrange_time " value="" type="text" name="device_record-arrange_time">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>工时</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-work_hour" value="" type="text" name="device_record-work_hour">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>故障类型</p>
+                                </div>
+                                <input class="weui-cell__ft hitch_type-name" value="" type="text">
+                            </div>
+
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <textarea class="weui-textarea device_record-details" placeholder="具体故障" rows="3" name="device_record-details"></textarea>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>维修员</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-repair_man" value="" type="text">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>维修时间</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-repair_time" value="" type="text">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <textarea class="weui-textarea device_record-repair_note" placeholder="维修记录" rows="3" name="device_record-repair_note"></textarea>
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>回访人</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-revisit_man" value="" type="text">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>回访时间</p>
+                                </div>
+                                <input class="weui-cell__ft device_record-finish_time" value="" type="text">
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <textarea class="weui-textarea device_record-revisit_note" placeholder="回访记录" rows="3" name="device_record-repair_note"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="nick_name"></div>
+             </div>
+        </div>
+
+        <script src="js/jquery-2.1.4.js"></script>
+        <script src="js/fastclick.js"></script>
+            <script src="js/jquery-weui.js"></script>
+   
+  </div>
+    </div>
+            </body>
+
+</html>

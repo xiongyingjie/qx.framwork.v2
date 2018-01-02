@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html class="pixel-ratio-1">
+<head>
+    <title>主页</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <style>
+        a:link, a:visited {
+            text-decoration: none;
+        }
+        /*让头部不覆盖主体*/
+        .weui-navbar + .weui-tab__bd {
+            padding-top: 95px;
+        }
+
+        .weui-navbar {
+            height: 95px;
+        }
+        /*头部三部分划分*/
+        #top1 {
+            flex-grow: 3.5;
+        }
+
+        #top2 {
+            flex-grow: 3.5;
+        }
+
+        #top3 {
+            flex-grow: 3;
+        }
+
+        .weui-navbar__item {
+            text-align: left;
+        }
+
+        .weui-navbar__item {
+            font-size: 0.8em;
+        }
+
+            .weui-navbar__item.weui-bar__item--on {
+                background-color: rgb(68,146,235);
+                color: white;
+                font-family: "微软雅黑";
+            }
+        /*主体 九宫格*/
+        .weui-footer, .weui-grid__label {
+            font-size: 0.9em;
+        }
+
+        .weui-grid__icon {
+            height: 58px;
+            width: 58px;
+        }
+
+            .weui-grid__icon img {
+                width: 100%;
+            }
+
+        .weui-grid {
+            height: 115px;
+        }
+
+        .weui-grid__icon + .weui-grid__label {
+            margin: 0 auto;
+        }
+        /*为了去边框*/
+        .weui-grid:after, .weui-grid:before {
+            content: none;
+        }
+    </style>
+    <script src="framework-m/js/head.min-m.js"></script>
+</head>
+<body ontouchstart>
+    <div class="weui-navbar">
+        <div class="weui-navbar__item weui-bar__item--on">
+            <div class="weui-flex">
+                <div class="weui-flex__item" id="top1">
+                    <div class="placeholder">
+                        <div style="position:absolute;left:1.5em;height:68%;">
+                            <img src="images/医依.png" style="height:100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item" id="top2">
+                    <div class="placeholder">
+                        <div style="width:100%;">
+
+                            <p class="nick_name"></p>
+
+                            <div><img src="images/icon.png" style="float:left; margin-left:-5px;margin-top:-2px;"><p id="unit_name" float="left">.</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-flex__item" id="top3">
+                    <div class="placeholder">
+                        <div style="width:100%;">
+                            <a href="userInfo.html" style="color: white;">
+                                <span>个人中心</span>
+                                <span class="weui-badge" style="margin:0 5px;" id="wait-repire-num">0</span><span>></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容部分-->
+    <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+            <!--九宫格-->
+            <div class="weui-grids">
+                <a href="erWeiMa.html" class="weui-grid js_grid">
+                    <div class="weui-grid__icon">
+                        <img src="images/报修.png" alt="">
+                    </div>
+                    <p class="weui-grid__label">
+                        报修
+                    </p>
+                </a>
+                <!--<a href="erWeiMa.html" class="weui-grid js_grid">
+                    <div class="weui-grid__icon">
+                        <img src="images/维修.png" alt="">
+                    </div>
+                    <p class="weui-grid__label">
+                      维修
+                    </p>
+                </a>-->
+                <!--<a href="C巡查.html" class="weui-grid js_grid" >
+                    <div class="weui-grid__icon">
+                        <img src="images/巡查.png" alt="">
+                    </div>
+                    <p class="weui-grid__label">
+                      巡查
+                    </p>
+                </a>-->
+                <a href="checked.html" class="weui-grid js_grid">
+                    <div class="weui-grid__icon">
+                        <div class="weui-cell__hd" style="position: relative; margin-right: 10px;">
+                            <img src="images/巡检.png">
+                            <span class="weui-badge" style="position: absolute; top: -.4em; right: -1.2em;" id="wait-check-num">0</span>
+                        </div>
+
+
+                    </div>
+                    <p class="weui-grid__label">
+                        巡检
+                    </p>
+                </a>
+                <a href="dispatch.html" class="weui-grid js_grid">
+                    <div class="weui-grid__icon">
+                        <div class="weui-cell__hd" style="position: relative; margin-right: 10px;">
+                            <img src="images/派工.png">
+                            <span class="weui-badge" style="position: absolute; top: -.4em; right: -1.2em;" id="wait-dipach-num">0</span>
+                        </div>
+                    </div>
+                    <p class="weui-grid__label">
+                        派工
+                    </p>
+                </a>
+                <a href="reexamine.html" class="weui-grid js_grid">
+                    <div class="weui-grid__icon">
+                        <img src="images/巡查.png" alt="">
+                    </div>
+                    <p class="weui-grid__label">
+                        回访
+                    </p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

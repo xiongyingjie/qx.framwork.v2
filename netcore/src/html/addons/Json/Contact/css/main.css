@@ -1,0 +1,19 @@
+
+.example .device {
+  margin: 0 auto;
+  position: relative;
+  background: #111;
+  box-shadow: 0px 0px 0px 2px #aaa;
+  z-index: 1000;
+  padding: 100px 30px;
+  border-radius: 55px;
+}
+.example .device-v {
+  padding: 100px 30px;
+}
+
+.example .device-left {
+  float: left;
+  margin: 0;
+  margin-right: 40px;
+}

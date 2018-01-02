@@ -1,0 +1,289 @@
+
+<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+  <!--  Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <style>
+    	.imgsize{
+    		max-height: 30px;
+    		position: relative;
+    		top:1px;
+    	}
+		  .item-link {
+		   -webkit-transition-duration: 0s !important;
+		    transition-duration:  0s !important;
+		    display: block;
+		    color: inherit;
+		}
+		.acolor{
+		   
+		    color: inherit;
+		}
+		.Inboximgsize{
+			 	max-height: 60px;
+    		position: relative;
+    		border-radius: 50%;
+    	
+		}
+
+   .deletemargin{
+    	margin: 1px 0;
+    	
+    }
+   .navbar, .subnavbar, .toolbar {
+    background:#007afc;
+    color:#ffffff;
+   }/* */
+
+   .telefontcolor1{
+   	color:#080808;
+   }
+   .telefontcolor2{
+   	font-size: 12px;
+   	color:#a1a1a1;
+   }
+   .telefontcolor3{
+
+   	color:#8b8b8b;
+   }
+    .position{
+    	width: 15px;
+    	position: relative;
+    	left:-32%;
+    	transform:rotate(-90deg);
+			-ms-transform:rotate(-90deg); /* Internet Explorer */
+			-moz-transform:rotate(-90deg); /* Firefox */
+			-webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+			-o-transform:rotate(-90deg); /* Opera */
+    }
+    .detailtop{
+    	background-color: #1eb6e8;
+    	padding: 35px 0;
+    	 color: #ffffff !important;
+    	 /*position:relative;
+    	 top:-50px;
+    	 z-index: 5000;*/
+    }
+    /*detail*/
+			   	.detailtop{
+			    		text-align: center;
+			    		background-color:#1eb6e8;
+			    		padding:35px 0 0;
+			    		line-height: 14px;
+			    		
+			    	}
+			    .deletemargin{
+			    	margin: 1px 0;
+			    	
+			    }
+			    .left a i{
+			    	position:fixed;
+			    	 left:15px;
+			    	 top:20px;
+			    	
+			    }
+			    .detailimgsize{
+			    	 	height:80px;
+			    		border-radius: 50%;
+			    }
+			      .detailimgsize2{
+			    	 	height:28px;
+			    		
+			    }
+			    .detailtopbottom{
+			    	font-size: 12px;
+			    	background-color:#1882a8;
+			    	line-height: 20px;
+			    	height: 74px;
+			    	padding: 12px 0 14px;
+			    }
+			    .list-block .item-title.labeldetail{
+			    	border-right:1px solid #C7C7CC;
+			    	color:#616060;
+			    	width:25%;
+			    -webkit-flex-shrink: 0;
+			    -ms-flex: 0 0 auto;
+			    flex-shrink: 0;
+			    }
+			    .item-inputdetail{
+			    	padding:0px 10px;
+			    }
+		
+     
+			.row {
+			    display: -webkit-box;
+			    display: -ms-flexbox;
+			    display: -webkit-flex;
+			    display: flex; 
+			    -webkit-box-pack: justify;
+			    -ms-flex-pack: justify;
+			    -webkit-justify-content: center;
+			    justify-content: center; 
+			    -webkit-box-lines: multiple; 
+			    -moz-box-lines: multiple;
+			     -webkit-flex-wrap: wrap; 
+			    -ms-flex-wrap: wrap;
+			    flex-wrap: wrap;
+			    -webkit-box-align: start;
+			    -ms-flex-align: start;
+			    -webkit-align-items: flex-start;
+			    align-items: flex-start; 
+			}
+      /*组织机构*/
+   .content-blockpadding{
+    padding: 0 0 0 20px;
+    color:#181818;
+    box-sizing: border-box;
+}
+.fanwei{
+	position: relative;
+   top:4px;
+   height: 25px;
+}
+    </style>
+   
+  </head>
+  <body >
+    <!-- Status bar overlay for fullscreen mode-->
+   
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+                 <div class="navbar color-white">
+									  <div class="navbar-inner">
+									   <div class="center"> 
+									   	<div class="list-block">
+											        <div class="item-content">
+											              <div class="item-inner"> 
+											                <div class="item-input">
+											                <select style="color:#ffffff; background:#007afc;"> 
+											                  <option>组织结构</option>
+											                  <option>通讯录</option>
+											                  </select>
+											                  
+											                </div>
+											              </div>
+											           </div>
+									  </div>
+									  </div>
+									   <i class="icon icon-back color-white position"></i>
+									  </div>
+									</div>
+								 <div class="pages pages navbar-through toolbar-through">
+								  <!-- Page, data-page contains page name-->
+								  <div data-page="about" class="page">
+								
+								  <div class="page-content">
+											<div class="list-block deletemargin">
+											  <ul>
+											    <li class="accordion-item">
+											
+											    	<a href="#" class="item-content item-link ">
+											     <div class="item-inner">
+											
+											          <div class="item-title"><img src="img/fanwei.png" class="fanwei "> 泛微上海</div>
+											        </div></a>
+											      <div class="accordion-item-content">
+											        <div class=" content-blockpadding">
+																 <div class="list-block">
+																	  <ul>
+																	    <li class="accordion-item"><a href="#" class="item-content item-link">
+																	        <div class="item-inner">
+																	          <div class="item-title"><img src="img/fanwei.png" class="fanwei "> 微森集团</div>
+																	        </div></a>
+																	      <div class="accordion-item-content">
+																	        <div class="content-blockpadding">
+																	           <div class="list-block">
+																							  <ul>
+																							    <li class="accordion-item"><a href="#" class="item-content item-link" >
+																							        <div class="item-inner">
+																							          <div class="item-title"><img src="img/fanwei.png" class="fanwei "> 企划部</div>
+																							        </div></a>
+																							      <div class="accordion-item-content">
+																							        <div class="content-block">
+																							          
+																							        </div>
+																							      </div>
+																							    </li>
+																							    <li class="accordion-item"><a href="#" class="item-content item-link">
+																							        <div class="item-inner">
+																							          <div class="item-title"><img src="img/fanwei.png" class="fanwei"> 集团总经办</div>
+																							        </div></a>
+																							      <div class="accordion-item-content">
+																							        <div class="content-blockpadding">
+																							         <div class="list-block list-block-search searchbar-found deletemargin">
+																												  <ul>
+																												    <!-- Text inputs -->
+																														    <li><a href="详情.html" class="acolor">
+																														      <div class="item-content">
+																														        <div class="item-media"><img src="img/tel.png" class="Inboximgsize"></div>
+																														        <div class="item-inner">
+																														          <div class="item-title label"><span class="telefontcolor1">倪云</span><br/><span class="telefontcolor2">维森集团</span></div>
+																														          <div class="item-input">
+																														             <span class="telefontcolor3">  总裁</span><br/><span class="telefontcolor2">集团总经办</span>
+																														          </div>
+																														        </div>
+																														      </div></a>
+																														    </li>
+																														    <li>
+																												      <div class="item-content">
+																												        <div class="item-media"><img src="img/tel.png" class="Inboximgsize"></div>
+																												        <div class="item-inner">
+																												          <div class="item-title label"><span class="telefontcolor1">杨文元</span><br/><span class="telefontcolor2">维森集团</span></div>
+																												          <div class="item-input">
+																												              <span class="telefontcolor3">  总经理</span><br/><span class="telefontcolor2">集团总经办</span>
+																												          </div>
+																												         
+																												        </div>
+																												      </div>
+																												    </li>
+																												   </ul>
+																												   </div>
+																							        </div>
+																							      </div>
+																							    </li>
+																							 
+																							  </ul>
+																							</div>
+													
+																	        </div>
+																	      </div>
+																	    </li>
+																	  </ul>
+																	</div>
+															</div>
+											      </div>
+											    </li>
+											  </ul>
+											</div>
+								
+												</div>
+								 </div>
+								</div>
+
+           </div>
+        <!-- Bottom Toolbar-->
+        </div>
+  
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+  </body>
+</html>
+
+
+		

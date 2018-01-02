@@ -1,0 +1,212 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title></title>
+    <script src="../framework-m/js/head.min-m.js"></script>
+    <link href="../../../../vendor/m/css/framework7.ios.min.css" rel="stylesheet" />
+    <link href="../../../../vendor/m/css/framework7.ios.colors.min.css" rel="stylesheet" />
+    <script src="../../../../vendor/m/js/framework7.min.js"></script>
+    <script src="../../../../vendor/framework-m/js/my-app.js"></script>
+    <style>
+        .deletemargin {
+            margin-top: 0px !important;
+        }
+
+        .navbar, .subnavbar {
+            background: #0060c9 !important;
+            color: #ffffff;
+            height: 50px;
+        }
+
+        .login-screen-content {
+            background: #efeff4 !important;
+        }
+
+        .list-block ul li {
+            background: #ffffff !important;
+        }
+
+        .list-block {
+            margin: 10px 0 !important;
+        }
+
+        .content-block {
+            margin-bottom: 10px !important;
+        }
+       .color{
+           color: inherit !important;
+       }
+    </style>
+</head>
+<body>
+    <div class="views">
+        <div class="view view-main">
+            <div class="navbar color-white">
+                <div class="navbar-inner">
+                    <!-- We have home navbar without left link-->
+                    <div class="center sliding">
+                        我的日程
+                    </div>
+                    <div class="right"><img src="img/jia.png" class="open-login"></div>
+                </div>
+            </div>
+            <div class="pages">
+                <div data-page="home" class="page navbar-fixed">
+                    <div class="page-content">
+                        <div class="content-block deletemargin">
+                            <div style="padding:0; margin-right:-15px; width:auto" class="content-block-inner">
+                                <div id="calendar-inline-container"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="list-block">
+                           <ul id="remind">
+                              
+                          </ul>
+                           
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="login-screen">
+        <div class="view">
+            <div class="navbar color-white">
+                <div class="navbar-inner">
+                    <!-- We have home navbar without left link-->
+                    <div clss="left"><a href="#" class="close-login-screen" style="color:#ffffff;width:50px;">取消</a></div>
+                    <div>
+                        新建日程
+                    </div>
+                    <div class="right">保存</div>
+                </div>
+            </div>
+            <div class="page">
+                <div class="page-content login-screen-content">
+                    <form>
+                        <div class="list-block" style="margin-top:50px !important;">
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <input type="text" name="username" placeholder="标题">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <input type="text" name="username" placeholder="地点">
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">全天</div>
+                                            <div class="item-input">
+                                                <label class="label-switch">
+                                                    <input type="checkbox">
+                                                    <div class="checkbox"></div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">开始</div>
+                                            <div class="item-input">
+                                                <input id="time" name="time" type="time"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">结束</div>
+                                            <div class="item-input">
+                                                <input id="time" name="time" type="time"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">重复</div>
+                                            <div class="item-input">
+                                                <select>
+                                                    <option>永不</option>
+                                                    <option>每天</option>
+                                                    <option>每周</option>
+                                                    <option>每月</option>
+                                                    <option>每年</option>
+                                                    <option>定义</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <ul>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">提醒</div>
+                                            <div class="item-input">
+                                                <select>
+                                                    <option>无</option>
+                                                    <option>日程发生时</option>
+                                                    <option>5分钟前</option>
+                                                    <option>15分钟前</option>
+                                                    <option>30分钟前</option>
+                                                    <option>1个小时前</option>
+                                                    <option>2个小时前</option>
+                                                    <option>1天前</option>
+                                                    <option>2天前</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list-block">
+                            <ul>
+                                <li class="align-top">
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-input">
+                                                <textarea placeholder="备注"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\IWebSiteService.cs" />
+    <Compile Remove="Models\HTMLElement.cs" />
+    <Compile Remove="Services\PageControlService.cs" />
+    <Compile Remove="Services\WebSiteService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Qx.Tools\Qx.Tools.csproj" />
+  </ItemGroup>
+
+</Project>

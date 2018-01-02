@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue" />
+    <title></title>
+    <script src="../framework-m/js/head.min-m.js"></script>
+    <link href="../../../../vendor/m/css/framework7.ios.min.css" rel="stylesheet" />
+    <link href="../../../../vendor/m/css/framework7.ios.colors.min.css" rel="stylesheet" />
+    <script src="../../../../vendor/m/js/framework7.min.js"></script>
+    <script src="../../../../vendor/framework-m/js/my-app.js"></script>
+    <style>
+        .item-link {
+            -webkit-transition-duration: 0s !important;
+            transition-duration: 0s !important;
+            display: block;
+            color: inherit;
+        }
+
+        .acolor {
+            color: inherit;
+        }
+
+
+        .deletemargin {
+            margin: 1px 0 !important;
+        }
+
+        .telefontcolor1 {
+            padding: 10px 0 2px 0;
+            color: #080808;
+             overflow:hidden;
+            white-space: nowrap;
+            text-overflow:ellipsis;
+            
+        }
+
+        .telefontcolor2 {
+            padding: 2px 0 10px 0;
+            font-size: 12px;
+            color: #a1a1a1;
+        }
+        .telefontcolor1 span{
+             margin: 0 20px 0 0;
+        }
+            .telefontcolor2 span {
+                margin: 0 10px 0 0;
+            }
+
+        .navbar, .subnavbar, .toolbar {
+            background: #007afc !important;
+            color: #ffffff;
+        }
+
+        /* */
+    </style>
+
+</head>
+<body>
+    <div class="views">
+        <!-- Your main view, should have "view-main" class-->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar color-white">
+                <div class="navbar-inner">
+                    <!-- We have home navbar without left link-->
+                    <div class="center sliding" style="left: 150px;">
+                        <div class="list-block">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input" id="title">
+                                        历史公告
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+
+            <div class="pages navbar-through toolbar-through">
+
+
+                <!-- Page, data-page contains page name-->
+                <div data-page="telephoto" class="page">
+                    <!-- Scrollable page content-->
+                    <!-- Search Bar -->
+                    <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+                        <div class="searchbar-input">
+                            <input type="search" id="c11" placeholder="输入公告标题查找" /><a href="#" class="searchbar-clear"></a>
+                        </div><a href="#" class="searchbar-cancel">Cancel</a>
+                    </form>
+
+                    <!-- Search Bar overlay -->
+                    <div class="searchbar-overlay"></div>
+
+                    <div class="page-content">
+                        <!-- This block will be displayed if nothing found -->
+                        <div class="content-block searchbar-not-found">
+                            <div class="content-block-inner">Nothing found</div>
+                        </div>
+
+                        <div class="list-block list-block-search searchbar-found deletemargin">
+                             
+                              <ul id="content_news_list">
+                                 
+                                 
+                                <li>
+                                    <a href="# " class="acolor">
+                                         
+                                          <div class=" item-content">
+                                             
+                                              <div class="item-inner">
+                                                 
+                                                    <div class="item-title ">
+                                                     
+                                                       <div class="telefontcolor1" ><span>[..]</span><span>..</span></div> 
+                                                          <div class="telefontcolor2">
+                                                        <span>
+                                                          作者: ..
+                                                        </span><span>
+                                                            发布日期: ..
+                                                        </span>
+                                                      
+                                                    </div>
+                                                </div> 
+                                                 
+                                            </div> 
+                                             
+                                        </div>
+                                    </a> 
+                                     
+                                </li> 
+                                 
+                            </ul> 
+                             
+                        </div> ;
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Toolbar-->
+    </div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title>My App</title>
+      <script src="../ent-wx/framework-m/js/head.min-m.js"></script>
+    <style>
+
+		.acolor{
+		    color: inherit;
+		}
+   .deletemargin{
+    	margin: 1px 0 !important;
+    	
+    }
+   .navbar, .subnavbar, .toolbar {
+    background:#007afc !important;
+    color:#ffffff !important;
+    height: 55px !important;
+   }/* */
+    </style>
+
+</head>
+  <body>
+       <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar color-white">
+          <div class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="center sliding" style="left: 150px;">
+			我的信息
+			</div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        
+        <div class="pages navbar-through toolbar-through">
+        	
+       
+          <!-- Page, data-page contains page name-->
+            <div data-page="telephoto" class="page">
+					    <!-- Scrollable page content-->
+					  <div class="page-content">
+					    <!-- This block will be displayed if nothing found -->
+                <div class="list-block">
+                    <ul>
+                        <li class="acolor">
+                            <div class=" item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label ">账号</div>
+                                    <div class="item-input">
+                                        <label id="user_id"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="acolor">
+                            <div class=" item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">姓名</div>
+                                    <div class="item-input">
+                                        <label id="nick_name"></label>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                       
+                    </ul>
+                </div>
+						<div class="list-block">
+                           <a href="framework-m/index-m.html" class="button button-big button-fill">确认</a>
+						</div>
+
+					 </div>
+					</div>
+			</div>
+        </div>
+        <!-- Bottom Toolbar-->
+        </div>
+
+</body>
+</html>
+

@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html class="pixel-ratio-1">
+<head>
+
+    <title>主页</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <script src="head-js/head.min.js"></script>
+
+    <link rel="stylesheet" href="css/applicationMeeting.css">
+    <link rel="stylesheet" href="css/search.css">
+    <style>
+        .weui-cell__hd img {
+            display: block;
+            margin-right: 20px;
+            border-radius: 50%;
+            width: 80px;
+            display: block;
+        }
+        .db_block {
+            width: 100%;
+        }
+        .ba_pic {
+            width: 60%;
+            margin-left: 20%;
+            height: 100px;
+        }
+        .dba_pic {
+            display:inline-block;
+            width: 40%;
+           margin-left: 10%;
+            height: 120px;
+        }
+        .blank_blok {
+            margin-left: 10%;
+            display: inline-block
+        }
+    </style>
+</head>
+<body ontouchstart>
+	<div class="weui-navbar">
+		<div class="colortitle" style="width:100%;border-radius: 5px;">
+	  	<div class="weui-cell">
+        <div class="weui-cell__hd">
+          <img src="img/1183410.jpg">
+        </div>
+        <div class="weui-cell__bd">
+          <p>姓名：<span class="nick_name"></span></p>
+          <p style="font-size: 13px;color: #F8F8F8;">学号：<span id="stuNo"></span></p>
+          <!--<p style="font-size: 13px;color: #F8F8F8;">卡号：151551</p>-->
+        </div>
+      </div>
+	    </div>    
+	</div>
+    <div class="weui-grids" style="margin-top: 144px;">
+      <a href="consumeRecord.html" class="weui-grid js_grid" style="">
+
+          <img src="img/1201487.png" class="ba_pic"/>
+         <p class="weui-grid__label">
+                           <span>余额：<span class="num"></span>元</span>
+        </p>
+        <p class="weui-grid__label">
+                             生活服务
+        </p>
+      </a>
+       <a href="borrowBook.html" class="weui-grid js_grid">
+
+           <img src="img/1124361.png" class="ba_pic" />
+         <p class="weui-grid__label">
+                           未还：<span id="bookCount"></span> 本
+        </p>
+        <p class="weui-grid__label">
+                            图书借阅
+        </p>
+      </a>
+       <!--<a href="上网记录.html" class="weui-grid js_grid">
+   
+         <p class="weui-grid__label">
+                           剩余时间：30元
+        </p>
+        <p class="weui-grid__label">
+                             网络查询
+        </p>
+      </a>-->
+       <a href="myScore.html" class="weui-grid js_grid db_block">
+
+           <img src="img/1141927.png" class="dba_pic"/>
+           <div class="blank_blok">
+               <p class="weui-grid__label">
+                   绩点：<span id="scroe"></span>
+               </p>
+               <p class="weui-grid__label">
+                   成绩查询
+               </p>
+           </div>
+        
+      </a>
+    </div>
+
+</body>
+</html>
+

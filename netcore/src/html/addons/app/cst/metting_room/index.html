@@ -1,0 +1,524 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>会议室预约</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+      <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+      <script src="../framework-m/js/head.min-m.js"></script>
+<link rel="stylesheet" type="text/css" href="css/applicationMeeting.css">
+<style>
+	
+#timeChoose {
+	z-index: 5;
+	background:#f1f1f1;
+	height: 54px;
+	line-height:50px;
+  width: 100%;
+  position:fixed;
+  top:50px;
+  padding:0 5%;
+	}
+#timeChoose li {
+	text-align: center;
+	width: 30%;
+	float:left;
+	color:#000;
+	cursor:pointer;
+
+	}
+#timeChoose li.current {
+	color:#1aad19;
+
+	}
+#content {
+	border-top-width:0;
+	}
+#content>ul {
+	display:none;	
+	
+	}
+	.weui-navbar + .weui-tab__bd {
+    padding: 100px 0 0 !important;
+}
+
+.weui-select {
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    width: 33%;
+    font-size: inherit;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+#timeChoose img{
+	width: 25px;
+}
+.butl{
+	position:fixed;
+  top:65px;
+  left:5px;
+  display: none;
+  
+}
+.butr{
+	position:fixed;
+  top:65px;
+  right: 5px;
+
+}
+#timeChoose>div{
+		   	list-style: none;
+		   	width:100%;
+		   	display: none;
+}
+.card-content{
+	height: 30px;
+	padding:0 0 5%;
+	font-size:0.65em;
+}
+.card-content ul li{
+	float: left;
+	height: 30px;
+	width: 5.5%;
+	margin: 0 1%;
+	text-align: center;
+}
+.card-content ul li div{
+	background:#efefef;
+	height: 15px;
+}
+</style>
+
+  </head>
+
+  <body ontouchstart>
+<div class="weui-navbar" >
+		<div class="colortitle weui-navbar__item1" >
+	  	  <div class="weui-flex ">
+	            <div style="width:60px"><div class="placeholder"><img src="img/return.png" class="return"></div></div>
+	            <div class="weui-flex__item"><div class="placeholder">会议室预约</div></div>
+	           
+	            	<a href="records.html" class="weui-btn1 weui-btn_mini">我的</a>
+		      </div>
+	   </div> 
+	
+	</div>
+ 
+  <div class="weui-tab__bd">
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
+
+    <ul id="timeChoose">
+        <div style="display: block;"> <li class="current">今天10-22</li><li>明天10-23</li><li>后天10-24</li>
+        </div>
+        <div><li>周三10-25</li> <li>周四10-26</li> <li>周五10-27</li>
+        </div>
+        <div><li>周六10-28</li>
+        </div>
+        <img src="img/left.png" width="50px" class="butl">
+        <img src="img/right.png" width="50px" class="butr" alt="">
+    </ul>
+
+
+    <ul style="display: block;">
+        <div id="list">
+        </div>
+        <!--<div class="card facebook-card" style="margin-top: 20px" id="office1">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34">
+                </div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9
+                        <div></div> </li>
+                    <li>10
+                        <div></div> </li>
+                    <li>11
+                        <div></div> </li>
+                    <li>12
+                        <div></div> </li>
+                    <li>13
+                        <div></div> </li>
+                    <li>14
+                        <div></div> </li>
+                    <li>15
+                        <div></div> </li>
+                    <li>16
+                        <div></div> </li>
+                    <li>17
+                        <div></div> </li>
+                    <li>18
+                        <div></div> </li>
+                    <li>19
+                        <div></div> </li>
+                    <li>20
+                        <div></div> </li>
+                    <li>21
+                        <div></div> </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card facebook-card" style="margin-top: 20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34">
+                </div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9
+                        <div></div> </li>
+                    <li>10
+                        <div></div> </li>
+                    <li>11
+                        <div></div> </li>
+                    <li>12
+                        <div></div> </li>
+                    <li>13
+                        <div></div> </li>
+                    <li>14
+                        <div></div> </li>
+                    <li>15
+                        <div></div> </li>
+                    <li>16
+                        <div></div> </li>
+                    <li>17
+                        <div></div> </li>
+                    <li>18
+                        <div></div> </li>
+                    <li>19
+                        <div></div> </li>
+                    <li>20
+                        <div></div> </li>
+                    <li>21
+                        <div></div> </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card facebook-card" style="margin-top: 20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34">
+                </div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9
+                        <div></div> </li>
+                    <li>10
+                        <div></div> </li>
+                    <li>11
+                        <div></div> </li>
+                    <li>12
+                        <div></div> </li>
+                    <li>13
+                        <div></div> </li>
+                    <li>14
+                        <div></div> </li>
+                    <li>15
+                        <div></div> </li>
+                    <li>16
+                        <div></div> </li>
+                    <li>17
+                        <div></div> </li>
+                    <li>18
+                        <div></div> </li>
+                    <li>19
+                        <div></div> </li>
+                    <li>20
+                        <div></div> </li>
+                    <li>21
+                        <div></div> </li>
+                </ul>
+            </div>
+        </div>-->
+    </ul>
+    <!--<ul>
+        <div class="card facebook-card" style="margin-top:20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/del.svg" width="34" height="34"></div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9<div></div> </li>
+                    <li>10<div></div> </li>
+                    <li>11<div></div> </li>
+                    <li>12<div></div> </li>
+                    <li>13<div></div> </li>
+                    <li>14<div></div> </li>
+                    <li>15<div></div> </li>
+                    <li>16<div></div> </li>
+                    <li>17<div></div> </li>
+                    <li>18<div></div> </li>
+                    <li>19<div></div> </li>
+                    <li>20<div></div> </li>
+                    <li>21<div></div> </li>
+                </ul>
+            </div>
+            <div class="card-footer">预约时间: 2017-10-22</div>
+        </div>
+    </ul>
+    <ul>
+        <div class="card facebook-card" style="margin-top:20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34"></div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9<div></div> </li>
+                    <li>10<div></div> </li>
+                    <li>11<div></div> </li>
+                    <li>12<div></div> </li>
+                    <li>13<div></div> </li>
+                    <li>14<div></div> </li>
+                    <li>15<div></div> </li>
+                    <li>16<div></div> </li>
+                    <li>17<div></div> </li>
+                    <li>18<div></div> </li>
+                    <li>19<div></div> </li>
+                    <li>20<div></div> </li>
+                    <li>21<div></div> </li>
+                </ul>
+            </div>
+            <div class="card-footer">预约时间: 2017-10-22</div>
+        </div>
+    </ul>
+    <ul>
+        <div class="card facebook-card" style="margin-top:20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34"></div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9<div></div> </li>
+                    <li>10<div></div> </li>
+                    <li>11<div></div> </li>
+                    <li>12<div></div> </li>
+                    <li>13<div></div> </li>
+                    <li>14<div></div> </li>
+                    <li>15<div></div> </li>
+                    <li>16<div></div> </li>
+                    <li>17<div></div> </li>
+                    <li>18<div></div> </li>
+                    <li>19<div></div> </li>
+                    <li>20<div></div> </li>
+                    <li>21<div></div> </li>
+                </ul>
+            </div>
+        </div>
+    </ul>
+    <ul>
+        <div class="card facebook-card" style="margin-top:20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34"></div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9<div></div> </li>
+                    <li>10<div></div> </li>
+                    <li>11<div></div> </li>
+                    <li>12<div></div> </li>
+                    <li>13<div></div> </li>
+                    <li>14<div></div> </li>
+                    <li>15<div></div> </li>
+                    <li>16<div></div> </li>
+                    <li>17<div></div> </li>
+                    <li>18<div></div> </li>
+                    <li>19<div></div> </li>
+                    <li>20<div></div> </li>
+                    <li>21<div></div> </li>
+                </ul>
+            </div>
+        </div>
+    </ul>
+    <ul>
+        <div class="card facebook-card" style="margin-top:20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34"></div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9<div></div> </li>
+                    <li>10<div></div> </li>
+                    <li>11<div></div> </li>
+                    <li>12<div></div> </li>
+                    <li>13<div></div> </li>
+                    <li>14<div></div> </li>
+                    <li>15<div></div> </li>
+                    <li>16<div></div> </li>
+                    <li>17<div></div> </li>
+                    <li>18<div></div> </li>
+                    <li>19<div></div> </li>
+                    <li>20<div></div> </li>
+                    <li>21<div></div> </li>
+                </ul>
+            </div>
+        </div>
+    </ul>
+    <ul>
+        <div class="card facebook-card" style="margin-top:20px">
+            <div class="card-header">
+                <div class="facebook-avatar"><img src="img/swiper-3.jpg" width="34" height="34"></div>
+                <div class="facebook-name">会议室1</div>
+                <div class="facebook-date">可容纳20人，并提供八爪鱼等工具</div>
+            </div>
+            <div class="card-content">
+                <ul>
+                    <li>9<div></div> </li>
+                    <li>10<div></div> </li>
+                    <li>11<div></div> </li>
+                    <li>12<div></div> </li>
+                    <li>13<div></div> </li>
+                    <li>14<div></div> </li>
+                    <li>15<div></div> </li>
+                    <li>16<div></div> </li>
+                    <li>17<div></div> </li>
+                    <li>18<div></div> </li>
+                    <li>19<div></div> </li>
+                    <li>20<div></div> </li>
+                    <li>21<div></div> </li>
+                </ul>
+            </div>
+        </div>
+    </ul>-->
+
+   
+	  </div>
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script>
+	$(function(){
+		window.onload = function()
+		{
+			//------------tab页-------------------
+			var $li = $('#timeChoose div li');
+			var $ul = $('#content>ul');
+				
+			$li.click(function(){
+				var $this = $(this);
+				var $t = $this.index();
+				$li.removeClass();
+				$this.addClass('current');
+				$ul.css('display','none');
+				$ul.eq($t).css('display','block');
+			})
+		  //---------------------------------------
+		  //------------轮播选择日期---------------------------
+			var index=0;
+			var len=$("#timeChoose>div").length-1;
+		   
+		   var flagright=0;
+		   var flagleft=0;
+			$(".butr").click(function(){
+				if(!(flagright)){
+				index++;
+				$("#timeChoose>div").eq(index).toggle().siblings().hide();
+				flagleft=0;
+				$(".butl").fadeIn();
+				$(".butr").fadeIn();
+			
+				if(index==len){
+					
+
+    		  $(".butr").fadeOut();
+    		  flagright=1;
+				}
+				}
+			});
+			$(".butl").click(function(){
+				if(!(flagleft)){
+				index--;
+				
+				$("#timeChoose>div").eq(index).toggle().siblings().hide();
+				
+				$(".butr").fadeIn();
+				$(".butl").fadeIn();
+				flagright=0;
+				if(index==0){
+					$(".butl").fadeOut();
+					flagleft=1;
+				}
+				}
+		});
+	     //------------------------------------
+	     //-----------选择时间-------------------
+//	     $(".card-content").click(function(){
+//	     	var $this = $(this).children("li");
+//	     	  alert($this);
+//	     	  $("div").children("p").children("span")
+//	     })
+          function onTimeClick(html){
+          	console.log(html);
+          }
+
+		    $(".card-content li").click(function() {
+		        var $this = $(this).children("div");
+		        if ($this.css("background-color") == "rgb(26, 173, 25)") {
+		            onTimeAlreadyUsedClick();
+		        } else {
+		            $this.css("background-color", "#1aad19");
+		            location.href = "apply.html?id=";
+		            var list = [];
+		            list = $this;
+		            onTimeClick(list[0]);
+		        }
+		    });
+	      //------------------------------------
+	      var atrr=[10,13,14,15,16];
+	      function initTime(atrr,id){
+	      	var list=[];
+	      	list=$($("#"+id).children(".card-content").children("ul").children("li"))
+	      	console.log(list.length);
+		      for(var i=0;i<list.length;i++)
+		      {
+		      	var item=$(list[i]);
+		      	for(var j=0;j<atrr.length;j++)
+		      	{
+		      		 if(atrr[j]==item.text())
+		      		 {
+		      		 	console.log(item);
+		      		 		//console.log(item);
+		      		 		item.children("div").css("background-color","#1aad19");
+		      		 }
+		      	}
+		      }
+		      	
+	      }
+	      initTime(atrr,"office1");
+	      function onTimeClick(html){
+          	console.log(html);
+          }
+	      function onTimeAlreadyUsedClick(){
+          	$.alert("该时段已被其他人预约");
+        }
+		}
+	});
+	
+</script>
+
+   </body>
+</html>
+
+

@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="framework-m/js/head.min-m.js"></script>
+    <title>请假审批</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" type="text/css" href="css/applicationMeeting.css">
+    <link rel="stylesheet" href="css/weui.min.css"/>
+    <link rel="stylesheet" href="css/pubilice.css"/>
+
+    <script src="js/jquery-2.1.4.js"></script>
+
+    <script src="js/jquery-weui.js"></script>
+
+
+    <style>
+        .facebook-name {
+            margin-left: 0 !important;
+
+        }
+        .facebook-date {
+            margin-left: 0 !important;
+        }
+        .facebook-name span {
+            float: left;
+            width: 33%;
+            text-align: center;
+        }
+        
+        .weui-select {
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            width: 100%;
+            font-size: inherit;
+            height: 22px !important;
+            line-height: 44px  !important;
+            position: relative;
+            z-index: 1;
+            padding-left: 15px;
+        }
+    </style>
+</head>
+
+  <body ontouchstart>
+
+<div class="weui-tab__bd">
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
+    	  <div class="card facebook-card" style="margin-top:70px;margin-bottom: 48px;">
+    		 <div class="search">
+						<span class="s_con"><input type="text" class="content" placeholder="请输入搜索内容"><i class="clear"></i></span>
+						
+					</div>
+       	</div>
+    	
+        <div class="card facebook-card" style="margin-top: 12px;">
+                             <div class="weui-tab">
+      <div class="weui-navbar">
+        <a class="weui-navbar__item" href="#tab1">
+                                    待审批
+        </a>
+        <a class="weui-navbar__item weui-bar__item--on" href="#tab2">
+                                    已审批
+        </a>
+        
+      </div>
+      <div class="weui-tab__bd">
+        <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+        	  <div class="card facebook-card" style="margin-top: 12px;">
+               <div class="card-header">
+                   
+                  <div class="facebook-name"><span>1525121003</span><span>事假</span> <span>张三</span> </div>
+                  
+                </div>
+                <div class="card-footer">同意 <span>查看</span></div>
+               </div>
+             	 <div class="card facebook-card" style="margin-top: 12px;">
+               <div class="card-header">
+                   
+                  <div class="facebook-name"><span>1525121003</span><span>事假</span> <span>张三</span> </div>
+                  
+                </div>
+                <div class="card-footer">同意 <span>查看</span></div>
+               </div>
+        </div>
+        <div id="tab2" class="weui-tab__bd-item ">
+        	 <div class="card facebook-card" style="margin-top: 12px;">
+               <div class="card-header">
+                   
+                  <div class="facebook-name"><span>1525121003</span><span>事假</span> <span>张三</span> </div>
+                  
+                </div>
+                <div class="card-footer">同意 <span>详情</span></div>
+               </div>
+               
+     
+      </div>
+    </div>
+        </div>
+        
+	</div>
+ </div>
+<script type="text/javascript">
+$('.content').on('keyup',function(){
+	$('.clear').show();
+});
+$('.clear').click(function(){
+	$('.content').val('');
+});
+</script>
+    </div>
+   </body>
+</html>
+

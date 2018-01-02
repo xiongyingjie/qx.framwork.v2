@@ -1,0 +1,228 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>报表引擎</title>
+    <script src="/vendor/head-js/head.min.js" data-headjs-load="/vendor/head-js/init.js"></script>
+   </head>
+<body>
+   
+
+
+<script type="text/javascript">
+    head.ready(function() {
+       
+    });
+
+
+</script>
+ <script src="../vendor/frameWork/js/formHelp.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        document.getElementById('Source').value = '[{"imform":"请输入数字","checkType":"^[0-9]*$","id":"92F4RE7K4K","name":"","type":1,"sequence":1,"lable":"用户编号","crossWidth":"1","value":"","items":[]},{"imform":"该选项为无效","checkType":"1","id":"753YL7ZSMZ","name":"","type":4,"sequence":2,"lable":"用户名","crossWidth":"1","value":"","items":[{"value":"2","text":"second"},{"value":"1","text":"f"}]},{"imform":"时间超出限制","checkType":"2017-02-10 11:00","id":"753YL7ZSAZ","name":"","type":2,"sequence":2,"lable":"时间","crossWidth":"1","value":"","items":[]},{"checkType":"20","id":"753YL7ZBMZ","name":"","type":3,"sequence":2,"lable":"用户名","crossWidth":"1","imform":"超出字数限制","value":"","items":[]}]';
+               createForm();
+
+        });
+
+
+         function TextCheck(type,Id)
+        {
+             var reg = new RegExp(type);
+             var obj = document.getElementById(Id);
+             if(!reg.test(obj.value)){
+                    $('#'+Id).addClass("check");
+                    $('#Sp'+Id).removeClass("hide");
+              }
+             else if(!/^[0-9]*$/.test(obj.value)){
+                  $('#'+Id).addClass("check");
+                  $('#Sp'+Id).removeClass("hide");
+              }
+              else
+              {
+                $('#'+Id).removeClass("check");
+                $('#Sp'+Id).addClass("hide");
+              }
+        }
+         function DateTimeCheck(type,Id)
+        {
+              var obj = document.getElementById(Id);
+              if (obj.value > type) {
+                  $('#'+Id).addClass("check");
+                  $('#Sp'+Id).removeClass("hide");
+              }
+              else
+              {
+                 $('#'+Id).removeClass("check");
+                 $('#Sp'+Id).addClass("hide");
+              }
+        }
+
+         function TextareaCheck(type,Id)
+        {
+          var obj = document.getElementById(Id);
+          if (obj.value.length >= type){
+              obj.value = obj.value.substring(0, type);
+                $('#'+Id).addClass("check");
+                $('#Sp'+Id).removeClass("hide");
+          }
+          else{
+            $('#'+Id).removeClass("check");
+            $('#Sp'+Id).addClass("hide");
+          }
+
+
+        }
+
+         function DropDownListCheck(type,Id)
+        {
+              var obj = document.getElementById(Id);
+              if (obj.value != type) {
+                  $('#'+Id).addClass("check");
+                  $('#Sp'+Id).removeClass("hide");
+              }
+              else
+              {
+                 $('#'+Id).removeClass("check");
+                 $('#Sp'+Id).addClass("hide");
+              }
+
+
+        }
+
+        function GetFormData()
+        {
+           // var g_formControlConfig = '[{"imform":"请输入数字","checkType":"^[0-9]*$","id":"92F4RE7K4K","name":"","type":1,"sequence":1,"lable":"用户编号","crossWidth":"1","value":"","items":[]},{"imform":"该选项为无效","checkType":"1","id":"753YL7ZSMZ","name":"","type":4,"sequence":2,"lable":"用户名","crossWidth":"1","value":"","items":[{"value":"2","text":"second"},{"value":"1","text":"f"}]},{"imform":"时间超出限制","checkType":"2017-02-10 11:00","id":"753YL7ZSAZ","name":"","type":2,"sequence":2,"lable":"时间","crossWidth":"1","value":"","items":[]},{"checkType":"20","id":"753YL7ZBMZ","name":"","type":3,"sequence":2,"lable":"用户名","crossWidth":"1","imform":"超出字数限制","value":"","items":[]}]';
+           var source = document.getElementById('Source').value;
+
+           var obj=JSON.parse(source);
+           return obj;
+        }
+
+        function createForm() {
+        var obj = GetFormData();
+
+        var html = [];
+        //Input = 1,
+        //DateTime = 2,
+        //TextArea = 3,onkeyup="SomeJavaScriptCode"
+
+        //DropDownList = 4  onkeyup="SomeJavaScriptCode"
+        // Button = 5,
+        // Tip = 6
+        for (var i = 0; i < obj.length; i++) {
+            if (obj[i].type === 1) {
+                html.push('<li><div class="form-group form-pd">' +
+                    '<label class="label-wid">' + obj[i].lable + '</label>' +
+                    '<input type="text" onkeyup="TextCheck(\''+ obj[i].checkType + '\',\''+ obj[i].id + '\')" class="form-control form-control-size" value="' + obj[i].value + '" id="' + obj[i].id + '" placeholder="">' +
+                    '<span class="hide" id="'+'Sp'+obj[i].id+'" style="color:red;">'+obj[i].imform+'</span>'+
+                    '</div></li>');
+            }
+             else if (obj[i].type === 4) {
+                html.push('<li><div class="form-group form-pd">' +
+                    '<label class="label-wid">' + obj[i].lable + '</label>' +
+                    '<select onchange="DropDownListCheck(\''+ obj[i].checkType + '\',\''+ obj[i].id + '\')"  id="' + obj[i].id + '" class="form-control form-control-size"><option value="kongbai"></option>');
+
+                for (var j = 0; j < obj[i].items.length; j++) {
+                    html.push('<option value="' + obj[i].items[j].value + '">' + obj[i].items[j].text + '</option>');
+                }
+                html.push('</select><span class="hide" id="'+'Sp'+obj[i].id+'" style="color:red;">'+obj[i].imform+'</span></div></li>');
+            }
+            else if (obj[i].type === 2) {
+                html.push('<li><div class="form-group form-pd">' +
+                    '<label class="label-wid">' + obj[i].lable + '</label>' +
+                    '<input onchange="DateTimeCheck(\''+ obj[i].checkType + '\',\''+ obj[i].id + '\')"  type="text" value="' + obj[i].value + '" class="form-control form-control-size" id="' + obj[i].id + '">' +'<span class="hide" id="'+'Sp'+obj[i].id+'" style="color:red;">'+obj[i].imform+'</span>'+
+                    '</div></li>');
+
+                html.push('<script type="text/javascript">$("#' + obj[i].id + '").datetimepicker({ weekStart: 1,todayBtn: 1,autoclose: 1,todayHighlight: 1,startView: 2,forceParse: 0,showMeridian: 1,})' + ';' + '<' + '/script>');
+            }
+            else if (obj[i].type === 3) {
+                html.push('<li style="width:100%;"><div class="form-group form-pd" style="width:100%;">' +
+                    '<label class="label-wid">' + obj[i].lable + '</label>' +
+                    '<textarea maxlength="'+obj[i].checkType+'" onkeyup="TextareaCheck(\''+ obj[i].checkType + '\',\''+ obj[i].id + '\')"  class="form-control" style="width:85%;height:120px;"  rows="' + obj[i].crossWidth + '" id="' + obj[i].id + '" placeholder="">' + obj[i].value +
+                    '</textarea>' +'<span class="hide" id="'+'Sp'+obj[i].id+'" style="color:red;">'+obj[i].imform+'</span>'+
+                    '</div></li>');
+            }
+
+        }
+        var mainObj = $('#mainForm');
+        mainObj.empty();
+        mainObj.html(html.join(''));
+
+    }
+
+
+     function getUpdate(){
+      var obj = GetFormData();
+      var data = new String;
+      data+='{'
+      for (var i = 0; i <obj.length; i++) {
+        if (obj[i].type==4) {
+          if (i==obj.length-1) {
+          var mainObj = '"'+obj[i].lable+'":"'+document.getElementById(obj[i].id).options[document.getElementById(obj[i].id).selectedIndex].text+'"}';
+          data+=mainObj;
+          }
+          else
+          {
+          var mainObj = '"'+obj[i].lable+'":"'+document.getElementById(obj[i].id).options[document.getElementById(obj[i].id).selectedIndex].text+'",';
+           data+=mainObj;
+          }
+        }
+        else
+        {
+          if (i==obj.length-1) {
+          var mainObj = '"'+obj[i].lable+'":"'+document.getElementById(obj[i].id).value+'"}';
+          data+=mainObj;
+          }
+          else
+          {
+          var mainObj = '"'+obj[i].lable+'":"'+document.getElementById(obj[i].id).value+'",';
+           data+=mainObj;
+          }
+        }
+
+
+       }
+       var newData=document.getElementById('newData').value=data;
+
+     }
+
+
+
+    </script>
+    <style type="text/css">
+        .hide {
+            display: none;
+        }
+
+        .check:focus {
+            border: 1px solid red;
+        }
+
+        .check {
+            border: 1px solid red;
+        }
+    </style>
+    <div class="container">
+        <div id="mainForm">
+
+        </div>
+        <form>
+            <label>源数据</label>
+            <textarea class="form-control" style="width:85%;height:120px;" id="Source"></textarea>
+            <input class="btn btn-default" type="button" value="更新" onclick="createForm()">
+
+        </form>
+        <form>
+            <label>数据</label>
+            <textarea class="form-control" style="width:85%;height:120px;" id="newData"></textarea>
+            <input class="btn btn-default" type="button" value="更新" onclick="getUpdate()">
+        </form>
+    </div>
+
+
+  
+</body>
+</html>

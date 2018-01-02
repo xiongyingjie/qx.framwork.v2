@@ -1,0 +1,25 @@
+﻿render([
+    group([
+showInput('报修记录编号', 'device_record-device_record_id', '', '4'),
+showInput('设备编号', 'device_record-device_id', '', '4'),
+showInput('2.故障确认', 'device_record-details', '', '4'),
+showInput('1.报修人', 'device_record-request_man', '', '4'),
+showInput('2巡检人', 'device_record-charge_man', '', '4'),
+showInput('3维修人员', 'device_record-repair_man', '', '4'),
+showTime('1报修时间', 'device_record-req_time', '', '4'),
+showTime('回访时间', 'device_record-finish_time', '', '4'),
+showTime('3派工时间', 'device_record-arrange_time', '', '4'),
+showInput('0：待确认-1已确认1已派工2维修完成3已安排回访4已回访5结单', 'device_record-state', '((0))', '4'),
+showInput('记录来源', 'device_record-sources', '((0))', '4'),
+showInput('紧急程度', 'device_record-urgency_degree', '((0))', '4'),
+showInput('1.故障描述', 'device_record-remark', '', '4'),
+showInput('照片', 'device_record-photo', '', '4'),
+showInput('2预估工时', 'device_record-work_hour', '', '4'),
+showTime('2巡检确认时间', 'device_record-confirm_time', '', '4'),
+showTime('4维修时间', 'device_record-repair_time', '', '4'),
+showInput('2故障类型编号', 'device_record-hitch_type_id', '', '4'),
+showEditor('4维修笔记', 'device_record-repair_note'),
+showInput('关联单', 'device_record-relation_record', '', '4'),
+showInput('回访人编号', 'device_record-revisit_man', '', '4'),
+showInput('回访记录', 'device_record-revisit_note', '', '4')
+],'标题')],'','wx.bx.device_record@find&id='+q.id,'','详情');

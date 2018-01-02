@@ -1,0 +1,121 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{84C45C7F-DCC6-4F60-965C-3370BCC1F809}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FramWork", "FramWork", "{6A392817-1C37-4D37-BD01-532108200FB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTool", "..\framwork\CodeTool\CodeTool.csproj", "{6707780F-6367-4F95-AD81-CA87DFE05CF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.Msg", "..\framwork\Qx.Msg\Qx.Msg.csproj", "{84334A77-9BB2-4F9B-AF9D-ACABB56D5162}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.Order", "..\framwork\Qx.Order\Qx.Order.csproj", "{4C6F2CFE-3CCD-4229-8496-8C12BF02CB81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qx.permmision.v2", "..\framwork\qx.permission.v2\qx.permmision.v2.csproj", "{51C18CB8-5E07-44B9-8AA5-ED3E6823D1F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.Report", "..\framwork\Qx.Report\Qx.Report.csproj", "{1F0AA8A6-53B9-4670-9109-F7E06553F8FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.Tools", "..\framwork\Qx.Tools\Qx.Tools.csproj", "{39913DC6-DBB8-41A8-A397-D531D4549AA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qx.wechat", "..\framwork\Qx.Wechat\qx.wechat.csproj", "{83D95916-E07F-4309-A0BC-DE7BEF970D6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.WorkFlow", "..\framwork\Qx.WorkFlow\Qx.WorkFlow.csproj", "{ADBBA880-F593-4594-A63B-249959E33DDB}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "html", "..\html\", "{114B3416-94F2-44B7-8361-B9666F765874}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_27080"
+		Debug.AspNetCompiler.PhysicalPath = "..\html\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_27080\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_27080"
+		Release.AspNetCompiler.PhysicalPath = "..\html\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_27080\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "27080"
+		SlnRelativePath = "..\html\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.Account", "..\framwork\Qx.Account\Qx.Account.csproj", "{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6707780F-6367-4F95-AD81-CA87DFE05CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6707780F-6367-4F95-AD81-CA87DFE05CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6707780F-6367-4F95-AD81-CA87DFE05CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6707780F-6367-4F95-AD81-CA87DFE05CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84334A77-9BB2-4F9B-AF9D-ACABB56D5162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84334A77-9BB2-4F9B-AF9D-ACABB56D5162}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84334A77-9BB2-4F9B-AF9D-ACABB56D5162}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84334A77-9BB2-4F9B-AF9D-ACABB56D5162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6F2CFE-3CCD-4229-8496-8C12BF02CB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6F2CFE-3CCD-4229-8496-8C12BF02CB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6F2CFE-3CCD-4229-8496-8C12BF02CB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6F2CFE-3CCD-4229-8496-8C12BF02CB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51C18CB8-5E07-44B9-8AA5-ED3E6823D1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C18CB8-5E07-44B9-8AA5-ED3E6823D1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C18CB8-5E07-44B9-8AA5-ED3E6823D1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C18CB8-5E07-44B9-8AA5-ED3E6823D1F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0AA8A6-53B9-4670-9109-F7E06553F8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0AA8A6-53B9-4670-9109-F7E06553F8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0AA8A6-53B9-4670-9109-F7E06553F8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0AA8A6-53B9-4670-9109-F7E06553F8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39913DC6-DBB8-41A8-A397-D531D4549AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39913DC6-DBB8-41A8-A397-D531D4549AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39913DC6-DBB8-41A8-A397-D531D4549AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39913DC6-DBB8-41A8-A397-D531D4549AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83D95916-E07F-4309-A0BC-DE7BEF970D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83D95916-E07F-4309-A0BC-DE7BEF970D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83D95916-E07F-4309-A0BC-DE7BEF970D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83D95916-E07F-4309-A0BC-DE7BEF970D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADBBA880-F593-4594-A63B-249959E33DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADBBA880-F593-4594-A63B-249959E33DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADBBA880-F593-4594-A63B-249959E33DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADBBA880-F593-4594-A63B-249959E33DDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114B3416-94F2-44B7-8361-B9666F765874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114B3416-94F2-44B7-8361-B9666F765874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114B3416-94F2-44B7-8361-B9666F765874}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{114B3416-94F2-44B7-8361-B9666F765874}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6707780F-6367-4F95-AD81-CA87DFE05CF6} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{84334A77-9BB2-4F9B-AF9D-ACABB56D5162} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{4C6F2CFE-3CCD-4229-8496-8C12BF02CB81} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{51C18CB8-5E07-44B9-8AA5-ED3E6823D1F5} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{1F0AA8A6-53B9-4670-9109-F7E06553F8FA} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{39913DC6-DBB8-41A8-A397-D531D4549AA1} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{83D95916-E07F-4309-A0BC-DE7BEF970D6E} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{ADBBA880-F593-4594-A63B-249959E33DDB} = {6A392817-1C37-4D37-BD01-532108200FB4}
+		{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E} = {6A392817-1C37-4D37-BD01-532108200FB4}
+	EndGlobalSection
+EndGlobal

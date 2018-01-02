@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+     <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+	  <!--   <link rel="stylesheet" href="css/framework7.material.min.css">
+	 <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+	 Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <style>
+    	.imgsize{
+    		max-height: 30px;
+    		position: relative;
+    		top:1px;
+    	}
+		  .item-link {
+		   -webkit-transition-duration: 0s !important;
+		    transition-duration:  0s !important;
+		    display: block;
+		    color: inherit;
+		}
+		.acolor{
+		   
+		    color: inherit;
+		}
+		.Inboximgsize{
+			 	max-height: 60px;
+    		position: relative;
+    		border-radius: 50%;
+    	
+		}
+
+   .deletemargin{
+    	margin: 1px 0;
+    	
+    }
+   .navbar, .subnavbar, .toolbar {
+    background:#007afc;
+    color:#ffffff;
+   }/* */
+
+   .telefontcolor1{
+   	color:#080808;
+   }
+   .telefontcolor2{
+   	font-size: 12px;
+   	color:#a1a1a1;
+   }
+   .telefontcolor3{
+
+   	color:#8b8b8b;
+   }
+    .position{
+    	width: 15px;
+    	position: relative;
+    	left:-32%;
+    	transform:rotate(-90deg);
+			-ms-transform:rotate(-90deg); /* Internet Explorer */
+			-moz-transform:rotate(-90deg); /* Firefox */
+			-webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+			-o-transform:rotate(-90deg); /* Opera */
+    }
+    .detailtop{
+    	background-color: #1eb6e8;
+    	padding: 35px 0;
+    	 color: #ffffff !important;
+    	 /*position:relative;
+    	 top:-50px;
+    	 z-index: 5000;*/
+    }
+    /*detail*/
+			   	.detailtop{
+			    		text-align: center;
+			    		background-color:#1eb6e8;
+			    		padding:35px 0 0;
+			    		line-height: 14px;
+			    		
+			    	}
+			    .deletemargin{
+			    	margin: 1px 0;
+			    	
+			    }
+			    .left a i{
+			    	position:fixed;
+			    	 left:15px;
+			    	 top:20px;
+			    	
+			    }
+			    .detailimgsize{
+			    	 	height:80px;
+			    		border-radius: 50%;
+			    }
+			      .detailimgsize2{
+			    	 	height:28px;
+			    		
+			    }
+			    .detailtopbottom{
+			    	font-size: 12px;
+			    	background-color:#1882a8;
+			    	line-height: 20px;
+			    	height: 74px;
+			    	padding: 12px 0 14px;
+			    }
+			    .list-block .item-title.labeldetail{
+			    	border-right:1px solid #C7C7CC;
+			    	color:#616060;
+			    	width:25%;
+			    -webkit-flex-shrink: 0;
+			    -ms-flex: 0 0 auto;
+			    flex-shrink: 0;
+			    }
+			    .item-inputdetail{
+			    	padding:0px 10px;
+			    }
+		
+     
+			.row {
+			    display: -webkit-box;
+			    display: -ms-flexbox;
+			    display: -webkit-flex;
+			    display: flex; 
+			    -webkit-box-pack: justify;
+			    -ms-flex-pack: justify;
+			    -webkit-justify-content: center;
+			    justify-content: center; 
+			    -webkit-box-lines: multiple; 
+			    -moz-box-lines: multiple;
+			     -webkit-flex-wrap: wrap; 
+			    -ms-flex-wrap: wrap;
+			    flex-wrap: wrap;
+			    -webkit-box-align: start;
+			    -ms-flex-align: start;
+			    -webkit-align-items: flex-start;
+			    align-items: flex-start; 
+			}
+      /*组织机构*/
+   .content-blockpadding{
+    padding: 0 0 0 20px;
+    color:#181818;
+    box-sizing: border-box;
+}
+.fanwei{
+	position: relative;
+   top:4px;
+   height: 25px;
+}
+    </style>
+
+</head>
+  <body>
+       <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar color-white">
+          <div class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="center sliding" style="left: 150px;">
+            	<div class="list-block">
+							        <div class="item-content">
+							              <div class="item-inner"> 
+							                <div class="item-input">
+							             
+							                <select style="color:#ffffff; background:#007afc;"> 
+							                  <option>通讯录</option>
+							                  <option>组织结构</option>
+							                  </select>
+							                  
+							                </div>
+							              </div>
+							           </div>
+					  </div>
+					  
+					</div>
+			    <i class="icon icon-back color-white position"></i>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        
+        <div class="pages navbar-through toolbar-through">
+        	
+       
+          <!-- Page, data-page contains page name-->
+            <div data-page="telephoto" class="page">
+					    <!-- Scrollable page content-->
+					     <!-- Search Bar -->
+					  <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init">
+					    <div class="searchbar-input">
+					      <input type="search" placeholder="输入姓名、姓名简拼、手机号码查找"><a href="#" class="searchbar-clear"></a>
+					    </div><a href="#" class="searchbar-cancel">Cancel</a>
+					  </form>
+					 
+					  <!-- Search Bar overlay -->
+					  <div class="searchbar-overlay"></div>
+					 
+					  <div class="page-content">
+					    <!-- This block will be displayed if nothing found -->
+					    <div class="content-block searchbar-not-found">
+					      <div class="content-block-inner">Nothing found</div>
+					    </div>
+					
+					    <div id="list-block">
+						  </div>
+					 </div>
+					</div>
+					    </div>
+        </div>
+        <!-- Bottom Toolbar-->
+        </div>
+
+
+   <script type="text/javascript">
+     
+      	var obj=[
+      	{name:"倪云",company:"维森集团", job:"总裁",department:"集团总经办"},
+      	{name:"杨文元",company:"维森集团", job:"总裁",department:"集团总经办"},
+      	{name:"徐平",company:"维森集团", job:"总裁",department:"集团总经办"},
+      	{name:"赵静",company:"维森集团", job:"总裁",department:"集团总经办"},
+      	{name:"陆辉",company:"维森集团", job:"总裁",department:"集团总经办"},
+      	{name:"张辉",company:"维森集团", job:"总裁",department:"集团总经办"},
+      	];
+      	var html="";
+      	for(var i=0;i<obj.length;i++){
+      		var item = obj[i];
+      		html+=
+      		 ' <li><a href="详情.html" class="acolor">'+
+				     ' <div class="item-content">'+
+				       ' <div class="item-media"><img src="img/tel.png" class="Inboximgsize"></div>'+
+				       ' <div class="item-inner">'+
+				       '   <div class="item-title label">'+
+				        '  <span class="telefontcolor1">'+item.name+'</span><br/><span class="telefontcolor2">'+item.company+'</span></div>'+
+				        '  <div class="item-input">'+
+				        '     <span class="telefontcolor3">'+item.job+'</span><br/><span class="telefontcolor2">'+item.department+'</span>'+
+				        '  </div>'+
+				       ' </div>'+
+				    '  </div></a>'+
+				   ' </li>'+
+				   ' <li>';
+      	}
+      	html='<div class="list-block list-block-search searchbar-found deletemargin" >'+
+					 ' <ul>'+html+
+				   ' </ul>'+
+				   ' </div>'
+        $("#list-block").html(html);
+    
+			</script>
+	 <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+</html>

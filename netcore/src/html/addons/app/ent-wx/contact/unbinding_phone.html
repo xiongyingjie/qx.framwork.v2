@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title></title>
+      <script src="../framework-m/js/head.min-m.js"></script>
+      <link href="../../../../vendor/m/css/framework7.ios.min.css" rel="stylesheet" />
+      <link href="../../../../vendor/m/css/framework7.ios.colors.min.css" rel="stylesheet" />
+      <script src="../../../../vendor/m/js/framework7.min.js"></script>
+      <script src="../../../../vendor/framework-m/js/my-app.js"></script>
+      <style>
+          .acolor {
+              color: inherit;
+          }
+
+          .deletemargin {
+              margin: 1px 0 !important;
+          }
+
+          .navbar, .subnavbar, .toolbar {
+              background: #007afc !important;
+              color: #ffffff !important;
+              height: 55px !important;
+          }
+        
+      </style>
+</head>
+  <body>
+      <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar color-white">
+          <div class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="center sliding" style="left: 150px;">
+				解绑手机
+			</div>
+          </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        
+        <div class="pages navbar-through toolbar-through">
+        	
+       
+          <!-- Page, data-page contains page name-->
+            <div data-page="telephoto" class="page">
+					    <!-- Scrollable page content-->
+					  <div class="page-content">
+					    <!-- This block will be displayed if nothing found -->
+					    <div class="content-block-title">请确认要解绑的手机号码</div>
+                <div class="list-block deletemargin">
+                    <ul>
+                        <li class="acolor">
+                            <div class=" item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">+86</div>
+                                    <div class="item-input">
+                                        <input type="text" readonly="readonly" class="app_contact_person-phone" placeholder="请输入号码">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+						<div class="list-block">
+						   <a href="binding_confirm.html?id=" id='bt-nextStep' class="button button-big button-fill">确认解绑</a>
+						</div>
+					 </div>
+					</div>
+			</div>
+        </div>
+        <!-- Bottom Toolbar-->
+        </div>
+
+
+ 
+	
+</body>
+</html>
+

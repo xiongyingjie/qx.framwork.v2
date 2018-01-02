@@ -1,0 +1,252 @@
+﻿
+<!DOCTYPE html>
+<html class="pixel-ratio-1">
+<head>
+    <title>派工列表</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+    <link rel="stylesheet" href="css/weui.min.css">
+    <link rel="stylesheet" href="css/jquery-weui.css">
+    <link rel="stylesheet" href="css/Repair.css">
+    <script src="framework-m/js/head.min-m.js"></script>
+    <style>
+        /* head */
+        .weui-navbar__item {
+            padding: 11px 0;
+            font-size: 0.95em;
+        }
+
+            .weui-navbar__item:after {
+                content: none;
+            }
+
+        .weui-navbar {
+            background-color: white;
+            border-bottom: 1px solid rgb(213,213,213);
+            font-size: 1.2em;
+        }
+
+        .weui-navbar__item.weui-bar__item--on { /*被选中时*/
+            color: rgb(68,146,235);
+            background-color: white;
+            border-bottom: 3px solid rgb(68,146,235);
+        }
+
+
+
+        .weui-cells {
+            line-height: normal;
+            margin: 0;
+            margin-top: 12px;
+            margin-left: 4%;
+            margin-right: 4%;
+        }
+
+            .weui-cells:after, .weui-cells:before {
+                content: none;
+            }
+
+        .weui-cell { /*一个小节点*/
+            border-top: 1px solid rgb(234,238,239);
+            border-right: 1px solid rgb(225,229,230);
+            border-bottom: 1px solid rgb(216,219,220);
+            border-left: 1px solid rgb(225,229,230);
+            padding: 0px 15px 0px 5px;
+            /*height: 87px;*/
+            background-color: white;
+        }
+
+     .card-content{
+         padding:0 20px;
+     }
+
+        .card-content table th {
+            font-size: 0.7em;
+            font-weight: normal;
+            font-family: "微软雅黑";
+            color: rgb(102,102,102);
+            width: 5em;
+            height: 2em;
+            text-align: left;
+        }
+
+        .card-content table td {
+            font-size: 0.7em;
+            font-family: "微软雅黑";
+            color: rgb(159,159,159);
+        }
+
+        .weui-badge { /*前面序号*/
+            background-color: rgb(240,240,240);
+            color: rgb(204,204,204);
+            margin-right: 10px;
+        }
+
+        #sign { /*签名*/
+            color: rgb(68,146,235);
+            font-size: 0.9em;
+            font-weight: 600;
+            font-family: "微软雅黑";
+        }
+
+        #unsign {
+            color: rgb(217,217,217);
+            font-size: 16px;
+            font-weight: 600;
+            font-family: "微软雅黑";
+        }
+        /*下方按钮*/
+        .weui-tabbar:before {
+            content: none;
+        }
+
+        #back {
+            height: 40px;
+            width: 33%;
+            float: left;
+            text-align: center;
+            line-height: 40px;
+            color: black;
+            background-color: white;
+        }
+
+        #newone {
+            height: 40px;
+            width: 33%;
+            float: right;
+            text-align: center;
+            line-height: 40px;
+            color: white;
+            background-color: rgb(68,146,235);
+            margin-top: 0;
+            padding: 0;
+        }
+
+        .button_sp_area {
+            position: fixed;
+            width: 90%;
+            bottom: 10px;
+            left: 5%;
+            right: 5%;
+        }
+        .facebook-card .facebook-name {
+                    margin-left: 5px;
+                    font-size: 14px;
+                    font-weight: 500;
+                }
+                .facebook-card .facebook-date {
+                    margin-left: 5px;
+                    font-size: 13px;
+                    color: #8e8e93;
+                }
+                .card-footer{
+                    text-align:center
+                }
+    </style>
+</head>
+<body ontouchstart>
+    <div class="weui-tab">
+        <!--head-->
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="#tab1">
+                待派工列表
+            </a>
+            <a class="weui-navbar__item " href="#tab2">
+                已派工列表
+            </a>
+
+        </div>
+        <!--body-->
+        <div class="weui-tab__bd">
+            <!--已完成的巡检-->
+            <div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                <!--<div class="card facebook-card">
+                    <div class="card-header">
+                        <div class="facebook-date">报修人：丁济青  </div>
+                    </div>
+                   
+                   
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>报修编号</th>
+                                <td>ae171101010</td>
+
+                            </tr>
+                            <tr>
+                                <th>设备名称</th>
+                                <td>排气扇</td>
+                            </tr>
+                            <tr>
+                                <th>报修点</th>
+                                <td>新外科楼/20区</td>
+                            </tr>
+                            <tr>
+                                <th>故障类型</th>
+                                <td>不排气</td>
+                            </tr>
+                      
+                            <tr>
+                                <th>报修时间</th>
+                                <td>2017-11-01 11:25:44</td>
+                            </tr>
+                        </table>
+                      
+                    </div>
+                    <div class="card-footer">已读 <span style="color:rgb(68,146,235);">查看记录</span><span>待回访</span></div>
+                </div>-->
+           
+            </div>
+            <div id="tab2" class="weui-tab__bd-item">
+                <!--<div class="card facebook-card">
+                    <div class="card-header">
+                        <div class="facebook-date">报修人：丁济青    <span style="float:right">  当前负责人：陈江峰</span></div>
+                    </div>
+
+
+                    <div class="card-content">
+                        <table>
+                            <tr>
+                                <th>报修编号</th>
+                                <td>ae171101010</td>
+
+                            </tr>
+                            <tr>
+                                <th>设备名称</th>
+                                <td>排气扇</td>
+                            </tr>
+                            <tr>
+                                <th>报修点</th>
+                                <td>新外科楼/20区</td>
+                            </tr>
+                            <tr>
+                                <th>故障类型</th>
+                                <td>不排气</td>
+                            </tr>
+
+                            <tr>
+                                <th>报修时间</th>
+                                <td>2017-11-01 11:25:44</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="card-footer">已读 <span style="color:rgb(68,146,235);">查看记录</span><span>待回访</span></div>
+                </div>-->
+            </div>
+        </div>
+        <!--下面的按钮-->
+        <!--<div class="button_sp_area">
+            <a href="主页.html" class="weui-btn weui-btn_mini weui-btn_primary" id="back">返回</a>
+            <a href="开始新的巡检.html" class="weui-btn weui-btn_mini weui-btn_default" id="newone">开始新的巡检</a>
+        </div>-->
+    </div>
+    <script src="js/jquery-2.1.4.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="js/jquery-weui.js"></script>
+
+</body>
+</html>

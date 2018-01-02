@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+     <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
+  <!--   <link rel="stylesheet" href="css/framework7.material.min.css">
+ <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+ Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <style>
+    	.imgsize{
+    		max-height: 30px;
+    		position: relative;
+    		top:1px;
+    	}
+		  .item-link {
+		   -webkit-transition-duration: 0s !important;
+		    transition-duration:  0s !important;
+		    display: block;
+		    color: inherit;
+		}
+		.acolor{
+		   
+		    color: inherit;
+		}
+		.Inboximgsize{
+			 	max-height: 60px;
+    		position: relative;
+    		border-radius: 50%;
+    	
+		}
+
+   .deletemargin{
+    	margin: 1px 0;
+    	
+    }
+   .navbar, .subnavbar, .toolbar {
+    background:#007afc;
+    color:#ffffff;
+   }/* */
+
+   .telefontcolor1{
+   	color:#080808;
+   }
+   .telefontcolor2{
+   	font-size: 12px;
+   	color:#a1a1a1;
+   }
+   .telefontcolor3{
+
+   	color:#8b8b8b;
+   }
+    .position{
+    	width: 15px;
+    	position: relative;
+    	left:-32%;
+    	transform:rotate(-90deg);
+			-ms-transform:rotate(-90deg); /* Internet Explorer */
+			-moz-transform:rotate(-90deg); /* Firefox */
+			-webkit-transform:rotate(-90deg); /* Safari 和 Chrome */
+			-o-transform:rotate(-90deg); /* Opera */
+    }
+    .detailtop{
+    	background-color: #1eb6e8;
+    	padding: 35px 0;
+    	 color: #ffffff !important;
+    	 /*position:relative;
+    	 top:-50px;
+    	 z-index: 5000;*/
+    }
+    /*detail*/
+			   	.detailtop{
+			    		text-align: center;
+			    		background-color:#1eb6e8;
+			    		padding:35px 0 0;
+			    		line-height: 14px;
+			    		
+			    	}
+			    .deletemargin{
+			    	margin: 1px 0;
+			    	
+			    }
+			    .left a i{
+			    	position:fixed;
+			    	 left:15px;
+			    	 top:20px;
+			    	
+			    }
+			    .detailimgsize{
+			    	 	height:80px;
+			    		border-radius: 50%;
+			    }
+			      .detailimgsize2{
+			    	 	height:28px;
+			    		
+			    }
+			    .detailtopbottom{
+			    	font-size: 12px;
+			    	background-color:#1882a8;
+			    	line-height: 20px;
+			    	height: 74px;
+			    	padding: 12px 0 14px;
+			    }
+			    .list-block .item-title.labeldetail{
+			    	border-right:1px solid #C7C7CC;
+			    	color:#616060;
+			    	width:25%;
+			    -webkit-flex-shrink: 0;
+			    -ms-flex: 0 0 auto;
+			    flex-shrink: 0;
+			    }
+			    .item-inputdetail{
+			    	padding:0px 10px;
+			    }
+		
+     
+			.row {
+			    display: -webkit-box;
+			    display: -ms-flexbox;
+			    display: -webkit-flex;
+			    display: flex; 
+			    -webkit-box-pack: justify;
+			    -ms-flex-pack: justify;
+			    -webkit-justify-content: center;
+			    justify-content: center; 
+			    -webkit-box-lines: multiple; 
+			    -moz-box-lines: multiple;
+			     -webkit-flex-wrap: wrap; 
+			    -ms-flex-wrap: wrap;
+			    flex-wrap: wrap;
+			    -webkit-box-align: start;
+			    -ms-flex-align: start;
+			    -webkit-align-items: flex-start;
+			    align-items: flex-start; 
+			}
+      /*组织机构*/
+   .content-blockpadding{
+    padding: 0 0 0 20px;
+    color:#181818;
+    box-sizing: border-box;
+}
+.fanwei{
+	position: relative;
+   top:4px;
+   height: 25px;
+}
+    </style>
+   
+  </head>
+  <body >
+<div class="views">
+    <div class="view view-main">
+    	
+              <div class="pages">
+				<!--<div class="navbar">
+				  <div class="navbar-inner">
+				  </div>
+				</div>  -->
+			  <div data-page="about" class="page no-navbar">
+				  <div class="page-content">
+				  	<div id="detailtop">
+				  	</div>
+					<div id="list-block">
+				     </div>	 
+					</div>
+				</div>  
+			</div>
+		</div>
+	</div>
+	  <script type="text/javascript">
+     
+      	var obj=[
+      	{label:"手机",input:"15156906311"},
+        {label:"电话",input:"02162133121"},
+        {label:"邮件",input:"15156906311@qq.com"},
+        {label:"分部",input:"维森集团"},
+        {label:"部门",input:"集团总经办"},
+        {label:"上级",input:"   "},
+        {label:"办公地点",input:"上海"},
+      	];
+      	var html="";
+      	
+      	for(var i=0;i<obj.length;i++){
+      		var item = obj[i];
+      		html+=
+      		 '<li>'+
+			      '<div class="item-content">'+
+			       ' <div class="item-media"><i class="icon icon-form-name"></i></div>'+
+			       ' <div class="item-inner">'+
+			        '  <div class="item-title label labeldetail">'+item.label+'</div>'+
+			         ' <div class="item-input item-inputdetail">'+
+			                 item.input+
+			          '</div>'+
+			       ' </div>'+
+			     ' </div>'+
+			   ' </li>';
+      	}
+      	html='<div class="list-block deletemargin">'+
+					 ' <ul>'+html+
+				   ' </ul>'+
+				   ' </div>';
+        $("#list-block").html(html);
+        var html2="";
+        var obj2=[
+      	{name:"倪云",job:"总裁"},
+      
+      	];
+        html2='<div class="detailtop">'+
+					  	' <div class="left">'+
+					    	'<a href="#" class="back link"> <i class="icon icon-back color-white"></i></a>'+
+					    ' </div>'+
+					  
+				  	   '<div class="content-block deletemargin color-white" style="text-align: center;" >'+
+				            '<div class="col-100 acolor ">'+
+							        '<img src="img/tel.png" class="detailimgsize">'+
+								    	'<h3 >'+obj2[0].name+'</h3>'+
+								    	'<p>'+obj2[0].job+'</p></a>'+
+				            '</div>'+
+						  ' </div> '+
+						  
+				      ' <div class="content-block deletemargin detailtopbottom color-white">'+
+				       	        '<div class="row">'+
+				                 ' <div class="col-50 acolor" style="border-right: 1px solid #FFFFFF;"><img src="img/tele.png" class="detailimgsize2"></div>'+
+				                '  <div class="col-50 acolor"><img src="img/text.png" class="detailimgsize2"></div>'+
+				              '  </div>'+
+				                '<div class="row">'+
+				                '  <div class="col-50 acolor" style="border-right: 1px solid #FFFFFF;">打电话</div>'+
+				               '   <div class="col-50 acolor">发短信</div>'+
+				               ' </div>'+
+				       ' </div>'+
+				   ' </div>';
+		 $("#detailtop").html(html2);
+       
+
+			</script>
+
+   <script type="text/javascript" src="js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <script type="text/javascript" src="js/my-app.js"></script>
+</body>
+</html>

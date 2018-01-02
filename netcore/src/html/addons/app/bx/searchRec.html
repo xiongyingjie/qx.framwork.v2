@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+	   <link rel="stylesheet" href="css/weui.min.css">
+	   <link rel="stylesheet" href="css/jquery-weui.css">
+	    <link href="css/Repair.css" rel="stylesheet"/>
+        <script src="framework-m/js/head.min-m.js"></script>
+	    <style>
+              .weui-navbar__item{
+               border-bottom:1px solid #6ab9fa;
+               background-color:#e1edfa !important;
+               color:#6ab9fa !important;
+              
+               
+            }
+            .weui-cell__bd table th{
+		        font-size:0.7em;
+		        font-weight:normal;
+		        font-family: "微软雅黑";
+		        color:rgb(102,102,102);
+		        width: 5em;
+		        height: 2em;
+    	        text-align: left;
+	        }
+	        .weui-cell__bd table td{
+		        font-size:0.7em;
+		        font-family: "微软雅黑";
+		        color:rgb(159,159,159);
+	        }
+            .weui-cell__hd img{
+                    margin-right: 30px;
+                    width:80%;
+            }
+            .card{
+                    margin: 3px;
+            }
+            .facebook-card .card-footer{
+                background-color:#eef2f3;
+            }
+            .return {
+                border: 1px solid #d5d5d5;
+                border-radius: 5px;
+                height: 35px;
+                line-height: 35px;
+                background-color:#ffffff;
+             
+            }
+            .placeholder {
+
+                margin: 5px;
+                margin-top:20px;
+                padding: 0 10px;
+                text-align: center;
+                color: #000000;
+            }
+
+        </style>
+	</head>
+    <body ontouchstart="">
+
+        <div class="weui-tab">
+
+            <div class="weui-tab__bd"  id="checkdetail">
+                <!--<div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+                    <div class="weui-cells deletemargin">
+                        <div class="weui-cell">
+                            <div class="weui-cell__hd">
+                                <img src="images/flex.png">
+                            </div>
+                            <div class="weui-cell__bd">
+                                <table>
+                                    <tr>
+                                        <th>设备名称</th>
+                                        <td>排气筒</td>
+                                    </tr>
+                                    <tr>
+                                        <th>设备编号</th>
+                                        <td>pf002</td>
+                                    </tr>
+                                    <tr>
+                                        <th>报修地点</th>
+                                        <td>20区</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                     </div>
+                    <div class="card facebook-card">
+                        <div class="card-footer">报修信息 <span>2017-11-01 11:25:44</span></div>
+                        <div class="weui-cells deletemargin">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>报修人</p>
+                                </div>
+                                <div class="weui-cell__ft">丁</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>故障语音</p>
+                                </div>
+                                <div class="weui-cell__ft">暂无语音</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd"><label for="name" class="weui-label">故障类型</label></div>
+                                <div class="weui-cell__bd">
+                                    <input class="weui-input" id="in" type="text" value="" readonly="">
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>故障语音</p>
+                                </div>
+                                <div class="weui-cell__ft">暂无语音</div>
+                            </div>
+                           
+                            <div class="weui-cell">
+                                
+                                <div class="weui-cell__bd">
+                                    <textarea class="weui-textarea" placeholder="故障备注" rows="3" id="i"></textarea>
+                                  
+                                </div>
+
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                   暂无图片
+                                </div>
+                             
+                            </div>
+                         </div>
+                      
+                    </div>
+                    <div class="card facebook-card">
+                        <div class="card-footer">派工信息 <span>2017-11-01 11:26:04</span></div>
+                        <div class="weui-cells deletemargin">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>派工人</p>
+                                </div>
+                                <div class="weui-cell__ft">任炜东</div>
+                            </div>
+                            <div class="weui-cell">
+
+                                <div class="weui-cell__bd">
+                                    <textarea class="weui-textarea" placeholder="故障备注" rows="3" id="i"></textarea>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card facebook-card">
+                        <div class="card-footer">维修信息 <span>2017-11-01 11:26:50</span></div>
+                        <div class="weui-cells deletemargin">
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>维修负责人</p>
+                                </div>
+                                <div class="weui-cell__ft">朱晓斌</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>设备维修状态</p>
+                                </div>
+                                <div class="weui-cell__ft">维修完成</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>维修详情</p>
+                                </div>
+                                <div class="weui-cell__ft">
+                                    转基建办
+                                </div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__bd">
+                                    <p>更换部件</p>
+                                </div>
+                                <div class="weui-cell__ft">未更换部件</div>
+                            </div>
+                            <div class="weui-cell">
+                                <div class="weui-cell__hd">
+                                    未上传附件
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+               
+                    <div class="placeholder return">
+                        返回
+                    </div>
+             </div>-->
+        </div>
+
+        <script src="js/jquery-2.1.4.js"></script>
+        <script src="js/fastclick.js"></script>
+        <script src="js/jquery-weui.js"></script>
+            <script>
+                 $("#in").select({
+                    title: "故障类型",
+                    multi: true,
+                    min: 1,
+                    max: 3,
+                    items: [
+                      {
+                        title: "不排气",
+                        value: 1,
+                        description: "额外的数据1"
+                      },
+                      {
+                        title: "引擎",
+                        value: 2,
+                        description: "额外的数据2"
+                      },
+                      {
+                        title: "唱歌",
+                        value: 3,
+                        description: "额外的数据3"
+                      },
+                      {
+                        title: "游泳",
+                        value: 4,
+                        description: "额外的数据4"
+                      },
+                      {
+                        title: "健身",
+                        value: 5,
+                        description: "额外的数据5"
+                      },
+                      {
+                        title: "睡觉",
+                        value: 6,
+                        description: "额外的数据6"
+                      },
+                    ],
+
+                  });
+            </script>
+        </div>
+
+    </body>
+
+</html>

@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="framework-m/js/head.min-m.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+    <title>请假申请</title>
+    <link rel="stylesheet" type="text/css" href="css/applicationMeeting.css">
+    <style>
+
+        .weui-select {
+            border: 0;
+            outline: 0;
+            background-color: transparent;
+            width: 100%;
+            font-size: inherit;
+            height: 22px !important;
+            line-height: 44px  !important;
+            position: relative;
+            z-index: 1;
+            padding-left: 15px;
+        }
+        .weui-btn_primary {
+            background-color: #1aad19;
+            float: left;
+        }
+        .weui-btn {
+            position: relative;
+            display: block;
+            margin: 5px 2.5%;
+            box-sizing: border-box;
+            font-size: 0.65em;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            line-height: 2.55555556;
+            border-radius: 5px;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            overflow: hidden;
+        }
+        .weui-btn_default {
+            background-color: #ffffff;
+            border: 1px solid #1AAD19;
+            color: #1AAD19;
+
+        }
+
+    </style>
+
+</head>
+	<body>
+
+<div class="weui-tab__bd" >
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
+			<div class="card facebook-card">
+					       <div class="weui-cells deletegap">
+					       	<div class="weui-cell">
+					        <div class="weui-cell__hd"><label class="weui-label">请假类型</label></div>
+						           <div class="weui-cell__bd">
+					          <select class="weui-select" id="T_YQJ_XSQJXXB_LXDM">
+			                       
+			                  </select>
+					        </div>
+					      </div>
+					         <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">开始日期</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						        <div id="stardate" ></div>
+						          
+						        </div>
+						      </div>
+			                <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">开始节次</label>
+						        </div>
+						         <div class="weui-cell__bd" >
+						           <select class="weui-select" name="T_YQJ_XSQJXXB-KSJCDM" id="T_YQJ_XSQJXXB_KSJCDM" >
+			                       
+			                        <option value="13"></option>
+			                    </select>
+						        </div>
+						      </div>
+						      
+						          <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">结束日期</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						        	<div id="enddate"></div>
+						        </div>
+						      </div>
+			                <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">请假结束节次</label>
+						        </div>
+						         <div class="weui-cell__bd">
+						           <select class="weui-select" name="T_YQJ_XSQJXXB-JSJCDM" id="T_YQJ_XSQJXXB_JSJCDM" >
+			                        <option value="1"></option>
+			                     
+			                    </select>
+						        </div>
+						      </div>
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">请假总天数</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" placeholder="请输入请假天数" value="1"   id="T_YQJ_XSQJXXB_TS" >
+                    </div>
+                </div>
+						     <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">去向</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" placeholder="请输入地点" value="2"  id="T_YQJ_XSQJXXB_QX">
+						        </div>
+						      </div>
+						       <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">联系电话</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" value="3" placeholder="请输入电话号码" id="T_YQJ_XSQJXXB_LXFS" name="T_YQJ_XSQJXXB-LXFS">
+						        </div>
+						      </div>
+			                  <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">家长姓名</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" value="4"  placeholder="请输入家长姓名" id="T_YQJ_XSQJXXB_JZXM" name="T_YQJ_XSQJXXB-JZXM">
+						        </div>
+						      </div>
+			                  <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">家长联系电话</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" value="5"  placeholder="请输入家长电话号码" id="T_YQJ_XSQJXXB_JZLXFS" name="T_YQJ_XSQJXXB-JZLXFS">
+						        </div>
+						      </div>
+			                  
+			                   <div class="weui-cell">
+						                	 <div class="weui-cell__hd" ><label class="weui-label">请假事由</label></div>
+						                     <div class="weui-cell__bd" style="height: auto;"> <textarea class="weui-textarea" placeholder="输入请假事由" rows="3" id="T_YQJ_XSQJXXB_SY" name="T_YQJ_XSQJXXB-SY">6</textarea>
+						                    </div>  
+						         </div>           
+					       </div> 
+			      
+					</div>  
+			<a href="javascript:;" class="weui-btn weui-btn_primary" style="width:95%;height: 40px;line-height: 40px;" id="bt-subrecord">提交</a>
+	</div>
+<script>
+
+    //开始日期
+    var d = new Date(); //获取今天时间
+    var day = "";
+    if (d.getDate() < 10) {
+        day = "0" + d.getDate();
+    } else {
+        day = d.getDate;
+    }
+    var Month = d.getMonth() + 1;
+    var ndate = '"' + d.getFullYear() + '-' + Month + '-' + day + '"';
+    var stardate = document.getElementById("stardate");
+    var startext = '<input class="weui-input" type="date" value="2017-12-08" name="T_YQJ_XSQJXXB-KSRQ" id="T_YQJ_XSQJXXB_KSRQ" min=' + ndate + ' >';
+    stardate.innerHTML = startext;
+
+
+    //结束日期
+    var KSRQ_id = document.getElementById("T_YQJ_XSQJXXB_KSRQ");
+    var end_d = KSRQ_id.value;
+    var enddate = document.getElementById("enddate");
+    var endtext = '<input class="weui-input" type="date" value="' + end_d + '" name="T_YQJ_XSQJXXB-JSRQ" id="T_YQJ_XSQJXXB_JSRQ" min="' + end_d + '" >';
+    enddate.innerHTML = endtext;
+
+
+</script>
+    </div>
+	</body>
+
+</html>

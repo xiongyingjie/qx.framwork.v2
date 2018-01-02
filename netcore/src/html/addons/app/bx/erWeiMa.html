@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html class="pixel-ratio-2 retina android android-6 android-6-0"><head>
+    <title>巡查点</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+
+<link rel="stylesheet" href="css/weui.min.css">
+<link rel="stylesheet" href="css/jquery-weui.css">
+<link rel="stylesheet" href="css/Repair.css">
+
+    <style>
+    
+    	.demos-title{
+    		color: black;
+    		font-size:1.2em;
+    		width: 100%;
+    		text-align: center;
+    		margin: 20px 0 12px 0;
+    		
+    	}
+      .icon-box {
+        margin-bottom: 10px;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        align-items: center
+      }
+
+     
+      .line{
+      
+      	border:1px solid #F0F0F0;
+      	padding: 2px 0;
+      	margin-top:2px;
+      }
+      .font{
+      	font-size: 80%;
+      }
+      .icon-box-p{
+      	color: #B3AEED;
+      	font-size: 12px;
+        text-align: center;
+      }
+      .icon-img{
+      	
+      	margin:0 auto;
+      }
+      .font{
+      	margin-top:10px;
+      	font-size: 1.0em;
+      	line-height: 2.0em;
+      	padding: 5px 10px;
+      }
+    .font>p{
+    	font-size: 1.2em;
+    	padding-left:5px ;
+    }
+    </style>
+  </head>
+
+  <body ontouchstart="">
+    <h1 class="demos-title">请先扫描需要检测的监测点的二维码</h1>
+    <div class="demos-content-padded">
+                <a href="http://api.52xyj.cn/open/scanwxqr">
+            <div class="icon-box">
+                <img src="images/erweima.jpg" class="icon-img" />
+            </div>
+              </a>
+        <p class="icon-box-p">
+            <a href="signCheck.html?id=10001">点击扫一扫 </a>
+</p>
+            <div class="font">
+                <p>使用记录步骤：</p>
+                <div class="line">
+                    <p>1.扫描需要检测的检测点二维码。</p>
+                    <p>2.未登录的进入授权码验证页面，已登录的可直接完善检测信息。</p>
+                    <p>3.保存或提交检测信息</p>
+                </div>
+            </div>
+</div>
+    <script src="js/jquery-2.1.4.js"></script>
+	<script src="js/fastclick.js"></script>
+	<script>
+	  $(function() {
+	    FastClick.attach(document.body);
+	  });
+	</script>
+	<script src="../js/jquery-weui.js"></script>
+</body></html>

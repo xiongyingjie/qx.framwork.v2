@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>我的预约记录</title>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+">
+<link rel="stylesheet" type="text/css" href="css/applicationMeeting.css">
+<style>
+	
+</style>
+      <script src="../framework-m/js/head.min-m.js"></script>
+</head>
+
+  <body ontouchstart>
+<div class="weui-navbar">
+		<div class="colortitle weui-navbar__item1">
+	  	<div class="weui-flex ">
+		      <div style="width: 60px">
+              <a href="index.html">
+                  <div class="placeholder">
+                      <img src="img/return.png" class="return">
+                  </div>
+              </a> 
+		         
+		      </div>
+	            <div class="weui-flex__item"><div class="placeholder">我的预约记录</div></div>
+	           
+	            	<a href="javascript:;" class="weui-btn1 weui-btn_mini">&nbsp;&nbsp;&nbsp;&nbsp;</a>
+	         
+	    </div>
+	    </div>    
+	</div>
+	<div class="weui-tab__bd">
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
+    	<div class="card facebook-card" style="margin-top:70px">
+    		 <div class="search">
+						<span class="s_con"><input type="text" id="ip_name" class="content" placeholder="请输入会议名称进行搜索"><i class="clear"></i></span>
+						
+					</div>
+    	</div>
+    	<div id="list"></div>
+    
+    </div>
+  
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$('.content').on('keyup',function(){
+	$('.clear').show();
+});
+$('.clear').click(function(){
+	$('.content').val('');
+});
+</script>
+
+   </body>
+</html>
+

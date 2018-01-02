@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+此文件由 Web 项目的发布/打包过程使用。可以通过编辑此 MSBuild 文件
+自定义此过程的行为。为了解与此相关的更多内容，请访问 https://go.microsoft.com/fwlink/?LinkID=208121。 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>E:\pub\api.52xyj.cn81</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>12/02/2017 17:28:01</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>12/02/2017 18:02:13</publishTime>
+    </File>
+    <File Include="Autofac.dll">
+      <publishTime>10/16/2017 09:53:24</publishTime>
+    </File>
+    <File Include="bundleconfig.json">
+      <publishTime>12/02/2017 17:28:01</publishTime>
+    </File>
+    <File Include="Dapper.dll">
+      <publishTime>11/25/2017 18:18:42</publishTime>
+    </File>
+    <File Include="Dapper.Extension.dll">
+      <publishTime>06/18/2016 07:13:40</publishTime>
+    </File>
+    <File Include="dotnet-aspnet-codegenerator-design.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="FastExcel.dll">
+      <publishTime>10/20/2017 19:20:56</publishTime>
+    </File>
+    <File Include="HtmlAgilityPack.dll">
+      <publishTime>11/30/2017 10:26:46</publishTime>
+    </File>
+    <File Include="JinianNet.JNTemplate.dll">
+      <publishTime>12/23/2015 12:45:52</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
+      <publishTime>12/02/2017 16:19:58</publishTime>
+    </File>
+    <File Include="Microsoft.CodeAnalysis.Workspaces.dll">
+      <publishTime>12/02/2017 16:19:59</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.Relational.Design.dll">
+      <publishTime>10/17/2017 22:25:10</publishTime>
+    </File>
+    <File Include="Microsoft.EntityFrameworkCore.SqlServer.Design.dll">
+      <publishTime>10/17/2017 22:25:10</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Core.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll">
+      <publishTime>07/25/2017 00:48:06</publishTime>
+    </File>
+    <File Include="MySql.Data.dll">
+      <publishTime>10/09/2017 04:58:08</publishTime>
+    </File>
+    <File Include="MySql.Data.EntityFrameworkCore.dll">
+      <publishTime>10/09/2017 04:58:10</publishTime>
+    </File>
+    <File Include="Newtonsoft.Json.dll">
+      <publishTime>06/18/2017 13:57:10</publishTime>
+    </File>
+    <File Include="NuGet.Frameworks.dll">
+      <publishTime>12/02/2017 16:20:06</publishTime>
+    </File>
+    <File Include="Oracle.ManagedDataAccess.dll">
+      <publishTime>05/25/2017 20:39:04</publishTime>
+    </File>
+    <File Include="QRCoder.dll">
+      <publishTime>10/21/2017 09:43:48</publishTime>
+    </File>
+    <File Include="RestSharp.NetCore.dll">
+      <publishTime>07/01/2016 20:54:22</publishTime>
+    </File>
+    <File Include="System.Composition.AttributedModel.dll">
+      <publishTime>12/02/2017 16:20:01</publishTime>
+    </File>
+    <File Include="System.Composition.Convention.dll">
+      <publishTime>12/02/2017 16:20:01</publishTime>
+    </File>
+    <File Include="System.Composition.Hosting.dll">
+      <publishTime>12/02/2017 16:20:01</publishTime>
+    </File>
+    <File Include="System.Composition.Runtime.dll">
+      <publishTime>12/02/2017 16:20:01</publishTime>
+    </File>
+    <File Include="System.Composition.TypedParts.dll">
+      <publishTime>12/02/2017 16:20:01</publishTime>
+    </File>
+    <File Include="System.Xml.XPath.XmlDocument.dll">
+      <publishTime>11/05/2016 04:57:34</publishTime>
+    </File>
+    <File Include="UnityEngine.dll">
+      <publishTime>10/21/2017 09:43:48</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>12/30/2017 23:25:40</publishTime>
+    </File>
+    <File Include="Web.deps.json">
+      <publishTime>12/30/2017 23:25:40</publishTime>
+    </File>
+    <File Include="Web.dll">
+      <publishTime>12/30/2017 23:25:37</publishTime>
+    </File>
+    <File Include="Web.pdb">
+      <publishTime>12/30/2017 23:25:37</publishTime>
+    </File>
+    <File Include="Web.PrecompiledViews.dll">
+      <publishTime>12/30/2017 23:25:40</publishTime>
+    </File>
+    <File Include="Web.PrecompiledViews.pdb">
+      <publishTime>12/30/2017 23:25:40</publishTime>
+    </File>
+    <File Include="Web.runtimeconfig.json">
+      <publishTime>12/30/2017 23:25:40</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.min.css">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner1.svg">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner2.svg">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner3.svg">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/banner4.svg">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.js">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.min.js">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/.bower.json">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.css.map">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-theme.min.css.map">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.eot">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.svg">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>12/02/2017 17:28:02</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/npm.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/LICENSE">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/.bower.json">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/.bower.json">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/.bower.json">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/LICENSE.txt">
+      <publishTime>12/02/2017 17:28:03</publishTime>
+    </File>
+    <File Include="xyj.acs.dll">
+      <publishTime>12/30/2017 23:24:00</publishTime>
+    </File>
+    <File Include="xyj.acs.pdb">
+      <publishTime>12/30/2017 23:24:00</publishTime>
+    </File>
+    <File Include="xyj.core.dll">
+      <publishTime>12/30/2017 23:23:57</publishTime>
+    </File>
+    <File Include="xyj.core.pdb">
+      <publishTime>12/30/2017 23:23:57</publishTime>
+    </File>
+    <File Include="ZKWeb.System.Drawing.dll">
+      <publishTime>08/28/2017 17:32:08</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

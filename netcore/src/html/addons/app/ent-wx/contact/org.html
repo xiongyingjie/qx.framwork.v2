@@ -1,0 +1,379 @@
+﻿<!-- We don't need full layout here, because this page will be parsed with Ajax-->
+<!-- Top Navbar-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="blue">
+    <title>组织机构</title>
+    <script src="../framework-m/js/head.min-m.js"></script>
+    <link href="../../../../vendor/m/css/framework7.ios.min.css" rel="stylesheet" />
+    <link href="../../../../vendor/m/css/framework7.ios.colors.min.css" rel="stylesheet" />
+    <script src="../../../../vendor/m/js/framework7.min.js"></script>
+    <script src="../../../../vendor/framework-m/js/my-app.js"></script>
+    <style>
+        .imgsize {
+            max-height: 30px;
+            position: relative;
+            top: 1px;
+        }
+
+        .item-link {
+            -webkit-transition-duration: 0s !important;
+            transition-duration: 0s !important;
+            display: block;
+            color: inherit;
+        }
+
+        .acolor {
+            color: inherit;
+        }
+
+        .Inboximgsize {
+            max-height: 60px;
+            position: relative;
+            border-radius: 50%;
+        }
+
+        .deletemargin {
+            margin: 1px 0;
+        }
+
+        .navbar, .subnavbar, .toolbar {
+            background: #007afc !important;
+            color: #ffffff;
+        }
+        /* */
+
+        .telefontcolor1 {
+            color: #080808;
+        }
+
+        .telefontcolor2 {
+            font-size: 12px;
+            color: #a1a1a1;
+        }
+
+        .telefontcolor3 {
+            color: #8b8b8b;
+        }
+
+        .position {
+            width: 15px;
+            position: relative;
+            left: -32%;
+            transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg); /* Internet Explorer */
+            -moz-transform: rotate(-90deg); /* Firefox */
+            -webkit-transform: rotate(-90deg); /* Safari 和 Chrome */
+            -o-transform: rotate(-90deg); /* Opera */
+        }
+
+        .detailtop {
+            background-color: #1eb6e8;
+            padding: 35px 0;
+            color: #ffffff !important;
+            /*position:relative;
+         top:-50px;
+         z-index: 5000;*/
+        }
+        /*detail*/
+        .detailtop {
+            text-align: center;
+            background-color: #1eb6e8;
+            padding: 35px 0 0;
+            line-height: 14px;
+        }
+
+        .deletemargin {
+            margin: 1px 0;
+        }
+
+        .left a i {
+            position: fixed;
+            left: 15px;
+            top: 20px;
+        }
+
+        .detailimgsize {
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .detailimgsize2 {
+            height: 28px;
+        }
+
+        .detailtopbottom {
+            font-size: 12px;
+            background-color: #1882a8;
+            line-height: 20px;
+            height: 74px;
+            padding: 12px 0 14px;
+        }
+
+        .list-block .item-title.labeldetail {
+            border-right: 1px solid #C7C7CC;
+            color: #616060;
+            width: 25%;
+            -webkit-flex-shrink: 0;
+            -ms-flex: 0 0 auto;
+            flex-shrink: 0;
+        }
+
+        .item-inputdetail {
+            padding: 0px 10px;
+        }
+
+
+        .row {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-lines: multiple;
+            -moz-box-lines: multiple;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            -webkit-align-items: flex-start;
+            align-items: flex-start;
+        }
+        /*组织机构*/
+        .content-blockpadding {
+            padding: 0 0 0 20px;
+            color: #181818;
+            box-sizing: border-box;
+        }
+
+        .fanwei {
+            position: relative;
+            top: 4px;
+            height: 25px;
+        }
+           .list-block {
+       margin: 0 !important;
+    font-size: 17px;
+      }
+    </style>
+
+</head>
+<body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <!-- Views-->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class-->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar color-white">
+                <div class="navbar-inner">
+                    <div class="center" style="left: 150px;">
+                        <div class="list-block">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input">
+                                      
+                                        <select onchange="window.location=this.value;" style="color:#ffffff; background:#007afc;">
+                                            <option value="org.html">组织结构</option>
+                                            <option value="index.html">通讯录</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="icon icon-back color-white position"></i>
+                </div>
+            </div>
+            <div class="pages pages navbar-through toolbar-through">
+                <!-- Page, data-page contains page name-->
+                <div data-page="about" class="page">
+
+                    <div class="page-content">
+                        <div id="treemain">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Bottom Toolbar-->
+    </div>
+<script type="text/javascript">
+
+    head.ready(function () {
+        $.Ajax({
+            url: "/Json/Contact/GetChildOrgList",
+            success: function (data) {
+                var NO1html = "";
+                var onclick2;
+               
+                for (var i = 0; i < data.length; i++) {
+                    var item = data[i];
+                  
+                    onclick2 = 'lastclick(\'' + item.id + '\')';
+                  
+
+                    if (item.hasChildren == 0) {
+                        onclick2 = 'click2(\'' + item.id + '\')';
+                    }
+                    if (item.hasChildren == 1) {
+                        onclick2 = 'lastclick(\'' + item.id + '\')';
+                    }
+                
+                    NO1html +=
+                        '<li class="accordion-item"  >' +
+                        '<a href="#" class="item-content item-link">' +
+                        '<div class="item-inner" onclick="' + onclick2 + '">' +
+                        '<div class="item-title" ><img src="img/fanwei.png" class="fanwei" > ' + item.text + '</div>' +
+                        '</div></a>' +
+                        '<div id="' + item.id + '"></div>' +
+                        '</li>';
+                }
+                NO1html = '<div class="list-block deletemargin">' +
+                    ' <ul>' + NO1html +
+                    ' </ul>' +
+                    ' </div>';
+                $("#treemain").html(NO1html);
+            }
+        });
+       
+       
+    });
+    var flag1 = "0";
+    var flag2 = "0";
+    function click2(id) {
+
+        $.Ajax({
+            url: "/Json/Contact/GetChildOrgList",
+            data:{id:id},
+            success: function (obj) {
+                var flag3 = 0;
+              
+                var ele = $("#" + id);
+                if (flag1 == "0") {
+                    flag1 = "auto";
+                    flag3 = 1;
+                }
+                if (flag1 == "auto" && flag3 == 0) {
+                    flag1 = "0";
+                }
+                if (id == "data") {
+                    var obj = [{ id: "NO21", text: "维森集团", hasChildren: "2" }, { id: "NO22", text: "xx集团", hasChildren: "0" }];
+                }
+                if (id == "NO21") {
+                    var obj = [{ id: "NO31", text: "企划部", hasChildren: "1" },
+                        { id: "NO32", text: "集团总经办", hasChildren: "1" },
+                        { id: "NO33", text: "行政部", hasChildren: "1" },
+                        { id: "NO34", text: "销售部", hasChildren: "1" },
+                        { id: "NO35", text: "财务部", hasChildren: "1" },
+                    ];
+                }
+               
+                var NO2html = "";
+               
+             
+                
+                for (var i = 0; i < obj.length; i++) {
+                    
+                    var item = obj[i];
+                    var onclick2;
+                   
+                    if (item.hasChildren == 0) {
+                        onclick2 = "click2('" + item.id + "')";
+
+                    }
+                    if (item.hasChildren == 1) {
+                        onclick2 = "lastclick('" + item.id + "')";
+                    }
+
+                    NO2html +=
+                        '<li class="accordion-item"><a href="#" class="item-content item-link">' +
+                        '<div class="item-inner"  onclick="' + onclick2 + '">' +
+                        '<div class="item-title" ><img src="img/fanwei.png" class="fanwei" > ' + item.text + '</div>' +
+                        '</div></a>' +
+                        '<div id="' + item.id + '"></div>' +
+                        '</li>';
+
+                }
+                NO2html = '<div class="accordion-item-content" style="height:' + flag1 + '">' +
+                    '<div class="content-blockpadding">' +
+
+                    '<div class="list-block">' +
+                    '<ul>' +
+                    NO2html +
+                    ' </ul>' +
+                    '</div>' +
+
+                    ' </div>' +
+                    '</div>';
+
+                ele.html(NO2html);
+            }
+        });
+
+        
+    }
+
+
+    function lastclick(id) {
+        $.Ajax({
+            url: "/Json/Contact/GetPersonByOrgId",
+            data: {id:id},
+            success: function (obj) {
+                var flag3 = 0;
+                var ele = $("#" + id);
+                if (flag2 == "0") {
+                    flag2 = "auto";
+                    flag3 = 1;
+                }
+                if (flag2 == "auto" && flag3 == 0) {
+                    flag2 = "0";
+                }
+                var html = "";
+                for (var i = 0; i < obj.length; i++) {
+                    var item = obj[i];
+                  
+                    html +=
+                        ' <li><a href="detail.html?id=' + obj[i].user_id + '" class="acolor">' +
+                        ' <div class="item-content">' +
+                        ' <div class="item-media"><img src="img/tel.png" class="Inboximgsize"></div>' +
+                        ' <div class="item-inner">' +
+                        '   <div class="item-title label">' +
+                        '  <span class="telefontcolor1">' + item.name + '</span><br/><span class="telefontcolor2">' + item.father_org + '</span></div>' +
+                        '  <div class="item-input">' +
+                        '     <span class="telefontcolor3">' + '</span><br/><span class="telefontcolor2">' + item.org + '</span>' +
+                        '  </div>' +
+                        ' </div>' +
+                        '  </div></a>' +
+                        ' </li>' +
+                        ' <li>';
+                }
+
+                html = '<div class="accordion-item-content"style="height:' + flag2 + '">' +
+                    '<div class="content-blockpadding">' +
+                    '<div class="list-block list-block-search searchbar-found deletemargin" >' +
+                    ' <ul>' + html +
+                    ' </ul>' +
+                    ' </div>';
+                //$.log(html);
+               // $.log(ele)
+                ele.html(html);
+        } });
+       
+       
+    }
+
+
+</script>
+
+</body>
+</html>

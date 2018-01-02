@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>礼品列表</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.">
+        <script src="framework-m/js/head.min-m.js"></script>
+	
+        <link rel="stylesheet" type="text/css" href="css/weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+
+		<style type="text/css">
+		</style>
+	</head>
+
+	<body ontouchstart>
+		<!--顶部搜索-->
+		<header class='weui-header fixed-top'>
+			
+			<div class="weui-flex">
+				<a class="placeholder" style="width: 16px;"><i class="icon iconfont icon-back"></i></a>
+				<div class="weui-search-bar weui-flex__item" id="searchBar" style="background: none;">
+					<form class="weui-search-bar__form">
+						<div class="weui-search-bar__box">
+							<i class="weui-icon-search"></i>
+							<input type="search" class="weui-search-bar__input" id="ip_key" placeholder="搜索您想要的商品" required>
+							<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+						</div>
+						<label class="weui-search-bar__label" id="searchText" style="transform-origin: 0px 0px 0px; opacity: 1; transform: scale(1, 1);">
+					        <i class="weui-icon-search"></i>
+					        <span>搜索您想要的商品</span>
+					     </label>
+					</form>
+					<a href="javascript:" class="weui-search-bar__cancel-btn" style="color: #454545;" id="searchCancel">取消</a>
+				</div>
+				<a class="placeholder" href="cart.html" id="bt-goToCart" style="width: 16px;">购
+				</a>
+			</div>
+			<div class="pro-sort">
+				<div class="weui-flex">
+					<a class="weui-flex__item">
+						<div class="placeholder NormalCss">综合</div>
+					</a>
+					<a class="weui-flex__item">
+						<div class="placeholder SortAscCss">按库存</div>
+					</a>
+					<a class="weui-flex__item">
+						<div class="placeholder SortAscCss">按价格</div>
+						</div>
+					</a>
+				</div>
+		
+		</header>
+			
+			
+			
+			
+			
+		<!--主体-->
+	<div class="weui-content" style="padding-top: 85px;">
+	    <div id="list" class='demos-content-padded proListWrap'>
+	        <!--<div class="pro-items">
+	            <div class="weui-media-box weui-media-box_appmsg">
+	                <a href="pro_info.html" class="weui-media-box__hd"><img class="weui-media-box__thumb" src="img/product1.png" alt=""></a>
+	                <div class="weui-media-box__bd">
+	                    <h1 class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</h1>
+	                    <div class="wy-pro-pri">¥<em class="num font-15">296.00</em>
+	                    </div>
+	                    <ul class="weui-media-box__info prolist-ul weui-flex">
+	                        <li class="weui-media-box__info__meta weui-flex__item">库存<em class="num">100</em>件</li>
+	                        <li onclick="addCart('{shop_batch_goods-batch_good_id}')" class="weui-media-box__info__meta"><i class="icon iconfont icon-gouwuche txt-color-red"></i></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>-->
+
+	        
+
+	    </div>
+	    <!--<div class="weui-loadmore">
+	        <i class="weui-loading"></i>
+	        <span class="weui-loadmore__tips">正在加载</span>
+	    </div>-->
+
+	</div>
+        <script src="js/jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="js/jquery-weui.min.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="js/fastclick.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+			// infinite
+			var loading = false;
+			$(document.body).infinite().on("infinite", function() {
+				if(loading) return;
+				loading = true;
+				setTimeout(function() {
+					$("#list").append('<div class="pro-items"><div class="weui-media-box weui-media-box_appmsg"><a href="pro_info.html" class="weui-media-box__hd"><img class="weui-media-box__thumb" src="img/product1.png" alt=""></a><div class="weui-media-box__bd"><h1 class="weui-media-box__desc">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</h1><div class="wy-pro-pri">¥<em class="num font-15">296.00</em></div><ul class="weui-media-box__info prolist-ul weui-flex"><li class="weui-media-box__info__meta weui-flex__item">库存<em class="num">100</em>件</li><li class="weui-media-box__info__meta"><i class="icon iconfont icon-gouwuche txt-color-red"></i></li></ul></div></div></div>');
+					loading = false;
+				}, 2000);
+			});
+        </script>
+		
+	</body>
+
+</html>

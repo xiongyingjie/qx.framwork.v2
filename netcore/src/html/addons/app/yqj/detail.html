@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+		">
+		<title>请假审批</title>
+		<link rel="stylesheet" type="text/css" href="css/applicationMeeting.css">
+		<style>
+	
+        .weui-select {
+		    border: 0;
+		    outline: 0;
+		    background-color: transparent;
+		    width: 100%;
+		    font-size: inherit;
+		    height: 22px !important;
+		    line-height: 44px !important;
+		    position: relative;
+		    z-index: 1;
+		    padding-left: 15px;
+		}
+			.weui-btn_primary {
+			    background-color: #1aad19;
+			    float:left;
+			}
+			.weui-btn {
+			    position: relative;
+			    display: block;
+			    margin: 5px 2.5%;
+			    box-sizing: border-box;
+			    font-size: 0.65em;
+			    text-align: center;
+			    text-decoration: none;
+			    color: #fff;
+			    line-height: 2.55555556;
+			    border-radius: 5px;
+			    -webkit-tap-highlight-color: rgba(0,0,0,0);
+			    overflow: hidden;
+			}
+	
+</style>
+	
+	</head>
+	<body>
+
+<div class="weui-tab__bd">
+    <div class="weui-tab__bd-item weui-tab__bd-item--active">
+    	<div class="weui-cells deletegap">
+		  <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">学生</label>
+						        </div>
+						        <div class="weui-cell__bd" style="position:fixed;right: 30px;">
+						                                         张三
+						        </div>
+						      </div>
+		</div>
+			<div class="card facebook-card">
+					       <div class="weui-cells deletegap">
+					       	<div class="weui-cell">
+					        <div class="weui-cell__hd"><label class="weui-label">请假类型</label></div>
+					        <div class="weui-cell__bd">
+					          <select class="weui-select" name="select" id="XQLX_id" disabled>
+			                        <option value="1">临时活动</option>
+			                        <option value="2">教学活动</option>
+			                  </select>
+					        </div>
+					      </div>
+					         <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">开始日期</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						        <div id="stardate"></div>
+						          
+						        </div>
+						      </div>
+			                <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">开始节次</label>
+						        </div>
+						         <div class="weui-cell__bd">
+						           <select class="weui-select" name="select" id="KSJC_id" disabled>
+			                        <option value="1">第1节课 8：00~8：50</option>
+			                        <option value="2">第2节课 9：00~9：50</option>
+			                        <option value="3">第3节课 10：10~11：00</option>
+			                        <option value="4">第4节课 11：10~12：00</option>
+			                        <option value="5">第5节课 12：10~13：00</option>
+			                        <option value="6">第6节课 13：10~ 14：00</option>
+			                        <option value="7">第7节课 14：30~15：20</option>
+			                        <option value="8">第8节课  15：30~16：20</option>
+			                        <option value="9">第9节课  16：30~17：20</option>
+			                        <option value="10">第10节课 17：30~18：20</option>
+			                        <option value="11">第11节课 19：10~ 20：00</option>
+			                        <option value="12">第12节课  20：10~ 21：00</option>
+			                        <option value="13">第13节课 21：10~ 22：00</option>
+			                    </select>
+						        </div>
+						      </div>
+						      
+						          <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">结束日期</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						        	<div id="enddate"></div>
+						        </div>
+						      </div>
+			                <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">请假结束节次</label>
+						        </div>
+						         <div class="weui-cell__bd">
+						           <select class="weui-select" name="select" id="JSJC_id" disabled>
+			                        <option value="1">第1节课 8：00~8：50</option>
+			                        <option value="2">第2节课 9：00~9：50</option>
+			                        <option value="3">第3节课 10：10~11：00</option>
+			                        <option value="4">第4节课 11：10~12：00</option>
+			                        <option value="5">第5节课 12：10~13：00</option>
+			                        <option value="6">第6节课 13：10~ 14：00</option>
+			                        <option value="7">第7节课 14：30~15：20</option>
+			                        <option value="8">第8节课  15：30~16：20</option>
+			                        <option value="9">第9节课  16：30~17：20</option>
+			                        <option value="10">第10节课 17：30~18：20</option>
+			                        <option value="11">第11节课 19：10~ 20：00</option>
+			                        <option value="12">第12节课  20：10~ 21：00</option>
+			                        <option value="13">第13节课 21：10~ 22：00</option>
+			                    </select>
+						        </div>
+						      </div>
+						     
+						     <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">去向</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" placeholder="请输入地点" id="QX_id" readonly>
+						        </div>
+						      </div>
+						       <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">联系电话</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" placeholder="请输入电话号码" id="LXFS_id" readonly>
+						        </div>
+						      </div>
+			                  <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">家长姓名</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" placeholder="请输入家长姓名" id="JZXM_id" readonly>
+						        </div>
+						      </div>
+			                  <div class="weui-cell">
+						        <div class="weui-cell__hd">
+						          <label class="weui-label">家长联系电话</label>
+						        </div>
+						        <div class="weui-cell__bd">
+						          <input class="weui-input" placeholder="请输入家长电话号码" id="JZLXFS_id" readonly>
+						        </div>
+						      </div>
+			                  
+			                   <div class="weui-cell">
+						                	 <div class="weui-cell__hd" ><label class="weui-label">请假事由</label></div>
+						                     <div class="weui-cell__bd" style="height: auto;"> <textarea class="weui-textarea" placeholder="输入请假事由" rows="3" id="QJSY_id" readonly></textarea>
+						                    </div>  
+						         </div>           
+					       </div> 
+			      
+					</div>  
+			<div class="card facebook-card">
+				<div class="weui-cell__hd" style="height: 40px;line-height: 40px;margin-left: 20px;" >
+					<label class="weui-label">审核意见</label>
+				</div>
+				  <div class="weui-cell">
+						  <div class="weui-cell__bd" style="height: auto;"> <textarea class="weui-textarea" placeholder="输入审核意见" rows="3" id="QJSY_id" readonly></textarea>
+						   </div>  
+				 </div>  
+			</div>
+			<a href="javascript:;" class="weui-btn weui-btn_primary" style="width:28%;height: 40px;line-height: 40px;" onclick="alertdata()">提交</a>
+			<a href="javascript:;" class="weui-btn weui-btn_primary" style="width:28%;height: 40px;line-height: 40px;">提交</a>
+			<a href="javascript:;" class="weui-btn weui-btn_primary" style="width:28%;height: 40px;line-height: 40px;">提交</a>
+	   </div>
+	     </div>
+	   <script>
+	    	
+		    	//开始日期
+		    	var d=new Date();//获取今天时间
+		    	var day="";
+		    	if(d.getDate ()<10)
+		    	{
+		    		day="0"+d.getDate();
+		    	}
+		    	else{
+		    		day=d.getDate;
+		    	}
+		    	var Month=d.getMonth()+1;
+		    	var ndate='"'+d.getFullYear ()+'-'+Month+'-'+day+'"';
+		        var stardate=document.getElementById("stardate")
+		    	var startext='<input class="weui-input" type="date" value="2017-12-08" id="KSRQ_id" min='+ndate+' readonly>';
+		    	stardate.innerHTML=startext;
+		    	
+		    	
+		    	//结束日期
+		    	var KSRQ_id=document.getElementById("KSRQ_id")
+		    	var end_d=KSRQ_id.value;
+		    	var enddate=document.getElementById("enddate")
+		    	var endtext='<input class="weui-input" type="date" value="'+end_d+'" id="JSRQ_id" min="'+end_d+'" readonly>';
+		    	enddate.innerHTML=endtext;
+
+
+            
+		    	var XQLX_id=document.getElementById("XQLX_id")
+		    	var KSJC_id=document.getElementById("KSJC_id")
+		    	var JSRQ_id=document.getElementById("JSRQ_id")
+		    	var JSJC_id=document.getElementById("JSJC_id")
+		    	var QX_id=document.getElementById("QX_id")
+		    	var LXFS_id=document.getElementById("LXFS_id")
+		        var JZXM_id=document.getElementById("JZXM_id")
+		    	var JZLXFS_id=document.getElementById("JZLXFS_id")
+		    	var QJSY_id=document.getElementById("QJSY_id")
+		    	 
+          
+            function alertdata(){
+	        
+               QX_id.value="上海";
+	           LXFS_id.value="1235223";
+	           JZXM_id.value="张三";
+	           JZLXFS_id.value="1223";
+	           QJSY_id.value="生病";
+//          	alert(terms.XQLX+','+terms.KSRQ+','+terms.KSJC+','+terms.JSRQ+','+terms.JSJC+','+ terms.QX+','+terms.LXFS+','+terms.JZXM+','+terms.JZLXFS+','+terms.QJSY);  
+            }
+		   alertdata();
+	    </script>
+	</body>
+</html>
