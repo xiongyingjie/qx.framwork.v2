@@ -11,13 +11,13 @@ namespace xyj.acs.Entity
         public string sub_system_id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(100)]
         public string name { get; set; }
         [Column(TypeName = "datetime2")]
         [Required]
         public DateTime create_time { get; set; }
 
-        [StringLength(100)]
+
         public string note { get; set; }
         [Required]
         [StringLength(100)]

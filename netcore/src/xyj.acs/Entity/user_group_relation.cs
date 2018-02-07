@@ -5,7 +5,7 @@ namespace xyj.acs.Entity
     public partial class user_group_relation
     {
         [Key]
-        [StringLength(100)]
+        [StringLength(150)]
         public string user_group_relation_id { get; set; }
 
         [Required]

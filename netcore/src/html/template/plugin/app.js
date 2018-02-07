@@ -1,7 +1,5 @@
-﻿
-/*! head.load - v1.0.3 */
+﻿/*! head.load - v1.0.3 */
 (function (n, t) { "use strict"; function w() { } function u(n, t) { if (n) { typeof n == "object" && (n = [].slice.call(n)); for (var i = 0, r = n.length; i < r; i++)t.call(n, n[i], i) } } function it(n, i) { var r = Object.prototype.toString.call(i).slice(8, -1); return i !== t && i !== null && r === n } function s(n) { return it("Function", n) } function a(n) { return it("Array", n) } function et(n) { var i = n.split("/"), t = i[i.length - 1], r = t.indexOf("?"); return r !== -1 ? t.substring(0, r) : t } function f(n) { (n = n || w, n._done) || (n(), n._done = 1) } function ot(n, t, r, u) { var f = typeof n == "object" ? n : { test: n, success: !t ? !1 : a(t) ? t : [t], failure: !r ? !1 : a(r) ? r : [r], callback: u || w }, e = !!f.test; return e && !!f.success ? (f.success.push(f.callback), i.load.apply(null, f.success)) : e || !f.failure ? u() : (f.failure.push(f.callback), i.load.apply(null, f.failure)), i } function v(n) { var t = {}, i, r; if (typeof n == "object") for (i in n) !n[i] || (t = { name: i, url: n[i] }); else t = { name: et(n), url: n }; return (r = c[t.name], r && r.url === t.url) ? r : (c[t.name] = t, t) } function y(n) { n = n || c; for (var t in n) if (n.hasOwnProperty(t) && n[t].state !== l) return !1; return !0 } function st(n) { n.state = ft; u(n.onpreload, function (n) { n.call() }) } function ht(n) { n.state === t && (n.state = nt, n.onpreload = [], rt({ url: n.url, type: "cache" }, function () { st(n) })) } function ct() { var n = arguments, t = n[n.length - 1], r = [].slice.call(n, 1), f = r[0]; return (s(t) || (t = null), a(n[0])) ? (n[0].push(t), i.load.apply(null, n[0]), i) : (f ? (u(r, function (n) { s(n) || !n || ht(v(n)) }), b(v(n[0]), s(f) ? f : function () { i.load.apply(null, r) })) : b(v(n[0])), i) } function lt() { var n = arguments, t = n[n.length - 1], r = {}; return (s(t) || (t = null), a(n[0])) ? (n[0].push(t), i.load.apply(null, n[0]), i) : (u(n, function (n) { n !== t && (n = v(n), r[n.name] = n) }), u(n, function (n) { n !== t && (n = v(n), b(n, function () { y(r) && f(t) })) }), i) } function b(n, t) { if (t = t || w, n.state === l) { t(); return } if (n.state === tt) { i.ready(n.name, t); return } if (n.state === nt) { n.onpreload.push(function () { b(n, t) }); return } n.state = tt; rt(n, function () { n.state = l; t(); u(h[n.name], function (n) { f(n) }); o && y() && u(h.ALL, function (n) { f(n) }) }) } function at(n) { n = n || ""; var t = n.split("?")[0].split("."); return t[t.length - 1].toLowerCase() } function rt(t, i) { function e(t) { t = t || n.event; u.onload = u.onreadystatechange = u.onerror = null; i() } function o(f) { f = f || n.event; (f.type === "load" || /loaded|complete/.test(u.readyState) && (!r.documentMode || r.documentMode < 9)) && (n.clearTimeout(t.errorTimeout), n.clearTimeout(t.cssTimeout), u.onload = u.onreadystatechange = u.onerror = null, i()) } function s() { if (t.state !== l && t.cssRetries <= 20) { for (var i = 0, f = r.styleSheets.length; i < f; i++)if (r.styleSheets[i].href === u.href) { o({ type: "load" }); return } t.cssRetries++; t.cssTimeout = n.setTimeout(s, 250) } } var u, h, f; i = i || w; h = at(t.url); h === "css" ? (u = r.createElement("link"), u.type = "text/" + (t.type || "css"), u.rel = "stylesheet", u.href = t.url, t.cssRetries = 0, t.cssTimeout = n.setTimeout(s, 500)) : (u = r.createElement("script"), u.type = "text/" + (t.type || "javascript"), u.src = t.url); u.onload = u.onreadystatechange = o; u.onerror = e; u.async = !1; u.defer = !1; t.errorTimeout = n.setTimeout(function () { e({ type: "timeout" }) }, 7e3); f = r.head || r.getElementsByTagName("head")[0]; f.insertBefore(u, f.lastChild) } function vt() { for (var t, u = r.getElementsByTagName("script"), n = 0, f = u.length; n < f; n++)if (t = u[n].getAttribute("data-headjs-load"), !!t) { i.load(t); return } } function yt(n, t) { var v, p, e; return n === r ? (o ? f(t) : d.push(t), i) : (s(n) && (t = n, n = "ALL"), a(n)) ? (v = {}, u(n, function (n) { v[n] = c[n]; i.ready(n, function () { y(v) && f(t) }) }), i) : typeof n != "string" || !s(t) ? i : (p = c[n], p && p.state === l || n === "ALL" && y() && o) ? (f(t), i) : (e = h[n], e ? e.push(t) : e = h[n] = [t], i) } function e() { if (!r.body) { n.clearTimeout(i.readyTimeout); i.readyTimeout = n.setTimeout(e, 50); return } o || (o = !0, vt(), u(d, function (n) { f(n) })) } function k() { r.addEventListener ? (r.removeEventListener("DOMContentLoaded", k, !1), e()) : r.readyState === "complete" && (r.detachEvent("onreadystatechange", k), e()) } var r = n.document, d = [], h = {}, c = {}, ut = "async" in r.createElement("script") || "MozAppearance" in r.documentElement.style || n.opera, o, g = n.head_conf && n.head_conf.head || "head", i = n[g] = n[g] || function () { i.ready.apply(null, arguments) }, nt = 1, ft = 2, tt = 3, l = 4, p; if (r.readyState === "complete") e(); else if (r.addEventListener) r.addEventListener("DOMContentLoaded", k, !1), n.addEventListener("load", e, !1); else { r.attachEvent("onreadystatechange", k); n.attachEvent("onload", e); p = !1; try { p = !n.frameElement && r.documentElement } catch (wt) { } p && p.doScroll && function pt() { if (!o) { try { p.doScroll("left") } catch (t) { n.clearTimeout(i.readyTimeout); i.readyTimeout = n.setTimeout(pt, 50); return } e() } }() } i.load = i.js = ut ? lt : ct; i.test = ot; i.ready = yt; i.ready(r, function () { y() && u(h.ALL, function (n) { f(n) }); i.feature && i.feature("domloaded", !0) }) })(window);
-
 
 //tool.js
 var g_selectReady = true;
@@ -22,11 +20,11 @@ var NS = {
     REG: function () {
         Register();
     }
-}
+};
 
 
 //#框架加载器
-var g_moudel = "{g_moudel}";
+var g_moudel = "{g_moudel}";// "{g_moudel}";
 if (g_moudel === "{g_moudel}") {
     alert("警告:没有为模块在配置值:g_moudel");
     throw SyntaxError("警告:没有为模块在配置值:g_moudel");
@@ -35,9 +33,9 @@ var _c = {
     security: {
         encrypt_key: "xyj",
         decrypt_key: "xyj",
-        expire:7
+        expire: 7
     },
-    dir : {
+    dir: {
         app: "/addons/" + g_moudel + "/template",//注意末尾不能有/
         pc: "/addons/" + g_moudel + "/template"//注意末尾不能有/
     },
@@ -45,7 +43,8 @@ var _c = {
         debug: true,
         fake: false,
         warn: true,
-        third_login: false,
+        third_login: true,
+        is_win10:false,
         route: [
             { src: "/sports/crud/", target: "" },
             { src: "/sports/admin/", target: "" }
@@ -57,14 +56,13 @@ var _c = {
         host_sys: "https://api.52xyj.cn",//框架服务器[权限,报表]
         host_wx: "https://api.52xyj.cn" //微信服务器
     }
-   
 };
 
 _c.app = {
-    login: _c.dir.app + "/pages/login-m.html", 
+    login: _c.dir.app + "/pages/login-m.html",
     login_auto: _c.dir.app + "/pages/login-auto-m.html",
     homepage: _c.dir.app + "/mobile/index.html",
-    login_third:"/"
+    login_third: "we7"
     //bind: _c.dir.app + "/pages/bind-m.html",
     //wx_login: _c.sever.host_wx + "/WeChat/Web/Authorize?return_url=" + window.location.origin + g_login_wx, //微信自动登陆
     //pay_wx: _c.sever.host_wx + "/WeChat/WeChatPay/JsApiPayPage", //微信支付回调
@@ -76,45 +74,53 @@ _c.app = {
     //withdraw_wx: "/web/app/" + g_app + "/framework-m/" + "-withdraw.html" //提现
 };
 
-_c.pc= {
+_c.pc = {
     login: _c.dir.pc + "/pages/login.html",
     login_auto: _c.dir.pc + "/pages/login-auto.html",
     homepage: _c.dir.pc + "/pages/index.html",
-    login_third: "/",
+    login_third: "we7",
     local_res: _c.dir.pc + "/web/",
     leftmenu: true,
     topmenu: false,
     form: _c.dir.pc + "/pages/form.html",
     report: _c.dir.pc + "/pages/report.html"
+};
+_c.cm = {
+    loading: _c.dir.pc + "/pages/loading.html"
 }
-
 _c.isDebug = _c.runtime.debug;
-_c.isApp = window.location.pathname.toLowerCase() == _c.app.login_auto//当前页面是移动端自动登陆页
+_c.isWin10 = _c.runtime.is_win10;
+_c.isApp = (window.location.pathname.toLowerCase() == _c.app.login_auto || window.location.pathname.toLowerCase() == _c.app.login)//当前页面是移动端自动登陆页
     ? true
-    : window.location.pathname.toLowerCase() == _c.pc.login_auto//当前页面是pc端自动登陆页
-    ? false
-    : (_c.dir.app !== "" && window.location.pathname.toLowerCase().indexOf("/mobile/") > -1);
+    : (window.location.pathname.toLowerCase() == _c.pc.login_auto || window.location.pathname.toLowerCase() == _c.pc.login)//当前页面是pc端自动登陆页
+        ? false
+        : (_c.dir.app !== "" && window.location.pathname.toLowerCase().indexOf("/mobile/") > -1);
 _c.root = _c.isApp ? _c.dir.app : _c.dir.pc;
 _c.login = _c.isApp ? _c.app.login : _c.pc.login;
 _c.login_auto = _c.isApp ? _c.app.login_auto : _c.pc.login_auto;
 _c.homepage = _c.isApp ? _c.app.homepage : _c.pc.homepage;
-_c.login_third = _c.runtime.third_login?(_c.isApp ? _c.app.login_third : _c.pc.login_third):"";
+_c.login_third = _c.runtime.third_login ? (_c.isApp ? _c.app.login_third : _c.pc.login_third) : "";
 //_c.pc.login_3rd_result = _c.dir.pc +"/pages/login-3rd-result.html";
 //_c.pc.login_3rd = _c.sever.host + "/Oauth2/YiBan?returnUrl=" +localUrl(_c.pc.login_3rd_result);
 //_c.pc.login_out_3rd = _c.sever.host + "/Json/Login/Logout?returnUrl=" + ;
 _c.isAutoLoginPage = function () {
     return $.geturl() === _c.app.login_auto || $.geturl() === _c.pc.login_auto;
-}
+};
+_c.isLoadingPage = function () {
+    return $.geturl() === _c.cm.loading;
+};
 _c.isLoginPage = function () {
     return $.geturl() === _c.login;
-}
+};
+
 _c.isVisitor = function () {
-    return $.geturl() !== _c.login &&
+    return !_c.isLoginPage() && !_c.isLoadingPage() && !_c.isAutoLoginPage()&&
         (!$.hasValue($.unitid()) || !$.hasValue($.uid()));
-}
+};
+
 _c.route = function (srcurl) {
-    var url = (srcurl + "").replace("//", "/").toLowerCase(); 
-    
+    var url = (srcurl + "").replace("//", "/").toLowerCase();
+
     for (var i = 0; i < _c.runtime.route.length; i++) {//兼容旧版程序，路由映射
         var item = _c.runtime.route[i];
         if (url.indexOf(item.src) > -1) {//只要替换成功就跳出
@@ -123,10 +129,10 @@ _c.route = function (srcurl) {
         }
     }
     return url;
-}
+};
 function localUrl(url) {
-    return window.location.protocol + "//" + window.location.host + _c.dir.pc +url;
-}
+    return window.location.protocol + "//" + window.location.host + _c.dir.pc + url;
+};
 function srcurl(src, folder) {
 
     //1.框架文件（framework目录）  2.程序文件（web目录）   3.cdn资源(调用时无folder参数)
@@ -150,7 +156,7 @@ function srcurl(src, folder) {
     }
     return folder + src + version;
 
-}
+};
 _c.app.lib = {
     src: [
         //layui
@@ -182,6 +188,9 @@ _c.pc.lib = {
         srcurl("sb2-dist/css/sb-admin-2.css"),
         srcurl("morrisjs/morris.css"),
         srcurl("font-awesome/css/font-awesome.min.css"),
+        //win10-ui
+        srcurl("win10-ui/css/animate.css"),
+        srcurl("win10-ui/css/default.css"),
         //bootstrap-switch
         srcurl("bootstrap-switch/static/stylesheets/bootstrap-switch.css"),
         srcurl("bootstrap-switch/static/stylesheets/bootstrap-switch-conquer.css"),
@@ -197,7 +206,7 @@ _c.pc.lib = {
         //datatables-responsive
         srcurl("datatables-responsive/dataTables.responsive.css"),
         srcurl("layui/1.0.9/css/layui.css"),
-       
+
         //umeditor
         srcurl("umeditor/themes/default/css/umeditor.css"),
 
@@ -268,8 +277,8 @@ _c.pc.lib = {
         //html-to-pdf
         { "exportxls-jspdf": srcurl("html-to-pdf/js/jspdf.min.js") },
         { "exportxls-html2canvas": srcurl("html-to-pdf/js/html2canvas.min.js") },
-        //pym
-        { "pym": srcurl("pym-js/src/pym.js") },
+        //win10-ui
+        { "win10-ui-core": srcurl("win10-ui/js/win10.js") },     
         //fileUpload
         { "widget": srcurl("fileUpload/file/js/vendor/jquery.ui.widget.js") },
         { "tmpl": srcurl("fileUpload/file/js/tmpl.min.js") },
@@ -287,9 +296,10 @@ _c.pc.lib = {
         //framework
         // { "tools": srcurl("tools.js", "/plugin/") },
         { "importxls-acc": srcurl("importxls/js/excel.acc.js") },
-        { "app-extension-pc": srcurl("app.extension.pc.js", "/plugin/") }  
+        { "app-extension-pc": srcurl("app.extension.pc.js", "/plugin/") }
     ],
     ready: function () {
+        //debugger
         layui.config({
             dir: srcurl("layui/1.0.9/") //layui.js 所在路径（注意,如果是script单独引入layui.js,无需设定该参数。）,一般情况下可以无视
             ,
@@ -312,17 +322,26 @@ head.load(_c.lib.src);
 head.ready(_c.lib.ready);
 //扩展jquery-使用命名空间定义函数
 head.ready(["jquery", "layui"], function () {
+    
+    
     $.extend({
         //ajax
         Ajax: function (cfg) {
             var showLoading = cfg.showLoading == undefined ? true : cfg.showLoading;
+            cfg.url = ("" + cfg.url).toLowerCase();//转小写
             if (cfg.url.indexOf("@") > -1) {
                 cfg.url = cfg.url.replace(/@/g, "-"); //ecampus.twxt.fake_api@add  
                 if (cfg.url.indexOf("?cmd=") === -1) {
                     cfg.url = "/db/index?cmd=" + cfg.url; //ecampus.twxt.fake_api@add  
                 }
             }
-            var url = $.url(cfg.url, (cfg.url.length > 6 && cfg.url.substring(0, 5).toLowerCase() === "/open"));
+
+            var url = $.url(cfg.url);
+            //open下除文件api 其他转发到框架服务器
+            if ((cfg.url.length > 6 && cfg.url.substring(0, 5) === "/open") &&//api为open系
+                !(cfg.url.indexOf("/open/upload") > -1 || cfg.url.indexOf("/open/delete") > -1)) {//请求的不是文件api
+                url = $.url(cfg.url, true);
+            }
 
             if (cfg.data == undefined) {
                 cfg.data = {};
@@ -345,7 +364,7 @@ head.ready(["jquery", "layui"], function () {
                     if (showLoading) {
                         $.loaded(lIndex);
                     }
-                    // //debugger
+                    // //
                     try {
                         var result = response;
                         if (typeof (response) == "string") {
@@ -378,7 +397,7 @@ head.ready(["jquery", "layui"], function () {
                 },
                 error: function (xmlHttpRequest, textStatus, errorThrown) {
                     $.loaded(lIndex);
-                    //debugger 
+                    // 
 
                     if (_c.isDebug) {
                         var errorData = xmlHttpRequest.responseText; //500错误时需要整体序列化
@@ -396,7 +415,7 @@ head.ready(["jquery", "layui"], function () {
                             var errorMsg = $.toObject(errorData.jsonData);
                             $.dealError(url, errorMsg.Message, errorMsg.StackTrace.replace(/\r\n/g, "<br/><br/>"));
                         } catch (ex) { //致命错误
-                            //debugger
+                            //
                             $.dealError(url, "服务器错误:请确保服务器已成功启动！", errorData);
                         }
 
@@ -435,101 +454,101 @@ head.ready(["jquery", "layui"], function () {
             });
         },
         dealAjax: function (data, code, msg, url) { //回调函数,result,返回值 
-            //debugger 
+            // 
             switch (code) {
-            case 1:
-                {
-                    $.msg(msg, code);
-                };
-                break;
-            case 2:
-                {
-                    $.msg(msg, code);
-                };
-                break;
-            case 3:
-                {
-                    $.confirm(msg, function () {
-                        if ($.hasValue(url)) {
-                            $.go($.parseurl(url).destUrl);
-                        }
-                    }, "", "", "", code);
-                };
-                break;
-            case 5:
-                {
-                    $.confirm(msg, function () {
-                        if ($.hasValue(url)) {
-                            $.go($.parseurl(url).destUrl);
-                        }
-                    }, "", "", "", code);
-                };
-                break;
-            case 6:
-                {
-                    $.confirm(msg, function () {
-                        if ($.hasValue(url)) {
-                            $.go($.parseurl(url).destUrl);
-                        }
-                    }, "", "", "", code);
-                };
-                break;
-            case 7:
-                {
-                    $.confirm(msg, function () {
-                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                        parent.layer.close(index); //再执行关闭   
-                        return true;
-                    }, "", "", "", 3);
-                };
-                break;
-            case 8:
-                {
-                    $.confirm(msg, function () {
-                        layer.close();
-                        return true;
-                    }, "", "", "", 5);
-                };
-                break;
-            case 9:
-                { //下载文件
-                    // //debugger 
+                case 1:
+                    {
+                        $.msg(msg, code);
+                    };
+                    break;
+                case 2:
+                    {
+                        $.msg(msg, code);
+                    };
+                    break;
+                case 3:
+                    {
+                        $.confirm(msg, function () {
+                            if ($.hasValue(url)) {
+                                $.go($.parseurl(url).destUrl);
+                            }
+                        }, "", "", "", code);
+                    };
+                    break;
+                case 5:
+                    {
+                        $.confirm(msg, function () {
+                            if ($.hasValue(url)) {
+                                $.go($.parseurl(url).destUrl);
+                            }
+                        }, "", "", "", code);
+                    };
+                    break;
+                case 6:
+                    {
+                        $.confirm(msg, function () {
+                            if ($.hasValue(url)) {
+                                $.go($.parseurl(url).destUrl);
+                            }
+                        }, "", "", "", code);
+                    };
+                    break;
+                case 7:
+                    {
+                        $.confirm(msg, function () {
+                            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            parent.layer.close(index); //再执行关闭   
+                            return true;
+                        }, "", "", "", 3);
+                    };
+                    break;
+                case 8:
+                    {
+                        $.confirm(msg, function () {
+                            layer.close();
+                            return true;
+                        }, "", "", "", 5);
+                    };
+                    break;
+                case 9:
+                    { //下载文件
+                        // // 
 
-                    // $.log(data.info);
-                    // $.log(data.name);
-                    if (!$.hasValue(data[data.name])) {
-                        $.msg("用户没有上传文件", 0);
+                        // $.log(data.info);
+                        // $.log(data.name);
+                        if (!$.hasValue(data[data.name])) {
+                            $.msg("用户没有上传文件", 0);
+                            return;
+                        }
+                        $.ajax({
+                            url: $.url(data[data.name]),
+                            success: function () {
+                                $.go($.url(data[data.name]));
+                            },
+                            error: function () {
+                                $.msg("服务器文件已丢失", 2);
+                            }
+                        });
                         return;
-                    }
-                    $.ajax({
-                        url: $.url(data[data.name]),
-                        success: function () {
-                            $.go($.url(data[data.name]));
-                        },
-                        error: function () {
-                            $.msg("服务器文件已丢失", 2);
+
+                    };
+                    break;
+                case 10:
+                    {
+                        $(".btn").remove();
+                        $.msg(msg + "<br/><span id='lb_time'>3</span>秒后自动关闭窗口", 1);
+                        setTimeout(function () {
+                            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+                            parent.layer.close(index); //再执行关闭   
+                        }, 3000);
+
+                    };
+                    break;
+                    deafult: {
+                        if (_c.isDebug) {
+                            $.alert("服务器返回了错误的code,请检查api的返回值");
                         }
-                    });
-                    return;
-
-                };
-                break;
-            case 10:
-                {
-                    $(".btn").remove();
-                    $.msg(msg + "<br/><span id='lb_time'>3</span>秒后自动关闭窗口", 1);
-                    setTimeout(function () {
-                        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-                        parent.layer.close(index); //再执行关闭   
-                    }, 3000);
-
-                };
-                break;
-                deafult: {
-                    if (_c.isDebug) {
-                        $.alert("服务器返回了错误的code,请检查api的返回值");
                     }
-                }
             }
             try {
                 refresh(data, code, msg, url);
@@ -551,7 +570,7 @@ head.ready(["jquery", "layui"], function () {
         },
         // 批量替换  
         replace: function (str, arr) {
-            // debugger
+            // 
             if (!$.hasValue(str)) return "";
             if ($.isArray(arr) && arr.length > 0 && !$.isArray(arr[0])) {
                 arr = [arr];
@@ -584,7 +603,7 @@ head.ready(["jquery", "layui"], function () {
                 tip = "请将信息填写完整";
 
             }
-            // debugger
+            // 
             if (!$.isArray(nameArray)) {
                 nameArray = [nameArray];
             }
@@ -711,7 +730,7 @@ head.ready(["jquery", "layui"], function () {
                 return "";
             }
             var dom;
-            //debugger
+            //
             if ($.isString(domOrNameOrClass)) {
                 dom = $("input[name='" + domOrNameOrClass + "'],textarea[name='" + domOrNameOrClass + "'],textarea[select='" + domOrNameOrClass + "']");
                 if (dom.length === 0) {
@@ -743,185 +762,185 @@ head.ready(["jquery", "layui"], function () {
         },
         //取值
         val: function (id, type, uiType) {
-            //debugger 
+            // 
             var value = "";
             uiType = $.checkValue(uiType, 'pc');
             switch (uiType) {
-            case "pc":
-            {
-                switch (type) {
-                case 201:
-                case 203:
-                case 209:
-                case 210:
-                case 211:
-                case 212:
-                case 213:
-                case 214: //文本框
+                case "pc":
                     {
-                        value = $('#' + id).val(); //jquery取值
-                        //value=document.getElementById(id).value;//js取值
-                    }
-                    break;
-                case 202:
-                case 223: //时间
-                    {
-                        //debugger
-                        return $('#' + id).val(); //时间不转码
-                    }
-                    break;
-                case 204: //下拉框
-                    {
-                        //debugger
-                        //把val()改为text(),value改为text可以实现取文本
-                        value = $("#" + id + " option:selected").val(); //jquery取值
-                        /*//js取值
-                           var myselect=document.getElementById(id); 
-                           var index=myselect.selectedIndex ; 
-                           value=myselect.options[index].value; 
-                          */
-                    }
-                    break;
-                case 205: //单选框
-                    {
-                        value = $("input[name=" + id + "]:checked").val(); //jq 取值
-                        //  obj = document.getElementsByName(id);//js取值
+                        switch (type) {
+                            case 201:
+                            case 203:
+                            case 209:
+                            case 210:
+                            case 211:
+                            case 212:
+                            case 213:
+                            case 214: //文本框
+                                {
+                                    value = $('#' + id).val(); //jquery取值
+                                    //value=document.getElementById(id).value;//js取值
+                                }
+                                break;
+                            case 202:
+                            case 223: //时间
+                                {
+                                    //
+                                    return $('#' + id).val(); //时间不转码
+                                }
+                                break;
+                            case 204: //下拉框
+                                {
+                                    //
+                                    //把val()改为text(),value改为text可以实现取文本
+                                    value = $("#" + id + " option:selected").val(); //jquery取值
+                                    /*//js取值
+                                       var myselect=document.getElementById(id); 
+                                       var index=myselect.selectedIndex ; 
+                                       value=myselect.options[index].value; 
+                                      */
+                                }
+                                break;
+                            case 205: //单选框
+                                {
+                                    value = $("input[name=" + id + "]:checked").val(); //jq 取值
+                                    //  obj = document.getElementsByName(id);//js取值
 
-                    }
-                    break;
-                case 206: //编辑器
-                    {
-                        var ue = UM.getEditor(id);
-                        ue.ready(function () {
-                            //获取html内容,
-                            value = $.htmlEncode(ue.getContent());
-                        });
-                    }
-                    break;
-                case 207: //多选框
-                    {
-                        //var chk_value = []; //定义一个数组     jq取值 
-                        //$("input[name=" + id + "]:checked").each(function () { //遍历每一个名字为nodes的复选框,其中选中的执行函数
-                        //    chk_value.push($(this).val()); //将选中的值添加到数组chk_value中      
-                        //});
-                        //var groups = chk_value.join(",");
-                        //value = groups;
-                        ////jq 取值
-                        //$("input:checkbox[value=3]").attr('checked', 'true'); //jq 赋值 
-                        ////      			 obj = document.getElementsByName(id);//js取值
-                        ////				    check_val = [];
-                        ////				    for(k in obj){
-                        ////				        if(obj[k].checked)
-                        ////				           check_val.push(obj[k].value)
-                        ////				    }
-                        ////				      value=check_val;
-                        var length = $('#' + id + ' .weui-check__label').length
-                        var str = ""
-                        for (var i = 0; i < length; i++) {
-                            if ($('#' + id + ' .weui-check__label').eq(i).find('input[type=checkbox]').is(':checked')) {
-                                str += $('#' + id + ' .weui-check__label').eq(i).find('.weui-cell__bd p').text();
-                            }
+                                }
+                                break;
+                            case 206: //编辑器
+                                {
+                                    var ue = UM.getEditor(id);
+                                    ue.ready(function () {
+                                        //获取html内容,
+                                        value = $.htmlEncode(ue.getContent());
+                                    });
+                                }
+                                break;
+                            case 207: //多选框
+                                {
+                                    //var chk_value = []; //定义一个数组     jq取值 
+                                    //$("input[name=" + id + "]:checked").each(function () { //遍历每一个名字为nodes的复选框,其中选中的执行函数
+                                    //    chk_value.push($(this).val()); //将选中的值添加到数组chk_value中      
+                                    //});
+                                    //var groups = chk_value.join(",");
+                                    //value = groups;
+                                    ////jq 取值
+                                    //$("input:checkbox[value=3]").attr('checked', 'true'); //jq 赋值 
+                                    ////      			 obj = document.getElementsByName(id);//js取值
+                                    ////				    check_val = [];
+                                    ////				    for(k in obj){
+                                    ////				        if(obj[k].checked)
+                                    ////				           check_val.push(obj[k].value)
+                                    ////				    }
+                                    ////				      value=check_val;
+                                    var length = $('#' + id + ' .weui-check__label').length;
+                                    var str = "";
+                                    for (var i = 0; i < length; i++) {
+                                        if ($('#' + id + ' .weui-check__label').eq(i).find('input[type=checkbox]').is(':checked')) {
+                                            str += $('#' + id + ' .weui-check__label').eq(i).find('.weui-cell__bd p').text();
+                                        }
+                                    }
+                                    var groups = str.join(",");
+                                    value = groups;
+
+                                }
+                                break;
+                            case 208: //开关
+                                {
+                                    value = $('#' + id).val(); //jquery取值
+                                }
+                                break;
+
+
                         }
-                        var groups = str.join(",");
-                        value = groups;
+                    }
+                case "weui":
+                    {
+                        switch (type) {
+                            case 201:
+                            case 203:
+                            case 209:
+                            case 210:
+                            case 211:
 
-                    }
-                    break;
-                case 208: //开关
-                    {
-                        value = $('#' + id).val(); //jquery取值
-                    }
-                    break;
+                            case 212:
+                            case 213:
+                            case 214:
+                            case 222:
+                            case 223:
+                            case 224:
+                            case 225:
+                            case 226://文本框
+                                {
+                                    value = $('#' + id).val(); //jquery取值
+                                    //value=document.getElementById(id).value;//js取值
+                                }
+                                break;
+                            case 202:
+                            case 223: //时间
+                                {
+                                    //
+                                    return $('#' + id).val(); //时间不转码
+                                }
+                                break;
+                            case 204: //下拉框
+                                {
+                                    //
+                                    //把val()改为text(),value改为text可以实现取文本
+                                    value = $("#" + id + " option:selected").val(); //jquery取值
+                                    /*//js取值
+                                       var myselect=document.getElementById(id); 
+                                       var index=myselect.selectedIndex ; 
+                                       value=myselect.options[index].value; 
+                                      */
+                                }
+                                break;
+                            case 205: //单选框
+                                {
+                                    value = $("input[name=" + id + "]:checked").val(); //jq 取值
+                                    //  obj = document.getElementsByName(id);//js取值
 
+                                }
+                                break;
+                            case 206: //编辑器
+                                {
+                                    var ue = UM.getEditor(id);
+                                    ue.ready(function () {
+                                        //获取html内容,
+                                        value = $.htmlEncode(ue.getContent());
+                                    });
+                                }
+                                break;
+                            case 207: //多选框
+                                {
+                                    var chk_value = []; //定义一个数组     jq取值 
+                                    $("input[name=" + id + "]:checked").each(function () { //遍历每一个名字为nodes的复选框,其中选中的执行函数
+                                        chk_value.push($(this).val()); //将选中的值添加到数组chk_value中      
+                                    });
+                                    var groups = chk_value.join(",");
+                                    value = groups;
+                                    //jq 取值
+                                    $("input:checkbox[value=3]").attr('checked', 'true'); //jq 赋值 
+                                    //      			 obj = document.getElementsByName(id);//js取值
+                                    //				    check_val = [];
+                                    //				    for(k in obj){
+                                    //				        if(obj[k].checked)
+                                    //				           check_val.push(obj[k].value)
+                                    //				    }
+                                    //				      value=check_val;
 
-                }
-            }
-            case "weui":
-            {
-                switch (type) {
-                case 201:
-                case 203:
-                case 209:
-                case 210:
-                case 211:
-
-                case 212:
-                case 213:
-                case 214:
-                case 222:
-                case 223:
-                case 224:
-                case 225:
-                case 226://文本框
-                    {
-                        value = $('#' + id).val(); //jquery取值
-                        //value=document.getElementById(id).value;//js取值
-                    }
-                    break;
-                case 202:
-                case 223: //时间
-                    {
-                        //debugger
-                        return $('#' + id).val(); //时间不转码
-                    }
-                    break;
-                case 204: //下拉框
-                    {
-                        //debugger
-                        //把val()改为text(),value改为text可以实现取文本
-                        value = $("#" + id + " option:selected").val(); //jquery取值
-                        /*//js取值
-                           var myselect=document.getElementById(id); 
-                           var index=myselect.selectedIndex ; 
-                           value=myselect.options[index].value; 
-                          */
-                    }
-                    break;
-                case 205: //单选框
-                    {
-                        value = $("input[name=" + id + "]:checked").val(); //jq 取值
-                        //  obj = document.getElementsByName(id);//js取值
-
-                    }
-                    break;
-                case 206: //编辑器
-                    {
-                        var ue = UE.getEditor(id);
-                        ue.ready(function () {
-                            //获取html内容,
-                            value = $.htmlEncode(ue.getContent());
-                        });
-                    }
-                    break;
-                case 207: //多选框
-                    {
-                        var chk_value = []; //定义一个数组     jq取值 
-                        $("input[name=" + id + "]:checked").each(function () { //遍历每一个名字为nodes的复选框,其中选中的执行函数
-                            chk_value.push($(this).val()); //将选中的值添加到数组chk_value中      
-                        });
-                        var groups = chk_value.join(",");
-                        value = groups;
-                        //jq 取值
-                        $("input:checkbox[value=3]").attr('checked', 'true'); //jq 赋值 
-                        //      			 obj = document.getElementsByName(id);//js取值
-                        //				    check_val = [];
-                        //				    for(k in obj){
-                        //				        if(obj[k].checked)
-                        //				           check_val.push(obj[k].value)
-                        //				    }
-                        //				      value=check_val;
-
-                    }
-                    break;
-                case 208: //开关
-                    {
-                        value = $('#' + id).val(); //jquery取值
-                    }
-                    break;
+                                }
+                                break;
+                            case 208: //开关
+                                {
+                                    value = $('#' + id).val(); //jquery取值
+                                }
+                                break;
 
 
-                }
-            }
+                        }
+                    }
             }
 
 
@@ -935,7 +954,7 @@ head.ready(["jquery", "layui"], function () {
             return HtmlUtil.htmlDecodeByRegExp(html);
         },
         set_m: function (doms, v, p) {
-            //debugger
+            //
             if (doms == undefined) return;
             for (var i = 0; i < doms.length; i++) {
                 var dom = $(doms[i]);
@@ -956,10 +975,10 @@ head.ready(["jquery", "layui"], function () {
                     // dom.attr("name", p);//设置name属性
                     dom.val(v); //设置value属性
                 } else if (dom[0].tagName === "SELECT") { //下拉框
-                    // debugger 
+                    //  
                     dom.val(v);
                 } else if (dom[0].tagName === "P") { //下拉框
-                    // debugger 
+                    //  
                     dom.html($.htmlDecode(v));
                 }
                 {
@@ -967,12 +986,12 @@ head.ready(["jquery", "layui"], function () {
                         dom.attr("name", p);//页面没有该name时才改变name
                     }
                     dom.html($.htmlDecode(v));
-                    //debugger
+                    //
                     $.warn(
                         {
                             msg: "set_m函数出错，出现无法判断的控件类型,已经采用默认方法赋值(html元素优先，hide第二)", dom_type:
-                                dom.attr("type"), dom_id:
-                                dom.attr("id")
+                            dom.attr("type"), dom_id:
+                            dom.attr("id")
                         });
                     //$.log(dom.type.toLowerCase())
                     //dom.attr("name", p);//设置name属性
@@ -988,98 +1007,98 @@ head.ready(["jquery", "layui"], function () {
             var value = $.trimString(notTrimValue);
             var defultValue = $.hasValue(value) ? value : "-12580";
             switch (type) {
-            case 201: case 211: case 212: case 213://文本框
-            {
-                //  debugger
-                if ($.hasValue(value))//无值的时候不操作
-                    $('#' + currentId).val(value);//jquery赋值
-                //document.getElementById(currentId).value='newvalue'//js赋值
-            } break;
-            case 202: case 216: case 223://时间
-            {
-                //   debugger 
-                if ($.hasValue(notTrimValue))//无值的时候不操作
-                    $('#' + currentId).val($.parsetime(notTrimValue));
-            } break;
-            case 203: case 217://日期
-            {
-                // debugger
-                if ($.hasValue(value))
-                    $('#' + currentId).val($.parsedate(value));
-            } break;
-            case 204: case 218://下拉框202
-            {
-                //debugger
-                if ($.hasValue(value)) {
-                    $("#" + currentId).val(value);//设置选中
-                    $("#" + currentId).data("value", value);//缓存从服务器读取回来的值
-                }
-            } break;
-            case 205: case 219://单选框
-            {
-                $.log($.hasValue(value));
-                if ($.hasValue(value)) {
-                    $("input:radio[value=" + defultValue + "]").attr('checked', 'true'); //jq 赋值 
-                    /*  obj = document.getElementsByName(currentId);//eckbox取值    
-                        for(k in obj){
-                            if(obj[k].checked)
-                               value= obj[k].value
-                        }    */ //js赋值
-                }
+                case 201: case 211: case 212: case 213://文本框
+                    {
+                        //  
+                        if ($.hasValue(value))//无值的时候不操作
+                            $('#' + currentId).val(value);//jquery赋值
+                        //document.getElementById(currentId).value='newvalue'//js赋值
+                    } break;
+                case 202: case 216: case 223://时间
+                    {
+                        //    
+                        if ($.hasValue(notTrimValue))//无值的时候不操作
+                            $('#' + currentId).val($.parsetime(notTrimValue));
+                    } break;
+                case 203: case 217://日期
+                    {
+                        // 
+                        if ($.hasValue(value))
+                            $('#' + currentId).val($.parsedate(value));
+                    } break;
+                case 204: case 218://下拉框202
+                    {
+                        //
+                        if ($.hasValue(value)) {
+                            $("#" + currentId).val(value);//设置选中
+                            $("#" + currentId).data("value", value);//缓存从服务器读取回来的值
+                        }
+                    } break;
+                case 205: case 219://单选框
+                    {
+                        $.log($.hasValue(value));
+                        if ($.hasValue(value)) {
+                            $("input:radio[value=" + defultValue + "]").attr('checked', 'true'); //jq 赋值 
+                            /*  obj = document.getElementsByName(currentId);//eckbox取值    
+                                for(k in obj){
+                                    if(obj[k].checked)
+                                       value= obj[k].value
+                                }    */ //js赋值
+                        }
 
-            } break;
-            case 206: case 220://编辑器
-            {
-                if ($.hasValue(notTrimValue)) {
-                    var ue = UM.getEditor(currentId);
-                    ue.ready(function () {
-                        //设置编辑器的内容
-                        //debugger 
-                        ue.setContent($.htmlDecode(notTrimValue));
-                    });
-                }
+                    } break;
+                case 206: case 220://编辑器
+                    {
+                        if ($.hasValue(notTrimValue)) {
+                            var ue = UM.getEditor(currentId);
+                            ue.ready(function () {
+                                //设置编辑器的内容
+                                // 
+                                ue.setContent($.htmlDecode(notTrimValue));
+                            });
+                        }
 
-            } break;
-            case 220: //编辑器查看
-            {
-                // debugger
-                if ($.hasValue(notTrimValue))
-                    $('#' + currentId).html($.htmlDecode(notTrimValue));
-            } break;
-            case 207: case 221://多选框
-            {
-                if ($.hasValue(value)) {
-                    for (var k = 0; k < notTrimValue.length; k++) {
-                        $("input:checkbox[value=" + notTrimValue[k] + "]").attr('checked', 'true'); //jq 赋值 
-                        // document.getElementsByName(currentId)[2].checked = true; //js赋值 
-                    }
-                }
+                    } break;
+                case 220: //编辑器查看
+                    {
+                        // 
+                        if ($.hasValue(notTrimValue))
+                            $('#' + currentId).html($.htmlDecode(notTrimValue));
+                    } break;
+                case 207: case 221://多选框
+                    {
+                        if ($.hasValue(value)) {
+                            for (var k = 0; k < notTrimValue.length; k++) {
+                                $("input:checkbox[value=" + notTrimValue[k] + "]").attr('checked', 'true'); //jq 赋值 
+                                // document.getElementsByName(currentId)[2].checked = true; //js赋值 
+                            }
+                        }
 
 
-            } break;
-            case 208: case 222://开关
-            {
-            } break;
-            case 209: case 215: //多行文本框
-            {
-                if ($.hasValue(notTrimValue)) {
-                    $('#' + currentId).val(notTrimValue);  // jq赋值
-                    // document.getElementById(currentId).value = "221";//js赋值   
-                }
+                    } break;
+                case 208: case 222://开关
+                    {
+                    } break;
+                case 209: case 215: //多行文本框
+                    {
+                        if ($.hasValue(notTrimValue)) {
+                            $('#' + currentId).val(notTrimValue);  // jq赋值
+                            // document.getElementById(currentId).value = "221";//js赋值   
+                        }
 
-            } break;
-            case 210: case 214://文件
-            {
+                    } break;
+                case 210: case 214://文件
+                    {
 
-                if ($.hasValue(value)) {
-                    //把文件值放进hide中
-                    $('#' + currentId).val(value);
-                    //构造文件操作界面
-                    $('#fileupload-' + currentId + ' tbody').html(FileItemsTpl(value, currentId, type == 210));
-                }
+                        if ($.hasValue(value)) {
+                            //把文件值放进hide中
+                            $('#' + currentId).val(value);
+                            //构造文件操作界面
+                            $('#fileupload-' + currentId + ' tbody').html(FileItemsTpl(value, currentId, type == 210));
+                        }
 
-            } break;
-            default:
+                    } break;
+                default:
             }
         },
 
@@ -1169,10 +1188,16 @@ head.ready(["jquery", "layui"], function () {
                     skin: "layer-ext-moon" //该皮肤由layer.seaning.com友情扩展。关于皮肤的扩展规则,去这里查阅
                 }, realFn);
             } catch (ex) {
-                return layer.open({
-                    content: content
-                    , btn: '我知道了'
-                });
+                try {
+                    return layer.open({
+                        content: content
+                        , btn: '我知道了'
+                    });
+
+                } catch (ex) {
+                    $.warn("alert函数执行出错");
+                }
+               
 
             }
 
@@ -1182,7 +1207,7 @@ head.ready(["jquery", "layui"], function () {
             if (icon == undefined) {
                 icon = 1;
             }
-            if (content.indexOf("请稍后") > -1) {
+            if (content.indexOf("加载中") > -1) {
                 icon = 0;
             }
             try {
@@ -1193,11 +1218,15 @@ head.ready(["jquery", "layui"], function () {
                 return index;
             } catch (ex) {
                 //移动版本
-                return layer.open({
-                    content: content
-                    , skin: 'msg'
-                    , time: 2 //2秒后自动关闭
-                });
+                try {
+                    return layer.open({
+                        content: content,
+                        skin: 'msg',
+                        time: 2 //2秒后自动关闭
+                    });
+                } catch (ex) {
+                    $.warn("msg函数执行出错");
+                }
 
             }
         },
@@ -1213,8 +1242,14 @@ head.ready(["jquery", "layui"], function () {
                 });
                 return index;
             } catch (ex) {
-                //移动版本
-                return layer.open({ type: 2 });
+                try {
+                    //移动版本
+                    return layer.open({ type: 2 });
+                   
+                } catch (ex) {
+                    $.warn("loading函数执行出错");
+                }
+                
             }
         },
 
@@ -1228,13 +1263,18 @@ head.ready(["jquery", "layui"], function () {
                     layer.closeAll('loading'); //关闭加载层 
                 }
             } catch (ex) {
+                try {
+                    layer.close(index);
 
-                layer.close(index);
+                } catch (ex) {
+                    $.warn("close函数执行出错");
+                }
+               
             }
         },
         //确认框
         confirm: function (content, confirmDoWhat, whenCancleDo, whenDoSuccess, whenDoFail, icon) {
-            //debugger
+            //
             if (content == undefined) {
                 content = "请确认您的操作！";
             }
@@ -1333,7 +1373,7 @@ head.ready(["jquery", "layui"], function () {
             //thisU1 = window.location.protocol; // http:
             //thisU2 = window.location.host;   // localhost:81
             //thisU3 = window.location.pathname; // /Test/1.htm
-            //debugger 
+            // 
             var fullUrl = document.URL;
             var hostProtal = window.location.protocol + "//" + window.location.host;
             var relativeUrl = fullUrl.replace(hostProtal, "").
@@ -1439,7 +1479,7 @@ head.ready(["jquery", "layui"], function () {
 
 
             if (name == undefined) {
-                // debugger 
+                //  
                 //清除
                 var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
                 if (keys) {
@@ -1456,7 +1496,7 @@ head.ready(["jquery", "layui"], function () {
             } else {//write
                 var exp = new Date();
                 exp.setTime(exp.getTime() + time * 1);
-                //debugger
+                //
                 document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/;";
             }
         },
@@ -1479,7 +1519,7 @@ head.ready(["jquery", "layui"], function () {
         },
         parsedate: function (str) {
             try {
-                debugger
+
                 // $.log(str)
                 if (str.length > 10) {
                     str = str.substring(0, 10);
@@ -1499,7 +1539,7 @@ head.ready(["jquery", "layui"], function () {
         },
         parsetime: function (str) {
             try {
-                // debugger 
+                //  
                 //$.log(str)
                 var d = new Date(Date.parse(str.replace(/-/g, "/").replace(/T/g, " ")));
                 var year = d.getFullYear();
@@ -1551,7 +1591,7 @@ head.ready(["jquery", "layui"], function () {
         //转换路由地址
         parseurl: function (url, type) {
 
-            // //debugger
+            // //
             var result = {};
             result.url = url;
             result.type = type;
@@ -1583,26 +1623,26 @@ head.ready(["jquery", "layui"], function () {
                 //$.log(type)
                 if (type != undefined) {
                     switch (type) {
-                    case "http":
-                        {
-                            //http
-                        };
-                        break;
-                    case "h":
-                        {
-                            //html
-                            result.destUrl = ($.res(url.replace('*h', "")) + ".html?uid=" + $.uid());
-                            result.destType = "h";
-                        };
-                        break;
-                    case "f":
-                        {
-                            //form 
-                            result.destUrl = (_c.pc.form + "?id=" + url.replace('*f', ""));
-                            result.destType = "f";
+                        case "http":
+                            {
+                                //http
+                            };
+                            break;
+                        case "h":
+                            {
+                                //html
+                                result.destUrl = ($.res(url.replace('*h', "")) + ".html?uid=" + $.uid());
+                                result.destType = "h";
+                            };
+                            break;
+                        case "f":
+                            {
+                                //form 
+                                result.destUrl = (_c.pc.form + "?id=" + url.replace('*f', ""));
+                                result.destType = "f";
 
-                        };
-                        break;
+                            };
+                            break;
                     }
 
                 } else {
@@ -1690,7 +1730,7 @@ head.ready(["jquery", "layui"], function () {
             var flagIndex = id.lastIndexOf("/");
             if (flagIndex > -1) {
                 var front = id.substring(0, flagIndex);
-                //  debugger
+                //  
                 var behind = id.substring(flagIndex);
                 jsurl = front + "/bll" + behind.replace(".html", "");
             }
@@ -1742,7 +1782,7 @@ head.ready(["jquery", "layui"], function () {
                 target.removeAttr("href");
 
                 $("#" + id).click(function () {
-                    // debugger 
+                    //  
                     $.doFunction(id.replace(pre, ""), href + "','" + target.prop("outerHTML"));
                 });
             });
@@ -1759,7 +1799,7 @@ head.ready(["jquery", "layui"], function () {
 
         },
         Ajaxs: function (dataUrlArray, doAfterSuccessful, autoToObjectIfSingle, timeOut) {
-            // debugger
+            // 
             //当只有单个成员时，自动转为对象【默认不转】
             autoToObjectIfSingle = $.hasValue(autoToObjectIfSingle) ? autoToObjectIfSingle : false;
             if (!$.hasValue(timeOut)) {//转换为数组
@@ -1774,7 +1814,7 @@ head.ready(["jquery", "layui"], function () {
             var resultArray = [];
             for (var h = 0; h < dataUrlArray.length; h++) {
                 var dataUrl = dataUrlArray[h];
-                // debugger
+                // 
                 $.Ajax({
                     url: dataUrl,
                     success: function (data, code, msg, url) {
@@ -1800,7 +1840,7 @@ head.ready(["jquery", "layui"], function () {
 
                         } else {//普通请求
                             if ($.isArray(data)) {//数组成员
-                                //  debugger
+                                //  
                                 var memberName = $.getMemberByUrl(url);
                                 var obj = {};
                                 obj[memberName] = data;
@@ -1832,7 +1872,7 @@ head.ready(["jquery", "layui"], function () {
                         //合并结果
 
                         var finalData = resultArray[0];
-                        //debugger
+                        //
                         //针对只有一个成员进行优化
                         if (resultArray.length === 1) {
 
@@ -1841,7 +1881,7 @@ head.ready(["jquery", "layui"], function () {
                                 finalData = theFirstProperOfTheOnlyMember;
                                 //针对只有一个成员的第一个成员进行优化
                                 if (autoToObjectIfSingle && $.isArray(theFirstProperOfTheOnlyMember) && theFirstProperOfTheOnlyMember.length === 1) {
-                                    //debugger
+                                    //
                                     finalData = theFirstProperOfTheOnlyMember[0];
                                 }
                             }
@@ -1871,7 +1911,7 @@ head.ready(["jquery", "layui"], function () {
             var formData = $.vals_m();//用户填写的
             var jsonPageData = $("#page-data").val();//原来的-依赖于bindPage
             var submitData = {};
-            //  debugger
+            //  
             if ($.hasValue(jsonPageData)) {//有旧数据-处理后提交
                 submitData = $.toObject(jsonPageData);
                 var arr = $.toArray(formData); //转换类型用于遍历
@@ -1920,9 +1960,9 @@ head.ready(["jquery", "layui"], function () {
         bindPage: function (dataUrlArray, tplArray, doBeforeBinded, doAfterBinded) {
             //检查页面是否规范2017-12-24
             $.checkPage();
-            // debugger
+            // 
             $.Ajaxs(dataUrlArray, function (data) {
-                // debugger
+                // 
                 //缓存最原始的数据
                 $("body").append("<input type='hidden' id='page-data' value='" + $.toJson(data) + "'>");
 
@@ -1946,7 +1986,7 @@ head.ready(["jquery", "layui"], function () {
                 for (var i = 0; i < arr.p.length; i++) {
                     var p = arr.p[i];
                     var v = arr.v[i];
-                    //debugger
+                    //
                     var dom = $("#" + p);//id
                     if (!$.hasValue(dom)) {
                         var domForShow = $("." + p); //class
@@ -1975,14 +2015,14 @@ head.ready(["jquery", "layui"], function () {
                     var targetId = tplObj[0]; //容器id
                     var tplFnObj = tplObj[1]; //模板函数对象
                     var tplData;
-                    //debugger
+                    //
                     //自动获取成员
                     var autoSelectMember;
 
                     for (var r = 0; r < dataUrlArray.length; r++) {
                         var currntDataUrlArray = dataUrlArray[r];
                         var key = $.getMemberByUrl(currntDataUrlArray, true);
-                        //  debugger
+                        //  
                         if (($.isArray(data[key]) || $.hasValue(data[key])) && k === r) { //第1次尝试
                             autoSelectMember = data[key];
                             $.log("已为" + targetId + "的doBeforeBinded自动匹配数据源成员" + key + "");
@@ -2007,7 +2047,7 @@ head.ready(["jquery", "layui"], function () {
                         dataToDealForDoBeforeBinded = data;
                         $.log("为" + targetId + "的doBeforeBinded自动匹配数据源成员失败,已忽略自动匹配并自动选择自动匹配前的成员");
                     }
-                    //debugger
+                    //
                     //自动转数组
                     if (!$.isArray(dataToDealForDoBeforeBinded)) {
                         dataToDealForDoBeforeBinded = [dataToDealForDoBeforeBinded];
@@ -2089,7 +2129,7 @@ head.ready(["jquery", "layui"], function () {
                             }
                         }
                         parentTplData["sub-tpl"] = tiHtml;
-                        //debugger
+                        //
                         $.log(targetId + "的嵌套父模板数据源如下:");
                         $.log(parentTplData);
                         tiHtml = $.qx_tpl(parentTplData, parentTplFn);
@@ -2107,7 +2147,7 @@ head.ready(["jquery", "layui"], function () {
 
             var src = $("#" + bindedId);
 
-            //debugger
+            //
             src.change(function () {
                 //取出旧值
                 var oldBindedValue = $.val(bindedId, 204);
@@ -2155,16 +2195,16 @@ head.ready(["jquery", "layui"], function () {
             }
 
             for (var i = 0; i < data.length; i++) {
-                //debugger
+                //
                 var _v = $.hasValue(data[i].value) ? data[i].value : data[i].Value;
                 var _t = $.hasValue(data[i].text) ? data[i].text : data[i].Text;
-                // debugger
+                // 
                 optionHtml.push('<option ' + (value == _v ? 'selected="selected"' : '') + ' value="' + _v + '">' + _t + '</option>');
             }
             return optionHtml.join('');
         },
         fillTable: function (tableId, url) {
-            debugger
+
             if (!$.hasValue(url))
                 return;
             //注意是大写的Ajax
@@ -2184,7 +2224,7 @@ head.ready(["jquery", "layui"], function () {
                         $.fillSelect(item[0],item[1],item[2],item[3]);
                     }
                 }*/
-            // debugger 
+            //  
             if (!$.hasValue(urlOrSelectItems))
                 return;
             //传入的是url
@@ -2350,7 +2390,7 @@ head.ready(["jquery", "layui"], function () {
 
         //获取地址栏参数
         q: function (name) {
-            // //debugger 
+            // // 
             var currntUrl = $.getfullurl();
             //特殊处理
             if (currntUrl.indexOf(_c.pc.form) > 0 || currntUrl.indexOf(_c.pc.report) > 0) {
@@ -2382,32 +2422,60 @@ head.ready(["jquery", "layui"], function () {
         }
 
     });
-});
-//特殊页面处理
-window.onload = function () {
     $.log(_c);
-    //debugger 
+});
+
+//特殊页面处理
+head.ready(function () {
     var uid = $.uid();
     var unitid = $.unitid();
-    //处理自动登陆
-    if (_c.isAutoLoginPage()) {
-        // debugger
-        $("body").html("");
-        $.loading();
-        $.msg("请稍后...");
-        autoLogin($.q("userId"), $.q("roleString"));
+    if (_c.isWin10) {
+        //初始化-依赖于layui,jquery
+        Win10._init();
+        for (var i in Win10._handleReady) {
+            if (Win10._handleReady.hasOwnProperty(i)) {
+                var handle = Win10._handleReady[i];
+                handle();
+            }
+        }
+    }
+    if (_c.isLoadingPage()) {
+       
+        $.msg("加载中...");
+        $.each(_c.lib.src,
+            function(i, o) {
+                $.log(o[o.length-1]);
+            });
+
         return;
     }
+    //处理自动登陆
+    if (_c.isAutoLoginPage()) {
+        // 
+        $("body").html("");
+        $.loading();
+        $.msg("加载中...");
+        autoLogin($.q("userId"), $.q("roleString"), $.q("subSys"), $.q("site"), $.q("userName"));
+        return;
+    }
+    //处理登陆
     if (_c.isLoginPage()) {
-        //if ($.hasValue(_c.pc.login_3rd)) {
-        //    //第三方登陆
-        //    $("body").html("");
-        //    $.loading();
-        //    $.msg("请稍后...");
-        //    //   debugger 
-        //    window.location.replace(_c.pc.login_3rd);
-        //    return;
-        //}
+
+        if ($.hasValue(_c.login_third)) {
+
+            //第三方登陆
+            $("body").html("");
+            $.loading();
+            if (_c.login_third == "we7") {
+                $("body").html("");
+                $.alert("页面会话超时，请关闭页面后重新进入！")
+            } else {
+                $.msg("加载中...");
+                window.location.replace(_c.login_third);
+            }
+
+            return;
+        }
         $('#login').click(function () {
             var userid = $('#uid').val();
             var psw = $('#psw').val();
@@ -2415,56 +2483,63 @@ window.onload = function () {
         });
         return;
     }
-    //登陆验证
+    //处理访客
     if (_c.isVisitor()) {
         $.warn("请登陆");
         if ($.hasValue(_c.login_third)) {
-            $.go(_c.login_third + "?returnUrl=" + _c.login_auto);
+            if (_c.login_third == "we7") {
+                $("body").html("");
+                $.alert("页面会话超时，请关闭页面后重新进入！");
+            } else {
+                $.msg("加载中...");
+                $.go(_c.login_third + "?returnUrl=" + _c.login_auto);
+            }
+
         } else {
             $.go(_c.login);
-        } 
+        }
         return;
     }
-    //登陆成功后
-    $("#user_id").text($.cookie('user_id'));
-    $("#nick_name").val($.cookie('nick_name')); $(".nick_name").text($.cookie('nick_name'));
-    $("#unit_name").text($.cookie('unit_name'));//显示用户id//显示用户id
-    $(".fa-sign-out").click(function () {//设置退出登录
-        $.cookie();
-        $.msg("已退出登录");
-        $.go(_c.pc.login);
-    });
-   
-    if (_c.isApp) {
-        $.loadBll();//加载业务js
-        $.bindFunction();//自动绑定页面参数
-        $(".back").click(function () { $.go(-1) });//后退按钮
+    //会员
+    else {
+        $("#user_id").text($.cookie('user_id'));
+        $("#nick_name").val($.cookie('nick_name')); $(".nick_name").text($.cookie('nick_name'));
+        $("#unit_name").text($.cookie('unit_name'));//显示用户id//显示用户id
+        $(".fa-sign-out").click(function () {//设置退出登录
+            $.cookie();
+            $.msg("已退出登录");
+            $.go(_c.pc.login);
+        });
 
-    } else {
-        //需要拉取工作流待办
-        InitWorkFlow();
-        //报表初始化
-        if ($.geturl() === _c.pc.report) {
-            //id为报表的数据api地址
-            qx.grid.InitReport($.q("id"));
-        }
-        //表单初始化
-        else if ($.geturl() === _c.pc.form) {
-            //sdebugger 
-            //id为js路径或自定义页面路径
-            InitForm($.q("id"));
-        }
-        //首页初始化
-        else if ($.geturl() === _c.pc.homepage) {
-            menuStageTwo(uid);
-        }
-        else {
-        }
+        if (_c.isApp) {
+            $.loadBll();//加载业务js
+            $.bindFunction();//自动绑定页面参数
+            $(".back").click(function () { $.go(-1) });//后退按钮
+
+        } else {
+            //需要拉取工作流待办
+            InitWorkFlow();
+            //报表初始化
+            if ($.geturl() === _c.pc.report) {
+                //id为报表的数据api地址
+                qx.grid.InitReport($.q("id"));
+            }
+            //表单初始化
+            else if ($.geturl() === _c.pc.form) {
+                //sdebugger 
+                //id为js路径或自定义页面路径
+                InitForm($.q("id"));
+            }
+            //首页初始化
+            else if ($.geturl() === _c.pc.homepage) {
+                menuStageTwo(uid);
+            }
+            else {
+            }
+        } 
     }
-
-
-
-};
+}
+);
 
 //扩展String
 String.prototype.append = function (str, arr) {
@@ -2472,7 +2547,7 @@ String.prototype.append = function (str, arr) {
         arr = [];
     }
     return this + $.replace(str, arr);
-}
+};
 String.prototype.jn =
     String.prototype.join = function (another, colnumnOrTable) {//如何判断传入的是列名还是表名？
         if (!$.hasValue(colnumnOrTable)) {//自动补全目标表的列名 （和本库相关，后端框架会自动补全库名）
@@ -2481,34 +2556,34 @@ String.prototype.jn =
         //    colnumnOrTable = colnumnOrTable + "." + another.split('.')[1];
         //}
         return this.append("&search.join:" + another + "=" + colnumnOrTable);
-    }
+    };
 String.prototype.in = function (colnumn, arr) {
     return this.append("&search.in:" + colnumn + "=('" + arr.join("','") + "')");
-}
+};
 String.prototype.eq =
     String.prototype.equal = function (colnumn, value) {
         return this.append("&search.equal:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.neq =
     String.prototype.notequal = function (colnumn, value) {
         return this.append("&search.notequal:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.bg =
     String.prototype.biger = function (colnumn, value) {
         return this.append("&search.biger:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.be =
     String.prototype.bigerequal = function (colnumn, value) {
         return this.append("&search.bigerequal:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.ls =
     String.prototype.less = function (colnumn, value) {
         return this.append("&search.less:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.le =
     String.prototype.lessequal = function (colnumn, value) {
         return this.append("&search.lessequal:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.lk =
     String.prototype.like = function (colnumn, value) {
 
@@ -2516,47 +2591,47 @@ String.prototype.lk =
             return this;
         }
         return this.append("&search.like:" + colnumn + "=" + value, '\'');
-    }
+    };
 String.prototype.gp =
     String.prototype.group = function (colnumn, value) {
         if (!$.hasValue(value)) {
             value = "_auto";
         }
         return this.append("&search.groupby:" + colnumn + "=" + value);
-    }
+    };
 String.prototype.ob =
     String.prototype.orderby = function (colnumn, value) {
         if (!$.hasValue(value)) {
             value = "+";
         }
         return this.append("&search.orderby:" + colnumn + "=" + value);
-    }
+    };
 
 String.prototype.query = function (doAfterSuccess, autoToObject) {
     var url = this;
     $.Ajaxs(url, function (data) {
-            // debugger
-            var memberName = $.getMemberByUrl(url, true);
-            var member = data[memberName];
-            // debugger
-            if (!$.hasValue(member)) {
-                member = $.hasValue(data) ? data : [];
-            }
-            doAfterSuccess(member);
-        }, autoToObject
-    );
-}
-String.prototype.submit = function (data, doAfterSuccess) {
-    // debugger
-    $.Ajax({
-            url: this,
-            data: data,
-            success: function (data, code, msg, url) {
-                doAfterSuccess(data, code, msg, url);
-            }
+        // 
+        var memberName = $.getMemberByUrl(url, true);
+        var member = data[memberName];
+        // 
+        if (!$.hasValue(member)) {
+            member = $.hasValue(data) ? data : [];
         }
+        doAfterSuccess(member);
+    }, autoToObject
     );
-}
+};
+String.prototype.submit = function (data, doAfterSuccess) {
+    // 
+    $.Ajax({
+        url: this,
+        data: data,
+        success: function (data, code, msg, url) {
+            doAfterSuccess(data, code, msg, url);
+        }
+    }
+    );
+};
 String.prototype.excute = function (doAfterSuccessForEach) {
     this.query(function (data) {
         for (var i = 0; i < data.length; i++) {
@@ -2564,9 +2639,9 @@ String.prototype.excute = function (doAfterSuccessForEach) {
             doAfterSuccessForEach(item, i, data.length);
         }
     });
-}
+};
 String.prototype.format = function (args) {
-    // debugger
+    // 
     if (arguments.length > 0) {
         var result = this;
         var reg;
@@ -2586,7 +2661,7 @@ String.prototype.format = function (args) {
             }
         } return result;
     } else { return this; }
-}
+};
 //扩展string.tpl
 /*{}.prototype.tpl = function (tplFn) {
     return getTpl(tplFn).format(this);
@@ -2610,7 +2685,7 @@ Array.prototype.getdistinct = function () {
         }
     }
     return tmp2;
-}
+};
 //去除重复元素
 Array.prototype.distinct = function () {
     // 遍历arr,把元素分别放入tmp数组(不存在才放)
@@ -2622,7 +2697,7 @@ Array.prototype.distinct = function () {
         }
     }
     return tmp;
-}
+};
 function back() {
     history.go(-1);
 }
@@ -2699,7 +2774,8 @@ function Guid(g) {
         B  括在大括号中、由连字符分隔的 32 位数字：{xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
         P  括在圆括号中、由连字符分隔的 32 位数字：(xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)
         */
-} function ToStringWithFormat(arr, format) { switch (format) { case "N": return arr.toString().replace(/,/g, ""); case "D": var str = arr.slice(0, 8) + "-" + arr.slice(8, 12) + "-" + arr.slice(12, 16) + "-" + arr.slice(16, 20) + "-" + arr.slice(20, 32); str = str.replace(/,/g, ""); return str; case "B": var str = ToStringWithFormat(arr, "D"); str = "{" + str + "}"; return str; case "P": var str = ToStringWithFormat(arr, "D"); str = "(" + str + ")"; return str; default: return new Guid(); } } Guid.Empty = new Guid();/*Guid 类的默认实例,其值保证均为零。*/Guid.NewGuid = function () { var g = ""; var i = 32; while (i--) { g += Math.floor(Math.random() * 16.0).toString(16); } return new Guid(g); }; Guid.random = function () { var g = ""; var i = 32; while (i--) { g += Math.floor(Math.random() * 16.0).toString(16); } return new Guid(g).ToString(); }
+}
+function ToStringWithFormat(arr, format) { switch (format) { case "N": return arr.toString().replace(/,/g, ""); case "D": var str = arr.slice(0, 8) + "-" + arr.slice(8, 12) + "-" + arr.slice(12, 16) + "-" + arr.slice(16, 20) + "-" + arr.slice(20, 32); str = str.replace(/,/g, ""); return str; case "B": var str = ToStringWithFormat(arr, "D"); str = "{" + str + "}"; return str; case "P": var str = ToStringWithFormat(arr, "D"); str = "(" + str + ")"; return str; default: return new Guid(); } } Guid.Empty = new Guid();/*Guid 类的默认实例,其值保证均为零。*/Guid.NewGuid = function () { var g = ""; var i = 32; while (i--) { g += Math.floor(Math.random() * 16.0).toString(16); } return new Guid(g); }; Guid.random = function () { var g = ""; var i = 32; while (i--) { g += Math.floor(Math.random() * 16.0).toString(16); } return new Guid(g).ToString(); };
 
 
 //获取时间
@@ -2777,8 +2853,8 @@ function getTpl(fn) {
 
 
 function loginRedirect(units, index) {
-    //debugger
-    //$.msg('请稍后...', 0);
+    //
+    //$.msg('加载中...', 0);
     // $.msg('即将以' + units.name[index] + "的身份进入系统", 0);
     $.cookie('unit_name', units.name[index]);
     $.unitid(units.id[index]);//加密版
@@ -2794,7 +2870,7 @@ function loginRedirect(units, index) {
     }, 10);
 }
 function chooseOrgToLogin(units) {
-    //debugger
+    //
     if (units.id.length > 1) {
         //选择机构
         try {
@@ -2834,7 +2910,7 @@ function chooseOrgToLogin(units) {
 }
 
 function loginSuccess(uid) {
-    // debugger
+    // 
     $.uid(uid); //存储加密版uid
     //根据uid获取用户信息
     $.Ajax({
@@ -2880,18 +2956,14 @@ function login(userId, psw) {
     });
 }
 
-function autoLogin(userId, roleString) {
-    if (!$.hasValue(userId)) {
-        $.alert("身份已过期，请重新登陆！", 5);
-        $.go(_c.root + "/index.html", 3);
-        return;
-    }
+function autoLogin(userId, roleString, subSys, site, userName) {
+
     if (!$.hasValue(roleString)) {
         roleString = "";
     }
     var index = $.loading();
     $.ajax({
-        url: $.url("/Open/autoLogin?userId=" + userId + "&roleString=" + roleString, true),
+        url: $.url("/Open/autoLogin?userId=" + userId + "&roleString=" + roleString + "&subSys=" + subSys + "&site=" + site + "&userName=" + userName, true),
         success: function (result) {
             $.loaded(index);
             var code = result.code;
@@ -2900,8 +2972,8 @@ function autoLogin(userId, roleString) {
                 //登陆成功-获取加密后的uid
                 loginSuccess(data.uid);
             } else {
-                $.alert("身份已过期，请重新登陆！", 5);
-                $.go(_c.root + "/index.html", 3);
+                $.alert(result.msg, 5);
+                return;
             }
         }, error: function (xmlHttpRequest, textStatus, errorThrown) {
             $.loaded(index);
@@ -2922,7 +2994,7 @@ function confirmPay(totalFee) {
 }
 function YibanLogin() {
 
-    $.go(_c.sever.host + "/Oauth2/YiBan?returnUrl=" +localUrl(_c.pc.login_3rd_result));
+    $.go(_c.sever.host + "/Oauth2/YiBan?returnUrl=" + localUrl(_c.pc.login_3rd_result));
 }
 
 function hide_m(objArray) {

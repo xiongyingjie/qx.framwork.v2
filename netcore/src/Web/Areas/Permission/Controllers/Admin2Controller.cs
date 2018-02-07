@@ -205,6 +205,8 @@ namespace Web.Areas.Permission.Controllers
             }
             Search.Add("用户编号");
             Search.Add("用户名");
+            Search.Add("子系统");
+            Search.Add("备注");
             InitReport("用户列表", "/core/permission/UserAdd", "", true, "sys.core");
             return ReportJson();
             //return View(UserList_M.ToViewModel(Params));

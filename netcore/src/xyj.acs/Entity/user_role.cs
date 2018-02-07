@@ -7,7 +7,7 @@ namespace xyj.acs.Entity
     public partial class user_role
     {
         [Key]
-        [StringLength(50)]
+        [StringLength(150)]
         public string user_role_id { get; set; }
 
         [Required]

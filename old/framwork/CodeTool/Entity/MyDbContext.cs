@@ -8,7 +8,7 @@ namespace CodeTool.Entity
     public partial class MyDbContext : DbContext
     {
         public MyDbContext()
-            : base("name=qx.system")
+            : base("name=sys.core")
         {
         }
 

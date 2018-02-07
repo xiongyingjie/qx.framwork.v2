@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Qiniu.Storage;
 using Qiniu.Util;
 using Web.Controllers.Base;
@@ -35,7 +36,23 @@ namespace Web.Controllers
         {
             return View();
         }
-       
+        // GET: /Open/Grap
+        public IActionResult Grap(string url= "http://w7.52xyj.cn")
+        {
+            var client = new HttpHelper();
+            var res = client.GetHtml(new HttpItem()
+            { URL = url, //Method = "post",// 默认为Get
+            });
+            while (res.RedirectUrl.HasValue())
+            {
+                res = client.GetHtml(new HttpItem()
+                {
+                    URL = res.RedirectUrl, //Method = "post",// 默认为Get
+                });
+            }
+         
+            return Content(res.Html);
+        }
         // GET: Open/balance
         //public IActionResult Balance()
         //{
@@ -85,25 +102,44 @@ namespace Web.Controllers
             var token = Auth.CreateUploadToken(mac, putPolicy.ToJsonString());
             return Json(State.Success,new{ data.ak, data.sk });
         }
-        public IActionResult AutoLogin(string userId, string roleString,string subSys)
+        public IActionResult AutoLogin(string userId, string userName, string roleString,string subSys,string site)
         {
-            userId = userId.ToLower().Replace("http://", "").Replace("https://", "").Replace("/", "");
+            var site2 = site.ToLower().Replace("http://", "").Replace("https://", "").Replace("/", "");
+
+            //兼容订阅号
+            userId = (""+userId).CheckValue(subSys + "-visitor").ToLower();
+            userId = subSys + "-"+site2 + "-" + userId;//同个用户打开不同站点处理为不同用户
             var u = new User();
             try
             {
                 var user = _acsService.UserInfo(userId);
                 u.user_id = userId;
+                u.sub_system_reg_id = user.sub_system_reg_id;
             }
             catch (Exception)
             {
                 //执行注册
                 try
                 {
-                    _acsService.Regist(userId, userId, "", "", "", "", roleString.UnPackString(';'), subSys);
+                    _acsService.Regist(userId, userId, userName, "", "", "", site, roleString.UnPackString(';'), subSys);
                     var user = _acsService.UserInfo(userId);
                     u.user_id = userId;
+                    u.sub_system_reg_id = user.sub_system_reg_id;
                 }
-                catch (Exception) { return Json(State.Fail, u, false); }
+                catch (Exception ex) {
+                    //盗版检测
+                    if(ex is DbUpdateException && ex.InnerException.Message.Contains("sub_system_id"))
+                    {
+                        var msg = "请勿使用盗版程序，正版程序请到微擎官网购买。联系QQ:603748637";
+                        return Json(State.Fail, msg);
+                    }
+                    else
+                    {
+                        var msg = "页面初始化失败,请关闭后重新打开";
+                        return Json(State.Fail, msg);
+                    }
+             
+                }
             }
             return Json(State.Success, u, true);
         }
@@ -117,6 +153,7 @@ namespace Web.Controllers
                 var user = _acsService.UserInfo(userid);
                 u.nick_name = user.nick_name;
                 u.user_id = user.user_id;
+                u.sub_system_reg_id = user.sub_system_reg_id;
                 var units = _acsService.GetOrgIdByUserId(userid, false).ToList();
                 u.units = new
                 {
@@ -132,7 +169,7 @@ namespace Web.Controllers
         // GET: Open/GetMenu
         public IActionResult GetMenu()
         {
-            return Json(NavbarIndex.Init(_acsService.GetNavbarByUserId(DataContext.UserId),
+            return Json(NavbarIndex.Init( _acsService.GetMenuByUserId(DataContext.UserId),
                  _acsService.GetForbidenButtonByUserId(DataContext.UserId)));
         }
         // GET: Open/GetTable
@@ -211,8 +248,19 @@ namespace Web.Controllers
             }
         }
 
-      
 
+        // /open/IpInfo?ip=192.168.31.2
+        public IActionResult IpInfo([FromServices]IHostingEnvironment env, string ip="")
+        {      
+            if (!ip.HasValue())
+            {
+                return Json(State.Success, env.IpSearch(HttpContext));
+            }
+            else
+            {
+                return Json(State.Success, env.IpSearch(ip));
+            }
+        }
 
 
 
@@ -223,10 +271,7 @@ namespace Web.Controllers
             {
                 content = "baidu.com";
             }
-
-            var path = "/UserFiles/QrCode.jpg";
-            QRCoderUtility.CreateQrCode(content, PathUtility.ToPhysicalPath(path));
-            return File(path, "image/jpeg");
+            return File(QRCoderUtility.CreateQrCode(content).BitmapToBytes(), "image/jpeg");
         }
 
         // GET: /open/ScanWxQr

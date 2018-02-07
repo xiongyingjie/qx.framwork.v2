@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<title>幸运转盘</title>
+</head>
+<body>
+	
+	<div class="zp-box">
+		<div class="dp-box">
+			<img src="img/dipan.png" class="g-lottery-img">
+		</div>
+		<div class="zhizhen">
+			<img src="img/zhizhen.png">
+			<div id="cishu-text">点击开始<br><span id="cishu">0</span>次</div>
+		</div>
+	</div>
+
+	<div class="jl">
+		<p>
+			<span id="zjjl">中奖纪录》</span>|<span id="look-gz">查看规则》</span>
+		</p>
+	</div>
+	<div class="gdbox">
+		<strong>中奖用户</strong>
+		<p id="tit">
+			<span>手机号</span>
+			<span>获得奖励</span>
+		</p>
+        <div class="zhongj-bbk">
+            <div class="zhongj-bb">
+                <div class="zhongj-bbl" id="colee" style="overflow:hidden;">
+                    <div id="colee1"></div>
+                    <div id="colee2"></div>
+                </div>
+                <div class="zhongj-bbr" id="coleer" style="overflow:hidden;">
+                    <div id="coleer1" ></div>
+                    <div id="coleer2"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+	<!--遮罩&弹框-->
+	<div class="zz"></div>
+	<!--超级返现规则-->
+	<div class="cjfx">
+		<img src="img/close.png" class="cjgz-c">
+		<img src="img/cjgz.png" id="cjgz-img">
+	</div>
+	<!--转盘规则-->
+	<div class="zpgz">
+		<img src="img/close.png" class="cjgz-c">
+		<img src="img/zpgz.png" id="cjgz-img">
+	</div>
+	<!--中奖纪录-->
+	<div class="zj">
+		<img src="img/close.png" class="cjgz-c">
+		<img src="img/zjjl-img.png" id="cjgz-img">
+		<div class="zj-content">
+			<p>
+				<span id="mytime">时间</span>
+				<span id="myjl">获得奖励</span>
+			</p>
+			<ul>
+				<li><span>2017.10.31</span><span>0.3%己烯醛</span></li>
+				<li><span>2017.10.31</span><span>0.3%己烯醛</span></li>
+				<li><span>2017.10.31</span><span>0.3%己烯醛</span></li>
+				<li><span>2017.10.31</span><span>0.3%己烯醛</span></li>
+				<li><span>2017.10.31</span><span>0.3%己烯醛</span></li>
+				<li><span>2017.10.31</span><span>0.3%己烯醛</span></li>
+			</ul>
+		</div>
+	</div>
+	<!-- 无次数提示弹框 -->
+	<div class="wcs">
+		<img src="img/close.png" class="cjgz-c">
+		<img src="img/wcs-tk.png" class="wcs-img">
+		<img src="img/ok-img.png" class="ok-img">
+	</div>
+	<!-- 当日是否投资弹框 -->
+	<div class="today">
+		<img src="img/close.png" class="cjgz-c">
+		<img src="img/tz-tk.png" class="tz-img">
+		<img src="img/ok-img.png" class="ok-img">
+	</div>
+	<!-- 抽到奖励弹框 -->
+	<div class="jl-tk">
+		<img src="img/close.png" class="cjgz-c">
+		<img src="img/zj-tk.png" class="zj-img">
+		<img src="img/ok-img.png" class="ok-img">
+		<p class="texts">恭喜您已获得<br>双季丰满减红包满1000可用50元</p>
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.rotate.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.min.js"></script>
+	<script type="text/javascript" src="js/jquery.jsonp.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

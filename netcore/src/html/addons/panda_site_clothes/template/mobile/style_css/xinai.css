@@ -1,0 +1,187 @@
+﻿@charset "utf-8";
+
+body {
+	background-color: #f1f1f1;
+}
+#content_box {
+	overflow: hidden;
+	min-width: 320px;
+	min-height: 480px;
+	max-width: 540px;
+	position: relative;
+}
+.main_visual {
+	height: 210px;
+	overflow: hidden;
+	position: relative;
+}
+.main_image {
+	height: 210px;
+	overflow: hidden;
+	position: relative;
+}
+.main_image ul {
+	width: 9999px;
+	height: 210px;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0
+}
+.main_image li {
+	float: left;
+	width: 100%;
+	height: 210px;
+}
+.main_image li span {
+	display: block;
+	width: 100%;
+	height: 210px
+}
+.main_image li a {
+	display: block;
+	width: 100%;
+	height: 210px
+}
+
+
+div.flicking_con {
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	z-index: 999;
+	height: 21px;
+	margin: 0 0 0 -31px;
+}
+div.flicking_con a {
+	float: left;
+	width: 21px;
+	height: 21px;
+	margin: 0;
+	padding: 0;
+	background: url(../imges/btn_main_img.png) 0 0 no-repeat;
+	display: block;
+	text-indent: -1000px
+}
+div.flicking_con a.on {
+	background-position: 0 -21px
+}
+.title_box {
+	width: 100%;
+	height: 40px;
+	display: block;
+	background: #FFF;
+	margin-top: 5px;
+}
+.title_box .title_logo a {
+
+	width: 30px;
+	height: 30px;
+	display: block;
+	
+	text-indent: -3999px;
+	float: left;
+	margin: 5px 10px 5px 15px;
+}
+.title_box .title_logo span {
+	float: left;
+	font: bold 18px/40px "微软雅黑", "宋体";
+}
+.classify_box {
+	margin-top: 5px;
+}
+.classify_box .classify_num {
+}
+.classify_box .classify_num li {
+	float: left;
+	width: 50%;
+	min-height: 97px;
+	list-style: none;
+}
+.classify_box .classify_num li a {
+	padding: 8px 0px 0px 0px;
+	text-align: center;
+	display: block;
+	margin: 0 5px 5px 5px;
+	color: #FFF;
+}
+.classify_box .classify_num li a i {
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+	background: url(../imges/classify.png) no-repeat 0 0;
+	background-size: 270px 45px;
+}
+.classify_box .classify_num li a span {
+	display: inline-block;
+	width: 100%;
+	height: 38px;
+	line-height: 38px;
+	font-size: 16px;
+}
+.classify_box .classify_num > li:nth-child(1) a {
+	background-color: #e26d64;
+}
+.classify_box .classify_num > li:nth-child(2) a {
+	margin: 0 5px 5px 0px;
+	text-align: center;
+	background-color: #bc4040;
+}
+.classify_box .classify_num > li:nth-child(3) a {
+	background-color: #5ec7b4;
+}
+.classify_box .classify_num > li:nth-child(4) a {
+	margin: 0 5px 5px 0px;
+	text-align: center;
+	background-color: #49c683;
+}
+.classify_box .classify_num > li:nth-child(5) a {
+	background-color: #e26d64;
+}
+.classify_box .classify_num > li:nth-child(6) a {
+	margin: 0 5px 5px 0px;
+	text-align: center;
+	background-color: #bc4040;
+}
+.classify_box .classify_num > li:nth-child(1) a i {
+	background-position: 0 0;
+}
+.classify_box .classify_num > li:nth-child(2) a i {
+	background-position: -45px 0;
+}
+.classify_box .classify_num > li:nth-child(3) a i {
+	background-position: -90px 0;
+}
+.classify_box .classify_num > li:nth-child(4) a i {
+	background-position: -135px 0;
+}
+.classify_box .classify_num > li:nth-child(5) a i {
+	background-position: -180px 0;
+}
+.classify_box .classify_num > li:nth-child(6) a i {
+	background-position: -225px 0;
+}
+.classify_box .classify_num > li:nth-child(1) a:hover {
+	background-color: #c7574e;
+	color: #282728;
+}
+.classify_box .classify_num > li:nth-child(2) a:hover {
+	background-color: #a33232;
+	color: #282728;
+}
+.classify_box .classify_num > li:nth-child(3) a:hover {
+	background-color: #4ab29f;
+	color: #282728;
+}
+.classify_box .classify_num > li:nth-child(4) a:hover {
+	background-color: #56b683;
+	color: #282728;
+}
+.classify_box .classify_num > li:nth-child(5) a:hover {
+	background-color: #c7574e;
+	color: #282728;
+}
+.classify_box .classify_num > li:nth-child(6) a:hover {
+	background-color: #a33232;
+	color: #282728;
+}

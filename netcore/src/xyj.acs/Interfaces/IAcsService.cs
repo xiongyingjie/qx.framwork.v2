@@ -67,7 +67,7 @@ namespace xyj.acs.Interfaces
         bool Login(string userId, string userPwd);
         //�û�ע��
         bool Regist(string userId, string userPwd,
-            string nickName = "", string email = "", string phone = "", string userTypeId = "",
+            string nickName = "", string email = "", string phone = "", string userTypeId = "", string note = "",
             List<string> roleList = null, string subSys = "");
 
          bool SetSubSystemData(string subSystemId, string dataKey, string dataValue);

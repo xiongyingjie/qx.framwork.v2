@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>xyj.pfx</AssemblyOriginatorKeyFile>
     <AssemblyName>xyj.core</AssemblyName>
     <RootNamespace>xyj.core</RootNamespace>

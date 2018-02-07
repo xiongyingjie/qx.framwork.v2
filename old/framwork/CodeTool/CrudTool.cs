@@ -12,12 +12,12 @@ using CodeTool.Extension;
 using CodeTool.Helper;
 using CodeTool.Models;
 using CodeTool.Template;
-using JinianNet.JNTemplate;
+
 using Microsoft.VisualBasic;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Models;
 using Qx.Tools.Models.Report;
-using Resources = CodeTool.Properties.Resources;
+using xyj.tool.Properties;
 
 namespace CodeTool
 {

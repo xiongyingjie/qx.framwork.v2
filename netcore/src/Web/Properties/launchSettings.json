@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iis": {
-      "applicationUrl": "https://api.52xyj.cn",
+      "applicationUrl": "http://localhost:888/",
       "sslPort": 0
     },
     "iisExpress": {
@@ -26,6 +26,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "applicationUrl": "http://localhost:1650/"
+    },
+    "app.52xyj.cn": {
+      "commandName": "IIS",
+      "launchBrowser": true
+    },
+    "LocalIIS": {
+      "commandName": "IIS"
     }
   }
 }

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2010
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xyj.core", "xyj.core\xyj.core.csproj", "{C183BD9A-418B-4250-A5ED-AC4B53F06CCF}"
 EndProject
@@ -30,6 +30,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "html", "html\", "{F7576B70-
 		SlnRelativePath = "html\"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyj.study", "xyj.study\xyj.study.csproj", "{6CC13D43-4AA5-4F71-8CAA-6C056BDA3498}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,10 @@ Global
 		{F7576B70-D539-47A8-9F85-52E71991A515}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7576B70-D539-47A8-9F85-52E71991A515}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7576B70-D539-47A8-9F85-52E71991A515}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{6CC13D43-4AA5-4F71-8CAA-6C056BDA3498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC13D43-4AA5-4F71-8CAA-6C056BDA3498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC13D43-4AA5-4F71-8CAA-6C056BDA3498}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC13D43-4AA5-4F71-8CAA-6C056BDA3498}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

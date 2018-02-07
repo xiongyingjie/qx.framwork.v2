@@ -1,0 +1,229 @@
+﻿@charset "utf-8";
+
+.main_visual {
+  height: 150px;
+  border-top: 1px solid #d7d7d7;
+  overflow: hidden;
+  position: relative;
+  border-radius: 6px;
+  margin: 10px;
+}
+.main_image {
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+.main_image ul {
+  width: 9999px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0
+}
+.main_image li {
+  float: left;
+  width: 100%;
+  height: 150px;
+}
+.main_image li span {
+  display: block;
+  width: 100%;
+  height: 150px
+}
+.main_image li a {
+  display: block;
+  width: 100%;
+  height: 150px
+}
+.main_image li .img_1 {
+  background: url('../images/banner1.jpg') center top no-repeat;
+  background-size: cover;
+}
+.main_image li .img_2 {
+  background: url('../images/banner2.jpg') center top no-repeat;
+  background-size: cover;
+}
+.main_image li .img_3 {
+  background: url('../images/banner1.jpg') center top no-repeat;
+  background-size: cover;
+}
+.main_image li .img_4 {
+  background: url('../images/banner2.jpg') center top no-repeat;
+  background-size: cover;
+}
+.main_image li .img_5 {
+  background: url('../images/banner1.jpg') center top no-repeat;
+  background-size: cover;
+}
+div.flicking_con {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  z-index: 999;
+  width: 300px;
+  height: 21px;
+  margin: 0 0 0 -50px;
+}
+div.flicking_con a {
+  float: left;
+  width: 21px;
+  height: 21px;
+  margin: 0;
+  padding: 0;
+  background: url('../images/btn_main_img.png') 0 0 no-repeat;
+  display: block;
+  text-indent: -1000px
+}
+div.flicking_con a.on {
+  background-position: 0 -21px
+}
+
+.footer_btn3 {
+  position: fixed;
+  z-index: 3;
+  bottom: 0px;
+  border-top: 1px solid #b3b3b3;
+  background: #e6e6e6;
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.menu {
+  position: relative;
+  float: left;
+  width: 33.33%;
+  height: 50px;
+  line-height: 50px;
+  background: #fff;
+  border-right: 1px solid #ebebeb;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+.menu:last-child {
+  border-right: none;
+}
+.new-sub {
+  position: absolute;
+  bottom: 60px;
+  z-index: 10;
+  width: 100%;
+  padding: 0px 10px;
+  background: #fff;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border: 1px solid #EEEEEE;
+  border-radius: 5px;
+  display: none;
+}
+.new-sub li {
+  width: 100%;
+  background: #fff;
+  float: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-top: 1px solid #f2f2f2;
+}
+.new-sub li a {
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  text-align: left;
+  background: #fff;
+  color: #333;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+}
+.sanjiao {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-right: 5px solid #000;
+  border-bottom: 5px solid #000;
+  opacity: .5;
+}
+.bt-name {
+  font-size: 16px;
+  color: #000;
+}
+.bt-name a {
+  display: block;
+  font-size: 16px;
+  color: #000;
+}
+.new-sub .tiggle {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  left: 50%;
+  margin-left: -10px;
+  bottom: -9px;
+  border-top: 10px solid #EEEEEE;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  z-index: 10;
+}
+.new-sub .innertiggle {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  left: 50%;
+  margin-left: -9px;
+  bottom: -8px;
+  border-top: 9px solid white;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  z-index: 11;
+}
+
+.scroll {
+  position: relative;
+}
+.scroll_box {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+.scroll_wrap {
+  overflow: hidden;
+  position: relative;
+}
+.scroll_wrap li {
+  position: relative;
+  display: block;
+  width: 100%;
+  float: left;
+}
+.scroll_wrap li a {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+.scroll_position {
+  width: 60px;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  z-index: 400;
+  bottom: 20px;
+  margin-left: -30px;
+}
+.scroll_position li {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 10px;
+  background: #c3c1c1;
+}
+.scroll_position li a {
+  font-size: 0;
+}
+.scroll_position li.on {
+  background-color: #fc5252;
+}

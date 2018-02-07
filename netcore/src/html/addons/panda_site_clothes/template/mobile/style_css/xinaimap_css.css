@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+body {
+	background-color: #f1f1f1;
+	font-family: Tahoma, Arial, Roboto, ”Droid Sans”, ”Helvetica Neue”, ”Droid Sans Fallback”, ”Heiti SC”, sans-self;
+}
+#content_box {
+	overflow: hidden;
+	min-width: 320px;
+	min-height: 480px;
+	max-width: 540px;
+	position: relative;
+}
+.map_box {
+	width: 100%;
+}
+.mapimg {
+	width: 100%;
+	text-align: center;
+	position: relative;
+}
+.mapimg i img {
+	width: 100%;
+	display: inline-block;
+}
+.mapimg a img {
+	width: 108px;
+	height: 29px;
+	position: absolute;
+	left: 35%;
+	bottom: 65%;
+}
+.maptit_box {
+	width: 100%;
+	height: 35px;
+	display: inline-block;
+	background-color: #FFF;
+	position: relative;
+}
+.map_soild {
+	border-bottom: solid 1px #e1e1e1;
+	position: absolute;
+	width: 100%;
+	bottom: 50%;
+	z-index: 1;
+}
+.map_tit i {
+	width: 120px;
+	height: 35px;
+	background-color: #FFF;
+	z-index: 5;
+	display: inline-block;
+	vertical-align: top;
+	position: absolute;
+	left: 50%;
+	margin-left: -60px;
+}
+.map_cont {
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+.map_cont p {
+	font: normal 16px/25px "黑体";
+	color: #666666;
+}

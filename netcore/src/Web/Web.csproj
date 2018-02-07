@@ -5,13 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Areas\Permission\Data\**" />
+    <Compile Remove="Areas\Permission\Models\**" />
     <Compile Remove="Areas\Permission\ViewModels\**" />
+    <Compile Remove="Areas\Permission\Views\**" />
     <Compile Remove="net\**" />
+    <Content Remove="Areas\Permission\Data\**" />
+    <Content Remove="Areas\Permission\Models\**" />
     <Content Remove="Areas\Permission\ViewModels\**" />
+    <Content Remove="Areas\Permission\Views\**" />
     <Content Remove="net\**" />
+    <EmbeddedResource Remove="Areas\Permission\Data\**" />
+    <EmbeddedResource Remove="Areas\Permission\Models\**" />
     <EmbeddedResource Remove="Areas\Permission\ViewModels\**" />
+    <EmbeddedResource Remove="Areas\Permission\Views\**" />
     <EmbeddedResource Remove="net\**" />
+    <None Remove="Areas\Permission\Data\**" />
+    <None Remove="Areas\Permission\Models\**" />
     <None Remove="Areas\Permission\ViewModels\**" />
+    <None Remove="Areas\Permission\Views\**" />
     <None Remove="net\**" />
   </ItemGroup>
 
@@ -45,9 +57,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Permission\Data\" />
-    <Folder Include="Areas\Permission\Models\" />
-    <Folder Include="Areas\Permission\Views\" />
     <Folder Include="wwwroot\userfiles\" />
   </ItemGroup>
 
@@ -83,6 +92,13 @@
   <ItemGroup>
     <ProjectReference Include="..\xyj.acs\xyj.acs.csproj" />
     <ProjectReference Include="..\xyj.core\xyj.core.csproj" />
+    <ProjectReference Include="..\xyj.study\xyj.study.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="data\ip\qqwry.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

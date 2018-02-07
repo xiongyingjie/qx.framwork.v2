@@ -30,7 +30,7 @@ namespace CodeTool
                 "错误提示",
                 "功能说明"
             };   
-            ListViewBinding(lv_regex, head,SQL_Regex().ExecuteReader2(ConnectionString("qx.system")));
+            ListViewBinding(lv_regex, head,SQL_Regex().ExecuteReader2(ConnectionString("sys.core")));
         }
 
         private void tb_error_tip_TextChanged(object sender, EventArgs e)

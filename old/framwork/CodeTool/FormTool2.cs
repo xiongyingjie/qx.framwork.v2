@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using CodeTool.Extension;
 using CodeTool.Helper;
 using CodeTool.Models;
-using CodeTool.Properties;
+
 using Microsoft.VisualBasic;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Models;
@@ -385,7 +385,7 @@ namespace CodeTool
                 {
                    
                     var  js=
-@"render(function(){
+@"render(function(model){
 var cfg=[];
 cfg.push(
     group([
@@ -402,6 +402,7 @@ return cfg;
                 get
                 {
 
+
                     var js =
 @"render([
     group([
@@ -415,13 +416,18 @@ return cfg;
             {
                 get
                 {
-
                     var js =
-@"render([
+@"render(function(model){
+var cfg=[];
+cfg.push(
     group([
 ";
-                    js += JavaScript[1] +
-@"],'标题')],'','" + DbApi("find") + "&id='+q.id" + ",'','详情');";
+                    js += JavaScript[0] +
+@"],'标题'));
+return cfg;
+},''" + ",'" + DbApi("find") + "&id='+q.id" + ",'详情');";
+
+           
                     return js;
                 }
             }
@@ -462,7 +468,7 @@ string.Format(@"render([
                 {
                     var js = string.Format(@"List();
 function List() {{
-    render(function () {{
+    render(function (row,model) {{
         var cfg = [
             table(model),
             button(""刷新"", ""1:5"", Color.blue, function () {{
@@ -1041,12 +1047,18 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
         }
         private void WriteDebugFiles()
         {
+            //生成debug目录 名称
             var id = DbName.Replace(".", "-") + "-" + DateTime.Now.FormatTime(false);
-            var visitDir = "debug\\" + DbName.Replace(".", "-") + "\\" + DateTime.Now.FormatTime(false) + "\\";
-            var debugDir = LastDir + "\\web\\debug\\";
-            var destDir = LastDir + "\\web\\" + visitDir;
-            var testJs = LastDir + "\\web\\core\\test\\" + "all.js";
-            var testJsBak = LastDir + "\\web\\core\\test\\" + "all-bak.js";
+            //生成debug目录 相对 物理目录路径 (去除特殊字符)
+            var visitDir = DbName.Replace(".", "-") + "\\" + DateTime.Now.FormatTime(false) + "\\";
+            //生成debug目录 绝对 物理目录路径
+            var debugDir = LastDir + "\\addons\\sys\\template\\views\\form\\debug\\";
+            //生成debug目录 完整 物理目录路径
+            var destDir = debugDir + visitDir;
+            //设置all.js路径
+            var testJs = LastDir + "\\addons\\sys\\template\\views\\form\\test\\" + "all.js";
+            //设置all-bak.js路径
+            var testJsBak = LastDir + "\\addons\\sys\\template\\views\\form\\test\\" + "all-bak.js";
             var addJs = destDir + "add.js";
             var editJs = destDir + "update.js";
             var detailJs = destDir + "detail.js";
@@ -1064,7 +1076,7 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
                   {{ text: '删除', value: '{2}', id: '{0}-delete' }},
                   {{ text: '下拉', value: '*f/{1}items', id: '{0}-items' }},
                   {{ text: '列表', value: '*f/{1}list', id: '{0}-list' }}
-              ]));", id, visitDir.Replace("\\", "/"), rtb_output_delete.Text)).
+              ]));", id, ("debug\\"+visitDir).Replace("\\", "/"), rtb_output_delete.Text)).
           Replace("testIdArray = [", "testIdArray=[").Replace("testIdArray=[", "testIdArray=['" + id + "',");
             if (ck_clean.Checked)
             {//清理调试目录
@@ -1080,11 +1092,11 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             rtb_output_items.Text.WriteFile(itemsJs);
             rtb_output_list.Text.WriteFile(listJs);
             TipInfo("写入成功");
-           
+
         }
         private void OpenSaveFileDialog()
         {
-              var sfd = new SaveFileDialog();
+            var sfd = new SaveFileDialog();
             sfd.InitialDirectory = "E:\\svn\\jwxt\\html\\web\\";
             //设置文件类型 
             sfd.Filter = "javascript文件（*.js）|";
@@ -1105,14 +1117,14 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
         private void OpenFolderBrowserDialog()
         {
             var fbd = new FolderBrowserDialog();
-           
+
             fbd.Description = "请选择前端项目所在目录，推荐路径为E:/svn/jwxt/html";
 
             //点了保存按钮进入 
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                
-                if (!Directory.Exists(fbd.SelectedPath + "\\web\\debug\\"))
+
+                if (!Directory.Exists(fbd.SelectedPath + "\\addons\\sys\\template\\views\\form\\debug"))
                 {
                     TipError("目录选择错误，请确保选择了正确的前端项目目录");
                     return;

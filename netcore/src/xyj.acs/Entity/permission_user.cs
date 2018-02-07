@@ -37,8 +37,8 @@ namespace xyj.acs.Entity
         [StringLength(50)]
         public string user_type_id { get; set; }
         [Required]
-        [StringLength(50)]
-        public string sub_system_id { get; set; }
+        [StringLength(300)]
+        public string sub_system_reg_id { get; set; }
 
         [Column(TypeName = "text")]
         public string note { get; set; }

@@ -410,7 +410,8 @@ namespace xyj.acs.Services
             ).ToList();
         }
         public bool Regist(string userId, string userPwd,
-            string nickName = "", string email = "", string phone = "", string userTypeId = "", List<string> roleList = null,string subSys="")
+            string nickName = "", string email = "", string phone = "", string userTypeId = "", 
+            string note = "", List<string> roleList = null,string subSys="")
         {
 
             if (!(userId.HasValue() && userPwd.HasValue()))
@@ -420,7 +421,7 @@ namespace xyj.acs.Services
                     "userPwd=>" + userPwd + "\r\n"
                 );
             }
-        
+            var site = note.ToLower().Replace("http://", "").Replace("https://", "").Replace("/", "");
             #region 基础数据准备
             object result;
             #region  subSystem 
@@ -434,8 +435,26 @@ namespace xyj.acs.Services
                 plateform = "sys"
             };
             result = Db.sub_system.Any(a => a.sub_system_id == subSystem.sub_system_id)
-                ? Db.sub_system.Update(subSystem)
+                ? new object() //  Db.sub_system.Update(subSystem)
                 : Db.sub_system.Add(subSystem);
+            #endregion
+
+            #region subSystemRegDeafult
+
+            var subSystemRegDeafult = new sub_system_reg()
+            {
+                sub_system_reg_id = "deafult",//子系统注册标识
+                sub_system_id = subSystem.sub_system_id,//子系统标识
+                site = "deafult",//注册站点
+                user_id = "deafult",
+                reg_time = DateTime.Now,
+                note = "系统默认，用于兼容以前的旧用户"
+            };
+
+            result = Db.sub_system_reg.Any(a => a.sub_system_id == subSystemRegDeafult.sub_system_id)
+                ? new object() //Db.sub_system_reg.Update(subSystemReg)
+                : Db.sub_system_reg.Add(subSystemRegDeafult);
+            
             #endregion
 
             #region  orglevel 
@@ -447,7 +466,7 @@ namespace xyj.acs.Services
                 note = "由PermissionProvider.Regist于" + DateTime.Now + "自动创建"
             };
              result = Db.organization_level.Any(a => a.organization_level_id == orgLevel.organization_level_id)
-                ? Db.organization_level.Update(orgLevel)
+                ? new object() // Db.organization_level.Update(orgLevel)
                 : Db.organization_level.Add(orgLevel);
             #endregion
 
@@ -460,7 +479,7 @@ namespace xyj.acs.Services
             };
 
             result = Db.orgnization_type.Any(a => a.orgnization_type_id == orgType.orgnization_type_id)
-                ? Db.orgnization_type.Update(orgType)
+                ? new object() //  Db.orgnization_type.Update(orgType)
                 : Db.orgnization_type.Add(orgType);
             #endregion
 
@@ -476,7 +495,7 @@ namespace xyj.acs.Services
                 orgnization_type_id = orgType.orgnization_type_id
             };
             result = Db.orgnization.Any(a => a.orgnization_id == org.orgnization_id)
-                ? Db.orgnization.Update(org)
+                ? new object() //  Db.orgnization.Update(org)
                 : Db.orgnization.Add(org);
             #endregion
 
@@ -492,10 +511,50 @@ namespace xyj.acs.Services
             };
 
             result = Db.role.Any(a => a.role_id == role.role_id)
-                ? Db.role.Update(role)
+                ? new object() // Db.role.Update(role)
                 : Db.role.Add(role);
 
             #endregion
+            #endregion
+
+
+            #region 盗版检测
+            if (subSys.HasValue() && subSys != "deafult")
+            {
+                var fakeApp = new sub_system()
+                {
+                    sub_system_id = subSys,
+                    name = "fake-" + subSys,
+                    create_time = DateTime.Now,
+                    note = "盗版程序:" + subSys + ",盗版首次注册站点:" + note + ",首次注册的用户id:" + userId,
+                    plateform = "fake"
+                };
+                result = Db.sub_system.Any(a => a.sub_system_id == fakeApp.sub_system_id)
+                    ?new object() // Db.sub_system.Update(fakeApp)
+                    : Db.sub_system.Add(fakeApp);
+
+                Db.SaveChanges();
+            }
+
+            #endregion
+
+
+            #region 注册系统
+
+            var subSystemReg = new sub_system_reg()
+            {
+                sub_system_reg_id = subSys+"-"+ site,//子系统注册标识
+                sub_system_id = subSys,//子系统标识
+                site = site,//注册站点
+                user_id = userId,
+                reg_time = DateTime.Now,
+                note = note//保留原始站点信息
+            };
+
+            result = Db.sub_system_reg.Any(a => a.sub_system_id == subSystemReg.sub_system_id && a.site == subSystemReg.site)
+                ? new object() //Db.sub_system_reg.Update(subSystemReg)
+                : Db.sub_system_reg.Add(subSystemReg);
+            Db.SaveChanges();
             #endregion
 
 
@@ -503,7 +562,7 @@ namespace xyj.acs.Services
 
             var user = new permission_user()
             {
-                user_id = userId,
+                user_id =  userId,//同个用户打开不同站点处理为不同用户
                 user_pwd = NoneEncrypt(userPwd),
                 nick_name = nickName.CheckValue("none"),
                 user_type_id = userTypeId.CheckValue("0"),
@@ -511,8 +570,10 @@ namespace xyj.acs.Services
                 phone = phone.CheckValue("none"),
                 register_date = DateTime.Now,
                 last_login_date = DateTime.Now,
-                sub_system_id = subSys.CheckValue(subSystem.sub_system_id)
+                sub_system_reg_id = subSystemReg.sub_system_reg_id,
+                note= note//原始站点
             };
+
             result = Db.permission_user.Any(a => a.user_id == user.user_id)
                 ? Db.permission_user.Update(user)
                 : Db.permission_user.Add(user);
@@ -529,7 +590,7 @@ namespace xyj.acs.Services
                 orgnization_id = org.orgnization_id
             };
             result = Db.user_orgnization.Any(a => a.user_orgnization_id == userOrg.user_orgnization_id)
-                ? Db.user_orgnization.Update(userOrg)
+                ? new object() //  Db.user_orgnization.Update(userOrg)
                 : Db.user_orgnization.Add(userOrg);
             #endregion
 
@@ -545,7 +606,7 @@ namespace xyj.acs.Services
                 user_role_id = user.user_id + "-" + role.role_id
             };
             result = Db.user_role.Any(a => a.user_role_id == userRole.user_role_id)
-                ? Db.user_role.Update(userRole)
+                ? new object() //  Db.user_role.Update(userRole)
                 : Db.user_role.Add(userRole);
             #endregion
 
@@ -567,7 +628,7 @@ namespace xyj.acs.Services
                         user_role_id = user.user_id + "-" + tempRole.role_id
                     };
                     result = Db.user_role.Any(a => a.user_role_id == tempUserRole.user_role_id)
-                        ? Db.user_role.Update(tempUserRole)
+                        ? new object() // Db.user_role.Update(tempUserRole)
                         : Db.user_role.Add(tempUserRole);
 
                 }

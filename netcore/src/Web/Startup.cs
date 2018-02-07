@@ -1,18 +1,17 @@
-﻿using System;
-using System.IO;
+﻿
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.FileProviders;
+
 using Web.Controllers.Filter;
 using xyj.acs.Interfaces;
 using xyj.acs.Services;
 using xyj.core.Interfaces;
 using xyj.core.Services;
+using xyj.study.Interfaces;
+using xyj.study.Services;
 
 
 namespace Web
@@ -34,7 +33,9 @@ namespace Web
             services.AddSession();//使用session
             services.AddTransient<IAcsService, AcsService>();
             services.AddTransient<IReportServices, ReportServices>();
+            services.AddTransient<IYlService, YlService>();
 
+            
             //  services.AddDbContext<qx.permmision.v2.Entity.MyContext>(options => options.UseSqlServer("qx.permmision.v2"));
             //异常处理
             services.AddMvc(options =>

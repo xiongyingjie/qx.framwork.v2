@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="">
+	<application setting="false">
+		<name><![CDATA[同城飞机大战]]></name>
+		<identifie><![CDATA[panda_airplan]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[activity]]></type>
+		<ability><![CDATA[这是一款突破经典的飞行射击类精品手机游戏，后期将增加同城排行榜，同城红包]]></ability>
+		<description><![CDATA[这是一款突破经典的飞行射击类精品手机游戏，后期将增加同城排行榜，同城红包]]></description>
+		<author><![CDATA[xiongyingjie]]></author>
+		<url><![CDATA[]]></url>
+	</application>
+	<platform>
+		<subscribes>
+		</subscribes>
+		<handles>
+			<message type="text" />
+		</handles>
+		<rule embed="false" />
+		<card embed="false" />
+		<supports>
+			<item type="app" />
+		</supports>
+	</platform>
+	<bindings>
+    <cover>
+      <entry title="同城飞机大战" do="init" state="" direct="true" />
+    </cover>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>

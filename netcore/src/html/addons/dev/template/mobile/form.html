@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>中奖信息</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			-webkit-box-sizing: border-box;
+		    box-sizing: border-box;
+		    -webkit-user-select: none;
+		    outline: 0;
+		    -webkit-tap-highlight-color: transparent;
+		    -webkit-tap-highlight-color: transparent;
+		}
+		body {
+		    line-height: 1.6;
+		    font-family: -apple-system-font,Helvetica Neue,sans-serif;
+		}
+        .zjtopbox {
+            width: 100%;
+            overflow: hidden;
+            height: 10rem;
+            background: url(img/zjbg.png) no-repeat center top/100% 10rem;
+            position: relative;
+        }
+		.zjtopbox .zjtxtinfo{
+			position: absolute;
+			width: 6.1rem;
+			height: 3.35rem;
+			background: url(img/zjtxtbg.png) no-repeat center top/6.1rem 3.35rem;
+			padding: 25px 30px;
+			left: 50%;
+			margin-left: -3.05rem;
+			color: #fff1d9;
+			font-size: 14px;
+			top: 4.2rem;
+		}
+		.zjtopbox .zjtxtinfo .title{
+			margin-bottom: 10px;
+			text-align: center;
+			font-size: 16px;
+		}
+		.zjtxtbox{
+			background: #da3f59;
+			overflow: hidden;
+		}
+		.zjtxtbox .list{
+			padding: 0 15px;
+			font-size: 0;
+		}
+		.zjtxtbox .list+.list{
+			margin-top: 10px;
+		}
+		.zjtxtbox .list .type{
+			color: #ffedcd;
+			font-size: 15px;
+			margin-bottom: 5px;
+		}
+		.zjtxtbox .list input{
+			margin: 0;
+			border: none;
+			border-radius: 4px;
+			background: #f5f5f5;
+			padding: 0 8px;
+			height: 32px;
+			font-size: 15px;
+			color: #333;
+		    line-height: 21px;
+			width: 100%;
+			-webkit-appearance: none;
+    		outline: 0;
+		}
+		.zjtxtbox .list .info{
+			font-size: 14px;
+			color: #ffedcd;
+		}
+		.zjxxbox .btns{
+			margin:20px 15px;
+		}
+		.zjxxbox .btns .ui-btn{
+			
+			position: relative;
+		    display: block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    padding-left: 14px;
+		    padding-right: 14px;
+		    box-sizing: border-box;
+		    font-size: 18px;
+		    text-align: center;
+		    text-decoration: none;
+		    color: #fff;
+		    line-height: 2.55555556;
+		    border-radius: 5px;
+		    -webkit-tap-highlight-color: rgba(0,0,0,0);
+		    overflow: hidden;
+		    line-height: 44px;
+   			height: 44px;
+   			background-color: #ffedcd;
+			color: #da3f59;
+		}
+	</style>
+	<body>
+		<div class="zjxxbox">
+			<div class="zjtopbox">
+				<div class="zjtxtinfo">
+					<div class="title">您抽中 50元流量卡</div>
+					<p>请尽快提交您的个人联系方式，以便发放奖品，不提交将视为自动放弃本次抽奖。</p>
+				</div>
+			</div>
+			<div class="zjtxtbox">
+				<div class="list">
+					<p class="type">您的姓名</p>
+					<input type="text" placeholder="请输入您的姓名"/>
+				</div>
+				<div class="list">
+					<p class="type">联系电话</p>
+					<input type="text" placeholder="请输入您的电话"/>
+				</div>
+				<div class="list">
+					<p class="type">邮寄地址</p>
+					<input type="text" placeholder="请输入您的邮寄地址"/>
+				</div>
+				<div class="list">
+					<p class="type">备注内容</p>
+					<input type="text" placeholder="请输入您的备注内容"/>
+				</div>
+				<div class="list">
+					<p class="info">活动结束7个工作日内发放奖励到填写的手机号码。</p>
+				</div>
+				<div class="btns"><a href="" class="ui-btn">提交</a></div>
+			</div>
+		</div>
+		<script>		
+		//rem计算方式：设计图尺寸px / 100 = 实际rem  例: 100px = 1rem
+		!function (window) {
+		    /* 设计图文档宽度 */
+		    var docWidth = 750;		
+		    var doc = window.document,
+		        docEl = doc.documentElement,
+		        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+		
+		    var recalc = (function refreshRem () {
+		        var clientWidth = docEl.getBoundingClientRect().width;
+		
+		        /* 8.55：小于320px不再缩小，11.2：大于420px不再放大 */
+		        docEl.style.fontSize = Math.max(Math.min(20 * (clientWidth / docWidth), 11.2), 8.55) * 5 + 'px';
+		
+		        return refreshRem;
+		    })();
+		
+		    /* 添加倍屏标识，安卓为1 */
+		    docEl.setAttribute('data-dpr', window.navigator.appVersion.match(/iphone/gi) ? window.devicePixelRatio : 1);
+		
+		    if (/iP(hone|od|ad)/.test(window.navigator.userAgent)) {
+		        /* 添加IOS标识 */
+		        doc.documentElement.classList.add('ios');
+		        /* IOS8以上给html添加hairline样式，以便特殊处理 */
+		        if (parseInt(window.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1], 10) >= 8)
+		            doc.documentElement.classList.add('hairline');
+		    }
+		
+		    if (!doc.addEventListener) return;
+		    window.addEventListener(resizeEvt, recalc, false);
+		    doc.addEventListener('DOMContentLoaded', recalc, false);
+		
+		}(window);
+		</script>
+	</body>
+</html>

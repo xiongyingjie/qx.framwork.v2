@@ -1,0 +1,116 @@
+@charset "utf-8";
+
+body {
+	background-color: #f1f1f1;
+	font-family: Tahoma, Arial, Roboto, ”Droid Sans”, ”Helvetica Neue”, ”Droid Sans Fallback”, ”Heiti SC”, sans-self;
+}
+.content_box {
+	min-height: 480px;
+	min-width: 320px;
+	max-width: 540px;
+	overflow: hidden;
+	position: relative;
+}
+.banner_box {
+	width: 100%;
+	height: 133px;
+	display: inline-block;
+	background: url(../imges/banner6.jpg) center 0 no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+.title_box {
+	width: 100%;
+	min-height: 80px;
+	text-align: center;
+}
+.titlt_con i {
+	width: 20px;
+	height: 2px;
+	display: inline-block;
+	background-color: #555a5d;
+	border: solid 1px #0e0e0e;
+}
+.titlt_con h2 {
+	font: bold 28px/40px "黑体";
+}
+.titlt_con p {
+	font: normal 16px/20px "微软雅黑";
+}
+.par_logobox {
+	min-height: 300px;
+	width: 100%;
+}
+.par_logobox ul li {
+	width: 50%;
+	height: 60px;
+	float: left;
+	display: block;
+	margin-bottom: 10px;
+}
+.par_logobox ul li a {
+	margin: 10px 5px 0 10px;
+	background-color: #FFF;
+	display: block;
+	height: 60px;
+	text-align: center;
+}
+.par_logobox ul li:nth-child(1) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners1.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(2) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners2.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(3) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners3.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(4) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners4.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(5) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners5.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(6) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners6.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(7) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners7.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(8) a i {
+	width: 140px;
+	height: 60px;
+	display: inline-block;
+	background: url(../imges/Partners8.png) center center no-repeat;
+	background-size: 140px 51px;
+}
+.par_logobox ul li:nth-child(2) a, .par_logobox ul li:nth-child(4) a, .par_logobox ul li:nth-child(6) a, .par_logobox ul li:nth-child(8) a {
+	margin: 10px 10px 0 5px;
+}

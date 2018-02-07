@@ -5,7 +5,7 @@ namespace xyj.acs.Entity
     public partial class user_orgnization
     {
         [Key]
-        [StringLength(50)]
+        [StringLength(150)]
         public string user_orgnization_id { get; set; }
 
         [Required]

@@ -41,6 +41,7 @@ namespace xyj.acs.Entity
         public virtual DbSet<user_role> user_role { get; set; }
         public virtual DbSet<user_type> user_type { get; set; }
         public virtual DbSet<sub_system> sub_system { get; set; }
+        public virtual DbSet<sub_system_reg> sub_system_reg { get; set; }
         public virtual DbSet<sub_system_data> sub_system_data { get; set; }
         public virtual DbSet<sub_system_data_log> sub_system_data_log { get; set; }
         

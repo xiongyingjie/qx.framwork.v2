@@ -433,7 +433,7 @@ function InitMenuEvent(selector, type, positonInfo) {
             //  old = (old.indexOf("*") > -1 ) ? old : ("*" + type + old);
             old = (old.indexOf("*") > -1) ?
                 old : (old.toLowerCase().indexOf("delete") > -1) ?
-                ("*d" + old) : ("*" + type + old);
+                    ("*d" + old) : ("*" + type + old);
 
         }
         obj.removeAttr("href");//移除href防止跳转
@@ -859,35 +859,35 @@ function QxGrid() {
             //DropDownList = 4
 
             switch (item.type) {
-            case 201:
-                {
-                    value = $("#" + item.id).val();
-                };
-                break;
-            case 203:
-                {
-                    value = $("#" + item.id).val();
-                };
-                break;
-            case 209:
-                {
-                    value = document.getElementById(item.id).value;
-                };
-                break;
-            case 204:
-                {
-                    var x = document.getElementById(item.id);
-                    // console.log(item.id + x);
-                    var selecteditem = x.options[x.selectedIndex];
-                    value = $.hasValue(selecteditem) ? selecteditem.value : ";";
-                };
-                break;
-            default:
-                {
-                    continue;
-                    //  throw exception;
-                };
-                break;
+                case 201:
+                    {
+                        value = $("#" + item.id).val();
+                    };
+                    break;
+                case 203:
+                    {
+                        value = $("#" + item.id).val();
+                    };
+                    break;
+                case 209:
+                    {
+                        value = document.getElementById(item.id).value;
+                    };
+                    break;
+                case 204:
+                    {
+                        var x = document.getElementById(item.id);
+                        // console.log(item.id + x);
+                        var selecteditem = x.options[x.selectedIndex];
+                        value = $.hasValue(selecteditem) ? selecteditem.value : ";";
+                    };
+                    break;
+                default:
+                    {
+                        continue;
+                        //  throw exception;
+                    };
+                    break;
             }
             //清除特殊符号;
             // //debugger
@@ -2815,10 +2815,10 @@ function QxForm() {
         }
         //赋初值
         if ($.hasValue(data)) {
-            //debugger 
+
             for (var i = 0; i < g_formIdArray.length; i++) {
                 var currentId = g_formIdArray[i].id;
-                //debugger 
+
                 $.set(currentId, g_formIdArray[i].type, data[currentId]);
             }
         }
@@ -3192,27 +3192,27 @@ function QxForm() {
 
     //form界面渲染入口
     this.render = function (htmlArray, submiturl, dataUrl, title, overWrite) {
-        if ($.isFunction(htmlArray)) {
-            htmlArray = htmlArray();
-        }
-        if ($.isObject(htmlArray) && !$.hasValue(submiturl)) {
-            //debugger
-            render2(htmlArray);
-            return;
-        }
+        //旧版逻辑兼容
+        if (!$.isFunction(htmlArray)) {
+            //新版1：传入的是json格式的ui配置
+            if ($.isObject(htmlArray) && !$.hasValue(submiturl)) {
+                //debugger
+                render2(htmlArray);
+                return;
+            }
+            //新版2：传入的是内容系统tableId
+            if ($.isString(htmlArray) && !$.hasValue(submiturl)) {
 
-        if ($.isString(htmlArray) && !$.hasValue(submiturl)) {
-
-            $.ajax({
-                url: $.url("/open/gettable?id=" + htmlArray, true),
-                success: function (data) {
-                    //debugger
-                    render2(CovertToUI(data));
-                }
-            });
-            return;
+                $.ajax({
+                    url: $.url("/open/gettable?id=" + htmlArray, true),
+                    success: function (data) {
+                        //debugger
+                        render2(CovertToUI(data));
+                    }
+                });
+                return;
+            }
         }
-
         //是否有绑定值
         if ($.hasValue(dataUrl)) {
             // var url = $.url($.getsubmiturl());
@@ -3220,15 +3220,16 @@ function QxForm() {
                 url: dataUrl, //参数1
                 // data: q,
                 success: function (data, code, msg, url) {
+                    var singleRow = data;
                     //debugger
                     if ($.isArray(data) && data.length > 0) {
-                        data = data[0]; //取单行记录
+                        singleRow = data[0]; //取单行记录(该逻辑存在问题,无法兼容table,因此多增加一个singleRow变量)
                     } else if (!$.hasValue(data)) {
                         $.warn("从" + url + "获取的数据为空");
                     }
                     $.log(data);
-                    model = data;
-
+                    // model = data;不再使用全局变量存储绑定数据
+                    htmlArray = htmlArray(singleRow, data);//增加回调参数
                     InitFormControl(htmlArray, submiturl, dataUrl, title, overWrite, data);
                 }
             });
@@ -3247,191 +3248,191 @@ function QxForm() {
             var htmlObj = "";
             var cfg = fields[i];
             switch (cfg.type) {
-            case "input":
-                {
-                    htmlObj = qx.form.input(cfg.label, cfg.name, cfg.value, cfg.num, cfg.tip, cfg.reg);
-                }
-                break;
-            case "showinput":
-                {
-                    htmlObj = qx.form.showInput(cfg.label, cfg.name, cfg.value, cfg.num);
-                }
-                break;
-            case "time":
-                {
-                    htmlObj = qx.form.time(cfg.label, cfg.name, cfg.value, cfg.num, cfg.tip);
-                }
-                break;
-            case "showTime":
-                {
-                    htmlObj = qx.form.showTime(cfg.label, cfg.name, cfg.value, cfg.num);
-                }
-                break;
-            case "date":
-                {
-                    htmlObj = qx.form.date(cfg.label, cfg.name, cfg.value, cfg.num, cfg.tip);
-                }
-                break;
-            case "showDate":
-                {
-                    htmlObj = qx.form.showDate(cfg.label, cfg.name, cfg.value, cfg.num);
-                }
-                break;
-            case "select":
-                {
-                    htmlObj = qx.form.select(cfg.label, cfg.name, cfg.option, cfg.value, cfg.num, cfg.readonly);
-                }
-                break;
-            case "showSelect":
-                {
-                    htmlObj = qx.form.showSelect(cfg.label, cfg.name, cfg.option, cfg.value, cfg.num);
-                }
-                break;
-            case "radio":
-                {
-                    htmlObj = qx.form.radio(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.value);
-                }
-                break;
-            case "showRadio":
-                {
-                    htmlObj = qx.form.showRadio(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.value);
-                }
-                break;
-            case "editor":
-                {
-                    htmlObj = qx.form.editor(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height);
-                }
-                break;
-            case "showEditor":
-                {
-                    htmlObj = qx.form.showEditor(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height);
-                }
-                break;
-            case "checkbox":
-                {
-                    htmlObj = qx.form.checkbox(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.valueArray);
-                }
-                break;
-            case "showCheckbox":
-                {
-                    htmlObj = qx.form.showCheckbox(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.valueArray);
-                }
-                break;
-            case "_switch":
-                {
-                    htmlObj = qx.form._switch(cfg.label, cfg.name, cfg.num, cfg.value, cfg.onText, cfg.offText);
-                }
-                break;
-            case "showSwitch":
-                {
-                    htmlObj = qx.form.showSwitch(cfg.label, cfg.name, cfg.num, cfg.value, cfg.onText, cfg.offText);
-                }
-                break;
-            case "area":
-                {
-                    htmlObj = qx.form.area(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height, cfg.validators, cfg.tip);
-                }
-                break;
-            case "showArea":
-                {
-                    htmlObj = qx.form.showArea(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height, cfg.validators, cfg.tip);
-                }
-                break;
-            case "file":
-                {
-                    htmlObj = qx.form.file(cfg.label, cfg.name, cfg.num, cfg.folder, cfg.url);
-                }
-                break;
-            case "showfile":
-                {
-                    htmlObj = qx.form.showfile(cfg.label, cfg.name, cfg.files, cfg.num, cfg.folder, cfg.url);
-                }
-                break;
-            case "image":
-                {
-                    htmlObj = qx.form.image(cfg.imType, cfg.value, cfg.num, cfg.tip);
-                }
-                break;
-            case "button":
-                {
-                    htmlObj = qx.form.button(cfg.label, cfg.num, cfg.color, cfg.onclick);
-                }
-                break;
-            case "tab":
-                {
-                    htmlObj = qx.form.tab(cfg.contents, cfg.num);
-                }
-                break;
-            case "pre":
-                {
-                    htmlObj = qx.form.pre(cfg.code, cfg.num);
-                }
-                break;
-            case "dropdown ":
-                {
-                    htmlObj = qx.form.dropdown(cfg.label, cfg.li, cfg.color, cfg.num);
-                }
-                break;
-            case "panel":
-                {
-                    htmlObj = qx.form.panel(cfg.title, cfg.body, cfg.num, cfg.color, cfg.footer);
-                }
-                break;
-            case "listgroup":
-                {
-                    htmlObj = qx.form.listgroup(cfg.title, cfg.libody, cfg.num);
-                }
-                break;
-            case "media":
-                {
-                    htmlObj = qx.form.media(cfg.imgurl, cfg.header, cfg.text, cfg.num);
-                }
-                break;
-            case "_alert":
-                {
-                    htmlObj = qx.form.alert(cfg.text, cfg.num, cfg.color);
-                }
-                break;
-            case "thumbnail":
-                {
-                    htmlObj = qx.form.thumbnail(cfg.imgurl, cfg.body, cfg.num);
-                }
-                break;
-            case "pageheader":
-                {
-                    htmlObj = qx.form.pageheader(cfg.title, cfg.subtitle, cfg.num);
-                }
-                break;
-            case "carousel":
-                {
-                    htmlObj = qx.form.carousel(cfg.imgUrl, cfg.num);
-                }
-                break;
-            case "html":
-                {
-                    htmlObj = qx.form.html(cfg.html);
-                }
-                break;
-            case "hide":
-                {
-                    htmlObj = qx.form.hide(cfg.name, cfg.value);
-                }
-                break;
-            case "hides":
-                {
-                    htmlObj = qx.form.hides(cfg.nameArray, cfg.valueArray);
-                }
-                break;
-            case "hideTime":
-                {
-                    htmlObj = qx.form.hideTime(cfg.name, cfg.value);
-                }
-                break;
-            case "hideTimes":
-                {
-                    htmlObj = qx.form.hideTimes(cfg.nameArray, cfg.valueArray);
-                }
-                break;
+                case "input":
+                    {
+                        htmlObj = qx.form.input(cfg.label, cfg.name, cfg.value, cfg.num, cfg.tip, cfg.reg);
+                    }
+                    break;
+                case "showinput":
+                    {
+                        htmlObj = qx.form.showInput(cfg.label, cfg.name, cfg.value, cfg.num);
+                    }
+                    break;
+                case "time":
+                    {
+                        htmlObj = qx.form.time(cfg.label, cfg.name, cfg.value, cfg.num, cfg.tip);
+                    }
+                    break;
+                case "showTime":
+                    {
+                        htmlObj = qx.form.showTime(cfg.label, cfg.name, cfg.value, cfg.num);
+                    }
+                    break;
+                case "date":
+                    {
+                        htmlObj = qx.form.date(cfg.label, cfg.name, cfg.value, cfg.num, cfg.tip);
+                    }
+                    break;
+                case "showDate":
+                    {
+                        htmlObj = qx.form.showDate(cfg.label, cfg.name, cfg.value, cfg.num);
+                    }
+                    break;
+                case "select":
+                    {
+                        htmlObj = qx.form.select(cfg.label, cfg.name, cfg.option, cfg.value, cfg.num, cfg.readonly);
+                    }
+                    break;
+                case "showSelect":
+                    {
+                        htmlObj = qx.form.showSelect(cfg.label, cfg.name, cfg.option, cfg.value, cfg.num);
+                    }
+                    break;
+                case "radio":
+                    {
+                        htmlObj = qx.form.radio(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.value);
+                    }
+                    break;
+                case "showRadio":
+                    {
+                        htmlObj = qx.form.showRadio(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.value);
+                    }
+                    break;
+                case "editor":
+                    {
+                        htmlObj = qx.form.editor(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height);
+                    }
+                    break;
+                case "showEditor":
+                    {
+                        htmlObj = qx.form.showEditor(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height);
+                    }
+                    break;
+                case "checkbox":
+                    {
+                        htmlObj = qx.form.checkbox(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.valueArray);
+                    }
+                    break;
+                case "showCheckbox":
+                    {
+                        htmlObj = qx.form.showCheckbox(cfg.label, cfg.name, cfg.items, cfg.num, cfg.vertical, cfg.valueArray);
+                    }
+                    break;
+                case "_switch":
+                    {
+                        htmlObj = qx.form._switch(cfg.label, cfg.name, cfg.num, cfg.value, cfg.onText, cfg.offText);
+                    }
+                    break;
+                case "showSwitch":
+                    {
+                        htmlObj = qx.form.showSwitch(cfg.label, cfg.name, cfg.num, cfg.value, cfg.onText, cfg.offText);
+                    }
+                    break;
+                case "area":
+                    {
+                        htmlObj = qx.form.area(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height, cfg.validators, cfg.tip);
+                    }
+                    break;
+                case "showArea":
+                    {
+                        htmlObj = qx.form.showArea(cfg.label, cfg.name, cfg.value, cfg.num, cfg.height, cfg.validators, cfg.tip);
+                    }
+                    break;
+                case "file":
+                    {
+                        htmlObj = qx.form.file(cfg.label, cfg.name, cfg.num, cfg.folder, cfg.url);
+                    }
+                    break;
+                case "showfile":
+                    {
+                        htmlObj = qx.form.showfile(cfg.label, cfg.name, cfg.files, cfg.num, cfg.folder, cfg.url);
+                    }
+                    break;
+                case "image":
+                    {
+                        htmlObj = qx.form.image(cfg.imType, cfg.value, cfg.num, cfg.tip);
+                    }
+                    break;
+                case "button":
+                    {
+                        htmlObj = qx.form.button(cfg.label, cfg.num, cfg.color, cfg.onclick);
+                    }
+                    break;
+                case "tab":
+                    {
+                        htmlObj = qx.form.tab(cfg.contents, cfg.num);
+                    }
+                    break;
+                case "pre":
+                    {
+                        htmlObj = qx.form.pre(cfg.code, cfg.num);
+                    }
+                    break;
+                case "dropdown ":
+                    {
+                        htmlObj = qx.form.dropdown(cfg.label, cfg.li, cfg.color, cfg.num);
+                    }
+                    break;
+                case "panel":
+                    {
+                        htmlObj = qx.form.panel(cfg.title, cfg.body, cfg.num, cfg.color, cfg.footer);
+                    }
+                    break;
+                case "listgroup":
+                    {
+                        htmlObj = qx.form.listgroup(cfg.title, cfg.libody, cfg.num);
+                    }
+                    break;
+                case "media":
+                    {
+                        htmlObj = qx.form.media(cfg.imgurl, cfg.header, cfg.text, cfg.num);
+                    }
+                    break;
+                case "_alert":
+                    {
+                        htmlObj = qx.form.alert(cfg.text, cfg.num, cfg.color);
+                    }
+                    break;
+                case "thumbnail":
+                    {
+                        htmlObj = qx.form.thumbnail(cfg.imgurl, cfg.body, cfg.num);
+                    }
+                    break;
+                case "pageheader":
+                    {
+                        htmlObj = qx.form.pageheader(cfg.title, cfg.subtitle, cfg.num);
+                    }
+                    break;
+                case "carousel":
+                    {
+                        htmlObj = qx.form.carousel(cfg.imgUrl, cfg.num);
+                    }
+                    break;
+                case "html":
+                    {
+                        htmlObj = qx.form.html(cfg.html);
+                    }
+                    break;
+                case "hide":
+                    {
+                        htmlObj = qx.form.hide(cfg.name, cfg.value);
+                    }
+                    break;
+                case "hides":
+                    {
+                        htmlObj = qx.form.hides(cfg.nameArray, cfg.valueArray);
+                    }
+                    break;
+                case "hideTime":
+                    {
+                        htmlObj = qx.form.hideTime(cfg.name, cfg.value);
+                    }
+                    break;
+                case "hideTimes":
+                    {
+                        htmlObj = qx.form.hideTimes(cfg.nameArray, cfg.valueArray);
+                    }
+                    break;
             }
             htmlArray.push(htmlObj);
         }
@@ -3570,7 +3571,8 @@ function QxForm() {
         if (folder.length > 0 && folder[0] == '/') {
             folder = folder.substring(1, folder.length - 1);
         }
-        url = $.url(url + "?folder=" + folder + "&uid=" + $.uid() + "&unitid=" + $.unitid(), true);//转换地址
+        debugger
+        url = $.url(url + "?folder=" + folder + "&uid=" + $.uid() + "&unitid=" + $.unitid());//转换地址
         var contentId = '#fileupload-' + id;
         var startButton = "#startButton-" + id;
         var cancelButton = "#cancelButton-" + id;

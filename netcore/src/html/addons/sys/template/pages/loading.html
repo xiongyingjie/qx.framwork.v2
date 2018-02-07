@@ -1,0 +1,399 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>loading</title>
+
+    <script src="../plugin/app.js"></script>  
+    <style>
+        .button{
+            font:15px Calibri, Arial, sans-serif;
+
+            /* A semi-transparent text shadow */
+            text-shadow:1px 1px 0 rgba(255,255,255,0.4);
+	
+            /* Overriding the default underline styling of the links */
+            text-decoration:none !important;
+            white-space:nowrap;
+	
+            display:inline-block;
+            vertical-align:baseline;
+            position:relative;
+            cursor:pointer;
+            padding:10px 20px;
+	
+            background-repeat:no-repeat;
+
+            /* The following two rules are fallbacks, in case
+	   the browser does not support multiple backgrounds. */
+
+            background-position:bottom left;
+            background-image:url('img/button_bg.png');
+	
+            /* Multiple backgrounds version. The background images
+	   are defined individually in color classes */
+	
+            background-position:bottom left, top right, 0 0, 0 0;
+            background-clip:border-box;
+	
+            /* Applying a default border raidus of 8px */
+	
+            -moz-border-radius:8px;
+            -webkit-border-radius:8px;
+            border-radius:8px;
+	
+            /* A 1px highlight inside of the button */
+	
+            -moz-box-shadow:0 0 1px #fff inset;
+            -webkit-box-shadow:0 0 1px #fff inset;
+            box-shadow:0 0 1px #fff inset;
+	
+            /* Animating the background positions with CSS3 */
+            /* Currently works only in Safari/Chrome */
+	
+            -webkit-transition:background-position 1s;
+            -moz-transition:background-position 1s;
+            transition:background-position 1s;
+        }
+
+        .button:hover{
+	
+            /* The first rule is a fallback, in case the browser
+	   does not support multiple backgrounds
+	*/
+	
+            background-position:top left;
+            background-position:top left, bottom right, 0 0, 0 0;
+        }
+
+        .button:active{
+            /* Moving the button 1px to the bottom when clicked */
+            bottom:-1px;
+        }
+
+        /* The three buttons sizes */
+
+        .button.big		{ font-size:30px;}
+         .blue.button{
+             color:#0f4b6d !important;
+	
+             border:1px solid #84acc3 !important;
+	
+             /* A fallback background color */
+             background-color: #48b5f2;
+	
+             /* Specifying a version with gradients according to */
+	
+             background-image:	url('img/button_bg.png'), url('img/button_bg.png'),
+                              	-moz-radial-gradient(	center bottom, circle,
+                              	                     	rgba(89,208,244,1) 0,rgba(89,208,244,0) 100px),
+                              	-moz-linear-gradient(#4fbbf7, #3faeeb);
+
+             background-image:	url('img/button_bg.png'), url('img/button_bg.png'),
+                              	-webkit-gradient(	radial, 50% 100%, 0, 50% 100%, 100,
+                              	                 	from(rgba(89,208,244,1)), to(rgba(89,208,244,0))),
+                              	-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4fbbf7), to(#3faeeb));
+         }
+
+        .blue.button:hover{
+            background-color:#63c7fe;
+	
+            background-image:	url('img/button_bg.png'), url('img/button_bg.png'),
+                             	-moz-radial-gradient(	center bottom, circle,
+                             	                     	rgba(109,217,250,1) 0,rgba(109,217,250,0) 100px),
+                             	-moz-linear-gradient(#63c7fe, #58bef7);
+						
+            background-image:	url('img/button_bg.png'), url('img/button_bg.png'),
+                             	-webkit-gradient(	radial, 50% 100%, 0, 50% 100%, 100,
+                             	                 	from(rgba(109,217,250,1)), to(rgba(109,217,250,0))),
+                             	-webkit-gradient(linear, 0% 0%, 0% 100%, from(#63c7fe), to(#58bef7));
+        }
+
+        body {
+            background-color: #03A9F4;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        svg {
+            /*border: 1px solid Linen;*/
+            height: 100%;
+            position: absolute;
+            left: calc(50vw - 50vh);
+        }
+
+
+        #_slider rect {
+            fill: White;
+            pointer-events: none;
+        }
+
+        #_slider circle {
+            fill: White;
+            /*stroke: #333;*/
+        }
+
+        text {
+            dominant-baseline: central;
+            text-anchor: middle;
+            font-size: 5px;
+            pointer-events: none;
+            fill: #028bca;
+        }
+
+        svg text::selection {
+            background: none;
+        }
+    </style>
+        
+</head>
+<body id="body">
+
+<svg viewBox="0 0 200 200">
+    <defs>
+        <filter id="goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+            <feColorMatrix in="blur" mode="matrix"
+                           values="1 0 0  0   0
+                             0 1 0  0   0
+                             0 0 1  0   0
+                             0 0 0 18  -7" result="goo"/>
+            <feBlend in="SourceGraphic" in2="goo"/>
+        </filter>
+    </defs>
+    <g id="_slider" transform="translate(100,100)">
+        <rect x="-50" y="-1" width="100" height="2"/>
+        <g id="_thumb" filter="url(#goo)"> </g>
+    </g>
+    <!--<div>
+        <a class="button big blue" id="full" style="margin-top: 20%;float:initial" onclick="fullScreen()"></a>
+    </div>-->
+</svg>
+
+<script>
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const XLink_NS = "http://www.w3.org/1999/xlink";
+    const svg = document.querySelector("svg");
+    let draggable = false;
+    let rid = null;
+    let m = { x: 0, y: 0 };
+    const t = { x: 100, y: 100 }; // translate
+
+    let dx = 0; // distance between the center of the balloon and the click point
+
+    const spring = 0.09;
+    const friction = 0.80;
+
+    class Slider {
+        constructor() {
+            this.target = {
+                x: -50,
+                y: 0,
+                r: 5,
+                fontSize: 5
+            };
+            this.pos = {
+                x: -50,
+                y: 0,
+                r: 5,
+                fontSize: 5
+            };
+
+            this.vel = {
+                x: 0,
+                y: 0,
+                r: 0,
+                fontSize: 0
+            };
+            /*this.track = {
+              props: { x: -50, y: -1, width: 100, height: 2 },
+              tagName: "rect"
+            };*/
+            this.thumb = {
+                props: { cx: 0, cy: 0, r: 2, style: "pointer-events: none;" },
+                tagName: "circle"
+            };
+            this.balloon = {
+                props: { cx: 0, cy: 0, r: 5 },
+                tagName: "circle"
+            };
+            this.label = {
+                props: { x: 0, y: 0, style: "font-size:5px" },
+                tagName: "text",
+                text_content: "0"
+            };
+            //this.track.elmt = drawElement(this.track, _slider);
+            this.thumb.elmt = drawElement(this.thumb, _thumb);
+            this.balloon.elmt = drawElement(this.balloon, _thumb);
+            this.label.elmt = drawElement(this.label, _thumb);
+        }
+
+        getThisTargetY() {
+            if (draggable) {
+                this.target.y = -11;
+                this.target.r = 9;
+                this.target.fontSize = 8;
+            } else {
+                this.target.y = 0;
+                this.target.r = 5;
+                this.target.fontSize = 5;
+            };
+        }
+
+        getThisTargetX(m) {
+            this.target.x = m.x - dx;
+            if (this.target.x < -50) {
+                this.target.x = -50;
+            }
+            if (this.target.x > 50) {
+                this.target.x = -50;
+            }
+        }
+
+        getNewPos(prop) { //x,y,r,fontSize
+            let dist = this.target[prop] - this.pos[prop];
+            let acc = dist * spring;
+            this.vel[prop] += acc;
+            this.vel[prop] *= friction;
+            this.pos[prop] += this.vel[prop];
+        }
+
+        update() {
+            this.getNewPos("y");
+            this.getNewPos("x");
+            this.getNewPos("r");
+
+            this.thumb.props.cx = this.target.x;
+            this.balloon.props.cx = this.pos.x;
+            this.label.props.x = this.pos.x;
+            this.label.elmt.textContent = Math.round(this.target.x) + 50;
+
+            this.label.props.y = this.balloon.props.cy = this.pos.y;
+            this.label.props.style = "font-size:" + this.target.fontSize + "px";
+            this.balloon.props.r = this.pos.r;
+
+            updateElement(this.label);
+            updateElement(this.thumb);
+            updateElement(this.balloon);
+        }
+    }
+
+    let slider = new Slider();
+
+    function drawElement(o, parent) {
+        let elmt = document.createElementNS(SVG_NS, o.tagName);
+        for (let name in o.props) {
+            if (o.props.hasOwnProperty(name)) {
+                elmt.setAttributeNS(null, name, o.props[name]);
+            }
+        }
+        if (o.text_content) {
+            elmt.textContent = o.text_content;
+        }
+        parent.appendChild(elmt);
+        return elmt;
+    }
+
+    function updateElement(o) {
+        for (let name in o.props) {
+            if (o.props.hasOwnProperty(name)) {
+                o.elmt.setAttributeNS(null, name, o.props[name]);
+            }
+        }
+    }
+
+    function oMousePosSVG(e) {
+        let p = svg.createSVGPoint();
+        p.x = e.clientX;
+        p.y = e.clientY;
+        let ctm = svg.getScreenCTM().inverse();
+        p = p.matrixTransform(ctm);
+        return p;
+    }
+
+    function transformedMousePos(e, t) {
+        let m = oMousePosSVG(e);
+        return {
+            x: m.x - t.x,
+            y: m.y - t.y
+        };
+    }
+
+    function Animation() {
+        requestId = window.requestAnimationFrame(Animation);
+        slider.update();
+    }
+
+    Animation();
+
+    slider.balloon.elmt.addEventListener("mousedown",
+        function(e) {
+            e.preventDefault();
+            draggable = true;
+            svg.style.cursor = "move";
+            m = transformedMousePos(e, t); // mouse position
+            // distance between the center of the balloon and the click point
+            dx = m.x - this.getAttributeNS(null, "cx");
+            slider.getThisTargetY();
+        },
+        false
+    );
+
+    //svg.addEventListener("mouseup",
+    //    function(e) {
+
+    //        draggable = false;
+    //        svg.style.cursor = "default";
+    //        slider.getThisTargetY();
+    //    },
+    //    false
+    //);
+
+    //svg.addEventListener("mousemove",
+    //    function(e) {
+
+    //        if (draggable) {
+
+    //            m = transformedMousePos(e, t);
+    //            slider.getThisTargetX(m);
+    //        } else {
+    //            svg.style.cursor = "default";
+    //        }
+    //    });
+
+    function fullScreen() {
+
+        var el = document.documentElement;
+
+        var rfs = el.requestFullScreen ||
+            el.webkitRequestFullScreen ||
+            el.mozRequestFullScreen ||
+            el.msRequestFullScreen;
+
+        if (typeof rfs != "undefined" && rfs) {
+
+            rfs.call(el);
+
+        } else if (typeof window.ActiveXObject != "undefined") {
+
+            //for IE，这里其实就是模拟了按下键盘的F11，使浏览器全屏
+
+            var wscript = new ActiveXObject("WScript.Shell");
+
+            if (wscript != null) {
+
+                wscript.SendKeys("{F11}");
+
+            }
+
+        }
+        window.location.replace('index.html');
+     
+    }
+</script>
+
+</body>
+</html>

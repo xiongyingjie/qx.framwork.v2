@@ -28,14 +28,14 @@ namespace xyj.core.Config
                "System.Decimal",
                "System.DateTime"
             };
-        public readonly static string DbHost = "qxamoy.com,10385";
+        public readonly static string DbHost = "db.52xyj.cn";
         public readonly static string DbUser = "sa";
         public readonly static string DbPassword = "QxamoySQL666";
         public readonly static string SystemDbName = "sys.core";//框架数据库
         public readonly static Dictionary<string,string> DbMapping = new Dictionary<string, string> ()
         {
             {"qx.permmision.v2","sys.core" },
-            {"qx.qx.system","sys.core" }
+            {"qx.system","sys.core" }
         };//框架数据库
 
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Http;
+using xyj.core.Exceptions.Db;
 using xyj.core.Extensions;
 using xyj.core.Models.Db;
 using xyj.core.Services;
@@ -150,6 +151,10 @@ namespace xyj.core
                         _cmd = GetParam("cmd").ToLower();
                     }
                     var index = _cmd.LastIndexOf('.');
+                    if (index == -1)
+                    {
+                        throw new DbCmdErrorException("cmd参数错误,没有指明要操作的数据库,当前的cmd:"+ _cmd);
+                    }
                     if (_cmd.Contains("delete"))
                     {//兼容删除主键包含.
                         index= _cmd.Split("delete")[0].LastIndexOf('.');

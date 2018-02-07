@@ -12,8 +12,9 @@ using CodeTool.Entity;
 using CodeTool.Extension;
 using CodeTool.Helper;
 using CodeTool.Models;
-using CodeTool.Properties;
+
 using Qx.Tools.CommonExtendMethods;
+using xyj.tool.Properties;
 
 namespace CodeTool
 {

@@ -26,6 +26,7 @@ namespace xyj.acs.Models
         public string user_type_id { get; set; }
 
         public string note { get; set; }
+        public string sub_system_reg_id { get; set; }
 
         public DateTime register_date { get; set; }
 

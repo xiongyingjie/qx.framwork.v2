@@ -38,7 +38,7 @@ namespace Web.Controllers.Filter
                 context.Exception.Message);
 
 
-
+            
             var debug = bool.Parse(DataContext.Q(context.HttpContext,"isDebug"));
             if (debug)
             {

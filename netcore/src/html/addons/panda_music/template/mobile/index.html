@@ -1,114 +1,623 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>音频播放器</title>
-	<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <link rel="stylesheet" href="css/mobile.css">
-    <!--音频播放器-->
-    <link rel="stylesheet" href="audio/css/audio_player.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <title>性格测试</title>
+    <link rel="stylesheet" href="./css/swiper.min.css">
+    <link rel="stylesheet" href="./css/character-test.css" />
+    <script src="../plugin/app.min.js"></script>
 </head>
+
 <body>
-    <div class="bg_white mb_20 pb_20 pad30">
-        <div class="box_radio">
-            <div class="book_title">
-                <div class="audio_title"> </div>
-            </div>
-            <div class="audio_box">
-                <!--音乐控制面板-->
-                <div class="audio_btn">
-                    <!--快退-->
-                    <img class="btn_fr" src="audio/img/btn_fr.png" alt="">
-                    <!--旋转碟片-->
-                    <div class="cover" id="play"></div>
-                    <!--暂停/播放按钮-->
-                    <div class="btn_play btn_pause"></div>
-                    <!--快进-->
-                    <img class="btn_ff" src="audio/img/btn_ff.png" alt="">
-                </div>
-                <div class="music-nav">
-                    <!--当前时间-->
-                    <div class="time" id="time_cur"> </div>
-                    <!--进度条-->
-                    <div class="audio_progress">
-                        <span class="audio_line"></span>
-                        <span class="audio_blue"></span>
-                        <span class="audio_dot"></span>
-                        <input type="range" min="0" max="0" step="0.4" value="0" id="scale" >
+    <!-- Swiper -->
+    <div class="swiper-container" >
+      <div class="swiper-bg" data-swiper-parallax="-30%" data-swiper-parallax-duration="1000"></div>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题1：寻找走失的情人看你的爱情观</h4> 你与情人去爬山，一不小心走失了，你找不到他，他也找不到你，最后你会采取什么行动?
+                    <br>
+                    <div class="tabs tabs-1">
+                        <label>
+                            <input type="radio" name="q1" value="a"> 找一个可以休息的地方，等待对方来找你。
+                        </label>
                     </div>
-                    <!--歌曲时长-->
-                    <div class="time" id="time_long"></div>
-                </div>
-                <audio id="music" src="" >
-                    Your browser does not support HTML5 audio.
-                </audio>
+                    <div class="tabs tabs-1">
+                        <label>
+                            <input type="radio" name="q1" value="b"> 一定会把对方找到。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-1">
+                        <label>
+                            <input type="radio" name="q1" value="c"> 不相信会走失，因此慢慢闲逛看风景，等待对方找到自己。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-1">
+                        <label>
+                            <input type="radio" name="q1" value="d"> 报警，让警察来帮忙找对方。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-1-a">
+                        你需要一个明智体贴的情人，帮助你两人建立一个良好的关系，因为你多半是被动的地位，如果你遇到无理取闹的情人，你很难处理两人之间的关系，多会采取逃避的态度。依从他人的决策处理重大事件。
+                    </div>
+                    <div class="answer answer-1-b">
+                        你对爱情非常执着，从来没有自己的生活空间，将全部的关怀放在所爱的人身上，有时过分干涉对方使对方无法消受，而你却又难免感到委屈而牢骚满腹，因此建议你爱得轻松一些，给彼此一点空间吧。
+                    </div>
+                    <div class="answer answer-1-c">
+                        你将男女之间的感情看得很轻松，有充分的自信及安全感，从来不担心失去情人，仿佛他对你忠心耿耿。你的爱情带着孩子的顽皮及幽默，只是应当注意一些对方的感受，以免情人认为你爱得不够认真。
+                    </div>
+                    <div class="answer answer-1-d">
+                        当你们两人感情出现问题时，你总希望找到第三者来帮忙，弥补能力不足，并且成为两人之间的桥梁。你使用的方法很好，但是要注意这第三者的能力是否足够，否则过度依赖一位无用的第三者反而使自己更倒霉。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题2：走姿观人</h4> 从“走姿”观察人，世界各国古已有之。观察一个男人怎样走路，并从走姿中透视其内心，你肯定会觉得妙趣横生。
+                    <br>
+                    <div class="tabs tabs-2">
+                        <label>
+                            <input type="radio" name="q2" value="a"> 步伐急促的人。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-2">
+                        <label>
+                            <input type="radio" name="q2" value="b"> 步伐平缓的人。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-2">
+                        <label>
+                            <input type="radio" name="q2" value="c"> 身体前倾的人。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-2">
+                        <label>
+                            <input type="radio" name="q2" value="d"> 军事步伐的人。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-2">
+                        <label>
+                            <input type="radio" name="q2" value="e"> 踱方步的人。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-2-a">
+                        这类人是典型的行动主义者，大多精力充沛、精明能干，敢于面对现实生活中的各种挑战，适应能力特别强，尤其是凡事讲求效率，从不拖泥带水。
+                    </div>
+                    <div class="answer answer-2-b">
+                        这类人走路时总是一副慢腾腾的样子，别人无论说得如何急他都不在乎似的，这是典型的现实主义派。他们凡事讲求稳重，"三思而后行"，绝不好高骛远。如果他们在事业上得到提拔和重视的话，也许并不是他们有什么"后台"，而是他们那种务实的精神给自己创造的条件。
+                    </div>
+                    <div class="answer answer-2-c">
+                        有的人走路时习惯于身体向前倾斜甚至看上去像猫着腰。这类人的性格大多较温柔和内向，见到长得好看的异性时多半要脸红，但他们为人谦虚，一般都有良好的自身修养。 他们从不花言巧语，非常珍惜自己的友谊和感情，只是平常不苟言笑。较之其他类型的人来说，他们总是受害最多，而且不愿向人倾诉，一个人生闷气。
+                    </div>
+                    <div class="answer answer-2-d">
+                        走路如同上军操，步伐齐整，双手有规则地摆动。这种人意志力较强，对自己的信念非常专注，他们选定的目标一般不会因外在的环境和事物的变化而受影响。这种人如果是男人往往最让女人欢心也最让女人讨厌，因为他们一旦看上某个女人，就会非缠到手不可，只要你答应他，他愿意每天拉着人力车来接送你。 这类人如果能充分发挥自己的长处，一定收效颇丰，因为他们对事业的执著是其他类型的人不可比拟的。但如果你的上司是这种人的话，日子可就不好受了，很多时候你会"吃不了兜着走"，因为他们一般都比较"独裁"，而且有时候甚至会不惜牺牲任何东西去达到他个人的理想和目标。
+                    </div>
+                    <div class="answer answer-2-e">
+                        迈着这种步态的人是非常稳重的，他们认为面对任何困难事情时，最重要的是保持清醒的头脑，不希望被任何带有感情色彩的东西左右了自己的判断力和分析力。 这种人有时也觉得累，为了保持自己的尊严，他们很难在人前笑口常开，这是他们的准则。 他们对自己的身体形态进行严格控制，虽然别人敬畏他们，可在一人独处时却感到压抑。因为这种人涉世极深，了解人情冷暖。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题3</h4> 在一个晴空高照的日子，是最适合出游的。假如，你和你的朋友漫步在森林之中，无意中发现了一间隐藏在林中的建筑物，依你的直觉，你会认为这是何种建筑物?
+                    <br>
+                    <div class="tabs tabs-3">
+                        <label>
+                            <input type="radio" name="q3" value="a"> 小木屋。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-3">
+                        <label>
+                            <input type="radio" name="q3" value="b"> 宫殿。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-3">
+                        <label>
+                            <input type="radio" name="q3" value="c"> 城堡。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-3">
+                        <label>
+                            <input type="radio" name="q3" value="d"> 平房住家。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-3-a">
+                        选择小木屋的人：你是一个能忍别人所不能忍的人，宽大的心胸，使你对任何的事物都抱着以和为贵的态度，基本上你就是一个完美的人。
+                    </div>
+                    <div class="answer answer-3-b">
+                        选择宫殿的人：你是一个思路极细的人，对于身边的事物都能有良好的安排，凡事都在你的掌握之中，虽说不上城府极深，但对于复杂的人际关系却能处理得很好，如鱼得水。
+                    </div>
+                    <div class="answer answer-3-c">
+                        选择城堡的人：你可说是本世纪最厉害的人际高手，你比选宫殿的人对事物的观察更敏锐，更能看透人心，在这方面别人总是忘尘莫及，而你也一直以此自豪，乐此不疲。
+                    </div>
+                    <div class="answer answer-3-d">
+                        选择平房住家的人：你是一个生平无大志的人，也没有什么企图心，虽然对周围的感应能力并不差，但你凡事仅抱着一个平常心罢了，这种人最大的好处就是，平凡，没有烦恼压力。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题4:从胆量看你的爱情结局</h4> 　爱情一种勇敢者再上的游戏，你的爱情商数高不高，会直接影响到爱情大结局。
+                    <br> 蹦极挺危险的，又譬如高空跳伞，也很刺激，你会去尝试吗?
+                    <br>
+                    <div class="tabs tabs-4">
+                        <label>
+                            <input type="radio" name="q4" value="a"> 打死我，我都不去
+                        </label>
+                    </div>
+                    <div class="tabs tabs-4">
+                        <label>
+                            <input type="radio" name="q4" value="b"> 虽然很怕，却硬着顽皮试试看
+                        </label>
+                    </div>
+                    <div class="tabs tabs-4">
+                        <label>
+                            <input type="radio" name="q4" value="c"> 既然有人敢做，我也做吧
+                        </label>
+                    </div>
+                    <div class="tabs tabs-4">
+                        <label>
+                            <input type="radio" name="q4" value="d"> 假装有心脏病
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-4-a">
+                        十足的理性，但对爱情容易封闭自己，很怕会吃亏，一眼望去给人的印象是不太开朗，所以很可能在感情上遭到封杀。在此建议你，有时候不要想得太多，勇敢一点，你会觉得事情可不如想像来得恐怖。
+                    </div>
+                    <div class="answer answer-4-b">
+                        勇于尝试是你的优点，因此你只要喜欢一个人就会传出讯息让他知道，明明他有女朋友，你也不管。比较感情用事，使你的情绪不太稳定，喜欢时很喜欢，一旦兴趣缺缺了，你可能就半途而废，所以既然喜欢他，也采取行动了，就不妨勇敢地努力下去，也许会有成果。
+                    </div>
+                    <div class="answer answer-4-c">
+                        在感情上绝对坦白，也是爱情的常胜军，但有时就是大有自信了，反而把一些男人吓走，所以偶尔最好试试欲擒故纵，或若即若离来吊对方的胃口。
+                    </div>
+                    <div class="answer answer-4-d">
+                        做什么事总要找个借口，好面子，有时会害死你的。在爱情上如果借口大多，会使你得不到情人的情任，要小心使用借口哦!
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题5:酒与爱情</h4> 深夜，在酒吗的柜台前，年轻男女喝着鸡尾酒。猜猜看他们正在喝什么酒?
+                    <br>
+                    <br>
+                    <div class="tabs tabs-5">
+                        <label>
+                            <input type="radio" name="q5" value="a"> 美丽的红色基尔酒。
+                        </label>
+                    </div>
+                    <br>
+                    <div class="tabs tabs-5">
+                        <label>
+                            <input type="radio" name="q5" value="b"> 神秘的蓝色蓝带吉利。
+                        </label>
+                    </div>
+                    <br>
+                    <div class="tabs tabs-5">
+                        <label>
+                            <input type="radio" name="q5" value="c"> 光艳的黄色贵妇人酒。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-5-a">
+                        完全投入型。你绝对不喜欢无趣的人，而这一点反而成为你的危险因素。即使你平时是慎重的人，一旦喜欢上一个人就会全心投入，甚至为了他，一切都可以抛弃。不管周围的人怎么劝你，你都煞不住。这样的人一旦做出傻事，恐怕会是非常悲剧的结局。
+                    </div>
+                    <div class="answer answer-5-b">
+                        陶醉型。你容易陶醉在甜美的气氛中，为恋而恋。一旦恋爱，就会心驰神往，心中充满不切实际、甜蜜的渴望。特别是女性，总是做浪漫的梦。若是男性，则有点好虚荣，先入为主地有一种"恋爱应该是这样"的幻想，有时会使对方为难。
+                    </div>
+                    <div class="answer answer-5-c">
+                        自我抑制型。你的情形是，喜欢上一个人，而且很快被他吸引，但之后会不知不觉地开始冷静地看待对方。你的性格现实而不太浪漫，但这并非代表你不喜欢他。你对异性的戒心过强，对方一靠近你，你反而要疏远他。你应该调整好自己的情绪，觉得喜欢就应相信自己的心，并展开攻势，要有勇气把自己的热情表现出来。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题6</h4> 你打算在度假别墅之内添一套座椅，你会选择什么材质?
+                    <br>
+                    <div class="tabs tabs-6">
+                        <label>
+                            <input type="radio" name="q6" value="a"> 木制椅
+                        </label>
+                    </div>
+                    <div class="tabs tabs-6">
+                        <label>
+                            <input type="radio" name="q6" value="b"> 藤制椅
+                        </label>
+                    </div>
+                    <div class="tabs tabs-6">
+                        <label>
+                            <input type="radio" name="q6" value="c"> 绒毛椅
+                        </label>
+                    </div>
+                    <div class="tabs tabs-6">
+                        <label>
+                            <input type="radio" name="q6" value="d"> 真皮椅
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-6-a">
+                        你是一个颇注重生活情趣的人，宁愿牺牲佳肴、华服，也不愿放弃一场演唱会或音乐会。说穿了，你有点自命清高，但是很遗憾的，你想找个知音还不容易呢!
+                    </div>
+                    <div class="answer answer-6-b">
+                        你对物质生活比较在意，但也不放弃精神生活的充实，但是如果两者相冲突时，你还是会考虑物质上的问题。你这个人有一点吝啬，但是又好面子，个性上有许多矛盾之处。
+                    </div>
+                    <div class="answer answer-6-c">你是标准的空壳子，没钱也喜欢摆阔，对你而言，精神生活是多余的，物质生活上的追求才是你终生的志向，哎呀!你有点俗气哦!
+                    </div>
+                    <div class="answer answer-6-d">
+                        你的精神生活很独特，你对于一般时下流行的东西不感兴趣，却陶醉在你认为有价值的艺术里。你的物质生活倒是一向很充裕，你很少担心这一类的问题。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题7:你对爱情忠诚吗?</h4> 你的不远处站着TA,你的反应是：
+                    <br>
+                    <div class="tabs tabs-7">
+                        <label>
+                            <input type="radio" name="q7" value="a"> 你会仿佛没有看见一般，从身边走过。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-7">
+                        <label>
+                            <input type="radio" name="q7" value="b"> 你会想：他是一个人吗?是否在等人?
+                        </label>
+                    </div>
+                    <div class="tabs tabs-7">
+                        <label>
+                            <input type="radio" name="q7" value="c"> 你会想：他是否有烦恼?看起来好可怜。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-7">
+                        <label>
+                            <input type="radio" name="q7" value="d"> 你会想：他一定是不受异性欢迎的人。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-7-a">你不易有任何外遇，对目前的情人相当满足，除非你的情人与你之间的转变，同时又有抢手的异性追求，在双重压力下才会有变化。因为你的个性不易移情别恋，忠诚度相当高，所以在婚前最好再确认你的他是可靠的人。
+                    </div>
+                    <div class="answer answer-7-b">你的爱情忠诚度相当不错，不过你与答案A不同之处是，你比较善于观察别人，不会将爱情付给一个不值得爱的人。你不仅有忠诚度，也懂得掌握一个幸福婚姻，是个体贴又善解人意的人。
+                    </div>
+                    <div class="answer answer-7-c">你的答案里充满同情心，虽然对爱情忠实，也难免因为同情心与多情，而卷进一些男女是非之中，当然也有可能使你不得不移情别恋。你是很好的朋友，当遇到机会时，总会使爱情的忠诚度打了折扣。
+                    </div>
+                    <div class="answer answer-7-d">你的答案里虽然有许多防御之心，但是它却是来自潜意识里的好奇心。你对其他各种类型的异性，仍充满好奇。即使你很爱目前的情人，忠诚度很高，但是当时间久了，爱情褪色时，机会来到，你不会放过外遇机会时。如果你的他是很理想的对象，好好反省自己，收收心吧!
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题8</h4> 情场上的赌有好几种，有的是输得惨兮兮，照样舍不得情场，照样再赌下一场;有的是不赌则已，一赌就要把一辈子的幸福给全盘押下;有的赌贏了，念念不忘贏的滋味，还想偷偷大胆地再去赌一局。你的情场赌性如何?不妨作个测验吧。当你在写情书时，最后的结语你想写上下面的那一句話?
+                    <br>
+                    <div class="tabs tabs-8">
+                        <label>
+                            <input type="radio" name="q8" value="a"> 我无时无刻不在想着你。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-8">
+                        <label>
+                            <input type="radio" name="q8" value="b"> 今生今世你是我的最爱。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-8">
+                        <label>
+                            <input type="radio" name="q8" value="c"> 但愿每天都能陪在你身边。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-8">
+                        <label>
+                            <input type="radio" name="q8" value="d"> 千言万语难以倾诉我的爱。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-8-a">你可能是个快手下注的人，锁定好目标就赌下去，要是输了，很快找寻下一场来赌。(有着白羊座、狮子座和射手座的特质)
+                    </div>
+                    <div class="answer answer-8-b">你不太敢赌，因为你怕输，可是万一随着交往时日的累积而決定一赌，就会一把下注得很大。有着巨蟹座、天蠍座和双鱼座的特质)
+                    </div>
+                    <div class="answer answer-8-c">你的赌性有韧性，不到最后胜负底牌的分晓，绝不轻言半途而废，还好不会一下子赌太大。(有着金牛座、处女座和摩羯座的特质)
+                    </div>
+                    <div class="answer answer-8-d">你往往会先衡量胜算的几率有多大，再來斟酌应该下多大的注，不会一赌上就脑昏昏的。(有着双子座、天秤座和水瓶座的特质)
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题9：测你遇到真爱时能否留住？</h4> 如果你被调到外地工作，谁最有可能让你有想恋爱的冲动？
+                    <br>
+                    <div class="tabs tabs-9">
+                        <label>
+                            <input type="radio" name="q9" value="a"> 当地认识的新朋友。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-9">
+                        <label>
+                            <input type="radio" name="q9" value="b"> 朝夕相处的同事。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-9">
+                        <label>
+                            <input type="radio" name="q9" value="c"> 当地遇到的老朋友。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-9">
+                        <label>
+                            <input type="radio" name="q9" value="d"> 在路上邂逅的陌生人。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-9">
+                        <label>
+                            <input type="radio" name="q9" value="e"> 巧遇到的旧情人。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-9-a">你会细心呵护着真爱，把他捧在手掌心上。这类型的人在内心深处有浪漫跟罗曼蒂克的幻想跟直觉，认为好不容易碰到真爱，一定要花很多的心血来维持这份真爱，因此真爱就维持的住。
+                    </div>
+                    <div class="answer answer-9-b">你会依照自己当时的状况，决定要放手还是要留下真爱。这类型的人在谈恋爱时会非常感性，可是再做决定时就会非常理性，会考虑到目前是不是可以给对方真正的幸福，当自己在工作很忙碌没有办法照顾对方时他会选择放手。
+                    </div>
+                    <div class="answer answer-9-c">你只有在紧要关头快要失去真爱时，才会想留住。这类型的人当他谈恋爱时认为已经搞定了就会把真爱放在一边，然后以自我中心，当真爱觉得被冷落想要离开时，才想办法要留住对方。
+                    </div>
+                    <div class="answer answer-9-d">你捍卫真爱的魄力，就算是牺牲性命也不放手。这类型的人内心深处有冒险心，当遇到真爱时即使抛头颅洒热血也在所不惜，积极主动的态度很容易打动对方。
+                    </div>
+                    <div class="answer answer-9-e">你浑然不知谁才是属于真爱，那要怎么留住。这类型的人个性很天真浪漫，搞不清楚哪个是真爱哪个是假爱，因此到底要留哪一个都不知道。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题10：你是以貌取人的人吗？</h4> 和朋友一起出游，站在桥上观赏风光的时候，你的帽子被风吹掉了，这时你会怎么办？
+                    <br>
+                    <div class="tabs tabs-10">
+                        <label>
+                            <input type="radio" name="q10" value="a"> 伸手试图抓住帽子。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-10">
+                        <label>
+                            <input type="radio" name="q10" value="b"> 束手无策。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-10">
+                        <label>
+                            <input type="radio" name="q10" value="c"> 喊人帮忙。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-10">
+                        <label>
+                            <input type="radio" name="q10" value="d"> 到河的下游等。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-10-a">你通常都会选择高水平的异性为目标，倒不是审美能力出众，实在是因为你有强烈好胜心。能够拥有出众的恋人在身旁，无形中就确认了你的胜利。何况，恋人越是难追，在追求中的感情波荡起伏，越是会刺激到你的好胜心。
+                    </div>
+                    <div class="answer answer-10-b">你比较相信自己的直觉，对美貌与否并不看重，能和自己来电的一见钟情感觉才最重要！默默的心灵层面交流，是你最喜欢的感觉。反正外貌是可以修饰的，只要别太离谱，每个人都有值得你欣赏的地方。
+                    </div>
+                    <div class="answer answer-10-c">你重视能与自己沟通的人，同性自然可以成为生死之交的好朋友，异性则会成为恋人。对于恋人和朋友的界限，你并不那么清晰，很热衷于异性的朋友转职为恋人。
+                    </div>
+                    <div class="answer answer-10-d">要求完美的你，选择恋人也是很挑剔的。当然，外表并不重要，内在心灵的纯洁才是你欣赏的美丽。话是这么说啦！不过……如果他的长相实在很抱歉，你还是不会多看一眼的。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题11：测你会为爱放弃一切吗？</h4> 如果选择一种化妆品来形容你理想中的恋人的气质，你会选：
+                    <br>
+                    <div class="tabs tabs-11">
+                        <label>
+                            <input type="radio" name="q11" value="a"> 口红
+                        </label>
+                    </div>
+                    <div class="tabs tabs-11">
+                        <label>
+                            <input type="radio" name="q11" value="b"> 面霜
+                        </label>
+                    </div>
+                    <div class="tabs tabs-11">
+                        <label>
+                            <input type="radio" name="q11" value="c"> 香薰
+                        </label>
+                    </div>
+                    <div class="tabs tabs-11">
+                        <label>
+                            <input type="radio" name="q11" value="d"> 面膜
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-11-a">自从你懂得了自己优点的那天起，就懂得了虚荣。你很介意别人看你的眼光，你会为了爱情放弃一些东西，但到一定负荷时会全身而退。
+                    </div>
+                    <div class="answer answer-11-b">缺乏安全感的你，当过上了舒适生活后，你才去寻求真正爱情。但你并不会真的为对方放弃什么，是个不以爱情为生的人。
+                    </div>
+                    <div class="answer answer-11-c">你对爱情的幻想溶入在对物质生活的要求中，也同时需要精神去统一。现实中供你挑选的异性也不多见，偶尔也要放低姿态哦。
+                    </div>
+                    <div class="answer answer-11-d">你十分愿意为爱情而守候，对爱人也宽容体贴。只要对方始终爱着你，你就能经受住磨难，诱惑对你也不起作用。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题12：测试最适合你的爱人</h4> 你参加了“神鬼传奇埃及体验”之旅，结果一不小心掉到了时空隧道，迷失在沙漠中。就在你精疲力尽的同时，眼前出现了水、食物、松软的床。但是，这三种东西，你只能选择一种。你要选哪一项呢？
+                    <br>
+                    <div class="tabs tabs-12">
+                        <label>
+                            <input type="radio" name="q12" value="a"> 水
+                        </label>
+                    </div>
+                    <div class="tabs tabs-12">
+                        <label>
+                            <input type="radio" name="q12" value="b"> 食物
+                        </label>
+                    </div>
+                    <div class="tabs tabs-12">
+                        <label>
+                            <input type="radio" name="q12" value="c"> 松软的床
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-12-a">选水的人，最适合你的异性是能给予你精神安定的人。因爽朗、开朗、思虑深远，可以满足你对知性方面的追求。你们会因柏拉图式的关系结合、交往、进而厮守终身，这可使你在精神方面以及人格方面有所成长，并恢复你的自信。
+                    </div>
+                    <div class="answer answer-12-b">选食物的人，最适合你的异性是能给予你肉体满足的异性。当你遇到他时，你的身体会因为爱与性的满足而觉醒，他是个可满足你欲望的异性。你们会与因肉体的关系结合、交往进而厮守终身，这可以使你在精神方面以及人格方面恢复自信。
+                    </div>
+                    <div class="answer answer-12-c">选松软的床的人，最适合你的异性是能给予你安全感的异性。当你遇到他时，你的个性就会觉醒。如果对方能给你温暖、让你撒娇，你就会与他因社会性结合、结婚进而厮守终身，这可以使你在物质方面以及经济方面有所成长，恢复自信。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题13：面对爱情你是这样的人</h4> 如果有天晚上，本来已很疲倦的你，不知道为什么总是睡不着，你会用下列哪种方法来度过这个失眼夜呢？
+                    <br>
+                    <div class="tabs tabs-13">
+                        <label>
+                            <input type="radio" name="q13" value="a"> 打电话与别人聊天。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-13">
+                        <label>
+                            <input type="radio" name="q13" value="b"> 在家中四处找事做。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-13">
+                        <label>
+                            <input type="radio" name="q13" value="c"> 继续在床上辗转反侧。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-13">
+                        <label>
+                            <input type="radio" name="q13" value="d"> 看书。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-13">
+                        <label>
+                            <input type="radio" name="q13" value="e"> 多冲一次凉。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-13-a">你做每一件事都只顾自己而已，绝不替人着想，独断独行的你，令爱人吃不消，改改你武断的性格，多征求伴侣对事情的看法，会令爱人觉得你更可爱。
+                    </div>
+                    <div class="answer answer-13-b">你那死不服输的性格将你独立出来。恋爱来的时候，亦因为不肯对对方坦白而遭抛弃，你唯一的好处是你绝不拖拖拉拉没完没了，只要找到心仪的对象，不妨来个闪电结婚！
+                    </div>
+                    <div class="answer answer-13-c">生活上有问题时，你只懂逃避，爱情方面也一样，因为你的拖拖拉拉令很多人爱到影响，和情人分手后仍会有藕断丝连的情况发生，想做就做，想爱就爱吧，机会溜走就不复返！
+                    </div>
+                    <div class="answer answer-13-d">你是个十分理智的人。但聪明反被聪明误，你对事情都小心谨慎，在爱情路上，因怕爱伤而不敢用情太深，但这会令你的爱人有被忽视的感觉，对你的热情亦因此大减，其实做人有时迷糊一下，亦未尝不可。
+                    </div>
+                    <div class="answer answer-13-e">你有点神经质，但亦有点执着，别人很难适应你的处事作风，你的爱侣也一样，你一时对他风情万种，一时对他冷若冰霜，令他感到十分迷惑，即使对他一见钟情，你亦会给他飘忽不定的感觉而吓得溜之大吉，要改变现况，控制一下自己的情绪吧！
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题14：测你的爱情敏感度</h4> 请问你(或是TA)讲手机的习惯通常都是怎样子的呢？
+                    <br>
+                    <div class="tabs tabs-14">
+                        <label>
+                            <input type="radio" name="q14" value="a"> 一手讲电话，另外一只手东摸摸、西摸摸。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-14">
+                        <label>
+                            <input type="radio" name="q14" value="b"> 一边讲电话，一边跑去做其它事。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-14">
+                        <label>
+                            <input type="radio" name="q14" value="c"> 什么事也不做，很专注地讲电话。
+                        </label>
+                    </div>
+                    <div class="tabs tabs-14">
+                        <label>
+                            <input type="radio" name="q14" value="d"> 另一只手捂住嘴巴，随时注意四周有没有人。
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-14-a">爱情敏感度：65%。这类人喜欢幻想，爱做白日梦，对于爱情也常有很美很深的憧憬，并希望能在现实中实现。所以你严重拒绝枯燥乏味的情人，就算不能浪漫也得常陪你玩，营造共同的美好回忆。你也喜欢以理来说服人，动不动就会长篇大论说了一大堆话，如果能慢慢用默契来取代啰嗦，相信你会是个很棒的情人。
+                    </div>
+                    <div class="answer answer-14-b">爱情敏感度：75%。女人天生较感性，所以敏感度高的女生更容易任性，稍有不如意便大发小姐脾气，到处摔东西或是找人当出气筒，虽然你气过就算了，可是旁人可能会因为你反复的个性而不敢接近你，对你的友情或爱情可是一项很严峻的考验喔。相反地，天生理性派的男人如果敏感度高，则是女孩子眼中理想的伴侣。
+                    </div>
+                    <div class="answer answer-14-c">爱情敏感度：40%。你们的个性刚直率真，而且凡事讲究效率。爱情中你们也不喜欢琼瑶式的哭哭啼啼，爱来爱去、优柔寡断，你们完全顺其自然，跟着感觉走，就算有什么问题也是快刀斩乱麻，不会拖太久。你们也很相信另一半，不会轻信谣言。只是女性一旦遭逢情人背叛，便如同火山爆发，不但天崩地裂，而且没有回旋的余地。
+                    </div>
+                    <div class="answer answer-14-d">爱情敏感度：50%。你比较没有自信，耳根子也比较软，很容易受到周遭朋友的言语左右，也是朋友眼中的好好先生/小姐。当你爱上一个人，也会立即跟着他一起改变；通常会这么做的人也以女性居大多数。虽然你也会胡思乱想，可是你也对情人表现出忠贞顺从，就算他有外遇，你也会因为他的求情而选择再次给他机会。
+                    </div>
+                </section>
+            </div>
+            <div class="swiper-slide">
+                <section>
+                    <h4>问题15:测你注定的爱情宿命</h4> 从以下文字中凭直觉选一个字，答案就会告诉你容易跟哪类异性来电？
+                    <br>
+                    <div class="tabs tabs-15">
+                        <label>
+                            <input type="radio" name="q15" value="a"> 周
+                        </label>
+                    </div>
+                    <div class="tabs tabs-15">
+                        <label>
+                            <input type="radio" name="q15" value="b"> 董
+                        </label>
+                    </div>
+                    <div class="tabs tabs-15">
+                        <label>
+                            <input type="radio" name="q15" value="c"> 主
+                        </label>
+                    </div>
+                    <div class="tabs tabs-15">
+                        <label>
+                            <input type="radio" name="q15" value="d"> 星
+                        </label>
+                    </div>
+                    <div class="tabs tabs-15">
+                        <label>
+                            <input type="radio" name="q15" value="e"> 播
+                        </label>
+                    </div>
+                    <h5>答案详解:</h5>
+                    <div class="answer answer-15-a">你对温柔的居家型男孩特别有好感，周字以吉字收尾，所以说若有周姓的男生出现，必能给你带来安定感和好运，也是最适合你的恋爱物件。
+                    </div>
+                    <div class="answer answer-15-b">外形挺拔、内心很有想法的酷哥特别能触动你的心，董字以草部起笔，有花花草草之意，表示他必须刺激你的眼球，长相是吸引你的首要备件。
+                    </div>
+                    <div class="answer answer-15-c">能电到你的人是具有淡淡忧郁气质又有些大男子主义的人。你希望你是独立性很强的人，有王者风范。主字以点起笔，下部刚好是一个霸气十足的王字。
+                    </div>
+                    <div class="answer answer-15-d">你喜欢可以让你依赖的对象，最好自己能像个小女人一样深受他的保护。此字上部日字，象征阳刚之气，又代表罩得住的意思，有值得依赖之意。
+                    </div>
+                    <div class="answer answer-15-e">你喜欢温柔且很懂得照顾人的男生，提手旁代表动手能力很强的意思，旁边的番字里有田，暗藏土地之宽广，可以看出你希望对方是一个体贴宽广的乖乖男。
+                    </div>
+                </section>
             </div>
         </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <botton class="swiper-button-next swiper-btn"></botton>
+        <botton class="swiper-button-prev swiper-btn"></botton>
     </div>
-    <div class="bg_white mb_20 pb_20 pad30">
-        <div class="des_title">
-        </div>
-        <div class="des_sub_title">
-            <span class="green_line"></span>
-            歌词
-        </div>
-
-        <div class="des_info lyric_wrap" >
-            <ul id="lyric_list">
-
-            </ul>
-        </div>
-
-        <div class="des_sub_title">
-            <span class="green_line"></span>
-            歌手
-        </div>
-        <div class="des_info" id="singer"></div>
-    </div>
-	<!--底部导航-->
-    <div class="height100"></div>
-    <ul class="tabbar">
-        <img class="btn_up" src="images/btn_up.png" alt="">
-        <div class="pupbox">
-            <img class="btn_down" src="images/btn_down.png" alt="">
-            <!--歌曲列表-->
-            <ul class="song_list">
-            </ul>
-        </div>
-        <li>
-            <div class="btn_prev">
-                <span>上一首</span>
-            </div>
-        </li>
-        <li>
-            <div class="btn_next">
-                <span>下一首</span>
-            </div>
-        </li>
-    </ul>
-	
-    <script src="js/jquery.min.js"></script>
-    <!--旋转动画插件-->
-    <script src="audio/js/jquery.rotate.min.js"></script>
-    <!--音频播放器-->
-    <script src="audio/js/audio_player.js"></script>
+      <div class="remind-bg">
+            <div class="remind-content">
+                  <h3>提示：</h3>
+                  <div class="btn-bg">
+                        <!-- <button class="defult-btn btn-1">提交</button>
+                        <button class="defult-btn btn-2">再看看</button> -->
+                  </div>
+            </div>       
+      </div>
+    <script src="./js/jquery-1.8.0.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script src="./js/character-test.js"></script>
     <script>
-        $(function () {
-            var $pupbox =   $(".pupbox"),
-                $btnUp  = $(".btn_up"),
-                $btnDown  = $(".btn_down");
-            $pupbox.hide();
-            $btnUp.show();
-            /*弹窗*/
-            $btnDown.click(function(){
-                $pupbox.slideUp(500);
-                $btnUp.delay(500).show(0);
-            });
-            $btnUp.click(function(){
-                $pupbox.slideDown(500);
-                $(this).hide(0);
-            });
-        });
+        //设置token
+        function SetToken(token){
+            Token=token;
+            if(Token!=null){
+                console.log("获得token");
+                $(".remind-content").find("h3").html("获得token:"+Token);
+                ShowRemind(3);
+            }
+            if(Browser()=='android'){
+                window.control.SetToken(token);
+            }
+        }
     </script>
 </body>
+
 </html>

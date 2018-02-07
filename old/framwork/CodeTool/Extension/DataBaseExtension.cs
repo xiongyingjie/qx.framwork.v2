@@ -14,7 +14,7 @@ namespace CodeTool.Extension
     {
        private static string connStr
        {
-           get { return ConfigurationManager.ConnectionStrings["qx.system"].ConnectionString; }
+           get { return ConfigurationManager.ConnectionStrings["sys.core"].ConnectionString; }
        }
         /// <summary>
         /// 返回查询内容

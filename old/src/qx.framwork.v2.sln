@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{CEE973D5-3804-40BF-89DC-F3E48DA3FFFC}"
 EndProject
@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{84C45C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FramWork", "FramWork", "{6A392817-1C37-4D37-BD01-532108200FB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTool", "..\framwork\CodeTool\CodeTool.csproj", "{6707780F-6367-4F95-AD81-CA87DFE05CF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xyj.tool", "..\framwork\CodeTool\xyj.tool.csproj", "{6707780F-6367-4F95-AD81-CA87DFE05CF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qx.Msg", "..\framwork\Qx.Msg\Qx.Msg.csproj", "{84334A77-9BB2-4F9B-AF9D-ACABB56D5162}"
 EndProject
@@ -117,5 +117,8 @@ Global
 		{83D95916-E07F-4309-A0BC-DE7BEF970D6E} = {6A392817-1C37-4D37-BD01-532108200FB4}
 		{ADBBA880-F593-4594-A63B-249959E33DDB} = {6A392817-1C37-4D37-BD01-532108200FB4}
 		{F97113AB-39B6-4B3D-9C7A-B3E4162BB50E} = {6A392817-1C37-4D37-BD01-532108200FB4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66572BB5-B382-4EE8-8E71-D966F3904C60}
 	EndGlobalSection
 EndGlobal

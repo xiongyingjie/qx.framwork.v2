@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>加载中...</title>
+
+    <script language="javascript">
+        var debug = false;
+        var secs = debug ? 3 : 0; 
+
+        var app = "{app}";
+        var uid = "{uid}";
+        var roleString = "{roleString}";
+        var site = "https://debug.52xyj.cn";
+        var userName = "xiongyingjie";
+
+        site = (debug ? uid : '{$_W["siteroot"]}');
+        app = (debug ? app : '{$_W["current_module"]["name"]}');
+        uid = (debug ? uid : '{$_W["openid"]}');
+        roleString = (debug ? roleString : '{$roleString}');
+        userName = (debug ? userName : '{$_W["fans"]["nickname"]}');
+
+        if (app === "{app}" || uid === "{uid}" || site === "{site}") {
+            alert("警告:没有指定要启动的应用，请到app版入口文件：init.html中配置");
+            throw SyntaxError();
+        }
+        debugger
+        var URL = '/addons/' + app + '/template/pages/login-auto-m.html?userId=' + uid + '&roleString=' + roleString + "&subSys=" + app + "&site=" + site + "&userName=" + userName;
+        function Load() {
+            for (var i = secs; i >= 0; i--) {
+                window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
+            }
+        }
+        function doUpdate(num) {
+            if (num == 0) { window.location.replace(URL); reutrn; }
+            document.getElementById('ShowDiv').innerHTML = (debug ? 'debug:' : '') + '<span style="color:red;">' + (100 - Math.round((num + 0.00001) * 100 / secs)) + '%</span>';
+        }
+    </script>
+</head>
+
+<body onload='Load()'>
+    <h2 class="page-header" id="ShowDiv" style="text-align: center;margin-top:350px;"></h2>
+</body>
+</html>
