@@ -1,12 +1,12 @@
 ﻿namespace xyj.core.Exceptions.Upgrate
 {
-    public class NotImplementedInCoreException : System.Exception
+    public class NotSupportedExceptionInCoreException : System.NotSupportedException
     {
-        public NotImplementedInCoreException()
+        public NotSupportedExceptionInCoreException()
         {
         }
 
-        public NotImplementedInCoreException(string message) : base(message)
+        public NotSupportedExceptionInCoreException(string message) : base(message)
         {
         }
     }

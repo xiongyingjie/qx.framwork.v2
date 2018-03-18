@@ -1,6 +1,6 @@
 ﻿render([
     group([
-input('ID', 'role_button_forbid-role_Button_forbid_id', $.random()),
+input('ID', 'role_button_forbid-role_Button_forbid_id', _c.random()),
 showInput('角色ID', 'role_button_forbid-role_id', q.role_id),
 showInput('按钮ID', 'role_button_forbid-button_id', q.button_id, '4'),
 time('失效日期', 'role_button_forbid-expire_time', ''),

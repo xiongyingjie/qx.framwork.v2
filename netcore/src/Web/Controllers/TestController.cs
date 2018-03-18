@@ -74,7 +74,7 @@ Age varchar(255)
         public IActionResult Grap120Ask(int start=3000,int count=20)
         {
             var startTime = DateTime.Now;
-            _ylService.Grap120Ask(start, count);
+           // _ylService.Grap120Ask(start, count);
             return Content(DateTime.Now+"采集完成,耗时:"+ (DateTime.Now- startTime).Seconds+"(s)");
         }
         public IActionResult Grap01()

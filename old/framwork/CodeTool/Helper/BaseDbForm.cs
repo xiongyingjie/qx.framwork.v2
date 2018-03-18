@@ -187,21 +187,23 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度	允许空	默认�
             }
             return itemsList;
         }
+        System.Object locker = new System.Object();
         protected void ListViewBinding(ListView lv, List<string> head, List<List<string>> body)//  为ListView绑定数据源//static
         {
-          
+            
+            lock (locker)
             {
                 if (head != null)
                 {
                     lv.View = View.Details;
-                    lv.GridLines = true;//显示网格线
-                    lv.MultiSelect = false;//多选
-                    lv.FullRowSelect = true;//选中整行
-                    lv.Items.Clear();//所有的项
-                    lv.Columns.Clear();//标题
+                    lv.GridLines = true; //显示网格线
+                    lv.MultiSelect = false; //多选
+                    lv.FullRowSelect = true; //选中整行
+                    lv.Items.Clear(); //所有的项
+                    lv.Columns.Clear(); //标题
                     for (int i = 0; i < head.Count; i++)
                     {
-                        lv.Columns.Add(head[i]);//增加标题
+                        lv.Columns.Add(head[i]); //增加标题
                     }
                     var listBody = new List<ListViewItem>();
                     for (int i = 0; i < body.Count; i++)
@@ -215,9 +217,11 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度	允许空	默认�
                         listBody.Add(lvi);
                     }
                     lv.Items.AddRange(listBody.ToArray());
-                    lv.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);//调整列的宽度
+                    lv.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize); //调整列的宽度
                 }
             }
+
+         
         
 
         

@@ -13,20 +13,7 @@ namespace xyj.acs.Services
 {
     public class OrgService : BaseRepository, IOrgService
     {
-        //不可逆的加密
-        public static string NoneEncrypt(string strPwd)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] data = Encoding.Default.GetBytes(strPwd);
-            byte[] md5data = md5.ComputeHash(data);
-            md5.Clear();
-            string str = "";
-            for (int i = 0; i < md5data.Length; i++)
-            {
-                str += md5data[i].ToString("x").PadLeft(2, '0');
-            }
-            return str;
-        }
+      
 
         //导入职员
         public int ImportStaff(List<Staff> staffList, string orgnization_position_id)

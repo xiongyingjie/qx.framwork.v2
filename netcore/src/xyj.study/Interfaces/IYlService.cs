@@ -2,6 +2,7 @@
 { 
     public interface IYlService
     {
-        void Grap120Ask(int startIndex, int count);
+        void Test();
+        // void Grap120Ask(int startIndex, int count);
     }
 }

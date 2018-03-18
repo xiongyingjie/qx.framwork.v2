@@ -1,14 +1,14 @@
 ﻿render(function () {
     var cfg=[];
-    cfg.push(input('', 'sys-app-20180108022144', '', 6));
-    cfg.push(dropdown('sys-app-20180108022144',
+    cfg.push(input('', 'erp-invoicing-20180309123827', '', 6));
+    cfg.push(dropdown('erp-invoicing-20180309123827',
               [
-                  { text: '添加', value: '*f/debug/sys-app/20180108022144/add', id: 'sys-app-20180108022144-add' },
-                  { text: '编辑', value: '*f/debug/sys-app/20180108022144/update', id: 'sys-app-20180108022144-update' },
-                  { text: '详情', value: '*f/debug/sys-app/20180108022144/detail', id: 'sys-app-20180108022144-detail' },      
-                  { text: '删除', value: 'sys.app.panda_site_clothes_site@delete', id: 'sys-app-20180108022144-delete' },
-                  { text: '下拉', value: '*f/debug/sys-app/20180108022144/items', id: 'sys-app-20180108022144-items' },
-                  { text: '列表', value: '*f/debug/sys-app/20180108022144/list', id: 'sys-app-20180108022144-list' }
+                  { text: '添加', value: '*f/debug/erp-invoicing/20180309123827/add', id: 'erp-invoicing-20180309123827-add' },
+                  { text: '编辑', value: '*f/debug/erp-invoicing/20180309123827/update', id: 'erp-invoicing-20180309123827-update' },
+                  { text: '详情', value: '*f/debug/erp-invoicing/20180309123827/detail', id: 'erp-invoicing-20180309123827-detail' },      
+                  { text: '删除', value: 'erp.invoicing.product@delete', id: 'erp-invoicing-20180309123827-delete' },
+                  { text: '下拉', value: '*f/debug/erp-invoicing/20180309123827/items', id: 'erp-invoicing-20180309123827-items' },
+                  { text: '列表', value: '*f/debug/erp-invoicing/20180309123827/list', id: 'erp-invoicing-20180309123827-list' }
               ]));
 
     cfg.push(html("<hr/>"));
@@ -22,7 +22,7 @@
     return cfg;
 });
 function formReady() {
-    var testIdArray=['sys-app-20180108022144',"init"];
+    var testIdArray=['erp-invoicing-20180309123827',"init"];
     for (var i = 0; i < testIdArray.length; i++) {
         bindParam(testIdArray[i]);
     }

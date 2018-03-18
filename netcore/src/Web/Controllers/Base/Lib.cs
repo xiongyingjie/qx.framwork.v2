@@ -52,15 +52,16 @@ namespace Web.Controllers.Base
         [HttpPost]
         public JsonResult UploadHandle(string saveDirectory)
         {
-            var fileBase = Request.Form.Files[0];
-            var SavePath = saveDirectory;// "/UserFiles/Test/";
-            var TargetPath = "";
-            throw new NotImplementedInCoreException();//   Qx.Tools.Web.HttpContext.Current.Server.MapPath(SavePath) + fileBase.FileName;
-            var ContentRange = Request.Headers["Content-Range"];
-            TempPath = TargetPath;
-            FileUploadUtility.UploadBigFile(fileBase, TargetPath, ContentRange);
-            var result = new { name = "提示:上传成功！", filePath = saveDirectory + fileBase.FileName };
-            return Json(result);
+            throw new NotSupportedExceptionInCoreException();
+           // var fileBase = Request.Form.Files[0];
+           // var SavePath = saveDirectory;// "/UserFiles/Test/";
+           // var TargetPath = "";
+           ////   Qx.Tools.Web.HttpContext.Current.Server.MapPath(SavePath) + fileBase.FileName;
+           // var ContentRange = Request.Headers["Content-Range"];
+           // TempPath = TargetPath;
+           // FileUploadUtility.UploadBigFile(fileBase, TargetPath, ContentRange);
+           // var result = new { name = "提示:上传成功！", filePath = saveDirectory + fileBase.FileName };
+           // return Json(result);
         }
 
         public IActionResult RedoHandle()

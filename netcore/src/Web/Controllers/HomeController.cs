@@ -2,21 +2,29 @@
 using System.Diagnostics;
 using System.Text;
 using Dapper;
+using Microsoft.ApplicationInsights.AspNetCore.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Web.Models;
 using xyj.acs.Interfaces;
+using xyj.study.Interfaces;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-       
+
+        private IYlService _ylService;
+
+        public HomeController(IYlService ylService)
+        {
+            _ylService = ylService;
+        }
 
         public IActionResult Index()
         {
-          
-            return Content("服务器启动成功");
+            _ylService.Test();
+            return Content(DateTime.Now+ " => 服务器启动成功: " + Request.Scheme + "://" + Request.Host.Host+ Request.GetUri().Port+"\n");
         }
 
         public IActionResult About()

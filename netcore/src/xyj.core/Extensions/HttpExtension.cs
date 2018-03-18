@@ -45,7 +45,7 @@ namespace xyj.core.Extensions
         }
         public static string Post(this HttpClient client, string url, Dictionary<string, string> param)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             //var request = new HttpRequest(url, RestSharp.Method.POST);
             //foreach (var key in param.Keys)
             //{
@@ -57,7 +57,7 @@ namespace xyj.core.Extensions
         }
         public static string Post(this HttpClient client, string url, Dictionary<string, string> param, Dictionary<string, string> header)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             //var request = new HttpRequest(url, RestSharp.Method.POST);
             //foreach (var key in param.Keys)
             //{
@@ -73,7 +73,7 @@ namespace xyj.core.Extensions
         }
         public static string Get(this HttpClient client, string url)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             //var request = new HttpRequest(url, RestSharp.Method.GET);
             //var response = client.Execute(request);
             //var content = response.Content;

@@ -28,7 +28,7 @@ namespace xyj.core.Config
                "System.Decimal",
                "System.DateTime"
             };
-        public readonly static string DbHost = "db.52xyj.cn";
+        public readonly static string DbHost = "119.23.140.9,10385";//"db.52xyj.cn";
         public readonly static string DbUser = "sa";
         public readonly static string DbPassword = "QxamoySQL666";
         public readonly static string SystemDbName = "sys.core";//框架数据库

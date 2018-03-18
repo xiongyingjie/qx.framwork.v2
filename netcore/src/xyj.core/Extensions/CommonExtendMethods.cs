@@ -72,8 +72,9 @@ namespace xyj.core.Extensions
                         target.GetType().InvokeMember(targetPro.Name, BindingFlags.SetProperty, null, target, new object[] { propertyValue });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
+                    
                 }
             }
             //返回所有公共字段
@@ -99,7 +100,7 @@ namespace xyj.core.Extensions
                         target.GetType().InvokeMember(filed.Name, BindingFlags.SetField, null, target, new object[] { fieldValue });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                 }
             }
@@ -164,7 +165,7 @@ namespace xyj.core.Extensions
                         target.GetType().InvokeMember(targetPro.Name, BindingFlags.SetProperty, null, target, new object[] { propertyValue });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
 
                 }
@@ -193,7 +194,7 @@ namespace xyj.core.Extensions
                         target.GetType().InvokeMember(filed.Name, BindingFlags.SetField, null, target, new object[] { fieldValue });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
                 }
             }

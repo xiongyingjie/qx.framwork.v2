@@ -55,7 +55,7 @@ namespace Web.Controllers
         }
         private string ToVirtualPath(string path)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             //string tmpRootDir = Server.MapPath(Request.ApplicationPath);//获取程序根目录  
             //string path2 = path.Replace(tmpRootDir, ""); //转换成相对路径  
             //path2 = path2.Replace(@"\", @"/");
@@ -63,7 +63,7 @@ namespace Web.Controllers
         }
         public IActionResult ReportToExcel2(string ReportID, string Params,string dataSourceUrl, string dbConnStringKey, int pageIndex = 1, int perCount = 99999)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             //获取用户权限列表
             //var list = _permmisionService.GetFilterByUserId(DataContext.UserId, ReportID);
             //var filter = "#all";//未配置数据权限时 默认取所有数据

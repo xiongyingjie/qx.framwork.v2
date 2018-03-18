@@ -25,8 +25,16 @@ namespace xyj.core.Extensions
 
         public static int ToInt(this DateTime time)
         {
-            var startTime = TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1));
-            return (int)(time - startTime).TotalSeconds;
+            // 获取中国时区
+            var chinaZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+
+            // 机器本地时间 -> 中国时间
+            var chinaTime = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local, chinaZone);
+
+            // 中国时间 -> 机器本地时间
+            var localTime = TimeZoneInfo.ConvertTime(chinaTime, chinaZone, TimeZoneInfo.Local);
+
+             return (int)(time - localTime).TotalSeconds;
         }
         public static int EncodeingTime(this DateTime time)
         {
@@ -34,7 +42,18 @@ namespace xyj.core.Extensions
         }
         public static DateTime DeEncodeingTime(this int seconds)
         {
-            return TimeZone.CurrentTimeZone.ToLocalTime(new DateTime(1970, 1, 1).AddSeconds(seconds));
+            // 获取中国时区
+            var chinaZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+
+            // 机器本地时间 -> 中国时间
+            var chinaTime = TimeZoneInfo.ConvertTime(new DateTime(1970, 1, 1), TimeZoneInfo.Local, chinaZone);
+
+            // 中国时间 -> 机器本地时间
+            var localTime = TimeZoneInfo.ConvertTime(chinaTime, chinaZone, TimeZoneInfo.Local);
+
+
+
+            return localTime.AddSeconds(seconds);
         }
         public static string ToTimeStr(this DateTime time)
         {
@@ -52,7 +71,7 @@ namespace xyj.core.Extensions
                     time = realTime;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ) { }
             return time;
           
         }

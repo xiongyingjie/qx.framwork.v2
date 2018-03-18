@@ -12,7 +12,7 @@ namespace xyj.core.Extensions
         //获取Controller下的public action =>通过反射获取Controller的子方法
         public static List<MethodInfo> GetSubActions(this Type t)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
          //   return t.GetMethods().Where(m => m.ReturnType == typeof(ActionResult) && m.IsPublic).ToList();
         }
 
@@ -66,7 +66,7 @@ namespace xyj.core.Extensions
                     {
                         dest.Add(_interface, _class);
                     }
-                    catch (Exception ex)
+                    catch (Exception )
                     {
                         break; //检测到重复 做中断处理
                     }

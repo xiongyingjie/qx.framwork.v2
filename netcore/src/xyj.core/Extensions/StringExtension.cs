@@ -45,16 +45,17 @@ namespace xyj.core.Extensions
                     {
                         result= DbUtility.ExecuteNonQueryForSqlSever(sql, connStr);
                     }break;
-                case ClientType.Oracle:
-                    {
-                        result= DbUtility.ExecuteNonQueryForOracle(sql, connStr);
-                    }
-                    break;
+                //case ClientType.Oracle:
+                //    {
+                //        result= DbUtility.ExecuteNonQueryForOracle(sql, connStr);
+                //    }
+                //    break;
                 case ClientType.MySql:
                     {
                         result = DbUtility.ExecuteNonQueryForMySql(sql, connStr);
                     }
                     break;
+                default: { throw new NotSupportedExceptionInCoreException(); }
 
             }
             return result;
@@ -69,16 +70,17 @@ namespace xyj.core.Extensions
                         result = DbUtility.ExecuteReaderForSqlSever(sql, connStr);
                     }
                     break;
-                case ClientType.Oracle:
-                    {
-                        result = DbUtility.ExecuteReaderForOracle(sql, connStr);
-                    }
-                    break;
+                //case ClientType.Oracle:
+                //{
+                //    result = DbUtility.ExecuteReaderForOracle(sql, connStr);
+                //}
+                //    break;
                 case ClientType.MySql:
                 {
                     result = DbUtility.ExecuteReaderForMySql(sql, connStr);
                 }
                     break;
+                default: { throw new NotSupportedExceptionInCoreException(); }
 
             }
             return result;
@@ -415,7 +417,7 @@ ORDER BY b.colid",
 
         public static string GetConnectionString(this string dbKey)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
            // return ConfigurationManager.ConnectionStrings[dbKey].ConnectionString;
         }
 

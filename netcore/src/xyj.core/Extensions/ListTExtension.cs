@@ -9,20 +9,11 @@ namespace xyj.core.Extensions
     public static class ListTExtension
     {
 
-        class TempObject<T>
-        {
-            public int index;
-            public T data;
-        }
+       
     
         public static QueryReult<T> GetPage<T>(this IQueryable<T> list, Expression<Func<T, string>> keySelector, int currentPage, int pageSize)
         {
-            //Expression<Func<T, int, TempObject<T>>> selectExpression = 
-            //    (x, i) => new TempObject<T>() { data = x, index = i };
-            //Expression<Func<TempObject<T>, int>> ordereExpression = 
-            //    x => x.index;
-            //Expression<Func<TempObject<T>, T>> selectExpression2 =
-            //    x => x.data;
+         
             var data= list.OrderBy(keySelector).
                 Take(pageSize * currentPage).
                 Skip(pageSize * (currentPage - 1));     

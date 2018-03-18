@@ -748,10 +748,10 @@ var _c = {
         url: window.location.pathname
     },
     sever: {
-        host: "https://app.52xyj.cn",//业务服务器
-        cdn: "https://cdn.52xyj.cn/xyj.framwork",
-        host_sys: "https://api.52xyj.cn",//框架服务器[权限,报表]
-        host_wx: "https://api.52xyj.cn" //微信服务器
+        host: "http://linux.52xyj.cn:8080",//业务服务器
+        cdn: "http://cdn.qxamoy.com/xyj.framwork",
+        host_sys: "http://linux.52xyj.cn:8080",//框架服务器[权限,报表]
+        host_wx: "http://linux.52xyj.cn:8080" //微信服务器
     }
 
 };
@@ -1330,6 +1330,10 @@ _c.url= function (url, isFramWorkUrl) {
     return (("" + url).length > 4) && (("" + url).toLowerCase().substring(0, 4) === "http") ? url : _c.sever.host + url;
 
 }
+//转换资源地址
+_c.cdn = function (url) { 
+    return _c.sever.cdn + url;
+}
 //转换路由地址
 _c.parseurl= function (url, type) {
 
@@ -1598,6 +1602,7 @@ _c.pc.lib = {
             srcurl("win10-ui/css/default.css"),
             srcurl("win10-ui/component/drawer/shortcut-drawer.min.css"),
             srcurl("win10-ui/component/font-awesome-4.7.0/css/font-awesome.min.css"),
+            srcurl("win10-ui/plugins/theme_switcher/theme_switcher.css"),
             //bootstrap-switch
             srcurl("bootstrap-switch/static/stylesheets/bootstrap-switch.css"),
             srcurl("bootstrap-switch/static/stylesheets/bootstrap-switch-conquer.css"),
@@ -1692,6 +1697,8 @@ _c.pc.lib = {
             //win10-ui
             { "win10-ui-core": srcurl("win10-ui/js/win10.js") },
             { "win10-ui-folder": srcurl("win10-ui/component/drawer/shortcut-drawer.min.js") },
+            { "win10-ui-child": srcurl("win10-ui/js/win10.child.js") },
+            { "win10-ui-wallpaper": srcurl("win10-ui/plugins/theme_switcher/theme_switcher.js") },
             //fileUpload
             { "widget": srcurl("fileUpload/file/js/vendor/jquery.ui.widget.js") },
             { "tmpl": srcurl("fileUpload/file/js/tmpl.min.js") },
@@ -1958,7 +1965,7 @@ _c.tool = function () {
 
                             return;
                         } else { //正常返回
-
+                            
                             var data = _c.toObject(result.jsonData);
                             cfg.success(data, result.code, result.msg, result.url);
                             return;
@@ -2201,7 +2208,7 @@ _c.tool = function () {
             if (_c.hasValue(doAfterGetValue)) {
                 doAfterGetValue(v, dom);
             }
-            return $.htmlEncode(v);
+            return _c.htmlEncode(v);
         },
         //取值
         val: function (id, type, uiType) {
@@ -2256,7 +2263,7 @@ _c.tool = function () {
                                     var ue = UM.getEditor(id);
                                     ue.ready(function () {
                                         //获取html内容,
-                                        value = $.htmlEncode(ue.getContent());
+                                        value = _c.htmlEncode(ue.getContent());
                                     });
                                 }
                                 break;
@@ -2351,7 +2358,7 @@ _c.tool = function () {
                                     var ue = UM.getEditor(id);
                                     ue.ready(function () {
                                         //获取html内容,
-                                        value = $.htmlEncode(ue.getContent());
+                                        value = _c.htmlEncode(ue.getContent());
                                     });
                                 }
                                 break;
@@ -2388,7 +2395,7 @@ _c.tool = function () {
 
 
             //编码后返回
-            return _c.hasValue(value) ? $.htmlEncode(value) : "";
+            return _c.hasValue(value) ? _c.htmlEncode(value) : "";
         },
  
         set_m: function (doms, v, p) {
@@ -3511,11 +3518,11 @@ window.onload = function() {
                 $.alert("页面会话超时，请关闭页面后重新进入！");
             } else {
                 $.msg("加载中...");
-                $.go(_c.login_third + "?returnUrl=" + _c.login_auto);
+                _c.go(_c.login_third + "?returnUrl=" + _c.login_auto);
             }
 
         } else {
-            $.go(_c.login);
+            _c.go(_c.login);
         }
     }
     else {

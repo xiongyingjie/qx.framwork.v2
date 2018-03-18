@@ -30,30 +30,16 @@
     <PackageReference Include="Dapper" Version="1.50.4" />
     <PackageReference Include="FastExcel" Version="2.2.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.6.6" />
-    <PackageReference Include="JinianNet.JNTemplate.WithFieldSupport" Version="1.3.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.0.1" />
     <PackageReference Include="MySql.Data" Version="6.10.4" />
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.4" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="12.2.1100" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
     <PackageReference Include="QRCoder" Version="1.3.2" />
-    <PackageReference Include="RestSharp.NetCore" Version="105.2.3" />
+    <PackageReference Include="RestSharp" Version="106.2.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.4.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
-      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.http.abstractions\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNetCore.Http.Features">
-      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.http.features\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore">
-      <HintPath>..\..\..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.entityframeworkcore\2.0.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

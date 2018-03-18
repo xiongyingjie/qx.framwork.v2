@@ -18,7 +18,7 @@ namespace xyj.core.Extensions
       
         public static string ToRealPath(this string path)
        {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
         //    return Web.HttpContext.Current.Request.MapPath(path);
        }
         #region 路径转换 

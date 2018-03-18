@@ -37,44 +37,44 @@ namespace xyj.core.Extensions
                     {
                         return new { name = colName, note = columnNote, ruleType = detail[0], ruleDetail = detail[1], errorTip = detail[2] };
                     }
-                    break;
+                   
                 default: { throw new NotSupportedException(string.Format("不支持改格式的解析!格式类型：{0}", detail[0])); }
             }
         }
         public static List<DbValidationError> Check(this DbContext db, object entity)
         {
-            throw new NotImplementedInCoreException();
-            var list = new List<DbValidationError>();
-            var connString = "";// db.Database.Connection.Database.GetConnectionString();
-            var tableName = entity.GetType().Name;
-            //规则集合
-            var columRuleInfos = tableName.
-                SqlTableInfo().
-                ExecuteReader2(connString).
-                Select(col => ResolveRegRule(col[1], col[2])).ToList();
+            throw new NotSupportedExceptionInCoreException();
+            //var list = new List<DbValidationError>();
+            //var connString = "";// db.Database.Connection.Database.GetConnectionString();
+            //var tableName = entity.GetType().Name;
+            ////规则集合
+            //var columRuleInfos = tableName.
+            //    SqlTableInfo().
+            //    ExecuteReader2(connString).
+            //    Select(col => ResolveRegRule(col[1], col[2])).ToList();
 
-            //待存取的值
-            var info = ReflectionUtility.GetObjInfo(entity);
-            //属性集合
-            var info_p = info[0];
-            //值集合
-            var info_v = info[1];
-            for (var index = 0; index < info_p.Count(); index++)
-            {
-                var p = info_p[index];
-                var v = info_v[index];
-                var p_rule = columRuleInfos.FirstOrDefault(rule => rule.name == p);
-                if (p_rule != null)
-                {
-                    //正则匹配
-                    if (!v.IsValidate((string)p_rule.ruleDetail))
-                    {
-                        list.Add(new DbValidationError(p,
-                            string.Format("{0} 不符合要求，应该为 {1}", p_rule.note, p_rule.errorTip)));
-                    }
-                }
-            }
-            return list;
+            ////待存取的值
+            //var info = ReflectionUtility.GetObjInfo(entity);
+            ////属性集合
+            //var info_p = info[0];
+            ////值集合
+            //var info_v = info[1];
+            //for (var index = 0; index < info_p.Count(); index++)
+            //{
+            //    var p = info_p[index];
+            //    var v = info_v[index];
+            //    var p_rule = columRuleInfos.FirstOrDefault(rule => rule.name == p);
+            //    if (p_rule != null)
+            //    {
+            //        //正则匹配
+            //        if (!v.IsValidate((string)p_rule.ruleDetail))
+            //        {
+            //            list.Add(new DbValidationError(p,
+            //                string.Format("{0} 不符合要求，应该为 {1}", p_rule.note, p_rule.errorTip)));
+            //        }
+            //    }
+            //}
+            //return list;
         }
         public static bool SaveAdd(this DbContext db, object entity)
         {

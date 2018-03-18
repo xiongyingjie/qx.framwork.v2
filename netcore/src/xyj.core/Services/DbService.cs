@@ -525,7 +525,7 @@ namespace xyj.core.Services
             {
                 return ToFinalSql(sql, id).ExecuteNonQuery(_connString);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return -1;
                 //result.AddMessage("捕获删除异常:" + ex.Message);

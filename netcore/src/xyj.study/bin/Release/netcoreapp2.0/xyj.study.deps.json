@@ -1,14 +1,13 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "67d6466cee07784725210ca88a76469301a88a99"
+    "signature": "2880533812ad2cfcfa644eb0ff0b0edbe8045b9e"
   },
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
       "xyj.study/1.0.0": {
         "dependencies": {
-          "EntityFramework": "6.2.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
           "xyj.core": "1.0.0"
         },
@@ -34,12 +33,6 @@
           "lib/netstandard2.0/Dapper.dll": {}
         }
       },
-      "EntityFramework/6.2.0": {
-        "runtime": {
-          "lib/net45/EntityFramework.SqlServer.dll": {},
-          "lib/net45/EntityFramework.dll": {}
-        }
-      },
       "FastExcel/2.2.0": {
         "runtime": {
           "lib/netstandard1.3/FastExcel.dll": {}
@@ -54,11 +47,6 @@
         },
         "runtime": {
           "lib/netstandard2.0/HtmlAgilityPack.dll": {}
-        }
-      },
-      "JinianNet.JNTemplate.WithFieldSupport/1.3.1": {
-        "runtime": {
-          "lib/net40/JinianNet.JNTemplate.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/2.0.1": {
@@ -253,7 +241,7 @@
         "dependencies": {
           "Microsoft.Extensions.Configuration": "1.1.2",
           "Microsoft.Extensions.Configuration.FileExtensions": "1.1.2",
-          "Newtonsoft.Json": "10.0.3",
+          "Newtonsoft.Json": "11.0.1",
           "System.Dynamic.Runtime": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0"
         },
@@ -420,21 +408,9 @@
           "lib/netstandard1.3/MySql.Data.EntityFrameworkCore.dll": {}
         }
       },
-      "Newtonsoft.Json/10.0.3": {
-        "dependencies": {
-          "Microsoft.CSharp": "4.4.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Runtime.Serialization.Formatters": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
-        },
+      "Newtonsoft.Json/11.0.1": {
         "runtime": {
-          "lib/netstandard1.3/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Oracle.ManagedDataAccess/12.2.1100": {
-        "runtime": {
-          "lib/net40/Oracle.ManagedDataAccess.dll": {}
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
         }
       },
       "QRCoder/1.3.2": {
@@ -464,22 +440,12 @@
           "lib/netstandard1.0/Remotion.Linq.dll": {}
         }
       },
-      "RestSharp.NetCore/105.2.3": {
+      "RestSharp/106.2.1": {
         "dependencies": {
-          "Newtonsoft.Json": "10.0.3",
-          "System.Collections.Specialized": "4.3.0",
-          "System.ComponentModel.TypeConverter": "4.3.0",
-          "System.Net.Requests": "4.0.11",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Runtime.Serialization.Formatters": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Runtime.Serialization.Xml": "4.1.1",
-          "System.Xml.XmlSerializer": "4.0.11"
+          "System.ValueTuple": "4.4.0"
         },
         "runtime": {
-          "lib/netstandard1.6/RestSharp.NetCore.dll": {}
+          "lib/netstandard2.0/RestSharp.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -1157,32 +1123,6 @@
           "System.Runtime.Handles": "4.3.0"
         }
       },
-      "System.Net.Requests/4.0.11": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.Tracing": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Net.Http": "4.3.2",
-          "System.Net.Primitives": "4.3.0",
-          "System.Net.WebHeaderCollection": "4.0.1",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0"
-        },
-        "runtimeTargets": {
-          "runtime/unix/lib/_._": {
-            "rid": "unix",
-            "assetType": "runtime"
-          },
-          "runtime/win/lib/_._": {
-            "rid": "win",
-            "assetType": "runtime"
-          }
-        }
-      },
       "System.Net.Security/4.3.1": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.3.0",
@@ -1233,14 +1173,6 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Net.WebHeaderCollection/4.0.1": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0"
-        }
-      },
       "System.ObjectModel/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -1248,34 +1180,6 @@
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0",
           "System.Threading": "4.3.0"
-        }
-      },
-      "System.Private.DataContractSerialization/4.1.1": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Collections.Concurrent": "4.3.0",
-          "System.Diagnostics.Debug": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Threading.Tasks": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0",
-          "System.Xml.XmlSerializer": "4.0.11"
         }
       },
       "System.Reflection/4.3.0": {
@@ -1405,16 +1309,6 @@
         "dependencies": {
           "System.Resources.ResourceManager": "4.3.0",
           "System.Runtime": "4.3.0"
-        }
-      },
-      "System.Runtime.Serialization.Xml/4.1.1": {
-        "dependencies": {
-          "System.IO": "4.3.0",
-          "System.Private.DataContractSerialization": "4.1.1",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Serialization.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0"
         }
       },
       "System.Security.AccessControl/4.4.0": {
@@ -1730,6 +1624,7 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.ValueTuple/4.4.0": {},
       "System.Xml.ReaderWriter/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -1761,27 +1656,6 @@
           "System.Text.Encoding": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0"
-        }
-      },
-      "System.Xml.XmlSerializer/4.0.11": {
-        "dependencies": {
-          "System.Collections": "4.3.0",
-          "System.Globalization": "4.3.0",
-          "System.IO": "4.3.0",
-          "System.Linq": "4.3.0",
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Extensions": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Reflection.TypeExtensions": "4.4.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
-          "System.Threading": "4.3.0",
-          "System.Xml.ReaderWriter": "4.3.0",
-          "System.Xml.XmlDocument": "4.3.0"
         }
       },
       "System.Xml.XPath/4.3.0": {
@@ -1833,16 +1707,14 @@
           "Dapper": "1.50.4",
           "FastExcel": "2.2.0",
           "HtmlAgilityPack": "1.6.6",
-          "JinianNet.JNTemplate.WithFieldSupport": "1.3.1",
           "Microsoft.AspNetCore.Http": "2.0.1",
           "Microsoft.AspNetCore.Http.Extensions": "2.0.1",
           "Microsoft.AspNetCore.Session": "2.0.1",
           "MySql.Data": "6.10.4",
           "MySql.Data.EntityFrameworkCore": "6.10.4",
-          "Newtonsoft.Json": "10.0.3",
-          "Oracle.ManagedDataAccess": "12.2.1100",
+          "Newtonsoft.Json": "11.0.1",
           "QRCoder": "1.3.2",
-          "RestSharp.NetCore": "105.2.3",
+          "RestSharp": "106.2.1",
           "System.Data.SqlClient": "4.4.0",
           "System.Runtime": "4.3.0"
         },
@@ -1872,13 +1744,6 @@
       "path": "dapper/1.50.4",
       "hashPath": "dapper.1.50.4.nupkg.sha512"
     },
-    "EntityFramework/6.2.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ptGyXOf26qLrtn+2doAmylIlCxOnBJANwlyyLrXDmqIk9O18IzLWHyxDwwAyhgXkxmbiaA0WNpRy67WRReInBw==",
-      "path": "entityframework/6.2.0",
-      "hashPath": "entityframework.6.2.0.nupkg.sha512"
-    },
     "FastExcel/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -1892,13 +1757,6 @@
       "sha512": "sha512-EN0xB6rT0AyYlqiwXpDdmiM7OmrVO7B18sc5uDrTxHxn4k+lR9SKLcoKEvfsN7mf+sCKlvfRiXyGf6YnVQqVHA==",
       "path": "htmlagilitypack/1.6.6",
       "hashPath": "htmlagilitypack.1.6.6.nupkg.sha512"
-    },
-    "JinianNet.JNTemplate.WithFieldSupport/1.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-iAVTpe6PiyxfVw7Z5RrIPzPATi5/Q98UmoWCde6PlNyrP5WAnFWbl5QPf8+XCbOxsfzg8bhxaPe8EG8ma0CpqA==",
-      "path": "jiniannet.jntemplate.withfieldsupport/1.3.1",
-      "hashPath": "jiniannet.jntemplate.withfieldsupport.1.3.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/2.0.1": {
       "type": "package",
@@ -1938,7 +1796,7 @@
     "Microsoft.AspNetCore.Http/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ALYyNZ7Lw11Yvu2U2lBqak628AKODKVvTrszkXNe+7LeV4s4vhPTIR20+WSZv9hn3Hq+oRaT9E96zfJ/nWdFKg==",
+      "sha512": "sha512-mTXDCNF83pV6qe+IzJ166p1re2or25Xj0vjdqj5JDakz9ClNZHncSkyAk63vSpBZbgFXGHiz+PuVyYcfurs5ew==",
       "path": "microsoft.aspnetcore.http/2.0.1",
       "hashPath": "microsoft.aspnetcore.http.2.0.1.nupkg.sha512"
     },
@@ -1952,7 +1810,7 @@
     "Microsoft.AspNetCore.Http.Extensions/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Oo1RwFD/T19QBGxbtlhcMBS5Uxvn9oxGfFfk2LgCftYijbWe1MIDWstNINvNjU/97TP+iXtOJa1rfmN3IKBrBw==",
+      "sha512": "sha512-iG6FtbPQI3AOb3LskrY23AUiaZUGSfXWxMf1cJh9lB/h309qiMTPM6Du4stGwwSvw3yR2EKNaV+O4aZWmuvfog==",
       "path": "microsoft.aspnetcore.http.extensions/2.0.1",
       "hashPath": "microsoft.aspnetcore.http.extensions.2.0.1.nupkg.sha512"
     },
@@ -1966,7 +1824,7 @@
     "Microsoft.AspNetCore.Session/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5iqtECq6PyB+6vItNe78PZlUZRCmqDkIRvFTIZwcsOm4hC1WxecRCfT+2AXsNjnGIq9F6m6t0I/yXHMCN/EE6w==",
+      "sha512": "sha512-ERowmL/UQUJ5mzbEQrQcLXqSgRAN3A78SLweI1lB6ce4suQ8+dtgi9qm56mePrVLnRhdN10XTrcAkZZIje7PAA==",
       "path": "microsoft.aspnetcore.session/2.0.1",
       "hashPath": "microsoft.aspnetcore.session.2.0.1.nupkg.sha512"
     },
@@ -1987,7 +1845,7 @@
     "Microsoft.EntityFrameworkCore/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RIxwqZgyi+BSu8QCiP5vIVYE0cR2uSHCZsx69Kr7KimEHo7BDQEy4tK33uMJx9Lg8LO2YaP4jV+5mF52AC054Q==",
+      "sha512": "sha512-RlwInZHfIUWwFgQJCpUMKrLeE8QJ64MA/GxD881oTMFa9j7iiGKCtI0xK4J1NNgRKvgVDPJbh9CIGJiu0KEdeA==",
       "path": "microsoft.entityframeworkcore/2.0.1",
       "hashPath": "microsoft.entityframeworkcore.2.0.1.nupkg.sha512"
     },
@@ -2001,7 +1859,7 @@
     "Microsoft.EntityFrameworkCore.SqlServer/2.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-dybfsxGUbau2Q9EHK7Q+pDP3M6+QD9ATiXwlqHGMffZhQrctjP/Az3eQgKImDMWiMPbQu9/OaDNZ2Go8+emA3w==",
+      "sha512": "sha512-+UnKJpkVpuNWRjF3BWSzbkQLL7gxY18Hnh5uXmlagO4Ua8BstqWIJaIUV+Ps2rw/2n62UPTQQV9RQWggV7OH9Q==",
       "path": "microsoft.entityframeworkcore.sqlserver/2.0.1",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.2.0.1.nupkg.sha512"
     },
@@ -2064,7 +1922,7 @@
     "Microsoft.Extensions.FileProviders.Abstractions/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-c2Z6a/iCfvlH0CA2qd51M7M5c7pIkk2AzewmiCzZfutN6p15UcBo0PZi23BKSAfJPMoueIhoUm/PxNZOrT0JPA==",
+      "sha512": "sha512-Z0AK+hmLO33WAXQ5P1uPzhH7z5yjDHX/XnUefXxE//SyvCb9x4cVjND24dT5566t/yzGp8/WLD7EG9KQKZZklQ==",
       "path": "microsoft.extensions.fileproviders.abstractions/2.0.0",
       "hashPath": "microsoft.extensions.fileproviders.abstractions.2.0.0.nupkg.sha512"
     },
@@ -2120,7 +1978,7 @@
     "Microsoft.Extensions.Primitives/2.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SrC6CuYihYkIEbJDInPqN1GAn/u5mgf/XidaibthP0SPBqgooMcInp+8DP7ci5udlhc96imXdPCBW4ZUFevnCQ==",
+      "sha512": "sha512-ukg53qNlqTrK38WA30b5qhw0GD7y3jdI9PHHASjdKyTcBHTevFM2o23tyk3pWCgAV27Bbkm+CPQ2zUe1ZOuYSA==",
       "path": "microsoft.extensions.primitives/2.0.0",
       "hashPath": "microsoft.extensions.primitives.2.0.0.nupkg.sha512"
     },
@@ -2166,19 +2024,12 @@
       "path": "mysql.data.entityframeworkcore/6.10.4",
       "hashPath": "mysql.data.entityframeworkcore.6.10.4.nupkg.sha512"
     },
-    "Newtonsoft.Json/10.0.3": {
+    "Newtonsoft.Json/11.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
-      "path": "newtonsoft.json/10.0.3",
-      "hashPath": "newtonsoft.json.10.0.3.nupkg.sha512"
-    },
-    "Oracle.ManagedDataAccess/12.2.1100": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-PEiPi7VrQyJmcZm0TtiIBNATR13JcuLUAncpdCrCY5us9KjIdwjbgbdb6lwsc9/EHETfUFiYlYCdSRY+qkcdzQ==",
-      "path": "oracle.manageddataaccess/12.2.1100",
-      "hashPath": "oracle.manageddataaccess.12.2.1100.nupkg.sha512"
+      "sha512": "sha512-pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
+      "path": "newtonsoft.json/11.0.1",
+      "hashPath": "newtonsoft.json.11.0.1.nupkg.sha512"
     },
     "QRCoder/1.3.2": {
       "type": "package",
@@ -2194,12 +2045,12 @@
       "path": "remotion.linq/2.1.1",
       "hashPath": "remotion.linq.2.1.1.nupkg.sha512"
     },
-    "RestSharp.NetCore/105.2.3": {
+    "RestSharp/106.2.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XAutnXRVeS6Nhqjzg1l0OUOEWWLUDl4ZUvopMTRea0N3qiX+lD1U1Z5HrdyNwLX3eUUHI1w6h1DfEWEIe8JUSA==",
-      "path": "restsharp.netcore/105.2.3",
-      "hashPath": "restsharp.netcore.105.2.3.nupkg.sha512"
+      "sha512": "sha512-YlL7/d6N0loTeI7BatX38snkSI/UhKSMPIWZ+rAxMMFM05QOKPySb43bNm/AUHmVca/FaNceOpgtZzY7Em8vNw==",
+      "path": "restsharp/106.2.1",
+      "hashPath": "restsharp.106.2.1.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
@@ -2232,7 +2083,7 @@
     "runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G8QY67a7qWdoiP5Sma95+REugjqCVexV7TqnbAjTVgwmCX/FxNJr6T+qWaGIejWlgMwge7mRr/LaShkriQYwXg==",
+      "sha512": "sha512-A8v6PGmk+UGbfWo5Ixup0lPM4swuSwOiayJExZwKIOjTlFFQIsu3QnDXECosBEyrWSPryxBVrdqtJyhK3BaupQ==",
       "path": "runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
@@ -2330,21 +2181,21 @@
     "runtime.win-arm64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bTDeNMPA6UtWwtcD2FUUSyySSYuXwdgePqHC9HA2mfs63lTVoDPEdZe6hrgMfEok5aszFENkh0GTugNH5tK+GA==",
+      "sha512": "sha512-LbrynESTp3bm5O/+jGL8v0Qg5SJlTV08lpIpFesXjF6uGNMWqFnUQbYBJwZTeua6E/Y7FIM1C54Ey1btLWupdg==",
       "path": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
     "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9wWPq6XCW163hD3QSoDrKPh77EtmRoJ/tEKozBD4rNwY4+X0r/MtIniviThzsRkjPd07LOp88n6G9qpsRglsuQ==",
+      "sha512": "sha512-38ugOfkYJqJoX9g6EYRlZB5U2ZJH51UP8ptxZgdpS07FgOEToV+lS11ouNK2PM12Pr6X/PpT5jK82G3DwH/SxQ==",
       "path": "runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
     "runtime.win-x86.runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-v4SFRI/pK0WQKwaRHCU60M4kN6kzMw8ZWU0XtGDtJq96rP/TZNfClApw11Kj0DDoIueolQ+DLlSbKK6OLrgwVw==",
+      "sha512": "sha512-YhEdSQUsTx+C8m8Bw7ar5/VesXvCFMItyZF7G1AUY+OM0VPZUOeAVpJ4Wl6fydBGUYZxojTDR3I6Bj/+BPkJNA==",
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
@@ -2428,7 +2279,7 @@
     "System.Data.SqlClient/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4ZBi8xmmXyrwvSAzQJT7UpY016N2A3RURSGxFxsEsAgrHYv9FNY2zb+Z3x8r4C6WyfUk8TCKWfs7/X+NtvduxA==",
+      "sha512": "sha512-fxb9ghn1k1Ua7FFdlvtiBOD4/PsQvD/fk2KnhS+FK7VC6OggEx6P+lP1P0+KMb5V2dqS1+FbR7HCenoqzJMNIA==",
       "path": "system.data.sqlclient/4.4.0",
       "hashPath": "system.data.sqlclient.4.4.0.nupkg.sha512"
     },
@@ -2607,13 +2458,6 @@
       "path": "system.net.primitives/4.3.0",
       "hashPath": "system.net.primitives.4.3.0.nupkg.sha512"
     },
-    "System.Net.Requests/4.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-vxGt7C0cZixN+VqoSW4Yakc1Y9WknmxauDqzxgpw/FnBdz4kQNN51l4wxdXX5VY1xjqy//+G+4CvJWp1+f+y6Q==",
-      "path": "system.net.requests/4.0.11",
-      "hashPath": "system.net.requests.4.0.11.nupkg.sha512"
-    },
     "System.Net.Security/4.3.1": {
       "type": "package",
       "serviceable": true,
@@ -2628,26 +2472,12 @@
       "path": "system.net.sockets/4.3.0",
       "hashPath": "system.net.sockets.4.3.0.nupkg.sha512"
     },
-    "System.Net.WebHeaderCollection/4.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-XX2TIAN+wBSAIV51BU2FvvXMdstUa8b0FBSZmDWjZdwUMmggQSifpTOZ5fNH20z9ZCg2fkV1L5SsZnpO2RQDRQ==",
-      "path": "system.net.webheadercollection/4.0.1",
-      "hashPath": "system.net.webheadercollection.4.0.1.nupkg.sha512"
-    },
     "System.ObjectModel/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-bdX+80eKv9bN6K4N+d77OankKHGn6CH711a6fcOpMQu2Fckp/Ft4L/kW9WznHpyR0NRAvJutzOMHNNlBGvxQzQ==",
       "path": "system.objectmodel/4.3.0",
       "hashPath": "system.objectmodel.4.3.0.nupkg.sha512"
-    },
-    "System.Private.DataContractSerialization/4.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-lcqFBUaCZxPiUkA4dlSOoPZGtZsAuuElH2XHgLwGLxd7ZozWetV5yiz0qGAV2AUYOqw97MtZBjbLMN16Xz4vXA==",
-      "path": "system.private.datacontractserialization/4.1.1",
-      "hashPath": "system.private.datacontractserialization.4.1.1.nupkg.sha512"
     },
     "System.Reflection/4.3.0": {
       "type": "package",
@@ -2715,7 +2545,7 @@
     "System.Runtime.CompilerServices.Unsafe/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-w8JRQBg4CVp0QSWl903JH7C03SeLZ/sBpWMweeXu6iO+8taCmmcomJPU0AN9bKXFtvDuaIzQ8IfHimKO0qj57w==",
+      "sha512": "sha512-9dLLuBxr5GNmOfl2jSMcsHuteEg32BEfUotmmUkmZjpR3RpVHE8YQwt0ow3p6prwA1ME8WqDVZqrr8z6H8G+Kw==",
       "path": "system.runtime.compilerservices.unsafe/4.4.0",
       "hashPath": "system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
     },
@@ -2757,7 +2587,7 @@
     "System.Runtime.Serialization.Formatters/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3NVVqsRjFAOoycgRFdmZvyUI+Fk9X/4/lPafa4FFyM9JCGQ2NihF2nlbOjQnx8WpkkRrAp3XtyLp0eO+LBes/g==",
+      "sha512": "sha512-KT591AkTNFOTbhZlaeMVvfax3RqhH1EJlcwF50Wm7sfnBLuHiOeZRRKrr1ns3NESkM20KPZ5Ol/ueMq5vg4QoQ==",
       "path": "system.runtime.serialization.formatters/4.3.0",
       "hashPath": "system.runtime.serialization.formatters.4.3.0.nupkg.sha512"
     },
@@ -2767,13 +2597,6 @@
       "sha512": "sha512-Wz+0KOukJGAlXjtKr+5Xpuxf8+c8739RI1C+A2BoQZT+wMCCoMDDdO8/4IRHfaVINqL78GO8dW8G2lW/e45Mcw==",
       "path": "system.runtime.serialization.primitives/4.3.0",
       "hashPath": "system.runtime.serialization.primitives.4.3.0.nupkg.sha512"
-    },
-    "System.Runtime.Serialization.Xml/4.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-yqfKHkWUAdI0hdDIdD9KDzluKtZ8IIqLF3O7xIZlt6UTs1bOvFRpCvRTvGQva3Ak/ZM9/nq9IHBJ1tC4Ybcrjg==",
-      "path": "system.runtime.serialization.xml/4.1.1",
-      "hashPath": "system.runtime.serialization.xml.4.1.1.nupkg.sha512"
     },
     "System.Security.AccessControl/4.4.0": {
       "type": "package",
@@ -2855,7 +2678,7 @@
     "System.Security.Principal.Windows/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mCeIoO15e+TFz1jvbptX7jL7dSME5hPV2OPI/SW5PNlkznjxB3yoJgp/zp3PTysL7EPRo+LCd40IFJ0GSWYheQ==",
+      "sha512": "sha512-pP+AOzt1o3jESOuLmf52YQTF7H3Ng9hTnrOESQiqsnl2IbBh1HInsAMHYtoh75iUYV0OIkHmjvveraYB6zM97w==",
       "path": "system.security.principal.windows/4.4.0",
       "hashPath": "system.security.principal.windows.4.4.0.nupkg.sha512"
     },
@@ -2869,7 +2692,7 @@
     "System.Text.Encoding.CodePages/4.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-gq/T85brfBcywSZuwHPg02uAo/Jxb12ah+tgVqXAbFjyl6EiGsVitbA1T7+SI4dMe7HXUvYE4aMp9M8BnTr+6g==",
+      "sha512": "sha512-6JX7ZdaceBiLKLkYt8zJcp4xTJd1uYyXXEkPw6mnlUIjh1gZPIVKPtRXPmY5kLf6DwZmf5YLwR3QUrRonl7l0A==",
       "path": "system.text.encoding.codepages/4.4.0",
       "hashPath": "system.text.encoding.codepages.4.4.0.nupkg.sha512"
     },
@@ -2943,6 +2766,13 @@
       "path": "system.threading.timer/4.3.0",
       "hashPath": "system.threading.timer.4.3.0.nupkg.sha512"
     },
+    "System.ValueTuple/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BahUww/+mdP4ARCAh2RQhQTg13wYLVrBb9SYVgW8ZlrwjraGCXHGjo0oIiUfZ34LUZkMMR+RAzR7dEY4S1HeQQ==",
+      "path": "system.valuetuple/4.4.0",
+      "hashPath": "system.valuetuple.4.4.0.nupkg.sha512"
+    },
     "System.Xml.ReaderWriter/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -2957,17 +2787,10 @@
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
-    "System.Xml.XmlSerializer/4.0.11": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-FrazwwqfIXTfq23mfv4zH+BjqkSFNaNFBtjzu3I9NRmG8EELYyrv/fJnttCIwRMFRR/YKXF1hmsMmMEnl55HGw==",
-      "path": "system.xml.xmlserializer/4.0.11",
-      "hashPath": "system.xml.xmlserializer.4.0.11.nupkg.sha512"
-    },
     "System.Xml.XPath/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Z+NCHjGBAi+RnIiUhBv1os/I3SiA+0+V8C+JUikD4aRNkqGfeGyoFuK2/QLAquPBLPms0Wtth5cl/FXg6xuejw==",
+      "sha512": "sha512-v1JQ5SETnQusqmS3RwStF7vwQ3L02imIzl++sewmt23VGygix04pEH+FCj1yWb+z4GDzKiljr1W7Wfvrx0YwgA==",
       "path": "system.xml.xpath/4.3.0",
       "hashPath": "system.xml.xpath.4.3.0.nupkg.sha512"
     },

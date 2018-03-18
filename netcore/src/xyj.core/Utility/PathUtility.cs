@@ -8,7 +8,7 @@ namespace xyj.core.Utility
     {
         public static string MapPath(string virtualPath)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             //if (HttpContext.Current != null)
             //{
             //    return HttpContext.Current.Server.MapPath(virtualPath);

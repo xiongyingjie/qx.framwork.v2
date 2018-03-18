@@ -36,12 +36,14 @@ namespace CodeTool
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tb_namespace = new System.Windows.Forms.TextBox();
             this.ck_test = new System.Windows.Forms.CheckBox();
             this.ck_pre = new System.Windows.Forms.CheckBox();
             this.ck_clean = new System.Windows.Forms.CheckBox();
             this.ck_rechoose = new System.Windows.Forms.CheckBox();
             this.ck_detail = new System.Windows.Forms.CheckBox();
             this.ck_update = new System.Windows.Forms.CheckBox();
+            this.ck_entity = new System.Windows.Forms.CheckBox();
             this.ck_add = new System.Windows.Forms.CheckBox();
             this.bt_check = new System.Windows.Forms.Button();
             this.bt_exit = new System.Windows.Forms.Button();
@@ -124,12 +126,14 @@ namespace CodeTool
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.tb_namespace);
             this.groupBox5.Controls.Add(this.ck_test);
             this.groupBox5.Controls.Add(this.ck_pre);
             this.groupBox5.Controls.Add(this.ck_clean);
             this.groupBox5.Controls.Add(this.ck_rechoose);
             this.groupBox5.Controls.Add(this.ck_detail);
             this.groupBox5.Controls.Add(this.ck_update);
+            this.groupBox5.Controls.Add(this.ck_entity);
             this.groupBox5.Controls.Add(this.ck_add);
             this.groupBox5.Controls.Add(this.bt_check);
             this.groupBox5.Controls.Add(this.bt_exit);
@@ -139,6 +143,14 @@ namespace CodeTool
             this.groupBox5.TabIndex = 11;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "4.生成代码";
+            // 
+            // tb_namespace
+            // 
+            this.tb_namespace.Location = new System.Drawing.Point(190, 15);
+            this.tb_namespace.Name = "tb_namespace";
+            this.tb_namespace.Size = new System.Drawing.Size(100, 21);
+            this.tb_namespace.TabIndex = 14;
+            this.tb_namespace.Visible = false;
             // 
             // ck_test
             // 
@@ -212,6 +224,17 @@ namespace CodeTool
             this.ck_update.Text = "编辑界面";
             this.ck_update.UseVisualStyleBackColor = true;
             // 
+            // ck_entity
+            // 
+            this.ck_entity.AutoSize = true;
+            this.ck_entity.Location = new System.Drawing.Point(87, 15);
+            this.ck_entity.Name = "ck_entity";
+            this.ck_entity.Size = new System.Drawing.Size(72, 16);
+            this.ck_entity.TabIndex = 13;
+            this.ck_entity.Text = "生成实体";
+            this.ck_entity.UseVisualStyleBackColor = true;
+            this.ck_entity.CheckedChanged += new System.EventHandler(this.ck_entity_CheckedChanged);
+            // 
             // ck_add
             // 
             this.ck_add.AutoSize = true;
@@ -226,7 +249,7 @@ namespace CodeTool
             // 
             // bt_check
             // 
-            this.bt_check.Location = new System.Drawing.Point(201, 46);
+            this.bt_check.Location = new System.Drawing.Point(193, 46);
             this.bt_check.Name = "bt_check";
             this.bt_check.Size = new System.Drawing.Size(39, 37);
             this.bt_check.TabIndex = 11;
@@ -279,6 +302,7 @@ namespace CodeTool
             // 
             this.pg_colum.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.pg_colum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pg_colum.LineColor = System.Drawing.SystemColors.ControlDark;
             this.pg_colum.Location = new System.Drawing.Point(3, 17);
             this.pg_colum.Name = "pg_colum";
             this.pg_colum.Size = new System.Drawing.Size(208, 320);
@@ -489,7 +513,7 @@ namespace CodeTool
             this.MinimizeBox = false;
             this.Name = "FormTool2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "表单生成器 V1.1.0.47";
+            this.Text = "表单生成器 V2.3.0.2";
             this.Load += new System.EventHandler(this.FormTool2_Load);
             this.p_addReport.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
@@ -548,5 +572,7 @@ namespace CodeTool
         private System.Windows.Forms.RichTextBox rtb_output_list;
         private System.Windows.Forms.CheckBox ck_pre;
         private System.Windows.Forms.CheckBox ck_rechoose;
+        private System.Windows.Forms.CheckBox ck_entity;
+        private System.Windows.Forms.TextBox tb_namespace;
     }
 }

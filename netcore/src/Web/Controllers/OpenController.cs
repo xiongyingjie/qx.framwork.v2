@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Qiniu.Storage;
-using Qiniu.Util;
+//using Qiniu.Storage;
+//using Qiniu.Util;
 using Web.Controllers.Base;
 using xyj.acs.Interfaces;
 using xyj.acs.Models;
@@ -93,15 +93,15 @@ namespace Web.Controllers
         {
             return Json(State.Success, _acsService.GetSubSystemData(id));
         }
-        public IActionResult GetQiNiuUpToken(string id)
-        {
-            var data = _acsService.GetSubSystemData(id).data_value.Deserialize<dynamic>();
-            var mac = new Mac(data.ak, data.sk);
-            var putPolicy = new PutPolicy();
-            putPolicy.Scope = "test";
-            var token = Auth.CreateUploadToken(mac, putPolicy.ToJsonString());
-            return Json(State.Success,new{ data.ak, data.sk });
-        }
+        //public IActionResult GetQiNiuUpToken(string id)
+        //{
+        //    var data = _acsService.GetSubSystemData(id).data_value.Deserialize<dynamic>();
+        //    var mac = new Mac(data.ak, data.sk);
+        //    var putPolicy = new PutPolicy();
+        //    putPolicy.Scope = "test";
+        //    var token = Auth.CreateUploadToken(mac, putPolicy.ToJsonString());
+        //    return Json(State.Success,new{ data.ak, data.sk });
+        //}
         public IActionResult AutoLogin(string userId, string userName, string roleString,string subSys,string site)
         {
             var site2 = site.ToLower().Replace("http://", "").Replace("https://", "").Replace("/", "");
@@ -175,13 +175,13 @@ namespace Web.Controllers
         // GET: Open/GetTable
         public IActionResult GetTable(string id="demo")
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
           //  return Json(_contentService.GetTableDesign(id), JsonRequestBehavior.AllowGet);
         }
         // GET: Open/UpdateTable
         public IActionResult UpdateTable(string json)
         {
-            throw new NotImplementedInCoreException();
+            throw new NotSupportedExceptionInCoreException();
             ///  return Json(_contentService.UpdateTable(json.Deserialize<ContentBag>()), JsonRequestBehavior.AllowGet);
         }
          // GET: Open/Upload

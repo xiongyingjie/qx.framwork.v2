@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
-using Oracle.ManagedDataAccess.Client;
+//using Oracle.ManagedDataAccess.Client;
 using xyj.core.Config;
 using xyj.core.Extensions;
 
@@ -34,7 +34,7 @@ namespace xyj.core.Utility
         {
 
             return string.Format("Data Source={0};Initial Catalog={1};Persist Security Info=True;User ID={2};Password={3}",
-                host, database.CheckDb(), user.CheckValue(Setting.DbUser), passWord.CheckValue(Setting.DbPassword));
+                host.CheckValue(Setting.DbHost), database.CheckDb(), user.CheckValue(Setting.DbUser), passWord.CheckValue(Setting.DbPassword));
 
         }
         public static string OracleConnString(string host, string serviceName, string user, string passWord, int port=1521)
@@ -110,73 +110,75 @@ namespace xyj.core.Utility
             }
             return count;
         }
-        public static List<List<string>> ExecuteReaderForOracle(string sql, string connStr)
-        {
-            using (var con = new OracleConnection(connStr))
-            {//  string connString = "Data Source=(description=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.18.170)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.18.172)(PORT=1521)))(FAILOVER=yes)(LOAD_BALANCE=yes)(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = kfptdb)));Persist Security Info=True;User ID=usr_weixin;Password=xAaeS90D;";
+        #region oracle 暂不支持
+        //public static List<List<string>> ExecuteReaderForOracle(string sql, string connStr)
+        //{
+        //    using (var con = new OracleConnection(connStr))
+        //    {//  string connString = "Data Source=(description=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.18.170)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.18.172)(PORT=1521)))(FAILOVER=yes)(LOAD_BALANCE=yes)(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = kfptdb)));Persist Security Info=True;User ID=usr_weixin;Password=xAaeS90D;";
 
-                using (var com = new OracleCommand(sql, con))
-                {
-                    try
-                    {
-                        //打开连接
-                        if (con.State != ConnectionState.Open)
-                        {
-                            con.Open();
-                        }
-                        using (var reader = com.ExecuteReader())
-                        {
-                            var result = reader.ToTableList();
-                            //关闭reader
-                            reader.Close();
-                            reader.Dispose();
-                            return result;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("错误信息:" + ex.Message);
-                    }
-                    finally
-                    {
-                        com.Dispose();
-                        // 关闭连接
-                        if (con.State != ConnectionState.Closed)
-                        { con.Close(); }
-                    }
-                }
-            }
-        }
-        public static int ExecuteNonQueryForOracle(string sql, string connStr)
-        {
-            var count = 0;
-            using (var con = new OracleConnection(connStr))
-            {
-                using (var com = new OracleCommand(sql, con))
-                    try
-                    {
-                        //打开连接
-                        if (con.State != ConnectionState.Open)
-                        { con.Open(); }
-                        count = com.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new Exception("错误信息:" + ex.Message);
-                    }
-                    finally
-                    {
-                        if (con.State == ConnectionState.Open)
-                        {
-                            com.Dispose(); ;
-                            con.Close();
-                            con.Dispose();
-                        }
-                    }
+        //        using (var com = new OracleCommand(sql, con))
+        //        {
+        //            try
+        //            {
+        //                //打开连接
+        //                if (con.State != ConnectionState.Open)
+        //                {
+        //                    con.Open();
+        //                }
+        //                using (var reader = com.ExecuteReader())
+        //                {
+        //                    var result = reader.ToTableList();
+        //                    //关闭reader
+        //                    reader.Close();
+        //                    reader.Dispose();
+        //                    return result;
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw new Exception("错误信息:" + ex.Message);
+        //            }
+        //            finally
+        //            {
+        //                com.Dispose();
+        //                // 关闭连接
+        //                if (con.State != ConnectionState.Closed)
+        //                { con.Close(); }
+        //            }
+        //        }
+        //    }
+        //}
+        //public static int ExecuteNonQueryForOracle(string sql, string connStr)
+        //{
+        //    var count = 0;
+        //    using (var con = new OracleConnection(connStr))
+        //    {
+        //        using (var com = new OracleCommand(sql, con))
+        //            try
+        //            {
+        //                //打开连接
+        //                if (con.State != ConnectionState.Open)
+        //                { con.Open(); }
+        //                count = com.ExecuteNonQuery();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                throw new Exception("错误信息:" + ex.Message);
+        //            }
+        //            finally
+        //            {
+        //                if (con.State == ConnectionState.Open)
+        //                {
+        //                    com.Dispose(); ;
+        //                    con.Close();
+        //                    con.Dispose();
+        //                }
+        //            }
 
-            }
-            return count;
-        }
+        //    }
+        //    return count;
+        //}
+        #endregion
 
         public static List<List<string>> ExecuteReaderForMySql(string sql, string connStr)
         {

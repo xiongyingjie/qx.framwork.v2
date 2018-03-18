@@ -96,6 +96,7 @@ namespace CodeTool
                     else
                     {
                         DbName = e.Node.Text;
+                       tb_namespace.Text= tb_namespace.Text.CheckValue(DbName);
                        // TipInfo("已更换数据库"+ dbName);
                     }
                 }
@@ -131,7 +132,7 @@ namespace CodeTool
                                         row[4], row[5], row[6],
                                         row[7], row[8], row[9],
                                         row[10], row[11])
-                                }).ToArray()));
+                                }).OrderBy(o=>o[1]).ToArray()));
 
                 }
 
@@ -162,23 +163,44 @@ namespace CodeTool
                 var lastChild = children[children.Count - 1];
                 Step1(lastChild, e.Node.Checked);
             }
+            //选择整个库
+            if (ck_entity.Checked&& e.Node.Level == 1)
+            {
+                if (e.Node.Checked)
+                {
+                    e.Node.ExpandAll();
+                    foreach (TreeNode child in e.Node.Nodes)
+                    {
+                        child.Checked = true;
+                    }
+                }
+                else
+                {
+                    e.Node.Collapse();
+                    lv_colums.Items.Clear();
+                }
+               
+            }
         }
+
+        private Thread _preThread;
 
         private void Step1(TreeNode lastChild,bool checkOrUnChek)
         {//塞入listView
          //改变鼠标状态
-          
-            new Thread(() =>
+
+            var _thread = new Thread(() =>
             {
                 Cursor = Cursors.WaitCursor;
                 while (true)
                 {
-                    if (lastChild.Checked== checkOrUnChek)
-                    {//检测是否完成
+                    if (lastChild.Checked == checkOrUnChek)
+                    {
+                        //检测是否完成
                         break;
                     }
                     Thread.Sleep(100);
-                }//恢复鼠标
+                } //恢复鼠标
                 Cursor = Cursors.Default;
 
                 var sequence = 1;
@@ -196,104 +218,113 @@ namespace CodeTool
                         switch (dataType)
                         {
                             case "varchar":
+                            {
+                                if (length == 18)
                                 {
-                                    if (length == 18)
-                                    {//身份证
-                                        regex = "{idno:true}";
-                                    }
-                                    else if (length == 11)
-                                    {//手机号
-                                        regex = "{mobile:true}";
-                                    }
-                                    else if (length == 800 || length == 500 || length == 600)
-                                    {
-                                        controlType = FormControlType.File.ToString();
-                                        showControlType = FormControlType.Showfile.ToString();
-                                    }
-                                    else if (length < 100)
-                                    {
-                                        regex = "{min:1,max:" + length + "}";
-                                    }
-                                    else if (length > 200)
-                                    {
-                                        controlType = FormControlType.Area.ToString();
-                                        showControlType = FormControlType.ShowArea.ToString();
-                                    }
+                                    //身份证
+                                    regex = "{idno:true}";
                                 }
+                                else if (length == 11)
+                                {
+                                    //手机号
+                                    regex = "{mobile:true}";
+                                }
+                                else if (length == 800 || length == 500 || length == 600)
+                                {
+                                    controlType = FormControlType.File.ToString();
+                                    showControlType = FormControlType.Showfile.ToString();
+                                }
+                                else if (length < 100)
+                                {
+                                    regex = "{min:1,max:" + length + "}";
+                                }
+                                else if (length > 200)
+                                {
+                                    controlType = FormControlType.Area.ToString();
+                                    showControlType = FormControlType.ShowArea.ToString();
+                                }
+                            }
                                 break;
                             case "text":
-                                {
-                                    controlType = FormControlType.Editor.ToString();
-                                    showControlType = FormControlType.ShowEditor.ToString();
-                                }
+                            {
+                                controlType = FormControlType.Editor.ToString();
+                                showControlType = FormControlType.ShowEditor.ToString();
+                            }
                                 break;
                             case "datetime2":
-                                {
-                                    controlType = FormControlType.Time.ToString();
-                                    showControlType = FormControlType.ShowTime.ToString();
-                                }
+                            {
+                                controlType = FormControlType.Time.ToString();
+                                showControlType = FormControlType.ShowTime.ToString();
+                            }
                                 break;
                             case "int":
-                                {
-                                    regex = "{int:true}";
-                                }
+                            {
+                                regex = "{int:true}";
+                            }
                                 break;
                             case "float":
-                                {
-                                    regex = "{float:true}";
-                                }
+                            {
+                                regex = "{float:true}";
+                            }
                                 break;
                         }
                         var row = new string[]
                         {
-                        nodeTag[0],
-                        (sequence++).ToString(),
-                        nodeTag[1],
-                        nodeTag[2],
-                        nodeTag[3],
-                        nodeTag[4],
-                        nodeTag[5],
-                        nodeTag[6],//数据类型
-                        nodeTag[7],
-                        nodeTag[8],
-                        nodeTag[9],
-                        nodeTag[10],
-                        nodeTag[11],
-                        controlType,
-                        regex,
-                        showControlType,
+                            nodeTag[0],
+                            (sequence++).ToString(),
+                            nodeTag[1],
+                            nodeTag[2],
+                            nodeTag[3],
+                            nodeTag[4],
+                            nodeTag[5],
+                            nodeTag[6], //数据类型
+                            nodeTag[7],
+                            nodeTag[8],
+                            nodeTag[9],
+                            nodeTag[10],
+                            nodeTag[11],
+                            controlType,
+                            regex,
+                            showControlType,
                         }.ToList();
                         lvBody.Add(row);
                     }
                 });
                 ListViewBinding(lv_colums, new List<string>()
-            {
-                "GUID",
-                "排序",
-                "列名",
-                "说明",
-                "表",
-                "不显示",
-                "主键",
-                "字段类型",
-                "长度",
-                "允许空",
-                "默认值",
-                "外键列",
-                "外键表",
-                "控件类型",
-                "正则式",
-                "详情控件类型",
-            }, lvBody);
-            //执行第二步
-           
-            Step2();
-            }).Start();
+                {
+                    "GUID",
+                    "排序",
+                    "列名",
+                    "说明",
+                    "表",
+                    "不显示",
+                    "主键",
+                    "字段类型",
+                    "长度",
+                    "允许空",
+                    "默认值",
+                    "外键列",
+                    "外键表",
+                    "控件类型",
+                    "正则式",
+                    "详情控件类型",
+                }, lvBody);
+                //执行第二步
 
+                Step2();
+            });
+            if (_preThread != null)
+            {
+               // _preThread.Abort();
+            }
            
+            _preThread = _thread;
+            _preThread.Start();
+
         }
 
         #region 辅助类
+       
       public class FormModel
         {
             public FormModel(List<FormColumSetting> columSettings,string dataBase)
@@ -708,12 +739,14 @@ function List() {{
             html += (isLast ? "" : ",") + "\n";
             return html;
         }
-
-      List<FormColumSetting> ParseListView(ListView.ListViewItemCollection rows,bool hasPre)
+        System.Object locker2 = new System.Object();
+        List<FormColumSetting> ParseListView(ListView.ListViewItemCollection rows,bool hasPre)
         {
-            var result = new List<FormColumSetting>();
-          
-            foreach (ListViewItem row in rows)
+           
+            lock (locker2)
+            {
+                var result = new List<FormColumSetting>();
+                foreach (ListViewItem row in rows)
             {
 
                 var item = row.SubItems;
@@ -723,10 +756,22 @@ function List() {{
                 obj.TableName = item[4].Text.TrimString(); obj.AddTable(obj.TableName); obj.HasPre = hasPre;
                 obj.ColumName = item[2].Text.TrimString();
                 obj.ColumName = hasPre ? obj.TableName+"-" + obj.ColumName : obj.ColumName;//加前缀
-                obj.ColumNote = item[3].Text.TrimString() + //防止列明重复
-                                (rows.Cast<ListViewItem>().Count(a => a.SubItems[2].Text == row.SubItems[2].Text) > 1
-                                    ? ""
-                                    : "");
+
+                try
+                {
+                    obj.ColumNote = item[3].Text.TrimString() + //防止列明重复
+                                    (rows.Cast<ListViewItem>().Count(a => a.SubItems[2].Text == row.SubItems[2].Text) >
+                                     1
+                                        ? ""
+                                        : "");
+                    }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                   
+                }
+               
+               
                 obj.IsHidden = bool.Parse(item[5].Text.TrimString());
                 obj.IsPrimaryKey = bool.Parse(item[6].Text.TrimString());
                 obj.Type = item[7].Text.TrimString();
@@ -744,14 +789,138 @@ function List() {{
                 result.Add(obj);
 
             }
-
-            return result;
+                return result;
+            }
+          
+           
         }
       #endregion
 
+        Dictionary<string, string> ToEntity(List<FormColumSetting> rows, string nameSpace)
+        {
+            var dest = new Dictionary<string, string>();
+            var dbContextContent = "";
+            foreach (var item in rows.GroupBy(a => a.TableName))
+            {
+               
+                var tableName = item.Key;
+                if (tableName == "sysdiagrams")
+                {
+                    continue;
+                }
+                var colums = item.AsEnumerable().ToList();
+                //DbContext
+                dbContextContent += string.Format(@"
+public virtual DbSet<{0}> {0} {{ get; set; }}", tableName);
+                //导航属性
+                var navContentTop = "";//构造函数的部分
+                var navContentBody = "";//成员部分
+                rows.Where(f => f.ForeignTable == tableName).ToList().ForEach(n =>
+                {
+                    navContentTop += string.Format(@"
+{0}s = new HashSet<{0}>();",n.TableName);
+                    navContentBody +=
+                        string.Format(@"
+public virtual ICollection<{0}> {0}s {{ get; set; }}",n.TableName);
+                });
+                var csContent = "";
+                #region 列
+                var propers = ""; var forienInfo = "";
+                colums.ForEach(colum =>
+                {
+                    //列类型
+                    var dotType = "";
+                    switch (colum.Type.ToLower())
+                    {
+                        case "varchar":
+                        case "text":
+                            dotType = "string";break;
+                        case "date":
+                        case "datetime":
+                        case "datetime2":
+                            dotType = "DateTime"; break;
+                        default: dotType = colum.Type; ; break;
+                    }
+                    //列名
+                    propers += string.Format(@"
+{0}
+public {1} {2} {{ get; set; }}
+", colum.IsPrimaryKey ? "[Key]" : "", dotType + (dotType == "DateTime"&&colum.CanNull? "?":""), colum.ColumName.Replace(tableName+"-",""));//type需要做映射
+
+                    //外键
+                    if (rows.Any(ff=>ff.TableName==colum.ForeignTable&&colum.ForeignTable.HasValue()))
+                    {
+                        forienInfo += string.Format(@"
+public virtual {0} {0} {{ get; set; }}", colum.ForeignTable);
+                    }
+                   
+                });
+
+
+                #endregion
+
+             
+                csContent=string.Format(@"
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+namespace {0}.Entity
+{{  
+        public partial class {1}
+        {{
+
+        public {1}()
+        {{
+            {2}
+         }}
+
+           {3}
+
+           {4}  
+
+           {5}  
+        }}
+    }}", nameSpace, tableName, navContentTop, propers, forienInfo, navContentBody);
+
+                dest.Add(tableName,csContent);
+            }
+            dbContextContent = string.Format(@"
+using Microsoft.EntityFrameworkCore;
+using {0};
+using xyj.core.Utility;
+namespace {0}.Entity
+{{
+ public partial class MyContext : DbContext
+    {{
+      
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {{
+            optionsBuilder.UseSqlServer(DbUtility.SqlSeverConnString(""{1}""));
+        }}
+        {2}
+         protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {{
+
+        }}
+  }}
+}}
+", nameSpace,DbName, dbContextContent);
+            dest.Add("MyContext", dbContextContent);
+          
+            return dest;
+        }
+
+        private Dictionary<string, string> _entitys;
         public void Step2(bool hasPre=true)
         {//读取listView生成配置
             var rows = ParseListView(lv_colums.Items, hasPre);
+
+
+            _entitys = ToEntity(rows, tb_namespace.Text);
+          
+
+
             var cfg = ToForm(rows, DbName);
             rtb_output_add.Text =cfg.FinalAddJavaScript;
             rtb_output_update.Text = cfg.FinalUpdateJavaScript;
@@ -994,7 +1163,19 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
                 TipError("请选择数据源并配置好相应参数后再点击生成按钮");
                 return;
             }
-            if (ck_test.Checked)
+            if (ck_entity.Checked)
+            {//生成实体
+
+                if (ck_rechoose.Checked)
+                {
+                    OpenFolderBrowserDialog();
+                }
+                else
+                {
+                    WriteEntityFiles();
+                }
+            }
+            else if (ck_test.Checked)
             {
 
                 if (ck_rechoose.Checked)
@@ -1042,6 +1223,16 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             if (ck_detail.Checked)
             {
                 rtb_output_detail.Text.WriteFile(detailJs);
+            }
+            TipInfo("写入成功");
+        }
+
+        private void WriteEntityFiles()
+        {//遍历选中表
+         //写文件！！！
+            foreach (var entity in _entitys)
+            {
+                entity.Value.WriteFile(LastDir+"/Entity/" + entity.Key + ".cs", true);
             }
             TipInfo("写入成功");
         }
@@ -1124,13 +1315,22 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             if (fbd.ShowDialog() == DialogResult.OK)
             {
 
-                if (!Directory.Exists(fbd.SelectedPath + "\\addons\\sys\\template\\views\\form\\debug"))
+                if (!ck_entity.Checked&&!Directory.Exists(fbd.SelectedPath + "\\addons\\sys\\template\\views\\form\\debug"))
                 {
                     TipError("目录选择错误，请确保选择了正确的前端项目目录");
                     return;
                 }
                 LastDir = fbd.SelectedPath;
-                WriteDebugFiles();
+
+                if (ck_entity.Checked)
+                {
+                    WriteEntityFiles();
+                }
+                else
+                {
+                    WriteDebugFiles();
+                }
+                   
             }
         }
 
@@ -1198,6 +1398,20 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             Step2(ck_pre.Checked);
         }
 
-      
+        private void ck_entity_CheckedChanged(object sender, EventArgs e)
+        {
+            tb_namespace.Visible = ck_entity.Checked;
+            ck_pre.Checked =//互斥
+          ck_test.Enabled =
+                ck_pre.Enabled =
+                    ck_clean.Enabled =
+                        ck_add.Enabled =
+                            ck_detail.Enabled =
+                                ck_update.Enabled =
+                                    ck_delete.Enabled =
+                                        ck_items.Enabled =
+                                            ck_list.Enabled = !ck_entity.Checked;
+        
+        }
     }
 }

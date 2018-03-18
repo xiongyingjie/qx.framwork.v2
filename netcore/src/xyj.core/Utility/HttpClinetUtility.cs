@@ -22,8 +22,7 @@ namespace xyj.core.Utility
         private Dictionary<string, string> _param;
         private string _requstLog;
         private Dictionary<string, string> _requstParam;
-        private string _xmlRequstBody;
-
+     
         public HttpClinetUtility(HttpContext httpContext)
         {
             _httpContext = httpContext;
@@ -57,7 +56,7 @@ namespace xyj.core.Utility
         {
             get
             {
-                throw new NotImplementedInCoreException("");
+                throw new NotSupportedExceptionInCoreException("");
                 //if (_xmlRequstBody == null)
                 //{
                 //    var s = Qx.Tools.Web.HttpContext.Current.Request.Scheme;
@@ -66,7 +65,7 @@ namespace xyj.core.Utility
                 //    var content = Encoding.UTF8.GetString(b);
                 //    _xmlRequstBody = content;
                 //}
-                return _xmlRequstBody;
+                //return _xmlRequstBody;
             }
         }
 
@@ -163,11 +162,11 @@ namespace xyj.core.Utility
         {
             return NormalHttp(host, url, param, Method.GET);
         }
-        public T HttpGet<T>(string url)
+        public T HttpGet<T>(string url) where T : new()
         {//60秒超时
             var client = new RestClient(new Uri(url));
             var request = new RestRequest(Method.GET);
-            return client.Execute(request).Deserialize<T>();
+            return client.Execute<T>(request).Data;
         }
          
         protected string HttpPost(string host, string url, Dictionary<string, string> param)
@@ -197,9 +196,9 @@ namespace xyj.core.Utility
         {
            
             var client = new RestClient(new Uri(host));
-            string content = null;
+            
 
-            return client.Execute(request);
+            return client.Execute(request).Content;
         }
         protected string BaseHttp(string host, string url, Dictionary<string, string> param, Method method, out RestClient client,int timeOut=60)
         {

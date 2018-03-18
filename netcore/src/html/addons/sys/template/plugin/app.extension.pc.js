@@ -166,7 +166,8 @@ function dropdownOpen() {
     });
 }
 function menuStageTwo(uid) {
-if (_c.isWin10) {
+    if (_c.isWin10) {
+    //win10专用
     menuStageTwo2(uid);
     return;
 }
@@ -281,24 +282,33 @@ function menuStageTwo2(uid) {
         data: { uid: uid },
         success: function (data, status) {
             $.loaded(lIndex);
+            if (_c.isString(data)) {
+                data = _c.toObject(data);
+            }
             //$.msg("获取菜单成功!");
             var html = '';
+            var html_start = '';//开始菜单
             for (var i = 0; i < data.navbars2.length; i++) {
                 var nvItem = data.navbars2[i];
                 var children = nvItem.children;
                 var father = nvItem.father;
                 //1级
-                html += ' <div class="shortcut win10-drawer"> <i class="icon fa fa-fw fa-star "></i> <div  class="title">'+father.name+'</div> <div class="win10-drawer-box">';
+                html += ' <div class="shortcut win10-drawer"> <i class="icon fa fa-fw fa-star "></i> <div  class="title">' + father.name + '</div> <div class="win10-drawer-box">';
+                html_start += '<div class="item"><i class="green icon fa fa-thumbs-up fa-fw"></i><span>' +father.name + '</span></div>';
                 for(var j=0;j<children.length;j++) {
                     var child = children[j];
                     html+=(//2级
                         '<div class="shortcut-drawer win10-open-window" data-url="'+_c.parseurl(child.url).destUrl+'"> <i class="icon fa fa-fw fa-th-list orange"></i> <div class="title" style="overflow: hidden; text-overflow:ellipsis;white-space: nowrap;">'+child.name+'</div> </div>');
+                    html_start += (//2级
+                        ' <div class="sub-item" onclick="Win10.openUrl(\'' + _c.parseurl(child.url).destUrl + '\',\'' + child.name +'\')">' + child.name +'</div>');
                 }
                 html += '</div> </div>';
            
             }
             var mainObj = $('#win10-shortcuts');
-            mainObj.append(html);
+            var mainObj_start = $('.animated-slideOutLeft');
+           // mainObj.append(html);//桌面菜单
+            mainObj_start.append(html_start);//开始菜单
             if (_c.isWin10) {
                 //初始化-依赖于layui,jquery
                 Win10._init();
@@ -310,8 +320,8 @@ function menuStageTwo2(uid) {
                 }
                 //设置壁纸
                 Win10.setBgUrl({
-                    main:'win10/img/wallpapers/main.jpg',
-                    mobile:'win10/img/wallpapers/mobile.jpg'
+                    main:'img/win10/wallpapers/main.jpg',
+                    mobile:'img/win10/wallpapers/mobile.jpg'
                 });
 
                 Win10.setAnimated([
@@ -323,9 +333,11 @@ function menuStageTwo2(uid) {
                     Win10.newMsg('信息',
                         '欢迎使用netcore 2.3');
                 }, 1500);
-                setTimeout(function () {
-                    Win10.openUrl('//waptianqi.2345.com','<i class="fa fa-newspaper-o icon red"></i>天气',[['300px', '380px'],'rt'])
-                },2000);
+               /* setTimeout(function () {
+                    Win10.openUrl('//doc.52xyj.cn/',
+                        '<i class="fa fa-newspaper-o icon red"></i>框架文档',
+                        [['800px', '600px'], 'rt']);
+                },2000);*/
             
             }
         },
