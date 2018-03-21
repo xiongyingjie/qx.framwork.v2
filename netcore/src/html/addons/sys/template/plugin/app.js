@@ -740,7 +740,7 @@ var _c = {
         fake: false,
         warn: true,
         third_login: false,
-        is_win10: true,
+        is_win10: false,
         route: [
             { src: "/sports/crud/", target: "" },
             { src: "/sports/admin/", target: "" }
@@ -748,10 +748,10 @@ var _c = {
         url: window.location.pathname
     },
     sever: {
-        host: "http://linux.52xyj.cn:8080",//业务服务器
+        host: "http://localhost:1649",//业务服务器
         cdn: "http://cdn.qxamoy.com/xyj.framwork",
-        host_sys: "http://linux.52xyj.cn:8080",//框架服务器[权限,报表]
-        host_wx: "http://linux.52xyj.cn:8080" //微信服务器
+        host_sys: "http://localhost:1649",//框架服务器[权限,报表]
+        host_wx: "http://localhost:1649" //微信服务器
     }
 
 };
@@ -771,11 +771,12 @@ _c.app = {
     //wallet_wx: "/web/app/" + g_app + "/framework-m/" + "wallet.html", //钱包
     //withdraw_wx: "/web/app/" + g_app + "/framework-m/" + "-withdraw.html" //提现
 };
-
+_c.isDebug = _c.runtime.debug;
+_c.isWin10 = _c.runtime.is_win10;
 _c.pc = {
     login: _c.dir.pc + "/pages/login.html",
     login_auto: _c.dir.pc + "/pages/login-auto.html",
-    homepage: _c.dir.pc + "/pages/index.html",
+    homepage: _c.dir.pc + (_c.isWin10 ? "/pages/index-win10.html":"/pages/index.html"),
     login_third: "we7",
     local_res: _c.dir.pc + "/web/",
     leftmenu: true,
@@ -786,8 +787,7 @@ _c.pc = {
 _c.cm = {
     loading: _c.dir.pc + "/pages/loading.html"
 }
-_c.isDebug = _c.runtime.debug;
-_c.isWin10 = _c.runtime.is_win10;
+
 _c.isApp = (window.location.pathname.toLowerCase() == _c.app.login_auto || window.location.pathname.toLowerCase() == _c.app.login)//当前页面是移动端自动登陆页
     ? true
     : (window.location.pathname.toLowerCase() == _c.pc.login_auto || window.location.pathname.toLowerCase() == _c.pc.login)//当前页面是pc端自动登陆页
@@ -3423,7 +3423,7 @@ _c.bll = function() {
             });
         return;
     } else {
-        if (_c.isHomePage()) {
+        if (_c.isWin10&&_c.isHomePage()) {
             $.alert("即将进入全屏，按F11可退出全屏", 0, function() {
                 var el = document.documentElement;
                 var rfs = el.requestFullScreen ||

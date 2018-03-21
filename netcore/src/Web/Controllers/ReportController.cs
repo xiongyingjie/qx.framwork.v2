@@ -61,39 +61,29 @@ namespace Web.Controllers
             //path2 = path2.Replace(@"\", @"/");
             //return path2;
         }
-        public IActionResult ReportToExcel2(string ReportID, string Params,string dataSourceUrl, string dbConnStringKey, int pageIndex = 1, int perCount = 99999)
+        public IActionResult ReportToExcel2(string ReportID, string Params, string dataSourceUrl, string dbConnStringKey, int pageIndex = 1, int perCount = 99999)
         {
-            throw new NotSupportedExceptionInCoreException();
             //获取用户权限列表
-            //var list = _permmisionService.GetFilterByUserId(DataContext.UserId, ReportID);
-            //var filter = "#all";//未配置数据权限时 默认取所有数据
-            //if (list.Any())
-            //{
-            //    filter = list[0].filter_script;
-            //}
-            ////过滤脚本
-            ////1=1
-            ////#self
-            ////unitid in 
-            //var filterScript = filter.Replace("#self", "uid='" + DataContext.UserId + "'").
-            //    Replace("#all", "1=1").
-            //    Replace("#unit", "unit_id in (" + WorkFlowDoman.Select(a => "'" + a + "'").ToList().PackString(',') + ")");
-            //var config = dataSourceUrl.HasValue() ?
-            //      _reportServices.ToView(ReportID, Params, HttpGet<List<List<string>>>(GeRootUrl(dataSourceUrl)), pageIndex, perCount, filterScript) :
-            //      _reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount, filterScript);
-            //config.DataFilter = list;
-            //config.pageParam.uid = DataContext.UserId;
+            var list = _permmisionService.GetFilterByUserId(DataContext.UserId, ReportID);
+            var filter = "#all";//未配置数据权限时 默认取所有数据
+            if (list.Any())
+            {
+                filter = list[0].filter_script;
+            }
+            //过滤脚本
+            //1=1
+            //#self
+            //unitid in 
+            var filterScript = filter.Replace("#self", "uid='" + DataContext.UserId + "'").
+                Replace("#all", "1=1").
+                Replace("#unit", "unit_id in (" + _permmisionService.GetOrgIdByUserId(DataContext.UserId).Select(a => "'" + a + "'").ToList().PackString(',') + ")");
+            var config = dataSourceUrl.HasValue() ?
+                _reportServices.ToView(ReportID, Params, new HttpClinetUtility(HttpContext).HttpGet<List<List<string>>>(GeRootUrl(dataSourceUrl)), pageIndex, perCount, filterScript) :
+                _reportServices.ToView(ReportID, Params, dbConnStringKey, pageIndex, perCount, filterScript);
+            config.DataFilter = list;
+            config.pageParam.uid = DataContext.UserId;
 
-            //return Json(State.Success, config.tableBody.AddRowToFirst(config.header), false);
-            //var outputDir = GetProjectDir("UserFiles\\Report\\" + uid+"\\") ;
-            //if (!Directory.Exists(outputDir))
-            //{
-            //    Directory.CreateDirectory(outputDir);
-            //}
-            //var excel = new ExcelUtility(config.tableBody.AddRowToFirst(config.header),
-            //    GetProjectDir("UserFiles\\Report\\Template.xlsx"),
-            //   outputDir + config.report.ReportName+".xlsx").ToExcel();
-            //return Json(State.Success,new {path= ToVirtualPath(excel.FullName) } );
+            return Json(State.Success, config.tableBody.AddRowToFirst(config.header), false);
         }
 
         //导入模板

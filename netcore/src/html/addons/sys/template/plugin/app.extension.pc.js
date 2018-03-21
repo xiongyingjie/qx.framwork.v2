@@ -166,6 +166,7 @@ function dropdownOpen() {
     });
 }
 function menuStageTwo(uid) {
+    
     if (_c.isWin10) {
     //win10专用
     menuStageTwo2(uid);
@@ -175,7 +176,7 @@ function menuStageTwo(uid) {
     //$.msg("正在获取菜单,请稍候...",0);
     $.ajax({
         url: _c.url("/Open/GetMenu", true),
-        data: { uid: uid },
+        data: { uid: uid, isWin10: _c.isWin10 },
         success: function (data, status) {
             $.loaded(lIndex);
             //$.msg("获取菜单成功!");
@@ -279,7 +280,7 @@ function menuStageTwo2(uid) {
     //$.msg("正在获取菜单,请稍候...",0);
     $.ajax({
         url: _c.url("/Open/GetMenu", true),
-        data: { uid: uid },
+        data: { uid: uid, isWin10: _c.isWin10 },
         success: function (data, status) {
             $.loaded(lIndex);
             if (_c.isString(data)) {
@@ -305,6 +306,7 @@ function menuStageTwo2(uid) {
                 html += '</div> </div>';
            
             }
+            
             var mainObj = $('#win10-shortcuts');
             var mainObj_start = $('.animated-slideOutLeft');
            // mainObj.append(html);//桌面菜单

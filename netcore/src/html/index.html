@@ -10,16 +10,24 @@
 
         var app = "sys";
         var uid = "1325112033";
-        var roleString = "";
-        var app = debug ? app : '{$_W["current_module"]["name"]}';
-        var uid = app + debug ? uid: '-{$_W["siteroot"]}-{$_W["uid"]}';
-        var roleString = debug ? roleString : '{$roleString}';
+        var roleString = "3NRBC9DXVW";
+        var site = "https://dev.52xyj.cn";
+        var userName = "开发者";
+		
+        site = (debug ? site : '{$_W["siteroot"]}');
+        app = (debug ? app : '{$_W["current_module"]["name"]}');
+        uid = (debug ? uid : '{$_W["openid"]}');
+        roleString = (debug ? roleString : '{$roleString}');
+        userName = (debug ? userName : '{$_W["fans"]["nickname"]}');
 
-        if (app === "{app}" || uid === "{uid}" || roleString === "{roleString}") {
-            alert("警告:没有指定要启动的应用，请到pc入口文件init.html中配置");
+         
+
+        if (app === "{app}" || uid === "{uid}" || site === "{site}") {
+            alert("警告:没有指定要启动的应用，请到app版入口文件：init.html中配置");
             throw SyntaxError();
         }
-        var URL = '/addons/' + app + '/template/pages/login-auto.html?userId=' + uid + '&roleString=' + roleString + "&subSys=" + app;  
+
+        var URL = '/addons/' + app + '/template/pages/login-auto.html?userId=' + uid + '&roleString=' + roleString + "&subSys=" + app + "&site=" + site + "&userName=" + userName;
         function Load() {
             for (var i = secs; i >= 0; i--) {
                 window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
@@ -28,7 +36,7 @@
         function doUpdate(num) {
             if (num == 0) { window.location.replace(URL); reutrn; }
             document.getElementById('ShowDiv').innerHTML = (debug ? 'debug:' : '') + '<span style="color:red;">' + (100 - Math.round((num + 0.00001) * 100 / secs)) + '%</span>';
-   }
+        } 
     </script>
 </head>
 

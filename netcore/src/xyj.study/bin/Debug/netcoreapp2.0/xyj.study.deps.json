@@ -9,6 +9,7 @@
       "xyj.study/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
+          "Newtonsoft.Json": "11.0.1",
           "xyj.core": "1.0.0"
         },
         "runtime": {

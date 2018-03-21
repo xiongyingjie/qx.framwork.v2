@@ -17,7 +17,7 @@ namespace CodeTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormTool2());
+            Application.Run(new Welcome());
            // Application.Run(new AutoCodeForm("1","2","3","4"));
         }
     }

@@ -8359,6 +8359,7 @@
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 2.0.1",
       "Microsoft.NETCore.App >= 2.0.0",
+      "Newtonsoft.Json >= 11.0.1",
       "xyj.core >= 1.0.0"
     ]
   },
@@ -8419,6 +8420,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "2.0.1"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "11.0.1"
           }
         },
         "imports": [

@@ -130,7 +130,7 @@ namespace Web.Controllers
                     //盗版检测
                     if(ex is DbUpdateException && ex.InnerException.Message.Contains("sub_system_id"))
                     {
-                        var msg = "请勿使用盗版程序，正版程序请到微擎官网购买。联系QQ:603748637";
+                        var msg = "请勿使用盗版程序，正版程序请到官网购买。客服QQ:603748637";
                         return Json(State.Fail, msg);
                     }
                     else
@@ -148,29 +148,26 @@ namespace Web.Controllers
         {
             var userid = DataContext.UserId;
             var u = new User();
-            try
+            var user = _acsService.UserInfo(userid);
+            u.nick_name = user.nick_name;
+            u.user_id = user.user_id;
+            u.sub_system_reg_id = user.sub_system_reg_id;
+            var units = _acsService.GetOrgIdByUserId(userid, false).ToList();
+            u.units = new
             {
-                var user = _acsService.UserInfo(userid);
-                u.nick_name = user.nick_name;
-                u.user_id = user.user_id;
-                u.sub_system_reg_id = user.sub_system_reg_id;
-                var units = _acsService.GetOrgIdByUserId(userid, false).ToList();
-                u.units = new
-                {
-                    id = units.Select(a => a.orgnization_id.Encrypt()),
-                    name = units.Select(a => a.name)
-                }.Serialize();
-            }
-            catch (Exception){ }
+                id = units.Select(a => a.orgnization_id.Encrypt()),
+                name = units.Select(a => a.name)
+            }.Serialize();
             var ok =u.user_id.HasValue() && u.units.Any();
             return Json(ok ? State.Success : State.Fail, u, false);
 
         }
         // GET: Open/GetMenu
-        public IActionResult GetMenu()
+        public IActionResult GetMenu(bool isWin10=true)
         {
-            return Json(NavbarIndex.Init( _acsService.GetMenuByUserId(DataContext.UserId),
-                 _acsService.GetForbidenButtonByUserId(DataContext.UserId)));
+            return Json(isWin10? 
+                NavbarIndex.Init( _acsService.GetMenuByUserId(DataContext.UserId), _acsService.GetForbidenButtonByUserId(DataContext.UserId))
+                :NavbarIndex.Init( _acsService.GetNavbarByUserId(DataContext.UserId), _acsService.GetMenuByUserId(DataContext.UserId),_acsService.GetForbidenButtonByUserId(DataContext.UserId)));
         }
         // GET: Open/GetTable
         public IActionResult GetTable(string id="demo")

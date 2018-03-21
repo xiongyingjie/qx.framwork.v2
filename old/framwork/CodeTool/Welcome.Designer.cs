@@ -62,7 +62,8 @@ namespace CodeTool
             this.rtb_info.Name = "rtb_info";
             this.rtb_info.Size = new System.Drawing.Size(443, 89);
             this.rtb_info.TabIndex = 1;
-            this.rtb_info.Text = "2018-01-27\n添加数据库qx.task\n2017-10-30\n编辑报表后提交时可取消勾选\'生成代码\'";
+            this.rtb_info.Text = "2018-02-30\n适配NetCore2.0特新,不再支持旧版本\n2018-02-29\n添加Entity实体生成工具\n2018-01-27\n添加数据库qx.ta" +
+    "sk\n2017-10-30\n编辑报表后提交时可取消勾选\'生成代码\'";
             this.rtb_info.TextChanged += new System.EventHandler(this.rtb_info_TextChanged);
             // 
             // groupBox1

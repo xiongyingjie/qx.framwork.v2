@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>NetCore2.3欢迎您</title>
+    <link rel='Shortcut Icon' type='image/x-icon' href='./img/windows.ico'>
+    <script src="../plugin/app.js"></script>  
+    <style>
+        * {
+            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+        }
+
+        /*磁贴自定义样式*/
+         .win10-block-content-text {
+             line-height: 44px;
+             text-align: center;
+             font-size: 16px;
+         }
+    </style>
+</head>
+<body>
+<div id="win10">
+    <div class="desktop">
+        <div id="win10-shortcuts" class="shortcuts-hidden">
+            <div class="shortcut win10-open-window" data-url="theme_switcher.html">
+                <i class="icon fa fa-fw fa-picture-o blue" ></i>
+                <div class="title">切换壁纸</div>
+            </div>
+           
+            <div class="shortcut" onclick='Win10.openUrl("win10ui.yuri2.cn/src/tools/builder-shortcut.html","<i class=\"fa fa-gears  icon purple\"></i>图标代码")'>
+                <i class="fa fa-gears  icon purple"></i>
+                <div class="title">图标代码</div>
+            </div>
+            <div class="shortcut" onclick='Win10.openUrl("*ftest/all","<i class=\"fa fa-bug  icon green\"></i>调试模式")'>
+                <i class="fa fa-bug  icon green"></i>
+                <div class="title">调试模式</div>
+            </div>
+            
+
+            <!--<div class="shortcut"
+                 onclick="Win10.openUrl('/addons/sys/template/pages/report.html?id=/Invocing/Home/product_list','<img class=\' icon\' src=\'img/win10/icon/511653.png\' />商品管理')">
+                <img class="icon" src="img/win10/icon/511653.png" />
+                <div class="title" >商品管理</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('/addons/sys/template/pages/report.html?id=/Invocing/Home/productManage','<img class=\' icon\' src=\'img/win10/icon/13871.png\' />库存管理')">
+                <img class="icon" src="img/win10/icon/13871.png" />
+                <div class="title">库存管理</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('/addons/sys/template/pages/report.html?id=/Invocing/Home/purchaseManage','<img class=\' icon\' src=\'img/win10/icon/进货入库.png\' />采购管理')">
+                <img class="icon" src="img/win10/icon/进货入库.png" />
+                <div class="title">采购管理</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('/addons/sys/template/pages/report.html?id=/Invocing/Home/sellManage','<img class=\' icon\' src=\'img/win10/icon/507536.png\' />销售管理')">
+                <img class="icon" src="img/win10/icon/507536.png" />
+                <div class="title">销售管理</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/533941.png\' />进货单管理')">
+                <img class="icon" src="img/win10/icon/533941.png" />
+                <div class="title">进货单管理</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/进货付款.png\' />进货付款')">
+                <img class="icon" src="img/win10/icon/进货付款.png" />
+                <div class="title">进货付款</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/销售单创建.png\' />销售单管理')">
+                <img class="icon" src="img/win10/icon/销售单创建.png" />
+                <div class="title">销售单管理</div>
+            </div>
+       
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/销售收款.png\' />销售收款')">
+                <img class="icon" src="img/win10/icon/销售收款.png" />
+                <div class="title">销售收款</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/数据分析.png\' />数据分析')">
+                <img class="icon" src="img/win10/icon/数据分析.png" />
+                <div class="title">数据分析</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/消息推送.png\' />消息推送')">
+                <img class="icon" src="img/win10/icon/消息推送.png" />
+                <div class="title">消息推送</div>
+            </div>
+            <div class="shortcut"
+                 onclick="Win10.openUrl('#','<img class=\' icon\' src=\'img/win10/icon/供应商管理.png\' />供应商管理')">
+                <img class="icon" src="img/win10/icon/供应商管理.png" />
+                <div class="title">供应商管理</div>
+            </div>-->
+
+
+            <!-- <div class="shortcut win10-open-window" data-url="./plugins/theme_switcher/theme_switcher.html">
+                <i class="icon fa fa-fw fa-picture-o blue"></i>
+                <div class="title">切换壁纸</div>
+            </div>-->
+            <!--<div class="shortcut"
+                     onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\' icon\' src=\'./img/icon/win10.png\' />Win10-UI官网')">
+                <img class="icon" src="./img/win10/icon/win10.png"/>
+                <div class="title">Win10-UI官网</div>
+            </div>
+            <div class="shortcut" onclick="window.open('./demo.html')">
+                <img class="icon" src="./img/win10/icon/demo.png"/>
+                <div class="title">查看DEMO</div>
+            </div>
+            <div class="shortcut win10-drawer">
+                <i class="icon fa fa-fw fa-star red"></i>
+                <div class="title">二级菜单</div>
+                <div class="win10-drawer-box">
+                    <div class="shortcut-drawer win10-open-window" data-url="www.baidu.com">
+                        <i class="icon fa fa-fw fa-th-list orange"></i>
+                        <div class="title">子项1</div>
+                    </div>
+                    <div class="shortcut-drawer">
+                        <i class="icon fa fa-fw fa-th-list orange"></i>
+                        <div class="title">子项2</div>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+        <div id="win10-desktop-scene"></div>
+    </div>
+
+<div id="win10-menu" class="hidden">
+    <div class="list win10-menu-hidden animated animated-slideOutLeft">
+        <div class="item"><i class="red icon fa fa-wrench fa-fw"></i><span>API测试</span></div>
+        <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')">父子页沟通</div>
+        <div class="sub-item" onclick="Win10.commandCenterOpen()">打开消息中心</div>
+        <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容(点击我试试)',function() {alert('click')})">发送带回调的消息</div>
+        <div class="sub-item" onclick="Win10.menuClose()">关闭菜单</div>
+        <div class="item" ><i class="blue icon fa fa-gavel fa-fw"></i>辅助工具</div>
+        <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-shortcut.html','图标代码生成器')">桌面图标代码生成器</div>
+        <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')">磁贴代码生成器</div>
+        <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')">菜单代码生成器</div>
+    
+
+        <div class="item" onclick=" Win10.exit();"><i class="black icon fa fa-power-off fa-fw"></i>关闭</div>
+    </div>
+
+    <div class="blocks">
+        <div class="menu_group">
+            <div class="title">Welcome</div>
+            <div class="block" loc="1,1" size="6,4">
+                <div class="content">
+                    <div style="font-size:100px;line-height: 132px;margin: 0 auto ;display: block"
+                         class="fa fa-fw fa-windows win10-block-content-text"></div>
+                    <div class="win10-block-content-text" style="font-size: 22px">NetCore2.3欢迎您</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="win10-menu-switcher"></div>
+</div>
+    <div id="win10_command_center" class="hidden_right">
+        <div class="title">
+            <h4 style="float: left">消息中心 </h4>
+            <span id="win10_btn_command_center_clean_all">全部清除</span>
+        </div>
+        <div class="msgs"></div>
+    </div>
+    <div id="win10_task_bar">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-windows"></span></div>
+            <div class="btn" id="win10-btn-browser"><span class="fa fa-internet-explorer"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time"></div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-comment-o"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
