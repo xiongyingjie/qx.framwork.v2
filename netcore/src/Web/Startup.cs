@@ -1,4 +1,6 @@
 ﻿
+using erp.invoicing.Interfaces;
+using erp.invoicing.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
@@ -34,8 +36,8 @@ namespace Web
             services.AddTransient<IAcsService, AcsService>();
             services.AddTransient<IReportServices, ReportServices>();
             services.AddTransient<IYlService, YlService>();
+            services.AddTransient<IInvoicingService, InvoicingService>();
 
-            
             //  services.AddDbContext<qx.permmision.v2.Entity.MyContext>(options => options.UseSqlServer("qx.permmision.v2"));
             //异常处理
             services.AddMvc(options =>

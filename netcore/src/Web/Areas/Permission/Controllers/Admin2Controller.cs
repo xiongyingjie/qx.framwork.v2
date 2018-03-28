@@ -33,7 +33,7 @@ namespace Web.Areas.Permission.Controllers
                         perCount = 10
                     });
             }
-
+            Search.Add("机构编号");
             Search.Add("机构名称");
             InitReport("机构管理", "/core/permission/OrgnizationAdd?father_id=" + father_id, "", true, "sys.core");
             return ReportJson();
@@ -278,8 +278,9 @@ namespace Web.Areas.Permission.Controllers
             var rid = Params.GetFixedParam();
           
             SetFixedParam(rid, Params);
+            Search.Add("菜单编号");
             Search.Add("菜单名称");
-            InitReport("分配菜单", "*r/Permission/Admin2/ChooseMenuList?ReportID=Permision.v2_选择菜单&Params=;&role_id=" + Params.GetFixedParam(), "", true, "sys.core");
+            InitReport("该角色已拥有的菜单", "*r/Permission/Admin2/ChooseMenuList?ReportID=Permision.v2_选择菜单&Params=;&role_id=" + Params.GetFixedParam(), "", true, "sys.core");
             return ReportJson();
             //return View(RoleMenuList_M.ToViewModel(role));
         }
@@ -394,8 +395,10 @@ namespace Web.Areas.Permission.Controllers
             {
                 return ChooseMenuList("Permision.v2_选择菜单", ";", role_id, 1, 10);
             }
+            Search.Add("菜单编号");
             Search.Add("菜单名称");
-            InitReport("选择分配菜单", "#", "&role_id=" + role_id, true, "sys.core");
+            Search.Add("父菜单编号");
+            InitReport("选择要分配给角色的菜单", "#", "&role_id=" + role_id, true, "sys.core");
             return ReportJson();
 
             //return View();
@@ -414,7 +417,7 @@ namespace Web.Areas.Permission.Controllers
                         perCount = 10
                     });
             }
-
+            Search.Add("角色编号");
             Search.Add("角色名称");
             InitReport("角色管理", "/core/permission/roleAdd", "", true, "sys.core");
             return ReportJson();
@@ -453,8 +456,9 @@ namespace Web.Areas.Permission.Controllers
                         perCount = 10
                     });
             }
+            Search.Add("机构编号");
             Search.Add("机构名称");
-            InitReport("用户机构列表", "*r/Permission/Admin2/AddUserOrgnization?userid=" + userid, "userid=" + userid, true, "sys.core");
+            InitReport("请选择要分配的机构", "#", "userid=" + userid, true, "sys.core");
             return ReportJson();
         }
         

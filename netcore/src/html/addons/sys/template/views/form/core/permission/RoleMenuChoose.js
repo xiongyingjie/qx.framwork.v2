@@ -8,6 +8,6 @@
             select('是否包含子菜单', 'role_menu-include_children', [{ text: "是", value: "1" }, { text: "否", value: "0" }], '1'),
     time('失效日期', 'role_menu-expire_time', '', '4', { min: 1, max: 100 }),
     input('备注', 'role_menu-note', '', '1')
-        ], '分配菜单设置'));
+        ], '确认要为角色[' + q.role_id + ']分配菜单[' + q.menu_id + ']吗?'));
     return cfg;
-}, 'qx.permmision.v2.role_menu@add', '', '选择分配菜单');
+}, 'sys.core.role_menu@add', '', '确认分配菜单');

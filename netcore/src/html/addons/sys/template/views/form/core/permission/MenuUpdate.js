@@ -18,4 +18,4 @@ input('图标', 'menu-image_class', '', '4'),
 input('激活图标', 'menu-active_li', '', '4')
 ],'标题'));
 return cfg;
-},'qx.permmision.v2.menu@update&id='+q.id,'qx.permmision.v2.menu@find&id='+q.id,'编辑');
+},'sys.core.menu@update&id='+q.id,'sys.core.menu@find&id='+q.id,'编辑');

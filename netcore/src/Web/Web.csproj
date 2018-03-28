@@ -74,6 +74,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\erp.invoicing\erp.invoicing.csproj" />
     <ProjectReference Include="..\xyj.acs\xyj.acs.csproj" />
     <ProjectReference Include="..\xyj.core\xyj.core.csproj" />
     <ProjectReference Include="..\xyj.study\xyj.study.csproj" />

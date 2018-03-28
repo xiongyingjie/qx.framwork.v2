@@ -68,6 +68,7 @@ namespace xyj.core
             {
                 v = DateTime.Now.Random();
             }
+
             return v;
         }
         #region 数据库操作相关
@@ -182,8 +183,8 @@ namespace xyj.core
                             _paramDictionary = GetParam("_json").CheckValue("{}").
                                     Replace("#uid", UserId).
                                     Replace("#unitid", UnitId).
-                                    Replace("#now", DateTime.Now.FormatTime())
-                                    .Replace("#id", DateTime.Now.Random()).ToDictionary<object>();
+                                    Replace("#now", DateTime.Now.FormatTime()).
+                                    Replace("#id", DateTime.Now.Random()).ToDictionary<object>();
                             //_paramDictionary["_conditionObject"] = "列明=值";
                             _paramDictionary["_id"] = operateStringArray.Length > 2 ? ConvertString(operateStringArray.Skip(2).ToList().PackString('-')): GetParam("id");
                             _paramDictionary["_name"] = GetParam("name");

@@ -740,7 +740,7 @@ var _c = {
         fake: false,
         warn: true,
         third_login: false,
-        is_win10: false,
+        is_win10: true,
         route: [
             { src: "/sports/crud/", target: "" },
             { src: "/sports/admin/", target: "" }

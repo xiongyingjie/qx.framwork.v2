@@ -1,0 +1,11 @@
+E:\git\netcore\src\erp.invoicing\bin\Debug\netcoreapp2.0\erp.invoicing.deps.json
+E:\git\netcore\src\erp.invoicing\bin\Debug\netcoreapp2.0\erp.invoicing.dll
+E:\git\netcore\src\erp.invoicing\bin\Debug\netcoreapp2.0\erp.invoicing.pdb
+E:\git\netcore\src\erp.invoicing\bin\Debug\netcoreapp2.0\xyj.core.dll
+E:\git\netcore\src\erp.invoicing\bin\Debug\netcoreapp2.0\xyj.core.pdb
+E:\git\netcore\src\erp.invoicing\obj\Debug\netcoreapp2.0\erp.invoicing.csprojResolveAssemblyReference.cache
+E:\git\netcore\src\erp.invoicing\obj\Debug\netcoreapp2.0\erp.invoicing.csproj.CoreCompileInputs.cache
+E:\git\netcore\src\erp.invoicing\obj\Debug\netcoreapp2.0\erp.invoicing.AssemblyInfoInputs.cache
+E:\git\netcore\src\erp.invoicing\obj\Debug\netcoreapp2.0\erp.invoicing.AssemblyInfo.cs
+E:\git\netcore\src\erp.invoicing\obj\Debug\netcoreapp2.0\erp.invoicing.dll
+E:\git\netcore\src\erp.invoicing\obj\Debug\netcoreapp2.0\erp.invoicing.pdb

@@ -14,4 +14,4 @@ input('所属子系统', 'menu-sub_system', '-', '4', {min:1,max:50}),
 select('状态', 'menu-status', [{ text: "可用", value: "1" }, { text: "不可用", value: "0" }],'1'),
 input('图标', 'menu-image_class', '', '4'),
 input('激活图标', 'menu-active_li', '', '4')
-],'标题')],'qx.permmision.v2.menu@add','','添加');
+],'菜单详情')],'sys.core.menu@add','','添加菜单');

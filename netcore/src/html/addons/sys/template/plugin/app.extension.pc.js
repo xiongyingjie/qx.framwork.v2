@@ -186,7 +186,8 @@ function menuStageTwo(uid) {
                 if (nvItem.isParent == false) {//存储最后一层菜单
                     g_menuData.push(nvItem);
                 }
-                if (nvItem.parentId === 'MRoot') {
+                
+                if (nvItem.parentId === 'mroot') {
                     var item = 0;
                     for (var j = 0; j < data.navbars.length; j++) {
                         var nvItemChild = data.navbars[j];
@@ -211,7 +212,7 @@ function menuStageTwo(uid) {
                     if (item !== 0) {
                         html.push('</ul></li>');
                     } else {
-                        if (nvItem.imageClass == null) {
+                        if (!_c.hasValue(nvItem.imageClass)) {
                             html.push(' <li>' +
                                 '<a data-url="' + nvItemChild.finalUrl + '" class="qx-menu" data-title="' + nvItemChild.name + '"><i class="fa fa-bar-chart-o fa-fw"></i>' + nvItem.name + '</a>' +
                                 '</li>');
@@ -1446,8 +1447,6 @@ function QxForm() {
                     </button>
                 </span>
             </div>
-          
-          
          </div> 
      </div>
 
@@ -1471,8 +1470,6 @@ function QxForm() {
                     </button>
                 </span>
             </div>
-          
-       
          </div> 
      </div>
 

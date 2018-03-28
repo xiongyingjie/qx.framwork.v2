@@ -7,4 +7,4 @@ showInput('备注', 'data_filter-note', '', '4'),
 showInput('过滤脚本', 'data_filter-filter_script_id', '', '4'),
 showTime('失效日期', 'data_filter-expire_time', '', '4'),
 showInput('优先级', 'data_filter-seq', '', '4')
-],'标题')],'','qx.permmision.v2.data_filter@find&id='+q.id,'','详情');
+],'标题')],'','sys.core.data_filter@find&id='+q.id,'','详情');

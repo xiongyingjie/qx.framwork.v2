@@ -9,4 +9,4 @@ input('备注', 'button-note', '', '4', {min:1,max:100}),
 input('按钮值', 'button-value', '', '4', {min:1,max:40})
 ],'标题'));
 return cfg;
-},'qx.permmision.v2.button@update&id='+q.id,'qx.permmision.v2.button@find&id='+q.id,'编辑');
+},'sys.core.button@update&id='+q.id,'sys.core.button@find&id='+q.id,'编辑');

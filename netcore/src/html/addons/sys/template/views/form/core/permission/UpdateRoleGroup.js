@@ -7,4 +7,4 @@ input('角色组名称', 'role_group-role_group_name', '', '4', {min:1,max:100})
 input('父亲ID', 'role_group-father_id', '', '4', {min:1,max:100})
 ],'标题'));
 return cfg;
-},'qx.permmision.v2.role_group@update&id='+q.id,'qx.permmision.v2.role_group@find&id='+q.id,'编辑');
+},'sys.core.role_group@update&id='+q.id,'sys.core.role_group@find&id='+q.id,'编辑');

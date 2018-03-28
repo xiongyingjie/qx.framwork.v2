@@ -72,7 +72,7 @@ namespace Web.Controllers
             var u =new User();
             try
             {
-                var user = _acsService.UserInfo(userId);
+                var user = _acsService.Login(userId, psw);
                 u.user_id = userId;
             }
             catch (Exception)

@@ -151,7 +151,7 @@ namespace xyj.acs.Services
             var dest= allMenus.Where(z=> myAllMenus.Contains(z.menu_id)).GroupBy(a => a.farther_id).Select(g => new MenuItem()
             {
                 Father = allMenus.FirstOrDefault(b => b.menu_id == g.Key),
-                Children = g.AsEnumerable().Select(c => c).ToList()
+                Children = g.OrderBy(oo=>oo.sequence).AsEnumerable().Select(c => c).ToList()
             }).ToList();
 
             //var dest = myRootMenus.Select(a => new MenuItem()
@@ -351,9 +351,16 @@ namespace xyj.acs.Services
         public bool Login(string userId, string userPwd)
         {
             userPwd = NoneEncrypt(userPwd);
-            return Db.permission_user.Any(a => a.user_id == userId &&
-                                               a.user_pwd == userPwd
-            );
+            var old=  Db.permission_user.FirstOrDefault(a => a.user_id == userId &&
+                                               a.user_pwd == userPwd);
+            if (old!=null)
+            {
+                old.last_login_date = DateTime.Now;
+                Db.Entry(old).State = EntityState.Modified;
+                Db.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public sub_system_data GetSubSystemData(string subSystemIdOrPk, string dataKey="")
@@ -445,7 +452,7 @@ namespace xyj.acs.Services
             {
                 sub_system_reg_id = "deafult",//子系统注册标识
                 sub_system_id = subSystem.sub_system_id,//子系统标识
-                site = "deafult",//注册站点
+                site = "默认",//注册站点
                 user_id = "deafult",
                 reg_time = DateTime.Now,
                 note = "系统默认，用于兼容以前的旧用户"

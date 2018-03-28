@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Web.Models;
 using xyj.acs.Interfaces;
-using xyj.study.Interfaces;
+using erp.invoicing.Interfaces;
 
 namespace Web.Controllers
 {
     public class HomeController : Controller
     {
 
-        private IYlService _ylService;
+        private IInvoicingService _ylService;
 
-        public HomeController(IYlService ylService)
+        public HomeController(IInvoicingService ylService)
         {
             _ylService = ylService;
         }
