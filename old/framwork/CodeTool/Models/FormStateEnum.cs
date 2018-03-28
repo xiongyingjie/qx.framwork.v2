@@ -1,4 +1,4 @@
-﻿namespace CodeTool.Models
+﻿namespace xyj.tool.Models
 {
     public enum FormStateEnum
     {

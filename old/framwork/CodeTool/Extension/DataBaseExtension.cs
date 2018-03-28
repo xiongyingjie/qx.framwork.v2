@@ -8,7 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace CodeTool.Extension
+namespace xyj.tool.Extension
 {
    public static class DataBaseExtension
     {

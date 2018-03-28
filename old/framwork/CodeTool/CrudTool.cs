@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Extension;
-using CodeTool.Helper;
-using CodeTool.Models;
-using CodeTool.Template;
+using xyj.tool.Extension;
+using xyj.tool.Helper;
+using xyj.tool.Models;
+using xyj.tool.Template;
 
 using Microsoft.VisualBasic;
 using Qx.Tools.CommonExtendMethods;
@@ -19,7 +19,7 @@ using Qx.Tools.Models;
 using Qx.Tools.Models.Report;
 using xyj.tool.Properties;
 
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class CrudTool : BaseDbForm
     {

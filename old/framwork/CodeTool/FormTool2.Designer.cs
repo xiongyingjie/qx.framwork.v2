@@ -1,6 +1,6 @@
-﻿using CodeTool.Helper;
+﻿using xyj.tool.Helper;
 
-namespace CodeTool
+namespace xyj.tool
 {
     partial class FormTool2:BaseDbForm
     {
@@ -121,8 +121,7 @@ namespace CodeTool
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(295, 218);
             this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "控件类型:\nFile    : length=800||500||600\nArea    : length > 200\nEdictor : type=text\nT" +
-    "ime    : type=datetime2\n\n验证:\n手机号:   length=11\n身份证:   length=18";
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
             // groupBox5
             // 

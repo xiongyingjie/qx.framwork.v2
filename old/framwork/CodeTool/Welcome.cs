@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Helper;
+using xyj.tool.Helper;
 using System.Configuration;
 using System.Threading;
-using CodeTool.Extension;
+using xyj.tool.Extension;
 using Qx.Report.Services;
 using Qx.Tools;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Interfaces;
 using Qx.Tools.Services;
 
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class Welcome : BaseDbForm
     {

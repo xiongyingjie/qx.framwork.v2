@@ -1,6 +1,6 @@
-﻿using CodeTool.Helper;
+﻿using xyj.tool.Helper;
 
-namespace CodeTool
+namespace xyj.tool
 {
     partial class OperateConfig: BaseDbForm
     {

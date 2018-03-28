@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace CodeTool
+namespace xyj.tool
 {
     partial class AutoCodeForm:Form
     {

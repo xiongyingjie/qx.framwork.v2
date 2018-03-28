@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Extension;
-using CodeTool.Helper;
+using xyj.tool.Extension;
+using xyj.tool.Helper;
 using Qx.Tools.CommonExtendMethods;
 
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class OperateConfig : BaseDbForm
     {

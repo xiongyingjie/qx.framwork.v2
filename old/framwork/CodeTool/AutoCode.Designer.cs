@@ -1,4 +1,4 @@
-﻿namespace CodeTool
+﻿namespace xyj.tool
 {
     partial class AutoCode
     {

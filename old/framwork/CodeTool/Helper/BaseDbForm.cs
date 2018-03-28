@@ -6,19 +6,15 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Entity;
-using qx.permmision.v2.Interfaces;
-using qx.permmision.v2.Services;
+using xyj.tool.Entity;
 using Qx.Report.Interfaces;
 using Qx.Report.Services;
-using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Scripts;
+using qx.permmision.v2.Interfaces;
+using qx.permmision.v2.Services;
 
-namespace CodeTool.Helper
+namespace xyj.tool.Helper
 {
     public  class BaseDbForm : Form
     {
@@ -97,13 +93,17 @@ namespace CodeTool.Helper
             var connStr = "";
             try
             {
-                connStr = ConfigurationManager.ConnectionStrings[key].ConnectionString;
+                connStr = ConnectionString_S(key);
             }
             catch (Exception)
             {
                 TipError("连接字符串[" + key + "]未找到,请检查App.config中的字符串配置");
             }
             return connStr;
+        }
+        public static string ConnectionString_S(string key)
+        {
+            return ConfigurationManager.ConnectionStrings[key].ConnectionString; ;
         }
         protected List<ConnectionStringSettings> ConnectionStrings
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Qx.Tools.Annotations;
 using Qx.Tools.Models;
 
-namespace CodeTool.Models
+namespace xyj.tool.Models
 {
  
     public class FormReportColumSetting  : ColumSetting

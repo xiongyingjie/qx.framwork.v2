@@ -10,15 +10,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Entity;
-using CodeTool.Extension;
-using CodeTool.Helper;
-using CodeTool.Models;
+using xyj.tool.Entity;
+using xyj.tool.Extension;
+using xyj.tool.Helper;
+using xyj.tool.Models;
 
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Models.Report;
 using Microsoft.VisualBasic;
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class ReportTool : BaseDbForm
     {
@@ -355,7 +355,7 @@ namespace CodeTool
                     NewNodesWithEmptyChild(SQL_DATABASE.ExecuteQuery().
                     Where(a=> cbItems.Contains(a[0])).
                     Select(row
-                    => row[0]).ToArray()));
+                    => row[0]).OrderBy(o => o).ToArray()));
                 //MessageBox.Show("正在获取数据库"+e.Node.Text + e.Action.ToString());
             }
             if (e.Node.Level == 1)
@@ -380,7 +380,7 @@ namespace CodeTool
                 e.Node.Nodes.AddRange(
                    NewNodesWithEmptyChild(SQL_TABLE().ExecuteQuery(e.Node.Text).
                    Select(row
-                   => row[0]).ToArray()));
+                   => row[0]).OrderBy(o => o).ToArray()));
                 // MessageBox.Show("正在获取数据表" + e.Node.Text + e.Action.ToString());
             }
             if (e.Node.Level == 2)
@@ -517,6 +517,31 @@ namespace CodeTool
             try
             {
                 Db.report_data.AddOrUpdate(report);
+                if (ck_auto_menu.Checked)
+                {//生成菜单 :ToDo
+                    //Db.menu.Add(new menu()
+                    //{
+                    //    menu_id = "",
+                    //    name = "",
+                    //    farther_id = "",
+                    //    note = "",
+                    //    url = "",
+                    //    depth = "",
+                    //    sequence = "",
+                    //    sub_system = "",
+                    //    status = "",
+                    //    controller = "",
+                    //    action = "",
+                    //    area = "",
+                    //    image_class = "",
+                    //    active_li = ""
+                    //});
+                    //Db.role_menu.Add(new role_menu()
+                    //{
+                    //    menu_id = "",
+
+                    //});
+                }
                 saveOk = Db.SaveChanges()>0;
             }
             catch (Exception ex)
@@ -554,6 +579,7 @@ namespace CodeTool
                     var f = new AutoCode(tb_reportId.Text,tb_reportName.Text,tb_deafultParam.Text,tb_perCount.Text,cb_connString.Text);
                     f.Show();
                 }
+               
             }
             else
             {
@@ -871,6 +897,16 @@ namespace CodeTool
         private void bt_exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ck_auto_menu_CheckedChanged(object sender, EventArgs e)
+        {
+            pl_auto_menu.Enabled = ck_autocode.Checked;
+            if (ck_autocode.Checked)
+            {//填充下拉框
+                ComBoxBinding(cb_root_menu, Db.menu.Where(a=>a.farther_id== "mroot").Select(b=>b.menu_id));
+                ComBoxBinding(cb_target_role, Db.role.Select(b => b.role_id));
+            }
         }
     }
 }

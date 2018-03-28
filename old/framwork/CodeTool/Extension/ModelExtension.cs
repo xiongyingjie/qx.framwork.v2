@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Qx.Tools.CommonExtendMethods;
 using System.Configuration;
 using System.Data.SqlClient;
-using CodeTool.Models;
+using xyj.tool.Models;
 using Qx.Tools.Annotations;
 using Qx.Tools.Models;
 
-namespace CodeTool.Extension
+namespace xyj.tool.Extension
 {
    public static class ModelExtension
     {

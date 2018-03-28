@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeTool.Models
+namespace xyj.tool.Models
 {
  
     public class ReportColumSetting : ColumSetting

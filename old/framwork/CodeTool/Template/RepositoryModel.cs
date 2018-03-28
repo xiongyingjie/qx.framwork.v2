@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodeTool.Template
+namespace xyj.tool.Template
 {
     public class RepositoryModel : BaseModel
     {

@@ -1,11 +1,11 @@
-﻿using CodeTool;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CodeTool
+namespace xyj.tool
 {
     static class Program
     {

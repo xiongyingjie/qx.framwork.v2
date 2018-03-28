@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Qx.Tools.CommonExtendMethods;
 
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class AutoCode : Form
     {

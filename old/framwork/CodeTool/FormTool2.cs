@@ -10,15 +10,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Extension;
-using CodeTool.Helper;
-using CodeTool.Models;
+using xyj.tool.Extension;
+using xyj.tool.Helper;
+using xyj.tool.Models;
 
 using Microsoft.VisualBasic;
 using Qx.Tools.CommonExtendMethods;
 using Qx.Tools.Models;
 
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class FormTool2 : BaseDbForm
     {
@@ -77,7 +77,7 @@ namespace CodeTool
                     NewNodesWithEmptyChild(SQL_DATABASE.ExecuteQuery().
                         Where(a => cbItems.Contains(a[0])).
                         Select(row
-                            => row[0]).ToArray()));
+                            => row[0]).OrderBy(o => o).ToArray()));
                 //MessageBox.Show("正在获取数据库"+e.Node.Text + e.Action.ToString());
             }
             if (e.Node.Level == 1)
@@ -102,7 +102,7 @@ namespace CodeTool
                 }
                 var temp = SQL_TABLE().ExecuteQuery(e.Node.Text).
                        Select(row
-                           => new { name = row[0], note = row[1] }).ToList();
+                           => new { name = row[0], note = row[1] }).OrderBy(o => o.name).ToList();
                 if (temp.Any())
                 {
                     _cfg = new CrudTool.Config();
@@ -132,7 +132,7 @@ namespace CodeTool
                                         row[4], row[5], row[6],
                                         row[7], row[8], row[9],
                                         row[10], row[11])
-                                }).OrderBy(o=>o[1]).ToArray()));
+                                }).ToArray()));
 
                 }
 
@@ -210,63 +210,117 @@ namespace CodeTool
                     if (node.Checked && node.Level == 3)
                     {
                         var nodeTag = node.Tag.ToString().UnPackString(';');
+                        var note = nodeTag[2].ToLower();
                         var dataType = nodeTag[6].ToLower();
+                        var fKey = nodeTag[10].ToLower();//外键列
                         var length = int.Parse(nodeTag[7]);
                         var controlType = FormControlType.Input.ToString();
                         var showControlType = FormControlType.ShowInput.ToString();
                         var regex = "";
                         switch (dataType)
                         {
+                            /*
+                             
+                            控件类型:
+                            File          : length=800||500||600
+                            Area          : length == 499||699||999
+                            Edictor       : type=text
+                            Time          : type=datetime2
+                            Date          : type=date
+                            Hide          : length = 99
+                            HideTime      : type=datetime
+                            Select        : 带外键的
+
+
+                            验证:
+                            手机号:   length=11
+                            身份证:   length=18
+                            邮   箱:   length=49
+                             
+                             
+                             */
                             case "varchar":
-                            {
-                                if (length == 18)
                                 {
-                                    //身份证
-                                    regex = "{idno:true}";
+                                    if (length == 18)
+                                    {
+                                        //身份证
+                                        regex = "{idno:true}";
+                                    }
+                                    else if (length == 11 || note.Contains("手机") || note.Contains("电话") || note.Contains("号码"))
+                                    {
+                                        //手机号
+                                        regex = "{mobile:true}";
+                                    }
+                                    else if (length == 49||note.Contains("邮件") || note.Contains("邮箱"))
+                                    {
+                                        regex = "{email:true}";
+                                    }
+                                    else if (length < 100)
+                                    {
+                                        regex = "{min:1,max:" + length + "}";
+                                    }
+
+
+                                    if (length == 800 || length == 500 || length == 600)
+                                    {
+                                        controlType = FormControlType.File.ToString();
+                                        showControlType = FormControlType.Showfile.ToString();
+                                    }
+                                    else if (length == 499 || length == 699 || length == 999)
+                                    {
+                                        controlType = FormControlType.Area.ToString();
+                                        showControlType = FormControlType.ShowArea.ToString();
+                                    }
+                                    else if (length == 99)
+                                    {
+                                        controlType = FormControlType.Hide.ToString();
+                                        showControlType = FormControlType.Hide.ToString();
+                                    }
+                                   
+
                                 }
-                                else if (length == 11)
-                                {
-                                    //手机号
-                                    regex = "{mobile:true}";
-                                }
-                                else if (length == 800 || length == 500 || length == 600)
-                                {
-                                    controlType = FormControlType.File.ToString();
-                                    showControlType = FormControlType.Showfile.ToString();
-                                }
-                                else if (length < 100)
-                                {
-                                    regex = "{min:1,max:" + length + "}";
-                                }
-                                else if (length > 200)
-                                {
-                                    controlType = FormControlType.Area.ToString();
-                                    showControlType = FormControlType.ShowArea.ToString();
-                                }
-                            }
                                 break;
                             case "text":
-                            {
-                                controlType = FormControlType.Editor.ToString();
-                                showControlType = FormControlType.ShowEditor.ToString();
-                            }
+                                {
+                                    controlType = FormControlType.Editor.ToString();
+                                    showControlType = FormControlType.ShowEditor.ToString();
+                                }
                                 break;
                             case "datetime2":
-                            {
-                                controlType = FormControlType.Time.ToString();
-                                showControlType = FormControlType.ShowTime.ToString();
-                            }
+                                {
+                                    controlType = FormControlType.Time.ToString();
+                                    showControlType = FormControlType.ShowTime.ToString();
+                                }
+                                break;
+                            case "datetime":
+                                {
+                                    controlType = FormControlType.HideTime.ToString();
+                                    showControlType = FormControlType.ShowTime.ToString();
+                                }
+                                break;
+                            case "date":
+                                {
+                                    controlType = FormControlType.Date.ToString();
+                                    showControlType = FormControlType.ShowDate.ToString();
+                                }
                                 break;
                             case "int":
-                            {
-                                regex = "{int:true}";
-                            }
+                                {
+                                    regex = "{int:true}";
+                                }
                                 break;
                             case "float":
-                            {
-                                regex = "{float:true}";
-                            }
+                                {
+                                    regex = "{float:true}";
+                                }
                                 break;
+                        }
+
+                        //存在外键
+                        if (fKey.HasValue())
+                        {
+                             controlType = FormControlType.Select.ToString();
+                             showControlType = FormControlType.Select.ToString();
                         }
                         var row = new string[]
                         {
@@ -358,7 +412,7 @@ namespace CodeTool
                     foreach (var obj in ColumSettings)
                     {
                         var isLast = columnIndex == ColumSettings.Count - 1;
-                        html += ToJavaScript(obj, isLast);
+                        html += ToJavaScript(obj, isLast, DataBase);
                         detailHtml += ToDetailJavaScript(obj, isLast);
                         if (isLast)
                         {
@@ -476,20 +530,22 @@ return cfg;
                     var js =
 string.Format(@"render([
     group([
-        pre(""select('下拉', 'test_dropdown', '{0}&name=<span id='item_name'></span>', '<span id='item_deafultValue'></span>', '4')"", 1),
+        pre(""select('<span class='item_lable'></span>', '{2}-<span class='item_key'></span>', '{0}&name=<span class='item_name'></span>', '<span id='item_deafultValue'></span>', '4')"", 1),
          select(""选字段"", ""choose_column"", ""{1}"", """", ""4""),
-         select(""<span id='item_lable'>下拉</span>"", ""test_dropdown"", ""{0}&name="", """", ""4"")
-    ], ""下拉代码生成"")], """", """", ""下拉测试"");
+         select(""<span class='item_lable'>下拉</span>"", ""test_dropdown"", ""{0}&name="", """", ""4"")
+    ], ""生成数据字典"")], """", """", ""测试数据字典"");
                     function formReady() {{
     $.bindSelect(""choose_column"", ""test_dropdown"", '{0}', true, function(src, target) {{
-        $(""#item_name"").html(src.val());
-        $(""#item_lable"").html(src.find(""option:selected"").text());
+        src.val(src.find(""option:nth(1)"").val());        
+        $("".item_key"").html(src.find(""option:first"").val()); 
+        $("".item_name"").html(src.val());
+        $("".item_lable"").html(src.find(""option:selected"").text());
                             target.change(function() {{
             $(""#item_deafultValue"").html($(this).val());
                             }});
                         }});
                     }}
-                    ", DbApi("items"), DbApi("info"));
+                    ", DbApi("items"), DbApi("info"),Tables.Any()? Tables[0]:"");
                     return js;
                 }
             }
@@ -535,7 +591,7 @@ function List() {{
          
            
         }
-      public static string ToJavaScript(FormColumSetting obj, bool isLast)
+      public static string ToJavaScript(FormColumSetting obj, bool isLast,string dbName)
         {
             var html = "";
             //判断控件类型
@@ -543,12 +599,13 @@ function List() {{
             {
                 case FormControlType.Input:
                     {// input: function (label, name, value, num,reg, tip)
+
                         if (!obj.Regex.HasValue()&&int.Parse(obj.Length) > 10)
                         {
                             obj.Regex = "{min:1,max:"+ obj.Length + "}";
                         }
                         html += string.Format("input('{0}', '{1}', '{2}', '{3}'{4})",
-                           obj.ColumNote, obj.ColumName, obj.DefaultValue, 4, obj.Regex.HasValue()? ", " + obj.Regex: "" );
+                           obj.ColumNote, obj.ColumName, obj.DefaultValue, 4, !obj.CanNull&&obj.Regex.HasValue()? ", " + obj.Regex: "" );
                     }
                     break;
                 case FormControlType.Time:
@@ -569,9 +626,43 @@ function List() {{
                     break;
                 case FormControlType.Select:
                     {
+                        var itemColumn = "";//Select显示列名
+                        if (obj.ForeignTable.HasValue())
+                        {
+                            //寻找下拉的name字段
+                            var fColumns = Qx.Tools.Scripts.Sql.SQL_TABLECOLUMN(obj.ForeignTable).ExecuteReader2(BaseDbForm.ConnectionString_S(dbName)).
+                                  Select(row
+                                      => new
+                                      {
+                                          name = row[1],
+                                          note = row[2]
+                                      });
+                            var _itemColumn = fColumns.FirstOrDefault(r => r.name.ToLower() == "name");
+                            if (_itemColumn == null)
+                            {
+                                _itemColumn = fColumns.FirstOrDefault(r => r.name.ToLower().Contains("_name"));   
+                            }
+
+                            if (_itemColumn == null)
+                            {
+                                //Tip("外键表" + obj.ForeignTable + "的列中的列名必须有name或包含_name");
+                            }
+                            else
+                            {itemColumn = _itemColumn.name;}
+
+
+                        }
+                        else
+                        {
+                           // Tip("Select类型的控件必须设置外键,请为" + obj.ColumNote + "设置外键");
+                            obj.ForeignKey =
+                            obj.ForeignTable = "";
+                        }
+                       
+                        //select('品牌名称', 'brand-brand_id', 'erp.invoicing.brand@items&name=name', '', '4')
                         // select: function (label, name, option, value, num, tip)
-                        html += string.Format("select('{0}', '{1}', '[]')",
-                            obj.ColumNote, obj.ColumName);
+                        html += string.Format("select('{0}', '{1}', '{2}.{3}@items&name={4}', '', '4')",
+                            obj.ColumNote, obj.ColumName, dbName,obj.ForeignTable, itemColumn);
                     }
                     break;
                 case FormControlType.Radio:
@@ -839,13 +930,15 @@ public virtual ICollection<{0}> {0}s {{ get; set; }}",n.TableName);
                         case "datetime":
                         case "datetime2":
                             dotType = "DateTime"; break;
+                        case "float":
+                            dotType = "double"; break;
                         default: dotType = colum.Type; ; break;
                     }
                     //列名
                     propers += string.Format(@"
 {0}
 public {1} {2} {{ get; set; }}
-", colum.IsPrimaryKey ? "[Key]" : "", dotType + (dotType == "DateTime"&&colum.CanNull? "?":""), colum.ColumName.Replace(tableName+"-",""));//type需要做映射
+", colum.IsPrimaryKey ? "[Key]" : "", dotType + ((dotType == "DateTime"|| dotType == "int" || dotType == "double") &&colum.CanNull? "?":""), colum.ColumName.Replace(tableName+"-",""));//type需要做映射
 
                     //外键
                     if (rows.Any(ff=>ff.TableName==colum.ForeignTable&&colum.ForeignTable.HasValue()))

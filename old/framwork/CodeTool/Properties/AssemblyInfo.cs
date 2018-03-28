@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("框架助手")]
 [assembly: AssemblyDescription("框架助手是一款自动化代码生成工具，设计的理念是只需简单的操作即可完成复杂的业务代码和界面生成")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("趣学厦门软件有限公司")]
+[assembly: AssemblyCompany("侨米科技")]
 [assembly: AssemblyProduct("框架助手")]
 [assembly: AssemblyCopyright("Copyright ©  2017- xiongyingjie")]
 [assembly: AssemblyTrademark("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 //可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”: :
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("2.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]

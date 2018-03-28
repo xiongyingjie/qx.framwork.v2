@@ -117,6 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="rtb_info.Text" xml:space="preserve">
+    <value>2018-03-24
+修复生成实体数据映射float-&gt;double
+优化表单/报表生成器数据库、数据表排序显示，方便查找
+优化数据字典生成，满足主键[0]，名称[1]的表将自动生成最终代码
+2018-02-30
+适配NetCore2.0特新,不再支持旧版本
+2018-02-29
+添加Entity实体生成工具
+2018-01-27
+添加数据库qx.task
+2017-10-30
+编辑报表后提交时可取消勾选'生成代码'</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -93,6 +93,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -103,6 +105,9 @@
     <Compile Include="CrudTool.Designer.cs">
       <DependentUpon>CrudTool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\menu.cs" />
+    <Compile Include="Entity\role.cs" />
+    <Compile Include="Entity\role_menu.cs" />
     <Compile Include="Helper\FormApplication.cs" />
     <Compile Include="Models\FormReportColumSetting.cs" />
     <Compile Include="Models\QueryCondition.cs" />

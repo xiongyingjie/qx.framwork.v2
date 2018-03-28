@@ -8,15 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CodeTool.Entity;
-using CodeTool.Extension;
-using CodeTool.Helper;
-using CodeTool.Models;
+using xyj.tool.Entity;
+using xyj.tool.Extension;
+using xyj.tool.Helper;
+using xyj.tool.Models;
 
 using Qx.Tools.CommonExtendMethods;
 using xyj.tool.Properties;
 
-namespace CodeTool
+namespace xyj.tool
 {
     public partial class FormTool : BaseDbForm
     {

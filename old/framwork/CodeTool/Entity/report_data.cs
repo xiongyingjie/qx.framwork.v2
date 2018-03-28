@@ -1,4 +1,4 @@
-namespace CodeTool.Entity
+namespace xyj.tool.Entity
 {
     using System;
     using System.Collections.Generic;

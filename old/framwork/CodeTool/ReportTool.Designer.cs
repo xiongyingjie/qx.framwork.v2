@@ -1,7 +1,7 @@
 ﻿
-using CodeTool.Helper;
+using xyj.tool.Helper;
 
-namespace CodeTool
+namespace xyj.tool
 {
     partial class ReportTool: BaseDbForm
     {
@@ -82,13 +82,19 @@ namespace CodeTool
             this.label2 = new System.Windows.Forms.Label();
             this.tb_reportId = new System.Windows.Forms.TextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.ck_deletes = new System.Windows.Forms.CheckBox();
+            this.pl_auto_menu = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cb_target_role = new System.Windows.Forms.ComboBox();
+            this.cb_root_menu = new System.Windows.Forms.ComboBox();
+            this.Lable111 = new System.Windows.Forms.Label();
+            this.ck_auto_menu = new System.Windows.Forms.CheckBox();
             this.ck_autocode = new System.Windows.Forms.CheckBox();
             this.cb_connString = new System.Windows.Forms.ComboBox();
             this.bt_submit = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.bt_exit = new System.Windows.Forms.Button();
             this.bt_check = new System.Windows.Forms.Button();
+            this.ck_deletes = new System.Windows.Forms.CheckBox();
             this.groupBox7.SuspendLayout();
             this.p_addReport.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,6 +109,7 @@ namespace CodeTool
             this.gp_addReport.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox12.SuspendLayout();
+            this.pl_auto_menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox7
@@ -110,7 +117,7 @@ namespace CodeTool
             this.groupBox7.Controls.Add(this.lv_preview);
             this.groupBox7.Location = new System.Drawing.Point(798, 400);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(363, 204);
+            this.groupBox7.Size = new System.Drawing.Size(363, 152);
             this.groupBox7.TabIndex = 5;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "调试窗口";
@@ -120,7 +127,7 @@ namespace CodeTool
             this.lv_preview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv_preview.Location = new System.Drawing.Point(3, 17);
             this.lv_preview.Name = "lv_preview";
-            this.lv_preview.Size = new System.Drawing.Size(357, 184);
+            this.lv_preview.Size = new System.Drawing.Size(357, 132);
             this.lv_preview.TabIndex = 0;
             this.lv_preview.UseCompatibleStateImageBehavior = false;
             // 
@@ -205,7 +212,7 @@ namespace CodeTool
             this.tssl_State});
             this.statusStrip1.Location = new System.Drawing.Point(0, 687);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1163, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1167, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -593,36 +600,86 @@ namespace CodeTool
             // 
             // groupBox12
             // 
-            this.groupBox12.Controls.Add(this.ck_deletes);
+            this.groupBox12.Controls.Add(this.pl_auto_menu);
+            this.groupBox12.Controls.Add(this.ck_auto_menu);
             this.groupBox12.Controls.Add(this.ck_autocode);
             this.groupBox12.Controls.Add(this.cb_connString);
             this.groupBox12.Controls.Add(this.bt_submit);
             this.groupBox12.Controls.Add(this.label9);
             this.groupBox12.Controls.Add(this.bt_exit);
             this.groupBox12.Controls.Add(this.bt_check);
-            this.groupBox12.Location = new System.Drawing.Point(799, 610);
+            this.groupBox12.Location = new System.Drawing.Point(799, 556);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(362, 66);
+            this.groupBox12.Size = new System.Drawing.Size(362, 130);
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "5.测试";
             // 
-            // ck_deletes
+            // pl_auto_menu
             // 
-            this.ck_deletes.AutoSize = true;
-            this.ck_deletes.Location = new System.Drawing.Point(99, 46);
-            this.ck_deletes.Name = "ck_deletes";
-            this.ck_deletes.Size = new System.Drawing.Size(72, 16);
-            this.ck_deletes.TabIndex = 13;
-            this.ck_deletes.Text = "批量删除";
-            this.ck_deletes.UseVisualStyleBackColor = true;
+            this.pl_auto_menu.Controls.Add(this.label11);
+            this.pl_auto_menu.Controls.Add(this.cb_target_role);
+            this.pl_auto_menu.Controls.Add(this.cb_root_menu);
+            this.pl_auto_menu.Controls.Add(this.Lable111);
+            this.pl_auto_menu.Enabled = false;
+            this.pl_auto_menu.Location = new System.Drawing.Point(4, 67);
+            this.pl_auto_menu.Name = "pl_auto_menu";
+            this.pl_auto_menu.Size = new System.Drawing.Size(352, 57);
+            this.pl_auto_menu.TabIndex = 18;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(2, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "上级菜单";
+            // 
+            // cb_target_role
+            // 
+            this.cb_target_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_target_role.FormattingEnabled = true;
+            this.cb_target_role.Location = new System.Drawing.Point(58, 32);
+            this.cb_target_role.Name = "cb_target_role";
+            this.cb_target_role.Size = new System.Drawing.Size(284, 20);
+            this.cb_target_role.TabIndex = 12;
+            // 
+            // cb_root_menu
+            // 
+            this.cb_root_menu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_root_menu.FormattingEnabled = true;
+            this.cb_root_menu.Location = new System.Drawing.Point(58, 6);
+            this.cb_root_menu.Name = "cb_root_menu";
+            this.cb_root_menu.Size = new System.Drawing.Size(285, 20);
+            this.cb_root_menu.TabIndex = 12;
+            // 
+            // Lable111
+            // 
+            this.Lable111.AutoSize = true;
+            this.Lable111.Location = new System.Drawing.Point(3, 38);
+            this.Lable111.Name = "Lable111";
+            this.Lable111.Size = new System.Drawing.Size(53, 12);
+            this.Lable111.TabIndex = 1;
+            this.Lable111.Text = "目标角色";
+            // 
+            // ck_auto_menu
+            // 
+            this.ck_auto_menu.AutoSize = true;
+            this.ck_auto_menu.Location = new System.Drawing.Point(97, 46);
+            this.ck_auto_menu.Name = "ck_auto_menu";
+            this.ck_auto_menu.Size = new System.Drawing.Size(72, 16);
+            this.ck_auto_menu.TabIndex = 13;
+            this.ck_auto_menu.Text = "生成菜单";
+            this.ck_auto_menu.UseVisualStyleBackColor = true;
+            this.ck_auto_menu.CheckedChanged += new System.EventHandler(this.ck_auto_menu_CheckedChanged);
             // 
             // ck_autocode
             // 
             this.ck_autocode.AutoSize = true;
             this.ck_autocode.Checked = true;
             this.ck_autocode.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ck_autocode.Location = new System.Drawing.Point(21, 46);
+            this.ck_autocode.Location = new System.Drawing.Point(9, 46);
             this.ck_autocode.Name = "ck_autocode";
             this.ck_autocode.Size = new System.Drawing.Size(72, 16);
             this.ck_autocode.TabIndex = 13;
@@ -633,9 +690,9 @@ namespace CodeTool
             // 
             this.cb_connString.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_connString.FormattingEnabled = true;
-            this.cb_connString.Location = new System.Drawing.Point(63, 14);
+            this.cb_connString.Location = new System.Drawing.Point(55, 14);
             this.cb_connString.Name = "cb_connString";
-            this.cb_connString.Size = new System.Drawing.Size(110, 20);
+            this.cb_connString.Size = new System.Drawing.Size(118, 20);
             this.cb_connString.TabIndex = 12;
             // 
             // bt_submit
@@ -651,7 +708,7 @@ namespace CodeTool
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 21);
+            this.label9.Location = new System.Drawing.Point(8, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 1;
@@ -677,11 +734,22 @@ namespace CodeTool
             this.bt_check.UseVisualStyleBackColor = true;
             this.bt_check.Click += new System.EventHandler(this.bt_check_Click);
             // 
+            // ck_deletes
+            // 
+            this.ck_deletes.AutoSize = true;
+            this.ck_deletes.Location = new System.Drawing.Point(1179, 656);
+            this.ck_deletes.Name = "ck_deletes";
+            this.ck_deletes.Size = new System.Drawing.Size(72, 16);
+            this.ck_deletes.TabIndex = 13;
+            this.ck_deletes.Text = "批量删除";
+            this.ck_deletes.UseVisualStyleBackColor = true;
+            // 
             // ReportTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 709);
+            this.ClientSize = new System.Drawing.Size(1167, 709);
+            this.Controls.Add(this.ck_deletes);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.p_addReport);
             this.Controls.Add(this.groupBox12);
@@ -713,6 +781,8 @@ namespace CodeTool
             this.groupBox5.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            this.pl_auto_menu.ResumeLayout(false);
+            this.pl_auto_menu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -777,6 +847,12 @@ namespace CodeTool
         private System.Windows.Forms.CheckBox ck_deletes;
         private System.Windows.Forms.CheckBox ck_autocode;
         private System.Windows.Forms.Button bt_exit;
+        private System.Windows.Forms.CheckBox ck_auto_menu;
+        private System.Windows.Forms.Panel pl_auto_menu;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cb_root_menu;
+        private System.Windows.Forms.Label Lable111;
+        private System.Windows.Forms.ComboBox cb_target_role;
     }
 }
 
