@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
-    <PublishUrlHistory>E:\pub\lib\tool\pub\|E:\pub\lib\tool\|E:\svn\jwxt\lib\Tool\</PublishUrlHistory>
+    <PublishUrlHistory>E:\pub\lib\tool.v2\pub\|E:\pub\lib\tool\pub\|E:\pub\lib\tool\|E:\svn\jwxt\lib\Tool\</PublishUrlHistory>
     <InstallUrlHistory>http://lib.52xyj.cn/tool/pub/|http://lib.52xyj.cn/tool/setup/|http://lib.52xyj.cn/tool/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory />

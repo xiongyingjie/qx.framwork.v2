@@ -31,6 +31,11 @@ namespace xyj.tool
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Welcome));
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tb_html_dir = new System.Windows.Forms.TextBox();
+            this.tb_csharp_dir = new System.Windows.Forms.TextBox();
+            this.lb_html_dir = new System.Windows.Forms.Label();
+            this.lb_csharp_dir = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rtb_info = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -41,9 +46,57 @@ namespace xyj.tool
             this.bt_exit = new System.Windows.Forms.Button();
             this.cb_function = new System.Windows.Forms.ComboBox();
             this.bt_do = new System.Windows.Forms.Button();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.tb_html_dir);
+            this.groupBox3.Controls.Add(this.tb_csharp_dir);
+            this.groupBox3.Controls.Add(this.lb_html_dir);
+            this.groupBox3.Controls.Add(this.lb_csharp_dir);
+            this.groupBox3.Location = new System.Drawing.Point(12, 130);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(647, 52);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "系统设置";
+            // 
+            // tb_html_dir
+            // 
+            this.tb_html_dir.Location = new System.Drawing.Point(73, 20);
+            this.tb_html_dir.Name = "tb_html_dir";
+            this.tb_html_dir.Size = new System.Drawing.Size(243, 21);
+            this.tb_html_dir.TabIndex = 5;
+            // 
+            // tb_csharp_dir
+            // 
+            this.tb_csharp_dir.Location = new System.Drawing.Point(396, 20);
+            this.tb_csharp_dir.Name = "tb_csharp_dir";
+            this.tb_csharp_dir.Size = new System.Drawing.Size(243, 21);
+            this.tb_csharp_dir.TabIndex = 5;
+            // 
+            // lb_html_dir
+            // 
+            this.lb_html_dir.AutoSize = true;
+            this.lb_html_dir.Location = new System.Drawing.Point(16, 26);
+            this.lb_html_dir.Name = "lb_html_dir";
+            this.lb_html_dir.Size = new System.Drawing.Size(53, 12);
+            this.lb_html_dir.TabIndex = 7;
+            this.lb_html_dir.Text = "前端目录";
+            this.lb_html_dir.Click += new System.EventHandler(this.lb_html_dir_Click);
+            // 
+            // lb_csharp_dir
+            // 
+            this.lb_csharp_dir.AutoSize = true;
+            this.lb_csharp_dir.Location = new System.Drawing.Point(337, 26);
+            this.lb_csharp_dir.Name = "lb_csharp_dir";
+            this.lb_csharp_dir.Size = new System.Drawing.Size(53, 12);
+            this.lb_csharp_dir.TabIndex = 7;
+            this.lb_csharp_dir.Text = "后端目录";
+            this.lb_csharp_dir.Click += new System.EventHandler(this.lb_csharp_dir_Click);
             // 
             // groupBox2
             // 
@@ -150,8 +203,9 @@ namespace xyj.tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 129);
+            this.ClientSize = new System.Drawing.Size(669, 126);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.bt_exit);
@@ -164,6 +218,8 @@ namespace xyj.tool
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "框架助手启动器V2.0";
             this.Load += new System.EventHandler(this.Test_Load);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -183,5 +239,10 @@ namespace xyj.tool
         private System.Windows.Forms.TextBox tb_psw;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox tb_html_dir;
+        private System.Windows.Forms.Label lb_html_dir;
+        private System.Windows.Forms.Label lb_csharp_dir;
+        private System.Windows.Forms.TextBox tb_csharp_dir;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

@@ -1711,6 +1711,7 @@
           "Microsoft.AspNetCore.Http": "2.0.1",
           "Microsoft.AspNetCore.Http.Extensions": "2.0.1",
           "Microsoft.AspNetCore.Session": "2.0.1",
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.1",
           "MySql.Data": "6.10.4",
           "MySql.Data.EntityFrameworkCore": "6.10.4",
           "Newtonsoft.Json": "11.0.1",

@@ -10,6 +10,7 @@ namespace xyj.tool.Models
     {
         public QueryTypeEnum QueryType;
         public string ColumName;
+        public string ColumNote;
         public string TableName;
 
         public bool CanQuery

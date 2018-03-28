@@ -1,24 +1,14 @@
 ﻿render(function () {
     var cfg=[];
-    cfg.push(input('', 'erp-invoicing-20180327181041', '', 6));
-    cfg.push(dropdown('erp-invoicing-20180327181041',
+    cfg.push(input('', 'erp-invoicing-20180328193105', '', 6));
+    cfg.push(dropdown('erp-invoicing-20180328193105',
               [
-                  { text: '添加', value: '*f/debug/erp-invoicing/20180327181041/add', id: 'erp-invoicing-20180327181041-add' },
-                  { text: '编辑', value: '*f/debug/erp-invoicing/20180327181041/update', id: 'erp-invoicing-20180327181041-update' },
-                  { text: '详情', value: '*f/debug/erp-invoicing/20180327181041/detail', id: 'erp-invoicing-20180327181041-detail' },      
-                  { text: '删除', value: 'erp.invoicing.customer@delete', id: 'erp-invoicing-20180327181041-delete' },
-                  { text: '下拉', value: '*f/debug/erp-invoicing/20180327181041/items', id: 'erp-invoicing-20180327181041-items' },
-                  { text: '列表', value: '*f/debug/erp-invoicing/20180327181041/list', id: 'erp-invoicing-20180327181041-list' }
-              ]));
-    cfg.push(input('', 'erp-invoicing-20180327180937', '', 6));
-    cfg.push(dropdown('erp-invoicing-20180327180937',
-              [
-                  { text: '添加', value: '*f/debug/erp-invoicing/20180327180937/add', id: 'erp-invoicing-20180327180937-add' },
-                  { text: '编辑', value: '*f/debug/erp-invoicing/20180327180937/update', id: 'erp-invoicing-20180327180937-update' },
-                  { text: '详情', value: '*f/debug/erp-invoicing/20180327180937/detail', id: 'erp-invoicing-20180327180937-detail' },      
-                  { text: '删除', value: 'erp.invoicing.product@delete', id: 'erp-invoicing-20180327180937-delete' },
-                  { text: '下拉', value: '*f/debug/erp-invoicing/20180327180937/items', id: 'erp-invoicing-20180327180937-items' },
-                  { text: '列表', value: '*f/debug/erp-invoicing/20180327180937/list', id: 'erp-invoicing-20180327180937-list' }
+                  { text: '添加', value: '*f/debug/erp-invoicing/20180328193105/add', id: 'erp-invoicing-20180328193105-add' },
+                  { text: '编辑', value: '*f/debug/erp-invoicing/20180328193105/update', id: 'erp-invoicing-20180328193105-update' },
+                  { text: '详情', value: '*f/debug/erp-invoicing/20180328193105/detail', id: 'erp-invoicing-20180328193105-detail' },      
+                  { text: '删除', value: 'erp.invoicing.brand@delete', id: 'erp-invoicing-20180328193105-delete' },
+                  { text: '下拉', value: '*f/debug/erp-invoicing/20180328193105/items', id: 'erp-invoicing-20180328193105-items' },
+                  { text: '列表', value: '*f/debug/erp-invoicing/20180328193105/list', id: 'erp-invoicing-20180328193105-list' }
               ]));
 
     cfg.push(html("<hr/>"));
@@ -32,7 +22,7 @@
     return cfg;
 });
 function formReady() {
-    var testIdArray=['erp-invoicing-20180327181041','erp-invoicing-20180327180937',"init"];
+    var testIdArray=['erp-invoicing-20180328193105',"init"];
     for (var i = 0; i < testIdArray.length; i++) {
         bindParam(testIdArray[i]);
     }

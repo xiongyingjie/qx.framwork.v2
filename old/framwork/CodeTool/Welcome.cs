@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using xyj.tool.Helper;
 using System.Configuration;
+using System.IO;
 using System.Threading;
 using xyj.tool.Extension;
 using Qx.Report.Services;
@@ -28,7 +29,27 @@ namespace xyj.tool
         }
 
          private void Test_Load(object sender, EventArgs e)
-        {
+         {
+
+            #region 读取配置文件
+           
+             if (!File.Exists(configFilePath))
+             {
+                 "|".WriteFile(configFilePath,true);
+             }
+             var configFile = configFilePath.ReadFile();
+             if (!configFile.Contains('|') || configFile.Split('|').Length != 2)
+             {
+                 configFile= "|";
+                 configFile.WriteFile(configFilePath, true);
+                 TipError("配置文件格式错误，已自动恢复默认配置");
+
+             }
+             tb_html_dir.Text = configFile.Split('|')[0];
+             tb_csharp_dir.Text = configFile.Split('|')[1];
+            #endregion
+
+
             //new {orgnization_id = "teadf", father_id = "1165", name = "dddddd"}
             //var all = _repository.Query();
             //var insert = _repository.Insert(new { ToDoId = "RPYJR7CBNTW", NodeRelationID = "1165", WhoShouldDo = "dddddd" });
@@ -77,6 +98,22 @@ namespace xyj.tool
             try
             {
                 checkOk =_permissionProvider.Login(tb_uid.Text,tb_psw.Text);
+                if(!Directory.Exists(tb_csharp_dir.Text + "\\Controllers"))
+                {
+                    TipError("检测到配置文件错误，请确保配置了正确的后端项目目录");
+                    lb_csharp_dir_Click(sender, e);
+                    return;
+                }
+                if (!Directory.Exists(tb_html_dir.Text + "\\addons\\sys\\template\\views\\form\\debug"))
+                {
+                    TipError("检测到配置文件错误，请确保配置了正确的前端项目目录");
+                    lb_html_dir_Click(sender, e);
+                    return;
+                }
+                csharp_dir = tb_csharp_dir.Text;
+                html_dir = tb_html_dir .Text;
+                //写配置文件
+                (html_dir + "|" + csharp_dir).WriteFile(configFilePath, true);
             }
             catch (Exception)
             {
@@ -87,13 +124,13 @@ namespace xyj.tool
                 if (cb_function.SelectedIndex == 0)
                 {
                     //TipInfo("环境配置正确，正在启动报表生成器...");
-                    new ReportTool().Show();
+                    new ReportTool(html_dir,csharp_dir).Show();
 
                 }
                 else if (cb_function.SelectedIndex == 1)
                 {
                     //TipInfo("环境配置正确，正在启动表单生成器...");
-                    new FormTool2().Show();
+                    new FormTool2(html_dir, csharp_dir).Show();
                 
                 }
                 else if (cb_function.SelectedIndex == 2)
@@ -133,6 +170,42 @@ namespace xyj.tool
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void lb_html_dir_Click(object sender, EventArgs e)
+        {
+            var fbd = new FolderBrowserDialog();
+            fbd.Description = "请选择前端项目所在目录，推荐路径为E:/svn/jwxt/html";
+
+            //点了保存按钮进入 
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+
+                if (!Directory.Exists(fbd.SelectedPath + "\\addons\\sys\\template\\views\\form\\debug"))
+                {
+                    TipError("检测到配置文件错误，请确保选择了正确的前端项目目录");
+                    return;
+                }
+                tb_html_dir.Text = fbd.SelectedPath;
+            }
+
+        }
+     
+        private void lb_csharp_dir_Click(object sender, EventArgs e)
+        {
+
+            var fbd = new FolderBrowserDialog();
+            fbd.Description = "请选择后端项目所在目录，推荐路径为E:/svn/jwxt/src/web";
+            //点了保存按钮进入 
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                if (!Directory.Exists(fbd.SelectedPath + "\\Controllers"))
+                {
+                    TipError("检测到配置文件错误，请确保选择了正确的后端项目目录");
+                    return;
+                }
+                tb_csharp_dir.Text = fbd.SelectedPath;
+            }
         }
     }
 }

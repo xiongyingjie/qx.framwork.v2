@@ -1005,6 +1005,16 @@ namespace {0}.Entity
         }
 
         private Dictionary<string, string> _entitys;
+
+        public FormTool2(string htmlDir, string csharpDir)
+        {
+            InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            this.html_dir = htmlDir;
+            this.csharp_dir = csharpDir;
+          
+        }
+
         public void Step2(bool hasPre=true)
         {//读取listView生成配置
             var rows = ParseListView(lv_colums.Items, hasPre);
@@ -1259,26 +1269,12 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             if (ck_entity.Checked)
             {//生成实体
 
-                if (ck_rechoose.Checked)
-                {
-                    OpenFolderBrowserDialog();
-                }
-                else
-                {
-                    WriteEntityFiles();
-                }
+                WriteEntityFiles();
             }
             else if (ck_test.Checked)
             {
 
-                if (ck_rechoose.Checked)
-                {
-                    OpenFolderBrowserDialog();
-                }
-                else
-                {
-                    WriteDebugFiles();
-                }
+                WriteDebugFiles();
             }
             else
             {
@@ -1302,20 +1298,20 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
 
         private void WriteJsFiles()
         {
-            var addJs = GetPath(LastDir, "Add");
-            var updateJs = GetPath(LastDir, "Update");
-            var detailJs = GetPath(LastDir, "Detail");
+            var addJs = GetPath(LastDir, "_add");
+            var updateJs = GetPath(LastDir, "_update");
+            var detailJs = GetPath(LastDir, "_detail");
             if (ck_add.Checked)
             {
-                rtb_output_add.Text.WriteFile(addJs);
+                rtb_output_add.Text.WriteFile(addJs,true);
             }
             if (ck_update.Checked)
             {
-                rtb_output_update.Text.WriteFile(updateJs);
+                rtb_output_update.Text.WriteFile(updateJs, true);
             }
             if (ck_detail.Checked)
             {
-                rtb_output_detail.Text.WriteFile(detailJs);
+                rtb_output_detail.Text.WriteFile(detailJs, true);
             }
             TipInfo("写入成功");
         }
@@ -1336,13 +1332,13 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             //生成debug目录 相对 物理目录路径 (去除特殊字符)
             var visitDir = DbName.Replace(".", "-") + "\\" + DateTime.Now.FormatTime(false) + "\\";
             //生成debug目录 绝对 物理目录路径
-            var debugDir = LastDir + "\\addons\\sys\\template\\views\\form\\debug\\";
+            var debugDir = html_dir + "\\addons\\sys\\template\\views\\form\\debug\\";
             //生成debug目录 完整 物理目录路径
             var destDir = debugDir + visitDir;
             //设置all.js路径
-            var testJs = LastDir + "\\addons\\sys\\template\\views\\form\\test\\" + "all.js";
+            var testJs = html_dir + "\\addons\\sys\\template\\views\\form\\test\\" + "all.js";
             //设置all-bak.js路径
-            var testJsBak = LastDir + "\\addons\\sys\\template\\views\\form\\test\\" + "all-bak.js";
+            var testJsBak = html_dir + "\\addons\\sys\\template\\views\\form\\test\\" + "all-bak.js";
             var addJs = destDir + "add.js";
             var editJs = destDir + "update.js";
             var detailJs = destDir + "detail.js";
@@ -1369,19 +1365,19 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
             }
 
             content.WriteFile(testJs, true);
-            rtb_output_add.Text.WriteFile(addJs);
-            rtb_output_update.Text.WriteFile(editJs);
-            rtb_output_detail.Text.WriteFile(detailJs);
-            rtb_output_delete.Text.WriteFile(deleteJs);
-            rtb_output_items.Text.WriteFile(itemsJs);
-            rtb_output_list.Text.WriteFile(listJs);
+            rtb_output_add.Text.WriteFile(addJs, true);
+            rtb_output_update.Text.WriteFile(editJs, true);
+            rtb_output_detail.Text.WriteFile(detailJs, true);
+            rtb_output_delete.Text.WriteFile(deleteJs, true);
+            rtb_output_items.Text.WriteFile(itemsJs, true);
+            rtb_output_list.Text.WriteFile(listJs, true);
             TipInfo("写入成功");
 
         }
         private void OpenSaveFileDialog()
         {
             var sfd = new SaveFileDialog();
-            sfd.InitialDirectory = "E:\\svn\\jwxt\\html\\web\\";
+            sfd.InitialDirectory = html_dir + "\\addons\\sys\\template\\views\\form";
             //设置文件类型 
             sfd.Filter = "javascript文件（*.js）|";
 

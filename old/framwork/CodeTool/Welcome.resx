@@ -118,7 +118,14 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="rtb_info.Text" xml:space="preserve">
-    <value>2018-03-24
+    <value>2018-03-28
+新增一键生成报表菜单
+新增一键分配菜单给角色
+新增一键生成报表操作列编辑/详情
+新增自动生成报表添加操作链接
+新增配置文件，再也不用为选目录而忧愁列！默认目录在C:/xyj.tool/config.ini
+统一报表，表单生成器版本号为2.0.0.0
+2018-03-24
 修复生成实体数据映射float-&gt;double
 优化表单/报表生成器数据库、数据表排序显示，方便查找
 优化数据字典生成，满足主键[0]，名称[1]的表将自动生成最终代码

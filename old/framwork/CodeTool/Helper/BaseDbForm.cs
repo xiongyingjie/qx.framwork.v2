@@ -20,8 +20,10 @@ namespace xyj.tool.Helper
     {
 
         protected IPermissionProvider _permissionProvider;
-
+        protected string csharp_dir = "";
+        protected string html_dir = "";
         protected string DbName = "";
+        protected string configFilePath = "C:\\xyj.tool\\config.ini";
         protected string GetPath(string path,  string fileName)
         {
             return path + fileName + (path.Substring(path.Length - 3).ToLower() == ".js" ? "" : (".js"));//加扩展名

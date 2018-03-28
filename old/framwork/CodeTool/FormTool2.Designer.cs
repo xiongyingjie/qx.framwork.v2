@@ -512,7 +512,7 @@ namespace xyj.tool
             this.MinimizeBox = false;
             this.Name = "FormTool2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "表单生成器 V2.3.0.2";
+            this.Text = "表单生成器 V2.0.0.0";
             this.Load += new System.EventHandler(this.FormTool2_Load);
             this.p_addReport.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);

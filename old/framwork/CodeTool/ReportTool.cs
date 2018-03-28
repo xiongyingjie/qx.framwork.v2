@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -159,7 +160,7 @@ namespace xyj.tool
                 //加入QuerType
                 if (obj.QuerType != QueryTypeEnum.None)
                 {
-                    queryConditionList.Add(new QueryCondition() { ColumName = obj.ColumName, TableName = obj.TableName, QueryType = obj.QuerType });
+                    queryConditionList.Add(new QueryCondition() { ColumName = obj.ColumName, TableName = obj.TableName, QueryType = obj.QuerType, ColumNote = obj.ColumNote });
 
                 }
                 //加入tables
@@ -208,7 +209,7 @@ namespace xyj.tool
                 {
                     reportSql_where += t.ToString(i) + " and\n";
                     //增加通配符
-                    reportParam += ";";
+                    reportParam += t.ColumNote+ (i == queryConditionList.Count-1?"":";");
                 }
             }
 
@@ -420,7 +421,7 @@ namespace xyj.tool
 
         private void bt_check_Click(object sender, EventArgs e)
         {
-            #region 前置条件检测
+             #region 前置条件检测
 
             if (cb_connString.SelectedIndex < 0)
             {
@@ -445,6 +446,22 @@ namespace xyj.tool
                 return;
 
             }
+
+            if (ck_auto_menu.Checked)
+            {
+                if (!cb_area.Text.HasValue() ||
+                    !cb_controller.Text.HasValue() ||
+                    !tb_action.Text.HasValue() ||
+                    !cb_root_menu.Text.HasValue() ||
+                    !cb_target_role.Text.HasValue())
+                {
+                    TipError("菜单信息不完整");
+                    pl_auto_menu.Focus();
+                    return;
+                }
+               
+            }
+
             #endregion
             try
             {
@@ -482,6 +499,15 @@ namespace xyj.tool
             ReFreshState();
         }
         private FormStateEnum _formState = FormStateEnum.AddReport;
+
+        public ReportTool(string htmlDir, string csharpDir)
+        {
+            InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
+            this.html_dir = htmlDir;
+            this.csharp_dir = csharpDir;
+        }
+
         protected void ChangeStateTo(FormStateEnum targetState)
         {
             _formState = targetState;
@@ -519,28 +545,49 @@ namespace xyj.tool
                 Db.report_data.AddOrUpdate(report);
                 if (ck_auto_menu.Checked)
                 {//生成菜单 :ToDo
-                    //Db.menu.Add(new menu()
-                    //{
-                    //    menu_id = "",
-                    //    name = "",
-                    //    farther_id = "",
-                    //    note = "",
-                    //    url = "",
-                    //    depth = "",
-                    //    sequence = "",
-                    //    sub_system = "",
-                    //    status = "",
-                    //    controller = "",
-                    //    action = "",
-                    //    area = "",
-                    //    image_class = "",
-                    //    active_li = ""
-                    //});
-                    //Db.role_menu.Add(new role_menu()
-                    //{
-                    //    menu_id = "",
+                    
+                    var father_menu_id = "";
+                    var menu_id = "";
+                    var role_id = "";
+                    if (cb_root_menu.Text.Contains('@'))
+                    {
+                        father_menu_id = cb_root_menu.Text.Split('@')[1] ;
+                        menu_id = father_menu_id + "_" + cb_area.Text + "_" + cb_controller.Text + "_" + tb_action.Text;
+                        Db.menu.Add(new menu()
+                        {
+                            menu_id = menu_id,
+                            name = report.ReportName,
+                            farther_id = father_menu_id,
+                            note = "报表生成时自动添加",
+                            url = "/"+cb_area.Text+ "/" +cb_controller.Text + "/" + tb_action.Text,
+                            depth = "2",
+                            sequence = 1,
+                            sub_system = "-",
+                            status = "1",
+                            controller = "",
+                            action = "",
+                            area = "",
+                            image_class = "",
+                            active_li = ""
+                        });
+                    }
+                    if (cb_target_role.Text.Contains('@'))
+                    {
+                        role_id = cb_target_role.Text.Split('@')[1];
+                        Db.role_menu.AddOrUpdate(new role_menu()
+                        {
+                            role_menu_id= role_id+"-"+ menu_id,
+                            role_id= role_id,
+                            menu_id = menu_id,
+                            include_children=1,
+                            expire_time=DateTime.MaxValue,
+                            note ="报表生成时自动分配",
 
-                    //});
+                        });
+                    }
+
+
+
                 }
                 saveOk = Db.SaveChanges()>0;
             }
@@ -576,7 +623,10 @@ namespace xyj.tool
                 ChangeStateTo(CheckStateEnum.NeverCheck);
                 if (UpdateReport(FormReport)&&ck_autocode.Checked)
                 {
-                    var f = new AutoCode(tb_reportId.Text,tb_reportName.Text,tb_deafultParam.Text,tb_perCount.Text,cb_connString.Text);
+                    var f = new AutoCode(tb_reportId.Text,tb_reportName.Text,
+                        tb_deafultParam.Text,tb_perCount.Text,cb_connString.Text,
+                        cb_area.Text,cb_controller.Text,tb_action.Text,
+                        csharp_dir+"\\Areas\\"+  cb_area.Text+ "\\Controllers\\" + cb_controller.Text+ "Controller.cs");
                     f.Show();
                 }
                
@@ -901,12 +951,106 @@ namespace xyj.tool
 
         private void ck_auto_menu_CheckedChanged(object sender, EventArgs e)
         {
-            pl_auto_menu.Enabled = ck_autocode.Checked;
-            if (ck_autocode.Checked)
+            pl_auto_menu.Enabled = ck_auto_menu.Checked;
+            if (ck_auto_menu.Checked)
             {//填充下拉框
-                ComBoxBinding(cb_root_menu, Db.menu.Where(a=>a.farther_id== "mroot").Select(b=>b.menu_id));
-                ComBoxBinding(cb_target_role, Db.role.Select(b => b.role_id));
+               // TipInfo(csharp_dir);
+               
+                //跳转Area
+                var area_root = csharp_dir + "\\Areas\\";
+                var areas = Directory.GetDirectories(area_root);
+                var old_area = cb_area.Text;
+                var old_controller = cb_controller.Text;
+                ComBoxBinding(cb_area, areas.Select(a=>a.Replace(area_root,"")));
+                cb_area.Text = old_area;
+                cb_controller.Text = old_controller;
+                //跳转action
+                tb_action.Text = tb_action.Text.CheckValue();
+
+                //上级菜单
+                ComBoxBinding(cb_root_menu, Db.menu.Where(a=>a.farther_id== "mroot").OrderBy(o=>o.sequence).OrderBy(oo=>oo.menu_id).ToList().Select(b=>
+                    AutoAddBlank(b.name) + "|" + b.menu_id.Replace("mroot.", "") + "                                                                               @" + b.menu_id));
+                //目标角色
+                ComBoxBinding(cb_target_role, Db.role.ToList().Select(b =>
+                    AutoAddBlank(b.name) + "|" + b.role_id.Replace("mroot.", "") + "                                                                               @" + b.role_id));
             }
+        }
+
+        string AutoAddBlank(string src, int length=8)
+        {
+            if (src.Length >= length)
+            {
+                return src;
+            }
+            var balnkCount = length - src.Length;
+            while (balnkCount-- > 0)
+            {
+                src += "  ";
+            }
+            return src;
+        }
+
+        private void cb_area_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var controller_root = csharp_dir + "\\Areas\\" + cb_area.Text + "\\Controllers\\";
+            ComBoxBinding(cb_controller, Directory.GetFiles(controller_root).Select(a => a.Replace(controller_root, "").Replace("Controller.cs", "")));
+        }
+
+        private void tb_action_TextChanged(object sender, EventArgs e)
+        {
+            tb_reportName.Text = tb_action.Text.Replace("_list", "");
+            tb_action.Text = tb_reportName.Text + "_list";
+        }
+
+
+       
+
+        private void ck_update_CheckedChanged(object sender, EventArgs e)
+        {
+                Auto_Op(ck_update,"update", "编辑");
+        }
+
+        private void ck_detail_CheckedChanged(object sender, EventArgs e)
+        {
+                Auto_Op(ck_detail,"detail", "查看");
+        }
+
+        private void Auto_Op(CheckBox ck,string opValue,string opName)
+        {
+            if(Check_MVC(ck))
+                rtb_oprate.Text += "\nN1:<a href='*f/"+ cb_area.Text + "/" + cb_controller.Text + "/" + tb_action.Text.Replace("_list","")+"_"+ opValue+"?id={0}'>" + opName+"</a>:0;";
+        }
+
+        private bool Check_MVC(CheckBox ck)
+        {
+            if (!ck.Checked)
+            {
+                return false;
+            }
+            if (!ck_auto_menu.Checked)
+            {//未勾选
+                TipInfo("该操作需要预先勾选[生成菜单]");
+                ck_auto_menu.Checked = true;
+                cb_area.Focus();
+                ck.Checked = false;
+                return false;
+            }
+            if (!cb_area.Text.HasValue() ||
+                !cb_controller.Text.HasValue() ||
+                !tb_action.Text.HasValue())
+
+            {
+                TipInfo("该操作需要预先选择好Area,Controller,Action");
+                cb_area.Focus();
+                ck.Checked = false;
+               return false;
+            }
+            return true;
+        }
+        private void ck_autocode_CheckedChanged(object sender, EventArgs e)
+        {
+            ck_autocode.Checked = Check_MVC(ck_autocode);
+           
         }
     }
 }

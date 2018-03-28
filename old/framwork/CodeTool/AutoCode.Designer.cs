@@ -36,6 +36,7 @@
             this.bt_submit = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.bt_reopen = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.lb_action = new System.Windows.Forms.Label();
             this.tb_paramNote = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.tb_reportName = new System.Windows.Forms.TextBox();
             this.tb_pageIndex = new System.Windows.Forms.TextBox();
             this.tb_reportId = new System.Windows.Forms.TextBox();
-            this.bt_reopen = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -136,6 +136,16 @@
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "Search";
+            // 
+            // bt_reopen
+            // 
+            this.bt_reopen.Location = new System.Drawing.Point(289, 62);
+            this.bt_reopen.Name = "bt_reopen";
+            this.bt_reopen.Size = new System.Drawing.Size(75, 23);
+            this.bt_reopen.TabIndex = 3;
+            this.bt_reopen.Text = "ReChoose";
+            this.bt_reopen.UseVisualStyleBackColor = true;
+            this.bt_reopen.Click += new System.EventHandler(this.bt_reopen_Click);
             // 
             // label9
             // 
@@ -314,16 +324,6 @@
             this.tb_reportId.ReadOnly = true;
             this.tb_reportId.Size = new System.Drawing.Size(87, 21);
             this.tb_reportId.TabIndex = 0;
-            // 
-            // bt_reopen
-            // 
-            this.bt_reopen.Location = new System.Drawing.Point(289, 62);
-            this.bt_reopen.Name = "bt_reopen";
-            this.bt_reopen.Size = new System.Drawing.Size(75, 23);
-            this.bt_reopen.TabIndex = 3;
-            this.bt_reopen.Text = "ReChoose";
-            this.bt_reopen.UseVisualStyleBackColor = true;
-            this.bt_reopen.Click += new System.EventHandler(this.bt_reopen_Click);
             // 
             // AutoCode
             // 

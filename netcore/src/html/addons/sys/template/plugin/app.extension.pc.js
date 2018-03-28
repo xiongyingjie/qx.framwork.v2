@@ -3646,7 +3646,7 @@ function QxForm() {
         if (folder.length > 0 && folder[0] == '/') {
             folder = folder.substring(1, folder.length - 1);
         }
-        debugger
+        //debugger
         url = _c.url(url + "?folder=" + folder + "&uid=" + $.uid() + "&unitid=" + $.unitid());//转换地址
         var contentId = '#fileupload-' + id;
         var startButton = "#startButton-" + id;

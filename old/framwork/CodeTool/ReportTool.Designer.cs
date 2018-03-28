@@ -65,28 +65,33 @@ namespace xyj.tool
             this.ck_detail = new System.Windows.Forms.CheckBox();
             this.ck_delete = new System.Windows.Forms.CheckBox();
             this.ck_update = new System.Windows.Forms.CheckBox();
-            this.ck_add = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.rtb_headears = new System.Windows.Forms.RichTextBox();
+            this.tb_deafultParam = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.rtb_oprate = new System.Windows.Forms.RichTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lb_help = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tb_reportName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tb_perCount = new System.Windows.Forms.TextBox();
-            this.tb_deafultParam = new System.Windows.Forms.TextBox();
             this.tb_columToShow = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tb_reportId = new System.Windows.Forms.TextBox();
+            this.tb_menu_name = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.pl_auto_menu = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.cb_target_role = new System.Windows.Forms.ComboBox();
+            this.cb_controller = new System.Windows.Forms.ComboBox();
+            this.cb_area = new System.Windows.Forms.ComboBox();
             this.cb_root_menu = new System.Windows.Forms.ComboBox();
             this.Lable111 = new System.Windows.Forms.Label();
+            this.tb_action = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.ck_auto_menu = new System.Windows.Forms.CheckBox();
             this.ck_autocode = new System.Windows.Forms.CheckBox();
             this.cb_connString = new System.Windows.Forms.ComboBox();
@@ -115,7 +120,7 @@ namespace xyj.tool
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lv_preview);
-            this.groupBox7.Location = new System.Drawing.Point(798, 400);
+            this.groupBox7.Location = new System.Drawing.Point(798, 367);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(363, 152);
             this.groupBox7.TabIndex = 5;
@@ -200,6 +205,7 @@ namespace xyj.tool
             // 
             this.pg_colum.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.pg_colum.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pg_colum.LineColor = System.Drawing.SystemColors.ControlDark;
             this.pg_colum.Location = new System.Drawing.Point(3, 17);
             this.pg_colum.Name = "pg_colum";
             this.pg_colum.Size = new System.Drawing.Size(163, 320);
@@ -212,7 +218,7 @@ namespace xyj.tool
             this.tssl_State});
             this.statusStrip1.Location = new System.Drawing.Point(0, 687);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1167, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1164, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -227,7 +233,7 @@ namespace xyj.tool
             this.p_manageReport.Controls.Add(this.gp_manageReport);
             this.p_manageReport.Location = new System.Drawing.Point(791, -8);
             this.p_manageReport.Name = "p_manageReport";
-            this.p_manageReport.Size = new System.Drawing.Size(363, 402);
+            this.p_manageReport.Size = new System.Drawing.Size(363, 366);
             this.p_manageReport.TabIndex = 16;
             this.p_manageReport.Click += new System.EventHandler(this.p_manageReport_Click);
             // 
@@ -238,7 +244,7 @@ namespace xyj.tool
             this.gp_manageReport.Controls.Add(this.groupBox8);
             this.gp_manageReport.Location = new System.Drawing.Point(9, 11);
             this.gp_manageReport.Name = "gp_manageReport";
-            this.gp_manageReport.Size = new System.Drawing.Size(346, 384);
+            this.gp_manageReport.Size = new System.Drawing.Size(346, 347);
             this.gp_manageReport.TabIndex = 14;
             this.gp_manageReport.TabStop = false;
             this.gp_manageReport.Text = "报表管理";
@@ -250,16 +256,16 @@ namespace xyj.tool
             this.groupBox11.Controls.Add(this.bt_edit);
             this.groupBox11.Controls.Add(this.bt_add);
             this.groupBox11.Controls.Add(this.bt_delete);
-            this.groupBox11.Location = new System.Drawing.Point(9, 287);
+            this.groupBox11.Location = new System.Drawing.Point(9, 263);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(326, 91);
+            this.groupBox11.Size = new System.Drawing.Size(326, 76);
             this.groupBox11.TabIndex = 15;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "报表操作";
             // 
             // bt_copy
             // 
-            this.bt_copy.Location = new System.Drawing.Point(221, 56);
+            this.bt_copy.Location = new System.Drawing.Point(221, 47);
             this.bt_copy.Name = "bt_copy";
             this.bt_copy.Size = new System.Drawing.Size(75, 23);
             this.bt_copy.TabIndex = 15;
@@ -269,7 +275,7 @@ namespace xyj.tool
             // 
             // bt_dubeg
             // 
-            this.bt_dubeg.Location = new System.Drawing.Point(121, 27);
+            this.bt_dubeg.Location = new System.Drawing.Point(121, 18);
             this.bt_dubeg.Name = "bt_dubeg";
             this.bt_dubeg.Size = new System.Drawing.Size(75, 23);
             this.bt_dubeg.TabIndex = 15;
@@ -279,7 +285,7 @@ namespace xyj.tool
             // 
             // bt_edit
             // 
-            this.bt_edit.Location = new System.Drawing.Point(121, 56);
+            this.bt_edit.Location = new System.Drawing.Point(121, 47);
             this.bt_edit.Name = "bt_edit";
             this.bt_edit.Size = new System.Drawing.Size(75, 23);
             this.bt_edit.TabIndex = 15;
@@ -290,7 +296,7 @@ namespace xyj.tool
             // bt_add
             // 
             this.bt_add.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.bt_add.Location = new System.Drawing.Point(16, 27);
+            this.bt_add.Location = new System.Drawing.Point(16, 18);
             this.bt_add.Name = "bt_add";
             this.bt_add.Size = new System.Drawing.Size(75, 52);
             this.bt_add.TabIndex = 15;
@@ -300,7 +306,7 @@ namespace xyj.tool
             // 
             // bt_delete
             // 
-            this.bt_delete.Location = new System.Drawing.Point(221, 28);
+            this.bt_delete.Location = new System.Drawing.Point(221, 19);
             this.bt_delete.Name = "bt_delete";
             this.bt_delete.Size = new System.Drawing.Size(75, 23);
             this.bt_delete.TabIndex = 15;
@@ -370,7 +376,7 @@ namespace xyj.tool
             this.groupBox8.Controls.Add(this.lv_reports);
             this.groupBox8.Location = new System.Drawing.Point(6, 114);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(332, 162);
+            this.groupBox8.Size = new System.Drawing.Size(332, 143);
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "查询结果";
@@ -380,7 +386,7 @@ namespace xyj.tool
             this.lv_reports.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lv_reports.Location = new System.Drawing.Point(3, 17);
             this.lv_reports.Name = "lv_reports";
-            this.lv_reports.Size = new System.Drawing.Size(326, 142);
+            this.lv_reports.Size = new System.Drawing.Size(326, 123);
             this.lv_reports.TabIndex = 0;
             this.lv_reports.UseCompatibleStateImageBehavior = false;
             // 
@@ -408,19 +414,18 @@ namespace xyj.tool
             this.groupBox5.Controls.Add(this.ck_detail);
             this.groupBox5.Controls.Add(this.ck_delete);
             this.groupBox5.Controls.Add(this.ck_update);
-            this.groupBox5.Controls.Add(this.ck_add);
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.rtb_headears);
+            this.groupBox5.Controls.Add(this.tb_deafultParam);
+            this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.rtb_oprate);
             this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.lb_help);
             this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.tb_reportName);
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Controls.Add(this.tb_perCount);
-            this.groupBox5.Controls.Add(this.tb_deafultParam);
             this.groupBox5.Controls.Add(this.tb_columToShow);
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Location = new System.Drawing.Point(6, 16);
@@ -433,42 +438,34 @@ namespace xyj.tool
             // ck_detail
             // 
             this.ck_detail.AutoSize = true;
-            this.ck_detail.Location = new System.Drawing.Point(697, 60);
+            this.ck_detail.Location = new System.Drawing.Point(627, 60);
             this.ck_detail.Name = "ck_detail";
             this.ck_detail.Size = new System.Drawing.Size(48, 16);
             this.ck_detail.TabIndex = 13;
             this.ck_detail.Text = "详情";
             this.ck_detail.UseVisualStyleBackColor = true;
+            this.ck_detail.CheckedChanged += new System.EventHandler(this.ck_detail_CheckedChanged);
             // 
             // ck_delete
             // 
             this.ck_delete.AutoSize = true;
-            this.ck_delete.Location = new System.Drawing.Point(647, 60);
+            this.ck_delete.Location = new System.Drawing.Point(685, 60);
             this.ck_delete.Name = "ck_delete";
-            this.ck_delete.Size = new System.Drawing.Size(48, 16);
+            this.ck_delete.Size = new System.Drawing.Size(72, 16);
             this.ck_delete.TabIndex = 13;
-            this.ck_delete.Text = "删除";
+            this.ck_delete.Text = "批量删除";
             this.ck_delete.UseVisualStyleBackColor = true;
             // 
             // ck_update
             // 
             this.ck_update.AutoSize = true;
-            this.ck_update.Location = new System.Drawing.Point(599, 60);
+            this.ck_update.Location = new System.Drawing.Point(574, 60);
             this.ck_update.Name = "ck_update";
             this.ck_update.Size = new System.Drawing.Size(48, 16);
             this.ck_update.TabIndex = 13;
             this.ck_update.Text = "编辑";
             this.ck_update.UseVisualStyleBackColor = true;
-            // 
-            // ck_add
-            // 
-            this.ck_add.AutoSize = true;
-            this.ck_add.Location = new System.Drawing.Point(549, 60);
-            this.ck_add.Name = "ck_add";
-            this.ck_add.Size = new System.Drawing.Size(48, 16);
-            this.ck_add.TabIndex = 13;
-            this.ck_add.Text = "添加";
-            this.ck_add.UseVisualStyleBackColor = true;
+            this.ck_update.CheckedChanged += new System.EventHandler(this.ck_update_CheckedChanged);
             // 
             // label3
             // 
@@ -486,6 +483,22 @@ namespace xyj.tool
             this.rtb_headears.Size = new System.Drawing.Size(350, 117);
             this.rtb_headears.TabIndex = 2;
             this.rtb_headears.Text = "";
+            // 
+            // tb_deafultParam
+            // 
+            this.tb_deafultParam.Location = new System.Drawing.Point(491, 26);
+            this.tb_deafultParam.Name = "tb_deafultParam";
+            this.tb_deafultParam.Size = new System.Drawing.Size(111, 21);
+            this.tb_deafultParam.TabIndex = 0;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(432, 33);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 12);
+            this.label13.TabIndex = 1;
+            this.label13.Text = "查询条件";
             // 
             // rtb_oprate
             // 
@@ -541,15 +554,6 @@ namespace xyj.tool
             this.label8.TabIndex = 1;
             this.label8.Text = "每页条数";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(422, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "预置参数";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -566,13 +570,6 @@ namespace xyj.tool
             this.tb_perCount.Size = new System.Drawing.Size(69, 21);
             this.tb_perCount.TabIndex = 0;
             this.tb_perCount.Text = "10";
-            // 
-            // tb_deafultParam
-            // 
-            this.tb_deafultParam.Location = new System.Drawing.Point(481, 27);
-            this.tb_deafultParam.Name = "tb_deafultParam";
-            this.tb_deafultParam.Size = new System.Drawing.Size(133, 21);
-            this.tb_deafultParam.TabIndex = 0;
             // 
             // tb_columToShow
             // 
@@ -598,6 +595,22 @@ namespace xyj.tool
             this.tb_reportId.Size = new System.Drawing.Size(137, 21);
             this.tb_reportId.TabIndex = 0;
             // 
+            // tb_menu_name
+            // 
+            this.tb_menu_name.Location = new System.Drawing.Point(1271, 466);
+            this.tb_menu_name.Name = "tb_menu_name";
+            this.tb_menu_name.Size = new System.Drawing.Size(111, 21);
+            this.tb_menu_name.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(1216, 472);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "菜单名称";
+            // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.pl_auto_menu);
@@ -608,9 +621,9 @@ namespace xyj.tool
             this.groupBox12.Controls.Add(this.label9);
             this.groupBox12.Controls.Add(this.bt_exit);
             this.groupBox12.Controls.Add(this.bt_check);
-            this.groupBox12.Location = new System.Drawing.Point(799, 556);
+            this.groupBox12.Location = new System.Drawing.Point(799, 526);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(362, 130);
+            this.groupBox12.Size = new System.Drawing.Size(362, 155);
             this.groupBox12.TabIndex = 13;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "5.测试";
@@ -619,12 +632,16 @@ namespace xyj.tool
             // 
             this.pl_auto_menu.Controls.Add(this.label11);
             this.pl_auto_menu.Controls.Add(this.cb_target_role);
+            this.pl_auto_menu.Controls.Add(this.cb_controller);
+            this.pl_auto_menu.Controls.Add(this.cb_area);
             this.pl_auto_menu.Controls.Add(this.cb_root_menu);
             this.pl_auto_menu.Controls.Add(this.Lable111);
+            this.pl_auto_menu.Controls.Add(this.tb_action);
+            this.pl_auto_menu.Controls.Add(this.label12);
             this.pl_auto_menu.Enabled = false;
-            this.pl_auto_menu.Location = new System.Drawing.Point(4, 67);
+            this.pl_auto_menu.Location = new System.Drawing.Point(4, 69);
             this.pl_auto_menu.Name = "pl_auto_menu";
-            this.pl_auto_menu.Size = new System.Drawing.Size(352, 57);
+            this.pl_auto_menu.Size = new System.Drawing.Size(352, 82);
             this.pl_auto_menu.TabIndex = 18;
             // 
             // label11
@@ -640,10 +657,29 @@ namespace xyj.tool
             // 
             this.cb_target_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_target_role.FormattingEnabled = true;
-            this.cb_target_role.Location = new System.Drawing.Point(58, 32);
+            this.cb_target_role.Location = new System.Drawing.Point(58, 59);
             this.cb_target_role.Name = "cb_target_role";
             this.cb_target_role.Size = new System.Drawing.Size(284, 20);
             this.cb_target_role.TabIndex = 12;
+            // 
+            // cb_controller
+            // 
+            this.cb_controller.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_controller.FormattingEnabled = true;
+            this.cb_controller.Location = new System.Drawing.Point(169, 35);
+            this.cb_controller.Name = "cb_controller";
+            this.cb_controller.Size = new System.Drawing.Size(86, 20);
+            this.cb_controller.TabIndex = 12;
+            // 
+            // cb_area
+            // 
+            this.cb_area.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_area.FormattingEnabled = true;
+            this.cb_area.Location = new System.Drawing.Point(59, 35);
+            this.cb_area.Name = "cb_area";
+            this.cb_area.Size = new System.Drawing.Size(106, 20);
+            this.cb_area.TabIndex = 12;
+            this.cb_area.SelectedIndexChanged += new System.EventHandler(this.cb_area_SelectedIndexChanged);
             // 
             // cb_root_menu
             // 
@@ -657,11 +693,28 @@ namespace xyj.tool
             // Lable111
             // 
             this.Lable111.AutoSize = true;
-            this.Lable111.Location = new System.Drawing.Point(3, 38);
+            this.Lable111.Location = new System.Drawing.Point(3, 65);
             this.Lable111.Name = "Lable111";
             this.Lable111.Size = new System.Drawing.Size(53, 12);
             this.Lable111.TabIndex = 1;
             this.Lable111.Text = "目标角色";
+            // 
+            // tb_action
+            // 
+            this.tb_action.Location = new System.Drawing.Point(259, 34);
+            this.tb_action.Name = "tb_action";
+            this.tb_action.Size = new System.Drawing.Size(83, 21);
+            this.tb_action.TabIndex = 0;
+            this.tb_action.TextChanged += new System.EventHandler(this.tb_action_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(4, 38);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "跳转目标";
             // 
             // ck_auto_menu
             // 
@@ -677,14 +730,13 @@ namespace xyj.tool
             // ck_autocode
             // 
             this.ck_autocode.AutoSize = true;
-            this.ck_autocode.Checked = true;
-            this.ck_autocode.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ck_autocode.Location = new System.Drawing.Point(9, 46);
             this.ck_autocode.Name = "ck_autocode";
             this.ck_autocode.Size = new System.Drawing.Size(72, 16);
             this.ck_autocode.TabIndex = 13;
             this.ck_autocode.Text = "生成代码";
             this.ck_autocode.UseVisualStyleBackColor = true;
+            this.ck_autocode.CheckedChanged += new System.EventHandler(this.ck_autocode_CheckedChanged);
             // 
             // cb_connString
             // 
@@ -748,19 +800,21 @@ namespace xyj.tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1167, 709);
+            this.ClientSize = new System.Drawing.Size(1164, 709);
             this.Controls.Add(this.ck_deletes);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.p_addReport);
             this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.p_manageReport);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.gp_addReport);
+            this.Controls.Add(this.tb_menu_name);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ReportTool";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "报表生成器1.0.0.31";
+            this.Text = "报表生成器2.0.0.0";
             this.Load += new System.EventHandler(this.ReportTool_Load);
             this.groupBox7.ResumeLayout(false);
             this.p_addReport.ResumeLayout(false);
@@ -843,7 +897,6 @@ namespace xyj.tool
         private System.Windows.Forms.CheckBox ck_detail;
         private System.Windows.Forms.CheckBox ck_delete;
         private System.Windows.Forms.CheckBox ck_update;
-        private System.Windows.Forms.CheckBox ck_add;
         private System.Windows.Forms.CheckBox ck_deletes;
         private System.Windows.Forms.CheckBox ck_autocode;
         private System.Windows.Forms.Button bt_exit;
@@ -853,6 +906,12 @@ namespace xyj.tool
         private System.Windows.Forms.ComboBox cb_root_menu;
         private System.Windows.Forms.Label Lable111;
         private System.Windows.Forms.ComboBox cb_target_role;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox tb_menu_name;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ComboBox cb_controller;
+        private System.Windows.Forms.ComboBox cb_area;
+        private System.Windows.Forms.TextBox tb_action;
     }
 }
 

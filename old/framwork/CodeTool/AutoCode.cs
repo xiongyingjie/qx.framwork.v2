@@ -29,6 +29,10 @@ namespace xyj.tool
         private string _pageIndex;
         private string _perCount;
         private string _dbKey;
+        private string __area;
+        private string __controller;
+        private string __action;
+        
         #region 页面参数
         private string _action
         {
@@ -76,7 +80,7 @@ Search.Add(#quote{0}#quote);", name);
 
                 return string.Format(@"
 //{0}/{1}/{2}
-public ActionResult {2}(string reportId, string Params)
+public IActionResult {2}(string reportId, string Params)
 #left
 if (!reportId.HasValue())
   #left
@@ -183,7 +187,7 @@ if (!reportId.HasValue())
 
 #endregion
         public AutoCode(string reportId,string reportName,
-            string param,string perCount,string dbKey)
+            string param,string perCount,string dbKey, string area, string controller, string action, string filePath)
         {
             _reportId = reportId;
             _reportName = reportName;
@@ -191,6 +195,10 @@ if (!reportId.HasValue())
             _pageIndex ="1";
             _perCount = perCount;
             _dbKey = dbKey;
+            __area = area;
+            __controller = controller;
+            __action = action;
+            _filePath = filePath;
             InitializeComponent();
         }
 
@@ -203,9 +211,13 @@ if (!reportId.HasValue())
             tb_perCount.Text = _perCount;
             tb_paramNote.Text = _params;
             tb_dbKey.Text = _dbKey;
-            tb_addLink.Text = "#";         
+            tb_addLink.Text = "/"+ __area + "/"+ __controller + "/"+ __action.Replace("_list","_add");         
             tb_action.Text ="R"+DateTime.Now.Random();
-            Open();
+            tb_area.Text = __area;
+            tb_controller.Text = __controller;
+            tb_action.Text = __action;
+            
+            // Open();
         }
 
         private void bt_generate_Click(object sender, EventArgs e)

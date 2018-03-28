@@ -8364,7 +8364,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Yingjie\\.nuget\\packages\\": {},
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -8373,17 +8373,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "E:\\git\\netcore\\src\\erp.invoicing\\erp.invoicing.csproj",
+      "projectUniqueName": "E:\\git\\qx.framwork.v2\\netcore\\src\\erp.invoicing\\erp.invoicing.csproj",
       "projectName": "erp.invoicing",
-      "projectPath": "E:\\git\\netcore\\src\\erp.invoicing\\erp.invoicing.csproj",
-      "packagesPath": "C:\\Users\\Yingjie\\.nuget\\packages\\",
-      "outputPath": "E:\\git\\netcore\\src\\erp.invoicing\\obj\\",
+      "projectPath": "E:\\git\\qx.framwork.v2\\netcore\\src\\erp.invoicing\\erp.invoicing.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "E:\\git\\qx.framwork.v2\\netcore\\src\\erp.invoicing\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Yingjie\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8396,8 +8396,8 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "E:\\git\\netcore\\src\\xyj.core\\xyj.core.csproj": {
-              "projectPath": "E:\\git\\netcore\\src\\xyj.core\\xyj.core.csproj"
+            "E:\\git\\qx.framwork.v2\\netcore\\src\\xyj.core\\xyj.core.csproj": {
+              "projectPath": "E:\\git\\qx.framwork.v2\\netcore\\src\\xyj.core\\xyj.core.csproj"
             }
           }
         }
