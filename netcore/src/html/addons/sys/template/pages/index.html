@@ -1,47 +1,52 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
+
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>后台管理NetCoreV2.3</title>
+
     <script src="../plugin/app.js"></script>  
+    <script>
+        _c.loadLib([
+            srcurl("sb2/css/plugins/morris/morris-0.4.3.min.css"),
+            srcurl("sb2/css/plugins/timeline/timeline.css"),
+            srcurl("sb2/js/plugins/morris/raphael-2.1.0.min.js")
+        ]);
+    </script>
 </head>
+
 <body>
 
 <div id="wrapper">
-<!-- Navigation -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
 <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
     </button>
-    <!--<img src="img/logo.png" style="height: 50px; width: 150px;"/>-->
-    <p style="display:inline-block; color: white;font-size:20px"></p>
     <a class="navbar-brand qx-menu sever-info" data-title="调试模式-Form" data-url="*f/test/all">后台管理 NetCoreV2.3</a>
-    <!--<a class="navbar-brand qx-menu" data-title="报表管理" data-url="*r/core/report/index">报表管理</a>-->
 </div>
-<ul class="nav navbar-nav" id="top-menu"></ul>
 <!-- /.navbar-header -->
+
 <ul class="nav navbar-top-links navbar-right">
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-        <span style="background-color: #0088cc;" id="workflow-tasks-num" class="badge"></span>
+        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
     </a>
-    <ul class="dropdown-menu dropdown-messages" id="workflow-tasks">
+    <ul class="dropdown-menu dropdown-messages">
         <li>
             <a href="#">
                 <div>
                     <strong>John Smith</strong>
                     <span class="pull-right text-muted">
-                                    <em>Yesterday</em>
-                                </span>
+                        <em>Yesterday</em>
+                    </span>
                 </div>
                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
             </a>
@@ -52,13 +57,25 @@
                 <div>
                     <strong>John Smith</strong>
                     <span class="pull-right text-muted">
-                                    <em>Yesterday</em>
-                                </span>
+                        <em>Yesterday</em>
+                    </span>
                 </div>
                 <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
             </a>
         </li>
-
+        <li class="divider"></li>
+        <li>
+            <a href="#">
+                <div>
+                    <strong>John Smith</strong>
+                    <span class="pull-right text-muted">
+                        <em>Yesterday</em>
+                    </span>
+                </div>
+                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+            </a>
+        </li>
+        <li class="divider"></li>
         <li>
             <a class="text-center" href="#">
                 <strong>Read All Messages</strong>
@@ -71,8 +88,7 @@
 <!-- /.dropdown -->
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
-        <span style="background-color: #0088cc;" class="badge"></span>
+        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
     </a>
     <ul class="dropdown-menu dropdown-tasks">
         <li>
@@ -151,7 +167,7 @@
 <!-- /.dropdown -->
 <li class="dropdown">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
     </a>
     <ul class="dropdown-menu dropdown-alerts">
         <li>
@@ -209,100 +225,376 @@
     <!-- /.dropdown-alerts -->
 </li>
 <!-- /.dropdown -->
-<li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-user fa-fw"></i>
-        <span id="nick_name"></span>
-        <i class="fa fa-caret-down"></i>
-    </a>
-    <ul class="dropdown-menu dropdown-user">
-        <li>
-            <a href="#"><i class="fa fa-user fa-fw"></i><span id="user_id"></span></a>
-        </li>
-        <li>
-            <a href="#"><i class="fa fa-gear fa-fw"></i> <span id="unit_name"></span></a>
-        </li>
-        <li class="divider"></li>
-        <li>
-            <a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 安全退出</a>
-        </li>
-    </ul>
-    <!-- /.dropdown-user -->
-</li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <i class="fa fa-user fa-fw"></i>
+            <span id="nick_name"></span>
+            <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+            <li>
+                <a href="#"><i class="fa fa-user fa-fw"></i><span id="user_id"></span></a>
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-gear fa-fw"></i> <span id="unit_name"></span></a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a><i class="fa fa-sign-out fa-fw"></i> 安全退出</a>
+            </li>
+        </ul>
+        <!-- /.dropdown-user -->
+    </li>
 <!-- /.dropdown -->
 </ul>
 <!-- /.navbar-top-links -->
-<div class="navbar-default sidebar" role="navigation">
-    <div class="sidebar-nav navbar-collapse">
+
+<div class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
             <li class="sidebar-search">
                 <div class="input-group custom-search-form">
                     <input type="text" id="search-menu" class="form-control" placeholder="搜索功能...">
                     <span class="input-group-btn">
-                                <button id="bt_clean" class="btn btn-default" type="button">
-                                    <i class="fa fa-undo"></i>
-                                </button>
-                            </span>
+                        <button id="bt_clean" class="btn btn-default" type="button">
+                            <i class="fa fa-undo"></i>
+                        </button>
+                    </span>
                 </div>
-                <!-- /input-group -->
             </li>
-
+            <!-- 菜单容器 -->
 
         </ul>
+        <!-- /#side-menu -->
     </div>
     <!-- /.sidebar-collapse -->
 </div>
 <!-- /.navbar-static-side -->
 </nav>
-<div id="page-wrapper" >
+
+<div id="page-wrapper">
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">欢迎进入系统</h1>
-
-    </div>
-    <div class="module_contain" style="width: 900px; height: 500px;margin: 200px auto">
-        <div class="module" style="width: 420px; height: 200px; background: rgb(219, 86, 44); float: left">
-            <img src="img/1206675.png" style="width: 110px; height: 110px; margin: 40px 80px">
-            <p style="font-size: 20px; color: white; float: right; margin-right: 50px; margin-top:80px;display: block;">供应商管理 </p>
-        </div>
-        <div class="module" style="width: 200px; height: 200px; margin-left: 20px; background: rgb(100, 82, 163); float: left">
-            <img src="img/1206676.png" style="width: 100px; height: 100px; margin: 30px 50px">
-            <p style="font-size: 20px; color: white; margin: 0;text-align: center">消息</p>
-        </div>
-        <div class="module" style="width: 200px; height: 200px; margin-left: 20px; background: rgb(64, 64, 64); float: left">
-            <img src="img/1206674.png" style="width: 100px; height: 100px; margin: 30px 50px">
-
-            <p style="font-size: 20px; color: white; margin: 0;text-align: center">取消</p>
-        </div>
-        <div class="module" style="width: 200px; height: 200px; margin-top: 20px; background: rgb(223, 147, 22); float: left">
-
-            <img src="img/1206679.png" style="width: 100px; height: 100px; margin: 30px 50px">
-            <p style="font-size: 20px; color: white; margin: 0;text-align: center">节日管理</p>
-        </div>
-        <div class="module" style="width: 200px; height: 200px; margin-top: 20px; margin-left: 20px; background: rgb(211, 211, 211); float: left">
-
-            <img src="img/1206689.png" style="width: 100px; height: 100px; margin: 30px 50px">
-            <p style="font-size: 20px; color: white; margin: 0;text-align: center">商品管理</p>
-        </div>
-        <div class="module" style="width: 200px; height: 200px; margin-top: 20px; margin-left: 20px; background: rgb(48, 183, 221); float: left">
-
-            <img src="img/1206688.png" style="width: 100px; height: 100px; margin: 30px 50px">
-            <p style="font-size: 20px; color: white; margin: 0;text-align: center">日常任务</p>
-        </div>
-        <div class="module" style="width: 200px; height: 200px; margin-top: 20px; margin-left: 20px; background: rgb(0, 74, 126); float: left">
-
-            <img src="img/1206708.png" style="width: 100px; height: 100px; margin: 30px 50px">
-            <p style="font-size: 20px; color: white; margin: 0;text-align: center">退出</p>
-        </div>
+        <h1 class="page-header">Dashboard</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
-
 <!-- /.row -->
+<div class="row">
+<div class="col-lg-8">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-clock-o fa-fw"></i> Timeline
+    </div>
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+        <ul class="timeline">
+            <li>
+                <div class="timeline-badge"><i class="fa fa-check"></i>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                        <p>
+                            <small class="text-muted"><i class="fa fa-time"></i> 11 hours ago via Twitter</small>
+                        </p>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-badge danger"><i class="fa fa-credit-card"></i>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-badge info"><i class="fa fa-save"></i>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                        <hr>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-cog"></i> 
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a>
+                                </li>
+                                <li><a href="#">Another action</a>
+                                </li>
+                                <li><a href="#">Something else here</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-badge success"><i class="fa fa-thumbs-up"></i>
+                </div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Timeline Event</h4>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vel justo eu mi scelerisque vulputate. Aliquam in metus eu lectus aliquet egestas.</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- /.panel-body -->
 </div>
-<!-- /#page-wrapper -->
+<!-- /.panel -->
 </div>
-<!-- /#wrapper -->
+<!-- /.col-lg-8 -->
+<div class="col-lg-4">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <div class="list-group">
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-comment fa-fw"></i> New Comment
+                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-envelope fa-fw"></i> Message Sent
+                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-tasks fa-fw"></i> New Task
+                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                    <span class="pull-right text-muted small"><em>11:32 AM</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
+                    <span class="pull-right text-muted small"><em>11:13 AM</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
+                    <span class="pull-right text-muted small"><em>10:57 AM</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
+                    <span class="pull-right text-muted small"><em>9:49 AM</em>
+                    </span>
+                </a>
+                <a href="#" class="list-group-item">
+                    <i class="fa fa-money fa-fw"></i> Payment Received
+                    <span class="pull-right text-muted small"><em>Yesterday</em>
+                    </span>
+                </a>
+            </div>
+            <!-- /.list-group -->
+            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
+        </div>
+        <div class="panel-body">
+            <div id="morris-donut-chart"></div>
+            <a href="#" class="btn btn-default btn-block">View Details</a>
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- /.panel -->
+    <div class="chat-panel panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-comments fa-fw"></i>
+            Chat
+            <div class="btn-group pull-right">
+                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-chevron-down"></i>
+                </button>
+                <ul class="dropdown-menu slidedown">
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-check-circle fa-fw"></i> Available
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-times fa-fw"></i> Busy
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-clock-o fa-fw"></i> Away
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.panel-heading -->
+        <div class="panel-body">
+            <ul class="chat">
+                <li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <strong class="primary-font">Jack Sparrow</strong> 
+                            <small class="pull-right text-muted">
+                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                            </small>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                        </p>
+                    </div>
+                </li>
+                <li class="right clearfix">
+                    <span class="chat-img pull-right">
+                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <small class=" text-muted">
+                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
+                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                        </p>
+                    </div>
+                </li>
+                <li class="left clearfix">
+                    <span class="chat-img pull-left">
+                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <strong class="primary-font">Jack Sparrow</strong> 
+                            <small class="pull-right text-muted">
+                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                        </p>
+                    </div>
+                </li>
+                <li class="right clearfix">
+                    <span class="chat-img pull-right">
+                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                    </span>
+                    <div class="chat-body clearfix">
+                        <div class="header">
+                            <small class=" text-muted">
+                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                        </div>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- /.panel-body -->
+        <div class="panel-footer">
+            <div class="input-group">
+                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                <span class="input-group-btn">
+                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                        Send
+                    </button>
+                </span>
+            </div>
+        </div>
+        <!-- /.panel-footer -->
+    </div>
+    <!-- /.panel .chat-panel -->
+</div>
+<!-- /.col-lg-4 -->
+</div>
+</div>
+
+</div>
+
 
 </body>
+
 </html>

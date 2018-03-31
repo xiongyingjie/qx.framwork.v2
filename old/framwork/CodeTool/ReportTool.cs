@@ -114,7 +114,7 @@ namespace xyj.tool
                             (sequence++).ToString(),
                             nodeTag[5],
                             nodeTag[6],
-                            QueryTypeEnum.None.ToString()
+                            QueryTypeEnum.Like.ToString()//(lvBody.Any()?QueryTypeEnum.Like:QueryTypeEnum.None).ToString()
                         };
                     lvBody.Add(row);
                 }
@@ -1014,7 +1014,11 @@ namespace xyj.tool
         {
                 Auto_Op(ck_detail,"detail", "查看");
         }
+        private void ck_delete_CheckedChanged(object sender, EventArgs e)
+        {
 
+            Auto_Op(ck_delete, "delete", "删除");
+        }
         private void Auto_Op(CheckBox ck,string opValue,string opName)
         {
             if(Check_MVC(ck))
@@ -1052,5 +1056,7 @@ namespace xyj.tool
             ck_autocode.Checked = Check_MVC(ck_autocode);
            
         }
+
+       
     }
 }

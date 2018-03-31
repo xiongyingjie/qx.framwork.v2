@@ -17,8 +17,9 @@ namespace xyj.core.Services
 
         #region Sql报表模板
 
-        private string Sql_Query_Template(string sql, int pageIndex, int perCount,string filterScript)
+        private string[] Sql_Query_Template(string sql, int pageIndex, int perCount,string filterScript)
         {
+            var sqlForCount = "";
             sql = sql.ToLower();
 
          
@@ -54,13 +55,18 @@ namespace xyj.core.Services
                 sql = sql.Replace("#filter", filterScript);
             #endregion
 
-            sql = sql.ReplaceFirst("select", "select IDENTITY(INT,1,1) as _序号xh,").
+            sqlForCount=sql = sql.ReplaceFirst("select", "select IDENTITY(INT,1,1) as _序号xh,").
                 ReplaceFirst("from", " into #TEMPTABLE from ", sql.Contains("#from") ? "#" : "");
 
             sql += string.Format(@"
                 select top {0} * from #TEMPTABLE where _序号xh>(({1}-1)*{0})
                 DROP TABLE #TEMPTABLE;", perCount, pageIndex);
-            return sql;
+
+            sqlForCount += string.Format(@"
+                select count(*) from #TEMPTABLE 
+                DROP TABLE #TEMPTABLE;");
+
+            return new string[]{ sql,sqlForCount } ;
 
         }
         #endregion
@@ -72,6 +78,7 @@ namespace xyj.core.Services
         private readonly string _reportRuleConnectionString = DbUtility.SqlSeverConnString();
         private string _filterScript;
         private string _finalSql;
+        private int _totalCount;
         private string _id;
         private bool _isDbSource;
         private bool _isCrossDb;
@@ -137,14 +144,16 @@ namespace xyj.core.Services
         {
 
             var sql = "";
+            var sql2Count = "";
             try
             {
                 sql = string.Format(report.SqlStr, // FormatString(
                     parms.UnPackString(';').ToArray<object>()
                     // )
                     );
-                _finalSql = Sql_Query_Template(sql, pageIndex, perCount,_filterScript);
-            
+                var sqls = Sql_Query_Template(sql, pageIndex, perCount, _filterScript);
+                _finalSql = sqls[0];
+                sql2Count= sqls[1];
             }
             catch (Exception ex)
             {
@@ -154,7 +163,9 @@ namespace xyj.core.Services
             List<List<string>> dataRows;
             try
             {
+               
                 dataRows = _finalSql.ExecuteReader2(connStr);
+                _totalCount = int.Parse(sql2Count.ExecuteReader2(connStr)[0][0]);
             }
             catch (Exception ex)
             {
@@ -204,6 +215,8 @@ namespace xyj.core.Services
             _reportViewModel.tableBody_all = dataRowToDeal;
             _reportViewModel.operatCol = _operatCol;
             _reportViewModel.FinalView = _dataRowsWithOperat;
+            _reportViewModel.TotalCount = _totalCount;
+            
         }
 
         private List<List<string>> _PackTable(List<string> title,List<List<string>>body, List<string>op)

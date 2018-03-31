@@ -82,6 +82,8 @@ namespace xyj.core.Models.Report
             get { return tableBody.Count == pageParam.perPage; }
         }
 
+        public int TotalCount { get; internal set; }
+
         public ReportViewModel SetPageParam(int pageIndex, int perCount, string filterScript,string finalSql)
         {
             report.FinalSqlStr = finalSql;

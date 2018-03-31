@@ -7,126 +7,219 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>报表引擎</title>
     <script src="../plugin/app.js"></script>
-   </head>
+    <style type="text/css">
+        body {
+            padding-top: 0px !important;
+        }
+    </style>
+</head>
+
 <body>
 <!-- Event Container -->
 <div id="e-title"></div>
 <!-- Page Content -->
 <div class="container-fluid">
-    <div class="row">
-        <!--<div class="col-lg-12">
-            <h2 style="padding-bottom: 10px; color: rgb(99, 99, 99); font-size: 19px; margin-top: 8px; font-family: '微软雅黑';">
-                <button class="btn btn-primary btn-sm" id="bt_back" style="float: right; margin-top: -3px;"> 返回</button>
-            </h2>
-        </div>-->
-        <!-- /.col-lg-12 -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group form-pd" id="tool-bar">
-                                        <a class="btn btn-warning Query" id="bt_query">
-                                            刷新
-                                            <i class="fa fa-refresh"></i>
-                                        </a>
-                                        <a data-url="" id="bt_add" class="btn btn-success qx-menu">
-                                            添加
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                        <a  id="bt_delete" class="btn btn-danger Delete">
-                                            删除
-                                            <i class="fa fa-remove"></i>
-                                        </a>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 id="lb_title" class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div id="left" class="col-sm-12">
+                    <!-- 搜索 -->
+                    <div class="accordion-group">
+                        <div id="collapseTwo" class="accordion-body collapse" aria-expanded="false" style="height: 0px;">
+                            <div class="accordion-inner">
+                                <form id="searchForm" class="form form-horizontal well clearfix">
+                                    <!--搜索控件容器--> 
+                                </form>
+                            </div>
+                        </div>
+                    </div>
 
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                导出
-                                                <i class="fa  fa-cloud-download"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li>
-                                                    <a class="ToExcel" id="bt_toExcel">
-                                                        <i class="fa  fa-file-excel-o"></i>
-                                                        Excel
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="ToPdf" id="bt_toPdf">
-                                                        <i class="fa  fa-file-pdf-o"></i>
-                                                        PDF
-                                                    </a>
-                                                </li>
 
-                                            </ul>
-                                        </div>
-                                        <div class="btn-group" id="bt_import">
-                                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                                导入
-                                                <i class="fa fa-cloud-upload"></i>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li>
-                                                    <a class="DonwnloadExcel" id="bt_donwnloadExcel">
-                                                        <i class="fa   fa-arrow-circle-down"></i>
-                                                        下载模板
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        <input style="filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; float: left; position: absolute;" type="file" id="bt_uploadExcel"/>
-                                                        <i class="fa  fa-arrow-circle-up"></i>
-                                                        上传表格
-                                                    </a>
-                                                </li>
+                    <!-- 工具栏 -->
+                    <!-- 工具栏结束 -->
+                    <!-- 表格 -->
+                    <div class="bootstrap-table">
+                        <div class="fixed-table-toolbar">
+                            <div class="bars pull-left">
+                                <div id="toolbar">
+                                    <a data-url="" id="bt_add" class="btn btn-success  qx-menu"><i class="glyphicon glyphicon-plus"></i> 新建</a>
+                                    <a id="bt_delete" class="btn btn-danger Delete"><i class="glyphicon glyphicon-remove"></i> 删除</a>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary  dropdown-toggle" data-toggle="dropdown">
+                                            <i class="fa  fa-cloud-download"></i>导出
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a class="ToExcel" id="bt_toExcel">
+                                                    <i class="fa  fa-file-excel-o"></i>
+                                                    Excel
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="ToPdf" id="bt_toPdf">
+                                                    <i class="fa  fa-file-pdf-o"></i>
+                                                    PDF
+                                                </a>
+                                            </li>
 
-                                            </ul>
-                                        </div>
-
-                                        <a id="extra-bt-container">
-
-                                        </a>
+                                        </ul>
                                     </div>
+                                    <div class="btn-group" id="bt_import">
+                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 
+                                            <i class="fa fa-cloud-upload"></i>
+                                            导入
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li>
+                                                <a class="DonwnloadExcel" id="bt_donwnloadExcel">
+                                                    <i class="fa   fa-arrow-circle-down"></i>
+                                                    下载模板
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <input style="filter: alpha(opacity=0); -moz-opacity: 0; -khtml-opacity: 0; opacity: 0; float: left; position: absolute;" type="file" id="bt_uploadExcel" />
+                                                    <i class="fa  fa-arrow-circle-up"></i>
+                                                    上传表格
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <span id="extra-bt-container">
+                                        <!--自定义操作控件容器--> 
+                                        <!--<a class="btn btn-default" title="创建菜单"><i class="fa fa-folder-open-o"></i> 自定义操作</a>-->
+                                    </span>
+                                    <a class="accordion-toggle btn btn-warning collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo" aria-expanded="false">
+                                        <i class="fa fa-search"></i> 检索
+                                    </a>
                                 </div>
                             </div>
-                            <div class="row">
-                                <a style="color: red" id="extra_tip-container"></a>
+                            <div class="columns columns-right btn-group pull-right">
+                                <div class="keep-open btn-group" title="要显示的列">
+                                    <a  class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <i class="glyphicon glyphicon-th icon-th"></i> <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu" id="tbHeaders">
+                                        <!--列容器-->
+                                    </ul>
+                                </div>
+                                <a class="btn btn-default Query" id="bt_query" title="刷新"><i class="glyphicon glyphicon-refresh icon-refresh"></i></a>
+                                <!--<a class="btn btn-default" title="切换"><i class="glyphicon glyphicon-list-alt icon-list-alt"></i></a>-->
+
+
+                                <!--<div class="export btn-group">
+                                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><i class="glyphicon glyphicon-export icon-share"></i> <span class="caret"></span>
+                                    </button><ul class="dropdown-menu" role="menu"><li data-type="json"><a href="javascript:void(0)">JSON</a></li><li data-type="xml"><a href="javascript:void(0)">XML</a></li><li data-type="csv"><a href="javascript:void(0)">CSV</a></li><li data-type="txt"><a href="javascript:void(0)">TXT</a></li><li data-type="sql"><a href="javascript:void(0)">SQL</a></li><li data-type="excel"><a href="javascript:void(0)">MS-Excel</a></li></ul>
+                                </div>-->
                             </div>
-                            <br/>
-                            <ul class="list-ul" id="mainForm"></ul>
-                            <div class="table-div">
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <a style="color: red;" id="extra_tip-container"></a>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <div class="fixed-table-container" style="padding-bottom: 0px;">
+                          
+                            <div class="fixed-table-header" style="display: none;"><table></table></div>
+                            <div class="fixed-table-body" id="mainContent">
+                                <div class="fixed-table-loading" style="top: 41px; display: none;">正在努力地加载数据中，请稍候……</div>
+                                <!--<table id="report-table" data-toolbar="#toolbar" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-export="true" data-id-field="id" class="table table-hover table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="bs-checkbox " style="width: 36px;" data-field="0" tabindex="0">
+                                            <div class="th-inner ">
+                                                <input name="btSelectAll" type="checkbox">
+                                            </div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="" data-field="table_type" tabindex="0">
+                                            <div class="th-inner ">表类型</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="" data-field="name" tabindex="0">
+                                            <div class="th-inner ">表名</div>
+                                            <div class="fht-cell"></div>
+                                        </th>
+                                        <th style="" data-field="comments" tabindex="0">
+                                            <div class="th-inner ">说明</div>
+                                            <div class="fht-cell"></div></th><th style="" data-field="className" tabindex="0">
+                                            <div class="th-inner ">类名</div>
+                                            <div class="fht-cell"></div></th><th style="" data-field="parentTable" tabindex="0">
+                                            <div class="th-inner ">主表</div>
+                                            <div class="fht-cell"></div></th><th style="" data-field="isSync" tabindex="0">
+                                            <div class="th-inner ">同步数据库</div>
+                                            <div class="fht-cell"></div></th>
+                                        <th style="text-align: center;" data-field="operate" tabindex="0"> <div class="th-inner ">操作</div><div class="fht-cell"></div></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr data-index="0">
+                                        <td class="bs-checkbox"><input data-index="0" name="btSelectItem" type="checkbox" value="71ce33a559584074b7df21835e28d574">
+                                        </td>
+                                        <td style="">单表</td>
+                                        <td style="">
+                                            t_user
+                                        </td>
+                                        <td style="">act_evt_log</td>
+                                        <td style="">ActEvtLog</td>
+                                        <td style=""></td><td style=""><font>已同步</font></td>
+                                        <td style="text-align: center;">
+                                            <div class="btn-group" role="group">
+                                                <a >修改 </a>
+                                                <a>修改 </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                       
+                                    </tbody>
+                                </table>-->
+                            </div>
+                           
+                            <div class="fixed-table-pagination" style="display: block;">   
+                                <div class="pull-left pagination-detail">
+                                    <span class="pagination-info">显示第 <span id="lb_fromIndex">*</span> 到第 <span id="lb_toIndex">*</span> 条记录，总共 <span id="lb_totalCount">*</span> 条记录</span>
+
+                                </div>
+                                
+                            </div>
+
+                            <!--旧版本<div class="table-div">
                                 <div id="callBackPagination" class="piece">
                                     <div id="mainContent"></div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <br>
-                                <div class="col-md-5 col-sm-12">
-                                    <div class="dataTables_info" id="sample_1_info">当前显示 <span id="lb_fromIndex">*</span>- <span id="lb_toIndex">*</span>记录
-                                    </div>
+                            </div>-->
 
-                                </div>
-                                <div id="callBackPager"></div>
+                            <div class="pull-right pagination">
+                              
+                                <ul id="callBackPager" class="pagination">
+                                    <!--<li class="page-first disabled"><a href="javascript:void(0)">«</a></li>
+                                    <li class="page-pre disabled"><a href="javascript:void(0)">‹</a></li>
+                                    <li class="page-number active"><a href="javascript:void(0)">1</a></li>
+                                    <li class="page-number"><a href="javascript:void(0)">2</a></li>
+                                    <li class="page-number"><a href="javascript:void(0)">3</a></li>
+                                    <li class="page-number"><a href="javascript:void(0)">4</a></li>
+                                    <li class="page-number"><a href="javascript:void(0)">5</a></li>
+                                    <li class="page-next"><a href="javascript:void(0)">›</a></li>
+                                    <li class="page-last"><a href="javascript:void(0)">»</a></li>-->
+                                </ul>
                             </div>
                         </div>
+                        </div>
+                    </div><div class="clearfix"></div>
 
-                    </div>
-                    <!-- /.table-responsive -->
+                 
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
         </div>
     </div>
-    <!--新加的js-->
-    <!--./新加的js-->
-    <!-- /.col-lg-12 -->
 </div>
-<!-- /.row -->
-<!-- /.container-fluid -->
+
 </body>
 </html>

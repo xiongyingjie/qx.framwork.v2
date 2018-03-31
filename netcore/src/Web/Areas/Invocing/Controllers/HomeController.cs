@@ -78,5 +78,25 @@ Search.Add("品牌编号");
 Search.Add("品牌名称");
   InitReport("brand", "/Invocing/Home/brand_add", "", true,"erp.invoicing");
   return ReportJson();
+}
+//Invocing/Home/product_test_list
+public IActionResult product_test_list(string reportId, string Params)
+{
+if (!reportId.HasValue())
+  {
+    return RedirectToAction("product_test_list", 
+        new { 
+           reportId = "erp.invoicing.RFQ.RZYY8EZEBP7",Params = "商品名称;主条码;零售价;批发价;计量单位;商品品态", pageIndex = 1, perCount = 3 
+            });
+  }
+  
+Search.Add("商品名称");
+Search.Add("主条码");
+Search.Add("零售价");
+Search.Add("批发价");
+Search.Add("计量单位");
+Search.Add("商品品态");
+  InitReport("RZYY8EZEBP7", "/Invocing/Home/product_test_add", "", true,"erp.invoicing");
+  return ReportJson();
 }}
 }

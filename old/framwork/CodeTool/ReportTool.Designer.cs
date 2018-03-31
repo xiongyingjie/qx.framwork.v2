@@ -218,7 +218,7 @@ namespace xyj.tool
             this.tssl_State});
             this.statusStrip1.Location = new System.Drawing.Point(0, 687);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1164, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1956, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -411,6 +411,7 @@ namespace xyj.tool
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.ck_deletes);
             this.groupBox5.Controls.Add(this.ck_detail);
             this.groupBox5.Controls.Add(this.ck_delete);
             this.groupBox5.Controls.Add(this.ck_update);
@@ -438,7 +439,7 @@ namespace xyj.tool
             // ck_detail
             // 
             this.ck_detail.AutoSize = true;
-            this.ck_detail.Location = new System.Drawing.Point(627, 60);
+            this.ck_detail.Location = new System.Drawing.Point(545, 59);
             this.ck_detail.Name = "ck_detail";
             this.ck_detail.Size = new System.Drawing.Size(48, 16);
             this.ck_detail.TabIndex = 13;
@@ -449,17 +450,18 @@ namespace xyj.tool
             // ck_delete
             // 
             this.ck_delete.AutoSize = true;
-            this.ck_delete.Location = new System.Drawing.Point(685, 60);
+            this.ck_delete.Location = new System.Drawing.Point(644, 59);
             this.ck_delete.Name = "ck_delete";
-            this.ck_delete.Size = new System.Drawing.Size(72, 16);
+            this.ck_delete.Size = new System.Drawing.Size(48, 16);
             this.ck_delete.TabIndex = 13;
-            this.ck_delete.Text = "批量删除";
+            this.ck_delete.Text = "删除";
             this.ck_delete.UseVisualStyleBackColor = true;
+            this.ck_delete.CheckedChanged += new System.EventHandler(this.ck_delete_CheckedChanged);
             // 
             // ck_update
             // 
             this.ck_update.AutoSize = true;
-            this.ck_update.Location = new System.Drawing.Point(574, 60);
+            this.ck_update.Location = new System.Drawing.Point(596, 59);
             this.ck_update.Name = "ck_update";
             this.ck_update.Size = new System.Drawing.Size(48, 16);
             this.ck_update.TabIndex = 13;
@@ -789,7 +791,7 @@ namespace xyj.tool
             // ck_deletes
             // 
             this.ck_deletes.AutoSize = true;
-            this.ck_deletes.Location = new System.Drawing.Point(1179, 656);
+            this.ck_deletes.Location = new System.Drawing.Point(694, 59);
             this.ck_deletes.Name = "ck_deletes";
             this.ck_deletes.Size = new System.Drawing.Size(72, 16);
             this.ck_deletes.TabIndex = 13;
@@ -800,8 +802,7 @@ namespace xyj.tool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1164, 709);
-            this.Controls.Add(this.ck_deletes);
+            this.ClientSize = new System.Drawing.Size(1956, 709);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.p_addReport);
             this.Controls.Add(this.groupBox12);

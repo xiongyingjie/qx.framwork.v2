@@ -1,6 +1,7 @@
 ﻿//#jquery - pagination
 (function ($) {
     $.fn.extendPagination = function (options) {
+        
         var defaults = {
             pageId: '2',
             totalCount: '',
@@ -10,6 +11,7 @@
                 return false;
             }
         };
+        
         $.extend(defaults, options || {});
         if (defaults.totalCount === '') {
             //alert('总数不能为空!');
@@ -71,6 +73,7 @@
             }
 
             function callBack(curr) {
+                //debugger 
                 defaults.callback(curr, defaults.limit, totalCount);
             }
 
@@ -588,40 +591,33 @@ function subClose() {
     window.parent.closeWindow(father.data("index"));
 }
 function InitMenuAnimation() {
+
     $('#side-menu').metisMenu();
-    $(window).bind("load resize", function () {
-        var topOffset = 50;
-        var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
-        if (width < 768) {
-            $('div.navbar-collapse').addClass('collapse');
-            topOffset = 100; // 2-row-menu
-        } else {
-            $('div.navbar-collapse').removeClass('collapse');
-        }
+    $(window).bind("load resize",
+        function () {
+            width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
+            if (width < 768) {
+                $('div.sidebar-collapse').addClass('collapse');
+            } else {
+                $('div.sidebar-collapse').removeClass('collapse');
+            }
+        });
 
-        var height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
-        height = height - topOffset;
-        if (height < 1) height = 1;
-        if (height > topOffset) {
-            $("#page-wrapper").css("min-height", (height) + "px");
-        }
-    });
+    //var url = window.location;
+    //// var element = $('ul.nav a').filter(function() {
+    ////     return this.href == url;
+    //// }).addClass('active').parent().parent().addClass('in').parent();
+    //var element = $('ul.nav a').filter(function () {
+    //    return this.href == url;
+    //}).addClass('active').parent();
 
-    var url = window.location;
-    // var element = $('ul.nav a').filter(function() {
-    //     return this.href == url;
-    // }).addClass('active').parent().parent().addClass('in').parent();
-    var element = $('ul.nav a').filter(function () {
-        return this.href == url;
-    }).addClass('active').parent();
-
-    while (true) {
-        if (element.is('li')) {
-            element = element.parent().addClass('in').parent();
-        } else {
-            break;
-        }
-    }
+    //while (true) {
+    //    if (element.is('li')) {
+    //        element = element.parent().addClass('in').parent();
+    //    } else {
+    //        break;
+    //    }
+    //}
 }
 
 /*
@@ -844,18 +840,20 @@ function QxGrid() {
                     $("#bt_import").remove();
                 }
                 if (GetFormData().length === 0) {
-                    $("#bt_query").remove();
+                   // $("#bt_query").remove();
                 }
                 if (!_c.hasValue(obj.BackUrl)) {
                     $("#bt_back").remove();
                 } else {
                     $("#bt_back").click(function () {
-                        $.go(_c.url(obj.BackUrl));
+                        _c.go(_c.url(obj.BackUrl));
                     });
                 }
 
                 //设置标题
                 $("#lb_title").html(g_title);
+                //$("#report-title").html(g_title);
+               
                 $(".Query").click(Query);
                 $(".Delete").click(Delete);
                 $(".ToExcel").click(ToExcel);
@@ -868,7 +866,8 @@ function QxGrid() {
                 // setTitle(g_title,document);//设置标题
                 //搜索框
                 createForm();
-                callBackPagination(999, g_perCount, g_perCount, g_pageIndex);
+                createTable(g_pageIndex, g_perCount);
+             
             }
         });
 
@@ -1055,7 +1054,7 @@ function QxGrid() {
                         //debugger
                         if (code > -1) {
                             trueCount++;
-                            //$.go(_c.url(data));
+                            //_c.go(_c.url(data));
                         } else {
                             failCount++;
                         }
@@ -1133,7 +1132,7 @@ function QxGrid() {
     }
     var Add = function () {
 
-        $.go("/pages/form.html?id=" + g_addLink);
+        _c.go("/pages/form.html?id=" + g_addLink);
     }
 
     var Delete = function () {
@@ -1179,70 +1178,50 @@ function QxGrid() {
         });
         return chkValues;
     }
+
     var Query = function () {
         //UpdateQueryParam();
-        callBackPagination(999, g_perCount, g_perCount, g_pageIndex);
-        //var url = g_currentUrl + "?ReportID=" + g_reportId + "&Params=" + queryParam + "&pageIndex=1&perCount=" + g_perCount + g_extraParam;
-        //location.href = url;
-        //console.log("Query..." + url);
+        createTable(g_pageIndex, g_perCount);
     }
 
 
-
-    //limit每页显示条数
-    var callBackPagination = function (totalCount, showCount, limit, currPage) {
-
-        createTable(currPage, limit, totalCount);
-        $('#callBackPager').extendPagination({
-
-            totalCount: totalCount,
-
-            showCount: showCount,
-
-            limit: limit,
-
-            callback: function (curr, limit, totalCount) {
-                createTable(curr, limit, totalCount);
-            }
-
-        });
-
-    }
-
-    var createTable = function (currPage, limit, total) {
+    var createTable = function (currPage, perCount) {
         UpdateQueryParam();
-        $("#lb_fromIndex").html((currPage - 1) * limit + 1);
-        $("#lb_toIndex").html(currPage * limit);
+        $("#lb_fromIndex").html((currPage - 1) * perCount + 1);
+        $("#lb_toIndex").html(currPage * perCount);
 
         $.Ajax({
             url: "/Report/Report2",
-            data: { ReportID: g_reportId, Params: g_params, dbConnStringKey: g_dbConnStringKey, dataSourceUrl: g_dataSourceUrl, pageIndex: currPage, perCount: limit },
+            data: { ReportID: g_reportId, Params: g_params, dbConnStringKey: g_dbConnStringKey, dataSourceUrl: g_dataSourceUrl, pageIndex: currPage, perCount: perCount },
             success: function (data, code, msg, url) {
                 var obj = data;
                 var params = obj.pageParam;//对象
+                var totalCount = obj.TotalCount;//总条数
                 var header = obj.header;//一维数组
                 var tableBody = obj.FinalView;//二维数组
                 var tableBodyAll = obj.tableBody_all;//二维数组
-                var html = [], showNum = limit;
+                var html = [];
+                var tbHeadersHtml = '';
+                //if (total - (currPage * limit) < 0) showNum = total - ((currPage - 1) * limit);
 
-                if (total - (currPage * limit) < 0) showNum = total - ((currPage - 1) * limit);
-
-                html.push('<table id="report-table" class="table table-striped table-bordered table-hover info" style="margin-left: 0;">');
+                html.push('<table id="report-table" data-toolbar="#toolbar" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-show-export="true" data-id-field="id" class="table table-hover table-striped">');
                 html.push('<thead><tr>' +
-                    '<th width="30px;">' +
-                    '<input type="checkbox" class="selectAll">' +
-                    '</th>');
+                    '<th class="bs-checkbox " style="width: 36px;" data-field="0" tabindex="0"><div class="th-inner ">' +
+                    '<input type="checkbox" class="th-inner selectAll">' +
+                    '</div> <div class="fht-cell"></div></th>');
                 for (var i = 0; i < header.length; i++) {
-                    html.push(' <th width="100px;"><label for="">' + header[i] + '</label></th>');
+                    tbHeadersHtml += ' <li><label><input type="checkbox" data-field="' + header[i] + '" name="checkbox" checked="checked"> ' + header[i] + '</label> </li>';
+                    html.push('<th style="" data-field="' + header[i] + '" tabindex="0"><div class="th-inner ">' + header[i] + '</div><div class="fht-cell"></div></th>');
                     if (i === header.length - 1) {
-                        html.push(' <th width="300px;"><label for="">' + '操作' + '</label></th>');
+                        tbHeadersHtml += ' <li><label><input type="checkbox" data-field="table_type" value="1" checked="checked"> 操作</label> </li>';
+                        html.push('  <th style="text-align: center;" data-field="operate" tabindex="0"> <div class="th-inner ">操作</div><div class="fht-cell"></div></th>');
                     }
                 }
 
                 html.push('</tr></thead><tbody>');
 
                 for (var j = 1; j < tableBody.length; j++) {
-                    html.push('<tr><td style="text-align:center;"><input id="' + _c.trimString(tableBodyAll[j - 1][0]) + '" type="checkbox"></td>');
+                    html.push('<tr data-index="0"> <td class="bs-checkbox"><input type="checkbox" data-index="0" id="' + _c.trimString(tableBodyAll[j - 1][0]) + '" ></td>');
                     for (var k = 0; k < tableBody[j].length; k++) {
                         if (k === tableBody[j].length - 1) {
                             //_c.log(g_extraParam)
@@ -1257,10 +1236,10 @@ function QxGrid() {
                 }
                 html.push('</tbody></table>');
                // html.push('<script> var pymChild = new pym.Child();</script>');
-                var mainObj = $('#mainContent');
-                mainObj.empty();
-                mainObj.html(html.join(''));
-
+                var mainObj = $('#mainContent'); var tbHeadersObj = $('#tbHeaders'); var totalCountObj = $('#lb_totalCount');
+                mainObj.empty(); tbHeadersObj.empty(); totalCountObj.empty();
+                mainObj.html(html.join('')); tbHeadersObj.html(tbHeadersHtml); totalCountObj.html(totalCount);
+                
                 //处理跳转地址
                 //$(".qx-operate").each(function (i, o) {
                 //    var obj = $(o);
@@ -1288,6 +1267,20 @@ function QxGrid() {
                 //    //_c.log(old);
                 //});
                 //debugger 
+                //页码
+                if (currPage == 1) {
+                    $('#callBackPager').extendPagination({
+                        totalCount: totalCount,
+                        pageId: currPage,
+                        limit: perCount,
+                        callback: function (curr, perCount) {
+                            
+                            createTable(curr, perCount);
+                        }
+
+                    }); 
+                }
+               
                 $(".selectAll").click(selectAll);
                 InitMenuEvent("tbody .qx-operate", "f", true);
                 //调用函数
@@ -1303,18 +1296,22 @@ function QxGrid() {
         var extra_tip_html = [];
         var html = [];
 
-
+        /*  <div class="col-xs-12 col-sm-6 col-md-4">
+                                        <label class="label-item single-overflow pull-left" title="表名：">表名：</label>
+                                        <input id="nameLike" name="nameLike" class=" form-control input-sm" type="text" value="" maxlength="50">
+                                    </div>
+        */
         for (var i = 0; i < obj.length; i++) {
             if (obj[i].type === 201) {
-                html.push('<li><div class="form-group form-pd">' +
-                    '<label class="label-wid">' + obj[i].lable + '</label>' +
-                    '<input type="text"  class="form-control form-control-size Query-keyup" value="' + obj[i].value + '" id="' + obj[i].id + '" placeholder="">' +
+                html.push('<li><div class="col-xs-12 col-sm-6 col-md-4">' +
+                    '<label class="label-item single-overflow pull-left" title="' + obj[i].lable + '">' + obj[i].lable + '</label>' +
+                    '<input type="text"  class="form-control input-sm Query-keyup" value="' + obj[i].value + '" id="' + obj[i].id + '" placeholder="">' +
                     '</div></li>');
             }
             else if (obj[i].type === 204) {
-                html.push('<li><div class="form-group form-pd">' +
-                    '<label class="label-wid">' + obj[i].lable + '</label>' +
-                    '<select   id="' + obj[i].id + '" class="form-control form-control-size Query-change">');
+                html.push('<li><div class="col-xs-12 col-sm-6 col-md-4">' +
+                    '<label class="label-item single-overflow pull-left" title="' + obj[i].lable + '">' + obj[i].lable +'</label>' +
+                    '<select   id="' + obj[i].id + '" class="form-control input-sm Query-change">');
 
                 for (var j = 0; j < obj[i].items.length; j++) {
                     html.push('<option value="' + obj[i].items[j].value + '">' + obj[i].items[j].text + '</option>');
@@ -1322,16 +1319,16 @@ function QxGrid() {
                 html.push('</select></div></li>');
             }
             else if (obj[i].type === 203) {
-                html.push('<li><div class="form-group form-pd">' +
-                    '<label class="label-wid">' + obj[i].lable + '</label>' +
-                    '<input   type="text" value="' + obj[i].value + '" class="form-control form-control-size Query-change" id="' + obj[i].id + '">' +
+                html.push('<li><div class="col-xs-12 col-sm-6 col-md-4">' +
+                    '<label class="label-item single-overflow pull-left" title="' + obj[i].lable + '">' + obj[i].lable + '</label>' +
+                    '<input   type="text" value="' + obj[i].value + '" class="form-control input-sm Query-change" id="' + obj[i].id + '">' +
                     '</div></li>');
 
                 html.push('<script type="text/javascript">$("#' + obj[i].id + '").datetimepicker({ weekStart: 1,todayBtn: 1,autoclose: 1,todayHighlight: 1,startView: 2,forceParse: 0,showMeridian: 1,})' + ';' + '<' + '/script>');
             }
             else if (obj[i].type === 209) {
-                html.push('<li style="width:100%;"><div class="form-group form-pd" style="width:100%;">' +
-                    '<label class="label-wid">' + obj[i].lable + '</label>' +
+                html.push('<li style="width:100%;"><div class="col-xs-12 col-sm-6 col-md-4" style="width:100%;">' +
+                    '<label class="label-item single-overflow pull-left" title="' + obj[i].lable + '">' + obj[i].lable + '</label>' +
                     '<textarea  class="form-control  Query-keyup" style="width:85%;height:120px;"  rows="' + obj[i].crossWidth + '" id="' + obj[i].id + '" placeholder="">' + obj[i].value +
                     '</textarea>' +
                     '</div></li>');
@@ -1346,7 +1343,7 @@ function QxGrid() {
             }
 
         }
-        var mainObj = $('#mainForm'); var extraButton = $("#extra-bt-container"); var extraTip = $("#extra_tip-container");
+        var mainObj = $('#searchForm'); var extraButton = $("#extra-bt-container"); var extraTip = $("#extra_tip-container");
         mainObj.empty(); extraButton.empty(); extraTip.empty();
         mainObj.html(html.join('')); extraButton.html(extra_bt_html.join('')); extraTip.html(extra_tip_html.join(''));
 
@@ -3647,7 +3644,7 @@ function QxForm() {
             folder = folder.substring(1, folder.length - 1);
         }
         //debugger
-        url = _c.url(url + "?folder=" + folder + "&uid=" + $.uid() + "&unitid=" + $.unitid());//转换地址
+        url = _c.url(url + "?folder=" + folder + "&uid=" + _c.uid() + "&unitid=" + _c.unitid());//转换地址
         var contentId = '#fileupload-' + id;
         var startButton = "#startButton-" + id;
         var cancelButton = "#cancelButton-" + id;

@@ -2,10 +2,10 @@
     var cfg = [];
 
     cfg.push(html("<hr/>"));
-    cfg.push(button("刷新", "1:5", Color.green, function () {
+    cfg.push(button("刷新", "1:3", Color.green, function () {
         location.reload();
     }));
-    cfg.push(button("关闭", "6:0", Color.red, function () {
+    cfg.push(button("关闭", "4:0", Color.red, function () {
         subClose();
     }));
 
