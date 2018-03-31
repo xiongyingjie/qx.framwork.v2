@@ -63,10 +63,10 @@ var _c = {
         url: window.location.pathname
     },
     sever: {
-        host: "http://api.52xyj.cn", //业务服务器
+        host: "http://139.199.205.245:8080", //业务服务器
         cdn: "http://cdn.qxamoy.com/xyj.framwork",
-        host_sys: "http://api.52xyj.cn",//框架服务器[权限,报表]
-        host_wx: "http://api.52xyj.cn" //微信服务器
+        host_sys: "http://139.199.205.245:8080",//框架服务器[登陆,权限,报表]
+        host_wx: "http://139.199.205.245:8080" //微信服务器
     }
 
 };
