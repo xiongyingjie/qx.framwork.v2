@@ -42,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Areas\Permission\Controllers\CRUD2Controller.cs" />
     <Compile Remove="Controllers\Base\FileOperate.cs" />
     <Compile Remove="Controllers\Filter\AccountFilterController.cs" />
     <Compile Remove="Controllers\Filter\AppFilterController.cs" />

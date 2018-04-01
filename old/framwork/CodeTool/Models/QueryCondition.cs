@@ -28,7 +28,7 @@ namespace xyj.tool.Models
                     }
                 case QueryTypeEnum.Like:
                     {
-                        return TableName + "."+ColumName + " like '%{" + count + "}%' ";
+                        return string.Format("({0}.{1} like '%{{{2}}}%' or {0}.{1} is null) ", TableName,ColumName,count);
                     }
 
                 case QueryTypeEnum.Equal:

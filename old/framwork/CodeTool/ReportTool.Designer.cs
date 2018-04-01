@@ -62,6 +62,7 @@ namespace xyj.tool
             this.gp_addReport = new System.Windows.Forms.GroupBox();
             this.rtb_sql = new System.Windows.Forms.RichTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.ck_deletes = new System.Windows.Forms.CheckBox();
             this.ck_detail = new System.Windows.Forms.CheckBox();
             this.ck_delete = new System.Windows.Forms.CheckBox();
             this.ck_update = new System.Windows.Forms.CheckBox();
@@ -99,7 +100,6 @@ namespace xyj.tool
             this.label9 = new System.Windows.Forms.Label();
             this.bt_exit = new System.Windows.Forms.Button();
             this.bt_check = new System.Windows.Forms.Button();
-            this.ck_deletes = new System.Windows.Forms.CheckBox();
             this.groupBox7.SuspendLayout();
             this.p_addReport.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -218,7 +218,7 @@ namespace xyj.tool
             this.tssl_State});
             this.statusStrip1.Location = new System.Drawing.Point(0, 687);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1956, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1167, 22);
             this.statusStrip1.TabIndex = 17;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -435,6 +435,16 @@ namespace xyj.tool
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "4.检查报表配置";
+            // 
+            // ck_deletes
+            // 
+            this.ck_deletes.AutoSize = true;
+            this.ck_deletes.Location = new System.Drawing.Point(694, 59);
+            this.ck_deletes.Name = "ck_deletes";
+            this.ck_deletes.Size = new System.Drawing.Size(72, 16);
+            this.ck_deletes.TabIndex = 13;
+            this.ck_deletes.Text = "批量删除";
+            this.ck_deletes.UseVisualStyleBackColor = true;
             // 
             // ck_detail
             // 
@@ -788,21 +798,11 @@ namespace xyj.tool
             this.bt_check.UseVisualStyleBackColor = true;
             this.bt_check.Click += new System.EventHandler(this.bt_check_Click);
             // 
-            // ck_deletes
-            // 
-            this.ck_deletes.AutoSize = true;
-            this.ck_deletes.Location = new System.Drawing.Point(694, 59);
-            this.ck_deletes.Name = "ck_deletes";
-            this.ck_deletes.Size = new System.Drawing.Size(72, 16);
-            this.ck_deletes.TabIndex = 13;
-            this.ck_deletes.Text = "批量删除";
-            this.ck_deletes.UseVisualStyleBackColor = true;
-            // 
             // ReportTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1956, 709);
+            this.ClientSize = new System.Drawing.Size(1167, 709);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.p_addReport);
             this.Controls.Add(this.groupBox12);

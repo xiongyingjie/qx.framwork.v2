@@ -21,11 +21,12 @@ namespace Web.Areas.Permission.Controllers
         private IRepository<role> _role;
         private IRepository<permission_user> _user;
         private IRepository<user_role> _userRole;
+        private IRepository<orgnization> _orgnization;
         private IRepository<role_group> _roleGroup;
         private IRepository<role_group_relation> _roleGroupRelation;
         private IRepository<user_group> _userGroup;
         private IRepository<user_group_relation> _userGroupRelation;
-        private IRepository<orgnization> _orgnization;
+      
         private IRepository<orgnization_position> _orgnizationPosition;
         private IRepository<orgnization_type> _orgnizationType;
         private IRepository<position> _position;

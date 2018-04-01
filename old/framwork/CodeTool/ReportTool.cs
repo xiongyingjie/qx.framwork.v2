@@ -197,7 +197,7 @@ namespace xyj.tool
                 //关系的主表 和 引用表 都存在于 已勾选的表 中时才生成连接语句
                 if (tableList.Contains(r.TableName) && tableList.Contains(r.ForeginTableName))
                 {
-                    reportSql_where += string.Format("\n {0}.{1}={2}.{3} and ", r.TableName,
+                    reportSql_where += string.Format(" {0}.{1}={2}.{3} \n and ", r.TableName,
                         r.ColumName, r.ForeginTableName, r.ForeginColumName);
                 }
             });
@@ -207,7 +207,7 @@ namespace xyj.tool
                 var t = queryConditionList[i];
                 if (t.CanQuery)
                 {
-                    reportSql_where += t.ToString(i) + " and\n";
+                    reportSql_where += t.ToString(i) + "\n and";
                     //增加通配符
                     reportParam += t.ColumNote+ (i == queryConditionList.Count-1?"":";");
                 }
@@ -553,7 +553,7 @@ namespace xyj.tool
                     {
                         father_menu_id = cb_root_menu.Text.Split('@')[1] ;
                         menu_id = father_menu_id + "_" + cb_area.Text + "_" + cb_controller.Text + "_" + tb_action.Text;
-                        Db.menu.Add(new menu()
+                        Db.menu.AddOrUpdate(new menu()
                         {
                             menu_id = menu_id,
                             name = report.ReportName,
@@ -875,6 +875,7 @@ namespace xyj.tool
                         }else if (hideThis == 2)
                         {
                             item.SubItems[4].Text = true.ToString();
+                            item.SubItems[8].Text = QueryTypeEnum.None.ToString();//hide的不查询
                         }
                         //上移/下移
                         var currSeq = item.SubItems[5].Text;
@@ -1022,7 +1023,7 @@ namespace xyj.tool
         private void Auto_Op(CheckBox ck,string opValue,string opName)
         {
             if(Check_MVC(ck))
-                rtb_oprate.Text += "\nN1:<a href='*f/"+ cb_area.Text + "/" + cb_controller.Text + "/" + tb_action.Text.Replace("_list","")+"_"+ opValue+"?id={0}'>" + opName+"</a>:0;";
+                rtb_oprate.Text += "\nN1:<a href='*f/"+ (cb_area.Text + "/" + cb_controller.Text + "/" + tb_action.Text.Replace("_list","")+"_"+ opValue+"?id={0}'>" + opName+"</a>:0;").ToLower();
         }
 
         private bool Check_MVC(CheckBox ck)
