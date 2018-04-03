@@ -664,7 +664,7 @@ function InitWorkFlow() {
                     var item = data.All[i];
                     //_c.log((item.PathHistory.length + 0.00001));
                     // _c.log((item.AllRelation.length));
-                    taskHtml += MsgTpl("*f" + item.Url, item.Title, $.parsetime(item.Time), item.Note);
+                    taskHtml += MsgTpl("*f" + item.Url, item.Title, _c.parsetime(item.Time), item.Note);
                 }
                 taskHtml += '<li><a class="text-center qx-menu" data-title="待办列表" data-url="*f/core/workflow/list"><strong>查看更多</strong><i class="fa fa-angle-right"></i></a></li>';
 
@@ -2718,6 +2718,9 @@ function QxForm() {
         if (arguments.length > 2 && _c.isDebug) {
             $.alert("警告:请检查页面中hideTime参数是否正确:" + name);
         }
+        if (!_c.hasValue(value)) {
+            value = "#now";
+        }
         var dest = (HideTpl(name, value));
 
 
@@ -3556,7 +3559,7 @@ function QxForm() {
             q = _c.qall(param);//给form页赋参数
         }
 
-        jsurl = (srcurl(jsurl + ".js", "/views/form/"));
+        jsurl = (srcurl(jsurl + ".js", "/views/form/")).replace("//", "/");
         $.ajax({
             url: jsurl,
             success: function () {
@@ -3583,7 +3586,7 @@ function QxForm() {
             actionName = jsurl;
         }
 
-        cssurl = (cssurl + "/css/" + actionName).replace(".js", ".css");
+        cssurl = (cssurl + "/css/" + actionName).replace(".js", ".css").replace("//", "/");
 
 
         $.ajax({

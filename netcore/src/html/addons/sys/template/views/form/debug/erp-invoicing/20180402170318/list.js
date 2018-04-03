@@ -11,5 +11,5 @@ function List() {
                 })
         ];
         return cfg;
-            }, "", "erp.invoicing.brand@list", "列表", true);
+            }, "", "erp.invoicing.product_deposit@list", "列表", true);
 }

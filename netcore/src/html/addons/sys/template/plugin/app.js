@@ -1779,7 +1779,7 @@ _c.tool = function () {
             {
                 //    
                 if (_c.hasValue(notTrimValue))//无值的时候不操作
-                    $('#' + currentId).val($.parsetime(notTrimValue));
+                    $('#' + currentId).val(_c.parsetime(notTrimValue));
             } break;
             case 203: case 217://日期
             {

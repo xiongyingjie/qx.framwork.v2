@@ -1,14 +1,14 @@
 ﻿render(function () {
     var cfg=[];
-    cfg.push(input('', 'erp-invoicing-20180328193105', '', 6));
-    cfg.push(dropdown('erp-invoicing-20180328193105',
+    cfg.push(input('', 'erp-invoicing-20180402170318', '', 6));
+    cfg.push(dropdown('erp-invoicing-20180402170318',
               [
-                  { text: '添加', value: '*f/debug/erp-invoicing/20180328193105/add', id: 'erp-invoicing-20180328193105-add' },
-                  { text: '编辑', value: '*f/debug/erp-invoicing/20180328193105/update', id: 'erp-invoicing-20180328193105-update' },
-                  { text: '详情', value: '*f/debug/erp-invoicing/20180328193105/detail', id: 'erp-invoicing-20180328193105-detail' },      
-                  { text: '删除', value: 'erp.invoicing.brand@delete', id: 'erp-invoicing-20180328193105-delete' },
-                  { text: '下拉', value: '*f/debug/erp-invoicing/20180328193105/items', id: 'erp-invoicing-20180328193105-items' },
-                  { text: '列表', value: '*f/debug/erp-invoicing/20180328193105/list', id: 'erp-invoicing-20180328193105-list' }
+                  { text: '添加', value: '*f/debug/erp-invoicing/20180402170318/add', id: 'erp-invoicing-20180402170318-add' },
+                  { text: '编辑', value: '*f/debug/erp-invoicing/20180402170318/update', id: 'erp-invoicing-20180402170318-update' },
+                  { text: '详情', value: '*f/debug/erp-invoicing/20180402170318/detail', id: 'erp-invoicing-20180402170318-detail' },      
+                  { text: '删除', value: 'erp.invoicing.product_deposit@delete', id: 'erp-invoicing-20180402170318-delete' },
+                  { text: '下拉', value: '*f/debug/erp-invoicing/20180402170318/items', id: 'erp-invoicing-20180402170318-items' },
+                  { text: '列表', value: '*f/debug/erp-invoicing/20180402170318/list', id: 'erp-invoicing-20180402170318-list' }
               ]));
 
     cfg.push(html("<hr/>"));
@@ -22,7 +22,7 @@
     return cfg;
 });
 function formReady() {
-    var testIdArray=['erp-invoicing-20180328193105',"init"];
+    var testIdArray=['erp-invoicing-20180402170318',"init"];
     for (var i = 0; i < testIdArray.length; i++) {
         bindParam(testIdArray[i]);
     }

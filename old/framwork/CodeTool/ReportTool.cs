@@ -99,6 +99,7 @@ namespace xyj.tool
         {
             var sequence = 1;
             var lvBody = new List<List<string>>();
+            var lvBodyWith_id = new List<List<string>>();
             TreeNodes.ForEach(node =>
             {
                 if (node.Checked && node.Level == 3)
@@ -116,9 +117,19 @@ namespace xyj.tool
                             nodeTag[6],
                             QueryTypeEnum.Like.ToString()//(lvBody.Any()?QueryTypeEnum.Like:QueryTypeEnum.None).ToString()
                         };
-                    lvBody.Add(row);
+                    if (row[1].Contains("_id"))
+                    {
+                        lvBodyWith_id.Add(row);
+                    }
+                    else
+                    {
+                        lvBody.Add(row);
+                    }
+                  
                 }
             });
+            //排序，带_id的排后面
+            lvBody.AddRange(lvBodyWith_id);
             ListViewBinding(lv_colums, new List<string>()
                 {
                     "GUID",

@@ -1168,6 +1168,14 @@ GUID	列名	说明	表	 不显示 	主键	字段类型	长度
                                 "输入控件编号", old, rect.Width / 3, rect.Height / 3)
                                 .CheckValue(old));
                             item.SubItems[13].Text = ((FormControlType)input).ToString();
+                            if (old == "212")
+                            {
+                                item.SubItems[15].Text = (FormControlType.Hide).ToString();
+                            }
+                            if (old == "223")
+                            {
+                                item.SubItems[15].Text = (FormControlType.HideTime).ToString();
+                            }
                         }
                         //改类型
                         if (changeShowType)

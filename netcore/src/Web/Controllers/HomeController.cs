@@ -23,8 +23,8 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            _ylService.Test();
-            return Content(DateTime.Now+ " => 服务器启动成功: " + Request.Scheme + "://" + Request.Host.Host+ Request.GetUri().Port+"\n");
+           // _ylService.Test();
+            return Content(DateTime.Now+ " => 服务器启动成功: " + Request.Scheme + "://" + Request.Host.Host + ":"+ Request.GetUri().Port+"\n");
         }
 
         public IActionResult About()
